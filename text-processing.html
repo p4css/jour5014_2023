@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="visualization.html"/>
-<link rel="next" href="wgoigt-of-nytimes.html"/>
+<link rel="next" href="tw-data-visualization.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -181,14 +181,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>2.1.4</b> Keyness</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>3</b> WGOIGT of NyTimes</a>
+<li class="chapter" data-level="3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>3</b> TW Data Visualization</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>3.1</b> Net Worth by Age Group</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>3.1.1</b> Read and sort data</a></li>
+<li class="chapter" data-level="3.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>3.1</b> Coordination &amp; Axis</a></li>
+<li class="chapter" data-level="3.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>3.2</b> Log-scale</a></li>
+<li class="chapter" data-level="3.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>3.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="3.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>3.4</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="3.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>3.5</b> TW-Income (boxplot)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>3.2</b> UNICEF-Optimistic</a></li>
-<li class="chapter" data-level="3.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>3.3</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="4" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>4</b> WGOIGT of NyTimes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>4.1</b> Net Worth by Age Group</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>4.1.1</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>4.2</b> UNICEF-Optimistic</a></li>
+<li class="chapter" data-level="4.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>4.3</b> Global Carbon Projects</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -375,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb53-42"><a href="text-processing.html#cb53-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Normalized by all&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Normalized in group&quot;</span>),</span>
 <span id="cb53-43"><a href="text-processing.html#cb53-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
 <span id="cb53-44"><a href="text-processing.html#cb53-44" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/tweets-by-hour-1.png" width="672" /></p>
+<p><img src="R-for-Data-Journalism_files/figure-html/tweets-by-hour-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="發文附圖" class="section level4 hasAnchor" number="2.1.3.2">
 <h4><span class="header-section-number">2.1.3.2</span> 發文附圖<a href="text-processing.html#發文附圖" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -413,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb54-26"><a href="text-processing.html#cb54-26" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
 <span id="cb54-27"><a href="text-processing.html#cb54-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Stacked&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Dodged&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
 <span id="cb54-28"><a href="text-processing.html#cb54-28" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="keyness" class="section level3 hasAnchor" number="2.1.4">
@@ -445,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb56-7"><a href="text-processing.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Occurrences&quot;</span>) <span class="sc">+</span></span>
 <span id="cb56-8"><a href="text-processing.html#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
 <span id="cb56-9"><a href="text-processing.html#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div id="詞頻差異" class="section level4 hasAnchor" number="2.1.4.1">
 <h4><span class="header-section-number">2.1.4.1</span> 詞頻差異<a href="text-processing.html#詞頻差異" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="text-processing.html#cb57-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
@@ -492,7 +500,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb62-11"><a href="text-processing.html#cb62-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
 <span id="cb62-12"><a href="text-processing.html#cb62-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
 <span id="cb62-13"><a href="text-processing.html#cb62-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-29-1.png" width="576" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -504,7 +512,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="wgoigt-of-nytimes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tw-data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
