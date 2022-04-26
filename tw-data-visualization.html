@@ -4,26 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 TW Data Visualization | R for Data Journalism</title>
+  <title>Chapter 4 TW Data Visualization | R Basic: Vector</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 TW Data Visualization | R for Data Journalism" />
+  <meta property="og:title" content="Chapter 4 TW Data Visualization | R Basic: Vector" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 TW Data Visualization | R for Data Journalism" />
+  <meta name="twitter:title" content="Chapter 4 TW Data Visualization | R Basic: Vector" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
 
-<meta name="author" content="HSIEH, JI-LUNG" />
+<meta name="author" content="Jilung Hsieh" />
 
 
-<meta name="date" content="2022-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,66 +136,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
-<li class="chapter" data-level="1" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>1</b> Visualization</a>
+<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> R Basic</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>1.1</b> ggplot簡介</a></li>
-<li class="chapter" data-level="1.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>1.2</b> 繪圖基礎：折線圖</a>
+<li class="chapter" data-level="1.1" data-path="basic.html"><a href="basic.html#playing-r-with-r-markdown"><i class="fa fa-check"></i><b>1.1</b> Playing R with R Markdown</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="visualization.html"><a href="visualization.html#繪圖三要素"><i class="fa fa-check"></i><b>1.2.1</b> 繪圖三要素</a></li>
-<li class="chapter" data-level="1.2.2" data-path="visualization.html"><a href="visualization.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>1.2.2</b> 範例-紐時世代貧富不均</a></li>
-<li class="chapter" data-level="1.2.3" data-path="visualization.html"><a href="visualization.html#加入自變項群組"><i class="fa fa-check"></i><b>1.2.3</b> 加入自變項群組</a></li>
+<li class="chapter" data-level="1.1.1" data-path="basic.html"><a href="basic.html#loading-dcard-data"><i class="fa fa-check"></i><b>1.1.1</b> Loading dcard data</a></li>
+<li class="chapter" data-level="1.1.2" data-path="basic.html"><a href="basic.html#getting-taipei-theft-report-data"><i class="fa fa-check"></i><b>1.1.2</b> Getting Taipei theft report data</a></li>
+<li class="chapter" data-level="1.1.3" data-path="basic.html"><a href="basic.html#loading-a-csv-file-in-data-directory"><i class="fa fa-check"></i><b>1.1.3</b> Loading a csv file in data directory</a></li>
+<li class="chapter" data-level="1.1.4" data-path="basic.html"><a href="basic.html#loading-moi-data-through-api"><i class="fa fa-check"></i><b>1.1.4</b> Loading MOI data through API</a></li>
+<li class="chapter" data-level="1.1.5" data-path="basic.html"><a href="basic.html#getting-ubike"><i class="fa fa-check"></i><b>1.1.5</b> Getting ubike</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>1.3</b> 圖表調整</a>
+<li class="chapter" data-level="1.2" data-path="basic.html"><a href="basic.html#vectors"><i class="fa fa-check"></i><b>1.2</b> Vectors</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="visualization.html"><a href="visualization.html#點線型態"><i class="fa fa-check"></i><b>1.3.1</b> 點線型態</a></li>
-<li class="chapter" data-level="1.3.2" data-path="visualization.html"><a href="visualization.html#標題標籤與圖說"><i class="fa fa-check"></i><b>1.3.2</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="1.3.3" data-path="visualization.html"><a href="visualization.html#字體樣式"><i class="fa fa-check"></i><b>1.3.3</b> 字體樣式</a></li>
-<li class="chapter" data-level="1.3.4" data-path="visualization.html"><a href="visualization.html#圖表主題色調"><i class="fa fa-check"></i><b>1.3.4</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="1.3.5" data-path="visualization.html"><a href="visualization.html#預設主題"><i class="fa fa-check"></i><b>1.3.5</b> 預設主題</a></li>
-<li class="chapter" data-level="1.3.6" data-path="visualization.html"><a href="visualization.html#顯示中文字體"><i class="fa fa-check"></i><b>1.3.6</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="1.3.7" data-path="visualization.html"><a href="visualization.html#xy軸方向"><i class="fa fa-check"></i><b>1.3.7</b> X/Y軸方向</a></li>
+<li class="chapter" data-level="1.2.1" data-path="basic.html"><a href="basic.html#r-syntax"><i class="fa fa-check"></i><b>1.2.1</b> R syntax</a></li>
+<li class="chapter" data-level="1.2.2" data-path="basic.html"><a href="basic.html#vector-basic-operations"><i class="fa fa-check"></i><b>1.2.2</b> Vector basic operations</a></li>
+<li class="chapter" data-level="1.2.3" data-path="basic.html"><a href="basic.html#viewing"><i class="fa fa-check"></i><b>1.2.3</b> Viewing</a></li>
+<li class="chapter" data-level="1.2.4" data-path="basic.html"><a href="basic.html#subsetting-filtering"><i class="fa fa-check"></i><b>1.2.4</b> Subsetting, filtering</a></li>
+<li class="chapter" data-level="1.2.5" data-path="basic.html"><a href="basic.html#deleting"><i class="fa fa-check"></i><b>1.2.5</b> Deleting</a></li>
+<li class="chapter" data-level="1.2.6" data-path="basic.html"><a href="basic.html#concatinating"><i class="fa fa-check"></i><b>1.2.6</b> Concatinating</a></li>
+<li class="chapter" data-level="1.2.7" data-path="basic.html"><a href="basic.html#calculating-with-vectors"><i class="fa fa-check"></i><b>1.2.7</b> Calculating with vectors</a></li>
+<li class="chapter" data-level="1.2.8" data-path="basic.html"><a href="basic.html#data-types"><i class="fa fa-check"></i><b>1.2.8</b> Data types</a></li>
+<li class="chapter" data-level="1.2.9" data-path="basic.html"><a href="basic.html#character-operations"><i class="fa fa-check"></i><b>1.2.9</b> Character operations</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>1.4</b> 視覺化說故事的技巧</a>
+<li class="chapter" data-level="1.3" data-path="basic.html"><a href="basic.html#dataframe"><i class="fa fa-check"></i><b>1.3</b> Dataframe</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="visualization.html"><a href="visualization.html#依群組指定顏色"><i class="fa fa-check"></i><b>1.4.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="1.4.2" data-path="visualization.html"><a href="visualization.html#使用gghighlight套件"><i class="fa fa-check"></i><b>1.4.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="1.4.3" data-path="visualization.html"><a href="visualization.html#為視覺化建立群組"><i class="fa fa-check"></i><b>1.4.3</b> 為視覺化建立群組</a></li>
-</ul></li>
-<li class="chapter" data-level="1.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>1.5</b> 時間軸的視覺化</a>
-<ul>
-<li class="chapter" data-level="1.5.1" data-path="visualization.html"><a href="visualization.html#文字轉時間"><i class="fa fa-check"></i><b>1.5.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="1.5.2" data-path="visualization.html"><a href="visualization.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>1.5.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="1.5.3" data-path="visualization.html"><a href="visualization.html#逐月統計資料"><i class="fa fa-check"></i><b>1.5.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="1.5.4" data-path="visualization.html"><a href="visualization.html#逐日統計資料佳"><i class="fa fa-check"></i><b>1.5.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="1.5.5" data-path="visualization.html"><a href="visualization.html#每日逐時資料"><i class="fa fa-check"></i><b>1.5.5</b> 每日逐時資料</a></li>
+<li class="chapter" data-level="1.3.1" data-path="basic.html"><a href="basic.html#產生新的dataframe"><i class="fa fa-check"></i><b>1.3.1</b> 產生新的Dataframe</a></li>
+<li class="chapter" data-level="1.3.2" data-path="basic.html"><a href="basic.html#觀察dataframe"><i class="fa fa-check"></i><b>1.3.2</b> 觀察dataframe</a></li>
+<li class="chapter" data-level="1.3.3" data-path="basic.html"><a href="basic.html#操作dataframe"><i class="fa fa-check"></i><b>1.3.3</b> 操作dataframe</a></li>
+<li class="chapter" data-level="1.3.4" data-path="basic.html"><a href="basic.html#簡易繪圖"><i class="fa fa-check"></i><b>1.3.4</b> 簡易繪圖</a></li>
+<li class="chapter" data-level="1.3.5" data-path="basic.html"><a href="basic.html#其他使用dplyr"><i class="fa fa-check"></i><b>1.3.5</b> 其他：使用dplyr</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>2</b> Text Processing</a>
+<li class="chapter" data-level="2" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>2</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>2.1</b> Tweets 分析</a>
+<li class="chapter" data-level="2.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>2.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="2.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>2.2</b> 繪圖基礎：折線圖</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="text-processing.html"><a href="text-processing.html#載入並清理資料"><i class="fa fa-check"></i><b>2.1.1</b> 載入並清理資料</a></li>
-<li class="chapter" data-level="2.1.2" data-path="text-processing.html"><a href="text-processing.html#萃取資料"><i class="fa fa-check"></i><b>2.1.2</b> 萃取資料</a></li>
-<li class="chapter" data-level="2.1.3" data-path="text-processing.html"><a href="text-processing.html#視覺化探索"><i class="fa fa-check"></i><b>2.1.3</b> 視覺化探索</a></li>
-<li class="chapter" data-level="2.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>2.1.4</b> Keyness</a></li>
+<li class="chapter" data-level="2.2.1" data-path="visualization.html"><a href="visualization.html#繪圖三要素"><i class="fa fa-check"></i><b>2.2.1</b> 繪圖三要素</a></li>
+<li class="chapter" data-level="2.2.2" data-path="visualization.html"><a href="visualization.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>2.2.2</b> 範例-紐時世代貧富不均</a></li>
+<li class="chapter" data-level="2.2.3" data-path="visualization.html"><a href="visualization.html#加入自變項群組"><i class="fa fa-check"></i><b>2.2.3</b> 加入自變項群組</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>2.3</b> 圖表調整</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="visualization.html"><a href="visualization.html#點線型態"><i class="fa fa-check"></i><b>2.3.1</b> 點線型態</a></li>
+<li class="chapter" data-level="2.3.2" data-path="visualization.html"><a href="visualization.html#標題標籤與圖說"><i class="fa fa-check"></i><b>2.3.2</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="2.3.3" data-path="visualization.html"><a href="visualization.html#字體樣式"><i class="fa fa-check"></i><b>2.3.3</b> 字體樣式</a></li>
+<li class="chapter" data-level="2.3.4" data-path="visualization.html"><a href="visualization.html#圖表主題色調"><i class="fa fa-check"></i><b>2.3.4</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="2.3.5" data-path="visualization.html"><a href="visualization.html#預設主題"><i class="fa fa-check"></i><b>2.3.5</b> 預設主題</a></li>
+<li class="chapter" data-level="2.3.6" data-path="visualization.html"><a href="visualization.html#顯示中文字體"><i class="fa fa-check"></i><b>2.3.6</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="2.3.7" data-path="visualization.html"><a href="visualization.html#xy軸方向"><i class="fa fa-check"></i><b>2.3.7</b> X/Y軸方向</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>2.4</b> 視覺化說故事的技巧</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="visualization.html"><a href="visualization.html#依群組指定顏色"><i class="fa fa-check"></i><b>2.4.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="2.4.2" data-path="visualization.html"><a href="visualization.html#使用gghighlight套件"><i class="fa fa-check"></i><b>2.4.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="2.4.3" data-path="visualization.html"><a href="visualization.html#為視覺化建立群組"><i class="fa fa-check"></i><b>2.4.3</b> 為視覺化建立群組</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>2.5</b> 時間軸的視覺化</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="visualization.html"><a href="visualization.html#文字轉時間"><i class="fa fa-check"></i><b>2.5.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="2.5.2" data-path="visualization.html"><a href="visualization.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>2.5.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="2.5.3" data-path="visualization.html"><a href="visualization.html#逐月統計資料"><i class="fa fa-check"></i><b>2.5.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="2.5.4" data-path="visualization.html"><a href="visualization.html#逐日統計資料佳"><i class="fa fa-check"></i><b>2.5.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="2.5.5" data-path="visualization.html"><a href="visualization.html#每日逐時資料"><i class="fa fa-check"></i><b>2.5.5</b> 每日逐時資料</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>3</b> TW Data Visualization</a>
+<li class="chapter" data-level="3" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>3</b> Text Processing</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>3.1</b> Coordination &amp; Axis</a></li>
-<li class="chapter" data-level="3.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>3.2</b> Log-scale</a></li>
-<li class="chapter" data-level="3.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>3.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="3.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>3.4</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="3.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>3.5</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="3.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>3.1</b> Tweets 分析</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="text-processing.html"><a href="text-processing.html#載入並清理資料"><i class="fa fa-check"></i><b>3.1.1</b> 載入並清理資料</a></li>
+<li class="chapter" data-level="3.1.2" data-path="text-processing.html"><a href="text-processing.html#萃取資料"><i class="fa fa-check"></i><b>3.1.2</b> 萃取資料</a></li>
+<li class="chapter" data-level="3.1.3" data-path="text-processing.html"><a href="text-processing.html#視覺化探索"><i class="fa fa-check"></i><b>3.1.3</b> 視覺化探索</a></li>
+<li class="chapter" data-level="3.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>3.1.4</b> Keyness</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>4</b> WGOIGT of NyTimes</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>4.1</b> Net Worth by Age Group</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>4.1.1</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>4.2</b> UNICEF-Optimistic</a></li>
-<li class="chapter" data-level="4.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>4.3</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>4</b> TW Data Visualization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>4.1</b> Coordination &amp; Axis</a></li>
+<li class="chapter" data-level="4.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>4.2</b> Log-scale</a></li>
+<li class="chapter" data-level="4.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>4.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="4.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>4.4</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="4.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>4.5</b> TW-Income (boxplot)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>5</b> WGOIGT of NyTimes</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>5.1</b> Net Worth by Age Group</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>5.1.1</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>5.2</b> UNICEF-Optimistic</a></li>
+<li class="chapter" data-level="5.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>5.3</b> Global Carbon Projects</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -210,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Journalism</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Basic: Vector</a>
           </h1>
         </div>
 
@@ -218,21 +248,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tw-data-visualization" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> TW Data Visualization<a href="tw-data-visualization.html#tw-data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tw-data-visualization.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="tw-data-visualization.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
-<span id="cb1-3"><a href="tw-data-visualization.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb1-4"><a href="tw-data-visualization.html#cb1-4" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb1-5"><a href="tw-data-visualization.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb1-6"><a href="tw-data-visualization.html#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>), </span>
-<span id="cb1-7"><a href="tw-data-visualization.html#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb1-8"><a href="tw-data-visualization.html#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb1-9"><a href="tw-data-visualization.html#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb1-10"><a href="tw-data-visualization.html#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>)</span>
-<span id="cb1-11"><a href="tw-data-visualization.html#cb1-11" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
-<div id="coordination-axis" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Coordination &amp; Axis<a href="tw-data-visualization.html#coordination-axis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tw-data-visualization" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> TW Data Visualization<a href="tw-data-visualization.html#tw-data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="tw-data-visualization.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb318-2"><a href="tw-data-visualization.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb318-3"><a href="tw-data-visualization.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb318-4"><a href="tw-data-visualization.html#cb318-4" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb318-5"><a href="tw-data-visualization.html#cb318-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb318-6"><a href="tw-data-visualization.html#cb318-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>), </span>
+<span id="cb318-7"><a href="tw-data-visualization.html#cb318-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb318-8"><a href="tw-data-visualization.html#cb318-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb318-9"><a href="tw-data-visualization.html#cb318-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb318-10"><a href="tw-data-visualization.html#cb318-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>)</span>
+<span id="cb318-11"><a href="tw-data-visualization.html#cb318-11" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<div id="coordination-axis" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Coordination &amp; Axis<a href="tw-data-visualization.html#coordination-axis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Chap3 Coordination &amp; Axis <a href="https://clauswilke.com/dataviz/coordinate-systems-axes.html">Fundamentals of Data Visualization (clauswilke.com)</a></li>
 </ul>
@@ -246,106 +276,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><img src="https://lh3.googleusercontent.com/qDunt-J56_eLmFmjTlUn7VMRyg9rKn0-aeYjfmbXd9JcUV9xJojcG0oAoEXHZMU3SCUx64o2B_GH9mtpwqKuj6KUchZL4Zau4l7LnC3sclUdpbW-mQdv8cJqCvukqUsrbXMgeKSl" /></p>
 </div>
-<div id="log-scale" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Log-scale<a href="tw-data-visualization.html#log-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tw-data-visualization.html#cb2-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/opendata107Y020.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="tw-data-visualization.html#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="tw-data-visualization.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
-<span id="cb2-4"><a href="tw-data-visualization.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="tw-data-visualization.html#cb2-5" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="tw-data-visualization.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(site_id, village, edu_age_15up_total) <span class="sc">%&gt;%</span></span>
-<span id="cb2-7"><a href="tw-data-visualization.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(edu_age_15up_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-8"><a href="tw-data-visualization.html#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb2-9"><a href="tw-data-visualization.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(index <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">|</span> index <span class="sc">&gt;</span> <span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>, <span class="fu">paste0</span>(site_id, village), <span class="st">&quot;&quot;</span>))</span>
-<span id="cb2-10"><a href="tw-data-visualization.html#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="tw-data-visualization.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb2-12"><a href="tw-data-visualization.html#cb2-12" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
-<span id="cb2-13"><a href="tw-data-visualization.html#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb2-14"><a href="tw-data-visualization.html#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">point.padding =</span> .<span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb2-15"><a href="tw-data-visualization.html#cb2-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">min.segment.length =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb2-16"><a href="tw-data-visualization.html#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb2-17"><a href="tw-data-visualization.html#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)) <span class="sc">+</span> </span>
-<span id="cb2-18"><a href="tw-data-visualization.html#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb2-19"><a href="tw-data-visualization.html#cb2-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
-<span id="cb2-20"><a href="tw-data-visualization.html#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb2-21"><a href="tw-data-visualization.html#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb2-22"><a href="tw-data-visualization.html#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb2-23"><a href="tw-data-visualization.html#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="tw-data-visualization.html#cb2-24" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb2-25"><a href="tw-data-visualization.html#cb2-25" aria-hidden="true" tabindex="-1"></a>  p2, <span class="cn">NULL</span>, p1,</span>
-<span id="cb2-26"><a href="tw-data-visualization.html#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb2-27"><a href="tw-data-visualization.html#cb2-27" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="log-scale" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Log-scale<a href="tw-data-visualization.html#log-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="tw-data-visualization.html#cb319-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/opendata107Y020.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb319-2"><a href="tw-data-visualization.html#cb319-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb319-3"><a href="tw-data-visualization.html#cb319-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
+<span id="cb319-4"><a href="tw-data-visualization.html#cb319-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-5"><a href="tw-data-visualization.html#cb319-5" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb319-6"><a href="tw-data-visualization.html#cb319-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(site_id, village, edu_age_15up_total) <span class="sc">%&gt;%</span></span>
+<span id="cb319-7"><a href="tw-data-visualization.html#cb319-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(edu_age_15up_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb319-8"><a href="tw-data-visualization.html#cb319-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb319-9"><a href="tw-data-visualization.html#cb319-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(index <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">|</span> index <span class="sc">&gt;</span> <span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>, <span class="fu">paste0</span>(site_id, village), <span class="st">&quot;&quot;</span>))</span>
+<span id="cb319-10"><a href="tw-data-visualization.html#cb319-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-11"><a href="tw-data-visualization.html#cb319-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb319-12"><a href="tw-data-visualization.html#cb319-12" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
+<span id="cb319-13"><a href="tw-data-visualization.html#cb319-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb319-14"><a href="tw-data-visualization.html#cb319-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">point.padding =</span> .<span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb319-15"><a href="tw-data-visualization.html#cb319-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">min.segment.length =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb319-16"><a href="tw-data-visualization.html#cb319-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb319-17"><a href="tw-data-visualization.html#cb319-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)) <span class="sc">+</span> </span>
+<span id="cb319-18"><a href="tw-data-visualization.html#cb319-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb319-19"><a href="tw-data-visualization.html#cb319-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
+<span id="cb319-20"><a href="tw-data-visualization.html#cb319-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb319-21"><a href="tw-data-visualization.html#cb319-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb319-22"><a href="tw-data-visualization.html#cb319-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb319-23"><a href="tw-data-visualization.html#cb319-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-24"><a href="tw-data-visualization.html#cb319-24" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb319-25"><a href="tw-data-visualization.html#cb319-25" aria-hidden="true" tabindex="-1"></a>  p2, <span class="cn">NULL</span>, p1,</span>
+<span id="cb319-26"><a href="tw-data-visualization.html#cb319-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb319-27"><a href="tw-data-visualization.html#cb319-27" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/Fig3-5-6-log-scale-village-level-population-1.png" width="672" /></p>
 </div>
-<div id="square-root-scale" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Square-root scale<a href="tw-data-visualization.html#square-root-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="square-root-scale" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Square-root scale<a href="tw-data-visualization.html#square-root-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Chap3 Coordination &amp; Axis <a href="https://clauswilke.com/dataviz/coordinate-systems-axes.html">Fundamentals of Data Visualization (clauswilke.com)</a></p>
 <div class="figure">
 <img src="images/paste-F8C01660.png" alt="" />
 <p class="caption">Figure 3.8: Areas of Northeastern U.S. states. (a) Areas shown on a linear scale. (b) Areas shown on a square-root scale. Data source: Google.</p>
 </div>
 <p>前面是視覺化了各村里大於十五歲以上人口的人口數分佈，採用對數尺度（log-scale）可以觀察到比較小的村里。那有什麼是適合用平方根尺度（sqrt-scale）的呢？是土地嗎？密度嗎？還是人口數？是村里等級嗎？鄉鎮市區等級嗎？還是縣市等級？</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="tw-data-visualization.html#cb3-1" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="tw-data-visualization.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="tw-data-visualization.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
-<span id="cb3-4"><a href="tw-data-visualization.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="tw-data-visualization.html#cb3-5" aria-hidden="true" tabindex="-1"></a>town <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="tw-data-visualization.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(area)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="tw-data-visualization.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="tw-data-visualization.html#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, area) <span class="sc">%&gt;%</span></span>
-<span id="cb3-9"><a href="tw-data-visualization.html#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb3-10"><a href="tw-data-visualization.html#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>() <span class="sc">+</span> </span>
-<span id="cb3-11"><a href="tw-data-visualization.html#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="tw-data-visualization.html#cb320-1" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb320-2"><a href="tw-data-visualization.html#cb320-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb320-3"><a href="tw-data-visualization.html#cb320-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
+<span id="cb320-4"><a href="tw-data-visualization.html#cb320-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb320-5"><a href="tw-data-visualization.html#cb320-5" aria-hidden="true" tabindex="-1"></a>town <span class="sc">%&gt;%</span></span>
+<span id="cb320-6"><a href="tw-data-visualization.html#cb320-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(area)) <span class="sc">%&gt;%</span></span>
+<span id="cb320-7"><a href="tw-data-visualization.html#cb320-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb320-8"><a href="tw-data-visualization.html#cb320-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, area) <span class="sc">%&gt;%</span></span>
+<span id="cb320-9"><a href="tw-data-visualization.html#cb320-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb320-10"><a href="tw-data-visualization.html#cb320-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>() <span class="sc">+</span> </span>
+<span id="cb320-11"><a href="tw-data-visualization.html#cb320-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:Fig03-8-TW-Population-Density-1"></span>
 <img src="R-for-Data-Journalism_files/figure-html/Fig03-8-TW-Population-Density-1.png" alt="(ref:population-area)" width="672" />
 <p class="caption">
-Figure 3.1: (ref:population-area)
+Figure 4.1: (ref:population-area)
 </p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tw-data-visualization.html#cb4-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> town <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="tw-data-visualization.html#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="tw-data-visualization.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="tw-data-visualization.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb4-5"><a href="tw-data-visualization.html#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
-<span id="cb4-6"><a href="tw-data-visualization.html#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
-<span id="cb4-7"><a href="tw-data-visualization.html#cb4-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="tw-data-visualization.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb4-9"><a href="tw-data-visualization.html#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="tw-data-visualization.html#cb4-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
-<span id="cb4-11"><a href="tw-data-visualization.html#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-12"><a href="tw-data-visualization.html#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb4-13"><a href="tw-data-visualization.html#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb4-14"><a href="tw-data-visualization.html#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>) <span class="sc">+</span></span>
-<span id="cb4-15"><a href="tw-data-visualization.html#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale_y_sqrt() +</span></span>
-<span id="cb4-16"><a href="tw-data-visualization.html#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb4-17"><a href="tw-data-visualization.html#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="tw-data-visualization.html#cb4-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
-<span id="cb4-19"><a href="tw-data-visualization.html#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-20"><a href="tw-data-visualization.html#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb4-21"><a href="tw-data-visualization.html#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb4-22"><a href="tw-data-visualization.html#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;khaki&quot;</span>) <span class="sc">+</span></span>
-<span id="cb4-23"><a href="tw-data-visualization.html#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">250000</span>, <span class="dv">500000</span>, <span class="dv">1000000</span>, <span class="dv">2000000</span>, <span class="dv">4000000</span>)) <span class="sc">+</span></span>
-<span id="cb4-24"><a href="tw-data-visualization.html#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb4-25"><a href="tw-data-visualization.html#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="tw-data-visualization.html#cb4-26" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb4-27"><a href="tw-data-visualization.html#cb4-27" aria-hidden="true" tabindex="-1"></a>  p1, p2,</span>
-<span id="cb4-28"><a href="tw-data-visualization.html#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>
-<span id="cb4-29"><a href="tw-data-visualization.html#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span></span>
-<span id="cb4-30"><a href="tw-data-visualization.html#cb4-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="tw-data-visualization.html#cb321-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> town <span class="sc">%&gt;%</span></span>
+<span id="cb321-2"><a href="tw-data-visualization.html#cb321-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb321-3"><a href="tw-data-visualization.html#cb321-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
+<span id="cb321-4"><a href="tw-data-visualization.html#cb321-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb321-5"><a href="tw-data-visualization.html#cb321-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
+<span id="cb321-6"><a href="tw-data-visualization.html#cb321-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
+<span id="cb321-7"><a href="tw-data-visualization.html#cb321-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb321-8"><a href="tw-data-visualization.html#cb321-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb321-9"><a href="tw-data-visualization.html#cb321-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-10"><a href="tw-data-visualization.html#cb321-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
+<span id="cb321-11"><a href="tw-data-visualization.html#cb321-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb321-12"><a href="tw-data-visualization.html#cb321-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb321-13"><a href="tw-data-visualization.html#cb321-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb321-14"><a href="tw-data-visualization.html#cb321-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-15"><a href="tw-data-visualization.html#cb321-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale_y_sqrt() +</span></span>
+<span id="cb321-16"><a href="tw-data-visualization.html#cb321-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb321-17"><a href="tw-data-visualization.html#cb321-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-18"><a href="tw-data-visualization.html#cb321-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
+<span id="cb321-19"><a href="tw-data-visualization.html#cb321-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb321-20"><a href="tw-data-visualization.html#cb321-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb321-21"><a href="tw-data-visualization.html#cb321-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb321-22"><a href="tw-data-visualization.html#cb321-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;khaki&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-23"><a href="tw-data-visualization.html#cb321-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">250000</span>, <span class="dv">500000</span>, <span class="dv">1000000</span>, <span class="dv">2000000</span>, <span class="dv">4000000</span>)) <span class="sc">+</span></span>
+<span id="cb321-24"><a href="tw-data-visualization.html#cb321-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb321-25"><a href="tw-data-visualization.html#cb321-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-26"><a href="tw-data-visualization.html#cb321-26" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb321-27"><a href="tw-data-visualization.html#cb321-27" aria-hidden="true" tabindex="-1"></a>  p1, p2,</span>
+<span id="cb321-28"><a href="tw-data-visualization.html#cb321-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>
+<span id="cb321-29"><a href="tw-data-visualization.html#cb321-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span></span>
+<span id="cb321-30"><a href="tw-data-visualization.html#cb321-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:Fig03-8-TW-Population-Density-2"></span>
 <img src="R-for-Data-Journalism_files/figure-html/Fig03-8-TW-Population-Density-2.png" alt="(ref:population-area)" width="672" />
 <p class="caption">
-Figure 3.2: (ref:population-area)
+Figure 4.2: (ref:population-area)
 </p>
 </div>
 </div>
-<div id="tw-salary-boxplot" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> TW-Salary (boxplot)<a href="tw-data-visualization.html#tw-salary-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tw-salary-boxplot" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> TW-Salary (boxplot)<a href="tw-data-visualization.html#tw-salary-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Inspired by <a href="https://www.nytimes.com/2017/11/03/education/edlife/choosing-a-college-major.html">Six Myths About Choosing a College Major - The New York Times (nytimes.com)</a> and <a href="https://www.nytimes.com/2018/01/04/learning/whats-going-on-in-this-graph-jan-9-2018.html">What’s Going On in This Graph? | Jan. 9, 2018 - The New York Times (nytimes.com)</a></p>
 <p><img src="https://lh5.googleusercontent.com/sl38jyzhqytJUX60SZypH6ZcmoOyGCDk0-6lk3oOS-YxyXJpRgioK_iF5Y8ZkjESzkuFXPbl6k5qovTuHaJhX-_KdH1sHGWl9nJFy3ixt5sryeEhXmiRfEhrjZjvZi50RtKKTm7UceUL" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="tw-data-visualization.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb5-2"><a href="tw-data-visualization.html#cb5-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/tw_salary109.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>, <span class="at">trim_ws =</span> T)</span>
-<span id="cb5-3"><a href="tw-data-visualization.html#cb5-3" aria-hidden="true" tabindex="-1"></a>raw</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="tw-data-visualization.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb322-2"><a href="tw-data-visualization.html#cb322-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/tw_salary109.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>, <span class="at">trim_ws =</span> T)</span>
+<span id="cb322-3"><a href="tw-data-visualization.html#cb322-3" aria-hidden="true" tabindex="-1"></a>raw</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 29 × 5
 ##    Category        Q1 Median    Q3  Mean
 ##    &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -360,38 +390,38 @@ Figure 3.2: (ref:population-area)
 ##  9 　國中及以下  32.7   40.5  52    45.4
 ## 10 　高中（職）  34.5   44.7  59.8  51.9
 ## # … with 19 more rows</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="tw-data-visualization.html#cb7-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="tw-data-visualization.html#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="tw-data-visualization.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">reorder</span>(Category, <span class="fu">desc</span>(Median))) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="tw-data-visualization.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> Category, </span>
-<span id="cb7-5"><a href="tw-data-visualization.html#cb7-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>Q1, <span class="at">xmiddle=</span>Median, <span class="at">xupper=</span>Q3, <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">150</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="tw-data-visualization.html#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="tw-data-visualization.html#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Mean)) <span class="sc">+</span> </span>
-<span id="cb7-8"><a href="tw-data-visualization.html#cb7-8" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb7-9"><a href="tw-data-visualization.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb7-10"><a href="tw-data-visualization.html#cb7-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="tw-data-visualization.html#cb324-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
+<span id="cb324-2"><a href="tw-data-visualization.html#cb324-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb324-3"><a href="tw-data-visualization.html#cb324-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">reorder</span>(Category, <span class="fu">desc</span>(Median))) <span class="sc">%&gt;%</span></span>
+<span id="cb324-4"><a href="tw-data-visualization.html#cb324-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> Category, </span>
+<span id="cb324-5"><a href="tw-data-visualization.html#cb324-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>Q1, <span class="at">xmiddle=</span>Median, <span class="at">xupper=</span>Q3, <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">150</span>) <span class="sc">+</span></span>
+<span id="cb324-6"><a href="tw-data-visualization.html#cb324-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb324-7"><a href="tw-data-visualization.html#cb324-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Mean)) <span class="sc">+</span> </span>
+<span id="cb324-8"><a href="tw-data-visualization.html#cb324-8" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
+<span id="cb324-9"><a href="tw-data-visualization.html#cb324-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb324-10"><a href="tw-data-visualization.html#cb324-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/plot-salary-dist-1.png" width="672" /></p>
 </div>
-<div id="tw-income-boxplot" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> TW-Income (boxplot)<a href="tw-data-visualization.html#tw-income-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="tw-data-visualization.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb8-2"><a href="tw-data-visualization.html#cb8-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_income_107.csv&quot;</span>, ) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="tw-data-visualization.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">村里</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;合計&quot;</span>, <span class="st">&quot;其他&quot;</span>, <span class="st">&quot;福住里&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="tw-data-visualization.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(鄉鎮市區 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;信義區&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="tw-data-visualization.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(村里 <span class="ot">=</span> <span class="fu">reorder</span>(村里, <span class="fu">desc</span>(中位數)))</span>
-<span id="cb8-6"><a href="tw-data-visualization.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="tw-data-visualization.html#cb8-7" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> </span>
-<span id="cb8-8"><a href="tw-data-visualization.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>((平均數<span class="sc">&gt;</span>第三分位數), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-9"><a href="tw-data-visualization.html#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> 村里, </span>
-<span id="cb8-10"><a href="tw-data-visualization.html#cb8-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>第一分位數, <span class="at">xmiddle=</span>中位數, <span class="at">xupper=</span>第三分位數, </span>
-<span id="cb8-11"><a href="tw-data-visualization.html#cb8-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xmin=</span> <span class="fu">min</span>(第一分位數), <span class="at">xmax=</span><span class="fu">max</span>(第三分位數), <span class="at">fill=</span>group) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="tw-data-visualization.html#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb8-13"><a href="tw-data-visualization.html#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;orangered&quot;</span>, <span class="st">&quot;none&quot;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb8-14"><a href="tw-data-visualization.html#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> 平均數)) <span class="sc">+</span> </span>
-<span id="cb8-15"><a href="tw-data-visualization.html#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;年所得（單位：千元）&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb8-16"><a href="tw-data-visualization.html#cb8-16" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb8-17"><a href="tw-data-visualization.html#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb8-18"><a href="tw-data-visualization.html#cb8-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<div id="tw-income-boxplot" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> TW-Income (boxplot)<a href="tw-data-visualization.html#tw-income-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="tw-data-visualization.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb325-2"><a href="tw-data-visualization.html#cb325-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_income_107.csv&quot;</span>, ) <span class="sc">%&gt;%</span></span>
+<span id="cb325-3"><a href="tw-data-visualization.html#cb325-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">村里</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;合計&quot;</span>, <span class="st">&quot;其他&quot;</span>, <span class="st">&quot;福住里&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb325-4"><a href="tw-data-visualization.html#cb325-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(鄉鎮市區 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;信義區&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb325-5"><a href="tw-data-visualization.html#cb325-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(村里 <span class="ot">=</span> <span class="fu">reorder</span>(村里, <span class="fu">desc</span>(中位數)))</span>
+<span id="cb325-6"><a href="tw-data-visualization.html#cb325-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-7"><a href="tw-data-visualization.html#cb325-7" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> </span>
+<span id="cb325-8"><a href="tw-data-visualization.html#cb325-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>((平均數<span class="sc">&gt;</span>第三分位數), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb325-9"><a href="tw-data-visualization.html#cb325-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> 村里, </span>
+<span id="cb325-10"><a href="tw-data-visualization.html#cb325-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>第一分位數, <span class="at">xmiddle=</span>中位數, <span class="at">xupper=</span>第三分位數, </span>
+<span id="cb325-11"><a href="tw-data-visualization.html#cb325-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xmin=</span> <span class="fu">min</span>(第一分位數), <span class="at">xmax=</span><span class="fu">max</span>(第三分位數), <span class="at">fill=</span>group) <span class="sc">+</span></span>
+<span id="cb325-12"><a href="tw-data-visualization.html#cb325-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb325-13"><a href="tw-data-visualization.html#cb325-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;orangered&quot;</span>, <span class="st">&quot;none&quot;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb325-14"><a href="tw-data-visualization.html#cb325-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> 平均數)) <span class="sc">+</span> </span>
+<span id="cb325-15"><a href="tw-data-visualization.html#cb325-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;年所得（單位：千元）&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb325-16"><a href="tw-data-visualization.html#cb325-16" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
+<span id="cb325-17"><a href="tw-data-visualization.html#cb325-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb325-18"><a href="tw-data-visualization.html#cb325-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/plot-box-plot-1.png" width="672" /></p>
 
 </div>
@@ -457,6 +487,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
