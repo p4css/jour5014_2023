@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="data-manipulation.html"/>
+<link rel="next" href="data-analysis-with-r.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -167,86 +175,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3.5" data-path="basic.html"><a href="basic.html#其他使用dplyr"><i class="fa fa-check"></i><b>1.3.5</b> 其他：使用dplyr</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data Manipulation</a>
+<li class="chapter" data-level="2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html"><i class="fa fa-check"></i><b>2</b> Data Analysis with R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-manipulation.html"><a href="data-manipulation.html#base-to-dplyr-tp-theft"><i class="fa fa-check"></i><b>2.1</b> base to dplyr: TP Theft</a>
+<li class="chapter" data-level="2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#case-paid-maternal-leave"><i class="fa fa-check"></i><b>2.1</b> Case: Paid Maternal Leave</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="data-manipulation.html"><a href="data-manipulation.html#reading-data"><i class="fa fa-check"></i><b>2.1.1</b> Reading data</a></li>
-<li class="chapter" data-level="2.1.2" data-path="data-manipulation.html"><a href="data-manipulation.html#cleaning-data-i"><i class="fa fa-check"></i><b>2.1.2</b> Cleaning data I</a></li>
-<li class="chapter" data-level="2.1.3" data-path="data-manipulation.html"><a href="data-manipulation.html#cleaning-data-ii"><i class="fa fa-check"></i><b>2.1.3</b> Cleaning data II</a></li>
-<li class="chapter" data-level="2.1.4" data-path="data-manipulation.html"><a href="data-manipulation.html#long-to-wide-form"><i class="fa fa-check"></i><b>2.1.4</b> Long to wide form</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data-manipulation.html"><a href="data-manipulation.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>2.1.5</b> Setting time as row.name for mosaicplot</a></li>
-<li class="chapter" data-level="2.1.6" data-path="data-manipulation.html"><a href="data-manipulation.html#clean-version"><i class="fa fa-check"></i><b>2.1.6</b> Clean version</a></li>
+<li class="chapter" data-level="2.1.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#reading-.xlsx-by-readxl-package"><i class="fa fa-check"></i><b>2.1.1</b> Reading .xlsx by readxl package</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#previewing-data-by-view-class-dim-str-summary-and-names"><i class="fa fa-check"></i><b>2.1.2</b> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code></a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#select-variables"><i class="fa fa-check"></i><b>2.1.3</b> Select variables</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#check-replace-nas"><i class="fa fa-check"></i><b>2.1.4</b> Check &amp; Replace NAs</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#filtering-data"><i class="fa fa-check"></i><b>2.1.5</b> Filtering data</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#plotting"><i class="fa fa-check"></i><b>2.1.6</b> Plotting</a></li>
+<li class="chapter" data-level="2.1.7" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice02_1_1-plotting-more"><i class="fa fa-check"></i><b>2.1.7</b> Practice02_1_1 Plotting more</a></li>
+<li class="chapter" data-level="2.1.8" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice02_2_2-selecting-and-filtering-by-dplyr-i"><i class="fa fa-check"></i><b>2.1.8</b> Practice02_2_2 selecting and filtering by dplyr I</a></li>
+<li class="chapter" data-level="2.1.9" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#more-clean-version"><i class="fa fa-check"></i><b>2.1.9</b> (More) Clean version</a></li>
+<li class="chapter" data-level="2.1.10" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#more-the-fittest-version-to-compute-staysame"><i class="fa fa-check"></i><b>2.1.10</b> (More) The fittest version to compute staySame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#pivot-analysis-on-tp-theft"><i class="fa fa-check"></i><b>2.2</b> Pivot Analysis on TP Theft</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#直接依資料網址讀取檔案"><i class="fa fa-check"></i><b>2.2.1</b> (1.1) 直接依資料網址讀取檔案</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#從個人電腦本機端讀取檔案"><i class="fa fa-check"></i><b>2.2.2</b> (1.2) 從個人電腦本機端讀取檔案</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#觀察資料維度"><i class="fa fa-check"></i><b>2.2.3</b> (2.1) 觀察資料維度</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#觀察變數名稱"><i class="fa fa-check"></i><b>2.2.4</b> (2.2) 觀察變數名稱</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#萃取所需新變項"><i class="fa fa-check"></i><b>2.2.5</b> (2.3) 萃取所需新變項</a></li>
+<li class="chapter" data-level="2.2.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice-萃取month變項"><i class="fa fa-check"></i><b>2.2.6</b> (Practice) 萃取month變項</a></li>
+<li class="chapter" data-level="2.2.7" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#iv.-樞紐分析計數加總與彙整"><i class="fa fa-check"></i><b>2.2.7</b> IV. 樞紐分析：計數、加總與彙整。</a></li>
+<li class="chapter" data-level="2.2.8" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#方法一counting-by-table"><i class="fa fa-check"></i><b>2.2.8</b> 方法一：Counting by <code>table()</code></a></li>
+<li class="chapter" data-level="2.2.9" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#方法二counting-by-tapply"><i class="fa fa-check"></i><b>2.2.9</b> 方法二：Counting by <code>tapply()</code></a></li>
+<li class="chapter" data-level="2.2.10" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#v.-依照變數值篩選資料"><i class="fa fa-check"></i><b>2.2.10</b> V. 依照變數值篩選資料</a></li>
+<li class="chapter" data-level="2.2.11" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#vi.-雙變數樞紐分析"><i class="fa fa-check"></i><b>2.2.11</b> VI. 雙變數樞紐分析</a></li>
+<li class="chapter" data-level="2.2.12" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice-count"><i class="fa fa-check"></i><b>2.2.12</b> (Practice) <code>count()</code></a></li>
+<li class="chapter" data-level="2.2.13" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#vii.-繪圖-plotting"><i class="fa fa-check"></i><b>2.2.13</b> VII. 繪圖 Plotting</a></li>
+<li class="chapter" data-level="2.2.14" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#option-視覺化殘差分析"><i class="fa fa-check"></i><b>2.2.14</b> (Option) 視覺化殘差分析</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>3</b> Visualization</a>
+<li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>3.1</b> ggplot簡介</a></li>
-<li class="chapter" data-level="3.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>3.2</b> 繪圖基礎：折線圖</a>
+<li class="chapter" data-level="3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#base-to-dplyr-tp-theft"><i class="fa fa-check"></i><b>3.1</b> base to dplyr: TP Theft</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="visualization.html"><a href="visualization.html#繪圖三要素"><i class="fa fa-check"></i><b>3.2.1</b> 繪圖三要素</a></li>
-<li class="chapter" data-level="3.2.2" data-path="visualization.html"><a href="visualization.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>3.2.2</b> 範例-紐時世代貧富不均</a></li>
-<li class="chapter" data-level="3.2.3" data-path="visualization.html"><a href="visualization.html#加入自變項群組"><i class="fa fa-check"></i><b>3.2.3</b> 加入自變項群組</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>3.3</b> 圖表調整</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="visualization.html"><a href="visualization.html#點線型態"><i class="fa fa-check"></i><b>3.3.1</b> 點線型態</a></li>
-<li class="chapter" data-level="3.3.2" data-path="visualization.html"><a href="visualization.html#標題標籤與圖說"><i class="fa fa-check"></i><b>3.3.2</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="3.3.3" data-path="visualization.html"><a href="visualization.html#字體樣式"><i class="fa fa-check"></i><b>3.3.3</b> 字體樣式</a></li>
-<li class="chapter" data-level="3.3.4" data-path="visualization.html"><a href="visualization.html#圖表主題色調"><i class="fa fa-check"></i><b>3.3.4</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="3.3.5" data-path="visualization.html"><a href="visualization.html#預設主題"><i class="fa fa-check"></i><b>3.3.5</b> 預設主題</a></li>
-<li class="chapter" data-level="3.3.6" data-path="visualization.html"><a href="visualization.html#顯示中文字體"><i class="fa fa-check"></i><b>3.3.6</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="3.3.7" data-path="visualization.html"><a href="visualization.html#xy軸方向"><i class="fa fa-check"></i><b>3.3.7</b> X/Y軸方向</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>3.4</b> 視覺化說故事的技巧</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="visualization.html"><a href="visualization.html#依群組指定顏色"><i class="fa fa-check"></i><b>3.4.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="3.4.2" data-path="visualization.html"><a href="visualization.html#使用gghighlight套件"><i class="fa fa-check"></i><b>3.4.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="3.4.3" data-path="visualization.html"><a href="visualization.html#為視覺化建立群組"><i class="fa fa-check"></i><b>3.4.3</b> 為視覺化建立群組</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>3.5</b> 時間軸的視覺化</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="visualization.html"><a href="visualization.html#文字轉時間"><i class="fa fa-check"></i><b>3.5.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="3.5.2" data-path="visualization.html"><a href="visualization.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>3.5.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="3.5.3" data-path="visualization.html"><a href="visualization.html#逐月統計資料"><i class="fa fa-check"></i><b>3.5.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="3.5.4" data-path="visualization.html"><a href="visualization.html#逐日統計資料佳"><i class="fa fa-check"></i><b>3.5.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="3.5.5" data-path="visualization.html"><a href="visualization.html#每日逐時資料"><i class="fa fa-check"></i><b>3.5.5</b> 每日逐時資料</a></li>
+<li class="chapter" data-level="3.1.1" data-path="data-manipulation.html"><a href="data-manipulation.html#reading-data"><i class="fa fa-check"></i><b>3.1.1</b> Reading data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-manipulation.html"><a href="data-manipulation.html#cleaning-data-i"><i class="fa fa-check"></i><b>3.1.2</b> Cleaning data I</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-manipulation.html"><a href="data-manipulation.html#cleaning-data-ii"><i class="fa fa-check"></i><b>3.1.3</b> Cleaning data II</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data-manipulation.html"><a href="data-manipulation.html#long-to-wide-form"><i class="fa fa-check"></i><b>3.1.4</b> Long to wide form</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data-manipulation.html"><a href="data-manipulation.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>3.1.5</b> Setting time as row.name for mosaicplot</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data-manipulation.html"><a href="data-manipulation.html#clean-version"><i class="fa fa-check"></i><b>3.1.6</b> Clean version</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>4</b> Text Processing</a>
+<li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>4.1</b> Tweets 分析</a>
+<li class="chapter" data-level="4.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>4.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="4.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>4.2</b> 繪圖基礎：折線圖</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="text-processing.html"><a href="text-processing.html#載入並清理資料"><i class="fa fa-check"></i><b>4.1.1</b> 載入並清理資料</a></li>
-<li class="chapter" data-level="4.1.2" data-path="text-processing.html"><a href="text-processing.html#萃取資料"><i class="fa fa-check"></i><b>4.1.2</b> 萃取資料</a></li>
-<li class="chapter" data-level="4.1.3" data-path="text-processing.html"><a href="text-processing.html#視覺化探索"><i class="fa fa-check"></i><b>4.1.3</b> 視覺化探索</a></li>
-<li class="chapter" data-level="4.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>4.1.4</b> Keyness</a></li>
+<li class="chapter" data-level="4.2.1" data-path="visualization.html"><a href="visualization.html#繪圖三要素"><i class="fa fa-check"></i><b>4.2.1</b> 繪圖三要素</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visualization.html"><a href="visualization.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>4.2.2</b> 範例-紐時世代貧富不均</a></li>
+<li class="chapter" data-level="4.2.3" data-path="visualization.html"><a href="visualization.html#加入自變項群組"><i class="fa fa-check"></i><b>4.2.3</b> 加入自變項群組</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>4.3</b> 圖表調整</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="visualization.html"><a href="visualization.html#點線型態"><i class="fa fa-check"></i><b>4.3.1</b> 點線型態</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visualization.html"><a href="visualization.html#標題標籤與圖說"><i class="fa fa-check"></i><b>4.3.2</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="4.3.3" data-path="visualization.html"><a href="visualization.html#字體樣式"><i class="fa fa-check"></i><b>4.3.3</b> 字體樣式</a></li>
+<li class="chapter" data-level="4.3.4" data-path="visualization.html"><a href="visualization.html#圖表主題色調"><i class="fa fa-check"></i><b>4.3.4</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="4.3.5" data-path="visualization.html"><a href="visualization.html#預設主題"><i class="fa fa-check"></i><b>4.3.5</b> 預設主題</a></li>
+<li class="chapter" data-level="4.3.6" data-path="visualization.html"><a href="visualization.html#顯示中文字體"><i class="fa fa-check"></i><b>4.3.6</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="4.3.7" data-path="visualization.html"><a href="visualization.html#xy軸方向"><i class="fa fa-check"></i><b>4.3.7</b> X/Y軸方向</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>4.4</b> 視覺化說故事的技巧</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="visualization.html"><a href="visualization.html#依群組指定顏色"><i class="fa fa-check"></i><b>4.4.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="4.4.2" data-path="visualization.html"><a href="visualization.html#使用gghighlight套件"><i class="fa fa-check"></i><b>4.4.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="4.4.3" data-path="visualization.html"><a href="visualization.html#為視覺化建立群組"><i class="fa fa-check"></i><b>4.4.3</b> 為視覺化建立群組</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>4.5</b> 時間軸的視覺化</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="visualization.html"><a href="visualization.html#文字轉時間"><i class="fa fa-check"></i><b>4.5.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="4.5.2" data-path="visualization.html"><a href="visualization.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>4.5.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="4.5.3" data-path="visualization.html"><a href="visualization.html#逐月統計資料"><i class="fa fa-check"></i><b>4.5.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="4.5.4" data-path="visualization.html"><a href="visualization.html#逐日統計資料佳"><i class="fa fa-check"></i><b>4.5.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="4.5.5" data-path="visualization.html"><a href="visualization.html#每日逐時資料"><i class="fa fa-check"></i><b>4.5.5</b> 每日逐時資料</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>5</b> Crawler</a>
+<li class="chapter" data-level="5" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>5</b> Text Processing</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>5.1</b> Scraping 104.com</a>
+<li class="chapter" data-level="5.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>5.1</b> Tweets 分析</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="crawler.html"><a href="crawler.html#complete-code"><i class="fa fa-check"></i><b>5.1.1</b> Complete Code</a></li>
-<li class="chapter" data-level="5.1.2" data-path="crawler.html"><a href="crawler.html#step-by-step"><i class="fa fa-check"></i><b>5.1.2</b> Step-by-Step</a></li>
+<li class="chapter" data-level="5.1.1" data-path="text-processing.html"><a href="text-processing.html#載入並清理資料"><i class="fa fa-check"></i><b>5.1.1</b> 載入並清理資料</a></li>
+<li class="chapter" data-level="5.1.2" data-path="text-processing.html"><a href="text-processing.html#萃取資料"><i class="fa fa-check"></i><b>5.1.2</b> 萃取資料</a></li>
+<li class="chapter" data-level="5.1.3" data-path="text-processing.html"><a href="text-processing.html#視覺化探索"><i class="fa fa-check"></i><b>5.1.3</b> 視覺化探索</a></li>
+<li class="chapter" data-level="5.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>5.1.4</b> Keyness</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>6</b> TW Data Visualization</a>
+<li class="chapter" data-level="6" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>6</b> Crawler</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>6.1</b> Coordination &amp; Axis</a></li>
-<li class="chapter" data-level="6.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>6.2</b> Log-scale</a></li>
-<li class="chapter" data-level="6.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>6.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="6.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>6.4</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="6.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>6.5</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="6.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>6.1</b> Scraping 104.com</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="crawler.html"><a href="crawler.html#complete-code"><i class="fa fa-check"></i><b>6.1.1</b> Complete Code</a></li>
+<li class="chapter" data-level="6.1.2" data-path="crawler.html"><a href="crawler.html#step-by-step"><i class="fa fa-check"></i><b>6.1.2</b> Step-by-Step</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>7</b> WGOIGT of NyTimes</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>7.1</b> Net Worth by Age Group</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>7.1.1</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>7.2</b> UNICEF-Optimistic</a></li>
-<li class="chapter" data-level="7.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>7.3</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="7" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>7</b> TW Data Visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>7.1</b> Coordination &amp; Axis</a></li>
+<li class="chapter" data-level="7.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>7.2</b> Log-scale</a></li>
+<li class="chapter" data-level="7.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>7.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="7.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>7.4</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="7.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>7.5</b> TW-Income (boxplot)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>8</b> WGOIGT of NyTimes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>8.1</b> Net Worth by Age Group</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>8.1.1</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>8.2</b> UNICEF-Optimistic</a></li>
+<li class="chapter" data-level="8.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>8.3</b> Global Carbon Projects</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -339,124 +380,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-4"><a href="basic.html#cb8-4" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
 <span id="cb8-5"><a href="basic.html#cb8-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(res)</span></code></pre></div>
 <pre class="output"><code>## Rows: 30
-## Columns: 53
-## $ id                      &lt;int&gt; 235931948, 238716114, 238711593, 238711362, 23…
-## $ title                   &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;分手完馬上做…
-## $ excerpt                 &lt;chr&gt; &quot;各位卡友們好，小天使近期收到許多關於感情板西…
-## $ anonymousSchool         &lt;lgl&gt; FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TR…
-## $ anonymousDepartment     &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE…
-## $ pinned                  &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-## $ forumId                 &lt;chr&gt; &quot;42851318-b9e2-4a75-8a05-9fe180becefe&quot;, &quot;42851…
-## $ replyId                 &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ createdAt               &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-04-25T17:37:…
-## $ updatedAt               &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-04-26T03:50:…
-## $ commentCount            &lt;int&gt; 34, 586, 334, 166, 203, 407, 124, 140, 138, 14…
-## $ likeCount               &lt;int&gt; 315, 2383, 2121, 1128, 887, 878, 727, 542, 434…
-## $ withNickname            &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-## $ tags                    &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &quot;HIDE_THUMBNAIL&quot;, &lt;&gt;, &lt;&gt;, &quot;…
-## $ topics                  &lt;list&gt; &lt;&gt;, &lt;&quot;分手後&quot;, &quot;吵架就說分手&quot;&gt;, &lt;&quot;交友&quot;, &quot;omi…
-## $ meta                    &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;
-## $ forumName               &lt;chr&gt; &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感…
-## $ forumAlias              &lt;chr&gt; &quot;relationship&quot;, &quot;relationship&quot;, &quot;relationship&quot;…
-## $ nsfw                    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ gender                  &lt;chr&gt; &quot;D&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;…
-## $ school                  &lt;chr&gt; &quot;客服小天使&quot;, NA, NA, &quot;國立臺灣藝術大學&quot;, NA, …
-## $ department              &lt;chr&gt; &quot;dcard_support_1&quot;, NA, NA, NA, NA, NA, NA, NA,…
-## $ replyTitle              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ mediaMeta               &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[1 x 10]&gt;],…
-## $ reactions               &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[6 x 2]&gt;],…
-## $ hidden                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
-## $ customStyle             &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ isSuspiciousAccount     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ isModerator             &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ layout                  &lt;chr&gt; &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;c…
-## $ pinnedType              &lt;chr&gt; &quot;dcard&quot;, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ pinnedPriority          &lt;dbl&gt; 1.620368e+12, NA, NA, NA, NA, NA, NA, NA, NA, …
-## $ spoilerAlert            &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ categories              &lt;list&gt; &quot;公告&quot;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;…
-## $ isSelectedPost          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
-## $ unsafe                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ totalCommentCount       &lt;int&gt; 34, 681, 564, 250, 335, 1019, 180, 246, 195, 1…
-## $ withImages              &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, T…
-## $ withVideos              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ media                   &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[0 x 0]&gt;], …
-## $ reportReasonText        &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
-## $ supportedReactions      &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ excerptComments         &lt;list&gt; [], [], [], [], [], [], [], [], [], [], [], []…
-## $ edited                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
-## $ collectionCount         &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ postAvatar              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
-## $ activityAvatar          &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
-## $ verifiedBadge           &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-## $ memberType              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
-## $ enablePrivateMessage    &lt;lgl&gt; NA, FALSE, FALSE, NA, FALSE, NA, NA, NA, FALSE…
-## $ enableNestedComment     &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …
-## $ leaderboardCategoryId   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ leaderboardCategoryName &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+## Columns: 51
+## $ id                   &lt;int&gt; 235931948, 238718220, 238717851, 238719155, 23871…
+## $ title                &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;可以把直男男友殺…
+## $ excerpt              &lt;chr&gt; &quot;各位卡友們好，小天使近期收到許多關於感情板西斯內…
+## $ anonymousSchool      &lt;lgl&gt; FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FAL…
+## $ anonymousDepartment  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, T…
+## $ pinned               &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ forumId              &lt;chr&gt; &quot;42851318-b9e2-4a75-8a05-9fe180becefe&quot;, &quot;42851318…
+## $ replyId              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ createdAt            &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-04-26T04:04:44.…
+## $ updatedAt            &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-04-26T04:04:44.…
+## $ commentCount         &lt;int&gt; 34, 235, 776, 38, 17, 42, 33, 33, 23, 41, 13, 46,…
+## $ likeCount            &lt;int&gt; 315, 1028, 1007, 554, 487, 244, 209, 174, 156, 11…
+## $ withNickname         &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, T…
+## $ tags                 &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &lt;&gt;, &quot;HIDE_THUMBNAIL&quot;, &quot;HIDE_TH…
+## $ topics               &lt;list&gt; &lt;&gt;, &lt;&quot;愛情&quot;, &quot;男友&quot;, &quot;直男&quot;&gt;, &lt;&quot;男生&quot;, &quot;女生&quot;, &quot;…
+## $ meta                 &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;
+## $ forumName            &lt;chr&gt; &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;…
+## $ forumAlias           &lt;chr&gt; &quot;relationship&quot;, &quot;relationship&quot;, &quot;relationship&quot;, &quot;…
+## $ nsfw                 &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ gender               &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;M&quot;,…
+## $ school               &lt;chr&gt; &quot;客服小天使&quot;, NA, &quot;國立臺灣師範大學&quot;, NA, &quot;國立中…
+## $ department           &lt;chr&gt; &quot;dcard_support_1&quot;, NA, NA, NA, NA, NA, NA, &quot;lite&quot;…
+## $ replyTitle           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ mediaMeta            &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[3 x 10]&gt;], [&lt;…
+## $ reactions            &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[5 x 2]&gt;], [&lt;…
+## $ hidden               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ customStyle          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ isSuspiciousAccount  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ isModerator          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ layout               &lt;chr&gt; &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;clas…
+## $ pinnedType           &lt;chr&gt; &quot;dcard&quot;, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+## $ pinnedPriority       &lt;dbl&gt; 1.620368e+12, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ spoilerAlert         &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ categories           &lt;list&gt; &quot;公告&quot;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…
+## $ isSelectedPost       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ unsafe               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ totalCommentCount    &lt;int&gt; 34, 445, 1365, 77, 20, 60, 44, 55, 31, 50, 13, 73…
+## $ withImages           &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TR…
+## $ withVideos           &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ media                &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[2 x 1]&gt;], [&lt;d…
+## $ reportReasonText     &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, …
+## $ supportedReactions   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ excerptComments      &lt;list&gt; [], [], [], [], [], [], [], [], [], [], [], [], […
+## $ edited               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ collectionCount      &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ postAvatar           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;https://megapx-asset…
+## $ activityAvatar       &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
+## $ verifiedBadge        &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ memberType           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
+## $ enableNestedComment  &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRU…
+## $ enablePrivateMessage &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, FALSE, NA, NA, NA, FA…</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span></code></pre></div>
-<pre class="output"><code>##          id                             title
-## 1 235931948      #公告 關於感情板的微西斯內容
-## 2 238716114              分手完馬上做特別興奮
-## 3 238711593        在交友軟體上發現朋友的男友
-## 4 238711362     直男的浪漫…….紅蘿蔔真的去死
-## 5 238715042 第一次看老公隱私，覺得心態好崩潰⋯
-## 6 238709372                  老婆跟我提離婚了
+<pre class="output"><code>##          id                        title
+## 1 235931948 #公告 關於感情板的微西斯內容
+## 2 238718220         可以把直男男友殺掉嗎
+## 3 238717851     百分之九九的男生都會出軌
+## 4 238719155          第一次見網友 挺開心
+## 5 238716947       要麼一生，要麼陌生人。
+## 6 238723057       看起來很乖 但⋯（微西斯
 ##                                                                                                                                                                                                    excerpt
 ## 1 各位卡友們好，小天使近期收到許多關於感情板西斯內容的檢舉以及相關詢問，我們了解感情板是為討論情感關係所設立，而「性」也是感情中的一部份，因此不會禁止討論這些內容。但有部分文章內容描述過於露骨，或是除了
-## 2 跟女友同居一年了，前一陣子為了誰該維持家中整潔而吵架感情決裂，氣的彼此說好分一分比較乾脆啦，東西都妳一個我一個分好了，講話也開始變得像陌生人一樣，變得非常客氣十分客套，但是過了一會，氣氛突然變得很詭異
-## 3        在Omi上面看到朋友的男友，還like我，我嚇一跳問了我朋友，一問之下才發現原來不是初犯，之前這男生去年答應我朋友不再用，結果還是一樣！，還會加別的女生賴直接撩個夠～我朋友真的也很誇張的傻，她兩個禮拜
-## 4    最近畢製快到，整天忙得要死三餐都隨便吃，（是真的隨便吃大概就餅乾、水果那些或喝飲料），男友剛看不下去幫我泡了一碗泡麵，但...打開泡麵，看見，滿滿ㄉ，紅蘿蔔，真的，不感動耶…，明知道我很挑食但又愛逼我
-## 5 跟老公認識到現在從來沒有真的翻過他手機，一直都很信任他，相信他會自己拿捏跟女生的界線，所以基本上也不會限制他什麼，但最近因為懷疑他有事情隱瞞我，所以偷偷看了訊息。我們之前分手過，後來他找我複合，而且主
-## 6 事情是這樣，簡單敘述。和老婆是因為懷孕而結婚了，原本小孩未出生前，我們都是在外居住。直到小孩出生，因為我們倆都有工作，無法帶小孩，加上我倆薪資不高，也不夠負擔保姆費用。所以把小孩帶回我家，因為小孩帶回
+## 2                                                                                                                                                                                                         
+## 3                                                                       我遇過太多了，還遇過有女友的男生瞞著女朋友洗泰國浴，女生完全不知道，後來結婚了，或是交友軟體換照才發現是系上學姐的男友..太多太多了
+## 4    本身很少用交友軟體的人，現階段沒什麼交男友的目的 純粹只是上去找人聊個天，而且本身對網路上認識的人信任感頗低 所以即使男生主動邀約也沒有出去過，半年前認識了一個網友A（某個不露臉的交友軟體）後來中間加
+## 5               張愛玲曾說：愛過的人，是做不了朋友的。因為一見面就會心軟，ㄧ擁抱就會淪陷，多看一眼，就想重新擁有。最遙遠的距離，不是愛，也不是恨，而是漸漸變成最熟悉的陌生人。所以，要麼一生，要麼陌生人。
+## 6     交往久了最近男友開始暗示能不能有性生活，其實我覺得現在可以了，但我有點擔心的是 我不是很清楚他會不會喜歡主動的女生  說白一點的話⋯是色，我平常比較安靜、親密接觸比較被動，不過那是因為我比較不會到要在
 ##   anonymousSchool anonymousDepartment pinned
 ## 1           FALSE                TRUE   TRUE
 ## 2            TRUE                TRUE  FALSE
-## 3            TRUE                TRUE  FALSE
-## 4           FALSE                TRUE  FALSE
-## 5            TRUE                TRUE  FALSE
+## 3           FALSE                TRUE  FALSE
+## 4            TRUE                TRUE  FALSE
+## 5           FALSE                TRUE  FALSE
 ## 6            TRUE                TRUE  FALSE
 ##                                forumId replyId                createdAt
 ## 1 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2021-05-07T06:11:32.413Z
-## 2 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-25T17:37:11.457Z
-## 3 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-25T09:39:56.061Z
-## 4 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-25T09:11:55.806Z
-## 5 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-25T15:35:26.209Z
-## 6 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-25T05:18:38.773Z
+## 2 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T04:04:44.148Z
+## 3 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T03:11:58.867Z
+## 4 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T05:55:41.867Z
+## 5 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-25T23:59:51.315Z
+## 6 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T13:17:01.706Z
 ##                  updatedAt commentCount likeCount withNickname           tags
 ## 1 2021-05-07T18:00:24.726Z           34       315         TRUE HIDE_THUMBNAIL
-## 2 2022-04-26T03:50:46.275Z          586      2383        FALSE HIDE_THUMBNAIL
-## 3 2022-04-26T11:21:34.628Z          334      2121        FALSE               
-## 4 2022-04-25T09:11:55.806Z          166      1128        FALSE               
-## 5 2022-04-26T07:13:38.374Z          203       887        FALSE HIDE_THUMBNAIL
-## 6 2022-04-25T05:18:38.773Z          407       878        FALSE HIDE_THUMBNAIL
-##                           topics meta.layout meta.disableAdSense forumName
-## 1                                    classic                TRUE      感情
-## 2           分手後, 吵架就說分手     classic                  NA      感情
-## 3 交友, omi, Omi, 交友軟體, 渣男     classic                  NA      感情
-## 4 浪漫, 紅蘿蔔, 感情, 愛情, 男友     classic                  NA      感情
-## 5               老公, 心態, 感情     classic                  NA      感情
-## 6                           離婚     classic                  NA      感情
-##     forumAlias  nsfw gender           school      department replyTitle
-## 1 relationship FALSE      D       客服小天使 dcard_support_1         NA
-## 2 relationship FALSE      M             &lt;NA&gt;            &lt;NA&gt;         NA
-## 3 relationship FALSE      F             &lt;NA&gt;            &lt;NA&gt;         NA
-## 4 relationship FALSE      F 國立臺灣藝術大學            &lt;NA&gt;         NA
-## 5 relationship FALSE      F             &lt;NA&gt;            &lt;NA&gt;         NA
-## 6 relationship FALSE      M             &lt;NA&gt;            &lt;NA&gt;         NA
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    mediaMeta
-## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       NULL
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     e27e5875-4cda-422e-b011-a8205b9b2816, https://sticker-assets.dcard.tw/images/e93afb68-3148-4ae6-bfaf-2fe6bf071d35/orig.png, https://megapx.dcard.tw/v1/images/e93afb68-3148-4ae6-bfaf-2fe6bf071d35, , image/sticker, IMAGE_NOT_AVAILABLE, 2022-04-25T17:37:11.457Z, 2022-04-26T03:50:46.275Z, 512, 512
-## 3 5431dc73-392b-43b6-b97c-50ed6d0c533a, 5431dc73-392b-43b6-b97c-50ed6d0c533a, f301b87a-4319-4a98-8d57-346ae6045ef6, a4a3ab81-aa8d-4bc0-8639-95dfbff15a39, 4cf70df7-82b8-48b4-81e2-6774fc773782, https://i.imgur.com/kiAugXAl.jpg, https://i.imgur.com/kiAugXA.jpg, https://i.imgur.com/Ck2m2Ws.jpg, https://i.imgur.com/R3mXqrH.jpg, https://i.imgur.com/r4mqWeS.jpg, https://i.imgur.com/kiAugXAl.jpg, https://imgur.com/kiAugXA, https://imgur.com/Ck2m2Ws, https://imgur.com/R3mXqrH, https://imgur.com/r4mqWeS, https://i.imgur.com/kiAugXAl.jpg, https://i.imgur.com/kiAugXAl.jpg, https://i.imgur.com/Ck2m2Wsl.jpg, https://i.imgur.com/R3mXqrHl.jpg, https://i.imgur.com/r4mqWeSl.jpg, image/thumbnail, image/imgur, image/imgur, image/imgur, image/imgur, ANNOTATED, ANNOTATED, ANNOTATED, ANNOTATED, 2022-04-26T11:05:56.528Z, 2022-04-26T11:05:56.528Z, 2022-04-26T11:21:34.628Z, 2022-04-25T09:43:27.577Z, 2022-04-26T11:05:56.528Z, 2022-04-26T11:21:34.628Z, 2022-04-26T11:21:34.628Z, 2022-04-26T11:21:34.628Z, 2022-04-26T11:21:34.628Z, 2022-04-26T11:21:34.628Z, 642, 642, 976, 1693, 1080, 951, 951, 1301, 2000, 1844, 0, 0, NA, NA, NA, 100, 100, NA, NA, NA, 642, 642, NA, NA, NA, 851, 851, NA, NA, NA
-## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              977b42a3-3085-4b4e-bd6b-2aa06f413557, 977b42a3-3085-4b4e-bd6b-2aa06f413557, b41dceac-7119-47fa-8fe5-ff27af51d5c8, https://i.imgur.com/PVxZRiIl.jpg, https://i.imgur.com/PVxZRiI.jpg, https://i.imgur.com/EjJNHnW.jpg, https://i.imgur.com/PVxZRiIl.jpg, https://imgur.com/PVxZRiI, https://imgur.com/EjJNHnW, https://i.imgur.com/PVxZRiIl.jpg, https://i.imgur.com/PVxZRiIl.jpg, https://i.imgur.com/EjJNHnWl.jpg, image/thumbnail, image/imgur, image/imgur, 2022-04-25T09:11:55.806Z, 2022-04-25T09:11:55.806Z, 2022-04-25T09:11:55.806Z, 2022-04-25T09:11:55.806Z, 2022-04-25T09:11:55.806Z, 2022-04-25T09:11:55.806Z, 1501, 1501, 1501, 2000, 2000, 2000
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       NULL
-## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       NULL
-##                                                                                                                                                                                                                                                    reactions
-## 1                                                                                       286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, aa0d425f-d530-4478-9a77-fe3aedc79eea, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 308, 4, 2, 1
-## 2 286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, aa0d425f-d530-4478-9a77-fe3aedc79eea, 011ead16-9b83-4729-9fde-c588920c6c2d, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 1991, 313, 71, 4, 3, 1
-## 3                                        286f599c-f86a-4932-82f0-f5a06f1eca03, 4b018f48-e184-445f-adf1-fc8e04ba09b9, aa0d425f-d530-4478-9a77-fe3aedc79eea, e8e6bc5d-41b0-4129-b134-97507523d7ff, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 1838, 126, 85, 50, 22
-## 4                                            286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 011ead16-9b83-4729-9fde-c588920c6c2d, 994, 126, 5, 2, 1
-## 5                                           286f599c-f86a-4932-82f0-f5a06f1eca03, 4b018f48-e184-445f-adf1-fc8e04ba09b9, e8e6bc5d-41b0-4129-b134-97507523d7ff, 514c2569-fd53-4d9d-a415-bf0f88e7329f, aa0d425f-d530-4478-9a77-fe3aedc79eea, 806, 33, 28, 13, 7
-## 6                                            286f599c-f86a-4932-82f0-f5a06f1eca03, 514c2569-fd53-4d9d-a415-bf0f88e7329f, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, aa0d425f-d530-4478-9a77-fe3aedc79eea, 758, 65, 41, 9, 5
+## 2 2022-04-26T04:04:44.148Z          235      1028        FALSE               
+## 3 2022-04-26T03:11:58.867Z          776      1007        FALSE HIDE_THUMBNAIL
+## 4 2022-04-26T05:55:41.867Z           38       554        FALSE HIDE_THUMBNAIL
+## 5 2022-04-25T23:59:51.315Z           17       487        FALSE HIDE_THUMBNAIL
+## 6 2022-04-26T13:17:01.706Z           42       244        FALSE HIDE_THUMBNAIL
+##             topics meta.layout meta.disableAdSense forumName   forumAlias  nsfw
+## 1                      classic                TRUE      感情 relationship FALSE
+## 2 愛情, 男友, 直男     classic                  NA      感情 relationship FALSE
+## 3 男生, 女生, 出軌     classic                  NA      感情 relationship FALSE
+## 4                      classic                  NA      感情 relationship FALSE
+## 5                      classic                  NA      感情 relationship FALSE
+## 6       感情, 床事     classic                  NA      感情 relationship FALSE
+##   gender           school      department replyTitle
+## 1      D       客服小天使 dcard_support_1         NA
+## 2      F             &lt;NA&gt;            &lt;NA&gt;         NA
+## 3      F 國立臺灣師範大學            &lt;NA&gt;         NA
+## 4      F             &lt;NA&gt;            &lt;NA&gt;         NA
+## 5      F     國立中興大學            &lt;NA&gt;         NA
+## 6      F             &lt;NA&gt;            &lt;NA&gt;         NA
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       mediaMeta
+## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
+## 2 d461131c-e023-48f3-a729-ac3f9432b5c3, d461131c-e023-48f3-a729-ac3f9432b5c3, b2808cbb-ef4f-4982-8ea2-a4510f01c48e, https://i.imgur.com/KjgRijVl.jpg, https://i.imgur.com/KjgRijV.jpg, https://sticker-assets.dcard.tw/images/7f80bc24-1800-4df2-8563-990acf8634de/orig.png, https://i.imgur.com/KjgRijVl.jpg, https://imgur.com/KjgRijV, https://megapx.dcard.tw/v1/images/7f80bc24-1800-4df2-8563-990acf8634de, https://i.imgur.com/KjgRijVl.jpg, https://i.imgur.com/KjgRijVl.jpg, , image/thumbnail, image/imgur, image/sticker, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 750, 750, 512, 1104, 1104, 512
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
+## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
+## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
+##                                                                                                                                                                                                                                                   reactions
+## 1                                                                                      286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, aa0d425f-d530-4478-9a77-fe3aedc79eea, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 308, 4, 2, 1
+## 2                                           286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 514c2569-fd53-4d9d-a415-bf0f88e7329f, aa0d425f-d530-4478-9a77-fe3aedc79eea, 807, 212, 5, 3, 1
+## 3 286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, aa0d425f-d530-4478-9a77-fe3aedc79eea, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 011ead16-9b83-4729-9fde-c588920c6c2d, 900, 68, 20, 13, 5, 1
+## 4                                                                                     286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 538, 10, 5, 1
+## 5                                                                                     286f599c-f86a-4932-82f0-f5a06f1eca03, 514c2569-fd53-4d9d-a415-bf0f88e7329f, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 471, 13, 2, 1
+## 6                                                                                                                                                                       286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 232, 12
 ##   hidden customStyle isSuspiciousAccount isModerator  layout pinnedType
 ## 1  FALSE          NA               FALSE       FALSE classic      dcard
 ## 2  FALSE          NA               FALSE       FALSE classic       &lt;NA&gt;
@@ -473,18 +512,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6             NA        FALSE       NULL          FALSE  FALSE
 ##   totalCommentCount withImages withVideos
 ## 1                34      FALSE      FALSE
-## 2               681       TRUE      FALSE
-## 3               564       TRUE      FALSE
-## 4               250       TRUE      FALSE
-## 5               335      FALSE      FALSE
-## 6              1019      FALSE      FALSE
-##                                                                                                                                media
-## 1                                                                                                                               NULL
-## 2                                                                                                                               NULL
-## 3 https://i.imgur.com/kiAugXA.jpg, https://i.imgur.com/Ck2m2Ws.jpg, https://i.imgur.com/R3mXqrH.jpg, https://i.imgur.com/r4mqWeS.jpg
-## 4                                                                   https://i.imgur.com/PVxZRiI.jpg, https://i.imgur.com/EjJNHnW.jpg
-## 5                                                                                                                               NULL
-## 6                                                                                                                               NULL
+## 2               445       TRUE      FALSE
+## 3              1365      FALSE      FALSE
+## 4                77      FALSE      FALSE
+## 5                20      FALSE      FALSE
+## 6                60      FALSE      FALSE
+##                                                                                                                   media
+## 1                                                                                                                  NULL
+## 2 https://i.imgur.com/KjgRijV.jpg, https://sticker-assets.dcard.tw/images/7f80bc24-1800-4df2-8563-990acf8634de/orig.png
+## 3                                                                                                                  NULL
+## 4                                                                                                                  NULL
+## 5                                                                                                                  NULL
+## 6                                                                                                                  NULL
 ##   reportReasonText supportedReactions excerptComments edited collectionCount
 ## 1                                  NA            NULL  FALSE               0
 ## 2                                  NA            NULL  FALSE               0
@@ -492,20 +531,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4                                  NA            NULL  FALSE               0
 ## 5                                  NA            NULL  FALSE               0
 ## 6                                  NA            NULL  FALSE               0
-##   postAvatar activityAvatar verifiedBadge memberType enablePrivateMessage
-## 1                                    TRUE                              NA
-## 2                                   FALSE                           FALSE
-## 3                                   FALSE                           FALSE
-## 4                                   FALSE                              NA
-## 5                                   FALSE                           FALSE
-## 6                                   FALSE                              NA
-##   enableNestedComment leaderboardCategoryId leaderboardCategoryName
-## 1                  NA                  &lt;NA&gt;                    &lt;NA&gt;
-## 2                TRUE                  &lt;NA&gt;                    &lt;NA&gt;
-## 3                TRUE                  &lt;NA&gt;                    &lt;NA&gt;
-## 4                TRUE                  &lt;NA&gt;                    &lt;NA&gt;
-## 5                TRUE                  &lt;NA&gt;                    &lt;NA&gt;
-## 6                TRUE                  &lt;NA&gt;                    &lt;NA&gt;</code></pre>
+##   postAvatar activityAvatar verifiedBadge memberType enableNestedComment
+## 1                                    TRUE                             NA
+## 2                                   FALSE                           TRUE
+## 3                                   FALSE                           TRUE
+## 4                                   FALSE                           TRUE
+## 5                                   FALSE                           TRUE
+## 6                                   FALSE                           TRUE
+##   enablePrivateMessage
+## 1                   NA
+## 2                   NA
+## 3                   NA
+## 4                   NA
+## 5                   NA
+## 6                   NA</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="basic.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(res)</span></span></code></pre></div>
 </div>
 <div id="getting-taipei-theft-report-data" class="section level3 hasAnchor" number="1.1.2">
@@ -530,33 +569,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 0
 ## 
 ## $result$count
-## [1] 3321
+## [1] 3347
 ## 
 ## $result$sort
 ## [1] &quot;&quot;
 ## 
 ## $result$results
-##    _id ﻿編號     案類 發生日期 發生時段
-## 1    1    1 住宅竊盜  1030623    08~10
-## 2    2    2 住宅竊盜  1040101    00~02
-## 3    3    3 住宅竊盜  1040101    00~02
-## 4    4    4 住宅竊盜  1040101    06~08
-## 5    5    5 住宅竊盜  1040101    10~12
-## 6    6    6 住宅竊盜  1040102    00~02
-## 7    7    7 住宅竊盜  1040102    06~08
-## 8    8    8 住宅竊盜  1040102    06~08
-## 9    9    9 住宅竊盜  1040102    10~12
-## 10  10   10 住宅竊盜  1040104    10~12
-## 11  11   11 住宅竊盜  1040104    12~14
-## 12  12   12 住宅竊盜  1040105    00~02
-## 13  13   13 住宅竊盜  1040105    04~06
-## 14  14   14 住宅竊盜  1040105    04~06
-## 15  15   15 住宅竊盜  1040105    12~14
-## 16  16   16 住宅竊盜  1040105    16~18
-## 17  17   17 住宅竊盜  1040105    18~20
-## 18  18   18 住宅竊盜  1040106    04~06
-## 19  19   19 住宅竊盜  1040106    16~18
-## 20  20   20 住宅竊盜  1040107    16~18
+##    _id           _importdate.date _importdate.timezone_type
+## 1    1 2022-04-27 15:38:42.398977                         3
+## 2    2 2022-04-27 15:38:42.400421                         3
+## 3    3 2022-04-27 15:38:42.401629                         3
+## 4    4 2022-04-27 15:38:42.402828                         3
+## 5    5 2022-04-27 15:38:42.403923                         3
+## 6    6 2022-04-27 15:38:42.405148                         3
+## 7    7 2022-04-27 15:38:42.406415                         3
+## 8    8 2022-04-27 15:38:42.407379                         3
+## 9    9 2022-04-27 15:38:42.408420                         3
+## 10  10 2022-04-27 15:38:42.409470                         3
+## 11  11 2022-04-27 15:38:42.410759                         3
+## 12  12 2022-04-27 15:38:42.411885                         3
+## 13  13 2022-04-27 15:38:42.413268                         3
+## 14  14 2022-04-27 15:38:42.414625                         3
+## 15  15 2022-04-27 15:38:42.415755                         3
+## 16  16 2022-04-27 15:38:42.417049                         3
+## 17  17 2022-04-27 15:38:42.418276                         3
+## 18  18 2022-04-27 15:38:42.419437                         3
+## 19  19 2022-04-27 15:38:42.420582                         3
+## 20  20 2022-04-27 15:38:42.421694                         3
+##    _importdate.timezone 編號     案類 發生日期 發生時段
+## 1           Asia/Taipei    1 住宅竊盜  1030623    08~10
+## 2           Asia/Taipei    2 住宅竊盜  1040101    00~02
+## 3           Asia/Taipei    3 住宅竊盜  1040101    00~02
+## 4           Asia/Taipei    4 住宅竊盜  1040101    06~08
+## 5           Asia/Taipei    5 住宅竊盜  1040101    10~12
+## 6           Asia/Taipei    6 住宅竊盜  1040102    00~02
+## 7           Asia/Taipei    7 住宅竊盜  1040102    06~08
+## 8           Asia/Taipei    8 住宅竊盜  1040102    06~08
+## 9           Asia/Taipei    9 住宅竊盜  1040102    10~12
+## 10          Asia/Taipei   10 住宅竊盜  1040104    10~12
+## 11          Asia/Taipei   11 住宅竊盜  1040104    12~14
+## 12          Asia/Taipei   12 住宅竊盜  1040105    00~02
+## 13          Asia/Taipei   13 住宅竊盜  1040105    04~06
+## 14          Asia/Taipei   14 住宅竊盜  1040105    04~06
+## 15          Asia/Taipei   15 住宅竊盜  1040105    12~14
+## 16          Asia/Taipei   16 住宅竊盜  1040105    16~18
+## 17          Asia/Taipei   17 住宅竊盜  1040105    18~20
+## 18          Asia/Taipei   18 住宅竊盜  1040106    04~06
+## 19          Asia/Taipei   19 住宅竊盜  1040106    16~18
+## 20          Asia/Taipei   20 住宅竊盜  1040107    16~18
 ##                                       發生地點
 ## 1                   臺北市中正區廈門街91~120號
 ## 2               臺北市文山區萬美里萬寧街1~30號
@@ -583,15 +643,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ result:List of 5
 ##   ..$ limit  : int 20
 ##   ..$ offset : int 0
-##   ..$ count  : int 3321
+##   ..$ count  : int 3347
 ##   ..$ sort   : chr &quot;&quot;
-##   ..$ results:&#39;data.frame&#39;:  20 obs. of  6 variables:
-##   .. ..$ _id     : int [1:20] 1 2 3 4 5 6 7 8 9 10 ...
-##   .. ..$ ﻿編號    : chr [1:20] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
-##   .. ..$ 案類    : chr [1:20] &quot;住宅竊盜&quot; &quot;住宅竊盜&quot; &quot;住宅竊盜&quot; &quot;住宅竊盜&quot; ...
-##   .. ..$ 發生日期: chr [1:20] &quot;1030623&quot; &quot;1040101&quot; &quot;1040101&quot; &quot;1040101&quot; ...
-##   .. ..$ 發生時段: chr [1:20] &quot;08~10&quot; &quot;00~02&quot; &quot;00~02&quot; &quot;06~08&quot; ...
-##   .. ..$ 發生地點: chr [1:20] &quot;臺北市中正區廈門街91~120號&quot; &quot;臺北市文山區萬美里萬寧街1~30號&quot; &quot;臺北市信義區富台里忠孝東路5段295巷6弄1~30號&quot; &quot;臺北市中山區新生北路1段91~120號&quot; ...</code></pre>
+##   ..$ results:&#39;data.frame&#39;:  20 obs. of  7 variables:
+##   .. ..$ _id        : int [1:20] 1 2 3 4 5 6 7 8 9 10 ...
+##   .. ..$ _importdate:&#39;data.frame&#39;:   20 obs. of  3 variables:
+##   .. ..$ 編號       : chr [1:20] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. ..$ 案類       : chr [1:20] &quot;住宅竊盜&quot; &quot;住宅竊盜&quot; &quot;住宅竊盜&quot; &quot;住宅竊盜&quot; ...
+##   .. ..$ 發生日期   : chr [1:20] &quot;1030623&quot; &quot;1040101&quot; &quot;1040101&quot; &quot;1040101&quot; ...
+##   .. ..$ 發生時段   : chr [1:20] &quot;08~10&quot; &quot;00~02&quot; &quot;00~02&quot; &quot;06~08&quot; ...
+##   .. ..$ 發生地點   : chr [1:20] &quot;臺北市中正區廈門街91~120號&quot; &quot;臺北市文山區萬美里萬寧街1~30號&quot; &quot;臺北市信義區富台里忠孝東路5段295巷6弄1~30號&quot; &quot;臺北市中山區新生北路1段91~120號&quot; ...</code></pre>
 </div>
 </div>
 <div id="loading-a-csv-file-in-data-directory" class="section level3 hasAnchor" number="1.1.3">
@@ -599,19 +660,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if mac cannot read data</span></span>
 <span id="cb17-2"><a href="basic.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(url, <span class="fu">write_disk</span>(<span class="st">&quot;data/tptheft.csv&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre class="output"><code>## Response [https://data.taipei/api/v1/dataset/93d9bc2d-af08-4db7-a56b-9f0a49226fa3?scope=resourceAquire]
-##   Date: 2022-04-26 16:31
+##   Date: 2022-04-27 10:17
 ##   Status: 200
 ##   Content-Type: application/json
-##   Size: 3.35 kB
+##   Size: 5.21 kB
 ## &lt;ON DISK&gt;  /Users/jirlong/Dropbox/Programming/JOUR5014/data/tptheft.csv</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic.html#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tptheft.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;big5&quot;</span>)</span>
 <span id="cb19-2"><a href="basic.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] X.result..limit.20                                                        
-## [2] offset.0                                                                  
-## [3] count.3321                                                                
-## [4] sort.                                                                     
-## [5] results..._id.1                                                           
-## [6] 嚜輻楊..result..limit.20.offset.0.count.3321.sort...results..._id.1.嚜輻楊
+<pre class="output"><code>## [1] X.result..limit.20                                                                                                                                        
+## [2] offset.0                                                                                                                                                  
+## [3] count.3347                                                                                                                                                
+## [4] sort.                                                                                                                                                     
+## [5] results..._id.1                                                                                                                                           
+## [6] X_importdate..date.2022.04.27.15.38.42.398977                                                                                                             
+## [7] timezone_type.3                                                                                                                                           
+## [8] timezone.Asia..Taipei.                                                                                                                                    
+## [9] 蝺刻..result..limit.20.offset.0.count.3347.sort...results..._id.1._importdate..date.2022.04.27.15.38.42.398977.timezone_type.3.timezone.Asia..Taipei..蝺刻
 ## &lt;0 列&gt; (或零長度的 row.names)</code></pre>
 </div>
 <div id="loading-moi-data-through-api" class="section level3 hasAnchor" number="1.1.4">
@@ -661,12 +725,12 @@ head(df)</code></pre>
 <span id="cb24-6"><a href="basic.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
 <span id="cb24-7"><a href="basic.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df)</span></code></pre></div>
 <pre class="output"><code>##    sno                       sna tot sbi  sarea           mday           lat
-## 1 0001     捷運市政府站(3號出口)  88   4 信義區 20220427002928 25.0408578889
-## 2 0002 捷運國父紀念館站(2號出口)  16   1 大安區 20220427002919     25.041254
-## 3 0004                  市民廣場  32   1 信義區 20220427002943 25.0360361111
-## 4 0005                  興雅國中  32   4 信義區 20220427002831 25.0365638889
-## 5 0006              臺北南山廣場  54   6 信義區 20220427002918     25.034047
-## 6 0007         信義廣場(台北101)  80   0 信義區 20220427002924 25.0330388889
+## 1 0001     捷運市政府站(3號出口)  88  33 信義區 20220427181638 25.0408578889
+## 2 0002 捷運國父紀念館站(2號出口)  16   7 大安區 20220427181637     25.041254
+## 3 0004                  市民廣場  32  10 信義區 20220427181630 25.0360361111
+## 4 0005                  興雅國中  32  21 信義區 20220427181620 25.0365638889
+## 5 0006              臺北南山廣場  54  32 信義區 20220427181623     25.034047
+## 6 0007         信義廣場(台北101)  80  58 信義區 20220427181629 25.0330388889
 ##             lng                                                             ar
 ## 1 121.567904444                                        忠孝東路/松仁路(東南側)
 ## 2     121.55742                                忠孝東路四段/光復南路口(西南側)
@@ -682,12 +746,12 @@ head(df)</code></pre>
 ## 5 Xinyi Dist.                            NAN SHAN PLAZA
 ## 6 Xinyi Dist.                  Xinyi Square(Taipei 101)
 ##                                                          aren bemp act
-## 1 The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.   82   1
-## 2                         Sec,4. Zhongxiao E.Rd/GuangFu S. Rd   15   1
-## 3               The N.W. side of Road Shifu &amp; Road Song Shou.   31   1
-## 4        The S.E. side of Road Songren &amp; Ln. 95, Songren Rd..   28   1
-## 5            The N.E. side of Road Song Zhi &amp; Road Song Lian.   48   1
-## 6                The N.E. side of Road Song Zhi &amp; Road Xinyi.   80   1</code></pre>
+## 1 The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.   54   1
+## 2                         Sec,4. Zhongxiao E.Rd/GuangFu S. Rd    9   1
+## 3               The N.W. side of Road Shifu &amp; Road Song Shou.   22   1
+## 4        The S.E. side of Road Songren &amp; Ln. 95, Songren Rd..   11   1
+## 5            The N.E. side of Road Song Zhi &amp; Road Song Lian.   22   1
+## 6                The N.E. side of Road Song Zhi &amp; Road Xinyi.   20   1</code></pre>
 
 </div>
 </div>
@@ -1317,7 +1381,7 @@ head(df)</code></pre>
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-analysis-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
