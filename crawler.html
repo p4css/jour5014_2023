@@ -4,25 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Crawler | R Basic: Vector</title>
+  <title>Chapter 11 Crawler | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Crawler | R Basic: Vector" />
+  <meta property="og:title" content="Chapter 11 Crawler | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Crawler | R Basic: Vector" />
+  <meta name="twitter:title" content="Chapter 11 Crawler | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
 
-<meta name="author" content="Jilung Hsieh" />
+<meta name="author" content="HSIEH, JI-LUNG" />
 
 
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -30,7 +31,7 @@
   
   
 <link rel="prev" href="text-processing.html"/>
-<link rel="next" href="tw-data-visualization.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,150 +145,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
-<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> R Basic</a>
+<li class="part"><span><b>I R BASIC</b></span></li>
+<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> R Basic</a></li>
+<li class="chapter" data-level="2" data-path="playing-r-with-r-markdown.html"><a href="playing-r-with-r-markdown.html"><i class="fa fa-check"></i><b>2</b> Playing R with R Markdown</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="basic.html"><a href="basic.html#playing-r-with-r-markdown"><i class="fa fa-check"></i><b>1.1</b> Playing R with R Markdown</a>
-<ul>
-<li class="chapter" data-level="1.1.1" data-path="basic.html"><a href="basic.html#loading-dcard-data"><i class="fa fa-check"></i><b>1.1.1</b> Loading dcard data</a></li>
-<li class="chapter" data-level="1.1.2" data-path="basic.html"><a href="basic.html#getting-taipei-theft-report-data"><i class="fa fa-check"></i><b>1.1.2</b> Getting Taipei theft report data</a></li>
-<li class="chapter" data-level="1.1.3" data-path="basic.html"><a href="basic.html#loading-a-csv-file-in-data-directory"><i class="fa fa-check"></i><b>1.1.3</b> Loading a csv file in data directory</a></li>
-<li class="chapter" data-level="1.1.4" data-path="basic.html"><a href="basic.html#loading-moi-data-through-api"><i class="fa fa-check"></i><b>1.1.4</b> Loading MOI data through API</a></li>
-<li class="chapter" data-level="1.1.5" data-path="basic.html"><a href="basic.html#getting-ubike"><i class="fa fa-check"></i><b>1.1.5</b> Getting ubike</a></li>
+<li class="chapter" data-level="2.1" data-path="playing-r-with-r-markdown.html"><a href="playing-r-with-r-markdown.html#loading-dcard-data"><i class="fa fa-check"></i><b>2.1</b> Loading dcard data</a></li>
+<li class="chapter" data-level="2.2" data-path="playing-r-with-r-markdown.html"><a href="playing-r-with-r-markdown.html#getting-taipei-theft-report-data"><i class="fa fa-check"></i><b>2.2</b> Getting Taipei theft report data</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="basic.html"><a href="basic.html#vectors"><i class="fa fa-check"></i><b>1.2</b> Vectors</a>
+<li class="chapter" data-level="3" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3</b> Vectors</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="basic.html"><a href="basic.html#r-syntax"><i class="fa fa-check"></i><b>1.2.1</b> R syntax</a></li>
-<li class="chapter" data-level="1.2.2" data-path="basic.html"><a href="basic.html#vector-basic-operations"><i class="fa fa-check"></i><b>1.2.2</b> Vector basic operations</a></li>
-<li class="chapter" data-level="1.2.3" data-path="basic.html"><a href="basic.html#viewing"><i class="fa fa-check"></i><b>1.2.3</b> Viewing</a></li>
-<li class="chapter" data-level="1.2.4" data-path="basic.html"><a href="basic.html#subsetting-filtering"><i class="fa fa-check"></i><b>1.2.4</b> Subsetting, filtering</a></li>
-<li class="chapter" data-level="1.2.5" data-path="basic.html"><a href="basic.html#deleting"><i class="fa fa-check"></i><b>1.2.5</b> Deleting</a></li>
-<li class="chapter" data-level="1.2.6" data-path="basic.html"><a href="basic.html#concatinating"><i class="fa fa-check"></i><b>1.2.6</b> Concatinating</a></li>
-<li class="chapter" data-level="1.2.7" data-path="basic.html"><a href="basic.html#calculating-with-vectors"><i class="fa fa-check"></i><b>1.2.7</b> Calculating with vectors</a></li>
-<li class="chapter" data-level="1.2.8" data-path="basic.html"><a href="basic.html#data-types"><i class="fa fa-check"></i><b>1.2.8</b> Data types</a></li>
-<li class="chapter" data-level="1.2.9" data-path="basic.html"><a href="basic.html#character-operations"><i class="fa fa-check"></i><b>1.2.9</b> Character operations</a></li>
+<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html#r-syntax"><i class="fa fa-check"></i><b>3.1</b> R Syntax</a></li>
+<li class="chapter" data-level="3.2" data-path="vectors.html"><a href="vectors.html#basic-operations"><i class="fa fa-check"></i><b>3.2</b> Basic operations</a></li>
+<li class="chapter" data-level="3.3" data-path="vectors.html"><a href="vectors.html#calculating-with-vectors"><i class="fa fa-check"></i><b>3.3</b> Calculating with vectors</a></li>
+<li class="chapter" data-level="3.4" data-path="vectors.html"><a href="vectors.html#data-types"><i class="fa fa-check"></i><b>3.4</b> Data types</a></li>
+<li class="chapter" data-level="3.5" data-path="vectors.html"><a href="vectors.html#character-operations"><i class="fa fa-check"></i><b>3.5</b> Character operations</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="basic.html"><a href="basic.html#dataframe"><i class="fa fa-check"></i><b>1.3</b> Dataframe</a>
+<li class="chapter" data-level="4" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>4</b> Dataframe</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="basic.html"><a href="basic.html#產生新的dataframe"><i class="fa fa-check"></i><b>1.3.1</b> 產生新的Dataframe</a></li>
-<li class="chapter" data-level="1.3.2" data-path="basic.html"><a href="basic.html#觀察dataframe"><i class="fa fa-check"></i><b>1.3.2</b> 觀察dataframe</a></li>
-<li class="chapter" data-level="1.3.3" data-path="basic.html"><a href="basic.html#操作dataframe"><i class="fa fa-check"></i><b>1.3.3</b> 操作dataframe</a></li>
-<li class="chapter" data-level="1.3.4" data-path="basic.html"><a href="basic.html#簡易繪圖"><i class="fa fa-check"></i><b>1.3.4</b> 簡易繪圖</a></li>
-<li class="chapter" data-level="1.3.5" data-path="basic.html"><a href="basic.html#其他使用dplyr"><i class="fa fa-check"></i><b>1.3.5</b> 其他：使用dplyr</a></li>
+<li class="chapter" data-level="4.1" data-path="dataframe.html"><a href="dataframe.html#基本操作"><i class="fa fa-check"></i><b>4.1</b> 基本操作</a></li>
+<li class="chapter" data-level="4.2" data-path="dataframe.html"><a href="dataframe.html#簡易繪圖"><i class="fa fa-check"></i><b>4.2</b> 簡易繪圖</a></li>
+<li class="chapter" data-level="4.3" data-path="dataframe.html"><a href="dataframe.html#基本操作使用dplyr"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="dataframe.html"><a href="dataframe.html#tibble-data_frame-data.frame"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html"><i class="fa fa-check"></i><b>2</b> Data Analysis with R</a>
+<li class="chapter" data-level="5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Data Analysis with R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#case-paid-maternal-leave"><i class="fa fa-check"></i><b>2.1</b> Case: Paid Maternal Leave</a>
-<ul>
-<li class="chapter" data-level="2.1.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#reading-.xlsx-by-readxl-package"><i class="fa fa-check"></i><b>2.1.1</b> Reading .xlsx by readxl package</a></li>
-<li class="chapter" data-level="2.1.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#previewing-data-by-view-class-dim-str-summary-and-names"><i class="fa fa-check"></i><b>2.1.2</b> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code></a></li>
-<li class="chapter" data-level="2.1.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#select-variables"><i class="fa fa-check"></i><b>2.1.3</b> Select variables</a></li>
-<li class="chapter" data-level="2.1.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#check-replace-nas"><i class="fa fa-check"></i><b>2.1.4</b> Check &amp; Replace NAs</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#filtering-data"><i class="fa fa-check"></i><b>2.1.5</b> Filtering data</a></li>
-<li class="chapter" data-level="2.1.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#plotting"><i class="fa fa-check"></i><b>2.1.6</b> Plotting</a></li>
-<li class="chapter" data-level="2.1.7" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice02_1_1-plotting-more"><i class="fa fa-check"></i><b>2.1.7</b> Practice02_1_1 Plotting more</a></li>
-<li class="chapter" data-level="2.1.8" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice02_2_2-selecting-and-filtering-by-dplyr-i"><i class="fa fa-check"></i><b>2.1.8</b> Practice02_2_2 selecting and filtering by dplyr I</a></li>
-<li class="chapter" data-level="2.1.9" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#more-clean-version"><i class="fa fa-check"></i><b>2.1.9</b> (More) Clean version</a></li>
-<li class="chapter" data-level="2.1.10" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#more-the-fittest-version-to-compute-staysame"><i class="fa fa-check"></i><b>2.1.10</b> (More) The fittest version to compute staySame</a></li>
+<li class="chapter" data-level="5.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#case-paid-maternal-leave"><i class="fa fa-check"></i><b>5.1</b> Case: Paid Maternal Leave</a></li>
+<li class="chapter" data-level="5.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#pivot-analysis-on-tp-theft"><i class="fa fa-check"></i><b>5.2</b> Pivot Analysis on TP Theft</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#pivot-analysis-on-tp-theft"><i class="fa fa-check"></i><b>2.2</b> Pivot Analysis on TP Theft</a>
+<li class="part"><span><b>II Data Manipulation</b></span></li>
+<li class="chapter" data-level="6" data-path="data-manipulation-wity-tidyverse.html"><a href="data-manipulation-wity-tidyverse.html"><i class="fa fa-check"></i><b>6</b> Data Manipulation wity tidyverse</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#直接依資料網址讀取檔案"><i class="fa fa-check"></i><b>2.2.1</b> (1.1) 直接依資料網址讀取檔案</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#從個人電腦本機端讀取檔案"><i class="fa fa-check"></i><b>2.2.2</b> (1.2) 從個人電腦本機端讀取檔案</a></li>
-<li class="chapter" data-level="2.2.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#觀察資料維度"><i class="fa fa-check"></i><b>2.2.3</b> (2.1) 觀察資料維度</a></li>
-<li class="chapter" data-level="2.2.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#觀察變數名稱"><i class="fa fa-check"></i><b>2.2.4</b> (2.2) 觀察變數名稱</a></li>
-<li class="chapter" data-level="2.2.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#萃取所需新變項"><i class="fa fa-check"></i><b>2.2.5</b> (2.3) 萃取所需新變項</a></li>
-<li class="chapter" data-level="2.2.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice-萃取month變項"><i class="fa fa-check"></i><b>2.2.6</b> (Practice) 萃取month變項</a></li>
-<li class="chapter" data-level="2.2.7" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#iv.-樞紐分析計數加總與彙整"><i class="fa fa-check"></i><b>2.2.7</b> IV. 樞紐分析：計數、加總與彙整。</a></li>
-<li class="chapter" data-level="2.2.8" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#方法一counting-by-table"><i class="fa fa-check"></i><b>2.2.8</b> 方法一：Counting by <code>table()</code></a></li>
-<li class="chapter" data-level="2.2.9" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#方法二counting-by-tapply"><i class="fa fa-check"></i><b>2.2.9</b> 方法二：Counting by <code>tapply()</code></a></li>
-<li class="chapter" data-level="2.2.10" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#v.-依照變數值篩選資料"><i class="fa fa-check"></i><b>2.2.10</b> V. 依照變數值篩選資料</a></li>
-<li class="chapter" data-level="2.2.11" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#vi.-雙變數樞紐分析"><i class="fa fa-check"></i><b>2.2.11</b> VI. 雙變數樞紐分析</a></li>
-<li class="chapter" data-level="2.2.12" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#practice-count"><i class="fa fa-check"></i><b>2.2.12</b> (Practice) <code>count()</code></a></li>
-<li class="chapter" data-level="2.2.13" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#vii.-繪圖-plotting"><i class="fa fa-check"></i><b>2.2.13</b> VII. 繪圖 Plotting</a></li>
-<li class="chapter" data-level="2.2.14" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#option-視覺化殘差分析"><i class="fa fa-check"></i><b>2.2.14</b> (Option) 視覺化殘差分析</a></li>
+<li class="chapter" data-level="6.1" data-path="data-manipulation-wity-tidyverse.html"><a href="data-manipulation-wity-tidyverse.html#base-to-dplyr-tp-theft"><i class="fa fa-check"></i><b>6.1</b> base to dplyr: TP Theft</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a>
+<li class="chapter" data-level="7" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>7</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#base-to-dplyr-tp-theft"><i class="fa fa-check"></i><b>3.1</b> base to dplyr: TP Theft</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="data-manipulation.html"><a href="data-manipulation.html#reading-data"><i class="fa fa-check"></i><b>3.1.1</b> Reading data</a></li>
-<li class="chapter" data-level="3.1.2" data-path="data-manipulation.html"><a href="data-manipulation.html#cleaning-data-i"><i class="fa fa-check"></i><b>3.1.2</b> Cleaning data I</a></li>
-<li class="chapter" data-level="3.1.3" data-path="data-manipulation.html"><a href="data-manipulation.html#cleaning-data-ii"><i class="fa fa-check"></i><b>3.1.3</b> Cleaning data II</a></li>
-<li class="chapter" data-level="3.1.4" data-path="data-manipulation.html"><a href="data-manipulation.html#long-to-wide-form"><i class="fa fa-check"></i><b>3.1.4</b> Long to wide form</a></li>
-<li class="chapter" data-level="3.1.5" data-path="data-manipulation.html"><a href="data-manipulation.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>3.1.5</b> Setting time as row.name for mosaicplot</a></li>
-<li class="chapter" data-level="3.1.6" data-path="data-manipulation.html"><a href="data-manipulation.html#clean-version"><i class="fa fa-check"></i><b>3.1.6</b> Clean version</a></li>
+<li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>7.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>7.2</b> 繪圖基礎：折線圖</a></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>7.3</b> 圖表調整</a></li>
+<li class="chapter" data-level="7.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>7.4</b> 視覺化說故事的技巧</a></li>
+<li class="chapter" data-level="7.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>7.5</b> 時間軸的視覺化</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> Visualization</a>
+<li class="chapter" data-level="8" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>8</b> TW Data Visualization</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>4.1</b> ggplot簡介</a></li>
-<li class="chapter" data-level="4.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>4.2</b> 繪圖基礎：折線圖</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="visualization.html"><a href="visualization.html#繪圖三要素"><i class="fa fa-check"></i><b>4.2.1</b> 繪圖三要素</a></li>
-<li class="chapter" data-level="4.2.2" data-path="visualization.html"><a href="visualization.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>4.2.2</b> 範例-紐時世代貧富不均</a></li>
-<li class="chapter" data-level="4.2.3" data-path="visualization.html"><a href="visualization.html#加入自變項群組"><i class="fa fa-check"></i><b>4.2.3</b> 加入自變項群組</a></li>
+<li class="chapter" data-level="8.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>8.1</b> Coordination &amp; Axis</a></li>
+<li class="chapter" data-level="8.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>8.2</b> Log-scale</a></li>
+<li class="chapter" data-level="8.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>8.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="8.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>8.4</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="8.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>8.5</b> TW-Income (boxplot)</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>4.3</b> 圖表調整</a>
+<li class="chapter" data-level="9" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>9</b> WGOIGT of NyTimes</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="visualization.html"><a href="visualization.html#點線型態"><i class="fa fa-check"></i><b>4.3.1</b> 點線型態</a></li>
-<li class="chapter" data-level="4.3.2" data-path="visualization.html"><a href="visualization.html#標題標籤與圖說"><i class="fa fa-check"></i><b>4.3.2</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="4.3.3" data-path="visualization.html"><a href="visualization.html#字體樣式"><i class="fa fa-check"></i><b>4.3.3</b> 字體樣式</a></li>
-<li class="chapter" data-level="4.3.4" data-path="visualization.html"><a href="visualization.html#圖表主題色調"><i class="fa fa-check"></i><b>4.3.4</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="4.3.5" data-path="visualization.html"><a href="visualization.html#預設主題"><i class="fa fa-check"></i><b>4.3.5</b> 預設主題</a></li>
-<li class="chapter" data-level="4.3.6" data-path="visualization.html"><a href="visualization.html#顯示中文字體"><i class="fa fa-check"></i><b>4.3.6</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="4.3.7" data-path="visualization.html"><a href="visualization.html#xy軸方向"><i class="fa fa-check"></i><b>4.3.7</b> X/Y軸方向</a></li>
+<li class="chapter" data-level="9.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>9.1</b> Net Worth by Age Group</a></li>
+<li class="chapter" data-level="9.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>9.2</b> UNICEF-Optimistic</a></li>
+<li class="chapter" data-level="9.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>9.3</b> Global Carbon Projects</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>4.4</b> 視覺化說故事的技巧</a>
+<li class="chapter" data-level="10" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>10</b> Text Processing</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="visualization.html"><a href="visualization.html#依群組指定顏色"><i class="fa fa-check"></i><b>4.4.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="4.4.2" data-path="visualization.html"><a href="visualization.html#使用gghighlight套件"><i class="fa fa-check"></i><b>4.4.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="4.4.3" data-path="visualization.html"><a href="visualization.html#為視覺化建立群組"><i class="fa fa-check"></i><b>4.4.3</b> 為視覺化建立群組</a></li>
+<li class="chapter" data-level="10.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>10.1</b> Tweets 分析</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>4.5</b> 時間軸的視覺化</a>
+<li class="chapter" data-level="11" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>11</b> Crawler</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="visualization.html"><a href="visualization.html#文字轉時間"><i class="fa fa-check"></i><b>4.5.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="4.5.2" data-path="visualization.html"><a href="visualization.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>4.5.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="4.5.3" data-path="visualization.html"><a href="visualization.html#逐月統計資料"><i class="fa fa-check"></i><b>4.5.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="4.5.4" data-path="visualization.html"><a href="visualization.html#逐日統計資料佳"><i class="fa fa-check"></i><b>4.5.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="4.5.5" data-path="visualization.html"><a href="visualization.html#每日逐時資料"><i class="fa fa-check"></i><b>4.5.5</b> 每日逐時資料</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>5</b> Text Processing</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>5.1</b> Tweets 分析</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="text-processing.html"><a href="text-processing.html#載入並清理資料"><i class="fa fa-check"></i><b>5.1.1</b> 載入並清理資料</a></li>
-<li class="chapter" data-level="5.1.2" data-path="text-processing.html"><a href="text-processing.html#萃取資料"><i class="fa fa-check"></i><b>5.1.2</b> 萃取資料</a></li>
-<li class="chapter" data-level="5.1.3" data-path="text-processing.html"><a href="text-processing.html#視覺化探索"><i class="fa fa-check"></i><b>5.1.3</b> 視覺化探索</a></li>
-<li class="chapter" data-level="5.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>5.1.4</b> Keyness</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>6</b> Crawler</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>6.1</b> Scraping 104.com</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="crawler.html"><a href="crawler.html#complete-code"><i class="fa fa-check"></i><b>6.1.1</b> Complete Code</a></li>
-<li class="chapter" data-level="6.1.2" data-path="crawler.html"><a href="crawler.html#step-by-step"><i class="fa fa-check"></i><b>6.1.2</b> Step-by-Step</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>7</b> TW Data Visualization</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>7.1</b> Coordination &amp; Axis</a></li>
-<li class="chapter" data-level="7.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>7.2</b> Log-scale</a></li>
-<li class="chapter" data-level="7.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>7.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="7.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>7.4</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="7.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>7.5</b> TW-Income (boxplot)</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>8</b> WGOIGT of NyTimes</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>8.1</b> Net Worth by Age Group</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>8.1.1</b> Read and sort data</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>8.2</b> UNICEF-Optimistic</a></li>
-<li class="chapter" data-level="8.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>8.3</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="11.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>11.1</b> Scraping 104.com</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -301,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Basic: Vector</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Journalism</a>
           </h1>
         </div>
 
@@ -309,159 +227,165 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="crawler" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Crawler<a href="crawler.html#crawler" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="crawler" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Crawler<a href="crawler.html#crawler" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
-<div id="scraping-104.com" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Scraping 104.com<a href="crawler.html#scraping-104.com" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="complete-code" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Complete Code<a href="crawler.html#complete-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="crawler.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb469-2"><a href="crawler.html#cb469-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb469-3"><a href="crawler.html#cb469-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb469-4"><a href="crawler.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span></code></pre></div>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="crawler.html#cb470-1" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
-<span id="cb470-2"><a href="crawler.html#cb470-2" aria-hidden="true" tabindex="-1"></a>refer_url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw&quot;</span></span>
-<span id="cb470-3"><a href="crawler.html#cb470-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb470-4"><a href="crawler.html#cb470-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb470-5"><a href="crawler.html#cb470-5" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=12&amp;asc=0&amp;page=&#39;</span>, </span>
-<span id="cb470-6"><a href="crawler.html#cb470-6" aria-hidden="true" tabindex="-1"></a>                 p, </span>
-<span id="cb470-7"><a href="crawler.html#cb470-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb470-8"><a href="crawler.html#cb470-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(p)</span>
-<span id="cb470-9"><a href="crawler.html#cb470-9" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url, <span class="fu">add_headers</span>(<span class="st">&quot;referer&quot;</span><span class="ot">=</span>refer_url)) <span class="sc">%&gt;%</span></span>
-<span id="cb470-10"><a href="crawler.html#cb470-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">content</span>(<span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb470-11"><a href="crawler.html#cb470-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fromJSON</span>()</span>
-<span id="cb470-12"><a href="crawler.html#cb470-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb470-13"><a href="crawler.html#cb470-13" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb470-14"><a href="crawler.html#cb470-14" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb470-15"><a href="crawler.html#cb470-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb470-16"><a href="crawler.html#cb470-16" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, res<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb470-17"><a href="crawler.html#cb470-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb470-18"><a href="crawler.html#cb470-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb470-19"><a href="crawler.html#cb470-19" aria-hidden="true" tabindex="-1"></a>all.df<span class="sc">$</span>jobNo <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> length</span></code></pre></div>
+<div id="scraping-104.com" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Scraping 104.com<a href="crawler.html#scraping-104.com" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="complete-code" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Complete Code<a href="crawler.html#complete-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="crawler.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb493-2"><a href="crawler.html#cb493-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb493-3"><a href="crawler.html#cb493-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb493-4"><a href="crawler.html#cb493-4" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="crawler.html#cb494-1" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb494-2"><a href="crawler.html#cb494-2" aria-hidden="true" tabindex="-1"></a>refer_url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw&quot;</span></span>
+<span id="cb494-3"><a href="crawler.html#cb494-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb494-4"><a href="crawler.html#cb494-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb494-5"><a href="crawler.html#cb494-5" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=12&amp;asc=0&amp;page=&#39;</span>, </span>
+<span id="cb494-6"><a href="crawler.html#cb494-6" aria-hidden="true" tabindex="-1"></a>                 p, </span>
+<span id="cb494-7"><a href="crawler.html#cb494-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb494-8"><a href="crawler.html#cb494-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(p)</span>
+<span id="cb494-9"><a href="crawler.html#cb494-9" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url, <span class="fu">add_headers</span>(<span class="st">&quot;referer&quot;</span><span class="ot">=</span>refer_url)) <span class="sc">%&gt;%</span></span>
+<span id="cb494-10"><a href="crawler.html#cb494-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">content</span>(<span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb494-11"><a href="crawler.html#cb494-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fromJSON</span>()</span>
+<span id="cb494-12"><a href="crawler.html#cb494-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb494-13"><a href="crawler.html#cb494-13" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb494-14"><a href="crawler.html#cb494-14" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb494-15"><a href="crawler.html#cb494-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb494-16"><a href="crawler.html#cb494-16" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, res<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb494-17"><a href="crawler.html#cb494-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb494-18"><a href="crawler.html#cb494-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb494-19"><a href="crawler.html#cb494-19" aria-hidden="true" tabindex="-1"></a>all.df<span class="sc">$</span>jobNo <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> length</span></code></pre></div>
 </div>
-<div id="step-by-step" class="section level3 hasAnchor" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Step-by-Step<a href="crawler.html#step-by-step" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="get-the-first-pages" class="section level4 hasAnchor" number="6.1.2.1">
-<h4><span class="header-section-number">6.1.2.1</span> Get the first pages<a href="crawler.html#get-the-first-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="step-by-step" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Step-by-Step<a href="crawler.html#step-by-step" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="get-the-first-pages" class="section level4 hasAnchor" number="11.1.2.1">
+<h4><span class="header-section-number">11.1.2.1</span> Get the first pages<a href="crawler.html#get-the-first-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Must loading the second page</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="crawler.html#cb471-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb471-2"><a href="crawler.html#cb471-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb471-3"><a href="crawler.html#cb471-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 2nd page data url to url2</span></span>
-<span id="cb471-4"><a href="crawler.html#cb471-4" aria-hidden="true" tabindex="-1"></a>url2 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb471-5"><a href="crawler.html#cb471-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb471-6"><a href="crawler.html#cb471-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 3rd page data url to url3</span></span>
-<span id="cb471-7"><a href="crawler.html#cb471-7" aria-hidden="true" tabindex="-1"></a>url3 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb471-8"><a href="crawler.html#cb471-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb471-9"><a href="crawler.html#cb471-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the url1 data, assigning to result1</span></span>
-<span id="cb471-10"><a href="crawler.html#cb471-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb471-11"><a href="crawler.html#cb471-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url2, <span class="at">config =</span> <span class="fu">add_headers</span>(<span class="st">&quot;Referer&quot;</span> <span class="ot">=</span> <span class="st">&quot;https://www.104.com.tw/&quot;</span>))</span>
-<span id="cb471-12"><a href="crawler.html#cb471-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb471-13"><a href="crawler.html#cb471-13" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">content</span>(res, <span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
-<span id="cb471-14"><a href="crawler.html#cb471-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb471-15"><a href="crawler.html#cb471-15" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url2), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb471-16"><a href="crawler.html#cb471-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb471-17"><a href="crawler.html#cb471-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing variable result2 and finding the data.frame, assigning to df2</span></span>
-<span id="cb471-18"><a href="crawler.html#cb471-18" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> res1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="crawler.html#cb495-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb495-2"><a href="crawler.html#cb495-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-3"><a href="crawler.html#cb495-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 2nd page data url to url2</span></span>
+<span id="cb495-4"><a href="crawler.html#cb495-4" aria-hidden="true" tabindex="-1"></a>url2 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb495-5"><a href="crawler.html#cb495-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-6"><a href="crawler.html#cb495-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 3rd page data url to url3</span></span>
+<span id="cb495-7"><a href="crawler.html#cb495-7" aria-hidden="true" tabindex="-1"></a>url3 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb495-8"><a href="crawler.html#cb495-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-9"><a href="crawler.html#cb495-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the url1 data, assigning to result1</span></span>
+<span id="cb495-10"><a href="crawler.html#cb495-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-11"><a href="crawler.html#cb495-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url2, <span class="at">config =</span> <span class="fu">add_headers</span>(<span class="st">&quot;Referer&quot;</span> <span class="ot">=</span> <span class="st">&quot;https://www.104.com.tw/&quot;</span>))</span>
+<span id="cb495-12"><a href="crawler.html#cb495-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-13"><a href="crawler.html#cb495-13" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">content</span>(res, <span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
+<span id="cb495-14"><a href="crawler.html#cb495-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-15"><a href="crawler.html#cb495-15" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url2), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb495-16"><a href="crawler.html#cb495-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-17"><a href="crawler.html#cb495-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing variable result2 and finding the data.frame, assigning to df2</span></span>
+<span id="cb495-18"><a href="crawler.html#cb495-18" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> res1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
 </div>
-<div id="get-the-first-page-by-modifying-url" class="section level4 hasAnchor" number="6.1.2.2">
-<h4><span class="header-section-number">6.1.2.2</span> Get the first page by modifying url<a href="crawler.html#get-the-first-page-by-modifying-url" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="crawler.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guessing the 1st page data url to url1</span></span>
-<span id="cb472-2"><a href="crawler.html#cb472-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb472-3"><a href="crawler.html#cb472-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb472-4"><a href="crawler.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
-<span id="cb472-5"><a href="crawler.html#cb472-5" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb472-6"><a href="crawler.html#cb472-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb472-7"><a href="crawler.html#cb472-7" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb472-8"><a href="crawler.html#cb472-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb472-9"><a href="crawler.html#cb472-9" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
+<div id="get-the-first-page-by-modifying-url" class="section level4 hasAnchor" number="11.1.2.2">
+<h4><span class="header-section-number">11.1.2.2</span> Get the first page by modifying url<a href="crawler.html#get-the-first-page-by-modifying-url" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="crawler.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guessing the 1st page data url to url1</span></span>
+<span id="cb496-2"><a href="crawler.html#cb496-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb496-3"><a href="crawler.html#cb496-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-4"><a href="crawler.html#cb496-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
+<span id="cb496-5"><a href="crawler.html#cb496-5" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb496-6"><a href="crawler.html#cb496-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-7"><a href="crawler.html#cb496-7" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb496-8"><a href="crawler.html#cb496-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-9"><a href="crawler.html#cb496-9" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
 </div>
-<div id="combine-two-data-with-the-same-variables" class="section level4 hasAnchor" number="6.1.2.3">
-<h4><span class="header-section-number">6.1.2.3</span> Combine two data with the same variables<a href="crawler.html#combine-two-data-with-the-same-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="crawler.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all.df &lt;- bind_rows(df1, df2) # will raise error</span></span>
-<span id="cb473-2"><a href="crawler.html#cb473-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in bind_rows_(x, .id) : </span></span>
-<span id="cb473-3"><a href="crawler.html#cb473-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Argument 31 can&#39;t be a list containing data frames</span></span></code></pre></div>
+<div id="combine-two-data-with-the-same-variables" class="section level4 hasAnchor" number="11.1.2.3">
+<h4><span class="header-section-number">11.1.2.3</span> Combine two data with the same variables<a href="crawler.html#combine-two-data-with-the-same-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="crawler.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all.df &lt;- bind_rows(df1, df2) # will raise error</span></span>
+<span id="cb497-2"><a href="crawler.html#cb497-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in bind_rows_(x, .id) : </span></span>
+<span id="cb497-3"><a href="crawler.html#cb497-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Argument 31 can&#39;t be a list containing data frames</span></span></code></pre></div>
 </div>
-<div id="drop-out-hierarchical-variables" class="section level4 hasAnchor" number="6.1.2.4">
-<h4><span class="header-section-number">6.1.2.4</span> Drop out hierarchical variables<a href="crawler.html#drop-out-hierarchical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="drop-out-hierarchical-variables" class="section level4 hasAnchor" number="11.1.2.4">
+<h4><span class="header-section-number">11.1.2.4</span> Drop out hierarchical variables<a href="crawler.html#drop-out-hierarchical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Preserving numeric or character, dropping list of data.frame by assigning NULL to the variable</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="crawler.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop list and data.frame inside the data.frame</span></span>
-<span id="cb474-2"><a href="crawler.html#cb474-2" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb474-3"><a href="crawler.html#cb474-3" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb474-4"><a href="crawler.html#cb474-4" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb474-5"><a href="crawler.html#cb474-5" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb474-6"><a href="crawler.html#cb474-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb474-7"><a href="crawler.html#cb474-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-binding two data.frame df1 and df2</span></span>
-<span id="cb474-8"><a href="crawler.html#cb474-8" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="crawler.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop list and data.frame inside the data.frame</span></span>
+<span id="cb498-2"><a href="crawler.html#cb498-2" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb498-3"><a href="crawler.html#cb498-3" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb498-4"><a href="crawler.html#cb498-4" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb498-5"><a href="crawler.html#cb498-5" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb498-6"><a href="crawler.html#cb498-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb498-7"><a href="crawler.html#cb498-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-binding two data.frame df1 and df2</span></span>
+<span id="cb498-8"><a href="crawler.html#cb498-8" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
 </div>
-<div id="dropping-hierarchical-variables-by-dplyr-way" class="section level4 hasAnchor" number="6.1.2.5">
-<h4><span class="header-section-number">6.1.2.5</span> Dropping hierarchical variables by dplyr way<a href="crawler.html#dropping-hierarchical-variables-by-dplyr-way" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="crawler.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 1st page data and dropping variable tags and link</span></span>
-<span id="cb475-2"><a href="crawler.html#cb475-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df1</span></span>
-<span id="cb475-3"><a href="crawler.html#cb475-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
-<span id="cb475-4"><a href="crawler.html#cb475-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb475-5"><a href="crawler.html#cb475-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 2nd page data and dropping variable tags and link</span></span>
-<span id="cb475-6"><a href="crawler.html#cb475-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df2</span></span>
-<span id="cb475-7"><a href="crawler.html#cb475-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> result2<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
-<span id="cb475-8"><a href="crawler.html#cb475-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb475-9"><a href="crawler.html#cb475-9" aria-hidden="true" tabindex="-1"></a><span class="co"># binding df1 and df2</span></span>
-<span id="cb475-10"><a href="crawler.html#cb475-10" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
+<div id="dropping-hierarchical-variables-by-dplyr-way" class="section level4 hasAnchor" number="11.1.2.5">
+<h4><span class="header-section-number">11.1.2.5</span> Dropping hierarchical variables by dplyr way<a href="crawler.html#dropping-hierarchical-variables-by-dplyr-way" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="crawler.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 1st page data and dropping variable tags and link</span></span>
+<span id="cb499-2"><a href="crawler.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df1</span></span>
+<span id="cb499-3"><a href="crawler.html#cb499-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
+<span id="cb499-4"><a href="crawler.html#cb499-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb499-5"><a href="crawler.html#cb499-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 2nd page data and dropping variable tags and link</span></span>
+<span id="cb499-6"><a href="crawler.html#cb499-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df2</span></span>
+<span id="cb499-7"><a href="crawler.html#cb499-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> result2<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
+<span id="cb499-8"><a href="crawler.html#cb499-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb499-9"><a href="crawler.html#cb499-9" aria-hidden="true" tabindex="-1"></a><span class="co"># binding df1 and df2</span></span>
+<span id="cb499-10"><a href="crawler.html#cb499-10" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
 </div>
-<div id="finding-out-the-last-page-number" class="section level4 hasAnchor" number="6.1.2.6">
-<h4><span class="header-section-number">6.1.2.6</span> Finding out the last page number<a href="crawler.html#finding-out-the-last-page-number" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="crawler.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing the number of pages in result1</span></span>
-<span id="cb476-2"><a href="crawler.html#cb476-2" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
-<span id="cb476-3"><a href="crawler.html#cb476-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the availability of the last page</span></span>
-<span id="cb476-4"><a href="crawler.html#cb476-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-5"><a href="crawler.html#cb476-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examining if the last page data available by re-composing URL with paste0()</span></span>
-<span id="cb476-6"><a href="crawler.html#cb476-6" aria-hidden="true" tabindex="-1"></a>url.last_page <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, last_page_num, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb476-7"><a href="crawler.html#cb476-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-8"><a href="crawler.html#cb476-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back and parsing the last page data</span></span>
-<span id="cb476-9"><a href="crawler.html#cb476-9" aria-hidden="true" tabindex="-1"></a>result.last_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url.last_page), <span class="st">&quot;text&quot;</span>))</span></code></pre></div>
+<div id="finding-out-the-last-page-number" class="section level4 hasAnchor" number="11.1.2.6">
+<h4><span class="header-section-number">11.1.2.6</span> Finding out the last page number<a href="crawler.html#finding-out-the-last-page-number" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="crawler.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing the number of pages in result1</span></span>
+<span id="cb500-2"><a href="crawler.html#cb500-2" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
+<span id="cb500-3"><a href="crawler.html#cb500-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the availability of the last page</span></span>
+<span id="cb500-4"><a href="crawler.html#cb500-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb500-5"><a href="crawler.html#cb500-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examining if the last page data available by re-composing URL with paste0()</span></span>
+<span id="cb500-6"><a href="crawler.html#cb500-6" aria-hidden="true" tabindex="-1"></a>url.last_page <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, last_page_num, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb500-7"><a href="crawler.html#cb500-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb500-8"><a href="crawler.html#cb500-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back and parsing the last page data</span></span>
+<span id="cb500-9"><a href="crawler.html#cb500-9" aria-hidden="true" tabindex="-1"></a>result.last_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url.last_page), <span class="st">&quot;text&quot;</span>))</span></code></pre></div>
 </div>
-<div id="using-for-loop-to-get-all-pages" class="section level4 hasAnchor" number="6.1.2.7">
-<h4><span class="header-section-number">6.1.2.7</span> Using for-loop to get all pages<a href="crawler.html#using-for-loop-to-get-all-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="crawler.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
-<span id="cb477-2"><a href="crawler.html#cb477-2" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb477-3"><a href="crawler.html#cb477-3" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb477-4"><a href="crawler.html#cb477-4" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb477-5"><a href="crawler.html#cb477-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(temp.df)))</span>
-<span id="cb477-6"><a href="crawler.html#cb477-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="using-for-loop-to-get-all-pages" class="section level4 hasAnchor" number="11.1.2.7">
+<h4><span class="header-section-number">11.1.2.7</span> Using for-loop to get all pages<a href="crawler.html#using-for-loop-to-get-all-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="crawler.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
+<span id="cb501-2"><a href="crawler.html#cb501-2" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb501-3"><a href="crawler.html#cb501-3" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb501-4"><a href="crawler.html#cb501-4" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb501-5"><a href="crawler.html#cb501-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(temp.df)))</span>
+<span id="cb501-6"><a href="crawler.html#cb501-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="combine-all-data.frame" class="section level4 hasAnchor" number="6.1.2.8">
-<h4><span class="header-section-number">6.1.2.8</span> combine all data.frame<a href="crawler.html#combine-all-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="crawler.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  The 1st url of the query</span></span>
-<span id="cb478-2"><a href="crawler.html#cb478-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb478-3"><a href="crawler.html#cb478-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb478-4"><a href="crawler.html#cb478-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
-<span id="cb478-5"><a href="crawler.html#cb478-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb478-6"><a href="crawler.html#cb478-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb478-7"><a href="crawler.html#cb478-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing and getting total number of page</span></span>
-<span id="cb478-8"><a href="crawler.html#cb478-8" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
-<span id="cb478-9"><a href="crawler.html#cb478-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb478-10"><a href="crawler.html#cb478-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncating hierarchical variables: link and tags</span></span>
-<span id="cb478-11"><a href="crawler.html#cb478-11" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result1<span class="sc">$</span>data<span class="sc">$</span>list, <span class="sc">-</span>link, <span class="sc">-</span>tags)</span>
-<span id="cb478-12"><a href="crawler.html#cb478-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb478-13"><a href="crawler.html#cb478-13" aria-hidden="true" tabindex="-1"></a><span class="co"># for-loop to getting back data and joining them</span></span>
-<span id="cb478-14"><a href="crawler.html#cb478-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
-<span id="cb478-15"><a href="crawler.html#cb478-15" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb478-16"><a href="crawler.html#cb478-16" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb478-17"><a href="crawler.html#cb478-17" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb478-18"><a href="crawler.html#cb478-18" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, temp.df)</span>
-<span id="cb478-19"><a href="crawler.html#cb478-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(all.df)))</span>
-<span id="cb478-20"><a href="crawler.html#cb478-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="combine-all-data.frame" class="section level4 hasAnchor" number="11.1.2.8">
+<h4><span class="header-section-number">11.1.2.8</span> combine all data.frame<a href="crawler.html#combine-all-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="crawler.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  The 1st url of the query</span></span>
+<span id="cb502-2"><a href="crawler.html#cb502-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb502-3"><a href="crawler.html#cb502-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb502-4"><a href="crawler.html#cb502-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
+<span id="cb502-5"><a href="crawler.html#cb502-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb502-6"><a href="crawler.html#cb502-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb502-7"><a href="crawler.html#cb502-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing and getting total number of page</span></span>
+<span id="cb502-8"><a href="crawler.html#cb502-8" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
+<span id="cb502-9"><a href="crawler.html#cb502-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb502-10"><a href="crawler.html#cb502-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncating hierarchical variables: link and tags</span></span>
+<span id="cb502-11"><a href="crawler.html#cb502-11" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result1<span class="sc">$</span>data<span class="sc">$</span>list, <span class="sc">-</span>link, <span class="sc">-</span>tags)</span>
+<span id="cb502-12"><a href="crawler.html#cb502-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb502-13"><a href="crawler.html#cb502-13" aria-hidden="true" tabindex="-1"></a><span class="co"># for-loop to getting back data and joining them</span></span>
+<span id="cb502-14"><a href="crawler.html#cb502-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
+<span id="cb502-15"><a href="crawler.html#cb502-15" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb502-16"><a href="crawler.html#cb502-16" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb502-17"><a href="crawler.html#cb502-17" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb502-18"><a href="crawler.html#cb502-18" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, temp.df)</span>
+<span id="cb502-19"><a href="crawler.html#cb502-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(all.df)))</span>
+<span id="cb502-20"><a href="crawler.html#cb502-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
 </div>
 </div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="text-processing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tw-data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="text-processing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,33 +4,34 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Dataframe | R Basic: Vector</title>
+  <title>Chapter 4 Dataframe | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Dataframe | R Basic: Vector" />
+  <meta property="og:title" content="Chapter 4 Dataframe | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Dataframe | R Basic: Vector" />
+  <meta name="twitter:title" content="Chapter 4 Dataframe | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
 
-<meta name="author" content="Jilung Hsieh" />
+<meta name="author" content="HSIEH, JI-LUNG" />
 
 
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="basic.html"/>
-<link rel="next" href="visualization.html"/>
+<link rel="prev" href="vectors.html"/>
+<link rel="next" href="data-analysis-with-r.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +52,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -136,105 +145,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
-<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> R Basic</a>
+<li class="part"><span><b>I R BASIC</b></span></li>
+<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> R Basic</a></li>
+<li class="chapter" data-level="2" data-path="playing-r-with-r-markdown.html"><a href="playing-r-with-r-markdown.html"><i class="fa fa-check"></i><b>2</b> Playing R with R Markdown</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="basic.html"><a href="basic.html#playing-r-with-r-markdown"><i class="fa fa-check"></i><b>1.1</b> Playing R with R Markdown</a>
-<ul>
-<li class="chapter" data-level="1.1.1" data-path="basic.html"><a href="basic.html#loading-dcard-data"><i class="fa fa-check"></i><b>1.1.1</b> Loading dcard data</a></li>
-<li class="chapter" data-level="1.1.2" data-path="basic.html"><a href="basic.html#getting-taipei-theft-report-data"><i class="fa fa-check"></i><b>1.1.2</b> Getting Taipei theft report data</a></li>
-<li class="chapter" data-level="1.1.3" data-path="basic.html"><a href="basic.html#loading-a-csv-file-in-data-directory"><i class="fa fa-check"></i><b>1.1.3</b> Loading a csv file in data directory</a></li>
-<li class="chapter" data-level="1.1.4" data-path="basic.html"><a href="basic.html#loading-moi-data-through-api"><i class="fa fa-check"></i><b>1.1.4</b> Loading MOI data through API</a></li>
-<li class="chapter" data-level="1.1.5" data-path="basic.html"><a href="basic.html#getting-ubike"><i class="fa fa-check"></i><b>1.1.5</b> Getting ubike</a></li>
+<li class="chapter" data-level="2.1" data-path="playing-r-with-r-markdown.html"><a href="playing-r-with-r-markdown.html#loading-dcard-data"><i class="fa fa-check"></i><b>2.1</b> Loading dcard data</a></li>
+<li class="chapter" data-level="2.2" data-path="playing-r-with-r-markdown.html"><a href="playing-r-with-r-markdown.html#getting-taipei-theft-report-data"><i class="fa fa-check"></i><b>2.2</b> Getting Taipei theft report data</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="basic.html"><a href="basic.html#vectors"><i class="fa fa-check"></i><b>1.2</b> Vectors</a>
+<li class="chapter" data-level="3" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3</b> Vectors</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="basic.html"><a href="basic.html#r-syntax"><i class="fa fa-check"></i><b>1.2.1</b> R syntax</a></li>
-<li class="chapter" data-level="1.2.2" data-path="basic.html"><a href="basic.html#vector-basic-operations"><i class="fa fa-check"></i><b>1.2.2</b> Vector basic operations</a></li>
-<li class="chapter" data-level="1.2.3" data-path="basic.html"><a href="basic.html#viewing"><i class="fa fa-check"></i><b>1.2.3</b> Viewing</a></li>
-<li class="chapter" data-level="1.2.4" data-path="basic.html"><a href="basic.html#subsetting-filtering"><i class="fa fa-check"></i><b>1.2.4</b> Subsetting, filtering</a></li>
-<li class="chapter" data-level="1.2.5" data-path="basic.html"><a href="basic.html#deleting"><i class="fa fa-check"></i><b>1.2.5</b> Deleting</a></li>
-<li class="chapter" data-level="1.2.6" data-path="basic.html"><a href="basic.html#concatinating"><i class="fa fa-check"></i><b>1.2.6</b> Concatinating</a></li>
-<li class="chapter" data-level="1.2.7" data-path="basic.html"><a href="basic.html#calculating-with-vectors"><i class="fa fa-check"></i><b>1.2.7</b> Calculating with vectors</a></li>
-<li class="chapter" data-level="1.2.8" data-path="basic.html"><a href="basic.html#data-types"><i class="fa fa-check"></i><b>1.2.8</b> Data types</a></li>
-<li class="chapter" data-level="1.2.9" data-path="basic.html"><a href="basic.html#character-operations"><i class="fa fa-check"></i><b>1.2.9</b> Character operations</a></li>
+<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html#r-syntax"><i class="fa fa-check"></i><b>3.1</b> R Syntax</a></li>
+<li class="chapter" data-level="3.2" data-path="vectors.html"><a href="vectors.html#basic-operations"><i class="fa fa-check"></i><b>3.2</b> Basic operations</a></li>
+<li class="chapter" data-level="3.3" data-path="vectors.html"><a href="vectors.html#calculating-with-vectors"><i class="fa fa-check"></i><b>3.3</b> Calculating with vectors</a></li>
+<li class="chapter" data-level="3.4" data-path="vectors.html"><a href="vectors.html#data-types"><i class="fa fa-check"></i><b>3.4</b> Data types</a></li>
+<li class="chapter" data-level="3.5" data-path="vectors.html"><a href="vectors.html#character-operations"><i class="fa fa-check"></i><b>3.5</b> Character operations</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>2</b> Dataframe</a>
+<li class="chapter" data-level="4" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>4</b> Dataframe</a>
 <ul>
-<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#using-taipei-city-population-data"><i class="fa fa-check"></i>Using Taipei city population data</a></li>
-<li class="chapter" data-level="2.1" data-path="dataframe.html"><a href="dataframe.html#copying-data-and-creating-vectors"><i class="fa fa-check"></i><b>2.1</b> Copying data and creating vectors</a></li>
-<li class="chapter" data-level="2.2" data-path="dataframe.html"><a href="dataframe.html#building-a-data.frame"><i class="fa fa-check"></i><b>2.2</b> Building a data.frame</a></li>
-<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#using-importexport-data-of-taiwan"><i class="fa fa-check"></i>Using Import/Export data of Taiwan</a></li>
-<li class="chapter" data-level="2.3" data-path="dataframe.html"><a href="dataframe.html#combining-3-vectors-to-a-data.frame"><i class="fa fa-check"></i><b>2.3</b> Combining 3 vectors to a data.frame</a></li>
-<li class="chapter" data-level="2.4" data-path="dataframe.html"><a href="dataframe.html#observing-data.frame"><i class="fa fa-check"></i><b>2.4</b> Observing data.frame</a></li>
-<li class="chapter" data-level="2.5" data-path="dataframe.html"><a href="dataframe.html#data-dimension-inspecting"><i class="fa fa-check"></i><b>2.5</b> Data dimension inspecting</a></li>
-<li class="chapter" data-level="2.6" data-path="dataframe.html"><a href="dataframe.html#getting-one-variable-from-a-data.frame"><i class="fa fa-check"></i><b>2.6</b> Getting one variable from a data.frame</a></li>
-<li class="chapter" data-level="2.7" data-path="dataframe.html"><a href="dataframe.html#mutate透過運算產生新變數"><i class="fa fa-check"></i><b>2.7</b> (mutate)透過運算產生新變數</a></li>
-<li class="chapter" data-level="2.8" data-path="dataframe.html"><a href="dataframe.html#filter篩選資料選取變數"><i class="fa fa-check"></i><b>2.8</b> (filter)篩選資料、選取變數</a></li>
-<li class="chapter" data-level="2.9" data-path="dataframe.html"><a href="dataframe.html#arrange-按某個變數排序"><i class="fa fa-check"></i><b>2.9</b> (arrange) 按某個變數排序</a></li>
-<li class="chapter" data-level="2.10" data-path="dataframe.html"><a href="dataframe.html#plotting"><i class="fa fa-check"></i><b>2.10</b> Plotting</a></li>
-<li class="chapter" data-level="2.11" data-path="dataframe.html"><a href="dataframe.html#more-using-dplyr"><i class="fa fa-check"></i><b>2.11</b> More: using dplyr</a></li>
+<li class="chapter" data-level="4.1" data-path="dataframe.html"><a href="dataframe.html#基本操作"><i class="fa fa-check"></i><b>4.1</b> 基本操作</a></li>
+<li class="chapter" data-level="4.2" data-path="dataframe.html"><a href="dataframe.html#簡易繪圖"><i class="fa fa-check"></i><b>4.2</b> 簡易繪圖</a></li>
+<li class="chapter" data-level="4.3" data-path="dataframe.html"><a href="dataframe.html#基本操作使用dplyr"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="dataframe.html"><a href="dataframe.html#tibble-data_frame-data.frame"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>3</b> Visualization</a>
+<li class="chapter" data-level="5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Data Analysis with R</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>3.1</b> ggplot簡介</a></li>
-<li class="chapter" data-level="3.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>3.2</b> 繪圖基礎：折線圖</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="visualization.html"><a href="visualization.html#繪圖三要素"><i class="fa fa-check"></i><b>3.2.1</b> 繪圖三要素</a></li>
-<li class="chapter" data-level="3.2.2" data-path="visualization.html"><a href="visualization.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>3.2.2</b> 範例-紐時世代貧富不均</a></li>
-<li class="chapter" data-level="3.2.3" data-path="visualization.html"><a href="visualization.html#加入自變項群組"><i class="fa fa-check"></i><b>3.2.3</b> 加入自變項群組</a></li>
+<li class="chapter" data-level="5.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#case-paid-maternal-leave"><i class="fa fa-check"></i><b>5.1</b> Case: Paid Maternal Leave</a></li>
+<li class="chapter" data-level="5.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#pivot-analysis-on-tp-theft"><i class="fa fa-check"></i><b>5.2</b> Pivot Analysis on TP Theft</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>3.3</b> 圖表調整</a>
+<li class="part"><span><b>II Data Manipulation</b></span></li>
+<li class="chapter" data-level="6" data-path="data-manipulation-wity-tidyverse.html"><a href="data-manipulation-wity-tidyverse.html"><i class="fa fa-check"></i><b>6</b> Data Manipulation wity tidyverse</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="visualization.html"><a href="visualization.html#點線型態"><i class="fa fa-check"></i><b>3.3.1</b> 點線型態</a></li>
-<li class="chapter" data-level="3.3.2" data-path="visualization.html"><a href="visualization.html#標題標籤與圖說"><i class="fa fa-check"></i><b>3.3.2</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="3.3.3" data-path="visualization.html"><a href="visualization.html#字體樣式"><i class="fa fa-check"></i><b>3.3.3</b> 字體樣式</a></li>
-<li class="chapter" data-level="3.3.4" data-path="visualization.html"><a href="visualization.html#圖表主題色調"><i class="fa fa-check"></i><b>3.3.4</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="3.3.5" data-path="visualization.html"><a href="visualization.html#預設主題"><i class="fa fa-check"></i><b>3.3.5</b> 預設主題</a></li>
-<li class="chapter" data-level="3.3.6" data-path="visualization.html"><a href="visualization.html#顯示中文字體"><i class="fa fa-check"></i><b>3.3.6</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="3.3.7" data-path="visualization.html"><a href="visualization.html#xy軸方向"><i class="fa fa-check"></i><b>3.3.7</b> X/Y軸方向</a></li>
+<li class="chapter" data-level="6.1" data-path="data-manipulation-wity-tidyverse.html"><a href="data-manipulation-wity-tidyverse.html#base-to-dplyr-tp-theft"><i class="fa fa-check"></i><b>6.1</b> base to dplyr: TP Theft</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>3.4</b> 視覺化說故事的技巧</a>
+<li class="chapter" data-level="7" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>7</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="visualization.html"><a href="visualization.html#依群組指定顏色"><i class="fa fa-check"></i><b>3.4.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="3.4.2" data-path="visualization.html"><a href="visualization.html#使用gghighlight套件"><i class="fa fa-check"></i><b>3.4.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="3.4.3" data-path="visualization.html"><a href="visualization.html#為視覺化建立群組"><i class="fa fa-check"></i><b>3.4.3</b> 為視覺化建立群組</a></li>
+<li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#ggplot簡介"><i class="fa fa-check"></i><b>7.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>7.2</b> 繪圖基礎：折線圖</a></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>7.3</b> 圖表調整</a></li>
+<li class="chapter" data-level="7.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>7.4</b> 視覺化說故事的技巧</a></li>
+<li class="chapter" data-level="7.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>7.5</b> 時間軸的視覺化</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>3.5</b> 時間軸的視覺化</a>
+<li class="chapter" data-level="8" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>8</b> TW Data Visualization</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="visualization.html"><a href="visualization.html#文字轉時間"><i class="fa fa-check"></i><b>3.5.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="3.5.2" data-path="visualization.html"><a href="visualization.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>3.5.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="3.5.3" data-path="visualization.html"><a href="visualization.html#逐月統計資料"><i class="fa fa-check"></i><b>3.5.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="3.5.4" data-path="visualization.html"><a href="visualization.html#逐日統計資料佳"><i class="fa fa-check"></i><b>3.5.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="3.5.5" data-path="visualization.html"><a href="visualization.html#每日逐時資料"><i class="fa fa-check"></i><b>3.5.5</b> 每日逐時資料</a></li>
+<li class="chapter" data-level="8.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>8.1</b> Coordination &amp; Axis</a></li>
+<li class="chapter" data-level="8.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>8.2</b> Log-scale</a></li>
+<li class="chapter" data-level="8.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>8.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="8.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>8.4</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="8.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>8.5</b> TW-Income (boxplot)</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>4</b> Text Processing</a>
+<li class="chapter" data-level="9" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>9</b> WGOIGT of NyTimes</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>4.1</b> Tweets 分析</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="text-processing.html"><a href="text-processing.html#載入並清理資料"><i class="fa fa-check"></i><b>4.1.1</b> 載入並清理資料</a></li>
-<li class="chapter" data-level="4.1.2" data-path="text-processing.html"><a href="text-processing.html#萃取資料"><i class="fa fa-check"></i><b>4.1.2</b> 萃取資料</a></li>
-<li class="chapter" data-level="4.1.3" data-path="text-processing.html"><a href="text-processing.html#視覺化探索"><i class="fa fa-check"></i><b>4.1.3</b> 視覺化探索</a></li>
-<li class="chapter" data-level="4.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>4.1.4</b> Keyness</a></li>
+<li class="chapter" data-level="9.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>9.1</b> Net Worth by Age Group</a></li>
+<li class="chapter" data-level="9.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>9.2</b> UNICEF-Optimistic</a></li>
+<li class="chapter" data-level="9.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>9.3</b> Global Carbon Projects</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>5</b> TW Data Visualization</a>
+<li class="chapter" data-level="10" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>10</b> Text Processing</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#coordination-axis"><i class="fa fa-check"></i><b>5.1</b> Coordination &amp; Axis</a></li>
-<li class="chapter" data-level="5.2" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#log-scale"><i class="fa fa-check"></i><b>5.2</b> Log-scale</a></li>
-<li class="chapter" data-level="5.3" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#square-root-scale"><i class="fa fa-check"></i><b>5.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="5.4" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>5.4</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="5.5" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html#tw-income-boxplot"><i class="fa fa-check"></i><b>5.5</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="10.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>10.1</b> Tweets 分析</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html"><i class="fa fa-check"></i><b>6</b> WGOIGT of NyTimes</a>
+<li class="chapter" data-level="11" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>11</b> Crawler</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#net-worth-by-age-group"><i class="fa fa-check"></i><b>6.1</b> Net Worth by Age Group</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#read-and-sort-data"><i class="fa fa-check"></i><b>6.1.1</b> Read and sort data</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#unicef-optimistic"><i class="fa fa-check"></i><b>6.2</b> UNICEF-Optimistic</a></li>
-<li class="chapter" data-level="6.3" data-path="wgoigt-of-nytimes.html"><a href="wgoigt-of-nytimes.html#global-carbon-projects"><i class="fa fa-check"></i><b>6.3</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="11.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>11.1</b> Scraping 104.com</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -248,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Basic: Vector</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Journalism</a>
           </h1>
         </div>
 
@@ -256,19 +227,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dataframe" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Dataframe<a href="dataframe.html#dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="using-taipei-city-population-data" class="section level2 unnumbered hasAnchor">
-<h2>Using Taipei city population data<a href="dataframe.html#using-taipei-city-population-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="copying-data-and-creating-vectors" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Copying data and creating vectors<a href="dataframe.html#copying-data-and-creating-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dataframe" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Dataframe<a href="dataframe.html#dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="基本操作" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> 基本操作<a href="dataframe.html#基本操作" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="產生新的dataframe" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> 產生新的Dataframe<a href="dataframe.html#產生新的dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="複製資料至vector" class="section level4 hasAnchor" number="4.1.1.1">
+<h4><span class="header-section-number">4.1.1.1</span> 複製資料至vector<a href="dataframe.html#複製資料至vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>直接複製Wikipedia上的台北市某五區人口資料</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="dataframe.html#cb185-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">158228</span>, <span class="dv">126687</span>, <span class="dv">228075</span>, <span class="dv">204903</span>, <span class="dv">308383</span>, <span class="dv">187920</span>)</span>
 <span id="cb185-2"><a href="dataframe.html#cb185-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;中正&quot;</span>, <span class="st">&quot;大同&quot;</span>, <span class="st">&quot;中山&quot;</span>, <span class="st">&quot;松山&quot;</span>, <span class="st">&quot;大安&quot;</span>, <span class="st">&quot;萬華&quot;</span>)</span>
 <span id="cb185-3"><a href="dataframe.html#cb185-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.6071</span>, <span class="fl">5.6815</span>, <span class="fl">13.6821</span>, <span class="fl">9.2878</span>, <span class="fl">11.3614</span>, <span class="fl">8.8522</span>)</span></code></pre></div>
 </div>
-<div id="building-a-data.frame" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Building a data.frame<a href="dataframe.html#building-a-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="合併等長vector為dataframe" class="section level4 hasAnchor" number="4.1.1.2">
+<h4><span class="header-section-number">4.1.1.2</span> 合併等長vector為dataframe<a href="dataframe.html#合併等長vector為dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="dataframe.html#cb186-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(town, population, area)</span>
 <span id="cb186-2"><a href="dataframe.html#cb186-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>density <span class="ot">=</span> df<span class="sc">$</span>population <span class="sc">/</span> df<span class="sc">$</span>area</span>
 <span id="cb186-3"><a href="dataframe.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
@@ -287,21 +260,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                     Max.   :308383   Max.   :13.682   Max.   :27143</code></pre>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="dataframe.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span></code></pre></div>
 </div>
-<div id="using-importexport-data-of-taiwan" class="section level2 unnumbered hasAnchor">
-<h2>Using Import/Export data of Taiwan<a href="dataframe.html#using-importexport-data-of-taiwan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="存放台灣貿易各國進出口量" class="section level4 hasAnchor" number="4.1.1.3">
+<h4><span class="header-section-number">4.1.1.3</span> 存放台灣貿易各國進出口量<a href="dataframe.html#存放台灣貿易各國進出口量" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li><a href="https://cus93.trade.gov.tw/FSC3040F/FSC3040F">台灣出口進口貿易資料查詢</a></li>
+<li>運用台灣出口進口資料 <a href="https://cus93.trade.gov.tw/FSC3040F/FSC3040F">台灣出口進口貿易資料查詢</a></li>
 </ul>
-</div>
-<div id="combining-3-vectors-to-a-data.frame" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Combining 3 vectors to a data.frame<a href="dataframe.html#combining-3-vectors-to-a-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="dataframe.html#cb191-1" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CN&quot;</span>, <span class="st">&quot;US&quot;</span>, <span class="st">&quot;JP&quot;</span>, <span class="st">&quot;HK&quot;</span>, <span class="st">&quot;KR&quot;</span>, <span class="st">&quot;SG&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;MY&quot;</span>, <span class="st">&quot;VN&quot;</span>, <span class="st">&quot;PH&quot;</span>, <span class="st">&quot;TH&quot;</span>, <span class="st">&quot;AU&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;SA&quot;</span>, <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;GB&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;IT&quot;</span>, <span class="st">&quot;AE&quot;</span>)</span>
 <span id="cb191-2"><a href="dataframe.html#cb191-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb191-3"><a href="dataframe.html#cb191-3" aria-hidden="true" tabindex="-1"></a>import <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">26.142</span>, <span class="fl">12.008</span>, <span class="fl">7.032</span>, <span class="fl">13.646</span>, <span class="fl">4.589</span>, <span class="fl">5.768</span>, <span class="fl">2.131</span>, <span class="fl">2.802</span>, <span class="fl">3.428</span>, <span class="fl">3.019</span>, <span class="fl">1.976</span>, <span class="fl">1.118</span>, <span class="fl">1.624</span>, <span class="fl">0.449</span>, <span class="fl">0.983</span>, <span class="fl">1.302</span>, <span class="fl">1.027</span>, <span class="fl">0.553</span>, <span class="fl">0.670</span>, <span class="fl">0.455</span>)</span>
 <span id="cb191-4"><a href="dataframe.html#cb191-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb191-5"><a href="dataframe.html#cb191-5" aria-hidden="true" tabindex="-1"></a>export <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">22.987</span>, <span class="fl">12.204</span>, <span class="fl">11.837</span>, <span class="fl">7.739</span>, <span class="fl">5.381</span>, <span class="fl">4.610</span>, <span class="fl">2.866</span>, <span class="fl">2.784</span>, <span class="fl">2.414</span>, <span class="fl">2.092</span>, <span class="fl">1.839</span>, <span class="fl">1.788</span>, <span class="fl">1.665</span>, <span class="fl">1.409</span>, <span class="fl">1.391</span>, <span class="fl">1.075</span>, <span class="fl">0.974</span>, <span class="fl">0.899</span>, <span class="fl">0.800</span>, <span class="fl">0.728</span>)</span></code></pre></div>
+</div>
+<div id="合併vector為data.frame" class="section level4 hasAnchor" number="4.1.1.4">
+<h4><span class="header-section-number">4.1.1.4</span> 合併vector為data.frame<a href="dataframe.html#合併vector為data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li><p>合併vector為data.frame</p></li>
 <li><p>這時候我們若以<code>str(df)</code>觀察該<code>df</code>的結構會發現，文字型態的資料被轉為<code>Factors</code>，這是我們所不樂見的。過去統計通常會把文字型態當成類別變數，於是用<code>Factors</code>作為資料型態，但資料科學中經常要處理大量的文字資料，此時，我們可以把<code>read.csv</code>的一個參數<code>stringsAsFactors</code>設為<code>FALSE</code>，意味著預設不要將文字的資料轉為Factor而是直接以文字變項來處理。* <code>stringsAsFactors = FALSE</code>也是<code>read.csv()</code>的參數（parameter、argument）。因為一般讀檔會預設把文字讀為類別變項也就是Factor，但資料分析經常要處理文字資料而不是類別變項，所以會希望預設不要把文字讀取為類別變項，因此要設定<code>stringsAsFactors = FALSE</code>。</p></li>
 <li><p>為了避免每次都要打這串參數，可以把它設定為全域參數，可以在程式一開始時便加上<code>options(stringsAsFactors = FASLE)</code>，意味著底下所有的函式如果有<code>stringsAsFactors</code>這個參數，一律自動設為<code>FALSE</code>。</p></li>
 </ul>
@@ -323,8 +295,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="dataframe.html#cb196-1" aria-hidden="true" tabindex="-1"></a>df.test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span></code></pre></div>
 </div>
-<div id="observing-data.frame" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Observing data.frame<a href="dataframe.html#observing-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="觀察dataframe" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> 觀察dataframe<a href="dataframe.html#觀察dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>View(df)</code> 用RStudio所提供的GUI直接觀看變數</li>
 <li><code>head(df)</code> 取前面六筆資料（也就是六列的資料來概觀該資料）</li>
@@ -359,9 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="dataframe.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look up help</span></span>
 <span id="cb205-2"><a href="dataframe.html#cb205-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(summary)</span>
 <span id="cb205-3"><a href="dataframe.html#cb205-3" aria-hidden="true" tabindex="-1"></a>?summary</span></code></pre></div>
-</div>
-<div id="data-dimension-inspecting" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Data dimension inspecting<a href="dataframe.html#data-dimension-inspecting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="觀察資料維度" class="section level4 hasAnchor" number="4.1.2.1">
+<h4><span class="header-section-number">4.1.2.1</span> 觀察資料維度<a href="dataframe.html#觀察資料維度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="dataframe.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 20  3</code></pre>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="dataframe.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span></code></pre></div>
@@ -371,8 +343,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="dataframe.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 3</code></pre>
 </div>
-<div id="getting-one-variable-from-a-data.frame" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> Getting one variable from a data.frame<a href="dataframe.html#getting-one-variable-from-a-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="操作dataframe" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> 操作dataframe<a href="dataframe.html#操作dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="取出一個變項" class="section level4 hasAnchor" number="4.1.3.1">
+<h4><span class="header-section-number">4.1.3.1</span> 取出一個變項<a href="dataframe.html#取出一個變項" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><code>names(df)</code> 列出變數名稱</li>
 <li><code>df$發生.現.地點</code> 顯示該變數內容</li>
@@ -396,16 +371,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                     3rd Qu.: 4.884   3rd Qu.: 4.803  
 ##                     Max.   :26.142   Max.   :22.987</code></pre>
 </div>
-<div id="mutate透過運算產生新變數" class="section level2 hasAnchor" number="2.7">
-<h2><span class="header-section-number">2.7</span> (mutate)透過運算產生新變數<a href="dataframe.html#mutate透過運算產生新變數" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mutate透過運算產生新變數" class="section level4 hasAnchor" number="4.1.3.2">
+<h4><span class="header-section-number">4.1.3.2</span> (mutate)透過運算產生新變數<a href="dataframe.html#mutate透過運算產生新變數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>這裡容易犯錯的是，要記得跟程式講說你要加總或四則運算的是哪個df的variable。</li>
 <li>從下面的這個操作中，該data.frame會產生一個新的變數<code>sub</code>，這就相當於Excel中的某一行減去某一行，然後把資料放在新的一行。</li>
 </ul>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="dataframe.html#cb224-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>sub <span class="ot">&lt;-</span> df<span class="sc">$</span>import <span class="sc">-</span> df<span class="sc">$</span>export</span></code></pre></div>
 </div>
-<div id="filter篩選資料選取變數" class="section level2 hasAnchor" number="2.8">
-<h2><span class="header-section-number">2.8</span> (filter)篩選資料、選取變數<a href="dataframe.html#filter篩選資料選取變數" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="filter篩選資料選取變數" class="section level4 hasAnchor" number="4.1.3.3">
+<h4><span class="header-section-number">4.1.3.3</span> (filter)篩選資料、選取變數<a href="dataframe.html#filter篩選資料選取變數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><p>注意，要告訴程式<code>import</code>和<code>export</code>是哪個<code>data.frame</code>的。</p></li>
 <li><p><code>df[,]</code>為存取<code>df</code>中某個區段的數值或某個數值的方法。因此<code>df[1, 1]</code>會取出第一行第一列，也就是第一筆資料的第一個vector。<code>df[2, 3]</code>則會取出第二筆資料的第三個variable。</p></li>
@@ -464,8 +439,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="dataframe.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(df[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>])) <span class="co"># filter the 1st row and select all columns except 1</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;numeric&quot;</code></pre>
 </div>
-<div id="arrange-按某個變數排序" class="section level2 hasAnchor" number="2.9">
-<h2><span class="header-section-number">2.9</span> (arrange) 按某個變數排序<a href="dataframe.html#arrange-按某個變數排序" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="arrange-按某個變數排序" class="section level4 hasAnchor" number="4.1.3.4">
+<h4><span class="header-section-number">4.1.3.4</span> (arrange) 按某個變數排序<a href="dataframe.html#arrange-按某個變數排序" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><code>df.sorted &lt;- df[order(df$import),]</code>會使得整個df照<code>import</code>的大小排序重新做排列。因為<code>order(df$import)</code>會把資料照指定順序排列後的位置傳回來，所以把他丟給<code>df</code>的列的位置，便會使得<code>df</code>的資料照指定的順序排列。
 預設是由小到大，加上<code>decreasing = T</code>這個參數後變成由大而小。</li>
@@ -489,18 +464,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6      SG  5.768  4.610  1.158
 ## 5      KR  4.589  5.381 -0.792</code></pre>
 </div>
-<div id="plotting" class="section level2 hasAnchor" number="2.10">
-<h2><span class="header-section-number">2.10</span> Plotting<a href="dataframe.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+</div>
+<div id="簡易繪圖" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> 簡易繪圖<a href="dataframe.html#簡易繪圖" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>graphics::plot()</code>為會預載入R的繪圖套件，如果希望繪圖的同時加上回歸線和資料點標籤的話，必須要三行一起執行。</li>
 </ul>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="dataframe.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(df) # raise error, 1st column is a character vector</span></span>
 <span id="cb247-2"><a href="dataframe.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="dataframe.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span>
 <span id="cb248-2"><a href="dataframe.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(import, export, <span class="at">labels=</span>country, <span class="at">cex=</span> <span class="fl">0.5</span>, <span class="at">pos=</span><span class="dv">3</span>)</span>
 <span id="cb248-3"><a href="dataframe.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
 <div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="dataframe.html#cb249-1" aria-hidden="true" tabindex="-1"></a>?plot</span></code></pre></div>
 <pre class="output"><code>## Help on topic &#39;plot&#39; was found in the following packages:
 ## 
@@ -511,8 +488,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## 用第一個符合…</code></pre>
 </div>
-<div id="more-using-dplyr" class="section level2 hasAnchor" number="2.11">
-<h2><span class="header-section-number">2.11</span> More: using dplyr<a href="dataframe.html#more-using-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="基本操作使用dplyr" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> 基本操作：使用dplyr<a href="dataframe.html#基本操作使用dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="dataframe.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb251-2"><a href="dataframe.html#cb251-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export, <span class="at">stringsAsFactors =</span> F)</span>
 <span id="cb251-3"><a href="dataframe.html#cb251-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">sub =</span> import <span class="sc">-</span> export)</span>
@@ -553,6 +530,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb255-2"><a href="dataframe.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df<span class="sc">$</span>country)</span></code></pre></div>
 <pre class="output"><code>##  [1] &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; &quot;KR&quot; &quot;SG&quot; &quot;DE&quot; &quot;MY&quot; &quot;VN&quot; &quot;PH&quot; &quot;TH&quot; &quot;AU&quot; &quot;NL&quot; &quot;SA&quot; &quot;ID&quot;
 ## [16] &quot;GB&quot; &quot;IN&quot; &quot;FR&quot; &quot;IT&quot; &quot;AE&quot;</code></pre>
+</div>
+<div id="tibble-data_frame-data.frame" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> tibble, data_frame, data.frame<a href="dataframe.html#tibble-data_frame-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>警告： "data_frame()" was deprecated in tibble 1.1.0. Please use "tibble()" instead.</code></p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="dataframe.html#cb257-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb257-2"><a href="dataframe.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="dataframe.html#cb259-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb259-2"><a href="dataframe.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="dataframe.html#cb261-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb261-2"><a href="dataframe.html#cb261-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 
 </div>
 </div>
@@ -561,8 +551,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="basic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-analysis-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
