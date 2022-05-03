@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-04-28" />
+<meta name="date" content="2022-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>7.3</b> 圖表調整</a></li>
 <li class="chapter" data-level="7.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>7.4</b> 視覺化說故事的技巧</a></li>
 <li class="chapter" data-level="7.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>7.5</b> 時間軸的視覺化</a></li>
+<li class="chapter" data-level="7.6" data-path="visualization.html"><a href="visualization.html#budget-and-treemap"><i class="fa fa-check"></i><b>7.6</b> Budget and TreeMap</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>8</b> TW Data Visualization</a>
 <ul>
@@ -206,6 +207,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>11</b> Crawler</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>11.1</b> Scraping 104.com</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="visual-principles.html"><a href="visual-principles.html"><i class="fa fa-check"></i><b>12</b> Visual Principles</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="visual-principles.html"><a href="visual-principles.html#dataset"><i class="fa fa-check"></i><b>12.1</b> Dataset</a></li>
+<li class="chapter" data-level="12.2" data-path="visual-principles.html"><a href="visual-principles.html#distribution-histogram-and-density-plot"><i class="fa fa-check"></i><b>12.2</b> Distribution: Histogram and Density plot</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -296,31 +302,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-5"><a href="playing-r-with-r-markdown.html#cb8-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(res)</span></code></pre></div>
 <pre class="output"><code>## Rows: 30
 ## Columns: 51
-## $ id                   &lt;int&gt; 235931948, 238718220, 238717851, 238719155, 23871…
-## $ title                &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;可以把直男男友殺…
+## $ id                   &lt;int&gt; 235931948, 238771761, 238779545, 238778979, 23877…
+## $ title                &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;容易遇到渣男渣女…
 ## $ excerpt              &lt;chr&gt; &quot;各位卡友們好，小天使近期收到許多關於感情板西斯內…
-## $ anonymousSchool      &lt;lgl&gt; FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FAL…
+## $ anonymousSchool      &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,…
 ## $ anonymousDepartment  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, T…
 ## $ pinned               &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
 ## $ forumId              &lt;chr&gt; &quot;42851318-b9e2-4a75-8a05-9fe180becefe&quot;, &quot;42851318…
-## $ replyId              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ createdAt            &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-04-26T04:04:44.…
-## $ updatedAt            &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-04-26T04:04:44.…
-## $ commentCount         &lt;int&gt; 34, 238, 802, 38, 18, 44, 35, 42, 16, 24, 47, 52,…
-## $ likeCount            &lt;int&gt; 315, 1048, 1031, 559, 503, 287, 237, 212, 173, 17…
-## $ withNickname         &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, T…
-## $ tags                 &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &lt;&gt;, &quot;HIDE_THUMBNAIL&quot;, &quot;HIDE_TH…
-## $ topics               &lt;list&gt; &lt;&gt;, &lt;&quot;愛情&quot;, &quot;男友&quot;, &quot;直男&quot;&gt;, &lt;&quot;男生&quot;, &quot;女生&quot;, &quot;…
-## $ meta                 &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;
+## $ replyId              &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ createdAt            &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-05-02T03:11:52.…
+## $ updatedAt            &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-05-02T03:12:12.…
+## $ commentCount         &lt;int&gt; 34, 149, 141, 116, 11, 228, 41, 43, 99, 71, 48, 3…
+## $ likeCount            &lt;int&gt; 321, 660, 477, 452, 288, 278, 267, 152, 140, 140,…
+## $ withNickname         &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FA…
+## $ tags                 &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &lt;&gt;, &lt;&gt;, &quot;HIDE_THUMBNAIL&quot;, &quot;HID…
+## $ topics               &lt;list&gt; &lt;&gt;, &lt;&quot;MBTI&quot;, &quot;渣男&quot;, &quot;感情&quot;, &quot;渣女&quot;, &quot;人格&quot;&gt;, &lt;&quot;…
+## $ meta                 &lt;df[,3]&gt; &lt;data.frame[26 x 3]&gt;
 ## $ forumName            &lt;chr&gt; &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;…
 ## $ forumAlias           &lt;chr&gt; &quot;relationship&quot;, &quot;relationship&quot;, &quot;relationship&quot;, &quot;…
 ## $ nsfw                 &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
-## $ gender               &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;,…
-## $ school               &lt;chr&gt; &quot;客服小天使&quot;, NA, &quot;國立臺灣師範大學&quot;, NA, &quot;國立中…
-## $ department           &lt;chr&gt; &quot;dcard_support_1&quot;, NA, NA, NA, NA, NA, NA, &quot;lite&quot;…
-## $ replyTitle           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ mediaMeta            &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[3 x 10]&gt;], [&lt;…
-## $ reactions            &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[5 x 2]&gt;], [&lt;…
+## $ gender               &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;,…
+## $ school               &lt;chr&gt; &quot;客服小天使&quot;, NA, NA, NA, &quot;抹茶控的貓奴&quot;, NA, NA,…
+## $ department           &lt;chr&gt; &quot;dcard_support_1&quot;, NA, NA, NA, &quot;fish0227&quot;, NA, NA…
+## $ replyTitle           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ mediaMeta            &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[5 x 10]&gt;], [&lt;…
+## $ reactions            &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[4 x 2]&gt;], [&lt;…
 ## $ hidden               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
 ## $ customStyle          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ## $ isSuspiciousAccount  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
@@ -332,135 +338,453 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ categories           &lt;list&gt; &quot;公告&quot;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…
 ## $ isSelectedPost       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
 ## $ unsafe               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
-## $ totalCommentCount    &lt;int&gt; 34, 453, 1399, 78, 21, 64, 48, 70, 16, 32, 56, 85…
-## $ withImages           &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TR…
+## $ totalCommentCount    &lt;int&gt; 34, 268, 200, 225, 23, 349, 65, 115, 277, 120, 66…
+## $ withImages           &lt;lgl&gt; FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, FAL…
 ## $ withVideos           &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
-## $ media                &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[2 x 1]&gt;], [&lt;d…
+## $ media                &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[4 x 1]&gt;], [&lt;d…
 ## $ reportReasonText     &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, …
 ## $ supportedReactions   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ## $ excerptComments      &lt;list&gt; [], [], [], [], [], [], [], [], [], [], [], [], […
 ## $ edited               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
 ## $ collectionCount      &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ postAvatar           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;https://megapx-asset…
+## $ postAvatar           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
 ## $ activityAvatar       &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
 ## $ verifiedBadge        &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
 ## $ memberType           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
-## $ enableNestedComment  &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRU…
-## $ enablePrivateMessage &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, FALSE, NA, NA, NA, FA…</code></pre>
+## $ enablePrivateMessage &lt;lgl&gt; NA, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, FALSE…
+## $ enableNestedComment  &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRU…</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="playing-r-with-r-markdown.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span></code></pre></div>
-<pre class="output"><code>##          id                        title
-## 1 235931948 #公告 關於感情板的微西斯內容
-## 2 238718220         可以把直男男友殺掉嗎
-## 3 238717851     百分之九九的男生都會出軌
-## 4 238719155          第一次見網友 挺開心
-## 5 238716947       要麼一生，要麼陌生人。
-## 6 238723057       看起來很乖 但⋯（微西斯
-##                                                                                                                                                                                                    excerpt
-## 1 各位卡友們好，小天使近期收到許多關於感情板西斯內容的檢舉以及相關詢問，我們了解感情板是為討論情感關係所設立，而「性」也是感情中的一部份，因此不會禁止討論這些內容。但有部分文章內容描述過於露骨，或是除了
-## 2                                                                                                                                                                                                         
-## 3                                                                       我遇過太多了，還遇過有女友的男生瞞著女朋友洗泰國浴，女生完全不知道，後來結婚了，或是交友軟體換照才發現是系上學姐的男友..太多太多了
-## 4    本身很少用交友軟體的人，現階段沒什麼交男友的目的 純粹只是上去找人聊個天，而且本身對網路上認識的人信任感頗低 所以即使男生主動邀約也沒有出去過，半年前認識了一個網友A（某個不露臉的交友軟體）後來中間加
-## 5               張愛玲曾說：愛過的人，是做不了朋友的。因為一見面就會心軟，ㄧ擁抱就會淪陷，多看一眼，就想重新擁有。最遙遠的距離，不是愛，也不是恨，而是漸漸變成最熟悉的陌生人。所以，要麼一生，要麼陌生人。
-## 6     交往久了最近男友開始暗示能不能有性生活，其實我覺得現在可以了，但我有點擔心的是 我不是很清楚他會不會喜歡主動的女生  說白一點的話⋯是色，我平常比較安靜、親密接觸比較被動，不過那是因為我比較不會到要在
-##   anonymousSchool anonymousDepartment pinned
-## 1           FALSE                TRUE   TRUE
-## 2            TRUE                TRUE  FALSE
-## 3           FALSE                TRUE  FALSE
-## 4            TRUE                TRUE  FALSE
-## 5           FALSE                TRUE  FALSE
-## 6            TRUE                TRUE  FALSE
-##                                forumId replyId                createdAt
-## 1 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2021-05-07T06:11:32.413Z
-## 2 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T04:04:44.148Z
-## 3 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T03:11:58.867Z
-## 4 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T05:55:41.867Z
-## 5 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-25T23:59:51.315Z
-## 6 42851318-b9e2-4a75-8a05-9fe180becefe      NA 2022-04-26T13:17:01.706Z
-##                  updatedAt commentCount likeCount withNickname           tags
-## 1 2021-05-07T18:00:24.726Z           34       315         TRUE HIDE_THUMBNAIL
-## 2 2022-04-26T04:04:44.148Z          238      1048        FALSE               
-## 3 2022-04-26T03:11:58.867Z          802      1031        FALSE HIDE_THUMBNAIL
-## 4 2022-04-26T05:55:41.867Z           38       559        FALSE HIDE_THUMBNAIL
-## 5 2022-04-25T23:59:51.315Z           18       503        FALSE HIDE_THUMBNAIL
-## 6 2022-04-26T13:17:01.706Z           44       287        FALSE HIDE_THUMBNAIL
-##             topics meta.layout meta.disableAdSense forumName   forumAlias  nsfw
-## 1                      classic                TRUE      感情 relationship FALSE
-## 2 愛情, 男友, 直男     classic                  NA      感情 relationship FALSE
-## 3 男生, 女生, 出軌     classic                  NA      感情 relationship FALSE
-## 4                      classic                  NA      感情 relationship FALSE
-## 5                      classic                  NA      感情 relationship FALSE
-## 6       感情, 床事     classic                  NA      感情 relationship FALSE
-##   gender           school      department replyTitle
-## 1      D       客服小天使 dcard_support_1         NA
-## 2      F             &lt;NA&gt;            &lt;NA&gt;         NA
-## 3      F 國立臺灣師範大學            &lt;NA&gt;         NA
-## 4      F             &lt;NA&gt;            &lt;NA&gt;         NA
-## 5      F     國立中興大學            &lt;NA&gt;         NA
-## 6      F             &lt;NA&gt;            &lt;NA&gt;         NA
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       mediaMeta
-## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
-## 2 d461131c-e023-48f3-a729-ac3f9432b5c3, d461131c-e023-48f3-a729-ac3f9432b5c3, b2808cbb-ef4f-4982-8ea2-a4510f01c48e, https://i.imgur.com/KjgRijVl.jpg, https://i.imgur.com/KjgRijV.jpg, https://sticker-assets.dcard.tw/images/7f80bc24-1800-4df2-8563-990acf8634de/orig.png, https://i.imgur.com/KjgRijVl.jpg, https://imgur.com/KjgRijV, https://megapx.dcard.tw/v1/images/7f80bc24-1800-4df2-8563-990acf8634de, https://i.imgur.com/KjgRijVl.jpg, https://i.imgur.com/KjgRijVl.jpg, , image/thumbnail, image/imgur, image/sticker, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 2022-04-26T04:04:44.148Z, 750, 750, 512, 1104, 1104, 512
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
-## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
-## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          NULL
-##                                                                                                                                                                                                                                                   reactions
-## 1                                                                                      286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, aa0d425f-d530-4478-9a77-fe3aedc79eea, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 308, 4, 2, 1
-## 2                                           286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 514c2569-fd53-4d9d-a415-bf0f88e7329f, aa0d425f-d530-4478-9a77-fe3aedc79eea, 824, 214, 5, 3, 2
-## 3 286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, aa0d425f-d530-4478-9a77-fe3aedc79eea, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 011ead16-9b83-4729-9fde-c588920c6c2d, 920, 71, 21, 13, 5, 1
-## 4                                                                                     286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 543, 10, 5, 1
-## 5                                                                                     286f599c-f86a-4932-82f0-f5a06f1eca03, 514c2569-fd53-4d9d-a415-bf0f88e7329f, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 486, 14, 2, 1
-## 6                                                                                                                                                                       286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 272, 15
-##   hidden customStyle isSuspiciousAccount isModerator  layout pinnedType
-## 1  FALSE          NA               FALSE       FALSE classic      dcard
-## 2  FALSE          NA               FALSE       FALSE classic       &lt;NA&gt;
-## 3  FALSE          NA               FALSE       FALSE classic       &lt;NA&gt;
-## 4  FALSE          NA               FALSE       FALSE classic       &lt;NA&gt;
-## 5  FALSE          NA               FALSE       FALSE classic       &lt;NA&gt;
-## 6  FALSE          NA               FALSE       FALSE classic       &lt;NA&gt;
-##   pinnedPriority spoilerAlert categories isSelectedPost unsafe
-## 1   1.620368e+12        FALSE       公告          FALSE  FALSE
-## 2             NA        FALSE       NULL          FALSE  FALSE
-## 3             NA        FALSE       NULL          FALSE  FALSE
-## 4             NA        FALSE       NULL          FALSE  FALSE
-## 5             NA        FALSE       NULL          FALSE  FALSE
-## 6             NA        FALSE       NULL          FALSE  FALSE
-##   totalCommentCount withImages withVideos
-## 1                34      FALSE      FALSE
-## 2               453       TRUE      FALSE
-## 3              1399      FALSE      FALSE
-## 4                78      FALSE      FALSE
-## 5                21      FALSE      FALSE
-## 6                64      FALSE      FALSE
-##                                                                                                                   media
-## 1                                                                                                                  NULL
-## 2 https://i.imgur.com/KjgRijV.jpg, https://sticker-assets.dcard.tw/images/7f80bc24-1800-4df2-8563-990acf8634de/orig.png
-## 3                                                                                                                  NULL
-## 4                                                                                                                  NULL
-## 5                                                                                                                  NULL
-## 6                                                                                                                  NULL
-##   reportReasonText supportedReactions excerptComments edited collectionCount
-## 1                                  NA            NULL  FALSE               0
-## 2                                  NA            NULL  FALSE               0
-## 3                                  NA            NULL  FALSE               0
-## 4                                  NA            NULL  FALSE               0
-## 5                                  NA            NULL  FALSE               0
-## 6                                  NA            NULL  FALSE               0
-##   postAvatar activityAvatar verifiedBadge memberType enableNestedComment
-## 1                                    TRUE                             NA
-## 2                                   FALSE                           TRUE
-## 3                                   FALSE                           TRUE
-## 4                                   FALSE                           TRUE
-## 5                                   FALSE                           TRUE
-## 6                                   FALSE                           TRUE
-##   enablePrivateMessage
-## 1                   NA
-## 2                   NA
-## 3                   NA
-## 4                   NA
-## 5                   NA
-## 6                   NA</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="playing-r-with-r-markdown.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(res)</span></span></code></pre></div>
+<table>
+<colgroup>
+<col width="0%" />
+<col width="1%" />
+<col width="6%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="57%" />
+<col width="10%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="4%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">title</th>
+<th align="left">excerpt</th>
+<th align="left">anonymousSchool</th>
+<th align="left">anonymousDepartment</th>
+<th align="left">pinned</th>
+<th align="left">forumId</th>
+<th align="right">replyId</th>
+<th align="left">createdAt</th>
+<th align="left">updatedAt</th>
+<th align="right">commentCount</th>
+<th align="right">likeCount</th>
+<th align="left">withNickname</th>
+<th align="left">tags</th>
+<th align="left">topics</th>
+<th align="left">meta</th>
+<th align="left">forumName</th>
+<th align="left">forumAlias</th>
+<th align="left">nsfw</th>
+<th align="left">gender</th>
+<th align="left">school</th>
+<th align="left">department</th>
+<th align="left">replyTitle</th>
+<th align="left">mediaMeta</th>
+<th align="left">reactions</th>
+<th align="left">hidden</th>
+<th align="left">customStyle</th>
+<th align="left">isSuspiciousAccount</th>
+<th align="left">isModerator</th>
+<th align="left">layout</th>
+<th align="left">pinnedType</th>
+<th align="right">pinnedPriority</th>
+<th align="left">spoilerAlert</th>
+<th align="left">categories</th>
+<th align="left">isSelectedPost</th>
+<th align="left">unsafe</th>
+<th align="right">totalCommentCount</th>
+<th align="left">withImages</th>
+<th align="left">withVideos</th>
+<th align="left">media</th>
+<th align="left">reportReasonText</th>
+<th align="left">supportedReactions</th>
+<th align="left">excerptComments</th>
+<th align="left">edited</th>
+<th align="right">collectionCount</th>
+<th align="left">postAvatar</th>
+<th align="left">activityAvatar</th>
+<th align="left">verifiedBadge</th>
+<th align="left">memberType</th>
+<th align="left">enablePrivateMessage</th>
+<th align="left">enableNestedComment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">235931948</td>
+<td align="left">#公告 關於感情板的微西斯內容</td>
+<td align="left">各位卡友們好，小天使近期收到許多關於感情板西斯內容的檢舉以及相關詢問，我們了解感情板是為討論情感關係所設立，而「性」也是感情中的一部份，因此不會禁止討論這些內容。但有部分文章內容描述過於露骨，或是除了</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">42851318-b9e2-4a75-8a05-9fe180becefe</td>
+<td align="right">NA</td>
+<td align="left">2021-05-07T06:11:32.413Z</td>
+<td align="left">2021-05-07T18:00:24.726Z</td>
+<td align="right">34</td>
+<td align="right">321</td>
+<td align="left">TRUE</td>
+<td align="left">HIDE_THUMBNAIL</td>
+<td align="left"></td>
+<td align="left">classic</td>
+<td align="left">感情</td>
+<td align="left">relationship</td>
+<td align="left">FALSE</td>
+<td align="left">D</td>
+<td align="left">客服小天使</td>
+<td align="left">dcard_support_1</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, aa0d425f-d530-4478-9a77-fe3aedc79eea, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 314 , 4 , 2 , 1</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">classic</td>
+<td align="left">dcard</td>
+<td align="right">1.620368e+12</td>
+<td align="left">FALSE</td>
+<td align="left">公告</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">34</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">TRUE</td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">238771761</td>
+<td align="left">容易遇到渣男渣女的兩種人格：INFP 和 ISFJ</td>
+<td align="left">不知道大家有沒有測過 MBTI，最近年輕人好像比較不會問：星座，而是問：「你的 MBTI 是什麼？」小小解釋一下MBTI，MBTI 又稱為「十六型人格測驗」（Myers-Briggs Type Ind</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">42851318-b9e2-4a75-8a05-9fe180becefe</td>
+<td align="right">NA</td>
+<td align="left">2022-05-02T03:11:52.025Z</td>
+<td align="left">2022-05-02T03:12:12.442Z</td>
+<td align="right">149</td>
+<td align="right">660</td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">MBTI, 渣男, 感情, 渣女, 人格</td>
+<td align="left">classic</td>
+<td align="left">感情</td>
+<td align="left">relationship</td>
+<td align="left">FALSE</td>
+<td align="left">F</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">3b2426d9-6f57-44ab-a383-074c09e587e4, 3b2426d9-6f57-44ab-a383-074c09e587e4, eb002d74-76a2-47b2-b180-de7877741d13, 1cdde21e-7d2e-40cd-9560-01026dce92d8, 51d7f213-29fd-41e2-82ed-5cabdf4de118, <a href="https://i.imgur.com/T0cxbWLl.jpg" class="uri">https://i.imgur.com/T0cxbWLl.jpg</a> , <a href="https://i.imgur.com/T0cxbWL.png" class="uri">https://i.imgur.com/T0cxbWL.png</a> , <a href="https://i.imgur.com/4yyPsKf.png" class="uri">https://i.imgur.com/4yyPsKf.png</a> , <a href="https://i.imgur.com/yrdnvz6.png" class="uri">https://i.imgur.com/yrdnvz6.png</a> , <a href="https://i.imgur.com/G975UPR.png" class="uri">https://i.imgur.com/G975UPR.png</a> , <a href="https://i.imgur.com/T0cxbWLl.jpg" class="uri">https://i.imgur.com/T0cxbWLl.jpg</a> , <a href="https://imgur.com/T0cxbWL" class="uri">https://imgur.com/T0cxbWL</a> , <a href="https://imgur.com/4yyPsKf" class="uri">https://imgur.com/4yyPsKf</a> , <a href="https://imgur.com/yrdnvz6" class="uri">https://imgur.com/yrdnvz6</a> , <a href="https://imgur.com/G975UPR" class="uri">https://imgur.com/G975UPR</a> , <a href="https://i.imgur.com/T0cxbWLl.jpg" class="uri">https://i.imgur.com/T0cxbWLl.jpg</a> , <a href="https://i.imgur.com/T0cxbWLl.jpg" class="uri">https://i.imgur.com/T0cxbWLl.jpg</a> , <a href="https://i.imgur.com/4yyPsKfl.jpg" class="uri">https://i.imgur.com/4yyPsKfl.jpg</a> , <a href="https://i.imgur.com/yrdnvz6l.jpg" class="uri">https://i.imgur.com/yrdnvz6l.jpg</a> , <a href="https://i.imgur.com/G975UPRl.jpg" class="uri">https://i.imgur.com/G975UPRl.jpg</a> , image/thumbnail , image/imgur , image/imgur , image/imgur , image/imgur , ANNOTATED , ANNOTATED , ANNOTATED , ANNOTATED , ANNOTATED , 2022-05-02T03:11:52.025Z , 2022-05-02T03:11:52.025Z , 2022-05-02T03:11:52.025Z , 2022-05-02T03:11:52.025Z , 2022-05-02T03:11:52.025Z , 2022-05-02T03:12:12.442Z , 2022-05-02T03:12:12.442Z , 2022-05-02T03:12:12.442Z , 2022-05-02T03:12:12.442Z , 2022-05-02T03:12:12.442Z , 1024 , 1024 , 816 , 816 , 310 , 768 , 768 , 680 , 680 , 307</td>
+<td align="left">286f599c-f86a-4932-82f0-f5a06f1eca03, 514c2569-fd53-4d9d-a415-bf0f88e7329f, e8e6bc5d-41b0-4129-b134-97507523d7ff, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 638 , 14 , 6 , 2</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">classic</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">268</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left"><a href="https://i.imgur.com/T0cxbWL.png" class="uri">https://i.imgur.com/T0cxbWL.png</a>, <a href="https://i.imgur.com/4yyPsKf.png" class="uri">https://i.imgur.com/4yyPsKf.png</a>, <a href="https://i.imgur.com/yrdnvz6.png" class="uri">https://i.imgur.com/yrdnvz6.png</a>, <a href="https://i.imgur.com/G975UPR.png" class="uri">https://i.imgur.com/G975UPR.png</a></td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="right">238779545</td>
+<td align="left">第一次見面網友說我超醜</td>
+<td align="left">我本身就有異位性皮膚炎（真的算蠻嚴重的那種）很常過敏什麼ㄉ 也有在吃藥 加上這幾天天氣變化很大 過敏又更嚴重 臉都是紅ㄉ 我承認我的皮膚真的很差ಥ_ಥ 然後因為過敏黑眼圈還超重ಥ_ಥ，好 就是呢！昨天</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">42851318-b9e2-4a75-8a05-9fe180becefe</td>
+<td align="right">NA</td>
+<td align="left">2022-05-02T19:07:26.738Z</td>
+<td align="left">2022-05-03T08:25:08.143Z</td>
+<td align="right">141</td>
+<td align="right">477</td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">見面, 網友</td>
+<td align="left">classic</td>
+<td align="left">感情</td>
+<td align="left">relationship</td>
+<td align="left">FALSE</td>
+<td align="left">F</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">64757979-69f9-40ac-a8f4-a23c82535882 , <a href="https://sticker-assets.dcard.tw/images/6af40cc5-9b57-4fa2-923f-40af82949f62/orig.png" class="uri">https://sticker-assets.dcard.tw/images/6af40cc5-9b57-4fa2-923f-40af82949f62/orig.png</a>, <a href="https://megapx.dcard.tw/v1/images/6af40cc5-9b57-4fa2-923f-40af82949f62" class="uri">https://megapx.dcard.tw/v1/images/6af40cc5-9b57-4fa2-923f-40af82949f62</a> , , image/sticker , IMAGE_NOT_AVAILABLE , 2022-05-02T19:07:26.738Z , 2022-05-03T08:25:08.143Z , 512 , 512</td>
+<td align="left">286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 4b018f48-e184-445f-adf1-fc8e04ba09b9, aa0d425f-d530-4478-9a77-fe3aedc79eea, 416 , 40 , 14 , 5 , 2</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">classic</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">200</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left"><a href="https://sticker-assets.dcard.tw/images/6af40cc5-9b57-4fa2-923f-40af82949f62/orig.png" class="uri">https://sticker-assets.dcard.tw/images/6af40cc5-9b57-4fa2-923f-40af82949f62/orig.png</a></td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="right">238778979</td>
+<td align="left">男友覺得我跟他在一起就只是想打砲而已</td>
+<td align="left">說真的我們相處永遠都是在家（看他睡覺，不然就是騎著車帶著我到處亂騎沒有目的==，也很少帶我出去玩，最近也很少見面，前陣子月經剛走完跟他說，他卻覺得我在暗示他只把他當砲友？？我認為性生活可以讓感情升溫但</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">42851318-b9e2-4a75-8a05-9fe180becefe</td>
+<td align="right">NA</td>
+<td align="left">2022-05-02T17:20:46.591Z</td>
+<td align="left">2022-05-03T07:00:23.375Z</td>
+<td align="right">116</td>
+<td align="right">452</td>
+<td align="left">FALSE</td>
+<td align="left">HIDE_THUMBNAIL</td>
+<td align="left">男友 , 微西斯, 在一起, 感情</td>
+<td align="left">classic</td>
+<td align="left">感情</td>
+<td align="left">relationship</td>
+<td align="left">FALSE</td>
+<td align="left">F</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 514c2569-fd53-4d9d-a415-bf0f88e7329f, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 410 , 37 , 3 , 2</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">classic</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">225</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="right">238773580</td>
+<td align="left">真的愛就會修補愛😊</td>
+<td align="left">兩個觀念，1.如果彼此是適合的人，若發生吵架就是你們磨合的過程。2.不要害怕吵架，有許多人會覺得吵架很傷感情，很容易把之前那種甜蜜的感覺毀滅了，於是就一直忍著不吵，忍著不吵就不會吵嗎？忍到最後一個點上</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">42851318-b9e2-4a75-8a05-9fe180becefe</td>
+<td align="right">NA</td>
+<td align="left">2022-05-02T07:13:41.278Z</td>
+<td align="left">2022-05-02T07:24:57.772Z</td>
+<td align="right">11</td>
+<td align="right">288</td>
+<td align="left">TRUE</td>
+<td align="left">HIDE_THUMBNAIL</td>
+<td align="left">愛 , 感情</td>
+<td align="left">classic</td>
+<td align="left">感情</td>
+<td align="left">relationship</td>
+<td align="left">FALSE</td>
+<td align="left">F</td>
+<td align="left">抹茶控的貓奴</td>
+<td align="left">fish0227</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">286f599c-f86a-4932-82f0-f5a06f1eca03, 011ead16-9b83-4729-9fde-c588920c6c2d, 287 , 1</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">classic</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">23</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="right">238773422</td>
+<td align="left">我懷孕了 男友不要小孩 他媽媽說我無法融入他們家 還說我態度不佳</td>
+<td align="left">以前我男友常說 有了就生 不然怎麼辦，我相信他了，月經沒來 驗孕沒有 以為是身體問題 去看了婦產科 當時驗到了 我懷孕了 我是開心的 期待的 對我來說幸福的，我們都沒什麼存款 所以我想 該怎麼辦呢 但</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">42851318-b9e2-4a75-8a05-9fe180becefe</td>
+<td align="right">NA</td>
+<td align="left">2022-05-02T06:55:55.329Z</td>
+<td align="left">2022-05-02T06:55:55.329Z</td>
+<td align="right">228</td>
+<td align="right">278</td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">懷孕 , 男友 , 小孩 , 婆媳問題, 感情</td>
+<td align="left">classic</td>
+<td align="left">感情</td>
+<td align="left">relationship</td>
+<td align="left">FALSE</td>
+<td align="left">F</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">d6c633bb-959c-4644-b5b2-9cf8db18245d, d6c633bb-959c-4644-b5b2-9cf8db18245d, <a href="https://i.imgur.com/MDH8hcHl.jpg" class="uri">https://i.imgur.com/MDH8hcHl.jpg</a> , <a href="https://i.imgur.com/MDH8hcH.jpg" class="uri">https://i.imgur.com/MDH8hcH.jpg</a> , <a href="https://i.imgur.com/MDH8hcHl.jpg" class="uri">https://i.imgur.com/MDH8hcHl.jpg</a> , <a href="https://imgur.com/MDH8hcH" class="uri">https://imgur.com/MDH8hcH</a> , <a href="https://i.imgur.com/MDH8hcHl.jpg" class="uri">https://i.imgur.com/MDH8hcHl.jpg</a> , <a href="https://i.imgur.com/MDH8hcHl.jpg" class="uri">https://i.imgur.com/MDH8hcHl.jpg</a> , image/thumbnail , image/imgur , 2022-05-02T06:55:55.329Z , 2022-05-02T06:55:55.329Z , 2022-05-02T06:55:55.329Z , 2022-05-02T06:55:55.329Z , 828 , 828 , 1402 , 1402</td>
+<td align="left">286f599c-f86a-4932-82f0-f5a06f1eca03, e8e6bc5d-41b0-4129-b134-97507523d7ff, 514c2569-fd53-4d9d-a415-bf0f88e7329f, aa0d425f-d530-4478-9a77-fe3aedc79eea, 4b018f48-e184-445f-adf1-fc8e04ba09b9, 232 , 28 , 12 , 4 , 2</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">classic</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">FALSE</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">349</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left"><a href="https://i.imgur.com/MDH8hcH.jpg" class="uri">https://i.imgur.com/MDH8hcH.jpg</a></td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="playing-r-with-r-markdown.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(res)</span></span></code></pre></div>
 </div>
 <div id="getting-taipei-theft-report-data" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Getting Taipei theft report data<a href="playing-r-with-r-markdown.html#getting-taipei-theft-report-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -473,9 +797,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Click “API”</li>
 <li>Copy the API address and assign to url</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="playing-r-with-r-markdown.html#cb13-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://data.taipei/api/v1/dataset/93d9bc2d-af08-4db7-a56b-9f0a49226fa3?scope=resourceAquire&quot;</span></span>
-<span id="cb13-2"><a href="playing-r-with-r-markdown.html#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_json</span>(url, <span class="at">simplifyVector =</span> T)</span>
-<span id="cb13-3"><a href="playing-r-with-r-markdown.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="playing-r-with-r-markdown.html#cb12-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://data.taipei/api/v1/dataset/93d9bc2d-af08-4db7-a56b-9f0a49226fa3?scope=resourceAquire&quot;</span></span>
+<span id="cb12-2"><a href="playing-r-with-r-markdown.html#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_json</span>(url, <span class="at">simplifyVector =</span> T)</span>
+<span id="cb12-3"><a href="playing-r-with-r-markdown.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre class="output"><code>## $result
 ## $result$limit
 ## [1] 20
@@ -553,7 +877,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 18           臺北市信義區雅祥里基隆路1段1~30號
 ## 19         臺北市中正區水源里汀州路3段91~120號
 ## 20             臺北市文山區萬芳里萬芳路31~60號</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="playing-r-with-r-markdown.html#cb15-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="playing-r-with-r-markdown.html#cb14-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(df)</span></code></pre></div>
 <pre class="output"><code>## List of 1
 ##  $ result:List of 5
 ##   ..$ limit  : int 20
@@ -571,48 +895,130 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="loading-a-csv-file-in-data-directory" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Loading a csv file in data directory<a href="playing-r-with-r-markdown.html#loading-a-csv-file-in-data-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="playing-r-with-r-markdown.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if mac cannot read data</span></span>
-<span id="cb17-2"><a href="playing-r-with-r-markdown.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(url, <span class="fu">write_disk</span>(<span class="st">&quot;data/tptheft.csv&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="playing-r-with-r-markdown.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if mac cannot read data</span></span>
+<span id="cb16-2"><a href="playing-r-with-r-markdown.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(url, <span class="fu">write_disk</span>(<span class="st">&quot;data/tptheft.csv&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre class="output"><code>## Response [https://data.taipei/api/v1/dataset/93d9bc2d-af08-4db7-a56b-9f0a49226fa3?scope=resourceAquire]
-##   Date: 2022-04-27 11:00
+##   Date: 2022-05-03 10:07
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 5.21 kB
-## &lt;ON DISK&gt;  data/tptheft.csv</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="playing-r-with-r-markdown.html#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tptheft.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;big5&quot;</span>)</span>
-<span id="cb19-2"><a href="playing-r-with-r-markdown.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] X.result..limit.20                                                                                                                                        
-## [2] offset.0                                                                                                                                                  
-## [3] count.3347                                                                                                                                                
-## [4] sort.                                                                                                                                                     
-## [5] results..._id.1                                                                                                                                           
-## [6] X_importdate..date.2022.04.27.15.38.42.398977                                                                                                             
-## [7] timezone_type.3                                                                                                                                           
-## [8] timezone.Asia..Taipei.                                                                                                                                    
-## [9] 蝺刻..result..limit.20.offset.0.count.3347.sort...results..._id.1._importdate..date.2022.04.27.15.38.42.398977.timezone_type.3.timezone.Asia..Taipei..蝺刻
-## &lt;0 列&gt; (或零長度的 row.names)</code></pre>
+## &lt;ON DISK&gt;  /Users/jirlong/Dropbox/Programming/JOUR5014/data/tptheft.csv</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="playing-r-with-r-markdown.html#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tptheft.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;big5&quot;</span>)</span>
+<span id="cb18-2"><a href="playing-r-with-r-markdown.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="2%" />
+<col width="3%" />
+<col width="1%" />
+<col width="5%" />
+<col width="15%" />
+<col width="5%" />
+<col width="7%" />
+<col width="51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">X.result..limit.20</th>
+<th align="left">offset.0</th>
+<th align="left">count.3347</th>
+<th align="left">sort.</th>
+<th align="left">results…_id.1</th>
+<th align="left">X_importdate..date.2022.04.27.15.38.42.398977</th>
+<th align="left">timezone_type.3</th>
+<th align="left">timezone.Asia..Taipei.</th>
+<th align="left">蝺刻..result..limit.20.offset.0.count.3347.sort…results…_id.1._importdate..date.2022.04.27.15.38.42.398977.timezone_type.3.timezone.Asia..Taipei..蝺刻</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 </div>
 <div id="loading-moi-data-through-api" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Loading MOI data through API<a href="playing-r-with-r-markdown.html#loading-moi-data-through-api" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="playing-r-with-r-markdown.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb21-2"><a href="playing-r-with-r-markdown.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb21-3"><a href="playing-r-with-r-markdown.html#cb21-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP024/107?page=1&quot;</span></span>
-<span id="cb21-4"><a href="playing-r-with-r-markdown.html#cb21-4" aria-hidden="true" tabindex="-1"></a>first_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb21-5"><a href="playing-r-with-r-markdown.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData)</span></code></pre></div>
-<pre class="output"><code>##   statistic_yyy district_code      site_id village    edu sex
-## 1           107   65000010001 新北市板橋區  留侯里   博畢  男
-## 2           107   65000010001 新北市板橋區  留侯里   碩畢  男
-## 3           107   65000010001 新北市板橋區  留侯里   大畢  男
-## 4           107   65000010001 新北市板橋區  留侯里   專畢  男
-## 5           107   65000010001 新北市板橋區  留侯里 高中畢  男
-## 6           107   65000010001 新北市板橋區  留侯里 國中畢  男
-##   headhousehold_count
-## 1                   3
-## 2                  26
-## 3                  71
-## 4                  52
-## 5                 122
-## 6                  40</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="playing-r-with-r-markdown.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb19-2"><a href="playing-r-with-r-markdown.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb19-3"><a href="playing-r-with-r-markdown.html#cb19-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP024/107?page=1&quot;</span></span>
+<span id="cb19-4"><a href="playing-r-with-r-markdown.html#cb19-4" aria-hidden="true" tabindex="-1"></a>first_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb19-5"><a href="playing-r-with-r-markdown.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="16%" />
+<col width="10%" />
+<col width="8%" />
+<col width="5%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">statistic_yyy</th>
+<th align="left">district_code</th>
+<th align="left">site_id</th>
+<th align="left">village</th>
+<th align="left">edu</th>
+<th align="left">sex</th>
+<th align="left">headhousehold_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">博畢</td>
+<td align="left">男</td>
+<td align="left">3</td>
+</tr>
+<tr class="even">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">碩畢</td>
+<td align="left">男</td>
+<td align="left">26</td>
+</tr>
+<tr class="odd">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">大畢</td>
+<td align="left">男</td>
+<td align="left">71</td>
+</tr>
+<tr class="even">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">專畢</td>
+<td align="left">男</td>
+<td align="left">52</td>
+</tr>
+<tr class="odd">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">高中畢</td>
+<td align="left">男</td>
+<td align="left">122</td>
+</tr>
+<tr class="even">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">國中畢</td>
+<td align="left">男</td>
+<td align="left">40</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="deprecated-getting-104-query-data" class="section level3 hasAnchor" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> (deprecated) Getting 104 query data<a href="playing-r-with-r-markdown.html#deprecated-getting-104-query-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -631,41 +1037,147 @@ head(df)</code></pre>
 <ul>
 <li><a href="https://taipeicity.github.io/traffic_realtime/" class="uri">https://taipeicity.github.io/traffic_realtime/</a></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="playing-r-with-r-markdown.html#cb24-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json&quot;</span></span>
-<span id="cb24-2"><a href="playing-r-with-r-markdown.html#cb24-2" aria-hidden="true" tabindex="-1"></a>ubike.list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url),<span class="st">&quot;text&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf-8&quot;</span>))</span>
-<span id="cb24-3"><a href="playing-r-with-r-markdown.html#cb24-3" aria-hidden="true" tabindex="-1"></a>ubike.v <span class="ot">&lt;-</span> <span class="fu">unlist</span>(ubike.list<span class="sc">$</span>retVal)</span>
-<span id="cb24-4"><a href="playing-r-with-r-markdown.html#cb24-4" aria-hidden="true" tabindex="-1"></a>ubike.m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ubike.v, <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">14</span>)</span>
-<span id="cb24-5"><a href="playing-r-with-r-markdown.html#cb24-5" aria-hidden="true" tabindex="-1"></a>ubike.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ubike.m)</span>
-<span id="cb24-6"><a href="playing-r-with-r-markdown.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
-<span id="cb24-7"><a href="playing-r-with-r-markdown.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df)</span></code></pre></div>
-<pre class="output"><code>##    sno                       sna tot sbi  sarea           mday           lat
-## 1 0001     捷運市政府站(3號出口)  88  45 信義區 20220427185939 25.0408578889
-## 2 0002 捷運國父紀念館站(2號出口)  16  14 大安區 20220427185937     25.041254
-## 3 0004                  市民廣場  32   8 信義區 20220427185930 25.0360361111
-## 4 0005                  興雅國中  32   9 信義區 20220427185920 25.0365638889
-## 5 0006              臺北南山廣場  54  29 信義區 20220427185919     25.034047
-## 6 0007         信義廣場(台北101)  80  55 信義區 20220427185927 25.0330388889
-##             lng                                                             ar
-## 1 121.567904444                                        忠孝東路/松仁路(東南側)
-## 2     121.55742                                忠孝東路四段/光復南路口(西南側)
-## 3    121.562325 市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)
-## 4   121.5686639       松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)
-## 5    121.565973  松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)
-## 6 121.565619444                            松智路/信義路(東北側) (鄰近台北101)
-##       sareaen                                     snaen
-## 1 Xinyi Dist.   MRT Taipei City Hall Stataion(Exit 3)-2
-## 2  Daan Dist. MRT S.Y.S Memorial Hall Stataion(Exit 2.)
-## 3 Xinyi Dist.                            Citizen Square
-## 4 Xinyi Dist.                    Xingya Jr. High School
-## 5 Xinyi Dist.                            NAN SHAN PLAZA
-## 6 Xinyi Dist.                  Xinyi Square(Taipei 101)
-##                                                          aren bemp act
-## 1 The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.   43   1
-## 2                         Sec,4. Zhongxiao E.Rd/GuangFu S. Rd    2   1
-## 3               The N.W. side of Road Shifu &amp; Road Song Shou.   24   1
-## 4        The S.E. side of Road Songren &amp; Ln. 95, Songren Rd..   23   1
-## 5            The N.E. side of Road Song Zhi &amp; Road Song Lian.   25   1
-## 6                The N.E. side of Road Song Zhi &amp; Road Xinyi.   23   1</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="playing-r-with-r-markdown.html#cb21-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json&quot;</span></span>
+<span id="cb21-2"><a href="playing-r-with-r-markdown.html#cb21-2" aria-hidden="true" tabindex="-1"></a>ubike.list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url),<span class="st">&quot;text&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf-8&quot;</span>))</span>
+<span id="cb21-3"><a href="playing-r-with-r-markdown.html#cb21-3" aria-hidden="true" tabindex="-1"></a>ubike.v <span class="ot">&lt;-</span> <span class="fu">unlist</span>(ubike.list<span class="sc">$</span>retVal)</span>
+<span id="cb21-4"><a href="playing-r-with-r-markdown.html#cb21-4" aria-hidden="true" tabindex="-1"></a>ubike.m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ubike.v, <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">14</span>)</span>
+<span id="cb21-5"><a href="playing-r-with-r-markdown.html#cb21-5" aria-hidden="true" tabindex="-1"></a>ubike.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ubike.m)</span>
+<span id="cb21-6"><a href="playing-r-with-r-markdown.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
+<span id="cb21-7"><a href="playing-r-with-r-markdown.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="1%" />
+<col width="9%" />
+<col width="1%" />
+<col width="1%" />
+<col width="2%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="22%" />
+<col width="4%" />
+<col width="15%" />
+<col width="21%" />
+<col width="1%" />
+<col width="1%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">sno</th>
+<th align="left">sna</th>
+<th align="left">tot</th>
+<th align="left">sbi</th>
+<th align="left">sarea</th>
+<th align="left">mday</th>
+<th align="left">lat</th>
+<th align="left">lng</th>
+<th align="left">ar</th>
+<th align="left">sareaen</th>
+<th align="left">snaen</th>
+<th align="left">aren</th>
+<th align="left">bemp</th>
+<th align="left">act</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0001</td>
+<td align="left">捷運市政府站(3號出口)</td>
+<td align="left">88</td>
+<td align="left">66</td>
+<td align="left">信義區</td>
+<td align="left">20220503180643</td>
+<td align="left">25.0408578889</td>
+<td align="left">121.567904444</td>
+<td align="left">忠孝東路/松仁路(東南側)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">MRT Taipei City Hall Stataion(Exit 3)-2</td>
+<td align="left">The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.</td>
+<td align="left">20</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">0002</td>
+<td align="left">捷運國父紀念館站(2號出口)</td>
+<td align="left">16</td>
+<td align="left">10</td>
+<td align="left">大安區</td>
+<td align="left">20220503180639</td>
+<td align="left">25.041254</td>
+<td align="left">121.55742</td>
+<td align="left">忠孝東路四段/光復南路口(西南側)</td>
+<td align="left">Daan Dist.</td>
+<td align="left">MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
+<td align="left">Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
+<td align="left">6</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">0004</td>
+<td align="left">市民廣場</td>
+<td align="left">32</td>
+<td align="left">12</td>
+<td align="left">信義區</td>
+<td align="left">20220503180620</td>
+<td align="left">25.0360361111</td>
+<td align="left">121.562325</td>
+<td align="left">市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">Citizen Square</td>
+<td align="left">The N.W. side of Road Shifu &amp; Road Song Shou.</td>
+<td align="left">18</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">0005</td>
+<td align="left">興雅國中</td>
+<td align="left">32</td>
+<td align="left">17</td>
+<td align="left">信義區</td>
+<td align="left">20220503180629</td>
+<td align="left">25.0365638889</td>
+<td align="left">121.5686639</td>
+<td align="left">松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">Xingya Jr. High School</td>
+<td align="left">The S.E. side of Road Songren &amp; Ln. 95, Songren Rd..</td>
+<td align="left">14</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">0006</td>
+<td align="left">臺北南山廣場</td>
+<td align="left">54</td>
+<td align="left">20</td>
+<td align="left">信義區</td>
+<td align="left">20220503180626</td>
+<td align="left">25.034047</td>
+<td align="left">121.565973</td>
+<td align="left">松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">NAN SHAN PLAZA</td>
+<td align="left">The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+<td align="left">29</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">0007</td>
+<td align="left">信義廣場(台北101)</td>
+<td align="left">80</td>
+<td align="left">41</td>
+<td align="left">信義區</td>
+<td align="left">20220503180616</td>
+<td align="left">25.0330388889</td>
+<td align="left">121.565619444</td>
+<td align="left">松智路/信義路(東北側) (鄰近台北101)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">Xinyi Square(Taipei 101)</td>
+<td align="left">The N.E. side of Road Song Zhi &amp; Road Xinyi.</td>
+<td align="left">39</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

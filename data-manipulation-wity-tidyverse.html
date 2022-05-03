@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-04-28" />
+<meta name="date" content="2022-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#圖表調整"><i class="fa fa-check"></i><b>7.3</b> 圖表調整</a></li>
 <li class="chapter" data-level="7.4" data-path="visualization.html"><a href="visualization.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>7.4</b> 視覺化說故事的技巧</a></li>
 <li class="chapter" data-level="7.5" data-path="visualization.html"><a href="visualization.html#時間軸的視覺化"><i class="fa fa-check"></i><b>7.5</b> 時間軸的視覺化</a></li>
+<li class="chapter" data-level="7.6" data-path="visualization.html"><a href="visualization.html#budget-and-treemap"><i class="fa fa-check"></i><b>7.6</b> Budget and TreeMap</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="tw-data-visualization.html"><a href="tw-data-visualization.html"><i class="fa fa-check"></i><b>8</b> TW Data Visualization</a>
 <ul>
@@ -206,6 +207,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>11</b> Crawler</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>11.1</b> Scraping 104.com</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="visual-principles.html"><a href="visual-principles.html"><i class="fa fa-check"></i><b>12</b> Visual Principles</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="visual-principles.html"><a href="visual-principles.html#dataset"><i class="fa fa-check"></i><b>12.1</b> Dataset</a></li>
+<li class="chapter" data-level="12.2" data-path="visual-principles.html"><a href="visual-principles.html#distribution-histogram-and-density-plot"><i class="fa fa-check"></i><b>12.2</b> Distribution: Histogram and Density plot</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -232,18 +238,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="base-to-dplyr-tp-theft" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> base to dplyr: TP Theft<a href="data-manipulation-wity-tidyverse.html#base-to-dplyr-tp-theft" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="data-manipulation-wity-tidyverse.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb402-2"><a href="data-manipulation-wity-tidyverse.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default options in R ver.&gt; 4.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="data-manipulation-wity-tidyverse.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb398-2"><a href="data-manipulation-wity-tidyverse.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default options in R ver.&gt; 4.0</span></span></code></pre></div>
 <div id="reading-data" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Reading data<a href="data-manipulation-wity-tidyverse.html#reading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="data-manipulation-wity-tidyverse.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read by read_csv()</span></span>
-<span id="cb403-2"><a href="data-manipulation-wity-tidyverse.html#cb403-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Will raise error</span></span>
-<span id="cb403-3"><a href="data-manipulation-wity-tidyverse.html#cb403-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in make.names(x) : invalid multibyte string at &#39;&lt;bd&gt;s&lt;b8&gt;&lt;b9&gt;&#39;</span></span>
-<span id="cb403-4"><a href="data-manipulation-wity-tidyverse.html#cb403-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/tp_theft.csv&quot;)</span></span>
-<span id="cb403-5"><a href="data-manipulation-wity-tidyverse.html#cb403-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb403-6"><a href="data-manipulation-wity-tidyverse.html#cb403-6" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv() with locale = locale(encoding = &quot;Big5&quot;)</span></span>
-<span id="cb403-7"><a href="data-manipulation-wity-tidyverse.html#cb403-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb403-8"><a href="data-manipulation-wity-tidyverse.html#cb403-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="data-manipulation-wity-tidyverse.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read by read_csv()</span></span>
+<span id="cb399-2"><a href="data-manipulation-wity-tidyverse.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Will raise error</span></span>
+<span id="cb399-3"><a href="data-manipulation-wity-tidyverse.html#cb399-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in make.names(x) : invalid multibyte string at &#39;&lt;bd&gt;s&lt;b8&gt;&lt;b9&gt;&#39;</span></span>
+<span id="cb399-4"><a href="data-manipulation-wity-tidyverse.html#cb399-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb399-5"><a href="data-manipulation-wity-tidyverse.html#cb399-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb399-6"><a href="data-manipulation-wity-tidyverse.html#cb399-6" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv() with locale = locale(encoding = &quot;Big5&quot;)</span></span>
+<span id="cb399-7"><a href="data-manipulation-wity-tidyverse.html#cb399-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb399-8"><a href="data-manipulation-wity-tidyverse.html#cb399-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="cleaning-data-i" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Cleaning data I<a href="data-manipulation-wity-tidyverse.html#cleaning-data-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -253,30 +259,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Generating variable month</li>
 <li>Retrieving area</li>
 </ul>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="data-manipulation-wity-tidyverse.html#cb404-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb404-2"><a href="data-manipulation-wity-tidyverse.html#cb404-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
-<span id="cb404-3"><a href="data-manipulation-wity-tidyverse.html#cb404-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類, </span>
-<span id="cb404-4"><a href="data-manipulation-wity-tidyverse.html#cb404-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
-<span id="cb404-5"><a href="data-manipulation-wity-tidyverse.html#cb404-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
-<span id="cb404-6"><a href="data-manipulation-wity-tidyverse.html#cb404-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb404-7"><a href="data-manipulation-wity-tidyverse.html#cb404-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb404-8"><a href="data-manipulation-wity-tidyverse.html#cb404-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb404-9"><a href="data-manipulation-wity-tidyverse.html#cb404-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb404-10"><a href="data-manipulation-wity-tidyverse.html#cb404-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="data-manipulation-wity-tidyverse.html#cb400-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb400-2"><a href="data-manipulation-wity-tidyverse.html#cb400-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb400-3"><a href="data-manipulation-wity-tidyverse.html#cb400-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類, </span>
+<span id="cb400-4"><a href="data-manipulation-wity-tidyverse.html#cb400-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb400-5"><a href="data-manipulation-wity-tidyverse.html#cb400-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb400-6"><a href="data-manipulation-wity-tidyverse.html#cb400-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb400-7"><a href="data-manipulation-wity-tidyverse.html#cb400-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb400-8"><a href="data-manipulation-wity-tidyverse.html#cb400-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb400-9"><a href="data-manipulation-wity-tidyverse.html#cb400-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb400-10"><a href="data-manipulation-wity-tidyverse.html#cb400-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
 </div>
 <div id="cleaning-data-ii" class="section level3 hasAnchor" number="6.1.3">
 <h3><span class="header-section-number">6.1.3</span> Cleaning data II<a href="data-manipulation-wity-tidyverse.html#cleaning-data-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Filtering out irrelevant data records</li>
 </ul>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="data-manipulation-wity-tidyverse.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readr::guess_encoding(&quot;data/tp_theft.csv&quot;)</span></span>
-<span id="cb405-2"><a href="data-manipulation-wity-tidyverse.html#cb405-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
-<span id="cb405-3"><a href="data-manipulation-wity-tidyverse.html#cb405-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
-<span id="cb405-4"><a href="data-manipulation-wity-tidyverse.html#cb405-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(county <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb405-5"><a href="data-manipulation-wity-tidyverse.html#cb405-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb405-6"><a href="data-manipulation-wity-tidyverse.html#cb405-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
-<span id="cb405-7"><a href="data-manipulation-wity-tidyverse.html#cb405-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
-<span id="cb405-8"><a href="data-manipulation-wity-tidyverse.html#cb405-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>area <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;中和市&quot;</span>, <span class="st">&quot;板橋市&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="data-manipulation-wity-tidyverse.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readr::guess_encoding(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb401-2"><a href="data-manipulation-wity-tidyverse.html#cb401-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb401-3"><a href="data-manipulation-wity-tidyverse.html#cb401-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb401-4"><a href="data-manipulation-wity-tidyverse.html#cb401-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(county <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb401-5"><a href="data-manipulation-wity-tidyverse.html#cb401-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb401-6"><a href="data-manipulation-wity-tidyverse.html#cb401-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb401-7"><a href="data-manipulation-wity-tidyverse.html#cb401-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb401-8"><a href="data-manipulation-wity-tidyverse.html#cb401-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>area <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;中和市&quot;</span>, <span class="st">&quot;板橋市&quot;</span>))</span></code></pre></div>
 </div>
 <div id="long-to-wide-form" class="section level3 hasAnchor" number="6.1.4">
 <h3><span class="header-section-number">6.1.4</span> Long to wide form<a href="data-manipulation-wity-tidyverse.html#long-to-wide-form" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -284,47 +290,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>count()</code> two variables</li>
 <li><code>spread()</code> spread one variable as columns to wide form</li>
 </ul>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="data-manipulation-wity-tidyverse.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count() then spread()</span></span>
-<span id="cb406-2"><a href="data-manipulation-wity-tidyverse.html#cb406-2" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
-<span id="cb406-3"><a href="data-manipulation-wity-tidyverse.html#cb406-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
-<span id="cb406-4"><a href="data-manipulation-wity-tidyverse.html#cb406-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="data-manipulation-wity-tidyverse.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count() then spread()</span></span>
+<span id="cb402-2"><a href="data-manipulation-wity-tidyverse.html#cb402-2" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb402-3"><a href="data-manipulation-wity-tidyverse.html#cb402-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb402-4"><a href="data-manipulation-wity-tidyverse.html#cb402-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) </span></code></pre></div>
 </div>
 <div id="setting-time-as-row.name-for-mosaicplot" class="section level3 hasAnchor" number="6.1.5">
 <h3><span class="header-section-number">6.1.5</span> Setting time as row.name for mosaicplot<a href="data-manipulation-wity-tidyverse.html#setting-time-as-row.name-for-mosaicplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="data-manipulation-wity-tidyverse.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
-<span id="cb407-2"><a href="data-manipulation-wity-tidyverse.html#cb407-2" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="data-manipulation-wity-tidyverse.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify fonts for Chinese</span></span>
-<span id="cb408-2"><a href="data-manipulation-wity-tidyverse.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;)) </span></span>
-<span id="cb408-3"><a href="data-manipulation-wity-tidyverse.html#cb408-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
-<span id="cb408-4"><a href="data-manipulation-wity-tidyverse.html#cb408-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb408-5"><a href="data-manipulation-wity-tidyverse.html#cb408-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
-<span id="cb408-6"><a href="data-manipulation-wity-tidyverse.html#cb408-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
-<span id="cb408-7"><a href="data-manipulation-wity-tidyverse.html#cb408-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
-<span id="cb408-8"><a href="data-manipulation-wity-tidyverse.html#cb408-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
-<span id="cb408-9"><a href="data-manipulation-wity-tidyverse.html#cb408-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb408-10"><a href="data-manipulation-wity-tidyverse.html#cb408-10" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
-<span id="cb408-11"><a href="data-manipulation-wity-tidyverse.html#cb408-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
-<span id="cb408-12"><a href="data-manipulation-wity-tidyverse.html#cb408-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="data-manipulation-wity-tidyverse.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb403-2"><a href="data-manipulation-wity-tidyverse.html#cb403-2" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="data-manipulation-wity-tidyverse.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify fonts for Chinese</span></span>
+<span id="cb404-2"><a href="data-manipulation-wity-tidyverse.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;)) </span></span>
+<span id="cb404-3"><a href="data-manipulation-wity-tidyverse.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb404-4"><a href="data-manipulation-wity-tidyverse.html#cb404-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-5"><a href="data-manipulation-wity-tidyverse.html#cb404-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb404-6"><a href="data-manipulation-wity-tidyverse.html#cb404-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb404-7"><a href="data-manipulation-wity-tidyverse.html#cb404-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb404-8"><a href="data-manipulation-wity-tidyverse.html#cb404-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb404-9"><a href="data-manipulation-wity-tidyverse.html#cb404-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-10"><a href="data-manipulation-wity-tidyverse.html#cb404-10" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb404-11"><a href="data-manipulation-wity-tidyverse.html#cb404-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb404-12"><a href="data-manipulation-wity-tidyverse.html#cb404-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 </div>
 <div id="clean-version" class="section level3 hasAnchor" number="6.1.6">
 <h3><span class="header-section-number">6.1.6</span> Clean version<a href="data-manipulation-wity-tidyverse.html#clean-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="data-manipulation-wity-tidyverse.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb409-2"><a href="data-manipulation-wity-tidyverse.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span>
-<span id="cb409-3"><a href="data-manipulation-wity-tidyverse.html#cb409-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
-<span id="cb409-4"><a href="data-manipulation-wity-tidyverse.html#cb409-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-5"><a href="data-manipulation-wity-tidyverse.html#cb409-5" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb409-6"><a href="data-manipulation-wity-tidyverse.html#cb409-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
-<span id="cb409-7"><a href="data-manipulation-wity-tidyverse.html#cb409-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類,</span>
-<span id="cb409-8"><a href="data-manipulation-wity-tidyverse.html#cb409-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
-<span id="cb409-9"><a href="data-manipulation-wity-tidyverse.html#cb409-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
-<span id="cb409-10"><a href="data-manipulation-wity-tidyverse.html#cb409-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb409-11"><a href="data-manipulation-wity-tidyverse.html#cb409-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb409-12"><a href="data-manipulation-wity-tidyverse.html#cb409-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb409-13"><a href="data-manipulation-wity-tidyverse.html#cb409-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb409-14"><a href="data-manipulation-wity-tidyverse.html#cb409-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb409-15"><a href="data-manipulation-wity-tidyverse.html#cb409-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-16"><a href="data-manipulation-wity-tidyverse.html#cb409-16" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(year)</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="data-manipulation-wity-tidyverse.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb405-2"><a href="data-manipulation-wity-tidyverse.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span>
+<span id="cb405-3"><a href="data-manipulation-wity-tidyverse.html#cb405-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb405-4"><a href="data-manipulation-wity-tidyverse.html#cb405-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb405-5"><a href="data-manipulation-wity-tidyverse.html#cb405-5" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb405-6"><a href="data-manipulation-wity-tidyverse.html#cb405-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb405-7"><a href="data-manipulation-wity-tidyverse.html#cb405-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類,</span>
+<span id="cb405-8"><a href="data-manipulation-wity-tidyverse.html#cb405-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb405-9"><a href="data-manipulation-wity-tidyverse.html#cb405-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb405-10"><a href="data-manipulation-wity-tidyverse.html#cb405-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb405-11"><a href="data-manipulation-wity-tidyverse.html#cb405-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb405-12"><a href="data-manipulation-wity-tidyverse.html#cb405-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb405-13"><a href="data-manipulation-wity-tidyverse.html#cb405-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb405-14"><a href="data-manipulation-wity-tidyverse.html#cb405-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb405-15"><a href="data-manipulation-wity-tidyverse.html#cb405-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb405-16"><a href="data-manipulation-wity-tidyverse.html#cb405-16" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(year)</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 9 × 2
 ##    year     n
 ##   &lt;dbl&gt; &lt;int&gt;
@@ -337,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 7   109   304
 ## 8   110   189
 ## 9   111    31</code></pre>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="data-manipulation-wity-tidyverse.html#cb411-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(time)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="data-manipulation-wity-tidyverse.html#cb407-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(time)</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 26 × 2
 ##    time      n
 ##    &lt;chr&gt; &lt;int&gt;
@@ -352,7 +358,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 10~12   338
 ## 10 11~03     1
 ## # … with 16 more rows</code></pre>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="data-manipulation-wity-tidyverse.html#cb413-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(time)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="data-manipulation-wity-tidyverse.html#cb409-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(time)</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 3,347 × 9
 ##       id cat         date time  location                 year month area  county
 ##    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -367,32 +373,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    95 住宅竊盜 1040212 00~02 臺北市萬華區萬大路493…    104     2 萬華… 臺北市
 ## 10   106 住宅竊盜 1040216 00~02 臺北市信義區吳興街269…    104     2 信義… 臺北市
 ## # … with 3,337 more rows</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="data-manipulation-wity-tidyverse.html#cb415-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
-<span id="cb415-2"><a href="data-manipulation-wity-tidyverse.html#cb415-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
-<span id="cb415-3"><a href="data-manipulation-wity-tidyverse.html#cb415-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb415-4"><a href="data-manipulation-wity-tidyverse.html#cb415-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;23~01&quot;</span>))</span>
-<span id="cb415-5"><a href="data-manipulation-wity-tidyverse.html#cb415-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
-<span id="cb415-6"><a href="data-manipulation-wity-tidyverse.html#cb415-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
-<span id="cb415-7"><a href="data-manipulation-wity-tidyverse.html#cb415-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter(!area %in% c(&quot;中和市&quot;, &quot;板橋市&quot;))</span></span>
-<span id="cb415-8"><a href="data-manipulation-wity-tidyverse.html#cb415-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-9"><a href="data-manipulation-wity-tidyverse.html#cb415-9" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
-<span id="cb415-10"><a href="data-manipulation-wity-tidyverse.html#cb415-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
-<span id="cb415-11"><a href="data-manipulation-wity-tidyverse.html#cb415-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb415-12"><a href="data-manipulation-wity-tidyverse.html#cb415-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
-<span id="cb415-13"><a href="data-manipulation-wity-tidyverse.html#cb415-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-14"><a href="data-manipulation-wity-tidyverse.html#cb415-14" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
-<span id="cb415-15"><a href="data-manipulation-wity-tidyverse.html#cb415-15" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb415-16"><a href="data-manipulation-wity-tidyverse.html#cb415-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-17"><a href="data-manipulation-wity-tidyverse.html#cb415-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
-<span id="cb415-18"><a href="data-manipulation-wity-tidyverse.html#cb415-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-19"><a href="data-manipulation-wity-tidyverse.html#cb415-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
-<span id="cb415-20"><a href="data-manipulation-wity-tidyverse.html#cb415-20" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
-<span id="cb415-21"><a href="data-manipulation-wity-tidyverse.html#cb415-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
-<span id="cb415-22"><a href="data-manipulation-wity-tidyverse.html#cb415-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
-<span id="cb415-23"><a href="data-manipulation-wity-tidyverse.html#cb415-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-24"><a href="data-manipulation-wity-tidyverse.html#cb415-24" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
-<span id="cb415-25"><a href="data-manipulation-wity-tidyverse.html#cb415-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
-<span id="cb415-26"><a href="data-manipulation-wity-tidyverse.html#cb415-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="data-manipulation-wity-tidyverse.html#cb411-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb411-2"><a href="data-manipulation-wity-tidyverse.html#cb411-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb411-3"><a href="data-manipulation-wity-tidyverse.html#cb411-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb411-4"><a href="data-manipulation-wity-tidyverse.html#cb411-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;23~01&quot;</span>))</span>
+<span id="cb411-5"><a href="data-manipulation-wity-tidyverse.html#cb411-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb411-6"><a href="data-manipulation-wity-tidyverse.html#cb411-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb411-7"><a href="data-manipulation-wity-tidyverse.html#cb411-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter(!area %in% c(&quot;中和市&quot;, &quot;板橋市&quot;))</span></span>
+<span id="cb411-8"><a href="data-manipulation-wity-tidyverse.html#cb411-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-9"><a href="data-manipulation-wity-tidyverse.html#cb411-9" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb411-10"><a href="data-manipulation-wity-tidyverse.html#cb411-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb411-11"><a href="data-manipulation-wity-tidyverse.html#cb411-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb411-12"><a href="data-manipulation-wity-tidyverse.html#cb411-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
+<span id="cb411-13"><a href="data-manipulation-wity-tidyverse.html#cb411-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-14"><a href="data-manipulation-wity-tidyverse.html#cb411-14" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb411-15"><a href="data-manipulation-wity-tidyverse.html#cb411-15" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb411-16"><a href="data-manipulation-wity-tidyverse.html#cb411-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-17"><a href="data-manipulation-wity-tidyverse.html#cb411-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb411-18"><a href="data-manipulation-wity-tidyverse.html#cb411-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-19"><a href="data-manipulation-wity-tidyverse.html#cb411-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb411-20"><a href="data-manipulation-wity-tidyverse.html#cb411-20" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb411-21"><a href="data-manipulation-wity-tidyverse.html#cb411-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb411-22"><a href="data-manipulation-wity-tidyverse.html#cb411-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb411-23"><a href="data-manipulation-wity-tidyverse.html#cb411-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-24"><a href="data-manipulation-wity-tidyverse.html#cb411-24" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb411-25"><a href="data-manipulation-wity-tidyverse.html#cb411-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb411-26"><a href="data-manipulation-wity-tidyverse.html#cb411-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)  </span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 
 </div>
