@@ -268,40 +268,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="unicef-optimistic-wgoith-1" class="section level3 hasAnchor" number="17.1.1">
 <h3><span class="header-section-number">17.1.1</span> UNICEF-Optimistic (WGOITH)<a href="association.html#unicef-optimistic-wgoith-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html" class="uri">https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html</a> <a href="https://changingchildhood.unicef.org/about" class="uri">https://changingchildhood.unicef.org/about</a></p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="association.html#cb518-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb518-2"><a href="association.html#cb518-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
-<span id="cb518-3"><a href="association.html#cb518-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
-<span id="cb518-4"><a href="association.html#cb518-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
-<span id="cb518-5"><a href="association.html#cb518-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
-<span id="cb518-6"><a href="association.html#cb518-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
-<span id="cb518-7"><a href="association.html#cb518-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
-<span id="cb518-8"><a href="association.html#cb518-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
-<span id="cb518-9"><a href="association.html#cb518-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
-<span id="cb518-10"><a href="association.html#cb518-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
-<span id="cb518-11"><a href="association.html#cb518-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
-<span id="cb518-12"><a href="association.html#cb518-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
-<span id="cb518-13"><a href="association.html#cb518-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
-<span id="cb518-14"><a href="association.html#cb518-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
-<span id="cb518-15"><a href="association.html#cb518-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb518-16"><a href="association.html#cb518-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
-<span id="cb518-17"><a href="association.html#cb518-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
-<span id="cb518-18"><a href="association.html#cb518-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb518-19"><a href="association.html#cb518-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb518-20"><a href="association.html#cb518-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb518-21"><a href="association.html#cb518-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb518-22"><a href="association.html#cb518-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb518-23"><a href="association.html#cb518-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
-<span id="cb518-24"><a href="association.html#cb518-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb518-25"><a href="association.html#cb518-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="association.html#cb519-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
-<span id="cb519-2"><a href="association.html#cb519-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
-<span id="cb519-3"><a href="association.html#cb519-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb519-4"><a href="association.html#cb519-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb519-5"><a href="association.html#cb519-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb519-6"><a href="association.html#cb519-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
-<span id="cb519-7"><a href="association.html#cb519-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb519-8"><a href="association.html#cb519-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb519-9"><a href="association.html#cb519-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="association.html#cb519-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb519-2"><a href="association.html#cb519-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
+<span id="cb519-3"><a href="association.html#cb519-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
+<span id="cb519-4"><a href="association.html#cb519-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
+<span id="cb519-5"><a href="association.html#cb519-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
+<span id="cb519-6"><a href="association.html#cb519-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
+<span id="cb519-7"><a href="association.html#cb519-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
+<span id="cb519-8"><a href="association.html#cb519-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
+<span id="cb519-9"><a href="association.html#cb519-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
+<span id="cb519-10"><a href="association.html#cb519-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
+<span id="cb519-11"><a href="association.html#cb519-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
+<span id="cb519-12"><a href="association.html#cb519-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
+<span id="cb519-13"><a href="association.html#cb519-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
+<span id="cb519-14"><a href="association.html#cb519-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
+<span id="cb519-15"><a href="association.html#cb519-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb519-16"><a href="association.html#cb519-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
+<span id="cb519-17"><a href="association.html#cb519-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
+<span id="cb519-18"><a href="association.html#cb519-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb519-19"><a href="association.html#cb519-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb519-20"><a href="association.html#cb519-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb519-21"><a href="association.html#cb519-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb519-22"><a href="association.html#cb519-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb519-23"><a href="association.html#cb519-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
+<span id="cb519-24"><a href="association.html#cb519-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb519-25"><a href="association.html#cb519-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">15-24y</th>
+<th align="right">40+y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">USA</td>
+<td align="right">0.6679842</td>
+<td align="right">0.4611465</td>
+</tr>
+<tr class="even">
+<td align="left">Morocco</td>
+<td align="right">0.4365079</td>
+<td align="right">0.4735812</td>
+</tr>
+<tr class="odd">
+<td align="left">Lebanon</td>
+<td align="right">0.5467197</td>
+<td align="right">0.4435798</td>
+</tr>
+<tr class="even">
+<td align="left">Indonesia</td>
+<td align="right">0.7920605</td>
+<td align="right">0.8027344</td>
+</tr>
+<tr class="odd">
+<td align="left">Bangladesh</td>
+<td align="right">0.4624506</td>
+<td align="right">0.4319527</td>
+</tr>
+<tr class="even">
+<td align="left">UK</td>
+<td align="right">0.5040000</td>
+<td align="right">0.4140000</td>
+</tr>
+<tr class="odd">
+<td align="left">France</td>
+<td align="right">0.3900000</td>
+<td align="right">0.2640000</td>
+</tr>
+<tr class="even">
+<td align="left">Germany</td>
+<td align="right">0.5900000</td>
+<td align="right">0.3860000</td>
+</tr>
+<tr class="odd">
+<td align="left">Spain</td>
+<td align="right">0.5160000</td>
+<td align="right">0.3340000</td>
+</tr>
+<tr class="even">
+<td align="left">Japan</td>
+<td align="right">0.6367265</td>
+<td align="right">0.2586873</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="association.html#cb520-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
+<span id="cb520-2"><a href="association.html#cb520-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
+<span id="cb520-3"><a href="association.html#cb520-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb520-4"><a href="association.html#cb520-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb520-5"><a href="association.html#cb520-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb520-6"><a href="association.html#cb520-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
+<span id="cb520-7"><a href="association.html#cb520-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb520-8"><a href="association.html#cb520-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb520-9"><a href="association.html#cb520-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-169-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

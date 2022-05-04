@@ -263,8 +263,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="wgoitg" class="section level1 hasAnchor" number="21">
 <h1><span class="header-section-number">Chapter 21</span> WGOITG of NyTimes<a href="wgoitg.html#wgoitg" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="wgoitg.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb520-2"><a href="wgoitg.html#cb520-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="wgoitg.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb521-2"><a href="wgoitg.html#cb521-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
 <div id="inequality-net-worth-by-age-group" class="section level2 hasAnchor" number="21.1">
 <h2><span class="header-section-number">21.1</span> Inequality: Net Worth by Age Group<a href="wgoitg.html#inequality-net-worth-by-age-group" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="notes">
@@ -274,38 +274,195 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>這個教學案例來自紐約時報的「What’s going on in this gragh」系列資料視覺化教學之<a href="https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html">Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)</a> 。該圖表呈現在不同年代、不同年齡層的人所擁有的淨資產（包含土地、存款、投資等減去債務）。該圖表的結果指出，在不同年代的老年人是越來越有錢，但年輕人卻越來越窮（該曲線為減去1989年</p>
 <p><a href="https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html"><img src="images/paste-27DE8695.png" alt="Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)" /></a></p>
 <p>Sorted by <code>arrange()</code> function.</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="wgoitg.html#cb521-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb521-2"><a href="wgoitg.html#cb521-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
-<span id="cb521-3"><a href="wgoitg.html#cb521-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb521-4"><a href="wgoitg.html#cb521-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb521-5"><a href="wgoitg.html#cb521-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb521-6"><a href="wgoitg.html#cb521-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="wgoitg.html#cb522-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb522-2"><a href="wgoitg.html#cb522-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb522-3"><a href="wgoitg.html#cb522-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb522-4"><a href="wgoitg.html#cb522-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb522-5"><a href="wgoitg.html#cb522-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb522-6"><a href="wgoitg.html#cb522-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb522-7"><a href="wgoitg.html#cb522-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb522-8"><a href="wgoitg.html#cb522-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb522-9"><a href="wgoitg.html#cb522-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="wgoitg.html#cb523-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb523-2"><a href="wgoitg.html#cb523-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
-<span id="cb523-3"><a href="wgoitg.html#cb523-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb523-4"><a href="wgoitg.html#cb523-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb523-5"><a href="wgoitg.html#cb523-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
-<span id="cb523-6"><a href="wgoitg.html#cb523-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb523-7"><a href="wgoitg.html#cb523-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="wgoitg.html#cb524-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb524-2"><a href="wgoitg.html#cb524-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb524-3"><a href="wgoitg.html#cb524-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb524-4"><a href="wgoitg.html#cb524-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb524-5"><a href="wgoitg.html#cb524-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb524-6"><a href="wgoitg.html#cb524-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
-<span id="cb524-7"><a href="wgoitg.html#cb524-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb524-8"><a href="wgoitg.html#cb524-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb524-9"><a href="wgoitg.html#cb524-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb524-10"><a href="wgoitg.html#cb524-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="wgoitg.html#cb522-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb522-2"><a href="wgoitg.html#cb522-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
+<span id="cb522-3"><a href="wgoitg.html#cb522-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb522-4"><a href="wgoitg.html#cb522-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb522-5"><a href="wgoitg.html#cb522-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb522-6"><a href="wgoitg.html#cb522-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">Category</th>
+<th align="right">Net_Worth</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1989</td>
+<td align="left">Less than 35</td>
+<td align="right">16.17019</td>
+</tr>
+<tr class="even">
+<td align="right">1989</td>
+<td align="left">35-44</td>
+<td align="right">112.47530</td>
+</tr>
+<tr class="odd">
+<td align="right">1989</td>
+<td align="left">45-54</td>
+<td align="right">195.11630</td>
+</tr>
+<tr class="even">
+<td align="right">1989</td>
+<td align="left">55-64</td>
+<td align="right">195.25554</td>
+</tr>
+<tr class="odd">
+<td align="right">1989</td>
+<td align="left">65-74</td>
+<td align="right">154.34277</td>
+</tr>
+<tr class="even">
+<td align="right">1989</td>
+<td align="left">75 or older</td>
+<td align="right">144.29855</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="left">Less than 35</td>
+<td align="right">16.60780</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="left">35-44</td>
+<td align="right">79.91050</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="left">45-54</td>
+<td align="right">139.97745</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="left">55-64</td>
+<td align="right">203.44104</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="left">65-74</td>
+<td align="right">176.44667</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="left">75 or older</td>
+<td align="right">155.35173</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="wgoitg.html#cb523-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb523-2"><a href="wgoitg.html#cb523-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb523-3"><a href="wgoitg.html#cb523-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb523-4"><a href="wgoitg.html#cb523-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb523-5"><a href="wgoitg.html#cb523-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb523-6"><a href="wgoitg.html#cb523-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb523-7"><a href="wgoitg.html#cb523-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb523-8"><a href="wgoitg.html#cb523-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb523-9"><a href="wgoitg.html#cb523-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-175-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="wgoitg.html#cb524-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb524-2"><a href="wgoitg.html#cb524-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
+<span id="cb524-3"><a href="wgoitg.html#cb524-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb524-4"><a href="wgoitg.html#cb524-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb524-5"><a href="wgoitg.html#cb524-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
+<span id="cb524-6"><a href="wgoitg.html#cb524-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb524-7"><a href="wgoitg.html#cb524-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">Category</th>
+<th align="right">NW</th>
+<th align="right">increase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1989</td>
+<td align="left">Less than 35</td>
+<td align="right">16.17019</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">1989</td>
+<td align="left">35-44</td>
+<td align="right">112.47530</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">1989</td>
+<td align="left">45-54</td>
+<td align="right">195.11630</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">1989</td>
+<td align="left">55-64</td>
+<td align="right">195.25554</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">1989</td>
+<td align="left">65-74</td>
+<td align="right">154.34277</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">1989</td>
+<td align="left">75 or older</td>
+<td align="right">144.29855</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="left">Less than 35</td>
+<td align="right">16.60780</td>
+<td align="right">0.0270627</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="left">35-44</td>
+<td align="right">79.91050</td>
+<td align="right">-0.2895285</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="left">45-54</td>
+<td align="right">139.97745</td>
+<td align="right">-0.2825948</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="left">55-64</td>
+<td align="right">203.44104</td>
+<td align="right">0.0419220</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="left">65-74</td>
+<td align="right">176.44667</td>
+<td align="right">0.1432131</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="left">75 or older</td>
+<td align="right">155.35173</td>
+<td align="right">0.0765994</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="wgoitg.html#cb525-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb525-2"><a href="wgoitg.html#cb525-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb525-3"><a href="wgoitg.html#cb525-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb525-4"><a href="wgoitg.html#cb525-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb525-5"><a href="wgoitg.html#cb525-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb525-6"><a href="wgoitg.html#cb525-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
+<span id="cb525-7"><a href="wgoitg.html#cb525-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb525-8"><a href="wgoitg.html#cb525-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb525-9"><a href="wgoitg.html#cb525-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb525-10"><a href="wgoitg.html#cb525-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-177-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="unicef-global-survey-optimism" class="section level2 hasAnchor" number="21.2">
 <h2><span class="header-section-number">21.2</span> UNICEF-Global Survey Optimism<a href="wgoitg.html#unicef-global-survey-optimism" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -313,59 +470,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>運用等比例之座標軸</li>
 <li><a href="https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html" class="uri">https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html</a> <a href="https://changingchildhood.unicef.org/about" class="uri">https://changingchildhood.unicef.org/about</a></li>
 </ul>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="wgoitg.html#cb525-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb525-2"><a href="wgoitg.html#cb525-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
-<span id="cb525-3"><a href="wgoitg.html#cb525-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
-<span id="cb525-4"><a href="wgoitg.html#cb525-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
-<span id="cb525-5"><a href="wgoitg.html#cb525-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
-<span id="cb525-6"><a href="wgoitg.html#cb525-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
-<span id="cb525-7"><a href="wgoitg.html#cb525-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
-<span id="cb525-8"><a href="wgoitg.html#cb525-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
-<span id="cb525-9"><a href="wgoitg.html#cb525-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
-<span id="cb525-10"><a href="wgoitg.html#cb525-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
-<span id="cb525-11"><a href="wgoitg.html#cb525-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
-<span id="cb525-12"><a href="wgoitg.html#cb525-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
-<span id="cb525-13"><a href="wgoitg.html#cb525-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
-<span id="cb525-14"><a href="wgoitg.html#cb525-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
-<span id="cb525-15"><a href="wgoitg.html#cb525-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb525-16"><a href="wgoitg.html#cb525-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
-<span id="cb525-17"><a href="wgoitg.html#cb525-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
-<span id="cb525-18"><a href="wgoitg.html#cb525-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb525-19"><a href="wgoitg.html#cb525-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb525-20"><a href="wgoitg.html#cb525-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb525-21"><a href="wgoitg.html#cb525-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb525-22"><a href="wgoitg.html#cb525-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb525-23"><a href="wgoitg.html#cb525-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
-<span id="cb525-24"><a href="wgoitg.html#cb525-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb525-25"><a href="wgoitg.html#cb525-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="wgoitg.html#cb526-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
-<span id="cb526-2"><a href="wgoitg.html#cb526-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
-<span id="cb526-3"><a href="wgoitg.html#cb526-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb526-4"><a href="wgoitg.html#cb526-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb526-5"><a href="wgoitg.html#cb526-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb526-6"><a href="wgoitg.html#cb526-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
-<span id="cb526-7"><a href="wgoitg.html#cb526-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb526-8"><a href="wgoitg.html#cb526-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb526-9"><a href="wgoitg.html#cb526-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="wgoitg.html#cb526-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb526-2"><a href="wgoitg.html#cb526-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
+<span id="cb526-3"><a href="wgoitg.html#cb526-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
+<span id="cb526-4"><a href="wgoitg.html#cb526-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
+<span id="cb526-5"><a href="wgoitg.html#cb526-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
+<span id="cb526-6"><a href="wgoitg.html#cb526-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
+<span id="cb526-7"><a href="wgoitg.html#cb526-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
+<span id="cb526-8"><a href="wgoitg.html#cb526-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
+<span id="cb526-9"><a href="wgoitg.html#cb526-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
+<span id="cb526-10"><a href="wgoitg.html#cb526-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
+<span id="cb526-11"><a href="wgoitg.html#cb526-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
+<span id="cb526-12"><a href="wgoitg.html#cb526-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
+<span id="cb526-13"><a href="wgoitg.html#cb526-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
+<span id="cb526-14"><a href="wgoitg.html#cb526-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
+<span id="cb526-15"><a href="wgoitg.html#cb526-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb526-16"><a href="wgoitg.html#cb526-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
+<span id="cb526-17"><a href="wgoitg.html#cb526-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
+<span id="cb526-18"><a href="wgoitg.html#cb526-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb526-19"><a href="wgoitg.html#cb526-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb526-20"><a href="wgoitg.html#cb526-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb526-21"><a href="wgoitg.html#cb526-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb526-22"><a href="wgoitg.html#cb526-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb526-23"><a href="wgoitg.html#cb526-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
+<span id="cb526-24"><a href="wgoitg.html#cb526-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-25"><a href="wgoitg.html#cb526-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">15-24y</th>
+<th align="right">40+y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">USA</td>
+<td align="right">0.6679842</td>
+<td align="right">0.4611465</td>
+</tr>
+<tr class="even">
+<td align="left">Morocco</td>
+<td align="right">0.4365079</td>
+<td align="right">0.4735812</td>
+</tr>
+<tr class="odd">
+<td align="left">Lebanon</td>
+<td align="right">0.5467197</td>
+<td align="right">0.4435798</td>
+</tr>
+<tr class="even">
+<td align="left">Indonesia</td>
+<td align="right">0.7920605</td>
+<td align="right">0.8027344</td>
+</tr>
+<tr class="odd">
+<td align="left">Bangladesh</td>
+<td align="right">0.4624506</td>
+<td align="right">0.4319527</td>
+</tr>
+<tr class="even">
+<td align="left">UK</td>
+<td align="right">0.5040000</td>
+<td align="right">0.4140000</td>
+</tr>
+<tr class="odd">
+<td align="left">France</td>
+<td align="right">0.3900000</td>
+<td align="right">0.2640000</td>
+</tr>
+<tr class="even">
+<td align="left">Germany</td>
+<td align="right">0.5900000</td>
+<td align="right">0.3860000</td>
+</tr>
+<tr class="odd">
+<td align="left">Spain</td>
+<td align="right">0.5160000</td>
+<td align="right">0.3340000</td>
+</tr>
+<tr class="even">
+<td align="left">Japan</td>
+<td align="right">0.6367265</td>
+<td align="right">0.2586873</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="wgoitg.html#cb527-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
+<span id="cb527-2"><a href="wgoitg.html#cb527-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
+<span id="cb527-3"><a href="wgoitg.html#cb527-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb527-4"><a href="wgoitg.html#cb527-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb527-5"><a href="wgoitg.html#cb527-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb527-6"><a href="wgoitg.html#cb527-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
+<span id="cb527-7"><a href="wgoitg.html#cb527-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb527-8"><a href="wgoitg.html#cb527-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb527-9"><a href="wgoitg.html#cb527-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-179-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="global-carbon-projects" class="section level2 hasAnchor" number="21.3">
 <h2><span class="header-section-number">21.3</span> Global Carbon Projects<a href="wgoitg.html#global-carbon-projects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a href="https://www.nytimes.com/interactive/2021/11/12/climate/cop26-emissions-compensation.html?campaign_id=29&amp;emc=edit_up_20211112&amp;instance_id=45236&amp;nl=the-upshot&amp;regi_id=52022771&amp;segment_id=74222&amp;te=1&amp;user_id=7cc6d9cd8f523e256ae41958ee8a9cb5">Who Has The Most Historical Responsibility for Climate Change? - The New York Times (nytimes.com)</a></p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="wgoitg.html#cb527-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb527-2"><a href="wgoitg.html#cb527-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb527-3"><a href="wgoitg.html#cb527-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb527-4"><a href="wgoitg.html#cb527-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb527-5"><a href="wgoitg.html#cb527-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb527-6"><a href="wgoitg.html#cb527-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
-<span id="cb527-7"><a href="wgoitg.html#cb527-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb527-8"><a href="wgoitg.html#cb527-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb527-9"><a href="wgoitg.html#cb527-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
-<span id="cb527-10"><a href="wgoitg.html#cb527-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
-<span id="cb527-11"><a href="wgoitg.html#cb527-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb527-12"><a href="wgoitg.html#cb527-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb527-13"><a href="wgoitg.html#cb527-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb527-14"><a href="wgoitg.html#cb527-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
-<span id="cb527-15"><a href="wgoitg.html#cb527-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="wgoitg.html#cb528-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb528-2"><a href="wgoitg.html#cb528-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb528-3"><a href="wgoitg.html#cb528-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb528-4"><a href="wgoitg.html#cb528-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb528-5"><a href="wgoitg.html#cb528-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb528-6"><a href="wgoitg.html#cb528-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
+<span id="cb528-7"><a href="wgoitg.html#cb528-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb528-8"><a href="wgoitg.html#cb528-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb528-9"><a href="wgoitg.html#cb528-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
+<span id="cb528-10"><a href="wgoitg.html#cb528-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
+<span id="cb528-11"><a href="wgoitg.html#cb528-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb528-12"><a href="wgoitg.html#cb528-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb528-13"><a href="wgoitg.html#cb528-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb528-14"><a href="wgoitg.html#cb528-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
+<span id="cb528-15"><a href="wgoitg.html#cb528-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-180-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
