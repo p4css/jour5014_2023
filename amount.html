@@ -52,14 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -127,6 +119,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -268,65 +282,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="heatmap-vaccination" class="section level2 hasAnchor" number="14.2">
 <h2><span class="header-section-number">14.2</span> Heatmap: Vaccination<a href="amount.html#heatmap-vaccination" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><a href="https://ourworldindata.org/covid-vaccinations" class="uri">https://ourworldindata.org/covid-vaccinations</a></li>
-<li><a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" class="uri">https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations</a></li>
-</ul>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="amount.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb501-2"><a href="amount.html#cb501-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
-<span id="cb501-3"><a href="amount.html#cb501-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb501-4"><a href="amount.html#cb501-4" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
-<span id="cb501-5"><a href="amount.html#cb501-5" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb501-6"><a href="amount.html#cb501-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb501-7"><a href="amount.html#cb501-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb501-8"><a href="amount.html#cb501-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
-<span id="cb501-9"><a href="amount.html#cb501-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb501-10"><a href="amount.html#cb501-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb501-11"><a href="amount.html#cb501-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb501-12"><a href="amount.html#cb501-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
-<span id="cb501-13"><a href="amount.html#cb501-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb501-14"><a href="amount.html#cb501-14" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="ot">&lt;-</span> fullvaccinated <span class="sc">%&gt;%</span></span>
-<span id="cb501-15"><a href="amount.html#cb501-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb501-16"><a href="amount.html#cb501-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb501-17"><a href="amount.html#cb501-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb501-18"><a href="amount.html#cb501-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb501-19"><a href="amount.html#cb501-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb501-20"><a href="amount.html#cb501-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
-<span id="cb501-21"><a href="amount.html#cb501-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb501-22"><a href="amount.html#cb501-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb501-23"><a href="amount.html#cb501-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>))</span></code></pre></div>
+<p>這個例子參考<span class="citation">(<a href="#ref-wilke2019fundamentals" role="doc-biblioref">Wilke 2019</a>)</span>在視覺化<a href="https://clauswilke.com/dataviz/visualizing-amounts.html">數量（Amount）</a>時的熱圖範例（Heatmap），但改用為視覺化各國每百人完整注射COVID-19疫苗人數歷時資料。
+- <a href="https://ourworldindata.org/covid-vaccinations" class="uri">https://ourworldindata.org/covid-vaccinations</a>
+- <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" class="uri">https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations</a></p>
+<p>這個案例使用了三個維度的資料，分別為X軸的時間（月）、Y軸的國家、以及用顏色來呈現各國疫苗注射量（每百人）。並使用<code>geom_tile()</code>來製作熱圖。然而，Y軸的排序卻會影響讀圖。例如，在第一個例子中，Y軸的順序是用最後一個時間點的疫苗注射比例來排序。但每個國家政策和疫苗可獲量均不同，故開始注射和覆蓋速度也差很多，最終覆蓋量也會差很多。所以如果以最終覆蓋量來排序的話，反而不易觀察過程的變化，且「顏色」並不容易用來比較最終覆蓋量的大小，因而會產生很多讀圖上的困擾。</p>
+<p>另一種繪圖策略是該書上的做法，其Y軸的排序是依照疫苗覆蓋率達到某個數值（例如每百人中有20人完整注射二劑疫苗）的時間早晚來排序。有此作為基準，每個國家在後續時間點的覆蓋速度的比較便比較容易。</p>
+<p>另外需要注意到，顏色的取捨、以及相對於尺度的漸層設計也會影響讀圖。</p>
+<p>本例子的資料前處理難度較高（OS：惡魔級）。困難來自於每個國家登記資料的時間不同，因此會產生大量<code>NA</code>值。但在這樣的狀況下，又要找到以月為時間單位的共同數值，就會更挑戰程式編寫者的資料清理技術。除此之外，如何偵測「每個國家超過每百人有二十人完整注射疫苗的時間點」，更是技巧中的技巧。是個磨練<code>NA</code>值處理和高難度資料前處理的好例子。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="amount.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-2"><a href="amount.html#cb1-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
+<span id="cb1-3"><a href="amount.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="amount.html#cb1-4" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
+<span id="cb1-5"><a href="amount.html#cb1-5" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="amount.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="amount.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="amount.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="amount.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="amount.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="amount.html#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="amount.html#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
+<span id="cb1-13"><a href="amount.html#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="amount.html#cb1-14" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="ot">&lt;-</span> fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="amount.html#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="amount.html#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="amount.html#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb1-18"><a href="amount.html#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="amount.html#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="amount.html#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="amount.html#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="amount.html#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="amount.html#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>))</span></code></pre></div>
 <p><a href="https://clauswilke.com/dataviz/visualizing-amounts.html" class="uri">https://clauswilke.com/dataviz/visualizing-amounts.html</a></p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="amount.html#cb502-1" aria-hidden="true" tabindex="-1"></a>watched <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;United Arab Emirates&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Singapore&quot;</span>, </span>
-<span id="cb502-2"><a href="amount.html#cb502-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;South Korea&quot;</span>, <span class="st">&quot;Taiwan&quot;</span>, <span class="st">&quot;Malaysia&quot;</span>, </span>
-<span id="cb502-3"><a href="amount.html#cb502-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Hong Kong&quot;</span>, <span class="st">&quot;New Zealand&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, </span>
-<span id="cb502-4"><a href="amount.html#cb502-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Netherlands&quot;</span>, <span class="st">&quot;United States&quot;</span>, <span class="st">&quot;Israel&quot;</span>, </span>
-<span id="cb502-5"><a href="amount.html#cb502-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;United Kingdom&quot;</span>, <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Philippines&quot;</span>)</span>
-<span id="cb502-6"><a href="amount.html#cb502-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb502-7"><a href="amount.html#cb502-7" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
-<span id="cb502-8"><a href="amount.html#cb502-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb502-9"><a href="amount.html#cb502-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
-<span id="cb502-10"><a href="amount.html#cb502-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="st">`</span><span class="at">2022-05-01</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb502-11"><a href="amount.html#cb502-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb502-12"><a href="amount.html#cb502-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
-<span id="cb502-13"><a href="amount.html#cb502-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb502-14"><a href="amount.html#cb502-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-155-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="amount.html#cb2-1" aria-hidden="true" tabindex="-1"></a>watched <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;United Arab Emirates&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Singapore&quot;</span>, </span>
+<span id="cb2-2"><a href="amount.html#cb2-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;South Korea&quot;</span>, <span class="st">&quot;Taiwan&quot;</span>, <span class="st">&quot;Malaysia&quot;</span>, </span>
+<span id="cb2-3"><a href="amount.html#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Hong Kong&quot;</span>, <span class="st">&quot;New Zealand&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, </span>
+<span id="cb2-4"><a href="amount.html#cb2-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Netherlands&quot;</span>, <span class="st">&quot;United States&quot;</span>, <span class="st">&quot;Israel&quot;</span>, </span>
+<span id="cb2-5"><a href="amount.html#cb2-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;United Kingdom&quot;</span>, <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Philippines&quot;</span>)</span>
+<span id="cb2-6"><a href="amount.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="amount.html#cb2-7" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
+<span id="cb2-8"><a href="amount.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="amount.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="amount.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="st">`</span><span class="at">2022-05-01</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="amount.html#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb2-12"><a href="amount.html#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
+<span id="cb2-13"><a href="amount.html#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb2-14"><a href="amount.html#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p><a href="https://clauswilke.com/dataviz/visualizing-amounts.html" class="uri">https://clauswilke.com/dataviz/visualizing-amounts.html</a></p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="amount.html#cb503-1" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
-<span id="cb503-2"><a href="amount.html#cb503-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
-<span id="cb503-3"><a href="amount.html#cb503-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">as_date</span>(month)) <span class="sc">%&gt;%</span></span>
-<span id="cb503-4"><a href="amount.html#cb503-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb503-5"><a href="amount.html#cb503-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month1 =</span> <span class="fu">min</span>((month[perc <span class="sc">&gt;</span> <span class="dv">20</span>]))) <span class="sc">%&gt;%</span> </span>
-<span id="cb503-6"><a href="amount.html#cb503-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb503-7"><a href="amount.html#cb503-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb503-8"><a href="amount.html#cb503-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="fu">as.numeric</span>(month1))) <span class="sc">%&gt;%</span></span>
-<span id="cb503-9"><a href="amount.html#cb503-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month1) <span class="sc">%&gt;%</span></span>
-<span id="cb503-10"><a href="amount.html#cb503-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb503-11"><a href="amount.html#cb503-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
-<span id="cb503-12"><a href="amount.html#cb503-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb503-13"><a href="amount.html#cb503-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-156-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="amount.html#cb3-1" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="amount.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="amount.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">as_date</span>(month)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="amount.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="amount.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month1 =</span> <span class="fu">min</span>((month[perc <span class="sc">&gt;</span> <span class="dv">20</span>]))) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="amount.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="amount.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="amount.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="fu">as.numeric</span>(month1))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="amount.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="amount.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="amount.html#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
+<span id="cb3-12"><a href="amount.html#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb3-13"><a href="amount.html#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-wilke2019fundamentals" class="csl-entry">
+Wilke, Claus O. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures</em>. O’Reilly Media.
 </div>
 </div>
             </section>
@@ -390,20 +413,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
