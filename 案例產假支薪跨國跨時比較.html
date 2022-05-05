@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 案例：產假支薪跨國跨時比較 | R for Data Journalism</title>
+  <meta name="description" content="For my Class teaching how to make data news reports" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 案例：產假支薪跨國跨時比較 | R for Data Journalism" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="For my Class teaching how to make data news reports" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 案例：產假支薪跨國跨時比較 | R for Data Journalism" />
+  
+  <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
+  
+
+<meta name="author" content="HSIEH, JI-LUNG" />
+
+
+<meta name="date" content="2022-05-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="使用基礎r套件.html"/>
+<link rel="next" href="樞紐分析台北住宅竊盜點位.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for Data Journalism</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I R BASIC</b></span></li>
+<li class="chapter" data-level="2" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>2</b> R語言基礎</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="使用rstudio.html"><a href="使用rstudio.html"><i class="fa fa-check"></i><b>2.1</b> 使用RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="使用rstudio.html"><a href="使用rstudio.html#插入新的程式區"><i class="fa fa-check"></i><b>2.1.1</b> 插入新的程式區</a></li>
+<li class="chapter" data-level="2.1.2" data-path="使用rstudio.html"><a href="使用rstudio.html#安裝與載入套件"><i class="fa fa-check"></i><b>2.1.2</b> 安裝與載入套件</a></li>
+<li class="chapter" data-level="2.1.3" data-path="使用rstudio.html"><a href="使用rstudio.html#載入所安裝的第三方套件"><i class="fa fa-check"></i><b>2.1.3</b> 載入所安裝的第三方套件</a></li>
+<li class="chapter" data-level="2.1.4" data-path="使用rstudio.html"><a href="使用rstudio.html#註解"><i class="fa fa-check"></i><b>2.1.4</b> 註解</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-syntax.html"><a href="r-syntax.html"><i class="fa fa-check"></i><b>3.1</b> R Syntax</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="r-syntax.html"><a href="r-syntax.html#assignment"><i class="fa fa-check"></i><b>3.1.1</b> Assignment</a></li>
+<li class="chapter" data-level="3.1.2" data-path="r-syntax.html"><a href="r-syntax.html#comments-註解"><i class="fa fa-check"></i><b>3.1.2</b> comments 註解</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-operations.html"><a href="basic-operations.html"><i class="fa fa-check"></i><b>3.2</b> Basic operations</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-operations.html"><a href="basic-operations.html#creating"><i class="fa fa-check"></i><b>3.2.1</b> Creating</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-operations.html"><a href="basic-operations.html#viewing"><i class="fa fa-check"></i><b>3.2.2</b> Viewing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-operations.html"><a href="basic-operations.html#subsetting-filtering"><i class="fa fa-check"></i><b>3.2.3</b> Subsetting, filtering</a></li>
+<li class="chapter" data-level="3.2.4" data-path="basic-operations.html"><a href="basic-operations.html#deleting"><i class="fa fa-check"></i><b>3.2.4</b> Deleting</a></li>
+<li class="chapter" data-level="3.2.5" data-path="basic-operations.html"><a href="basic-operations.html#concatinating"><i class="fa fa-check"></i><b>3.2.5</b> Concatinating</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html"><i class="fa fa-check"></i><b>3.3</b> Calculating with vectors</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html#arithmetic-operations"><i class="fa fa-check"></i><b>3.3.1</b> Arithmetic operations</a></li>
+<li class="chapter" data-level="3.3.2" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html#logic-comparisons"><i class="fa fa-check"></i><b>3.3.2</b> Logic comparisons</a></li>
+<li class="chapter" data-level="3.3.3" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html#subsetting-by-logic-comparisons"><i class="fa fa-check"></i><b>3.3.3</b> Subsetting by logic comparisons</a></li>
+<li class="chapter" data-level="3.3.4" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html#sorting-and-ordering"><i class="fa fa-check"></i><b>3.3.4</b> Sorting and ordering</a></li>
+<li class="chapter" data-level="3.3.5" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html#built-in-math-functions"><i class="fa fa-check"></i><b>3.3.5</b> Built-in math functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3.4</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data-types.html"><a href="data-types.html#checking-data-type"><i class="fa fa-check"></i><b>3.4.1</b> Checking data type</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data-types.html"><a href="data-types.html#converting-data-type"><i class="fa fa-check"></i><b>3.4.2</b> Converting data type</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="character-operations.html"><a href="character-operations.html"><i class="fa fa-check"></i><b>3.5</b> Character operations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>4</b> Dataframe</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="基本操作.html"><a href="基本操作.html"><i class="fa fa-check"></i><b>4.1</b> 基本操作</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="基本操作.html"><a href="基本操作.html#產生新的dataframe"><i class="fa fa-check"></i><b>4.1.1</b> 產生新的Dataframe</a></li>
+<li class="chapter" data-level="4.1.2" data-path="基本操作.html"><a href="基本操作.html#觀察dataframe"><i class="fa fa-check"></i><b>4.1.2</b> 觀察dataframe</a></li>
+<li class="chapter" data-level="4.1.3" data-path="基本操作.html"><a href="基本操作.html#操作dataframe"><i class="fa fa-check"></i><b>4.1.3</b> 操作dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="簡易繪圖.html"><a href="簡易繪圖.html"><i class="fa fa-check"></i><b>4.2</b> 簡易繪圖</a></li>
+<li class="chapter" data-level="4.3" data-path="基本操作使用dplyr.html"><a href="基本操作使用dplyr.html"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="tibble-data_frame-data.html"><a href="tibble-data_frame-data.html"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
+</ul></li>
+<li class="part"><span><b>II DATA MANIPULATION</b></span></li>
+<li class="chapter" data-level="5" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html"><i class="fa fa-check"></i><b>5</b> 使用基礎R套件</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html"><i class="fa fa-check"></i><b>5.1</b> 案例：產假支薪跨國跨時比較</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#reading-.xlsx-by-readxl-package"><i class="fa fa-check"></i><b>5.1.1</b> Reading .xlsx by readxl package</a></li>
+<li class="chapter" data-level="5.1.2" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#previewing-data-by-view-class-dim-str-summary-and-names"><i class="fa fa-check"></i><b>5.1.2</b> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#select-variables"><i class="fa fa-check"></i><b>5.1.3</b> Select variables</a></li>
+<li class="chapter" data-level="5.1.4" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#check-replace-nas"><i class="fa fa-check"></i><b>5.1.4</b> Check &amp; Replace NAs</a></li>
+<li class="chapter" data-level="5.1.5" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#filtering-data"><i class="fa fa-check"></i><b>5.1.5</b> Filtering data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#plotting"><i class="fa fa-check"></i><b>5.1.6</b> Plotting</a></li>
+<li class="chapter" data-level="5.1.7" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#practice02_1_1-plotting-more"><i class="fa fa-check"></i><b>5.1.7</b> Practice02_1_1 Plotting more</a></li>
+<li class="chapter" data-level="5.1.8" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#practice02_2_2-selecting-and-filtering-by-dplyr-i"><i class="fa fa-check"></i><b>5.1.8</b> Practice02_2_2 selecting and filtering by dplyr I</a></li>
+<li class="chapter" data-level="5.1.9" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#more-clean-version"><i class="fa fa-check"></i><b>5.1.9</b> (More) Clean version</a></li>
+<li class="chapter" data-level="5.1.10" data-path="案例產假支薪跨國跨時比較.html"><a href="案例產假支薪跨國跨時比較.html#more-the-fittest-version-to-compute-staysame"><i class="fa fa-check"></i><b>5.1.10</b> (More) The fittest version to compute staySame</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html"><i class="fa fa-check"></i><b>5.2</b> 樞紐分析：台北住宅竊盜點位</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#讀取檔案"><i class="fa fa-check"></i><b>5.2.1</b> 讀取檔案</a></li>
+<li class="chapter" data-level="5.2.2" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#查看資料內容"><i class="fa fa-check"></i><b>5.2.2</b> 查看資料內容</a></li>
+<li class="chapter" data-level="5.2.3" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#觀察資料維度-1"><i class="fa fa-check"></i><b>5.2.3</b> 觀察資料維度</a></li>
+<li class="chapter" data-level="5.2.4" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#觀察變數名稱"><i class="fa fa-check"></i><b>5.2.4</b> 觀察變數名稱</a></li>
+<li class="chapter" data-level="5.2.5" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#萃取所需新變項"><i class="fa fa-check"></i><b>5.2.5</b> 萃取所需新變項</a></li>
+<li class="chapter" data-level="5.2.6" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#iv.-樞紐分析計數加總與彙整"><i class="fa fa-check"></i><b>5.2.6</b> IV. 樞紐分析：計數、加總與彙整。</a></li>
+<li class="chapter" data-level="5.2.7" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#方法一counting-by-table"><i class="fa fa-check"></i><b>5.2.7</b> 方法一：Counting by <code>table()</code></a></li>
+<li class="chapter" data-level="5.2.8" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#方法二counting-by-tapply"><i class="fa fa-check"></i><b>5.2.8</b> 方法二：Counting by <code>tapply()</code></a></li>
+<li class="chapter" data-level="5.2.9" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#v.-依照變數值篩選資料"><i class="fa fa-check"></i><b>5.2.9</b> V. 依照變數值篩選資料</a></li>
+<li class="chapter" data-level="5.2.10" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#vi.-雙變數樞紐分析"><i class="fa fa-check"></i><b>5.2.10</b> VI. 雙變數樞紐分析</a></li>
+<li class="chapter" data-level="5.2.11" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#vii.-繪圖-plotting"><i class="fa fa-check"></i><b>5.2.11</b> VII. 繪圖 Plotting</a></li>
+<li class="chapter" data-level="5.2.12" data-path="樞紐分析台北住宅竊盜點位.html"><a href="樞紐分析台北住宅竊盜點位.html#option-視覺化殘差分析"><i class="fa fa-check"></i><b>5.2.12</b> (Option) 視覺化殘差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-manipulation-wity-tidyverse.html"><a href="data-manipulation-wity-tidyverse.html"><i class="fa fa-check"></i><b>6</b> Data Manipulation wity tidyverse</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html"><i class="fa fa-check"></i><b>6.1</b> base to dplyr: TP Theft</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#reading-data"><i class="fa fa-check"></i><b>6.1.1</b> Reading data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#cleaning-data-i"><i class="fa fa-check"></i><b>6.1.2</b> Cleaning data I</a></li>
+<li class="chapter" data-level="6.1.3" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#cleaning-data-ii"><i class="fa fa-check"></i><b>6.1.3</b> Cleaning data II</a></li>
+<li class="chapter" data-level="6.1.4" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#long-to-wide-form"><i class="fa fa-check"></i><b>6.1.4</b> Long to wide form</a></li>
+<li class="chapter" data-level="6.1.5" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>6.1.5</b> Setting time as row.name for mosaicplot</a></li>
+<li class="chapter" data-level="6.1.6" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#clean-version"><i class="fa fa-check"></i><b>6.1.6</b> Clean version</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>6.2</b> 時間軸的視覺化</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#文字轉時間"><i class="fa fa-check"></i><b>6.2.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="6.2.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>6.2.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="6.2.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐月統計資料"><i class="fa fa-check"></i><b>6.2.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="6.2.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐日統計資料佳"><i class="fa fa-check"></i><b>6.2.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="6.2.5" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#每日逐時資料"><i class="fa fa-check"></i><b>6.2.5</b> 每日逐時資料</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Explore Data Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html"><i class="fa fa-check"></i><b>7.1</b> TW AQI Visual Studies</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-central-tendency"><i class="fa fa-check"></i><b>7.1.1</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-extreme-value"><i class="fa fa-check"></i><b>7.1.2</b> Trending: Extreme value</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>8</b> Text Processing</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tweets-分析.html"><a href="tweets-分析.html"><i class="fa fa-check"></i><b>8.1</b> Tweets 分析</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="tweets-分析.html"><a href="tweets-分析.html#載入並清理資料"><i class="fa fa-check"></i><b>8.1.1</b> 載入並清理資料</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tweets-分析.html"><a href="tweets-分析.html#萃取資料"><i class="fa fa-check"></i><b>8.1.2</b> 萃取資料</a></li>
+<li class="chapter" data-level="8.1.3" data-path="tweets-分析.html"><a href="tweets-分析.html#視覺化探索"><i class="fa fa-check"></i><b>8.1.3</b> 視覺化探索</a></li>
+<li class="chapter" data-level="8.1.4" data-path="tweets-分析.html"><a href="tweets-分析.html#keyness"><i class="fa fa-check"></i><b>8.1.4</b> Keyness</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>9</b> Crawler</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>9.1</b> Scraping 104.com</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="scraping-104.html"><a href="scraping-104.html#complete-code"><i class="fa fa-check"></i><b>9.1.1</b> Complete Code</a></li>
+<li class="chapter" data-level="9.1.2" data-path="scraping-104.html"><a href="scraping-104.html#step-by-step"><i class="fa fa-check"></i><b>9.1.2</b> Step-by-Step</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III VISUALIZATION</b></span></li>
+<li class="chapter" data-level="10" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>10</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="10.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html"><i class="fa fa-check"></i><b>10.2</b> 繪圖基礎：折線圖</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#繪圖三要素"><i class="fa fa-check"></i><b>10.2.1</b> 繪圖三要素</a></li>
+<li class="chapter" data-level="10.2.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>10.2.2</b> 範例-紐時世代貧富不均</a></li>
+<li class="chapter" data-level="10.2.3" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#加入自變項群組"><i class="fa fa-check"></i><b>10.2.3</b> 加入自變項群組</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="圖表調整.html"><a href="圖表調整.html"><i class="fa fa-check"></i><b>10.3</b> 圖表調整</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="圖表調整.html"><a href="圖表調整.html#點線型態"><i class="fa fa-check"></i><b>10.3.1</b> 點線型態</a></li>
+<li class="chapter" data-level="10.3.2" data-path="圖表調整.html"><a href="圖表調整.html#標題標籤與圖說"><i class="fa fa-check"></i><b>10.3.2</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="10.3.3" data-path="圖表調整.html"><a href="圖表調整.html#字體樣式"><i class="fa fa-check"></i><b>10.3.3</b> 字體樣式</a></li>
+<li class="chapter" data-level="10.3.4" data-path="圖表調整.html"><a href="圖表調整.html#圖表主題色調"><i class="fa fa-check"></i><b>10.3.4</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="10.3.5" data-path="圖表調整.html"><a href="圖表調整.html#預設主題"><i class="fa fa-check"></i><b>10.3.5</b> 預設主題</a></li>
+<li class="chapter" data-level="10.3.6" data-path="圖表調整.html"><a href="圖表調整.html#顯示中文字體"><i class="fa fa-check"></i><b>10.3.6</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="10.3.7" data-path="圖表調整.html"><a href="圖表調整.html#xy軸方向"><i class="fa fa-check"></i><b>10.3.7</b> X/Y軸方向</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html"><i class="fa fa-check"></i><b>10.4</b> 視覺化說故事的技巧</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#依群組指定顏色"><i class="fa fa-check"></i><b>10.4.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="10.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>10.4.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="10.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>10.4.3</b> 為視覺化建立群組</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>11</b> COORDINATE</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>11.1</b> 排序以展示分佈</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>11.1.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.4.2</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>12</b> COLORS</a></li>
+<li class="chapter" data-level="13" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>13</b> CHART TYPES</a></li>
+<li class="chapter" data-level="14" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>14</b> AMOUNT</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>14.1</b> Bar chart</a></li>
+<li class="chapter" data-level="14.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>14.2</b> Heatmap: Vaccination</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>15</b> DISTRIBUTION: Histogram &amp; Density</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>15.1</b> Density plot</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>15.1.1</b> Density with different bandwidth</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>15.2</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>15.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="15.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>15.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="15.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>15.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="15.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>15.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>15.3</b> Pyramid Plot</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>15.3.1</b> Modify geom_col() to pyramid plot</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>15.4</b> Box plot: Muitiple Distrubution</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>15.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="15.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>15.4.2</b> TW-Income (boxplot)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>16</b> PROPORTION</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>16.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="16.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>16.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="16.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>16.3</b> Treemap: Nested Proportion</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>16.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="16.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>16.3.2</b> TW Budget</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>17</b> ASSOCIATION</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>17.1</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>17.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>18</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="19" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>19</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="20" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>20</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>20.1</b> Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>21</b> WGOITG of NyTimes</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>21.1</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="21.2" data-path="unicef-global-survey-optimism.html"><a href="unicef-global-survey-optimism.html"><i class="fa fa-check"></i><b>21.2</b> UNICEF-Global Survey Optimism</a></li>
+<li class="chapter" data-level="21.3" data-path="global-carbon-projects.html"><a href="global-carbon-projects.html"><i class="fa fa-check"></i><b>21.3</b> Global Carbon Projects</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Journalism</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="案例產假支薪跨國跨時比較" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 案例：產假支薪跨國跨時比較<a href="案例產假支薪跨國跨時比較.html#案例產假支薪跨國跨時比較" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>本案例將利用R來重製華盛頓郵報在2016/08/13的一篇談論美國婦女產假支薪情形的報導。這個案例中將會應用到data.frame和基本的繪圖與資料摘要方法。The case adaped Washington Post’s paid maternity leave as an exmaple to introduce basic skill of data.frame, plotting, and data mamipulation.</p></li>
+<li><p>原始新聞來源：<a href="https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/?tid=sm_tw&amp;utm_term=.f8cd50280326#comments" class="uri">https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/?tid=sm_tw&amp;utm_term=.f8cd50280326#comments</a></p></li>
+</ul>
+<div id="reading-.xlsx-by-readxl-package" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Reading .xlsx by readxl package<a href="案例產假支薪跨國跨時比較.html#reading-.xlsx-by-readxl-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>readxl也包含在tidyverse的套件集中，所以應該已經在前次安裝過，不用特別安裝。</li>
+</ul>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="案例產假支薪跨國跨時比較.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import readxl package</span></span>
+<span id="cb248-2"><a href="案例產假支薪跨國跨時比較.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb248-3"><a href="案例產假支薪跨國跨時比較.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="案例產假支薪跨國跨時比較.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use read_excel() to convert excel sheet to data.frame</span></span>
+<span id="cb249-2"><a href="案例產假支薪跨國跨時比較.html#cb249-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span></code></pre></div>
+</div>
+<div id="previewing-data-by-view-class-dim-str-summary-and-names" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code><a href="案例產假支薪跨國跨時比較.html#previewing-data-by-view-class-dim-str-summary-and-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="案例產假支薪跨國跨時比較.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span>
+<span id="cb250-2"><a href="案例產假支薪跨國跨時比較.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)       <span class="co"># [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="案例產假支薪跨國跨時比較.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
+<pre class="output"><code>## [1] 197 156</code></pre>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="案例產假支薪跨國跨時比較.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show names of variables (vectors, columns) by names()</span></span>
+<span id="cb254-2"><a href="案例產假支薪跨國跨時比較.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre class="output"><code>##   [1] &quot;country&quot;           &quot;iso2&quot;              &quot;iso3&quot;             
+##   [4] &quot;region&quot;            &quot;wb_econ&quot;           &quot;matleave_95&quot;      
+##   [7] &quot;matleave_96&quot;       &quot;matleave_97&quot;       &quot;matleave_98&quot;      
+##  [10] &quot;matleave_99&quot;       &quot;matleave_00&quot;       &quot;matleave_01&quot;      
+##  [13] &quot;matleave_02&quot;       &quot;matleave_03&quot;       &quot;matleave_04&quot;      
+##  [16] &quot;matleave_05&quot;       &quot;matleave_06&quot;       &quot;matleave_07&quot;      
+##  [19] &quot;matleave_08&quot;       &quot;matleave_09&quot;       &quot;matleave_10&quot;      
+##  [22] &quot;matleave_11&quot;       &quot;matleave_12&quot;       &quot;matleave_13&quot;      
+##  [25] &quot;matleave_wrr_95&quot;   &quot;matleave_wrr_96&quot;   &quot;matleave_wrr_97&quot;  
+##  [28] &quot;matleave_wrr_98&quot;   &quot;matleave_wrr_99&quot;   &quot;matleave_wrr_00&quot;  
+##  [31] &quot;matleave_wrr_01&quot;   &quot;matleave_wrr_02&quot;   &quot;matleave_wrr_03&quot;  
+##  [34] &quot;matleave_wrr_04&quot;   &quot;matleave_wrr_05&quot;   &quot;matleave_wrr_06&quot;  
+##  [37] &quot;matleave_wrr_07&quot;   &quot;matleave_wrr_08&quot;   &quot;matleave_wrr_09&quot;  
+##  [40] &quot;matleave_wrr_10&quot;   &quot;matleave_wrr_11&quot;   &quot;matleave_wrr_12&quot;  
+##  [43] &quot;matleave_wrr_13&quot;   &quot;bf_dur_95&quot;         &quot;bf_dur_96&quot;        
+##  [46] &quot;bf_dur_97&quot;         &quot;bf_dur_98&quot;         &quot;bf_dur_99&quot;        
+##  [49] &quot;bf_dur_00&quot;         &quot;bf_dur_01&quot;         &quot;bf_dur_02&quot;        
+##  [52] &quot;bf_dur_03&quot;         &quot;bf_dur_04&quot;         &quot;bf_dur_05&quot;        
+##  [55] &quot;bf_dur_06&quot;         &quot;bf_dur_07&quot;         &quot;bf_dur_08&quot;        
+##  [58] &quot;bf_dur_09&quot;         &quot;bf_dur_10&quot;         &quot;bf_dur_11&quot;        
+##  [61] &quot;bf_dur_12&quot;         &quot;bf_dur_13&quot;         &quot;mat_bfeed_6mon_95&quot;
+##  [64] &quot;mat_bfeed_6mon_96&quot; &quot;mat_bfeed_6mon_97&quot; &quot;mat_bfeed_6mon_98&quot;
+##  [67] &quot;mat_bfeed_6mon_99&quot; &quot;mat_bfeed_6mon_00&quot; &quot;mat_bfeed_6mon_01&quot;
+##  [70] &quot;mat_bfeed_6mon_02&quot; &quot;mat_bfeed_6mon_03&quot; &quot;mat_bfeed_6mon_04&quot;
+##  [73] &quot;mat_bfeed_6mon_05&quot; &quot;mat_bfeed_6mon_06&quot; &quot;mat_bfeed_6mon_07&quot;
+##  [76] &quot;mat_bfeed_6mon_08&quot; &quot;mat_bfeed_6mon_09&quot; &quot;mat_bfeed_6mon_10&quot;
+##  [79] &quot;mat_bfeed_6mon_11&quot; &quot;mat_bfeed_6mon_12&quot; &quot;mat_bfeed_6mon_13&quot;
+##  [82] &quot;minage_fem_leg_95&quot; &quot;minage_fem_leg_96&quot; &quot;minage_fem_leg_97&quot;
+##  [85] &quot;minage_fem_leg_98&quot; &quot;minage_fem_leg_99&quot; &quot;minage_fem_leg_00&quot;
+##  [88] &quot;minage_fem_leg_01&quot; &quot;minage_fem_leg_02&quot; &quot;minage_fem_leg_03&quot;
+##  [91] &quot;minage_fem_leg_04&quot; &quot;minage_fem_leg_05&quot; &quot;minage_fem_leg_06&quot;
+##  [94] &quot;minage_fem_leg_07&quot; &quot;minage_fem_leg_08&quot; &quot;minage_fem_leg_09&quot;
+##  [97] &quot;minage_fem_leg_10&quot; &quot;minage_fem_leg_11&quot; &quot;minage_fem_leg_12&quot;
+## [100] &quot;legal_diff_leg_95&quot; &quot;legal_diff_leg_96&quot; &quot;legal_diff_leg_97&quot;
+## [103] &quot;legal_diff_leg_98&quot; &quot;legal_diff_leg_99&quot; &quot;legal_diff_leg_00&quot;
+## [106] &quot;legal_diff_leg_01&quot; &quot;legal_diff_leg_02&quot; &quot;legal_diff_leg_03&quot;
+## [109] &quot;legal_diff_leg_04&quot; &quot;legal_diff_leg_05&quot; &quot;legal_diff_leg_06&quot;
+## [112] &quot;legal_diff_leg_07&quot; &quot;legal_diff_leg_08&quot; &quot;legal_diff_leg_09&quot;
+## [115] &quot;legal_diff_leg_10&quot; &quot;legal_diff_leg_11&quot; &quot;legal_diff_leg_12&quot;
+## [118] &quot;minage_fem_pc_95&quot;  &quot;minage_fem_pc_96&quot;  &quot;minage_fem_pc_97&quot; 
+## [121] &quot;minage_fem_pc_98&quot;  &quot;minage_fem_pc_99&quot;  &quot;minage_fem_pc_00&quot; 
+## [124] &quot;minage_fem_pc_01&quot;  &quot;minage_fem_pc_02&quot;  &quot;minage_fem_pc_03&quot; 
+## [127] &quot;minage_fem_pc_04&quot;  &quot;minage_fem_pc_05&quot;  &quot;minage_fem_pc_06&quot; 
+## [130] &quot;minage_fem_pc_07&quot;  &quot;minage_fem_pc_08&quot;  &quot;minage_fem_pc_09&quot; 
+## [133] &quot;minage_fem_pc_10&quot;  &quot;minage_fem_pc_11&quot;  &quot;minage_fem_pc_12&quot; 
+## [136] &quot;legal_diff_pc_95&quot;  &quot;legal_diff_pc_96&quot;  &quot;legal_diff_pc_97&quot; 
+## [139] &quot;legal_diff_pc_98&quot;  &quot;legal_diff_pc_99&quot;  &quot;legal_diff_pc_00&quot; 
+## [142] &quot;legal_diff_pc_01&quot;  &quot;legal_diff_pc_02&quot;  &quot;legal_diff_pc_03&quot; 
+## [145] &quot;legal_diff_pc_04&quot;  &quot;legal_diff_pc_05&quot;  &quot;legal_diff_pc_06&quot; 
+## [148] &quot;legal_diff_pc_07&quot;  &quot;legal_diff_pc_08&quot;  &quot;legal_diff_pc_09&quot; 
+## [151] &quot;legal_diff_pc_10&quot;  &quot;legal_diff_pc_11&quot;  &quot;legal_diff_pc_12&quot; 
+## [154] &quot;minwage_ppp_2013&quot;  &quot;mw_overtime&quot;       &quot;oecd&quot;</code></pre>
+</div>
+<div id="select-variables" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Select variables<a href="案例產假支薪跨國跨時比較.html#select-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="案例產假支薪跨國跨時比較.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the 3rd and 6th to 24th columns</span></span>
+<span id="cb256-2"><a href="案例產假支薪跨國跨時比較.html#cb256-2" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb256-3"><a href="案例產假支薪跨國跨時比較.html#cb256-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb256-4"><a href="案例產假支薪跨國跨時比較.html#cb256-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use class(), dim(), and str() to inspect the data</span></span>
+<span id="cb256-5"><a href="案例產假支薪跨國跨時比較.html#cb256-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="案例產假支薪跨國跨時比較.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## [1] 197  20</code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="案例產假支薪跨國跨時比較.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## tibble [197 × 20] (S3: tbl_df/tbl/data.frame)
+##  $ iso3       : chr [1:197] &quot;AFG&quot; &quot;ALB&quot; &quot;DZA&quot; &quot;AND&quot; ...
+##  $ matleave_95: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_96: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_97: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_98: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_99: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_00: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_01: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_02: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_03: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_04: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_05: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_06: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_07: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_08: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_09: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_10: num [1:197] 2 5 3 3 2 2 2 5 NA 5 ...
+##  $ matleave_11: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_12: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_13: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...</code></pre>
+</div>
+<div id="check-replace-nas" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Check &amp; Replace NAs<a href="案例產假支薪跨國跨時比較.html#check-replace-nas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>NA: Not Available</code></li>
+<li><code>v[is.na(v)]</code> will select all NA cells</li>
+<li>以0取代NA的資料格。避免繪圖產生錯誤</li>
+<li><code>sum(is.na(matleave))</code>的目的是檢測還有沒有NA值。如果有的話<code>is.na()</code>就會是<code>TRUE</code>，那麼加總後，如果不是0，那就代表還有NA。</li>
+</ul>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="案例產假支薪跨國跨時比較.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is.na() to indicate each element is NA or NOT(TRUE/FALSE)</span></span>
+<span id="cb262-2"><a href="案例產假支薪跨國跨時比較.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">is.na</span>(matleave), <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<pre class="output"><code>##        iso3 matleave_95 matleave_96 matleave_97 matleave_98 matleave_99
+##  [1,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [2,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [3,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [4,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [5,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [6,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [7,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [8,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [9,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [10,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [11,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [12,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [13,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [14,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [15,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [16,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [17,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [18,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [19,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [20,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##       matleave_00 matleave_01 matleave_02 matleave_03 matleave_04 matleave_05
+##  [1,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [2,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [3,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [4,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [5,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [6,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [7,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [8,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [9,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [10,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [11,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [12,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [13,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [14,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [15,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [16,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [17,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [18,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [19,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [20,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##       matleave_06 matleave_07 matleave_08 matleave_09 matleave_10 matleave_11
+##  [1,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [2,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [3,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [4,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [5,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [6,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [7,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [8,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [9,]       FALSE       FALSE       FALSE       FALSE        TRUE       FALSE
+## [10,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [11,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [12,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [13,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [14,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [15,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [16,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [17,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [18,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [19,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [20,]       FALSE        TRUE        TRUE       FALSE       FALSE       FALSE
+##       matleave_12 matleave_13
+##  [1,]       FALSE       FALSE
+##  [2,]       FALSE       FALSE
+##  [3,]       FALSE       FALSE
+##  [4,]       FALSE       FALSE
+##  [5,]       FALSE       FALSE
+##  [6,]       FALSE       FALSE
+##  [7,]       FALSE       FALSE
+##  [8,]       FALSE       FALSE
+##  [9,]       FALSE       FALSE
+## [10,]       FALSE       FALSE
+## [11,]       FALSE       FALSE
+## [12,]       FALSE       FALSE
+## [13,]       FALSE       FALSE
+## [14,]       FALSE       FALSE
+## [15,]       FALSE       FALSE
+## [16,]       FALSE       FALSE
+## [17,]       FALSE       FALSE
+## [18,]       FALSE       FALSE
+## [19,]       FALSE       FALSE
+## [20,]       FALSE       FALSE</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="案例產假支薪跨國跨時比較.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign 0 to those NA data</span></span>
+<span id="cb264-2"><a href="案例產假支薪跨國跨時比較.html#cb264-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb264-3"><a href="案例產假支薪跨國跨時比較.html#cb264-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-4"><a href="案例產假支薪跨國跨時比較.html#cb264-4" aria-hidden="true" tabindex="-1"></a><span class="co"># anyNA() to check if there are still NA cells.</span></span>
+<span id="cb264-5"><a href="案例產假支薪跨國跨時比較.html#cb264-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anyNA</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="案例產假支薪跨國跨時比較.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(is.na()) to count the number of NA</span></span>
+<span id="cb266-2"><a href="案例產假支薪跨國跨時比較.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(matleave))</span></code></pre></div>
+<pre class="output"><code>## [1] 0</code></pre>
+</div>
+<div id="filtering-data" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Filtering data<a href="案例產假支薪跨國跨時比較.html#filtering-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="filtered-by-the-last-year-value" class="section level4 hasAnchor" number="5.1.5.1">
+<h4><span class="header-section-number">5.1.5.1</span> Filtered by the last year value<a href="案例產假支薪跨國跨時比較.html#filtered-by-the-last-year-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="案例產假支薪跨國跨時比較.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use logical comparison to see if the last year equals to 5</span></span>
+<span id="cb268-2"><a href="案例產假支薪跨國跨時比較.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign matching data to var m5</span></span>
+<span id="cb268-3"><a href="案例產假支薪跨國跨時比較.html#cb268-3" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span><span class="sc">==</span><span class="dv">5</span>, ]</span>
+<span id="cb268-4"><a href="案例產假支薪跨國跨時比較.html#cb268-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-5"><a href="案例產假支薪跨國跨時比較.html#cb268-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to count matching data</span></span>
+<span id="cb268-6"><a href="案例產假支薪跨國跨時比較.html#cb268-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m5)</span></code></pre></div>
+<pre class="output"><code>## [1] 34</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="案例產假支薪跨國跨時比較.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is it possible to use length() to check the data length?</span></span>
+<span id="cb270-2"><a href="案例產假支薪跨國跨時比較.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;</span></span>
+<span id="cb270-3"><a href="案例產假支薪跨國跨時比較.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;==5</span></span>
+<span id="cb270-4"><a href="案例產假支薪跨國跨時比較.html#cb270-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(matleave$&#39;matleave_13&#39;==5)</span></span></code></pre></div>
+</div>
+<div id="filtered-data-by-the-first-year-value" class="section level4 hasAnchor" number="5.1.5.2">
+<h4><span class="header-section-number">5.1.5.2</span> Filtered data by the first year value<a href="案例產假支薪跨國跨時比較.html#filtered-data-by-the-first-year-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="案例產假支薪跨國跨時比較.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is 5, and assign to var m55</span></span>
+<span id="cb271-2"><a href="案例產假支薪跨國跨時比較.html#cb271-2" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">==</span><span class="dv">5</span>,]</span>
+<span id="cb271-3"><a href="案例產假支薪跨國跨時比較.html#cb271-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-4"><a href="案例產假支薪跨國跨時比較.html#cb271-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is not 5, and assign to var m05</span></span>
+<span id="cb271-5"><a href="案例產假支薪跨國跨時比較.html#cb271-5" aria-hidden="true" tabindex="-1"></a>m05<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">!=</span><span class="dv">5</span>,]</span></code></pre></div>
+</div>
+</div>
+<div id="plotting" class="section level3 hasAnchor" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Plotting<a href="案例產假支薪跨國跨時比較.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Plotting the second rows and all columns except 1st column</li>
+<li><strong>Question</strong> 為何要<code>unlist()</code>？請試著執行<code>barplot(matleave[2, -1])</code>這個沒有<code>unlist()</code>的版本，看看會有什麼錯誤訊息。資料結構有何差異呢？</li>
+<li>嘗試用<code>class()</code>或<code>str()</code>嘗試觀察沒有<code>unlist()</code>版本的資料，看看資料型態和有<code>unlist()</code>的會有何不同？</li>
+</ul>
+<div id="plotting-one-line" class="section level4 hasAnchor" number="5.1.6.1">
+<h4><span class="header-section-number">5.1.6.1</span> Plotting one line<a href="案例產假支薪跨國跨時比較.html#plotting-one-line" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="案例產假支薪跨國跨時比較.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row of m55</span></span>
+<span id="cb272-2"><a href="案例產假支薪跨國跨時比較.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, ])       # raise error</span></span>
+<span id="cb272-3"><a href="案例產假支薪跨國跨時比較.html#cb272-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-4"><a href="案例產假支薪跨國跨時比較.html#cb272-4" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row when neglecting the first column</span></span>
+<span id="cb272-5"><a href="案例產假支薪跨國跨時比較.html#cb272-5" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, -1])     # raise error</span></span>
+<span id="cb272-6"><a href="案例產假支薪跨國跨時比較.html#cb272-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-7"><a href="案例產假支薪跨國跨時比較.html#cb272-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the data type of matleave[2, ]</span></span>
+<span id="cb272-8"><a href="案例產假支薪跨國跨時比較.html#cb272-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="案例產假支薪跨國跨時比較.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="案例產假支薪跨國跨時比較.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unlist() to convert a single row data.frame to a vector for barplot()</span></span>
+<span id="cb276-2"><a href="案例產假支薪跨國跨時比較.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<ul>
+<li>Testing</li>
+</ul>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="案例產假支薪跨國跨時比較.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1]) # select the 1st variable</span></span>
+<span id="cb277-2"><a href="案例產假支薪跨國跨時比較.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[ ,1]) # select the 1st column</span></span>
+<span id="cb277-3"><a href="案例產假支薪跨國跨時比較.html#cb277-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1, ]) # select the 1st row</span></span>
+<span id="cb277-4"><a href="案例產假支薪跨國跨時比較.html#cb277-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb277-5"><a href="案例產假支薪跨國跨時比較.html#cb277-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>])       <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="案例產假支薪跨國跨時比較.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[ ,<span class="dv">1</span>]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="案例產假支薪跨國跨時比較.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>, ]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="案例產假支薪跨國跨時比較.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55<span class="sc">$</span>iso3) <span class="co"># character (vector)</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="more-arguments-args" class="section level4 hasAnchor" number="5.1.6.2">
+<h4><span class="header-section-number">5.1.6.2</span> More arguments (args)<a href="案例產假支薪跨國跨時比較.html#more-arguments-args" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="案例產假支薪跨國跨時比較.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the unlisted second row (neglecting the first col)</span></span>
+<span id="cb285-2"><a href="案例產假支薪跨國跨時比較.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="案例產假支薪跨國跨時比較.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?barplot to know more argument of the function.</span></span>
+<span id="cb286-2"><a href="案例產假支薪跨國跨時比較.html#cb286-2" aria-hidden="true" tabindex="-1"></a>?barplot</span>
+<span id="cb286-3"><a href="案例產假支薪跨國跨時比較.html#cb286-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb286-4"><a href="案例產假支薪跨國跨時比較.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add arguments ylim, space, border, and axat/yaxt one by one to barplot()</span></span>
+<span id="cb286-5"><a href="案例產假支薪跨國跨時比較.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-2.png" width="672" /></p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="案例產假支薪跨國跨時比較.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-3.png" width="672" /></p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="案例產假支薪跨國跨時比較.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-4.png" width="672" /></p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="案例產假支薪跨國跨時比較.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-5.png" width="672" /></p>
+</div>
+<div id="plotting-multiple-lines" class="section level4 hasAnchor" number="5.1.6.3">
+<h4><span class="header-section-number">5.1.6.3</span> Plotting multiple lines<a href="案例產假支薪跨國跨時比較.html#plotting-multiple-lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>底下可以看見每一行非常相似且一致的特徵，僅有<code>matleave</code>內的索引由1被列出至6。因此，最好的方法是用迴圈（for-loop）的方式將相同的程式碼，從1~6之間做六次。</li>
+</ul>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="案例產假支薪跨國跨時比較.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the first row</span></span>
+<span id="cb290-2"><a href="案例產假支薪跨國跨時比較.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb290-3"><a href="案例產假支薪跨國跨時比較.html#cb290-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-4"><a href="案例產假支薪跨國跨時比較.html#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the second to 6th rows</span></span>
+<span id="cb290-5"><a href="案例產假支薪跨國跨時比較.html#cb290-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="案例產假支薪跨國跨時比較.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb291-2"><a href="案例產假支薪跨國跨時比較.html#cb291-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb291-3"><a href="案例產假支薪跨國跨時比較.html#cb291-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb291-4"><a href="案例產假支薪跨國跨時比較.html#cb291-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">6</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+</div>
+<div id="for-loop-to-plot-multiple-lines" class="section level4 hasAnchor" number="5.1.6.4">
+<h4><span class="header-section-number">5.1.6.4</span> for-loop to plot multiple lines<a href="案例產假支薪跨國跨時比較.html#for-loop-to-plot-multiple-lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="案例產假支薪跨國跨時比較.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use for loop and use i as index to barplot multiple subgraphs</span></span>
+<span id="cb292-2"><a href="案例產假支薪跨國跨時比較.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
+<span id="cb292-3"><a href="案例產假支薪跨國跨時比較.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb292-4"><a href="案例產假支薪跨國跨時比較.html#cb292-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-57-1.png" width="672" /><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-57-2.png" width="672" /></p>
+</div>
+<div id="sub-plots" class="section level4 hasAnchor" number="5.1.6.5">
+<h4><span class="header-section-number">5.1.6.5</span> Sub-plots<a href="案例產假支薪跨國跨時比較.html#sub-plots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Check <code>?par</code> to get paremeters of plotting</p></li>
+<li><p><code>**mai**</code>: A numerical vector of the form c(bottom, left, top, right) which gives the margin size specified in inches.</p></li>
+<li><p><code>**mfcol, mfrow**</code>:A vector of the form c(nr, nc). Subsequent figures will be drawn in an nr-by-nc array on the device by columns (mfcol), or rows (mfrow), respectively.</p></li>
+</ul>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="案例產假支薪跨國跨時比較.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?par to get more plotting parameters</span></span>
+<span id="cb293-2"><a href="案例產假支薪跨國跨時比較.html#cb293-2" aria-hidden="true" tabindex="-1"></a>?par</span>
+<span id="cb293-3"><a href="案例產假支薪跨國跨時比較.html#cb293-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-4"><a href="案例產假支薪跨國跨時比較.html#cb293-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up the layout of subgraphs</span></span>
+<span id="cb293-5"><a href="案例產假支薪跨國跨時比較.html#cb293-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use the parameter main=c(0.2, 0.2, 0.2, 0.2) to thrink the padding of figures.</span></span>
+<span id="cb293-6"><a href="案例產假支薪跨國跨時比較.html#cb293-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb293-7"><a href="案例產假支薪跨國跨時比較.html#cb293-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
+<span id="cb293-8"><a href="案例產假支薪跨國跨時比較.html#cb293-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb293-9"><a href="案例產假支薪跨國跨時比較.html#cb293-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="案例產假支薪跨國跨時比較.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot more rows to see what happens</span></span>
+<span id="cb294-2"><a href="案例產假支薪跨國跨時比較.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb294-3"><a href="案例產假支薪跨國跨時比較.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb294-4"><a href="案例產假支薪跨國跨時比較.html#cb294-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb294-5"><a href="案例產假支薪跨國跨時比較.html#cb294-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/pml-plot-test-1.png" width="672" /></p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="案例產假支薪跨國跨時比較.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all subplots in a figure</span></span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/pml-plot-test-2.png" width="672" /></p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="案例產假支薪跨國跨時比較.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to check number of row of m55.</span></span>
+<span id="cb296-2"><a href="案例產假支薪跨國跨時比較.html#cb296-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m55)</span></code></pre></div>
+<pre class="output"><code>## [1] 18</code></pre>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="案例產假支薪跨國跨時比較.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up plotting parameters.</span></span>
+<span id="cb298-2"><a href="案例產假支薪跨國跨時比較.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb298-3"><a href="案例產假支薪跨國跨時比較.html#cb298-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-4"><a href="案例產假支薪跨國跨時比較.html#cb298-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use for-loop to plot all graph as subgraph</span></span>
+<span id="cb298-5"><a href="案例產假支薪跨國跨時比較.html#cb298-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
+<span id="cb298-6"><a href="案例產假支薪跨國跨時比較.html#cb298-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb298-7"><a href="案例產假支薪跨國跨時比較.html#cb298-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/plot-m55-1.png" width="672" /></p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="案例產假支薪跨國跨時比較.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb299-2"><a href="案例產假支薪跨國跨時比較.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
+<span id="cb299-3"><a href="案例產假支薪跨國跨時比較.html#cb299-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb299-4"><a href="案例產假支薪跨國跨時比較.html#cb299-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb299-5"><a href="案例產假支薪跨國跨時比較.html#cb299-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/plot-caption-1.png" width="672" /></p>
+</div>
+</div>
+<div id="practice02_1_1-plotting-more" class="section level3 hasAnchor" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> Practice02_1_1 Plotting more<a href="案例產假支薪跨國跨時比較.html#practice02_1_1-plotting-more" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="案例產假支薪跨國跨時比較.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting matleave_95 != 5 but matleve_13 == 5</span></span>
+<span id="cb300-2"><a href="案例產假支薪跨國跨時比較.html#cb300-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-3"><a href="案例產假支薪跨國跨時比較.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting for matleave_13 == 4</span></span></code></pre></div>
+</div>
+<div id="practice02_2_2-selecting-and-filtering-by-dplyr-i" class="section level3 hasAnchor" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Practice02_2_2 selecting and filtering by dplyr I<a href="案例產假支薪跨國跨時比較.html#practice02_2_2-selecting-and-filtering-by-dplyr-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="案例產假支薪跨國跨時比較.html#cb301-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
+<span id="cb301-2"><a href="案例產假支薪跨國跨時比較.html#cb301-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-3"><a href="案例產假支薪跨國跨時比較.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns by index</span></span>
+<span id="cb301-4"><a href="案例產假支薪跨國跨時比較.html#cb301-4" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave &lt;- df[ , c(3, 6:24)]</span></span>
+<span id="cb301-5"><a href="案例產假支薪跨國跨時比較.html#cb301-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-6"><a href="案例產假支薪跨國跨時比較.html#cb301-6" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
+<span id="cb301-7"><a href="案例產假支薪跨國跨時比較.html#cb301-7" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave[is.na(matleave)] &lt;- 0</span></span>
+<span id="cb301-8"><a href="案例產假支薪跨國跨時比較.html#cb301-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-9"><a href="案例產假支薪跨國跨時比較.html#cb301-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb301-10"><a href="案例產假支薪跨國跨時比較.html#cb301-10" aria-hidden="true" tabindex="-1"></a><span class="co"># m5 &lt;- matleave[matleave$&#39;matleave_13&#39; == 5, ]</span></span>
+<span id="cb301-11"><a href="案例產假支薪跨國跨時比較.html#cb301-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-12"><a href="案例產假支薪跨國跨時比較.html#cb301-12" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb301-13"><a href="案例產假支薪跨國跨時比較.html#cb301-13" aria-hidden="true" tabindex="-1"></a><span class="co"># m55&lt;- m5[m5$&#39;matleave_95&#39; == 5,]</span></span>
+<span id="cb301-14"><a href="案例產假支薪跨國跨時比較.html#cb301-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-15"><a href="案例產假支薪跨國跨時比較.html#cb301-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb301-16"><a href="案例產假支薪跨國跨時比較.html#cb301-16" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb301-17"><a href="案例產假支薪跨國跨時比較.html#cb301-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
+<span id="cb301-18"><a href="案例產假支薪跨國跨時比較.html#cb301-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
+<span id="cb301-19"><a href="案例產假支薪跨國跨時比較.html#cb301-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb301-20"><a href="案例產假支薪跨國跨時比較.html#cb301-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb301-21"><a href="案例產假支薪跨國跨時比較.html#cb301-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+</div>
+<div id="more-clean-version" class="section level3 hasAnchor" number="5.1.9">
+<h3><span class="header-section-number">5.1.9</span> (More) Clean version<a href="案例產假支薪跨國跨時比較.html#more-clean-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="案例產假支薪跨國跨時比較.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readxl::read_excel() to import the xls file</span></span>
+<span id="cb302-2"><a href="案例產假支薪跨國跨時比較.html#cb302-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
+<span id="cb302-3"><a href="案例產假支薪跨國跨時比較.html#cb302-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-4"><a href="案例產假支薪跨國跨時比較.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="co"># select iso3, and matleave columns by index</span></span>
+<span id="cb302-5"><a href="案例產假支薪跨國跨時比較.html#cb302-5" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb302-6"><a href="案例產假支薪跨國跨時比較.html#cb302-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-7"><a href="案例產假支薪跨國跨時比較.html#cb302-7" aria-hidden="true" tabindex="-1"></a><span class="co"># str() to inspect the data structure of </span></span>
+<span id="cb302-8"><a href="案例產假支薪跨國跨時比較.html#cb302-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## tibble [197 × 20] (S3: tbl_df/tbl/data.frame)
+##  $ iso3       : chr [1:197] &quot;AFG&quot; &quot;ALB&quot; &quot;DZA&quot; &quot;AND&quot; ...
+##  $ matleave_95: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_96: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_97: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_98: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_99: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_00: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_01: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_02: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_03: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_04: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_05: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_06: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_07: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_08: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_09: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_10: num [1:197] 2 5 3 3 2 2 2 5 NA 5 ...
+##  $ matleave_11: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_12: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_13: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...</code></pre>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="案例產假支薪跨國跨時比較.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
+<span id="cb304-2"><a href="案例產假支薪跨國跨時比較.html#cb304-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb304-3"><a href="案例產假支薪跨國跨時比較.html#cb304-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-4"><a href="案例產假支薪跨國跨時比較.html#cb304-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb304-5"><a href="案例產假支薪跨國跨時比較.html#cb304-5" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span> <span class="sc">==</span> <span class="dv">5</span>, ]</span>
+<span id="cb304-6"><a href="案例產假支薪跨國跨時比較.html#cb304-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-7"><a href="案例產假支薪跨國跨時比較.html#cb304-7" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb304-8"><a href="案例產假支薪跨國跨時比較.html#cb304-8" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span> <span class="sc">==</span> <span class="dv">5</span>,]</span>
+<span id="cb304-9"><a href="案例產假支薪跨國跨時比較.html#cb304-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-10"><a href="案例產假支薪跨國跨時比較.html#cb304-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb304-11"><a href="案例產假支薪跨國跨時比較.html#cb304-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb304-12"><a href="案例產假支薪跨國跨時比較.html#cb304-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
+<span id="cb304-13"><a href="案例產假支薪跨國跨時比較.html#cb304-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
+<span id="cb304-14"><a href="案例產假支薪跨國跨時比較.html#cb304-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb304-15"><a href="案例產假支薪跨國跨時比較.html#cb304-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb304-16"><a href="案例產假支薪跨國跨時比較.html#cb304-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="案例產假支薪跨國跨時比較.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb305-2"><a href="案例產假支薪跨國跨時比較.html#cb305-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb305-3"><a href="案例產假支薪跨國跨時比較.html#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb305-4"><a href="案例產假支薪跨國跨時比較.html#cb305-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-5"><a href="案例產假支薪跨國跨時比較.html#cb305-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb305-6"><a href="案例產假支薪跨國跨時比較.html#cb305-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb305-7"><a href="案例產假支薪跨國跨時比較.html#cb305-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(iso3, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb305-8"><a href="案例產假支薪跨國跨時比較.html#cb305-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(matleave_13 <span class="sc">==</span> <span class="dv">5</span>, matleave_95 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb305-9"><a href="案例產假支薪跨國跨時比較.html#cb305-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;degree&quot;</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb305-10"><a href="案例產假支薪跨國跨時比較.html#cb305-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(year, degree, fill = 0) %&gt;% View</span></span>
+<span id="cb305-11"><a href="案例產假支薪跨國跨時比較.html#cb305-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb305-12"><a href="案例產假支薪跨國跨時比較.html#cb305-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year2 =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(year, <span class="st">&quot;matleave_%y&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb305-13"><a href="案例產假支薪跨國跨時比較.html#cb305-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year3 =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(year2)) <span class="sc">%&gt;%</span></span>
+<span id="cb305-14"><a href="案例產假支薪跨國跨時比較.html#cb305-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb305-15"><a href="案例產假支薪跨國跨時比較.html#cb305-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year3, degree) <span class="sc">+</span> </span>
+<span id="cb305-16"><a href="案例產假支薪跨國跨時比較.html#cb305-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb305-17"><a href="案例產假支薪跨國跨時比較.html#cb305-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> iso3) <span class="sc">+</span></span>
+<span id="cb305-18"><a href="案例產假支薪跨國跨時比較.html#cb305-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+</div>
+<div id="more-the-fittest-version-to-compute-staysame" class="section level3 hasAnchor" number="5.1.10">
+<h3><span class="header-section-number">5.1.10</span> (More) The fittest version to compute staySame<a href="案例產假支薪跨國跨時比較.html#more-the-fittest-version-to-compute-staysame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="案例產假支薪跨國跨時比較.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame version</span></span>
+<span id="cb306-2"><a href="案例產假支薪跨國跨時比較.html#cb306-2" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame &lt;- apply(m5[,2:20], 1, function(x) length(unique(x[!is.na(x)]))) </span></span>
+<span id="cb306-3"><a href="案例產假支薪跨國跨時比較.html#cb306-3" aria-hidden="true" tabindex="-1"></a><span class="co"># m55 &lt;- m5[staySame, ]</span></span>
+<span id="cb306-4"><a href="案例產假支薪跨國跨時比較.html#cb306-4" aria-hidden="true" tabindex="-1"></a><span class="co"># m50 &lt;- m5[!staySame, ]</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="使用基礎r套件.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="樞紐分析台北住宅竊盜點位.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R21_readxl_paid_maternal.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R for Data Journalism.pdf", "R for Data Journalism.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

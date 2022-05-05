@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 練習：讀取台北住宅竊盜點位資料 | R for Data Journalism</title>
+  <meta name="description" content="For my Class teaching how to make data news reports" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 練習：讀取台北住宅竊盜點位資料 | R for Data Journalism" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="For my Class teaching how to make data news reports" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 練習：讀取台北住宅竊盜點位資料 | R for Data Journalism" />
+  
+  <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
+  
+
+<meta name="author" content="HSIEH, JI-LUNG" />
+
+
+<meta name="date" content="2022-05-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="練習載入dcard頁面資料.html"/>
+<link rel="next" href="vectors.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for Data Journalism</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I R BASIC</b></span></li>
+<li class="chapter" data-level="2" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>2</b> R語言基礎</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="使用rstudio.html"><a href="使用rstudio.html"><i class="fa fa-check"></i><b>2.1</b> 使用RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="練習載入dcard頁面資料.html"><a href="練習載入dcard頁面資料.html"><i class="fa fa-check"></i><b>2.2</b> 練習：載入dcard頁面資料</a></li>
+<li class="chapter" data-level="2.3" data-path="練習讀取台北住宅竊盜點位資料.html"><a href="練習讀取台北住宅竊盜點位資料.html"><i class="fa fa-check"></i><b>2.3</b> 練習：讀取台北住宅竊盜點位資料</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-syntax.html"><a href="r-syntax.html"><i class="fa fa-check"></i><b>3.1</b> R Syntax</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-operations.html"><a href="basic-operations.html"><i class="fa fa-check"></i><b>3.2</b> Basic operations</a></li>
+<li class="chapter" data-level="3.3" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html"><i class="fa fa-check"></i><b>3.3</b> Calculating with vectors</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3.4</b> Data types</a></li>
+<li class="chapter" data-level="3.5" data-path="character-operations.html"><a href="character-operations.html"><i class="fa fa-check"></i><b>3.5</b> Character operations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>4</b> Dataframe</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="基本操作.html"><a href="基本操作.html"><i class="fa fa-check"></i><b>4.1</b> 基本操作</a></li>
+<li class="chapter" data-level="4.2" data-path="簡易繪圖.html"><a href="簡易繪圖.html"><i class="fa fa-check"></i><b>4.2</b> 簡易繪圖</a></li>
+<li class="chapter" data-level="4.3" data-path="基本操作使用dplyr.html"><a href="基本操作使用dplyr.html"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="tibble-data_frame-data.html"><a href="tibble-data_frame-data.html"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Data Analysis with R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="case-paid-maternal-leave.html"><a href="case-paid-maternal-leave.html"><i class="fa fa-check"></i><b>5.1</b> Case: Paid Maternal Leave</a></li>
+<li class="chapter" data-level="5.2" data-path="pivot-analysis-on-tp-theft.html"><a href="pivot-analysis-on-tp-theft.html"><i class="fa fa-check"></i><b>5.2</b> Pivot Analysis on TP Theft</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Manipulation</b></span></li>
+<li class="chapter" data-level="6" data-path="data-manipulation-wity-tidyverse.html"><a href="data-manipulation-wity-tidyverse.html"><i class="fa fa-check"></i><b>6</b> Data Manipulation wity tidyverse</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html"><i class="fa fa-check"></i><b>6.1</b> base to dplyr: TP Theft</a></li>
+<li class="chapter" data-level="6.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>6.2</b> 時間軸的視覺化</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Explore Data Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html"><i class="fa fa-check"></i><b>7.1</b> TW AQI Visual Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>8</b> Text Processing</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tweets-分析.html"><a href="tweets-分析.html"><i class="fa fa-check"></i><b>8.1</b> Tweets 分析</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>9</b> Crawler</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>9.1</b> Scraping 104.com</a></li>
+</ul></li>
+<li class="part"><span><b>III VISUALIZATION</b></span></li>
+<li class="chapter" data-level="10" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>10</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="10.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html"><i class="fa fa-check"></i><b>10.2</b> 繪圖基礎：折線圖</a></li>
+<li class="chapter" data-level="10.3" data-path="圖表調整.html"><a href="圖表調整.html"><i class="fa fa-check"></i><b>10.3</b> 圖表調整</a></li>
+<li class="chapter" data-level="10.4" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html"><i class="fa fa-check"></i><b>10.4</b> 視覺化說故事的技巧</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>11</b> COORDINATE</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>11.1</b> 排序以展示分佈</a></li>
+<li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a></li>
+<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>12</b> COLORS</a></li>
+<li class="chapter" data-level="13" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>13</b> CHART TYPES</a></li>
+<li class="chapter" data-level="14" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>14</b> AMOUNT</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>14.1</b> Bar chart</a></li>
+<li class="chapter" data-level="14.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>14.2</b> Heatmap: Vaccination</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>15</b> DISTRIBUTION: Histogram &amp; Density</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>15.1</b> Density plot</a></li>
+<li class="chapter" data-level="15.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>15.2</b> Histogram</a></li>
+<li class="chapter" data-level="15.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>15.3</b> Pyramid Plot</a></li>
+<li class="chapter" data-level="15.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>15.4</b> Box plot: Muitiple Distrubution</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>16</b> PROPORTION</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>16.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="16.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>16.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="16.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>16.3</b> Treemap: Nested Proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>17</b> ASSOCIATION</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>17.1</b> 等比例座標軸</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>18</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="19" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>19</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="20" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>20</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>20.1</b> Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>21</b> WGOITG of NyTimes</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>21.1</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="21.2" data-path="unicef-global-survey-optimism.html"><a href="unicef-global-survey-optimism.html"><i class="fa fa-check"></i><b>21.2</b> UNICEF-Global Survey Optimism</a></li>
+<li class="chapter" data-level="21.3" data-path="global-carbon-projects.html"><a href="global-carbon-projects.html"><i class="fa fa-check"></i><b>21.3</b> Global Carbon Projects</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Journalism</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="練習讀取台北住宅竊盜點位資料" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 練習：讀取台北住宅竊盜點位資料<a href="練習讀取台北住宅竊盜點位資料.html#練習讀取台北住宅竊盜點位資料" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Go to data.taipei</li>
+<li>Make a query “住宅竊盜”</li>
+<li>Open “住宅竊盜點位資訊”</li>
+<li>Click “API”</li>
+<li>Copy the API address and assign to url</li>
+</ul>
+<div id="讀取先行下載的csv檔" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 讀取先行下載的csv檔<a href="練習讀取台北住宅竊盜點位資料.html#讀取先行下載的csv檔" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="練習讀取台北住宅竊盜點位資料.html#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb8-2"><a href="練習讀取台北住宅竊盜點位資料.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+編號
+</th>
+<th style="text-align:left;">
+案類
+</th>
+<th style="text-align:right;">
+發生日期
+</th>
+<th style="text-align:left;">
+發生時段
+</th>
+<th style="text-align:left;">
+發生地點
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1030623
+</td>
+<td style="text-align:left;">
+08~10
+</td>
+<td style="text-align:left;">
+臺北市中正區廈門街91~120號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+00~02
+</td>
+<td style="text-align:left;">
+臺北市文山區萬美里萬寧街1~30號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+00~02
+</td>
+<td style="text-align:left;">
+臺北市信義區富台里忠孝東路5段295巷6弄1~30號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+06~08
+</td>
+<td style="text-align:left;">
+臺北市中山區新生北路1段91~120號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+10~12
+</td>
+<td style="text-align:left;">
+臺北市文山區明興里興隆路4段1~30號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040102
+</td>
+<td style="text-align:left;">
+00~02
+</td>
+<td style="text-align:left;">
+臺北市士林區天福里1鄰忠誠路2段130巷1~30號
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="直接從網路載入內政部開放資料" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 直接從網路載入內政部開放資料<a href="練習讀取台北住宅竊盜點位資料.html#直接從網路載入內政部開放資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="練習讀取台北住宅竊盜點位資料.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb9-2"><a href="練習讀取台北住宅竊盜點位資料.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb9-3"><a href="練習讀取台北住宅竊盜點位資料.html#cb9-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP024/107?page=1&quot;</span></span>
+<span id="cb9-4"><a href="練習讀取台北住宅竊盜點位資料.html#cb9-4" aria-hidden="true" tabindex="-1"></a>first_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb9-5"><a href="練習讀取台北住宅竊盜點位資料.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="16%" />
+<col width="10%" />
+<col width="8%" />
+<col width="5%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">statistic_yyy</th>
+<th align="left">district_code</th>
+<th align="left">site_id</th>
+<th align="left">village</th>
+<th align="left">edu</th>
+<th align="left">sex</th>
+<th align="left">headhousehold_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">博畢</td>
+<td align="left">男</td>
+<td align="left">3</td>
+</tr>
+<tr class="even">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">碩畢</td>
+<td align="left">男</td>
+<td align="left">26</td>
+</tr>
+<tr class="odd">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">大畢</td>
+<td align="left">男</td>
+<td align="left">71</td>
+</tr>
+<tr class="even">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">專畢</td>
+<td align="left">男</td>
+<td align="left">52</td>
+</tr>
+<tr class="odd">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">高中畢</td>
+<td align="left">男</td>
+<td align="left">122</td>
+</tr>
+<tr class="even">
+<td align="left">107</td>
+<td align="left">65000010001</td>
+<td align="left">新北市板橋區</td>
+<td align="left">留侯里</td>
+<td align="left">國中畢</td>
+<td align="left">男</td>
+<td align="left">40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="獲取ubike即時資料" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> 獲取ubike即時資料<a href="練習讀取台北住宅竊盜點位資料.html#獲取ubike即時資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><a href="https://taipeicity.github.io/traffic_realtime/" class="uri">https://taipeicity.github.io/traffic_realtime/</a></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="練習讀取台北住宅竊盜點位資料.html#cb10-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json&quot;</span></span>
+<span id="cb10-2"><a href="練習讀取台北住宅竊盜點位資料.html#cb10-2" aria-hidden="true" tabindex="-1"></a>ubike.list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url),<span class="st">&quot;text&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf-8&quot;</span>))</span>
+<span id="cb10-3"><a href="練習讀取台北住宅竊盜點位資料.html#cb10-3" aria-hidden="true" tabindex="-1"></a>ubike.v <span class="ot">&lt;-</span> <span class="fu">unlist</span>(ubike.list<span class="sc">$</span>retVal)</span>
+<span id="cb10-4"><a href="練習讀取台北住宅竊盜點位資料.html#cb10-4" aria-hidden="true" tabindex="-1"></a>ubike.m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ubike.v, <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">14</span>)</span>
+<span id="cb10-5"><a href="練習讀取台北住宅竊盜點位資料.html#cb10-5" aria-hidden="true" tabindex="-1"></a>ubike.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ubike.m)</span>
+<span id="cb10-6"><a href="練習讀取台北住宅竊盜點位資料.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
+<span id="cb10-7"><a href="練習讀取台北住宅竊盜點位資料.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="1%" />
+<col width="9%" />
+<col width="1%" />
+<col width="1%" />
+<col width="2%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="22%" />
+<col width="4%" />
+<col width="15%" />
+<col width="21%" />
+<col width="1%" />
+<col width="1%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">sno</th>
+<th align="left">sna</th>
+<th align="left">tot</th>
+<th align="left">sbi</th>
+<th align="left">sarea</th>
+<th align="left">mday</th>
+<th align="left">lat</th>
+<th align="left">lng</th>
+<th align="left">ar</th>
+<th align="left">sareaen</th>
+<th align="left">snaen</th>
+<th align="left">aren</th>
+<th align="left">bemp</th>
+<th align="left">act</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0001</td>
+<td align="left">捷運市政府站(3號出口)</td>
+<td align="left">88</td>
+<td align="left">57</td>
+<td align="left">信義區</td>
+<td align="left">20220505091031</td>
+<td align="left">25.0408578889</td>
+<td align="left">121.567904444</td>
+<td align="left">忠孝東路/松仁路(東南側)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">MRT Taipei City Hall Stataion(Exit 3)-2</td>
+<td align="left">The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.</td>
+<td align="left">31</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">0002</td>
+<td align="left">捷運國父紀念館站(2號出口)</td>
+<td align="left">16</td>
+<td align="left">14</td>
+<td align="left">大安區</td>
+<td align="left">20220505091020</td>
+<td align="left">25.041254</td>
+<td align="left">121.55742</td>
+<td align="left">忠孝東路四段/光復南路口(西南側)</td>
+<td align="left">Daan Dist.</td>
+<td align="left">MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
+<td align="left">Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
+<td align="left">2</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">0004</td>
+<td align="left">市民廣場</td>
+<td align="left">32</td>
+<td align="left">14</td>
+<td align="left">信義區</td>
+<td align="left">20220505091026</td>
+<td align="left">25.0360361111</td>
+<td align="left">121.562325</td>
+<td align="left">市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">Citizen Square</td>
+<td align="left">The N.W. side of Road Shifu &amp; Road Song Shou.</td>
+<td align="left">17</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">0005</td>
+<td align="left">興雅國中</td>
+<td align="left">32</td>
+<td align="left">11</td>
+<td align="left">信義區</td>
+<td align="left">20220505091020</td>
+<td align="left">25.0365638889</td>
+<td align="left">121.5686639</td>
+<td align="left">松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">Xingya Jr. High School</td>
+<td align="left">The S.E. side of Road Songren &amp; Ln. 95, Songren Rd..</td>
+<td align="left">21</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">0006</td>
+<td align="left">臺北南山廣場</td>
+<td align="left">54</td>
+<td align="left">1</td>
+<td align="left">信義區</td>
+<td align="left">20220505091042</td>
+<td align="left">25.034047</td>
+<td align="left">121.565973</td>
+<td align="left">松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">NAN SHAN PLAZA</td>
+<td align="left">The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+<td align="left">48</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">0007</td>
+<td align="left">信義廣場(台北101)</td>
+<td align="left">80</td>
+<td align="left">65</td>
+<td align="left">信義區</td>
+<td align="left">20220505091017</td>
+<td align="left">25.0330388889</td>
+<td align="left">121.565619444</td>
+<td align="left">松智路/信義路(東北側) (鄰近台北101)</td>
+<td align="left">Xinyi Dist.</td>
+<td align="left">Xinyi Square(Taipei 101)</td>
+<td align="left">The N.E. side of Road Song Zhi &amp; Road Xinyi.</td>
+<td align="left">15</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="練習載入dcard頁面資料.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R11_using_r.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R for Data Journalism.pdf", "R for Data Journalism.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
