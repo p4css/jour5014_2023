@@ -52,18 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -131,28 +119,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -440,40 +406,40 @@ div.csl-indent {
 <div id="載入dcard頁面資料" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> 載入dcard頁面資料<a href="第一次資料嘗試.html#載入dcard頁面資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>先不要去管以下程式碼如<code>fromJSON(content(GET(url), "text"))</code>是什麼意思，先著重在語言的形式。通常一個函式會寫為<code>func_name()</code>，所以上述其實是三個函式由內而外一層套一層，從最內層開始往外做。這其實很「make-sense」，因為如果你有一個數學式<code>(1 + (3-3)/2)/8</code>，也是會從最裡面那層做出來。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="第一次資料嘗試.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb6-2"><a href="第一次資料嘗試.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb6-3"><a href="第一次資料嘗試.html#cb6-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.dcard.tw/_api/forums/relationship/posts?popular=true&quot;</span></span>
-<span id="cb6-4"><a href="第一次資料嘗試.html#cb6-4" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb6-5"><a href="第一次資料嘗試.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># View(res)</span></span>
-<span id="cb6-6"><a href="第一次資料嘗試.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="第一次資料嘗試.html#cb6-7" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="第一次資料嘗試.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb5-2"><a href="第一次資料嘗試.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb5-3"><a href="第一次資料嘗試.html#cb5-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.dcard.tw/_api/forums/relationship/posts?popular=true&quot;</span></span>
+<span id="cb5-4"><a href="第一次資料嘗試.html#cb5-4" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb5-5"><a href="第一次資料嘗試.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># View(res)</span></span>
+<span id="cb5-6"><a href="第一次資料嘗試.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="第一次資料嘗試.html#cb5-7" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(res)</span></code></pre></div>
 <pre class="output"><code>## Rows: 30
 ## Columns: 53
-## $ id                      &lt;int&gt; 235931948, 238786114, 238791140, 238789541, 23…
-## $ title                   &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;去年...我在精…
+## $ id                      &lt;int&gt; 235931948, 238796366, 238791140, 238789541, 23…
+## $ title                   &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;有沒有單身的…
 ## $ excerpt                 &lt;chr&gt; &quot;各位卡友們好，小天使近期收到許多關於感情板西…
-## $ anonymousSchool         &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE,…
+## $ anonymousSchool         &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, …
 ## $ anonymousDepartment     &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE…
 ## $ pinned                  &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
 ## $ forumId                 &lt;chr&gt; &quot;42851318-b9e2-4a75-8a05-9fe180becefe&quot;, &quot;42851…
 ## $ replyId                 &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ createdAt               &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-05-03T13:43:…
-## $ updatedAt               &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-05-03T13:43:…
-## $ commentCount            &lt;int&gt; 34, 62, 95, 96, 71, 144, 231, 40, 37, 42, 30, …
-## $ likeCount               &lt;int&gt; 321, 835, 324, 251, 228, 218, 176, 173, 95, 80…
-## $ withNickname            &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, FA…
+## $ createdAt               &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-05-04T15:23:…
+## $ updatedAt               &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-05-05T06:05:…
+## $ commentCount            &lt;int&gt; 34, 1031, 121, 129, 249, 227, 78, 101, 12, 34,…
+## $ likeCount               &lt;int&gt; 321, 817, 477, 361, 345, 301, 272, 191, 95, 92…
+## $ withNickname            &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, F…
 ## $ tags                    &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &quot;HIDE_THUMB…
-## $ topics                  &lt;list&gt; &lt;&gt;, &lt;&quot;精神病院&quot;, &quot;老婆&quot;, &quot;遇到&quot;, &quot;愛情&quot;&gt;, &lt;&quot;…
+## $ topics                  &lt;list&gt; &lt;&gt;, &lt;&quot;單身&quot;, &quot;男生&quot;, &quot;認識&quot;, &quot;愛情&quot;&gt;, &lt;&quot;前男…
 ## $ meta                    &lt;df[,3]&gt; &lt;data.frame[26 x 3]&gt;
 ## $ forumName               &lt;chr&gt; &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感…
 ## $ forumAlias              &lt;chr&gt; &quot;relationship&quot;, &quot;relationship&quot;, &quot;relationship&quot;…
 ## $ nsfw                    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ gender                  &lt;chr&gt; &quot;D&quot;, &quot;M&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;…
-## $ school                  &lt;chr&gt; &quot;客服小天使&quot;, &quot;璟兒&quot;, &quot;艾瑪&quot;, &quot;Atticus&quot;, NA, N…
-## $ department              &lt;chr&gt; &quot;dcard_support_1&quot;, &quot;wowbeach978&quot;, &quot;emma0109&quot;, …
+## $ gender                  &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;…
+## $ school                  &lt;chr&gt; &quot;客服小天使&quot;, &quot;貝果&quot;, &quot;艾瑪&quot;, &quot;Atticus&quot;, NA, N…
+## $ department              &lt;chr&gt; &quot;dcard_support_1&quot;, &quot;s517070&quot;, &quot;emma0109&quot;, &quot;jpn…
 ## $ replyTitle              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ mediaMeta               &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[2 x 10]&gt;],…
-## $ reactions               &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[3 x 2]&gt;],…
+## $ mediaMeta               &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[6 x 10]&gt;],…
+## $ reactions               &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[5 x 2]&gt;],…
 ## $ hidden                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
 ## $ customStyle             &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 ## $ isSuspiciousAccount     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
@@ -485,10 +451,10 @@ div.csl-indent {
 ## $ categories              &lt;list&gt; &quot;公告&quot;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;…
 ## $ isSelectedPost          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
 ## $ unsafe                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ totalCommentCount       &lt;int&gt; 34, 168, 177, 201, 80, 245, 330, 105, 82, 67, …
-## $ withImages              &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, F…
+## $ totalCommentCount       &lt;int&gt; 34, 1507, 220, 282, 378, 357, 93, 140, 20, 42,…
+## $ withImages              &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, …
 ## $ withVideos              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ media                   &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[1 x 1]&gt;], …
+## $ media                   &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[5 x 1]&gt;], …
 ## $ reportReasonText        &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
 ## $ supportedReactions      &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 ## $ excerptComments         &lt;list&gt; [], [], [], [], [], [], [], [], [], [], [], []…
@@ -498,12 +464,12 @@ div.csl-indent {
 ## $ activityAvatar          &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
 ## $ verifiedBadge           &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
 ## $ memberType              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
+## $ enablePrivateMessage    &lt;lgl&gt; NA, FALSE, FALSE, NA, NA, NA, FALSE, FALSE, NA…
 ## $ enableNestedComment     &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …
-## $ enablePrivateMessage    &lt;lgl&gt; NA, NA, FALSE, NA, FALSE, NA, NA, NA, NA, NA, …
 ## $ leaderboardCategoryId   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 ## $ leaderboardCategoryName &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="第一次資料嘗試.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, title, excerpt) <span class="sc">%&gt;%</span> <span class="fu">kbl</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span></code></pre></div>
-<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="第一次資料嘗試.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, title, excerpt)</span></code></pre></div>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -531,13 +497,13 @@ excerpt
 </tr>
 <tr>
 <td style="text-align:right;">
-238786114
+238796366
 </td>
 <td style="text-align:left;">
-去年…我在精神病院遇到了我老婆
+有沒有單身的男生要來認識的😢
 </td>
 <td style="text-align:left;">
-這個故事要從去年說起…，去年開始部隊又開始接義務役，很幸運的是，裡面來了一個情緒管控不太好的士兵…，在留守的那週副排打了通電話給我。內容是現在馬上換便服，副排帶你出去玩…，心裡知道這肯定有
+護理師的工作環境都是女生…，出社會之後真的很難認識的男生了，每天幫忙打疫苗就飽了，我不要啊…來點男生認識一下好嗎，更—————，別篇才能私訊此版沒開放私訊的功能
 </td>
 </tr>
 <tr>
@@ -548,7 +514,7 @@ excerpt
 前男友是恐怖情人
 </td>
 <td style="text-align:left;">
-在講故事之前 我知道報警就能解決 但我今年19歲 不是我想怎樣就怎樣 我也需要尊重我家人的意見，當時我17歲他24歲 我摩羯座 他天蠍座，我前男友是個恐怖情人，我跟他在一起一年多的時間，其實他對我很
+在講故事之前 我知道報警就能解決 但我今年19歲 不是我想怎樣就怎樣 我也需要尊重我家人的意見，當時我17歲他24歲 我摩羯座 他天蠍座（只是介紹不是想定義什麼），我前男友是個恐怖情人，我跟他在一起
 </td>
 </tr>
 <tr>
@@ -564,13 +530,13 @@ excerpt
 </tr>
 <tr>
 <td style="text-align:right;">
-238788667
+238797238
 </td>
 <td style="text-align:left;">
-還沒答應在一起卻已經把我當作他女朋友
+被騙炮了要怎麼辦
 </td>
 <td style="text-align:left;">
-因為遊戲認識一起玩了幾個月，剛開始也是覺得蠻聊得來的，人好像不錯，氣氛才變得曖昧，想說還沒認識多久，也不知道他真正個性是怎樣，先多觀察一下，我是偏好日久生情的路線，殊不知他直接暈船暈爆，三不五時丟球，
+去年耶誕節分手，網路上遇到一個男生，剛認識時各種虛寒問暖（我有點缺愛），聊了幾天一直盧我見面，我承認有好感才跟他見面，他開車來找我，吃完飯後他一直說很累想去旅館休息，我想說他很累開車危險，讓他去睡一覺
 </td>
 </tr>
 <tr>
@@ -599,9 +565,9 @@ excerpt
 </div>
 <div id="讀取先行下載的csv檔" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> 讀取先行下載的csv檔<a href="第一次資料嘗試.html#讀取先行下載的csv檔" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="第一次資料嘗試.html#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
-<span id="cb9-2"><a href="第一次資料嘗試.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<table>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="第一次資料嘗試.html#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb8-2"><a href="第一次資料嘗試.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -729,11 +695,11 @@ excerpt
 </div>
 <div id="直接從網路載入內政部開放資料" class="section level3 hasAnchor" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> 直接從網路載入內政部開放資料<a href="第一次資料嘗試.html#直接從網路載入內政部開放資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="第一次資料嘗試.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb10-2"><a href="第一次資料嘗試.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb10-3"><a href="第一次資料嘗試.html#cb10-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP024/107?page=1&quot;</span></span>
-<span id="cb10-4"><a href="第一次資料嘗試.html#cb10-4" aria-hidden="true" tabindex="-1"></a>first_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb10-5"><a href="第一次資料嘗試.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="第一次資料嘗試.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb9-2"><a href="第一次資料嘗試.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb9-3"><a href="第一次資料嘗試.html#cb9-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP024/107?page=1&quot;</span></span>
+<span id="cb9-4"><a href="第一次資料嘗試.html#cb9-4" aria-hidden="true" tabindex="-1"></a>first_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb9-5"><a href="第一次資料嘗試.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(戶長<span class="ot">=</span>headhousehold_count)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -756,7 +722,7 @@ edu
 sex
 </th>
 <th style="text-align:left;">
-headhousehold_count
+戶長
 </th>
 </tr>
 </thead>
@@ -907,13 +873,14 @@ headhousehold_count
 <ul>
 <li><a href="https://taipeicity.github.io/traffic_realtime/" class="uri">https://taipeicity.github.io/traffic_realtime/</a></li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="第一次資料嘗試.html#cb11-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json&quot;</span></span>
-<span id="cb11-2"><a href="第一次資料嘗試.html#cb11-2" aria-hidden="true" tabindex="-1"></a>ubike.list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url),<span class="st">&quot;text&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf-8&quot;</span>))</span>
-<span id="cb11-3"><a href="第一次資料嘗試.html#cb11-3" aria-hidden="true" tabindex="-1"></a>ubike.v <span class="ot">&lt;-</span> <span class="fu">unlist</span>(ubike.list<span class="sc">$</span>retVal)</span>
-<span id="cb11-4"><a href="第一次資料嘗試.html#cb11-4" aria-hidden="true" tabindex="-1"></a>ubike.m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ubike.v, <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">14</span>)</span>
-<span id="cb11-5"><a href="第一次資料嘗試.html#cb11-5" aria-hidden="true" tabindex="-1"></a>ubike.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ubike.m)</span>
-<span id="cb11-6"><a href="第一次資料嘗試.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
-<span id="cb11-7"><a href="第一次資料嘗試.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="第一次資料嘗試.html#cb10-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json&quot;</span></span>
+<span id="cb10-2"><a href="第一次資料嘗試.html#cb10-2" aria-hidden="true" tabindex="-1"></a>ubike.list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url),<span class="st">&quot;text&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf-8&quot;</span>))</span>
+<span id="cb10-3"><a href="第一次資料嘗試.html#cb10-3" aria-hidden="true" tabindex="-1"></a>ubike.v <span class="ot">&lt;-</span> <span class="fu">unlist</span>(ubike.list<span class="sc">$</span>retVal)</span>
+<span id="cb10-4"><a href="第一次資料嘗試.html#cb10-4" aria-hidden="true" tabindex="-1"></a>ubike.m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ubike.v, <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">14</span>)</span>
+<span id="cb10-5"><a href="第一次資料嘗試.html#cb10-5" aria-hidden="true" tabindex="-1"></a>ubike.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ubike.m)</span>
+<span id="cb10-6"><a href="第一次資料嘗試.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
+<span id="cb10-7"><a href="第一次資料嘗試.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="第一次資料嘗試.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -935,30 +902,6 @@ sarea
 <th style="text-align:left;">
 mday
 </th>
-<th style="text-align:left;">
-lat
-</th>
-<th style="text-align:left;">
-lng
-</th>
-<th style="text-align:left;">
-ar
-</th>
-<th style="text-align:left;">
-sareaen
-</th>
-<th style="text-align:left;">
-snaen
-</th>
-<th style="text-align:left;">
-aren
-</th>
-<th style="text-align:left;">
-bemp
-</th>
-<th style="text-align:left;">
-act
-</th>
 </tr>
 </thead>
 <tbody>
@@ -973,37 +916,13 @@ act
 88
 </td>
 <td style="text-align:left;">
-51
+60
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505100131
-</td>
-<td style="text-align:left;">
-25.0408578889
-</td>
-<td style="text-align:left;">
-121.567904444
-</td>
-<td style="text-align:left;">
-忠孝東路/松仁路(東南側)
-</td>
-<td style="text-align:left;">
-Xinyi Dist.
-</td>
-<td style="text-align:left;">
-MRT Taipei City Hall Stataion(Exit 3)-2
-</td>
-<td style="text-align:left;">
-The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.
-</td>
-<td style="text-align:left;">
-37
-</td>
-<td style="text-align:left;">
-1
+20220505150332
 </td>
 </tr>
 <tr>
@@ -1017,37 +936,13 @@ The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.
 16
 </td>
 <td style="text-align:left;">
-16
+5
 </td>
 <td style="text-align:left;">
 大安區
 </td>
 <td style="text-align:left;">
-20220505100120
-</td>
-<td style="text-align:left;">
-25.041254
-</td>
-<td style="text-align:left;">
-121.55742
-</td>
-<td style="text-align:left;">
-忠孝東路四段/光復南路口(西南側)
-</td>
-<td style="text-align:left;">
-Daan Dist.
-</td>
-<td style="text-align:left;">
-MRT S.Y.S Memorial Hall Stataion(Exit 2.)
-</td>
-<td style="text-align:left;">
-Sec,4. Zhongxiao E.Rd/GuangFu S. Rd
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-1
+20220505150319
 </td>
 </tr>
 <tr>
@@ -1061,37 +956,13 @@ Sec,4. Zhongxiao E.Rd/GuangFu S. Rd
 32
 </td>
 <td style="text-align:left;">
-16
+22
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505100126
-</td>
-<td style="text-align:left;">
-25.0360361111
-</td>
-<td style="text-align:left;">
-121.562325
-</td>
-<td style="text-align:left;">
-市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)
-</td>
-<td style="text-align:left;">
-Xinyi Dist.
-</td>
-<td style="text-align:left;">
-Citizen Square
-</td>
-<td style="text-align:left;">
-The N.W. side of Road Shifu &amp; Road Song Shou.
-</td>
-<td style="text-align:left;">
-15
-</td>
-<td style="text-align:left;">
-1
+20220505150326
 </td>
 </tr>
 <tr>
@@ -1105,37 +976,13 @@ The N.W. side of Road Shifu &amp; Road Song Shou.
 32
 </td>
 <td style="text-align:left;">
-2
+9
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505100121
-</td>
-<td style="text-align:left;">
-25.0365638889
-</td>
-<td style="text-align:left;">
-121.5686639
-</td>
-<td style="text-align:left;">
-松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)
-</td>
-<td style="text-align:left;">
-Xinyi Dist.
-</td>
-<td style="text-align:left;">
-Xingya Jr. High School
-</td>
-<td style="text-align:left;">
-The S.E. side of Road Songren &amp; Ln. 95, Songren Rd..
-</td>
-<td style="text-align:left;">
-30
-</td>
-<td style="text-align:left;">
-1
+20220505150320
 </td>
 </tr>
 <tr>
@@ -1149,37 +996,13 @@ The S.E. side of Road Songren &amp; Ln. 95, Songren Rd..
 54
 </td>
 <td style="text-align:left;">
-13
+33
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505100141
-</td>
-<td style="text-align:left;">
-25.034047
-</td>
-<td style="text-align:left;">
-121.565973
-</td>
-<td style="text-align:left;">
-松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)
-</td>
-<td style="text-align:left;">
-Xinyi Dist.
-</td>
-<td style="text-align:left;">
-NAN SHAN PLAZA
-</td>
-<td style="text-align:left;">
-The N.E. side of Road Song Zhi &amp; Road Song Lian.
-</td>
-<td style="text-align:left;">
-36
-</td>
-<td style="text-align:left;">
-1
+20220505150344
 </td>
 </tr>
 <tr>
@@ -1193,37 +1016,13 @@ The N.E. side of Road Song Zhi &amp; Road Song Lian.
 80
 </td>
 <td style="text-align:left;">
-70
+65
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505100117
-</td>
-<td style="text-align:left;">
-25.0330388889
-</td>
-<td style="text-align:left;">
-121.565619444
-</td>
-<td style="text-align:left;">
-松智路/信義路(東北側) (鄰近台北101)
-</td>
-<td style="text-align:left;">
-Xinyi Dist.
-</td>
-<td style="text-align:left;">
-Xinyi Square(Taipei 101)
-</td>
-<td style="text-align:left;">
-The N.E. side of Road Song Zhi &amp; Road Xinyi.
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-1
+20220505150336
 </td>
 </tr>
 </tbody>
@@ -1293,20 +1092,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
