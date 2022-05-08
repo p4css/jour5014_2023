@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-05" />
+<meta name="date" content="2022-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.22/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -439,89 +438,85 @@ div.csl-indent {
 <h2><span class="header-section-number">15.2</span> Histogram<a href="histogram.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="histogram-with-different-number-of-bins" class="section level3 hasAnchor" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> Histogram with different number of bins<a href="histogram.html#histogram-with-different-number-of-bins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="histogram.html#cb495-1" aria-hidden="true" tabindex="-1"></a>p10 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb495-2"><a href="histogram.html#cb495-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
-<span id="cb495-3"><a href="histogram.html#cb495-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">10</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
-<span id="cb495-4"><a href="histogram.html#cb495-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-5"><a href="histogram.html#cb495-5" aria-hidden="true" tabindex="-1"></a>p20 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb495-6"><a href="histogram.html#cb495-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
-<span id="cb495-7"><a href="histogram.html#cb495-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
-<span id="cb495-8"><a href="histogram.html#cb495-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-9"><a href="histogram.html#cb495-9" aria-hidden="true" tabindex="-1"></a>p30 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb495-10"><a href="histogram.html#cb495-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
-<span id="cb495-11"><a href="histogram.html#cb495-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
-<span id="cb495-12"><a href="histogram.html#cb495-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-13"><a href="histogram.html#cb495-13" aria-hidden="true" tabindex="-1"></a>p40 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb495-14"><a href="histogram.html#cb495-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
-<span id="cb495-15"><a href="histogram.html#cb495-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">40</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
-<span id="cb495-16"><a href="histogram.html#cb495-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-17"><a href="histogram.html#cb495-17" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb495-18"><a href="histogram.html#cb495-18" aria-hidden="true" tabindex="-1"></a>  p10, p20, p30, p40,</span>
-<span id="cb495-19"><a href="histogram.html#cb495-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) bins=10&quot;</span>, <span class="st">&quot;(b) bins=20&quot;</span>, <span class="st">&quot;(c) bins=30&quot;</span>, <span class="st">&quot;(b) bins=40&quot;</span>),</span>
-<span id="cb495-20"><a href="histogram.html#cb495-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb495-21"><a href="histogram.html#cb495-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/Fig.v1.geom_histogram-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="histogram.html#cb472-1" aria-hidden="true" tabindex="-1"></a>p10 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb472-2"><a href="histogram.html#cb472-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
+<span id="cb472-3"><a href="histogram.html#cb472-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">10</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
+<span id="cb472-4"><a href="histogram.html#cb472-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb472-5"><a href="histogram.html#cb472-5" aria-hidden="true" tabindex="-1"></a>p20 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb472-6"><a href="histogram.html#cb472-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
+<span id="cb472-7"><a href="histogram.html#cb472-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
+<span id="cb472-8"><a href="histogram.html#cb472-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb472-9"><a href="histogram.html#cb472-9" aria-hidden="true" tabindex="-1"></a>p30 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb472-10"><a href="histogram.html#cb472-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
+<span id="cb472-11"><a href="histogram.html#cb472-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
+<span id="cb472-12"><a href="histogram.html#cb472-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb472-13"><a href="histogram.html#cb472-13" aria-hidden="true" tabindex="-1"></a>p40 <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb472-14"><a href="histogram.html#cb472-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡) <span class="sc">+</span> </span>
+<span id="cb472-15"><a href="histogram.html#cb472-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">40</span>, <span class="at">fill=</span><span class="st">&#39;royalblue&#39;</span>) <span class="sc">+</span> th</span>
+<span id="cb472-16"><a href="histogram.html#cb472-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb472-17"><a href="histogram.html#cb472-17" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb472-18"><a href="histogram.html#cb472-18" aria-hidden="true" tabindex="-1"></a>  p10, p20, p30, p40,</span>
+<span id="cb472-19"><a href="histogram.html#cb472-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) bins=10&quot;</span>, <span class="st">&quot;(b) bins=20&quot;</span>, <span class="st">&quot;(c) bins=30&quot;</span>, <span class="st">&quot;(b) bins=40&quot;</span>),</span>
+<span id="cb472-20"><a href="histogram.html#cb472-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb472-21"><a href="histogram.html#cb472-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="density-vs-histogram" class="section level3 hasAnchor" number="15.2.2">
 <h3><span class="header-section-number">15.2.2</span> Density vs histogram<a href="histogram.html#density-vs-histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="histogram.html#cb496-1" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb496-2"><a href="histogram.html#cb496-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
-<span id="cb496-3"><a href="histogram.html#cb496-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb496-4"><a href="histogram.html#cb496-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb496-5"><a href="histogram.html#cb496-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>),</span>
-<span id="cb496-6"><a href="histogram.html#cb496-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="st">&quot;Male&quot;</span>,<span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Female&quot;</span>),</span>
-<span id="cb496-7"><a href="histogram.html#cb496-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&#39;Sex&#39;</span></span>
-<span id="cb496-8"><a href="histogram.html#cb496-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb496-9"><a href="histogram.html#cb496-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-10"><a href="histogram.html#cb496-10" aria-hidden="true" tabindex="-1"></a>ph <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb496-11"><a href="histogram.html#cb496-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
-<span id="cb496-12"><a href="histogram.html#cb496-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb496-13"><a href="histogram.html#cb496-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb496-14"><a href="histogram.html#cb496-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;none&quot;</span>)</span>
-<span id="cb496-15"><a href="histogram.html#cb496-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-16"><a href="histogram.html#cb496-16" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb496-17"><a href="histogram.html#cb496-17" aria-hidden="true" tabindex="-1"></a>  pd, ph,</span>
-<span id="cb496-18"><a href="histogram.html#cb496-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) geom_density()&quot;</span>, <span class="st">&quot;(b) geom_histogram()&quot;</span>),</span>
-<span id="cb496-19"><a href="histogram.html#cb496-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
-<span id="cb496-20"><a href="histogram.html#cb496-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-159-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="histogram.html#cb473-1" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb473-2"><a href="histogram.html#cb473-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
+<span id="cb473-3"><a href="histogram.html#cb473-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb473-4"><a href="histogram.html#cb473-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb473-5"><a href="histogram.html#cb473-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>),</span>
+<span id="cb473-6"><a href="histogram.html#cb473-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="st">&quot;Male&quot;</span>,<span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Female&quot;</span>),</span>
+<span id="cb473-7"><a href="histogram.html#cb473-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&#39;Sex&#39;</span></span>
+<span id="cb473-8"><a href="histogram.html#cb473-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb473-9"><a href="histogram.html#cb473-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb473-10"><a href="histogram.html#cb473-10" aria-hidden="true" tabindex="-1"></a>ph <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb473-11"><a href="histogram.html#cb473-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
+<span id="cb473-12"><a href="histogram.html#cb473-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb473-13"><a href="histogram.html#cb473-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb473-14"><a href="histogram.html#cb473-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;none&quot;</span>)</span>
+<span id="cb473-15"><a href="histogram.html#cb473-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb473-16"><a href="histogram.html#cb473-16" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb473-17"><a href="histogram.html#cb473-17" aria-hidden="true" tabindex="-1"></a>  pd, ph,</span>
+<span id="cb473-18"><a href="histogram.html#cb473-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) geom_density()&quot;</span>, <span class="st">&quot;(b) geom_histogram()&quot;</span>),</span>
+<span id="cb473-19"><a href="histogram.html#cb473-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb473-20"><a href="histogram.html#cb473-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="positions-of-bar-chart" class="section level3 hasAnchor" number="15.2.3">
 <h3><span class="header-section-number">15.2.3</span> Positions of bar chart<a href="histogram.html#positions-of-bar-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="histogram.html#cb497-1" aria-hidden="true" tabindex="-1"></a>p.hist.dodge <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb497-2"><a href="histogram.html#cb497-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
-<span id="cb497-3"><a href="histogram.html#cb497-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb497-4"><a href="histogram.html#cb497-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb497-5"><a href="histogram.html#cb497-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>),</span>
-<span id="cb497-6"><a href="histogram.html#cb497-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="st">&quot;Male&quot;</span>,<span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Female&quot;</span>),</span>
-<span id="cb497-7"><a href="histogram.html#cb497-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&#39;Sex&#39;</span></span>
-<span id="cb497-8"><a href="histogram.html#cb497-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb497-9"><a href="histogram.html#cb497-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-10"><a href="histogram.html#cb497-10" aria-hidden="true" tabindex="-1"></a>p.hist.stack <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb497-11"><a href="histogram.html#cb497-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
-<span id="cb497-12"><a href="histogram.html#cb497-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;stack&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span></span>
-<span id="cb497-13"><a href="histogram.html#cb497-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb497-14"><a href="histogram.html#cb497-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;none&quot;</span>)</span>
-<span id="cb497-15"><a href="histogram.html#cb497-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-16"><a href="histogram.html#cb497-16" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb497-17"><a href="histogram.html#cb497-17" aria-hidden="true" tabindex="-1"></a>  p.hist.dodge, p.hist.stack,</span>
-<span id="cb497-18"><a href="histogram.html#cb497-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) position:dodge&quot;</span>, <span class="st">&quot;(b) position:stack&quot;</span>),</span>
-<span id="cb497-19"><a href="histogram.html#cb497-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
-<span id="cb497-20"><a href="histogram.html#cb497-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/Fig.v1.hist.style-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="histogram.html#cb474-1" aria-hidden="true" tabindex="-1"></a>p.hist.dodge <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb474-2"><a href="histogram.html#cb474-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
+<span id="cb474-3"><a href="histogram.html#cb474-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb474-4"><a href="histogram.html#cb474-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb474-5"><a href="histogram.html#cb474-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>),</span>
+<span id="cb474-6"><a href="histogram.html#cb474-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="st">&quot;Male&quot;</span>,<span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Female&quot;</span>),</span>
+<span id="cb474-7"><a href="histogram.html#cb474-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&#39;Sex&#39;</span></span>
+<span id="cb474-8"><a href="histogram.html#cb474-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb474-9"><a href="histogram.html#cb474-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb474-10"><a href="histogram.html#cb474-10" aria-hidden="true" tabindex="-1"></a>p.hist.stack <span class="ot">&lt;-</span> vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb474-11"><a href="histogram.html#cb474-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
+<span id="cb474-12"><a href="histogram.html#cb474-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;stack&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span></span>
+<span id="cb474-13"><a href="histogram.html#cb474-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb474-14"><a href="histogram.html#cb474-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;none&quot;</span>)</span>
+<span id="cb474-15"><a href="histogram.html#cb474-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb474-16"><a href="histogram.html#cb474-16" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb474-17"><a href="histogram.html#cb474-17" aria-hidden="true" tabindex="-1"></a>  p.hist.dodge, p.hist.stack,</span>
+<span id="cb474-18"><a href="histogram.html#cb474-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) position:dodge&quot;</span>, <span class="st">&quot;(b) position:stack&quot;</span>),</span>
+<span id="cb474-19"><a href="histogram.html#cb474-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb474-20"><a href="histogram.html#cb474-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="display-two-groups-histogram-by-facet_wrap" class="section level3 hasAnchor" number="15.2.4">
 <h3><span class="header-section-number">15.2.4</span> Display two groups histogram by facet_wrap()<a href="histogram.html#display-two-groups-histogram-by-facet_wrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="histogram.html#cb498-1" aria-hidden="true" tabindex="-1"></a>vilmaster <span class="sc">%&gt;%</span></span>
-<span id="cb498-2"><a href="histogram.html#cb498-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
-<span id="cb498-3"><a href="histogram.html#cb498-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb498-4"><a href="histogram.html#cb498-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb498-5"><a href="histogram.html#cb498-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>),</span>
-<span id="cb498-6"><a href="histogram.html#cb498-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="st">&quot;Male&quot;</span>,<span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Female&quot;</span>),</span>
-<span id="cb498-7"><a href="histogram.html#cb498-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&#39;Sex&#39;</span></span>
-<span id="cb498-8"><a href="histogram.html#cb498-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb498-9"><a href="histogram.html#cb498-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>性別, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/Fig.v1.hist.facet-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="histogram.html#cb475-1" aria-hidden="true" tabindex="-1"></a>vilmaster <span class="sc">%&gt;%</span></span>
+<span id="cb475-2"><a href="histogram.html#cb475-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> <span class="fu">aes</span>(年齡, <span class="at">fill=</span><span class="fu">factor</span>(性別)) <span class="sc">+</span> </span>
+<span id="cb475-3"><a href="histogram.html#cb475-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb475-4"><a href="histogram.html#cb475-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb475-5"><a href="histogram.html#cb475-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&#39;gold&#39;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;skyblue &quot;</span>),</span>
+<span id="cb475-6"><a href="histogram.html#cb475-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="st">&quot;Male&quot;</span>,<span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Female&quot;</span>),</span>
+<span id="cb475-7"><a href="histogram.html#cb475-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&#39;Sex&#39;</span></span>
+<span id="cb475-8"><a href="histogram.html#cb475-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb475-9"><a href="histogram.html#cb475-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>性別, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 </div>
             </section>

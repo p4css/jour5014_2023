@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-05" />
+<meta name="date" content="2022-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.22/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -439,140 +438,140 @@ div.csl-indent {
 <h2><span class="header-section-number">9.1</span> Scraping 104.com<a href="scraping-104.html#scraping-104.com" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="complete-code" class="section level3 hasAnchor" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Complete Code<a href="scraping-104.html#complete-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="scraping-104.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb439-2"><a href="scraping-104.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb439-3"><a href="scraping-104.html#cb439-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb439-4"><a href="scraping-104.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span></code></pre></div>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="scraping-104.html#cb440-1" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
-<span id="cb440-2"><a href="scraping-104.html#cb440-2" aria-hidden="true" tabindex="-1"></a>refer_url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw&quot;</span></span>
-<span id="cb440-3"><a href="scraping-104.html#cb440-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb440-4"><a href="scraping-104.html#cb440-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb440-5"><a href="scraping-104.html#cb440-5" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=12&amp;asc=0&amp;page=&#39;</span>, </span>
-<span id="cb440-6"><a href="scraping-104.html#cb440-6" aria-hidden="true" tabindex="-1"></a>                 p, </span>
-<span id="cb440-7"><a href="scraping-104.html#cb440-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb440-8"><a href="scraping-104.html#cb440-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(p)</span>
-<span id="cb440-9"><a href="scraping-104.html#cb440-9" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url, <span class="fu">add_headers</span>(<span class="st">&quot;referer&quot;</span><span class="ot">=</span>refer_url)) <span class="sc">%&gt;%</span></span>
-<span id="cb440-10"><a href="scraping-104.html#cb440-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">content</span>(<span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb440-11"><a href="scraping-104.html#cb440-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fromJSON</span>()</span>
-<span id="cb440-12"><a href="scraping-104.html#cb440-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb440-13"><a href="scraping-104.html#cb440-13" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb440-14"><a href="scraping-104.html#cb440-14" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb440-15"><a href="scraping-104.html#cb440-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb440-16"><a href="scraping-104.html#cb440-16" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, res<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb440-17"><a href="scraping-104.html#cb440-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb440-18"><a href="scraping-104.html#cb440-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb440-19"><a href="scraping-104.html#cb440-19" aria-hidden="true" tabindex="-1"></a>all.df<span class="sc">$</span>jobNo <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> length</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="scraping-104.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb418-2"><a href="scraping-104.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb418-3"><a href="scraping-104.html#cb418-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb418-4"><a href="scraping-104.html#cb418-4" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="scraping-104.html#cb419-1" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb419-2"><a href="scraping-104.html#cb419-2" aria-hidden="true" tabindex="-1"></a>refer_url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw&quot;</span></span>
+<span id="cb419-3"><a href="scraping-104.html#cb419-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-4"><a href="scraping-104.html#cb419-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb419-5"><a href="scraping-104.html#cb419-5" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=12&amp;asc=0&amp;page=&#39;</span>, </span>
+<span id="cb419-6"><a href="scraping-104.html#cb419-6" aria-hidden="true" tabindex="-1"></a>                 p, </span>
+<span id="cb419-7"><a href="scraping-104.html#cb419-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb419-8"><a href="scraping-104.html#cb419-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(p)</span>
+<span id="cb419-9"><a href="scraping-104.html#cb419-9" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url, <span class="fu">add_headers</span>(<span class="st">&quot;referer&quot;</span><span class="ot">=</span>refer_url)) <span class="sc">%&gt;%</span></span>
+<span id="cb419-10"><a href="scraping-104.html#cb419-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">content</span>(<span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb419-11"><a href="scraping-104.html#cb419-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fromJSON</span>()</span>
+<span id="cb419-12"><a href="scraping-104.html#cb419-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb419-13"><a href="scraping-104.html#cb419-13" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb419-14"><a href="scraping-104.html#cb419-14" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb419-15"><a href="scraping-104.html#cb419-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb419-16"><a href="scraping-104.html#cb419-16" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, res<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb419-17"><a href="scraping-104.html#cb419-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb419-18"><a href="scraping-104.html#cb419-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-19"><a href="scraping-104.html#cb419-19" aria-hidden="true" tabindex="-1"></a>all.df<span class="sc">$</span>jobNo <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> length</span></code></pre></div>
 </div>
 <div id="step-by-step" class="section level3 hasAnchor" number="9.1.2">
 <h3><span class="header-section-number">9.1.2</span> Step-by-Step<a href="scraping-104.html#step-by-step" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="get-the-first-pages" class="section level4 hasAnchor" number="9.1.2.1">
 <h4><span class="header-section-number">9.1.2.1</span> Get the first pages<a href="scraping-104.html#get-the-first-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Must loading the second page</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="scraping-104.html#cb441-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb441-2"><a href="scraping-104.html#cb441-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-3"><a href="scraping-104.html#cb441-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 2nd page data url to url2</span></span>
-<span id="cb441-4"><a href="scraping-104.html#cb441-4" aria-hidden="true" tabindex="-1"></a>url2 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb441-5"><a href="scraping-104.html#cb441-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-6"><a href="scraping-104.html#cb441-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 3rd page data url to url3</span></span>
-<span id="cb441-7"><a href="scraping-104.html#cb441-7" aria-hidden="true" tabindex="-1"></a>url3 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb441-8"><a href="scraping-104.html#cb441-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-9"><a href="scraping-104.html#cb441-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the url1 data, assigning to result1</span></span>
-<span id="cb441-10"><a href="scraping-104.html#cb441-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-11"><a href="scraping-104.html#cb441-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url2, <span class="at">config =</span> <span class="fu">add_headers</span>(<span class="st">&quot;Referer&quot;</span> <span class="ot">=</span> <span class="st">&quot;https://www.104.com.tw/&quot;</span>))</span>
-<span id="cb441-12"><a href="scraping-104.html#cb441-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-13"><a href="scraping-104.html#cb441-13" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">content</span>(res, <span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
-<span id="cb441-14"><a href="scraping-104.html#cb441-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-15"><a href="scraping-104.html#cb441-15" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url2), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb441-16"><a href="scraping-104.html#cb441-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-17"><a href="scraping-104.html#cb441-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing variable result2 and finding the data.frame, assigning to df2</span></span>
-<span id="cb441-18"><a href="scraping-104.html#cb441-18" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> res1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="scraping-104.html#cb420-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb420-2"><a href="scraping-104.html#cb420-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-3"><a href="scraping-104.html#cb420-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 2nd page data url to url2</span></span>
+<span id="cb420-4"><a href="scraping-104.html#cb420-4" aria-hidden="true" tabindex="-1"></a>url2 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb420-5"><a href="scraping-104.html#cb420-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-6"><a href="scraping-104.html#cb420-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 3rd page data url to url3</span></span>
+<span id="cb420-7"><a href="scraping-104.html#cb420-7" aria-hidden="true" tabindex="-1"></a>url3 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb420-8"><a href="scraping-104.html#cb420-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-9"><a href="scraping-104.html#cb420-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the url1 data, assigning to result1</span></span>
+<span id="cb420-10"><a href="scraping-104.html#cb420-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-11"><a href="scraping-104.html#cb420-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url2, <span class="at">config =</span> <span class="fu">add_headers</span>(<span class="st">&quot;Referer&quot;</span> <span class="ot">=</span> <span class="st">&quot;https://www.104.com.tw/&quot;</span>))</span>
+<span id="cb420-12"><a href="scraping-104.html#cb420-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-13"><a href="scraping-104.html#cb420-13" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">content</span>(res, <span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
+<span id="cb420-14"><a href="scraping-104.html#cb420-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-15"><a href="scraping-104.html#cb420-15" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url2), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb420-16"><a href="scraping-104.html#cb420-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-17"><a href="scraping-104.html#cb420-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing variable result2 and finding the data.frame, assigning to df2</span></span>
+<span id="cb420-18"><a href="scraping-104.html#cb420-18" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> res1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
 </div>
 <div id="get-the-first-page-by-modifying-url" class="section level4 hasAnchor" number="9.1.2.2">
 <h4><span class="header-section-number">9.1.2.2</span> Get the first page by modifying url<a href="scraping-104.html#get-the-first-page-by-modifying-url" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="scraping-104.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guessing the 1st page data url to url1</span></span>
-<span id="cb442-2"><a href="scraping-104.html#cb442-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb442-3"><a href="scraping-104.html#cb442-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb442-4"><a href="scraping-104.html#cb442-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
-<span id="cb442-5"><a href="scraping-104.html#cb442-5" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb442-6"><a href="scraping-104.html#cb442-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb442-7"><a href="scraping-104.html#cb442-7" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb442-8"><a href="scraping-104.html#cb442-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb442-9"><a href="scraping-104.html#cb442-9" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="scraping-104.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guessing the 1st page data url to url1</span></span>
+<span id="cb421-2"><a href="scraping-104.html#cb421-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb421-3"><a href="scraping-104.html#cb421-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-4"><a href="scraping-104.html#cb421-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
+<span id="cb421-5"><a href="scraping-104.html#cb421-5" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb421-6"><a href="scraping-104.html#cb421-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-7"><a href="scraping-104.html#cb421-7" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb421-8"><a href="scraping-104.html#cb421-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-9"><a href="scraping-104.html#cb421-9" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
 </div>
 <div id="combine-two-data-with-the-same-variables" class="section level4 hasAnchor" number="9.1.2.3">
 <h4><span class="header-section-number">9.1.2.3</span> Combine two data with the same variables<a href="scraping-104.html#combine-two-data-with-the-same-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="scraping-104.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all.df &lt;- bind_rows(df1, df2) # will raise error</span></span>
-<span id="cb443-2"><a href="scraping-104.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in bind_rows_(x, .id) : </span></span>
-<span id="cb443-3"><a href="scraping-104.html#cb443-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Argument 31 can&#39;t be a list containing data frames</span></span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="scraping-104.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all.df &lt;- bind_rows(df1, df2) # will raise error</span></span>
+<span id="cb422-2"><a href="scraping-104.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in bind_rows_(x, .id) : </span></span>
+<span id="cb422-3"><a href="scraping-104.html#cb422-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Argument 31 can&#39;t be a list containing data frames</span></span></code></pre></div>
 </div>
 <div id="drop-out-hierarchical-variables" class="section level4 hasAnchor" number="9.1.2.4">
 <h4><span class="header-section-number">9.1.2.4</span> Drop out hierarchical variables<a href="scraping-104.html#drop-out-hierarchical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Preserving numeric or character, dropping list of data.frame by assigning NULL to the variable</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="scraping-104.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop list and data.frame inside the data.frame</span></span>
-<span id="cb444-2"><a href="scraping-104.html#cb444-2" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb444-3"><a href="scraping-104.html#cb444-3" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb444-4"><a href="scraping-104.html#cb444-4" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb444-5"><a href="scraping-104.html#cb444-5" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb444-6"><a href="scraping-104.html#cb444-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb444-7"><a href="scraping-104.html#cb444-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-binding two data.frame df1 and df2</span></span>
-<span id="cb444-8"><a href="scraping-104.html#cb444-8" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="scraping-104.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop list and data.frame inside the data.frame</span></span>
+<span id="cb423-2"><a href="scraping-104.html#cb423-2" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb423-3"><a href="scraping-104.html#cb423-3" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb423-4"><a href="scraping-104.html#cb423-4" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb423-5"><a href="scraping-104.html#cb423-5" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb423-6"><a href="scraping-104.html#cb423-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb423-7"><a href="scraping-104.html#cb423-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-binding two data.frame df1 and df2</span></span>
+<span id="cb423-8"><a href="scraping-104.html#cb423-8" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
 </div>
 <div id="dropping-hierarchical-variables-by-dplyr-way" class="section level4 hasAnchor" number="9.1.2.5">
 <h4><span class="header-section-number">9.1.2.5</span> Dropping hierarchical variables by dplyr way<a href="scraping-104.html#dropping-hierarchical-variables-by-dplyr-way" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="scraping-104.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 1st page data and dropping variable tags and link</span></span>
-<span id="cb445-2"><a href="scraping-104.html#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df1</span></span>
-<span id="cb445-3"><a href="scraping-104.html#cb445-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
-<span id="cb445-4"><a href="scraping-104.html#cb445-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb445-5"><a href="scraping-104.html#cb445-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 2nd page data and dropping variable tags and link</span></span>
-<span id="cb445-6"><a href="scraping-104.html#cb445-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df2</span></span>
-<span id="cb445-7"><a href="scraping-104.html#cb445-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> result2<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
-<span id="cb445-8"><a href="scraping-104.html#cb445-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb445-9"><a href="scraping-104.html#cb445-9" aria-hidden="true" tabindex="-1"></a><span class="co"># binding df1 and df2</span></span>
-<span id="cb445-10"><a href="scraping-104.html#cb445-10" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="scraping-104.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 1st page data and dropping variable tags and link</span></span>
+<span id="cb424-2"><a href="scraping-104.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df1</span></span>
+<span id="cb424-3"><a href="scraping-104.html#cb424-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
+<span id="cb424-4"><a href="scraping-104.html#cb424-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-5"><a href="scraping-104.html#cb424-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 2nd page data and dropping variable tags and link</span></span>
+<span id="cb424-6"><a href="scraping-104.html#cb424-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df2</span></span>
+<span id="cb424-7"><a href="scraping-104.html#cb424-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> result2<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
+<span id="cb424-8"><a href="scraping-104.html#cb424-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-9"><a href="scraping-104.html#cb424-9" aria-hidden="true" tabindex="-1"></a><span class="co"># binding df1 and df2</span></span>
+<span id="cb424-10"><a href="scraping-104.html#cb424-10" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
 </div>
 <div id="finding-out-the-last-page-number" class="section level4 hasAnchor" number="9.1.2.6">
 <h4><span class="header-section-number">9.1.2.6</span> Finding out the last page number<a href="scraping-104.html#finding-out-the-last-page-number" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="scraping-104.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing the number of pages in result1</span></span>
-<span id="cb446-2"><a href="scraping-104.html#cb446-2" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
-<span id="cb446-3"><a href="scraping-104.html#cb446-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the availability of the last page</span></span>
-<span id="cb446-4"><a href="scraping-104.html#cb446-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb446-5"><a href="scraping-104.html#cb446-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examining if the last page data available by re-composing URL with paste0()</span></span>
-<span id="cb446-6"><a href="scraping-104.html#cb446-6" aria-hidden="true" tabindex="-1"></a>url.last_page <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, last_page_num, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb446-7"><a href="scraping-104.html#cb446-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb446-8"><a href="scraping-104.html#cb446-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back and parsing the last page data</span></span>
-<span id="cb446-9"><a href="scraping-104.html#cb446-9" aria-hidden="true" tabindex="-1"></a>result.last_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url.last_page), <span class="st">&quot;text&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="scraping-104.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing the number of pages in result1</span></span>
+<span id="cb425-2"><a href="scraping-104.html#cb425-2" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
+<span id="cb425-3"><a href="scraping-104.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the availability of the last page</span></span>
+<span id="cb425-4"><a href="scraping-104.html#cb425-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-5"><a href="scraping-104.html#cb425-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examining if the last page data available by re-composing URL with paste0()</span></span>
+<span id="cb425-6"><a href="scraping-104.html#cb425-6" aria-hidden="true" tabindex="-1"></a>url.last_page <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, last_page_num, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb425-7"><a href="scraping-104.html#cb425-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-8"><a href="scraping-104.html#cb425-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back and parsing the last page data</span></span>
+<span id="cb425-9"><a href="scraping-104.html#cb425-9" aria-hidden="true" tabindex="-1"></a>result.last_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url.last_page), <span class="st">&quot;text&quot;</span>))</span></code></pre></div>
 </div>
 <div id="using-for-loop-to-get-all-pages" class="section level4 hasAnchor" number="9.1.2.7">
 <h4><span class="header-section-number">9.1.2.7</span> Using for-loop to get all pages<a href="scraping-104.html#using-for-loop-to-get-all-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="scraping-104.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
-<span id="cb447-2"><a href="scraping-104.html#cb447-2" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb447-3"><a href="scraping-104.html#cb447-3" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb447-4"><a href="scraping-104.html#cb447-4" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb447-5"><a href="scraping-104.html#cb447-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(temp.df)))</span>
-<span id="cb447-6"><a href="scraping-104.html#cb447-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="scraping-104.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
+<span id="cb426-2"><a href="scraping-104.html#cb426-2" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb426-3"><a href="scraping-104.html#cb426-3" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb426-4"><a href="scraping-104.html#cb426-4" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb426-5"><a href="scraping-104.html#cb426-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(temp.df)))</span>
+<span id="cb426-6"><a href="scraping-104.html#cb426-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="combine-all-data.frame" class="section level4 hasAnchor" number="9.1.2.8">
 <h4><span class="header-section-number">9.1.2.8</span> combine all data.frame<a href="scraping-104.html#combine-all-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="scraping-104.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  The 1st url of the query</span></span>
-<span id="cb448-2"><a href="scraping-104.html#cb448-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb448-3"><a href="scraping-104.html#cb448-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-4"><a href="scraping-104.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
-<span id="cb448-5"><a href="scraping-104.html#cb448-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb448-6"><a href="scraping-104.html#cb448-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-7"><a href="scraping-104.html#cb448-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing and getting total number of page</span></span>
-<span id="cb448-8"><a href="scraping-104.html#cb448-8" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
-<span id="cb448-9"><a href="scraping-104.html#cb448-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-10"><a href="scraping-104.html#cb448-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncating hierarchical variables: link and tags</span></span>
-<span id="cb448-11"><a href="scraping-104.html#cb448-11" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result1<span class="sc">$</span>data<span class="sc">$</span>list, <span class="sc">-</span>link, <span class="sc">-</span>tags)</span>
-<span id="cb448-12"><a href="scraping-104.html#cb448-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-13"><a href="scraping-104.html#cb448-13" aria-hidden="true" tabindex="-1"></a><span class="co"># for-loop to getting back data and joining them</span></span>
-<span id="cb448-14"><a href="scraping-104.html#cb448-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
-<span id="cb448-15"><a href="scraping-104.html#cb448-15" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb448-16"><a href="scraping-104.html#cb448-16" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb448-17"><a href="scraping-104.html#cb448-17" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb448-18"><a href="scraping-104.html#cb448-18" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, temp.df)</span>
-<span id="cb448-19"><a href="scraping-104.html#cb448-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(all.df)))</span>
-<span id="cb448-20"><a href="scraping-104.html#cb448-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="scraping-104.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  The 1st url of the query</span></span>
+<span id="cb427-2"><a href="scraping-104.html#cb427-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb427-3"><a href="scraping-104.html#cb427-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-4"><a href="scraping-104.html#cb427-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
+<span id="cb427-5"><a href="scraping-104.html#cb427-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb427-6"><a href="scraping-104.html#cb427-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-7"><a href="scraping-104.html#cb427-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing and getting total number of page</span></span>
+<span id="cb427-8"><a href="scraping-104.html#cb427-8" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
+<span id="cb427-9"><a href="scraping-104.html#cb427-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-10"><a href="scraping-104.html#cb427-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncating hierarchical variables: link and tags</span></span>
+<span id="cb427-11"><a href="scraping-104.html#cb427-11" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result1<span class="sc">$</span>data<span class="sc">$</span>list, <span class="sc">-</span>link, <span class="sc">-</span>tags)</span>
+<span id="cb427-12"><a href="scraping-104.html#cb427-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-13"><a href="scraping-104.html#cb427-13" aria-hidden="true" tabindex="-1"></a><span class="co"># for-loop to getting back data and joining them</span></span>
+<span id="cb427-14"><a href="scraping-104.html#cb427-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
+<span id="cb427-15"><a href="scraping-104.html#cb427-15" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb427-16"><a href="scraping-104.html#cb427-16" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb427-17"><a href="scraping-104.html#cb427-17" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb427-18"><a href="scraping-104.html#cb427-18" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, temp.df)</span>
+<span id="cb427-19"><a href="scraping-104.html#cb427-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(all.df)))</span>
+<span id="cb427-20"><a href="scraping-104.html#cb427-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>

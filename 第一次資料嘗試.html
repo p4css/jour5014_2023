@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-05" />
+<meta name="date" content="2022-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,17 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +130,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -414,62 +447,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-6"><a href="第一次資料嘗試.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="第一次資料嘗試.html#cb5-7" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(res)</span></code></pre></div>
 <pre class="output"><code>## Rows: 30
-## Columns: 53
-## $ id                      &lt;int&gt; 235931948, 238796366, 238791140, 238789541, 23…
-## $ title                   &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;有沒有單身的…
-## $ excerpt                 &lt;chr&gt; &quot;各位卡友們好，小天使近期收到許多關於感情板西…
-## $ anonymousSchool         &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, …
-## $ anonymousDepartment     &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE…
-## $ pinned                  &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-## $ forumId                 &lt;chr&gt; &quot;42851318-b9e2-4a75-8a05-9fe180becefe&quot;, &quot;42851…
-## $ replyId                 &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ createdAt               &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-05-04T15:23:…
-## $ updatedAt               &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-05-05T06:05:…
-## $ commentCount            &lt;int&gt; 34, 1031, 121, 129, 249, 227, 78, 101, 12, 34,…
-## $ likeCount               &lt;int&gt; 321, 817, 477, 361, 345, 301, 272, 191, 95, 92…
-## $ withNickname            &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, F…
-## $ tags                    &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &quot;HIDE_THUMB…
-## $ topics                  &lt;list&gt; &lt;&gt;, &lt;&quot;單身&quot;, &quot;男生&quot;, &quot;認識&quot;, &quot;愛情&quot;&gt;, &lt;&quot;前男…
-## $ meta                    &lt;df[,3]&gt; &lt;data.frame[26 x 3]&gt;
-## $ forumName               &lt;chr&gt; &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感…
-## $ forumAlias              &lt;chr&gt; &quot;relationship&quot;, &quot;relationship&quot;, &quot;relationship&quot;…
-## $ nsfw                    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ gender                  &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;…
-## $ school                  &lt;chr&gt; &quot;客服小天使&quot;, &quot;貝果&quot;, &quot;艾瑪&quot;, &quot;Atticus&quot;, NA, N…
-## $ department              &lt;chr&gt; &quot;dcard_support_1&quot;, &quot;s517070&quot;, &quot;emma0109&quot;, &quot;jpn…
-## $ replyTitle              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ mediaMeta               &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[6 x 10]&gt;],…
-## $ reactions               &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[5 x 2]&gt;],…
-## $ hidden                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
-## $ customStyle             &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ isSuspiciousAccount     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ isModerator             &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ layout                  &lt;chr&gt; &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;c…
-## $ pinnedType              &lt;chr&gt; &quot;dcard&quot;, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ pinnedPriority          &lt;dbl&gt; 1.620368e+12, NA, NA, NA, NA, NA, NA, NA, NA, …
-## $ spoilerAlert            &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ categories              &lt;list&gt; &quot;公告&quot;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;…
-## $ isSelectedPost          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
-## $ unsafe                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ totalCommentCount       &lt;int&gt; 34, 1507, 220, 282, 378, 357, 93, 140, 20, 42,…
-## $ withImages              &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, …
-## $ withVideos              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…
-## $ media                   &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[5 x 1]&gt;], …
-## $ reportReasonText        &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
-## $ supportedReactions      &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ excerptComments         &lt;list&gt; [], [], [], [], [], [], [], [], [], [], [], []…
-## $ edited                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
-## $ collectionCount         &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ postAvatar              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
-## $ activityAvatar          &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
-## $ verifiedBadge           &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-## $ memberType              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
-## $ enablePrivateMessage    &lt;lgl&gt; NA, FALSE, FALSE, NA, NA, NA, FALSE, FALSE, NA…
-## $ enableNestedComment     &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …
-## $ leaderboardCategoryId   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ leaderboardCategoryName &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+## Columns: 52
+## $ id                   &lt;int&gt; 235931948, 238807974, 238802968, 238807485, 23879…
+## $ title                &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;快結婚了，但爸媽…
+## $ excerpt              &lt;chr&gt; &quot;各位卡友們好，小天使近期收到許多關於感情板西斯內…
+## $ anonymousSchool      &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …
+## $ anonymousDepartment  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, T…
+## $ pinned               &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ forumId              &lt;chr&gt; &quot;42851318-b9e2-4a75-8a05-9fe180becefe&quot;, &quot;42851318…
+## $ replyId              &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ createdAt            &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-05-06T00:05:35.…
+## $ updatedAt            &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-05-06T14:24:10.…
+## $ commentCount         &lt;int&gt; 34, 260, 99, 133, 230, 143, 26, 126, 30, 53, 82, …
+## $ likeCount            &lt;int&gt; 321, 1031, 664, 632, 579, 408, 308, 291, 246, 230…
+## $ withNickname         &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ tags                 &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &quot;HIDE_THUMBNAIL&quot;, &quot;HIDE_THUMBN…
+## $ topics               &lt;list&gt; &lt;&gt;, &lt;&quot;結婚&quot;, &quot;爸媽&quot;, &quot;感情&quot;&gt;, &lt;&gt;, &lt;&quot;女朋友&quot;, &quot;感…
+## $ meta                 &lt;df[,3]&gt; &lt;data.frame[26 x 3]&gt;
+## $ forumName            &lt;chr&gt; &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;…
+## $ forumAlias           &lt;chr&gt; &quot;relationship&quot;, &quot;relationship&quot;, &quot;relationship&quot;, &quot;…
+## $ nsfw                 &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ gender               &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;M&quot;,…
+## $ school               &lt;chr&gt; &quot;客服小天使&quot;, NA, NA, NA, NA, NA, NA, NA, NA, &quot;國…
+## $ department           &lt;chr&gt; &quot;dcard_support_1&quot;, NA, NA, NA, NA, NA, NA, NA, NA…
+## $ replyTitle           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ mediaMeta            &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[0 x 0]&gt;], [&lt;d…
+## $ reactions            &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[6 x 2]&gt;], [&lt;…
+## $ hidden               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ customStyle          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ isSuspiciousAccount  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ isModerator          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ layout               &lt;chr&gt; &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;clas…
+## $ pinnedType           &lt;chr&gt; &quot;dcard&quot;, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+## $ pinnedPriority       &lt;dbl&gt; 1.620368e+12, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ spoilerAlert         &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ categories           &lt;list&gt; &quot;公告&quot;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…
+## $ isSelectedPost       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ unsafe               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ totalCommentCount    &lt;int&gt; 34, 749, 178, 412, 434, 240, 43, 259, 104, 100, 1…
+## $ withImages           &lt;lgl&gt; FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FA…
+## $ withVideos           &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ media                &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[0 x 0]&gt;], [&lt;d…
+## $ reportReasonText     &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, …
+## $ supportedReactions   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ excerptComments      &lt;list&gt; [], [], [], [], [], [], [], [], [], [], [], [], […
+## $ edited               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ collectionCount      &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ postAvatar           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
+## $ activityAvatar       &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
+## $ verifiedBadge        &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ memberType           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
+## $ enablePrivateMessage &lt;lgl&gt; NA, FALSE, FALSE, FALSE, FALSE, NA, NA, FALSE, NA…
+## $ enableNestedComment  &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRU…
+## $ hiddenOnPlatforms    &lt;list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="第一次資料嘗試.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, title, excerpt)</span></code></pre></div>
-<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -497,57 +529,57 @@ excerpt
 </tr>
 <tr>
 <td style="text-align:right;">
-238796366
+238807974
 </td>
 <td style="text-align:left;">
-有沒有單身的男生要來認識的😢
+快結婚了，但爸媽破產了
 </td>
 <td style="text-align:left;">
-護理師的工作環境都是女生…，出社會之後真的很難認識的男生了，每天幫忙打疫苗就飽了，我不要啊…來點男生認識一下好嗎，更—————，別篇才能私訊此版沒開放私訊的功能
+更：一早起床看見很多回覆，目前還沒看完，但先就爭議最多的幾個點回覆一下，1. 妹妹為什麼非要出國，不能留在台灣嗎？我們家從小就凝聚力很足 是非常健康有愛的家庭，爸爸媽媽自己都捨不得花錢 把錢投資在我跟
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238791140
+238802968
 </td>
 <td style="text-align:left;">
-前男友是恐怖情人
+我很好騙～
 </td>
 <td style="text-align:left;">
-在講故事之前 我知道報警就能解決 但我今年19歲 不是我想怎樣就怎樣 我也需要尊重我家人的意見，當時我17歲他24歲 我摩羯座 他天蠍座（只是介紹不是想定義什麼），我前男友是個恐怖情人，我跟他在一起
+不曉得在說些什麼，但就是，突然好難過呀。也想他了。
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238789541
+238807485
 </td>
 <td style="text-align:left;">
-所以女生真的是看顏值的生物嗎
+女朋友的條件
 </td>
 <td style="text-align:left;">
-兄弟們，有時候女生嫌你醜可能只是個藉口
+1.有洞，2.比我矮都沒差（我170），3.胖可以 但至少低頭可以看到腳趾頭，4.不會口臭，5.可以聊天超過五分鐘，6.有存錢意識，如果可以….希望偶爾會找我討抱抱，單身多年 ，要求不多……（
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238797238
+238799677
 </td>
 <td style="text-align:left;">
-被騙炮了要怎麼辦
+想試車 怎麼辦
 </td>
 <td style="text-align:left;">
-去年耶誕節分手，網路上遇到一個男生，剛認識時各種虛寒問暖（我有點缺愛），聊了幾天一直盧我見面，我承認有好感才跟他見面，他開車來找我，吃完飯後他一直說很累想去旅館休息，我想說他很累開車危險，讓他去睡一覺
+我自己本身是對性有需求的人，現在有用交友軟體 是想找比較穩定的關係的，是沒有要一牽就到結婚 但也不想3個月就換男友，跟前任和平分手半年 保持砲友關係，頻率不高 但他硬體條件不錯，目前有幾個約出去過 感
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238788652
+238799615
 </td>
 <td style="text-align:left;">
-男友想嘗試開放…
+男友看著其他女生自慰
 </td>
 <td style="text-align:left;">
-跟男友交往一年多，我們兩個溝通方面很好，都是很坦白的人，前一陣子聊天，我們跟對方坦承在交往的期間曾經對其他人「有好感」（沒有人劈腿！ ）只是發現自己出現不可以控制的出現這種情緒，而最後都選擇忠於我們現
+我跟現任男友是遠距，然後昨晚他很自豪的跟我說他自從跟我在一起後每天都只看著我的照片自X。當時我就想說難道這種事是需要被表揚的事嗎？他說他是一個需求很大的人，高中時曾經一天自己來快十次，然後他又說他其實
 </td>
 </tr>
 </tbody>
@@ -567,7 +599,7 @@ excerpt
 <h3><span class="header-section-number">2.2.3</span> 讀取先行下載的csv檔<a href="第一次資料嘗試.html#讀取先行下載的csv檔" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="第一次資料嘗試.html#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
 <span id="cb8-2"><a href="第一次資料嘗試.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -916,13 +948,13 @@ mday
 88
 </td>
 <td style="text-align:left;">
-60
+76
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505150332
+20220506234630
 </td>
 </tr>
 <tr>
@@ -936,13 +968,13 @@ mday
 16
 </td>
 <td style="text-align:left;">
-5
+8
 </td>
 <td style="text-align:left;">
 大安區
 </td>
 <td style="text-align:left;">
-20220505150319
+20220506234639
 </td>
 </tr>
 <tr>
@@ -956,13 +988,13 @@ mday
 32
 </td>
 <td style="text-align:left;">
-22
+16
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505150326
+20220506234619
 </td>
 </tr>
 <tr>
@@ -976,13 +1008,13 @@ mday
 32
 </td>
 <td style="text-align:left;">
-9
+10
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505150320
+20220506234623
 </td>
 </tr>
 <tr>
@@ -996,13 +1028,13 @@ mday
 54
 </td>
 <td style="text-align:left;">
-33
+17
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505150344
+20220506234642
 </td>
 </tr>
 <tr>
@@ -1016,13 +1048,13 @@ mday
 80
 </td>
 <td style="text-align:left;">
-65
+11
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220505150336
+20220506234616
 </td>
 </tr>
 </tbody>
@@ -1092,6 +1124,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-05" />
+<meta name="date" content="2022-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.22/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -437,44 +436,333 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="基本操作使用dplyr" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> 基本操作：使用dplyr<a href="基本操作使用dplyr.html#基本操作使用dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="基本操作使用dplyr.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb236-2"><a href="基本操作使用dplyr.html#cb236-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export, <span class="at">stringsAsFactors =</span> F)</span>
-<span id="cb236-3"><a href="基本操作使用dplyr.html#cb236-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">sub =</span> import <span class="sc">-</span> export)</span>
-<span id="cb236-4"><a href="基本操作使用dplyr.html#cb236-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, import <span class="sc">&gt;</span> export)</span></code></pre></div>
-<pre class="output"><code>##   country import export   sub
-## 1      CN 26.142 22.987 3.155
-## 2      HK 13.646  7.739 5.907
-## 3      SG  5.768  4.610 1.158
-## 4      MY  2.802  2.784 0.018
-## 5      VN  3.428  2.414 1.014
-## 6      PH  3.019  2.092 0.927
-## 7      TH  1.976  1.839 0.137
-## 8      GB  1.302  1.075 0.227
-## 9      IN  1.027  0.974 0.053</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="基本操作使用dplyr.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
-<pre class="output"><code>##    country export
-## 1       CN 22.987
-## 2       US 12.204
-## 3       JP 11.837
-## 4       HK  7.739
-## 5       KR  5.381
-## 6       SG  4.610
-## 7       DE  2.866
-## 8       MY  2.784
-## 9       VN  2.414
-## 10      PH  2.092
-## 11      TH  1.839
-## 12      AU  1.788
-## 13      NL  1.665
-## 14      SA  1.409
-## 15      ID  1.391
-## 16      GB  1.075
-## 17      IN  0.974
-## 18      FR  0.899
-## 19      IT  0.800
-## 20      AE  0.728</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="基本操作使用dplyr.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(df<span class="sc">$</span>country)</span>
-<span id="cb240-2"><a href="基本操作使用dplyr.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df<span class="sc">$</span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="基本操作使用dplyr.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb230-2"><a href="基本操作使用dplyr.html#cb230-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export, <span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb230-3"><a href="基本操作使用dplyr.html#cb230-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">sub =</span> import <span class="sc">-</span> export)</span>
+<span id="cb230-4"><a href="基本操作使用dplyr.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, import <span class="sc">&gt;</span> export)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+import
+</th>
+<th style="text-align:right;">
+export
+</th>
+<th style="text-align:right;">
+sub
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CN
+</td>
+<td style="text-align:right;">
+26.142
+</td>
+<td style="text-align:right;">
+22.987
+</td>
+<td style="text-align:right;">
+3.155
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HK
+</td>
+<td style="text-align:right;">
+13.646
+</td>
+<td style="text-align:right;">
+7.739
+</td>
+<td style="text-align:right;">
+5.907
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SG
+</td>
+<td style="text-align:right;">
+5.768
+</td>
+<td style="text-align:right;">
+4.610
+</td>
+<td style="text-align:right;">
+1.158
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MY
+</td>
+<td style="text-align:right;">
+2.802
+</td>
+<td style="text-align:right;">
+2.784
+</td>
+<td style="text-align:right;">
+0.018
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VN
+</td>
+<td style="text-align:right;">
+3.428
+</td>
+<td style="text-align:right;">
+2.414
+</td>
+<td style="text-align:right;">
+1.014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PH
+</td>
+<td style="text-align:right;">
+3.019
+</td>
+<td style="text-align:right;">
+2.092
+</td>
+<td style="text-align:right;">
+0.927
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TH
+</td>
+<td style="text-align:right;">
+1.976
+</td>
+<td style="text-align:right;">
+1.839
+</td>
+<td style="text-align:right;">
+0.137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GB
+</td>
+<td style="text-align:right;">
+1.302
+</td>
+<td style="text-align:right;">
+1.075
+</td>
+<td style="text-align:right;">
+0.227
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IN
+</td>
+<td style="text-align:right;">
+1.027
+</td>
+<td style="text-align:right;">
+0.974
+</td>
+<td style="text-align:right;">
+0.053
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="基本操作使用dplyr.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+export
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CN
+</td>
+<td style="text-align:right;">
+22.987
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+US
+</td>
+<td style="text-align:right;">
+12.204
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JP
+</td>
+<td style="text-align:right;">
+11.837
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HK
+</td>
+<td style="text-align:right;">
+7.739
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KR
+</td>
+<td style="text-align:right;">
+5.381
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SG
+</td>
+<td style="text-align:right;">
+4.610
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DE
+</td>
+<td style="text-align:right;">
+2.866
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MY
+</td>
+<td style="text-align:right;">
+2.784
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VN
+</td>
+<td style="text-align:right;">
+2.414
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PH
+</td>
+<td style="text-align:right;">
+2.092
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TH
+</td>
+<td style="text-align:right;">
+1.839
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AU
+</td>
+<td style="text-align:right;">
+1.788
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NL
+</td>
+<td style="text-align:right;">
+1.665
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SA
+</td>
+<td style="text-align:right;">
+1.409
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ID
+</td>
+<td style="text-align:right;">
+1.391
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GB
+</td>
+<td style="text-align:right;">
+1.075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IN
+</td>
+<td style="text-align:right;">
+0.974
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FR
+</td>
+<td style="text-align:right;">
+0.899
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IT
+</td>
+<td style="text-align:right;">
+0.800
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AE
+</td>
+<td style="text-align:right;">
+0.728
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="基本操作使用dplyr.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(df<span class="sc">$</span>country)</span>
+<span id="cb232-2"><a href="基本操作使用dplyr.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df<span class="sc">$</span>country)</span></code></pre></div>
 <pre class="output"><code>##  [1] &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; &quot;KR&quot; &quot;SG&quot; &quot;DE&quot; &quot;MY&quot; &quot;VN&quot; &quot;PH&quot; &quot;TH&quot; &quot;AU&quot; &quot;NL&quot; &quot;SA&quot; &quot;ID&quot;
 ## [16] &quot;GB&quot; &quot;IN&quot; &quot;FR&quot; &quot;IT&quot; &quot;AE&quot;</code></pre>
 </div>
