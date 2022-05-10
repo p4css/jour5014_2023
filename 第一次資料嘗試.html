@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-06" />
+<meta name="date" content="2022-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -447,32 +447,32 @@ div.csl-indent {
 <span id="cb5-6"><a href="第一次資料嘗試.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="第一次資料嘗試.html#cb5-7" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(res)</span></code></pre></div>
 <pre class="output"><code>## Rows: 30
-## Columns: 52
-## $ id                   &lt;int&gt; 235931948, 238807974, 238802968, 238807485, 23879…
-## $ title                &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;快結婚了，但爸媽…
+## Columns: 51
+## $ id                   &lt;int&gt; 235931948, 238836885, 238835742, 238836958, 23883…
+## $ title                &lt;chr&gt; &quot;#公告 關於感情板的微西斯內容&quot;, &quot;最後，我選擇嫁給…
 ## $ excerpt              &lt;chr&gt; &quot;各位卡友們好，小天使近期收到許多關於感情板西斯內…
-## $ anonymousSchool      &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …
+## $ anonymousSchool      &lt;lgl&gt; FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE, TRU…
 ## $ anonymousDepartment  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, T…
 ## $ pinned               &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
 ## $ forumId              &lt;chr&gt; &quot;42851318-b9e2-4a75-8a05-9fe180becefe&quot;, &quot;42851318…
-## $ replyId              &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ createdAt            &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-05-06T00:05:35.…
-## $ updatedAt            &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-05-06T14:24:10.…
-## $ commentCount         &lt;int&gt; 34, 260, 99, 133, 230, 143, 26, 126, 30, 53, 82, …
-## $ likeCount            &lt;int&gt; 321, 1031, 664, 632, 579, 408, 308, 291, 246, 230…
-## $ withNickname         &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
-## $ tags                 &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &quot;HIDE_THUMBNAIL&quot;, &quot;HIDE_THUMBN…
-## $ topics               &lt;list&gt; &lt;&gt;, &lt;&quot;結婚&quot;, &quot;爸媽&quot;, &quot;感情&quot;&gt;, &lt;&gt;, &lt;&quot;女朋友&quot;, &quot;感…
+## $ replyId              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ createdAt            &lt;chr&gt; &quot;2021-05-07T06:11:32.413Z&quot;, &quot;2022-05-09T07:22:58.…
+## $ updatedAt            &lt;chr&gt; &quot;2021-05-07T18:00:24.726Z&quot;, &quot;2022-05-09T07:22:58.…
+## $ commentCount         &lt;int&gt; 34, 112, 62, 390, 42, 37, 57, 93, 79, 92, 28, 197…
+## $ likeCount            &lt;int&gt; 322, 3888, 2295, 1978, 709, 347, 253, 209, 187, 1…
+## $ withNickname         &lt;lgl&gt; TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALS…
+## $ tags                 &lt;list&gt; &quot;HIDE_THUMBNAIL&quot;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &quot;HIDE_THUM…
+## $ topics               &lt;list&gt; &lt;&gt;, &lt;&quot;愛情&quot;, &quot;結婚&quot;, &quot;鑽戒&quot;&gt;, &lt;&quot;男友&quot;, &quot;出櫃&quot;, &quot;…
 ## $ meta                 &lt;df[,3]&gt; &lt;data.frame[26 x 3]&gt;
 ## $ forumName            &lt;chr&gt; &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;, &quot;感情&quot;…
 ## $ forumAlias           &lt;chr&gt; &quot;relationship&quot;, &quot;relationship&quot;, &quot;relationship&quot;, &quot;…
 ## $ nsfw                 &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
-## $ gender               &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;M&quot;,…
-## $ school               &lt;chr&gt; &quot;客服小天使&quot;, NA, NA, NA, NA, NA, NA, NA, NA, &quot;國…
-## $ department           &lt;chr&gt; &quot;dcard_support_1&quot;, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ replyTitle           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ mediaMeta            &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[0 x 0]&gt;], [&lt;d…
-## $ reactions            &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[6 x 2]&gt;], [&lt;…
+## $ gender               &lt;chr&gt; &quot;D&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;,…
+## $ school               &lt;chr&gt; &quot;客服小天使&quot;, NA, NA, &quot;Lil J 小哲&quot;, &quot;Jovana&quot;, &quot;最…
+## $ department           &lt;chr&gt; &quot;dcard_support_1&quot;, NA, NA, &quot;lil_j0930&quot;, &quot;jovana12…
+## $ replyTitle           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ mediaMeta            &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[4 x 10]&gt;], [&lt;…
+## $ reactions            &lt;list&gt; [&lt;data.frame[4 x 2]&gt;], [&lt;data.frame[5 x 2]&gt;], [&lt;…
 ## $ hidden               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
 ## $ customStyle          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ## $ isSuspiciousAccount  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
@@ -484,10 +484,10 @@ div.csl-indent {
 ## $ categories           &lt;list&gt; &quot;公告&quot;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…
 ## $ isSelectedPost       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
 ## $ unsafe               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
-## $ totalCommentCount    &lt;int&gt; 34, 749, 178, 412, 434, 240, 43, 259, 104, 100, 1…
-## $ withImages           &lt;lgl&gt; FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FA…
-## $ withVideos           &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
-## $ media                &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[0 x 0]&gt;], [&lt;d…
+## $ totalCommentCount    &lt;int&gt; 34, 131, 164, 523, 56, 101, 88, 170, 121, 146, 36…
+## $ withImages           &lt;lgl&gt; FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,…
+## $ withVideos           &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ media                &lt;list&gt; [&lt;data.frame[0 x 0]&gt;], [&lt;data.frame[3 x 1]&gt;], [&lt;d…
 ## $ reportReasonText     &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, …
 ## $ supportedReactions   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ## $ excerptComments      &lt;list&gt; [], [], [], [], [], [], [], [], [], [], [], [], […
@@ -497,9 +497,8 @@ div.csl-indent {
 ## $ activityAvatar       &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
 ## $ verifiedBadge        &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
 ## $ memberType           &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;…
-## $ enablePrivateMessage &lt;lgl&gt; NA, FALSE, FALSE, FALSE, FALSE, NA, NA, FALSE, NA…
 ## $ enableNestedComment  &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRU…
-## $ hiddenOnPlatforms    &lt;list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…</code></pre>
+## $ enablePrivateMessage &lt;lgl&gt; NA, NA, FALSE, NA, FALSE, FALSE, FALSE, FALSE, FA…</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="第一次資料嘗試.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, title, excerpt)</span></code></pre></div>
 <table>
 <thead>
@@ -529,57 +528,58 @@ excerpt
 </tr>
 <tr>
 <td style="text-align:right;">
-238807974
+238836885
 </td>
 <td style="text-align:left;">
-快結婚了，但爸媽破產了
+最後，我選擇嫁給了自己
 </td>
 <td style="text-align:left;">
-更：一早起床看見很多回覆，目前還沒看完，但先就爭議最多的幾個點回覆一下，1. 妹妹為什麼非要出國，不能留在台灣嗎？我們家從小就凝聚力很足 是非常健康有愛的家庭，爸爸媽媽自己都捨不得花錢 把錢投資在我跟
+小時候對於愛情充斥著各種想像，找到一個彼此相愛的人，並白頭偕老，也曾以為自己很幸運 第一次談戀愛就遇見真命天子，我們一起度過了學生時期到出社會，整整八年的時間，最後婚沒有結成，也不像以前那樣憧憬結婚，
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238802968
+238835742
 </td>
 <td style="text-align:left;">
-我很好騙～
+男友終於和我出櫃了
 </td>
 <td style="text-align:left;">
-不曉得在說些什麼，但就是，突然好難過呀。也想他了。
+從一開始交往，男友就和我說過他有一個還說不出口的秘密，是關於他的前任們的故事，他說等他做好了心理準備，或許某天會開口和我坦誠，但他也再三強調這件事完全不影響我們之間的感情，我知道與否真的沒有那麼重要，
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238807485
+238836958
 </td>
 <td style="text-align:left;">
-女朋友的條件
+我媽罵我女朋友「破麻」
 </td>
 <td style="text-align:left;">
-1.有洞，2.比我矮都沒差（我170），3.胖可以 但至少低頭可以看到腳趾頭，4.不會口臭，5.可以聊天超過五分鐘，6.有存錢意識，如果可以….希望偶爾會找我討抱抱，單身多年 ，要求不多……（
+整個事件是從今年清明節掃墓開始爆發的！！，今年掃墓我沒有接收到家裡要掃墓的通知，於是女朋友問我要不要跟她一起回老家，順便去看看她已經過世的爸爸，在外人眼裡可能像是去掃墓（但實際不是掃家族墓，而是陪伴女
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238799677
+238838604
 </td>
 <td style="text-align:left;">
-想試車 怎麼辦
+飛到外國和網友見面的故事
+之後續
 </td>
 <td style="text-align:left;">
-我自己本身是對性有需求的人，現在有用交友軟體 是想找比較穩定的關係的，是沒有要一牽就到結婚 但也不想3個月就換男友，跟前任和平分手半年 保持砲友關係，頻率不高 但他硬體條件不錯，目前有幾個約出去過 感
+最近有點忙，很謝謝大家願意看我寫故事，（這篇會有點長，請見諒），我想稍微介紹自己，只是想藉此表達，關於外表的自卑與內在的自卑，也希望大家都能好好愛自己，我出生的時候是稍微的畸形兒，我有六根手指頭，傳說
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-238799615
+238831470
 </td>
 <td style="text-align:left;">
-男友看著其他女生自慰
+曾經的理想男友條件實現了
 </td>
 <td style="text-align:left;">
-我跟現任男友是遠距，然後昨晚他很自豪的跟我說他自從跟我在一起後每天都只看著我的照片自X。當時我就想說難道這種事是需要被表揚的事嗎？他說他是一個需求很大的人，高中時曾經一天自己來快十次，然後他又說他其實
+以前看到流星的時候，都會偷偷許願；曾經去月老廟也跟月老爺爺說，希望理想男友要有以下條件：1. 要比我高（我165cm），2. 最好要單眼皮，長得順眼就好，不用太帥，3. 懂得孝順、感恩父母，但不能是媽
 </td>
 </tr>
 </tbody>
@@ -948,13 +948,13 @@ mday
 88
 </td>
 <td style="text-align:left;">
-76
+37
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220506234630
+20220510092843
 </td>
 </tr>
 <tr>
@@ -968,13 +968,13 @@ mday
 16
 </td>
 <td style="text-align:left;">
-8
+12
 </td>
 <td style="text-align:left;">
 大安區
 </td>
 <td style="text-align:left;">
-20220506234639
+20220510092815
 </td>
 </tr>
 <tr>
@@ -988,13 +988,13 @@ mday
 32
 </td>
 <td style="text-align:left;">
-16
+20
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220506234619
+20220510092845
 </td>
 </tr>
 <tr>
@@ -1008,13 +1008,13 @@ mday
 32
 </td>
 <td style="text-align:left;">
-10
+4
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220506234623
+20220510092842
 </td>
 </tr>
 <tr>
@@ -1028,13 +1028,13 @@ mday
 54
 </td>
 <td style="text-align:left;">
-17
+19
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220506234642
+20220510092834
 </td>
 </tr>
 <tr>
@@ -1048,13 +1048,13 @@ mday
 80
 </td>
 <td style="text-align:left;">
-11
+22
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20220506234616
+20220510092825
 </td>
 </tr>
 </tbody>
