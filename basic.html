@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-10" />
+<meta name="date" content="2022-05-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,17 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/viz-1.8.2/viz.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -130,28 +119,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -188,6 +155,11 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
 <li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
 <li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="其他環境設定.html"><a href="其他環境設定.html#編碼與設定語系"><i class="fa fa-check"></i><b>2.3.1</b> 編碼與設定語系</a></li>
+<li class="chapter" data-level="2.3.2" data-path="其他環境設定.html"><a href="其他環境設定.html#rmdr-notebook無法儲存"><i class="fa fa-check"></i><b>2.3.2</b> RMD/R Notebook無法儲存</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3</b> Vectors</a>
@@ -231,6 +203,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2" data-path="簡易繪圖.html"><a href="簡易繪圖.html"><i class="fa fa-check"></i><b>4.2</b> 簡易繪圖</a></li>
 <li class="chapter" data-level="4.3" data-path="基本操作使用dplyr.html"><a href="基本操作使用dplyr.html"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
 <li class="chapter" data-level="4.4" data-path="tibble-data_frame-data.html"><a href="tibble-data_frame-data.html"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
+<li class="chapter" data-level="4.5" data-path="database---sqlite.html"><a href="database---sqlite.html"><i class="fa fa-check"></i><b>4.5</b> Database - SQLite</a></li>
 </ul></li>
 <li class="part"><span><b>II DATA MANIPULATION</b></span></li>
 <li class="chapter" data-level="5" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html"><i class="fa fa-check"></i><b>5</b> 使用基礎R套件</a>
@@ -344,15 +317,16 @@ div.csl-indent {
 <li class="chapter" data-level="11.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>11.1.1</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="11.3" data-path="using-qqplot.html"><a href="using-qqplot.html"><i class="fa fa-check"></i><b>11.3</b> Using qqplot</a></li>
+<li class="chapter" data-level="11.4" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.4</b> Square-root scale</a></li>
+<li class="chapter" data-level="11.5" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.5</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="11.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.4.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="11.5.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.5.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.5.2</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a>
+<li class="chapter" data-level="11.6" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.6</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="11.6.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>12</b> COLORS</a></li>
@@ -499,20 +473,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

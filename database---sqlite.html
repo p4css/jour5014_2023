@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 簡易繪圖 | R for Data Journalism</title>
+  <title>3.5 Database - SQLite | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 簡易繪圖 | R for Data Journalism" />
+  <meta property="og:title" content="3.5 Database - SQLite | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 簡易繪圖 | R for Data Journalism" />
+  <meta name="twitter:title" content="3.5 Database - SQLite | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="基本操作.html"/>
-<link rel="next" href="基本操作使用dplyr.html"/>
+<link rel="prev" href="tibble-data_frame-data.html"/>
+<link rel="next" href="使用基礎r套件.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -406,31 +406,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="簡易繪圖" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> 簡易繪圖<a href="簡易繪圖.html#簡易繪圖" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><code>graphics::plot()</code>為會預載入R的繪圖套件，如果希望繪圖的同時加上回歸線和資料點標籤的話，必須要三行一起執行。</li>
-</ul>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="簡易繪圖.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(df) # raise error, 1st column is a character vector</span></span>
-<span id="cb57-2"><a href="簡易繪圖.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="簡易繪圖.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span>
-<span id="cb58-2"><a href="簡易繪圖.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(import, export, <span class="at">labels=</span>country, <span class="at">cex=</span> <span class="fl">0.5</span>, <span class="at">pos=</span><span class="dv">3</span>)</span>
-<span id="cb58-3"><a href="簡易繪圖.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="簡易繪圖.html#cb59-1" aria-hidden="true" tabindex="-1"></a>?plot</span></code></pre></div>
-<pre class="output"><code>## Help on topic &#39;plot&#39; was found in the following packages:
-## 
-##   * base
-##   * graphics</code></pre>
+<div id="database---sqlite" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Database - SQLite<a href="database---sqlite.html#database---sqlite" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>```</p>
+
 </div>
+<!-- </div> -->
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="基本操作.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="基本操作使用dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tibble-data_frame-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="使用基礎r套件.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

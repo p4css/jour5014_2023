@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.1 基本操作 | R for Data Journalism</title>
+  <title>5.2 NA Processing | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.1 基本操作 | R for Data Journalism" />
+  <meta property="og:title" content="5.2 NA Processing | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.1 基本操作 | R for Data Journalism" />
+  <meta name="twitter:title" content="5.2 NA Processing | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-14" />
+<meta name="date" content="2022-05-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dataframe.html"/>
-<link rel="next" href="簡易繪圖.html"/>
+<link rel="prev" href="base-to-dplyr-tp-theft.html"/>
+<link rel="next" href="時間軸的視覺化.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -157,7 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>1.3</b> 其他環境設定</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="其他環境設定.html"><a href="其他環境設定.html#設定語系"><i class="fa fa-check"></i><b>1.3.1</b> 設定語系</a></li>
+<li class="chapter" data-level="1.3.1" data-path="其他環境設定.html"><a href="其他環境設定.html#編碼與設定語系"><i class="fa fa-check"></i><b>1.3.1</b> 編碼與設定語系</a></li>
+<li class="chapter" data-level="1.3.2" data-path="其他環境設定.html"><a href="其他環境設定.html#rmdr-notebook無法儲存"><i class="fa fa-check"></i><b>1.3.2</b> RMD/R Notebook無法儲存</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>2</b> Vectors</a>
@@ -246,13 +247,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.5" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>5.1.5</b> Setting time as row.name for mosaicplot</a></li>
 <li class="chapter" data-level="5.1.6" data-path="base-to-dplyr-tp-theft.html"><a href="base-to-dplyr-tp-theft.html#clean-version"><i class="fa fa-check"></i><b>5.1.6</b> Clean version</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>5.2</b> 時間軸的視覺化</a>
+<li class="chapter" data-level="5.2" data-path="na-processing.html"><a href="na-processing.html"><i class="fa fa-check"></i><b>5.2</b> NA Processing</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#文字轉時間"><i class="fa fa-check"></i><b>5.2.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="5.2.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>5.2.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="5.2.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐月統計資料"><i class="fa fa-check"></i><b>5.2.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="5.2.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐日統計資料佳"><i class="fa fa-check"></i><b>5.2.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="5.2.5" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#每日逐時資料"><i class="fa fa-check"></i><b>5.2.5</b> 每日逐時資料</a></li>
+<li class="chapter" data-level="5.2.1" data-path="na-processing.html"><a href="na-processing.html#對齊資料世界各國疫苗接種比例"><i class="fa fa-check"></i><b>5.2.1</b> 對齊資料。世界各國疫苗接種比例</a></li>
+<li class="chapter" data-level="5.2.2" data-path="na-processing.html"><a href="na-processing.html#表格重整政府預算"><i class="fa fa-check"></i><b>5.2.2</b> 表格重整：政府預算</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>5.3</b> 時間軸的視覺化</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#文字轉時間"><i class="fa fa-check"></i><b>5.3.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="5.3.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>5.3.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="5.3.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐月統計資料"><i class="fa fa-check"></i><b>5.3.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="5.3.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐日統計資料佳"><i class="fa fa-check"></i><b>5.3.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="5.3.5" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#每日逐時資料"><i class="fa fa-check"></i><b>5.3.5</b> 每日逐時資料</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>6</b> Explore Data Analysis</a>
@@ -406,1224 +412,422 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="基本操作" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> 基本操作<a href="基本操作.html#基本操作" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="產生新的dataframe" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> 產生新的Dataframe<a href="基本操作.html#產生新的dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="複製資料至vector" class="section level4 hasAnchor" number="3.1.1.1">
-<h4><span class="header-section-number">3.1.1.1</span> 複製資料至vector<a href="基本操作.html#複製資料至vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>直接複製Wikipedia上的台北市某五區人口資料</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="基本操作.html#cb1-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">158228</span>, <span class="dv">126687</span>, <span class="dv">228075</span>, <span class="dv">204903</span>, <span class="dv">308383</span>, <span class="dv">187920</span>)</span>
-<span id="cb1-2"><a href="基本操作.html#cb1-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;中正&quot;</span>, <span class="st">&quot;大同&quot;</span>, <span class="st">&quot;中山&quot;</span>, <span class="st">&quot;松山&quot;</span>, <span class="st">&quot;大安&quot;</span>, <span class="st">&quot;萬華&quot;</span>)</span>
-<span id="cb1-3"><a href="基本操作.html#cb1-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.6071</span>, <span class="fl">5.6815</span>, <span class="fl">13.6821</span>, <span class="fl">9.2878</span>, <span class="fl">11.3614</span>, <span class="fl">8.8522</span>)</span></code></pre></div>
+<div id="na-processing" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> NA Processing<a href="na-processing.html#na-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>許多統計資料都會有不同程度的<code>NA</code>（缺失值、遺漏值）。缺失值產生的原因不一，可能有以下原因：</p>
+<ol style="list-style-type: decimal">
+<li>資料運算的時候產生的填空值。例如<code>spread()</code>和<code>pivot_wider()</code>經常會產生<code>NA</code>，也經常會指定值（例如0）來取代可能產生的<code>NA</code>。</li>
+<li>資料紀錄的時候遺漏某些時間點的資料。</li>
+<li>開放資料在開放時已經被整理成階層化、易於展示、一般人易懂的表格型態。此時，若將其讀入也會產生非常大量的<code>NA</code>。例如本章節所要提到的政府各部會預算比例。</li>
+<li>紀錄資料筆數非常龐大、來源眾多、紀錄時間不一時，雖然有很多紀錄，但這些紀錄必須要被對齊、刪減，才能夠獲得有意義的可計算資料。例如本章節會提到的世界各國疫苗注射資料。</li>
+</ol>
+<div id="對齊資料世界各國疫苗接種比例" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> 對齊資料。世界各國疫苗接種比例<a href="na-processing.html#對齊資料世界各國疫苗接種比例" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://ourworldindata.org/covid-vaccinations" class="uri">https://ourworldindata.org/covid-vaccinations</a> - <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" class="uri">https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="na-processing.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-2"><a href="na-processing.html#cb1-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
+<span id="cb1-3"><a href="na-processing.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="na-processing.html#cb1-4" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
+<span id="cb1-5"><a href="na-processing.html#cb1-5" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="na-processing.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="na-processing.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="na-processing.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="na-processing.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="na-processing.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="na-processing.html#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="na-processing.html#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
+<span id="cb1-13"><a href="na-processing.html#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="na-processing.html#cb1-14" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="ot">&lt;-</span> fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="na-processing.html#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="na-processing.html#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="na-processing.html#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb1-18"><a href="na-processing.html#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="na-processing.html#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="na-processing.html#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="na-processing.html#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="na-processing.html#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="na-processing.html#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>))</span></code></pre></div>
 </div>
-<div id="合併等長vector為dataframe" class="section level4 hasAnchor" number="3.1.1.2">
-<h4><span class="header-section-number">3.1.1.2</span> 合併等長vector為dataframe<a href="基本操作.html#合併等長vector為dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="基本操作.html#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(town, population, area)</span>
-<span id="cb2-2"><a href="基本操作.html#cb2-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>density <span class="ot">=</span> df<span class="sc">$</span>population <span class="sc">/</span> df<span class="sc">$</span>area</span>
-<span id="cb2-3"><a href="基本操作.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre class="output"><code>## &#39;data.frame&#39;:    6 obs. of  4 variables:
-##  $ town      : chr  &quot;中正&quot; &quot;大同&quot; &quot;中山&quot; &quot;松山&quot; ...
-##  $ population: num  158228 126687 228075 204903 308383 ...
-##  $ area      : num  7.61 5.68 13.68 9.29 11.36 ...
-##  $ density   : num  20800 22298 16670 22062 27143 ...</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="基本操作.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<div id="表格重整政府預算" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> 表格重整：政府預算<a href="na-processing.html#表格重整政府預算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="na-processing.html#cb2-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F)</span>
+<span id="cb2-2"><a href="na-processing.html#cb2-2" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
 <th style="text-align:left;">
+…1
 </th>
 <th style="text-align:left;">
-town
+…2
 </th>
 <th style="text-align:left;">
-population
+…3
 </th>
 <th style="text-align:left;">
-area
+…4
 </th>
 <th style="text-align:left;">
-density
+…5
+</th>
+<th style="text-align:left;">
+…6
+</th>
+<th style="text-align:left;">
+…7
+</th>
+<th style="text-align:left;">
+…8
+</th>
+<th style="text-align:left;">
+…9
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Length:6
-</td>
-<td style="text-align:left;">
-Min. :126687
-</td>
-<td style="text-align:left;">
-Min. : 5.681
-</td>
-<td style="text-align:left;">
-Min. :16670
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Class :character
-</td>
-<td style="text-align:left;">
-1st Qu.:165651
-</td>
-<td style="text-align:left;">
-1st Qu.: 7.918
-</td>
-<td style="text-align:left;">
-1st Qu.:20907
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Mode :character
-</td>
-<td style="text-align:left;">
-Median :196412
-</td>
-<td style="text-align:left;">
-Median : 9.070
-</td>
-<td style="text-align:left;">
-Median :21645
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
+科 目
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-Mean :202366
-</td>
-<td style="text-align:left;">
-Mean : 9.412
-</td>
-<td style="text-align:left;">
-Mean :21700
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-3rd Qu.:222282
+NA
 </td>
 <td style="text-align:left;">
-3rd Qu.:10.843
+本年度預算數
 </td>
 <td style="text-align:left;">
-3rd Qu.:22239
+上年度預算數
+</td>
+<td style="text-align:left;">
+前年度決算數
+</td>
+<td style="text-align:left;">
+本年度與上年度
+比 較
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
+款
+</td>
+<td style="text-align:left;">
+項
+</td>
+<td style="text-align:left;">
+目
+</td>
+<td style="text-align:left;">
+節
+</td>
+<td style="text-align:left;">
+名 稱 及 編 號
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-Max. :308383
+NA
 </td>
 <td style="text-align:left;">
-Max. :13.682
+NA
 </td>
 <td style="text-align:left;">
-Max. :27143
+NA
 </td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+合 計
+</td>
+<td style="text-align:left;">
+2262064189
+</td>
+<td style="text-align:left;">
+2135896877
+</td>
+<td style="text-align:left;">
+2039353355.829
+</td>
+<td style="text-align:left;">
+126167312
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+(1.一般政務支出)
+</td>
+<td style="text-align:left;">
+210137299
+</td>
+<td style="text-align:left;">
+202634617
+</td>
+<td style="text-align:left;">
+190777048.02900001
+</td>
+<td style="text-align:left;">
+7502682
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3100000000
+國務支出
+</td>
+<td style="text-align:left;">
+1210301
+</td>
+<td style="text-align:left;">
+1186955
+</td>
+<td style="text-align:left;">
+1176955.1259999999
+</td>
+<td style="text-align:left;">
+23346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3102010000
+總統府
+</td>
+<td style="text-align:left;">
+1004797
+</td>
+<td style="text-align:left;">
+978916
+</td>
+<td style="text-align:left;">
+997305.54599999997
+</td>
+<td style="text-align:left;">
+25881
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3102010100
+一般行政
+</td>
+<td style="text-align:left;">
+920526
+</td>
+<td style="text-align:left;">
+896334
+</td>
+<td style="text-align:left;">
+882112.75600000005
+</td>
+<td style="text-align:left;">
+24192
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3102010200
+國務機要
+</td>
+<td style="text-align:left;">
+30000
+</td>
+<td style="text-align:left;">
+30000
+</td>
+<td style="text-align:left;">
+29993.006000000001
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3102010300
+國家慶典
+</td>
+<td style="text-align:left;">
+15760
+</td>
+<td style="text-align:left;">
+15760
+</td>
+<td style="text-align:left;">
+45578.949000000001
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3102010400
+研究發展
+</td>
+<td style="text-align:left;">
+5332
+</td>
+<td style="text-align:left;">
+5332
+</td>
+<td style="text-align:left;">
+6720.1840000000002
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="基本操作.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span></code></pre></div>
-</div>
-<div id="存放台灣貿易各國進出口量" class="section level4 hasAnchor" number="3.1.1.3">
-<h4><span class="header-section-number">3.1.1.3</span> 存放台灣貿易各國進出口量<a href="基本操作.html#存放台灣貿易各國進出口量" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>運用台灣出口進口資料 <a href="https://cus93.trade.gov.tw/FSC3040F/FSC3040F">台灣出口進口貿易資料查詢</a></li>
+<h4 id="基本清理" class="hasAnchor">基本清理<a href="na-processing.html#基本清理" class="anchor-section" aria-label="Anchor link to header"></a></h4></li>
+</ul></li>
+</ul></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="基本操作.html#cb6-1" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CN&quot;</span>, <span class="st">&quot;US&quot;</span>, <span class="st">&quot;JP&quot;</span>, <span class="st">&quot;HK&quot;</span>, <span class="st">&quot;KR&quot;</span>, <span class="st">&quot;SG&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;MY&quot;</span>, <span class="st">&quot;VN&quot;</span>, <span class="st">&quot;PH&quot;</span>, <span class="st">&quot;TH&quot;</span>, <span class="st">&quot;AU&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;SA&quot;</span>, <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;GB&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;IT&quot;</span>, <span class="st">&quot;AE&quot;</span>)</span>
-<span id="cb6-2"><a href="基本操作.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="基本操作.html#cb6-3" aria-hidden="true" tabindex="-1"></a>import <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">26.142</span>, <span class="fl">12.008</span>, <span class="fl">7.032</span>, <span class="fl">13.646</span>, <span class="fl">4.589</span>, <span class="fl">5.768</span>, <span class="fl">2.131</span>, <span class="fl">2.802</span>, <span class="fl">3.428</span>, <span class="fl">3.019</span>, <span class="fl">1.976</span>, <span class="fl">1.118</span>, <span class="fl">1.624</span>, <span class="fl">0.449</span>, <span class="fl">0.983</span>, <span class="fl">1.302</span>, <span class="fl">1.027</span>, <span class="fl">0.553</span>, <span class="fl">0.670</span>, <span class="fl">0.455</span>)</span>
-<span id="cb6-4"><a href="基本操作.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="基本操作.html#cb6-5" aria-hidden="true" tabindex="-1"></a>export <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">22.987</span>, <span class="fl">12.204</span>, <span class="fl">11.837</span>, <span class="fl">7.739</span>, <span class="fl">5.381</span>, <span class="fl">4.610</span>, <span class="fl">2.866</span>, <span class="fl">2.784</span>, <span class="fl">2.414</span>, <span class="fl">2.092</span>, <span class="fl">1.839</span>, <span class="fl">1.788</span>, <span class="fl">1.665</span>, <span class="fl">1.409</span>, <span class="fl">1.391</span>, <span class="fl">1.075</span>, <span class="fl">0.974</span>, <span class="fl">0.899</span>, <span class="fl">0.800</span>, <span class="fl">0.728</span>)</span></code></pre></div>
-</div>
-<div id="合併vector為data.frame" class="section level4 hasAnchor" number="3.1.1.4">
-<h4><span class="header-section-number">3.1.1.4</span> 合併vector為data.frame<a href="基本操作.html#合併vector為data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li><p>這時候我們若以<code>str(df)</code>觀察該<code>df</code>的結構會發現，文字型態的資料被轉為<code>Factors</code>，這是我們所不樂見的。過去統計通常會把文字型態當成類別變數，於是用<code>Factors</code>作為資料型態，但資料科學中經常要處理大量的文字資料，此時，我們可以把<code>read.csv</code>的一個參數<code>stringsAsFactors</code>設為<code>FALSE</code>，意味著預設不要將文字的資料轉為Factor而是直接以文字變項來處理。* <code>stringsAsFactors = FALSE</code>也是<code>read.csv()</code>的參數（parameter、argument）。因為一般讀檔會預設把文字讀為類別變項也就是Factor，但資料分析經常要處理文字資料而不是類別變項，所以會希望預設不要把文字讀取為類別變項，因此要設定<code>stringsAsFactors = FALSE</code>。</p></li>
-<li><p>為了避免每次都要打這串參數，可以把它設定為全域參數，可以在程式一開始時便加上<code>options(stringsAsFactors = FASLE)</code>，意味著底下所有的函式如果有<code>stringsAsFactors</code>這個參數，一律自動設為<code>FALSE</code>。</p></li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="基本操作.html#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export)</span>
-<span id="cb7-2"><a href="基本操作.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre class="output"><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
-##  $ country: chr  &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; ...
-##  $ import : num  26.14 12.01 7.03 13.65 4.59 ...
-##  $ export : num  22.99 12.2 11.84 7.74 5.38 ...</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="基本操作.html#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-2"><a href="基本操作.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre class="output"><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
-##  $ country: chr  &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; ...
-##  $ import : num  26.14 12.01 7.03 13.65 4.59 ...
-##  $ export : num  22.99 12.2 11.84 7.74 5.38 ...</code></pre>
-<ul>
-<li>甚至也可以建立一個新的、空的<code>data.frame</code>。</li>
-<li><code>df.test</code>就R的用法就是一個變數，並不是<code>df</code>和<code>test</code>各自是一個變數。</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="基本操作.html#cb11-1" aria-hidden="true" tabindex="-1"></a>df.test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span></code></pre></div>
-</div>
-</div>
-<div id="觀察dataframe" class="section level3 hasAnchor" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> 觀察dataframe<a href="基本操作.html#觀察dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><code>View(df)</code> 用RStudio所提供的GUI直接觀看變數</li>
-<li><code>head(df)</code> 取前面六筆資料（也就是六列的資料來概觀該資料）</li>
-<li><code>class(df)</code></li>
-<li><code>str(df)</code></li>
-<li><code>summary(df)</code></li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="基本操作.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span>
-<span id="cb12-2"><a href="基本操作.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)    <span class="co"># get first part of the data.frame</span></span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>重新命名欄位名稱</li>
+<li>刪去被當成表格標題的多於列（通常是前兩三列）<code>slice(-(1:2))</code>。</li>
+<li>觀察資料，「款」可以說是支出大類的代號，例如總統府、行政支出、立法支出、軍事支出、教育支出等。「科」為該單位底下的部門或者項目，例如「行政支出」下有行政院、主計總處支出等。更底下的細類「目」並非本例的分析對象，所以可以刪除。所以，如果款、科均為空值的話，代表其為更細的「目」。因此篩去款科為空值的所有項目。<code>filter(!is.na(款) | !is.na(科))</code></li>
+<li>將機構id和機構名稱切分開來，視覺化的時候只會用到機構名稱。<code>separate(機構, c("oid", "org"), sep="\n")</code></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="na-processing.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
+<span id="cb3-2"><a href="na-processing.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="na-processing.html#cb3-3" aria-hidden="true" tabindex="-1"></a>cleaned <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="na-processing.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="na-processing.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="na-processing.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="na-processing.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(機構, <span class="fu">c</span>(<span class="st">&quot;oid&quot;</span>, <span class="st">&quot;org&quot;</span>), <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb3-8"><a href="na-processing.html#cb3-8" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
 <th style="text-align:left;">
-country
-</th>
-<th style="text-align:right;">
-import
-</th>
-<th style="text-align:right;">
-export
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-CN
-</td>
-<td style="text-align:right;">
-26.142
-</td>
-<td style="text-align:right;">
-22.987
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-US
-</td>
-<td style="text-align:right;">
-12.008
-</td>
-<td style="text-align:right;">
-12.204
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JP
-</td>
-<td style="text-align:right;">
-7.032
-</td>
-<td style="text-align:right;">
-11.837
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-HK
-</td>
-<td style="text-align:right;">
-13.646
-</td>
-<td style="text-align:right;">
-7.739
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-KR
-</td>
-<td style="text-align:right;">
-4.589
-</td>
-<td style="text-align:right;">
-5.381
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SG
-</td>
-<td style="text-align:right;">
-5.768
-</td>
-<td style="text-align:right;">
-4.610
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="基本操作.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="基本操作.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre class="output"><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
-##  $ country: chr  &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; ...
-##  $ import : num  26.14 12.01 7.03 13.65 4.59 ...
-##  $ export : num  22.99 12.2 11.84 7.74 5.38 ...</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="基本操作.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
+款
 </th>
 <th style="text-align:left;">
-country
+科
 </th>
 <th style="text-align:left;">
-import
+oid
 </th>
 <th style="text-align:left;">
-export
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Length:20
-</td>
-<td style="text-align:left;">
-Min. : 0.449
-</td>
-<td style="text-align:left;">
-Min. : 0.728
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Class :character
-</td>
-<td style="text-align:left;">
-1st Qu.: 1.016
-</td>
-<td style="text-align:left;">
-1st Qu.: 1.312
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Mode :character
-</td>
-<td style="text-align:left;">
-Median : 2.054
-</td>
-<td style="text-align:left;">
-Median : 1.966
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Mean : 4.536
-</td>
-<td style="text-align:left;">
-Mean : 4.374
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-3rd Qu.: 4.884
-</td>
-<td style="text-align:left;">
-3rd Qu.: 4.803
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Max. :26.142
-</td>
-<td style="text-align:left;">
-Max. :22.987
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="基本操作.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look up help</span></span>
-<span id="cb18-2"><a href="基本操作.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(summary)</span></code></pre></div>
-<div class="r-help-page">
-<div class="container">
-<table width="100%" summary="page for summary">
-<tr>
-<td>
-summary
-</td>
-<td style="text-align: right;">
-R Documentation
-</td>
-</tr>
-</table>
-<h2>
-Object Summaries
-</h2>
-<h3>
-Description
-</h3>
-<p>
-<code>summary</code> is a generic function used to produce result summaries
-of the results of various model fitting functions. The function
-invokes particular <code>methods</code> which depend on the
-<code>class</code> of the first argument.
-</p>
-<h3>
-Usage
-</h3>
-<pre class="r">
-summary(object, ...)
-
-## Default S3 method:
-summary(object, ..., digits, quantile.type = 7)
-## S3 method for class 'data.frame'
-summary(object, maxsum = 7,
-       digits = max(3, getOption("digits")-3), ...)
-
-## S3 method for class 'factor'
-summary(object, maxsum = 100, ...)
-
-## S3 method for class 'matrix'
-summary(object, ...)
-
-## S3 method for class 'summaryDefault'
-format(x, digits = max(3L, getOption("digits") - 3L), ...)
- ## S3 method for class 'summaryDefault'
-print(x, digits = max(3L, getOption("digits") - 3L), ...)
-</pre>
-<h3>
-Arguments
-</h3>
-<table summary="R argblock">
-<tr valign="top">
-<td>
-<code>object</code>
-</td>
-<td>
-<p>
-an object for which a summary is desired.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>x</code>
-</td>
-<td>
-<p>
-a result of the <em>default</em> method of <code>summary()</code>.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>maxsum</code>
-</td>
-<td>
-<p>
-integer, indicating how many levels should be shown for
-<code>factor</code>s.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>digits</code>
-</td>
-<td>
-<p>
-integer, used for number formatting with
-<code>signif()</code> (for <code>summary.default</code>) or
-<code>format()</code> (for <code>summary.data.frame</code>). In
-<code>summary.default</code>, if not specified (i.e.,
-<code>missing(.)</code>), <code>signif()</code> will <em>not</em> be called
-anymore (since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> &gt;= 3.4.0, where the default has been changed to
-only round in the <code>print</code> and <code>format</code> methods).
-</p>
-</td>
-</tr>
-</table>
-<table summary="R argblock">
-<tr valign="top">
-<td>
-<code>quantile.type</code>
-</td>
-<td>
-<p>
-integer code used in <code>quantile(*, type=quantile.type)</code>
-for the default method.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>…</code>
-</td>
-<td>
-<p>
-additional arguments affecting the summary produced.
-</p>
-</td>
-</tr>
-</table>
-<h3>
-Details
-</h3>
-<p>
-For <code>factor</code>s, the frequency of the first <code>maxsum - 1</code>
-most frequent levels is shown, and the less frequent levels are
-summarized in <code>“(Others)”</code> (resulting in at most <code>maxsum</code>
-frequencies).
-</p>
-<p>
-The functions <code>summary.lm</code> and <code>summary.glm</code> are examples
-of particular methods which summarize the results produced by
-<code>lm</code> and <code>glm</code>.
-</p>
-<h3>
-Value
-</h3>
-<p>
-The form of the value returned by <code>summary</code> depends on the
-class of its argument. See the documentation of the particular
-methods for details of what is produced by that method.
-</p>
-<p>
-The default method returns an object of class
-<code>c(“summaryDefault”, “table”)</code> which has specialized
-<code>format</code> and <code>print</code> methods. The
-<code>factor</code> method returns an integer vector.
-</p>
-<p>
-The matrix and data frame methods return a matrix of class
-<code>“table”</code>, obtained by applying <code>summary</code> to each
-column and collating the results.
-</p>
-<h3>
-References
-</h3>
-<p>
-Chambers, J. M. and Hastie, T. J. (1992)
-<em>Statistical Models in S</em>.
-Wadsworth &amp; Brooks/Cole.
-</p>
-<h3>
-See Also
-</h3>
-<p>
-<code>anova</code>,
-<code>summary.glm</code>,
-<code>summary.lm</code>.
-</p>
-<h3>
-Examples
-</h3>
-<pre class="r">
-summary(attenu, digits = 4) #-&gt; summary.data.frame(...), default precision
-summary(attenu $ station, maxsum = 20) #-&gt; summary.factor(...)
-
-lst &lt;- unclass(attenu$station) &gt; 20 # logical with NAs
-## summary.default() for logicals -- different from *.factor:
-summary(lst)
-summary(as.factor(lst))
-</pre>
-</div>
-</div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="基本操作.html#cb19-1" aria-hidden="true" tabindex="-1"></a>?summary</span></code></pre></div>
-<div class="r-help-page">
-<div class="container">
-<table width="100%" summary="page for summary">
-<tr>
-<td>
-summary
-</td>
-<td style="text-align: right;">
-R Documentation
-</td>
-</tr>
-</table>
-<h2>
-Object Summaries
-</h2>
-<h3>
-Description
-</h3>
-<p>
-<code>summary</code> is a generic function used to produce result summaries
-of the results of various model fitting functions. The function
-invokes particular <code>methods</code> which depend on the
-<code>class</code> of the first argument.
-</p>
-<h3>
-Usage
-</h3>
-<pre class="r">
-summary(object, ...)
-
-## Default S3 method:
-summary(object, ..., digits, quantile.type = 7)
-## S3 method for class 'data.frame'
-summary(object, maxsum = 7,
-       digits = max(3, getOption("digits")-3), ...)
-
-## S3 method for class 'factor'
-summary(object, maxsum = 100, ...)
-
-## S3 method for class 'matrix'
-summary(object, ...)
-
-## S3 method for class 'summaryDefault'
-format(x, digits = max(3L, getOption("digits") - 3L), ...)
- ## S3 method for class 'summaryDefault'
-print(x, digits = max(3L, getOption("digits") - 3L), ...)
-</pre>
-<h3>
-Arguments
-</h3>
-<table summary="R argblock">
-<tr valign="top">
-<td>
-<code>object</code>
-</td>
-<td>
-<p>
-an object for which a summary is desired.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>x</code>
-</td>
-<td>
-<p>
-a result of the <em>default</em> method of <code>summary()</code>.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>maxsum</code>
-</td>
-<td>
-<p>
-integer, indicating how many levels should be shown for
-<code>factor</code>s.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>digits</code>
-</td>
-<td>
-<p>
-integer, used for number formatting with
-<code>signif()</code> (for <code>summary.default</code>) or
-<code>format()</code> (for <code>summary.data.frame</code>). In
-<code>summary.default</code>, if not specified (i.e.,
-<code>missing(.)</code>), <code>signif()</code> will <em>not</em> be called
-anymore (since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> &gt;= 3.4.0, where the default has been changed to
-only round in the <code>print</code> and <code>format</code> methods).
-</p>
-</td>
-</tr>
-</table>
-<table summary="R argblock">
-<tr valign="top">
-<td>
-<code>quantile.type</code>
-</td>
-<td>
-<p>
-integer code used in <code>quantile(*, type=quantile.type)</code>
-for the default method.
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>…</code>
-</td>
-<td>
-<p>
-additional arguments affecting the summary produced.
-</p>
-</td>
-</tr>
-</table>
-<h3>
-Details
-</h3>
-<p>
-For <code>factor</code>s, the frequency of the first <code>maxsum - 1</code>
-most frequent levels is shown, and the less frequent levels are
-summarized in <code>“(Others)”</code> (resulting in at most <code>maxsum</code>
-frequencies).
-</p>
-<p>
-The functions <code>summary.lm</code> and <code>summary.glm</code> are examples
-of particular methods which summarize the results produced by
-<code>lm</code> and <code>glm</code>.
-</p>
-<h3>
-Value
-</h3>
-<p>
-The form of the value returned by <code>summary</code> depends on the
-class of its argument. See the documentation of the particular
-methods for details of what is produced by that method.
-</p>
-<p>
-The default method returns an object of class
-<code>c(“summaryDefault”, “table”)</code> which has specialized
-<code>format</code> and <code>print</code> methods. The
-<code>factor</code> method returns an integer vector.
-</p>
-<p>
-The matrix and data frame methods return a matrix of class
-<code>“table”</code>, obtained by applying <code>summary</code> to each
-column and collating the results.
-</p>
-<h3>
-References
-</h3>
-<p>
-Chambers, J. M. and Hastie, T. J. (1992)
-<em>Statistical Models in S</em>.
-Wadsworth &amp; Brooks/Cole.
-</p>
-<h3>
-See Also
-</h3>
-<p>
-<code>anova</code>,
-<code>summary.glm</code>,
-<code>summary.lm</code>.
-</p>
-<h3>
-Examples
-</h3>
-<pre class="r">
-summary(attenu, digits = 4) #-&gt; summary.data.frame(...), default precision
-summary(attenu $ station, maxsum = 20) #-&gt; summary.factor(...)
-
-lst &lt;- unclass(attenu$station) &gt; 20 # logical with NAs
-## summary.default() for logicals -- different from *.factor:
-summary(lst)
-summary(as.factor(lst))
-</pre>
-</div>
-</div>
-<div id="觀察資料維度" class="section level4 hasAnchor" number="3.1.2.1">
-<h4><span class="header-section-number">3.1.2.1</span> 觀察資料維度<a href="基本操作.html#觀察資料維度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="基本操作.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] 20  3</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="基本操作.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="基本操作.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] 20</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="基本操作.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] 3</code></pre>
-</div>
-</div>
-<div id="操作dataframe" class="section level3 hasAnchor" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> 操作dataframe<a href="基本操作.html#操作dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="取出一個變項" class="section level4 hasAnchor" number="3.1.3.1">
-<h4><span class="header-section-number">3.1.3.1</span> 取出一個變項<a href="基本操作.html#取出一個變項" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li><code>names(df)</code> 列出變數名稱</li>
-<li><code>df$發生.現.地點</code> 顯示該變數內容</li>
-<li><code>df$發生時段</code> 顯示該變數內容</li>
-<li><code>length(df$發生時段)</code> 顯示該變數的長度（相當於有幾個）</li>
-</ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="基本操作.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;country&quot; &quot;import&quot;  &quot;export&quot;</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="基本操作.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>發生.現.地點)</span></code></pre></div>
-<pre class="output"><code>## NULL</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="基本操作.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>發生時段)</span></code></pre></div>
-<pre class="output"><code>## NULL</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="基本操作.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df<span class="sc">$</span>發生時段)</span></code></pre></div>
-<pre class="output"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="基本操作.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
+org
 </th>
 <th style="text-align:left;">
-country
+本年度預算
 </th>
 <th style="text-align:left;">
-import
+上年度預算
 </th>
 <th style="text-align:left;">
-export
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Length:20
-</td>
-<td style="text-align:left;">
-Min. : 0.449
-</td>
-<td style="text-align:left;">
-Min. : 0.728
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Class :character
-</td>
-<td style="text-align:left;">
-1st Qu.: 1.016
-</td>
-<td style="text-align:left;">
-1st Qu.: 1.312
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Mode :character
-</td>
-<td style="text-align:left;">
-Median : 2.054
-</td>
-<td style="text-align:left;">
-Median : 1.966
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Mean : 4.536
-</td>
-<td style="text-align:left;">
-Mean : 4.374
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-3rd Qu.: 4.884
-</td>
-<td style="text-align:left;">
-3rd Qu.: 4.803
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Max. :26.142
-</td>
-<td style="text-align:left;">
-Max. :22.987
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="mutate透過運算產生新變數" class="section level4 hasAnchor" number="3.1.3.2">
-<h4><span class="header-section-number">3.1.3.2</span> (mutate)透過運算產生新變數<a href="基本操作.html#mutate透過運算產生新變數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>這裡容易犯錯的是，要記得跟程式講說你要加總或四則運算的是哪個df的variable。</li>
-<li>從下面的這個操作中，該data.frame會產生一個新的變數<code>sub</code>，這就相當於Excel中的某一行減去某一行，然後把資料放在新的一行。</li>
-</ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="基本操作.html#cb37-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>sub <span class="ot">&lt;-</span> df<span class="sc">$</span>import <span class="sc">-</span> df<span class="sc">$</span>export</span></code></pre></div>
-</div>
-<div id="filter篩選資料選取變數" class="section level4 hasAnchor" number="3.1.3.3">
-<h4><span class="header-section-number">3.1.3.3</span> (filter)篩選資料、選取變數<a href="基本操作.html#filter篩選資料選取變數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li><p>注意，要告訴程式<code>import</code>和<code>export</code>是哪個<code>data.frame</code>的。</p></li>
-<li><p><code>df[,]</code>為存取<code>df</code>中某個區段的數值或某個數值的方法。因此<code>df[1, 1]</code>會取出第一行第一列，也就是第一筆資料的第一個vector。<code>df[2, 3]</code>則會取出第二筆資料的第三個variable。</p></li>
-<li><p>下面的例子<code>nrow(df)</code>為1894，有1894筆資料，所以自然df<span class="math inline">\(import與df\)</span>export的長度都是1894。因此，比較這兩個變數的大小會得到一個長度為1894的boolean (logical) variable。因此把這個長度為1894、充滿TRUE和FALSE的logical vector丟進df的row之處，因為取自df，大小判斷式結果的長度自然和原本的df的列數相同。因此當這個TRUE/FALSE被丟在df的列之處，便會篩選出<code>import</code>大於<code>p.xport</code>的數值。</p></li>
-<li><p>原本的df有五個variable，而上述的操作是篩選資料，所以被篩選的是列，因此行的數量、名稱都不會變。因此，我篩選完後，直接存取這個被篩選過的data.frame的country variable，自然是可以的。</p></li>
-</ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="基本操作.html#cb38-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-country
-</th>
-<th style="text-align:right;">
-import
-</th>
-<th style="text-align:right;">
-export
-</th>
-<th style="text-align:right;">
-sub
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-CN
-</td>
-<td style="text-align:right;">
-26.142
-</td>
-<td style="text-align:right;">
-22.987
-</td>
-<td style="text-align:right;">
-3.155
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-US
-</td>
-<td style="text-align:right;">
-12.008
-</td>
-<td style="text-align:right;">
-12.204
-</td>
-<td style="text-align:right;">
--0.196
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JP
-</td>
-<td style="text-align:right;">
-7.032
-</td>
-<td style="text-align:right;">
-11.837
-</td>
-<td style="text-align:right;">
--4.805
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-HK
-</td>
-<td style="text-align:right;">
-13.646
-</td>
-<td style="text-align:right;">
-7.739
-</td>
-<td style="text-align:right;">
-5.907
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-KR
-</td>
-<td style="text-align:right;">
-4.589
-</td>
-<td style="text-align:right;">
-5.381
-</td>
-<td style="text-align:right;">
--0.792
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SG
-</td>
-<td style="text-align:right;">
-5.768
-</td>
-<td style="text-align:right;">
-4.610
-</td>
-<td style="text-align:right;">
-1.158
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-DE
-</td>
-<td style="text-align:right;">
-2.131
-</td>
-<td style="text-align:right;">
-2.866
-</td>
-<td style="text-align:right;">
--0.735
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-MY
-</td>
-<td style="text-align:right;">
-2.802
-</td>
-<td style="text-align:right;">
-2.784
-</td>
-<td style="text-align:right;">
-0.018
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-VN
-</td>
-<td style="text-align:right;">
-3.428
-</td>
-<td style="text-align:right;">
-2.414
-</td>
-<td style="text-align:right;">
-1.014
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-PH
-</td>
-<td style="text-align:right;">
-3.019
-</td>
-<td style="text-align:right;">
-2.092
-</td>
-<td style="text-align:right;">
-0.927
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-TH
-</td>
-<td style="text-align:right;">
-1.976
-</td>
-<td style="text-align:right;">
-1.839
-</td>
-<td style="text-align:right;">
-0.137
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-AU
-</td>
-<td style="text-align:right;">
-1.118
-</td>
-<td style="text-align:right;">
-1.788
-</td>
-<td style="text-align:right;">
--0.670
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NL
-</td>
-<td style="text-align:right;">
-1.624
-</td>
-<td style="text-align:right;">
-1.665
-</td>
-<td style="text-align:right;">
--0.041
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SA
-</td>
-<td style="text-align:right;">
-0.449
-</td>
-<td style="text-align:right;">
-1.409
-</td>
-<td style="text-align:right;">
--0.960
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ID
-</td>
-<td style="text-align:right;">
-0.983
-</td>
-<td style="text-align:right;">
-1.391
-</td>
-<td style="text-align:right;">
--0.408
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-GB
-</td>
-<td style="text-align:right;">
-1.302
-</td>
-<td style="text-align:right;">
-1.075
-</td>
-<td style="text-align:right;">
-0.227
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-IN
-</td>
-<td style="text-align:right;">
-1.027
-</td>
-<td style="text-align:right;">
-0.974
-</td>
-<td style="text-align:right;">
-0.053
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-FR
-</td>
-<td style="text-align:right;">
-0.553
-</td>
-<td style="text-align:right;">
-0.899
-</td>
-<td style="text-align:right;">
--0.346
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-IT
-</td>
-<td style="text-align:right;">
-0.670
-</td>
-<td style="text-align:right;">
-0.800
-</td>
-<td style="text-align:right;">
--0.130
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-AE
-</td>
-<td style="text-align:right;">
-0.455
-</td>
-<td style="text-align:right;">
-0.728
-</td>
-<td style="text-align:right;">
--0.273
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="基本操作.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;country&quot; &quot;import&quot;  &quot;export&quot;  &quot;sub&quot;</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="基本操作.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
-<pre class="output"><code>## [1] 20</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="基本操作.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter row data by column value</span></span>
-<span id="cb43-2"><a href="基本操作.html#cb43-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,]</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
+上年度決算
 </th>
 <th style="text-align:left;">
-country
-</th>
-<th style="text-align:right;">
-import
-</th>
-<th style="text-align:right;">
-export
-</th>
-<th style="text-align:right;">
-sub
+預算差
 </th>
 </tr>
 </thead>
@@ -1633,239 +837,77 @@ sub
 1
 </td>
 <td style="text-align:left;">
-CN
+NA
 </td>
-<td style="text-align:right;">
-26.142
+<td style="text-align:left;">
+3100000000
 </td>
-<td style="text-align:right;">
-22.987
+<td style="text-align:left;">
+國務支出
 </td>
-<td style="text-align:right;">
-3.155
+<td style="text-align:left;">
+1210301
+</td>
+<td style="text-align:left;">
+1186955
+</td>
+<td style="text-align:left;">
+1176955.1259999999
+</td>
+<td style="text-align:left;">
+23346
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-4
+NA
 </td>
-<td style="text-align:left;">
-HK
-</td>
-<td style="text-align:right;">
-13.646
-</td>
-<td style="text-align:right;">
-7.739
-</td>
-<td style="text-align:right;">
-5.907
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-SG
-</td>
-<td style="text-align:right;">
-5.768
-</td>
-<td style="text-align:right;">
-4.610
-</td>
-<td style="text-align:right;">
-1.158
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-MY
-</td>
-<td style="text-align:right;">
-2.802
-</td>
-<td style="text-align:right;">
-2.784
-</td>
-<td style="text-align:right;">
-0.018
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-VN
-</td>
-<td style="text-align:right;">
-3.428
-</td>
-<td style="text-align:right;">
-2.414
-</td>
-<td style="text-align:right;">
-1.014
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-PH
-</td>
-<td style="text-align:right;">
-3.019
-</td>
-<td style="text-align:right;">
-2.092
-</td>
-<td style="text-align:right;">
-0.927
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-TH
-</td>
-<td style="text-align:right;">
-1.976
-</td>
-<td style="text-align:right;">
-1.839
-</td>
-<td style="text-align:right;">
-0.137
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-16
-</td>
-<td style="text-align:left;">
-GB
-</td>
-<td style="text-align:right;">
-1.302
-</td>
-<td style="text-align:right;">
-1.075
-</td>
-<td style="text-align:right;">
-0.227
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-17
-</td>
-<td style="text-align:left;">
-IN
-</td>
-<td style="text-align:right;">
-1.027
-</td>
-<td style="text-align:right;">
-0.974
-</td>
-<td style="text-align:right;">
-0.053
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="基本操作.html#cb44-1" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,]<span class="sc">$</span>country</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;CN&quot; &quot;HK&quot; &quot;SG&quot; &quot;MY&quot; &quot;VN&quot; &quot;PH&quot; &quot;TH&quot; &quot;GB&quot; &quot;IN&quot;</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="基本操作.html#cb46-1" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,<span class="dv">1</span>]</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;CN&quot; &quot;HK&quot; &quot;SG&quot; &quot;MY&quot; &quot;VN&quot; &quot;PH&quot; &quot;TH&quot; &quot;GB&quot; &quot;IN&quot;</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="基本操作.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 row == a data.frame with only one data entry</span></span>
-<span id="cb48-2"><a href="基本操作.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,<span class="dv">1</span>])</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="基本操作.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[,<span class="dv">1</span>]) <span class="co"># character vector</span></span></code></pre></div>
-<pre class="output"><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="基本操作.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[<span class="dv">1</span>,]) <span class="co"># data.frame</span></span></code></pre></div>
-<pre class="output"><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="基本操作.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(df[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>])) <span class="co"># filter the 1st row and select all columns except 1</span></span></code></pre></div>
-<pre class="output"><code>## [1] &quot;numeric&quot;</code></pre>
-</div>
-<div id="arrange-按某個變數排序" class="section level4 hasAnchor" number="3.1.3.4">
-<h4><span class="header-section-number">3.1.3.4</span> (arrange) 按某個變數排序<a href="基本操作.html#arrange-按某個變數排序" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li><code>df.sorted &lt;- df[order(df$import),]</code>會使得整個df照<code>import</code>的大小排序重新做排列。因為<code>order(df$import)</code>會把資料照指定順序排列後的位置傳回來，所以把他丟給<code>df</code>的列的位置，便會使得<code>df</code>的資料照指定的順序排列。
-預設是由小到大，加上<code>decreasing = T</code>這個參數後變成由大而小。</li>
-</ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="基本操作.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort rows by df$import column</span></span>
-<span id="cb56-2"><a href="基本操作.html#cb56-2" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>import),]</span>
-<span id="cb56-3"><a href="基本操作.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df.sorted)</span></span>
-<span id="cb56-4"><a href="基本操作.html#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-5"><a href="基本操作.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sort rows in decreasing order</span></span>
-<span id="cb56-6"><a href="基本操作.html#cb56-6" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>import, <span class="at">decreasing =</span> T),]</span>
-<span id="cb56-7"><a href="基本操作.html#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-8"><a href="基本操作.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add - to column in order() can sort in decreasing order</span></span>
-<span id="cb56-9"><a href="基本操作.html#cb56-9" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(<span class="sc">-</span>df<span class="sc">$</span>import),]</span>
-<span id="cb56-10"><a href="基本操作.html#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-11"><a href="基本操作.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df.sorted)</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-country
-</th>
-<th style="text-align:right;">
-import
-</th>
-<th style="text-align:right;">
-export
-</th>
-<th style="text-align:right;">
-sub
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
 <td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
-CN
+3102010000
 </td>
-<td style="text-align:right;">
-26.142
+<td style="text-align:left;">
+總統府
 </td>
-<td style="text-align:right;">
-22.987
+<td style="text-align:left;">
+1004797
 </td>
-<td style="text-align:right;">
-3.155
+<td style="text-align:left;">
+978916
+</td>
+<td style="text-align:left;">
+997305.54599999997
+</td>
+<td style="text-align:left;">
+25881
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-4
+NA
 </td>
 <td style="text-align:left;">
-HK
+2
 </td>
-<td style="text-align:right;">
-13.646
+<td style="text-align:left;">
+3102100000
 </td>
-<td style="text-align:right;">
-7.739
+<td style="text-align:left;">
+國家安全會議
 </td>
-<td style="text-align:right;">
-5.907
+<td style="text-align:left;">
+205504
+</td>
+<td style="text-align:left;">
+208039
+</td>
+<td style="text-align:left;">
+179649.57999999999
+</td>
+<td style="text-align:left;">
+-2535
 </td>
 </tr>
 <tr>
@@ -1873,71 +915,1104 @@ HK
 2
 </td>
 <td style="text-align:left;">
-US
+NA
 </td>
-<td style="text-align:right;">
-12.008
+<td style="text-align:left;">
+3200000000
 </td>
-<td style="text-align:right;">
-12.204
+<td style="text-align:left;">
+行政支出
 </td>
-<td style="text-align:right;">
--0.196
+<td style="text-align:left;">
+6134276
+</td>
+<td style="text-align:left;">
+5836481
+</td>
+<td style="text-align:left;">
+5477154.5810000002
+</td>
+<td style="text-align:left;">
+297795
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3203010000
+</td>
+<td style="text-align:left;">
+行政院
+</td>
+<td style="text-align:left;">
+1256043
+</td>
+<td style="text-align:left;">
+1286646
+</td>
+<td style="text-align:left;">
+1268295.23
+</td>
+<td style="text-align:left;">
+-30603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3203100000
+</td>
+<td style="text-align:left;">
+主計總處
+</td>
+<td style="text-align:left;">
+1604967
+</td>
+<td style="text-align:left;">
+1478173
+</td>
+<td style="text-align:left;">
+1578781.8940000001
+</td>
+<td style="text-align:left;">
+126794
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
 <td style="text-align:left;">
 3
 </td>
 <td style="text-align:left;">
-JP
+3203300000
 </td>
-<td style="text-align:right;">
-7.032
+<td style="text-align:left;">
+人事行政總處
 </td>
-<td style="text-align:right;">
-11.837
+<td style="text-align:left;">
+555363
 </td>
-<td style="text-align:right;">
--4.805
+<td style="text-align:left;">
+573447
+</td>
+<td style="text-align:left;">
+489516.17700000003
+</td>
+<td style="text-align:left;">
+-18084
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-6
+NA
 </td>
 <td style="text-align:left;">
-SG
+4
 </td>
-<td style="text-align:right;">
-5.768
+<td style="text-align:left;">
+3203340000
 </td>
-<td style="text-align:right;">
-4.610
+<td style="text-align:left;">
+公務人力發展學院
 </td>
-<td style="text-align:right;">
-1.158
+<td style="text-align:left;">
+244346
+</td>
+<td style="text-align:left;">
+239453
+</td>
+<td style="text-align:left;">
+229852.26199999999
+</td>
+<td style="text-align:left;">
+4893
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+NA
+</td>
 <td style="text-align:left;">
 5
 </td>
 <td style="text-align:left;">
-KR
+3203420000
 </td>
-<td style="text-align:right;">
-4.589
+<td style="text-align:left;">
+檔案管理局
 </td>
-<td style="text-align:right;">
-5.381
+<td style="text-align:left;">
+787429
 </td>
-<td style="text-align:right;">
--0.792
+<td style="text-align:left;">
+646081
+</td>
+<td style="text-align:left;">
+443133.20799999998
+</td>
+<td style="text-align:left;">
+141348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+3203900000
+</td>
+<td style="text-align:left;">
+大陸委員會
+</td>
+<td style="text-align:left;">
+900896
+</td>
+<td style="text-align:left;">
+900866
+</td>
+<td style="text-align:left;">
+792491.22199999995
+</td>
+<td style="text-align:left;">
+30
 </td>
 </tr>
 </tbody>
 </table>
+<div id="na處理" class="section level4 hasAnchor" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> NA處理<a href="na-processing.html#na處理" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>觀察一下現在的資料，發現，行政院、主計總處等均屬於行政支出，但行政支出卻自有一列。依照長表格的格式來說，應嘗試把「款」作為機構的變項。所以將款的數字取代為「行政支出」等支出類別的名稱。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="na-processing.html#cb4-1" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="na-processing.html#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+款
+</th>
+<th style="text-align:left;">
+科
+</th>
+<th style="text-align:left;">
+oid
+</th>
+<th style="text-align:left;">
+org
+</th>
+<th style="text-align:left;">
+本年度預算
+</th>
+<th style="text-align:left;">
+上年度預算
+</th>
+<th style="text-align:left;">
+上年度決算
+</th>
+<th style="text-align:left;">
+預算差
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3100000000
+</td>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+1210301
+</td>
+<td style="text-align:left;">
+1186955
+</td>
+<td style="text-align:left;">
+1176955.1259999999
+</td>
+<td style="text-align:left;">
+23346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3102010000
+</td>
+<td style="text-align:left;">
+總統府
+</td>
+<td style="text-align:left;">
+1004797
+</td>
+<td style="text-align:left;">
+978916
+</td>
+<td style="text-align:left;">
+997305.54599999997
+</td>
+<td style="text-align:left;">
+25881
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3102100000
+</td>
+<td style="text-align:left;">
+國家安全會議
+</td>
+<td style="text-align:left;">
+205504
+</td>
+<td style="text-align:left;">
+208039
+</td>
+<td style="text-align:left;">
+179649.57999999999
+</td>
+<td style="text-align:left;">
+-2535
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3200000000
+</td>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+6134276
+</td>
+<td style="text-align:left;">
+5836481
+</td>
+<td style="text-align:left;">
+5477154.5810000002
+</td>
+<td style="text-align:left;">
+297795
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3203010000
+</td>
+<td style="text-align:left;">
+行政院
+</td>
+<td style="text-align:left;">
+1256043
+</td>
+<td style="text-align:left;">
+1286646
+</td>
+<td style="text-align:left;">
+1268295.23
+</td>
+<td style="text-align:left;">
+-30603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3203100000
+</td>
+<td style="text-align:left;">
+主計總處
+</td>
+<td style="text-align:left;">
+1604967
+</td>
+<td style="text-align:left;">
+1478173
+</td>
+<td style="text-align:left;">
+1578781.8940000001
+</td>
+<td style="text-align:left;">
+126794
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3203300000
+</td>
+<td style="text-align:left;">
+人事行政總處
+</td>
+<td style="text-align:left;">
+555363
+</td>
+<td style="text-align:left;">
+573447
+</td>
+<td style="text-align:left;">
+489516.17700000003
+</td>
+<td style="text-align:left;">
+-18084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+3203340000
+</td>
+<td style="text-align:left;">
+公務人力發展學院
+</td>
+<td style="text-align:left;">
+244346
+</td>
+<td style="text-align:left;">
+239453
+</td>
+<td style="text-align:left;">
+229852.26199999999
+</td>
+<td style="text-align:left;">
+4893
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3203420000
+</td>
+<td style="text-align:left;">
+檔案管理局
+</td>
+<td style="text-align:left;">
+787429
+</td>
+<td style="text-align:left;">
+646081
+</td>
+<td style="text-align:left;">
+443133.20799999998
+</td>
+<td style="text-align:left;">
+141348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+3203900000
+</td>
+<td style="text-align:left;">
+大陸委員會
+</td>
+<td style="text-align:left;">
+900896
+</td>
+<td style="text-align:left;">
+900866
+</td>
+<td style="text-align:left;">
+792491.22199999995
+</td>
+<td style="text-align:left;">
+30
+</td>
+</tr>
+</tbody>
+</table>
+<p>接下來，希望能夠在「款==<code>NA</code>」的地方填入該欄的「前一個值」例如行政支出。查詢一下（關鍵字如「Fill in NA column values with the last value that was not NA」）還真的有這樣的函式可以操作。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="na-processing.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb5-2"><a href="na-processing.html#cb5-2" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="na-processing.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="na-processing.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="na-processing.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+款
+</th>
+<th style="text-align:left;">
+科
+</th>
+<th style="text-align:left;">
+oid
+</th>
+<th style="text-align:left;">
+org
+</th>
+<th style="text-align:left;">
+本年度預算
+</th>
+<th style="text-align:left;">
+上年度預算
+</th>
+<th style="text-align:left;">
+上年度決算
+</th>
+<th style="text-align:left;">
+預算差
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3100000000
+</td>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+1210301
+</td>
+<td style="text-align:left;">
+1186955
+</td>
+<td style="text-align:left;">
+1176955.1259999999
+</td>
+<td style="text-align:left;">
+23346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3102010000
+</td>
+<td style="text-align:left;">
+總統府
+</td>
+<td style="text-align:left;">
+1004797
+</td>
+<td style="text-align:left;">
+978916
+</td>
+<td style="text-align:left;">
+997305.54599999997
+</td>
+<td style="text-align:left;">
+25881
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3102100000
+</td>
+<td style="text-align:left;">
+國家安全會議
+</td>
+<td style="text-align:left;">
+205504
+</td>
+<td style="text-align:left;">
+208039
+</td>
+<td style="text-align:left;">
+179649.57999999999
+</td>
+<td style="text-align:left;">
+-2535
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3200000000
+</td>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+6134276
+</td>
+<td style="text-align:left;">
+5836481
+</td>
+<td style="text-align:left;">
+5477154.5810000002
+</td>
+<td style="text-align:left;">
+297795
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3203010000
+</td>
+<td style="text-align:left;">
+行政院
+</td>
+<td style="text-align:left;">
+1256043
+</td>
+<td style="text-align:left;">
+1286646
+</td>
+<td style="text-align:left;">
+1268295.23
+</td>
+<td style="text-align:left;">
+-30603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3203100000
+</td>
+<td style="text-align:left;">
+主計總處
+</td>
+<td style="text-align:left;">
+1604967
+</td>
+<td style="text-align:left;">
+1478173
+</td>
+<td style="text-align:left;">
+1578781.8940000001
+</td>
+<td style="text-align:left;">
+126794
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3203300000
+</td>
+<td style="text-align:left;">
+人事行政總處
+</td>
+<td style="text-align:left;">
+555363
+</td>
+<td style="text-align:left;">
+573447
+</td>
+<td style="text-align:left;">
+489516.17700000003
+</td>
+<td style="text-align:left;">
+-18084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+3203340000
+</td>
+<td style="text-align:left;">
+公務人力發展學院
+</td>
+<td style="text-align:left;">
+244346
+</td>
+<td style="text-align:left;">
+239453
+</td>
+<td style="text-align:left;">
+229852.26199999999
+</td>
+<td style="text-align:left;">
+4893
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3203420000
+</td>
+<td style="text-align:left;">
+檔案管理局
+</td>
+<td style="text-align:left;">
+787429
+</td>
+<td style="text-align:left;">
+646081
+</td>
+<td style="text-align:left;">
+443133.20799999998
+</td>
+<td style="text-align:left;">
+141348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+3203900000
+</td>
+<td style="text-align:left;">
+大陸委員會
+</td>
+<td style="text-align:left;">
+900896
+</td>
+<td style="text-align:left;">
+900866
+</td>
+<td style="text-align:left;">
+792491.22199999995
+</td>
+<td style="text-align:left;">
+30
+</td>
+</tr>
+</tbody>
+</table>
+<p>太神奇了看見沒！接下來只要把「科 is <code>NA</code>」的那些該大類支出總數的紀錄給刪除，資料就乾淨了。最後就只會剩下一些資料清理的功伕。完整程式碼可以看下一節。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="na-processing.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb6-2"><a href="na-processing.html#cb6-2" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="na-processing.html#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="na-processing.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="na-processing.html#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="na-processing.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+款
+</th>
+<th style="text-align:left;">
+科
+</th>
+<th style="text-align:left;">
+oid
+</th>
+<th style="text-align:left;">
+org
+</th>
+<th style="text-align:left;">
+本年度預算
+</th>
+<th style="text-align:left;">
+上年度預算
+</th>
+<th style="text-align:left;">
+上年度決算
+</th>
+<th style="text-align:left;">
+預算差
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3102010000
+</td>
+<td style="text-align:left;">
+總統府
+</td>
+<td style="text-align:left;">
+1004797
+</td>
+<td style="text-align:left;">
+978916
+</td>
+<td style="text-align:left;">
+997305.54599999997
+</td>
+<td style="text-align:left;">
+25881
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+國務支出
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3102100000
+</td>
+<td style="text-align:left;">
+國家安全會議
+</td>
+<td style="text-align:left;">
+205504
+</td>
+<td style="text-align:left;">
+208039
+</td>
+<td style="text-align:left;">
+179649.57999999999
+</td>
+<td style="text-align:left;">
+-2535
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3203010000
+</td>
+<td style="text-align:left;">
+行政院
+</td>
+<td style="text-align:left;">
+1256043
+</td>
+<td style="text-align:left;">
+1286646
+</td>
+<td style="text-align:left;">
+1268295.23
+</td>
+<td style="text-align:left;">
+-30603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3203100000
+</td>
+<td style="text-align:left;">
+主計總處
+</td>
+<td style="text-align:left;">
+1604967
+</td>
+<td style="text-align:left;">
+1478173
+</td>
+<td style="text-align:left;">
+1578781.8940000001
+</td>
+<td style="text-align:left;">
+126794
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3203300000
+</td>
+<td style="text-align:left;">
+人事行政總處
+</td>
+<td style="text-align:left;">
+555363
+</td>
+<td style="text-align:left;">
+573447
+</td>
+<td style="text-align:left;">
+489516.17700000003
+</td>
+<td style="text-align:left;">
+-18084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+3203340000
+</td>
+<td style="text-align:left;">
+公務人力發展學院
+</td>
+<td style="text-align:left;">
+244346
+</td>
+<td style="text-align:left;">
+239453
+</td>
+<td style="text-align:left;">
+229852.26199999999
+</td>
+<td style="text-align:left;">
+4893
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3203420000
+</td>
+<td style="text-align:left;">
+檔案管理局
+</td>
+<td style="text-align:left;">
+787429
+</td>
+<td style="text-align:left;">
+646081
+</td>
+<td style="text-align:left;">
+443133.20799999998
+</td>
+<td style="text-align:left;">
+141348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+3203900000
+</td>
+<td style="text-align:left;">
+大陸委員會
+</td>
+<td style="text-align:left;">
+900896
+</td>
+<td style="text-align:left;">
+900866
+</td>
+<td style="text-align:left;">
+792491.22199999995
+</td>
+<td style="text-align:left;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+3203910000
+</td>
+<td style="text-align:left;">
+國家運輸安全調查委員會
+</td>
+<td style="text-align:left;">
+253760
+</td>
+<td style="text-align:left;">
+188246
+</td>
+<td style="text-align:left;">
+168289.19099999999
+</td>
+<td style="text-align:left;">
+65514
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+行政支出
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+3203920000
+</td>
+<td style="text-align:left;">
+促進轉型正義委員會
+</td>
+<td style="text-align:left;">
+66547
+</td>
+<td style="text-align:left;">
+61523
+</td>
+<td style="text-align:left;">
+101953.568
+</td>
+<td style="text-align:left;">
+5024
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="完整程式碼" class="section level4 hasAnchor" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> 完整程式碼<a href="na-processing.html#完整程式碼" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="na-processing.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb7-2"><a href="na-processing.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
+<span id="cb7-3"><a href="na-processing.html#cb7-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
+<span id="cb7-4"><a href="na-processing.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="na-processing.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
+<span id="cb7-6"><a href="na-processing.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
+<span id="cb7-7"><a href="na-processing.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="na-processing.html#cb7-8" aria-hidden="true" tabindex="-1"></a>cleaned <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="na-processing.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="na-processing.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="na-processing.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="na-processing.html#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(機構, <span class="fu">c</span>(<span class="st">&quot;oid&quot;</span>, <span class="st">&quot;org&quot;</span>), <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="na-processing.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-14"><a href="na-processing.html#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-15"><a href="na-processing.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-16"><a href="na-processing.html#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb7-17"><a href="na-processing.html#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
+<span id="cb7-18"><a href="na-processing.html#cb7-18" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
+<span id="cb7-19"><a href="na-processing.html#cb7-19" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-20"><a href="na-processing.html#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-21"><a href="na-processing.html#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
+
 </div>
 </div>
 </div>
@@ -1946,8 +2021,8 @@ KR
           </div>
         </div>
       </div>
-<a href="dataframe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="簡易繪圖.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="base-to-dplyr-tp-theft.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="時間軸的視覺化.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1978,7 +2053,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/R13_dataframe.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R33-NA-Processing.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -2002,20 +2077,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
