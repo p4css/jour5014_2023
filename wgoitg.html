@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -341,75 +345,85 @@ div.csl-indent {
 <li class="chapter" data-level="9.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>9.4.2</b> 使用gghighlight套件</a></li>
 <li class="chapter" data-level="9.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>9.4.3</b> 為視覺化建立群組</a></li>
 </ul></li>
+<li class="chapter" data-level="9.5" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>9.5</b> COLORS</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>10</b> COORDINATE</a>
+<li class="chapter" data-level="10" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>10</b> CHART TYPES</a></li>
+<li class="chapter" data-level="11" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>11</b> COORDINATE</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>10.1</b> 排序以展示分佈</a>
+<li class="chapter" data-level="11.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>11.1</b> 排序以展示分佈</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>10.1.1</b> </a></li>
+<li class="chapter" data-level="11.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>11.1.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>10.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="10.3" data-path="using-qqplot.html"><a href="using-qqplot.html"><i class="fa fa-check"></i><b>10.3</b> Using qqplot</a></li>
-<li class="chapter" data-level="10.4" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>10.4</b> Square-root scale</a></li>
-<li class="chapter" data-level="10.5" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>10.5</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>10.5.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="10.5.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>10.5.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="11.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.4.2</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>10.6</b> 等比例座標軸</a>
+<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>10.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="11.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>11</b> COLORS</a></li>
-<li class="chapter" data-level="12" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>12</b> CHART TYPES</a></li>
-<li class="chapter" data-level="13" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>13</b> AMOUNT</a>
+<li class="chapter" data-level="12" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>12</b> AMOUNT</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>13.1</b> Bar chart</a></li>
-<li class="chapter" data-level="13.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>13.2</b> Heatmap: Vaccination</a></li>
+<li class="chapter" data-level="12.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>12.1</b> Bar chart</a></li>
+<li class="chapter" data-level="12.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>12.2</b> Heatmap: Vaccination</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>14</b> DISTRIBUTION: Histogram &amp; Density</a>
+<li class="chapter" data-level="13" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>13</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>14.1</b> Density plot</a>
+<li class="chapter" data-level="13.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>13.1</b> Density plot</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>14.1.1</b> Density with different bandwidth</a></li>
+<li class="chapter" data-level="13.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>13.1.1</b> Density with different bandwidth</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>14.2</b> Histogram</a>
+<li class="chapter" data-level="13.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>13.2</b> Histogram</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>14.2.1</b> Histogram with different number of bins</a></li>
-<li class="chapter" data-level="14.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Density vs histogram</a></li>
-<li class="chapter" data-level="14.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>14.2.3</b> Positions of bar chart</a></li>
-<li class="chapter" data-level="14.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>14.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+<li class="chapter" data-level="13.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>13.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="13.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>13.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="13.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>13.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="13.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>13.2.4</b> Display two groups histogram by facet_wrap()</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>14.3</b> Pyramid Plot</a>
+<li class="chapter" data-level="13.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>13.3</b> Pyramid Plot</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>14.3.1</b> Modify geom_col() to pyramid plot</a></li>
+<li class="chapter" data-level="13.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>13.3.1</b> Modify geom_col() to pyramid plot</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>14.4</b> Box plot: Muitiple Distrubution</a>
+<li class="chapter" data-level="13.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>13.4</b> Box plot: Muitiple Distrubution</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>14.4.1</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="14.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>14.4.2</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="13.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>13.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>13.4.2</b> TW-Income (boxplot)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>15</b> PROPORTION</a>
+<li class="chapter" data-level="14" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>14</b> PROPORTION</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>15.1</b> Pie Chart</a></li>
-<li class="chapter" data-level="15.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>15.2</b> Dodged Bar Chart</a></li>
-<li class="chapter" data-level="15.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>15.3</b> Treemap: Nested Proportion</a>
+<li class="chapter" data-level="14.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>14.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="14.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>14.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="14.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>14.3</b> Treemap: Nested Proportion</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>15.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
-<li class="chapter" data-level="15.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>15.3.2</b> TW Budget</a></li>
+<li class="chapter" data-level="14.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>14.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="14.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>14.3.2</b> TW Budget</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>16</b> ASSOCIATION</a>
+<li class="chapter" data-level="15" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>15</b> ASSOCIATION</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>16.1</b> 等比例座標軸</a>
+<li class="chapter" data-level="15.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>15.1</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>16.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="15.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>15.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>17</b> TIME &amp; TRENDS</a></li>
-<li class="chapter" data-level="18" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>18</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="16" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>16</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="17" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>17</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="18" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>18</b> Interactivity</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="ggplotly.html"><a href="ggplotly.html"><i class="fa fa-check"></i><b>18.1</b> ggplotly</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="ggplotly.html"><a href="ggplotly.html#line-chart"><i class="fa fa-check"></i><b>18.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="18.1.2" data-path="ggplotly.html"><a href="ggplotly.html#scatter"><i class="fa fa-check"></i><b>18.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="18.1.3" data-path="ggplotly.html"><a href="ggplotly.html#barplot"><i class="fa fa-check"></i><b>18.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="18.1.4" data-path="ggplotly.html"><a href="ggplotly.html#boxplot"><i class="fa fa-check"></i><b>18.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="18.1.5" data-path="ggplotly.html"><a href="ggplotly.html#treemap-global-carbon"><i class="fa fa-check"></i><b>18.1.5</b> Treemap (Global Carbon)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="19" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>19</b> Appendix</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>19.1</b> Dataset</a></li>
@@ -442,8 +456,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="wgoitg" class="section level1 hasAnchor" number="20">
 <h1><span class="header-section-number">Chapter 20</span> WGOITG of NyTimes<a href="wgoitg.html#wgoitg" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="wgoitg.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb504-2"><a href="wgoitg.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="wgoitg.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb516-2"><a href="wgoitg.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
 </div>
             </section>
 

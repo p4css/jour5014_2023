@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14.4 Box plot: Muitiple Distrubution | R for Data Journalism</title>
+  <title>13.4 Box plot: Muitiple Distrubution | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
+  <meta property="og:title" content="13.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
+  <meta name="twitter:title" content="13.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -341,75 +345,85 @@ div.csl-indent {
 <li class="chapter" data-level="9.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>9.4.2</b> 使用gghighlight套件</a></li>
 <li class="chapter" data-level="9.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>9.4.3</b> 為視覺化建立群組</a></li>
 </ul></li>
+<li class="chapter" data-level="9.5" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>9.5</b> COLORS</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>10</b> COORDINATE</a>
+<li class="chapter" data-level="10" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>10</b> CHART TYPES</a></li>
+<li class="chapter" data-level="11" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>11</b> COORDINATE</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>10.1</b> 排序以展示分佈</a>
+<li class="chapter" data-level="11.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>11.1</b> 排序以展示分佈</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>10.1.1</b> </a></li>
+<li class="chapter" data-level="11.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>11.1.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>10.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="10.3" data-path="using-qqplot.html"><a href="using-qqplot.html"><i class="fa fa-check"></i><b>10.3</b> Using qqplot</a></li>
-<li class="chapter" data-level="10.4" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>10.4</b> Square-root scale</a></li>
-<li class="chapter" data-level="10.5" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>10.5</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>10.5.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="10.5.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>10.5.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="11.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.4.2</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>10.6</b> 等比例座標軸</a>
+<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>10.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="11.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>11</b> COLORS</a></li>
-<li class="chapter" data-level="12" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>12</b> CHART TYPES</a></li>
-<li class="chapter" data-level="13" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>13</b> AMOUNT</a>
+<li class="chapter" data-level="12" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>12</b> AMOUNT</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>13.1</b> Bar chart</a></li>
-<li class="chapter" data-level="13.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>13.2</b> Heatmap: Vaccination</a></li>
+<li class="chapter" data-level="12.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>12.1</b> Bar chart</a></li>
+<li class="chapter" data-level="12.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>12.2</b> Heatmap: Vaccination</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>14</b> DISTRIBUTION: Histogram &amp; Density</a>
+<li class="chapter" data-level="13" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>13</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>14.1</b> Density plot</a>
+<li class="chapter" data-level="13.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>13.1</b> Density plot</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>14.1.1</b> Density with different bandwidth</a></li>
+<li class="chapter" data-level="13.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>13.1.1</b> Density with different bandwidth</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>14.2</b> Histogram</a>
+<li class="chapter" data-level="13.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>13.2</b> Histogram</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>14.2.1</b> Histogram with different number of bins</a></li>
-<li class="chapter" data-level="14.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Density vs histogram</a></li>
-<li class="chapter" data-level="14.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>14.2.3</b> Positions of bar chart</a></li>
-<li class="chapter" data-level="14.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>14.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+<li class="chapter" data-level="13.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>13.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="13.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>13.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="13.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>13.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="13.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>13.2.4</b> Display two groups histogram by facet_wrap()</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>14.3</b> Pyramid Plot</a>
+<li class="chapter" data-level="13.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>13.3</b> Pyramid Plot</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>14.3.1</b> Modify geom_col() to pyramid plot</a></li>
+<li class="chapter" data-level="13.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>13.3.1</b> Modify geom_col() to pyramid plot</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>14.4</b> Box plot: Muitiple Distrubution</a>
+<li class="chapter" data-level="13.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>13.4</b> Box plot: Muitiple Distrubution</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>14.4.1</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="14.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>14.4.2</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="13.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>13.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>13.4.2</b> TW-Income (boxplot)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>15</b> PROPORTION</a>
+<li class="chapter" data-level="14" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>14</b> PROPORTION</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>15.1</b> Pie Chart</a></li>
-<li class="chapter" data-level="15.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>15.2</b> Dodged Bar Chart</a></li>
-<li class="chapter" data-level="15.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>15.3</b> Treemap: Nested Proportion</a>
+<li class="chapter" data-level="14.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>14.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="14.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>14.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="14.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>14.3</b> Treemap: Nested Proportion</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>15.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
-<li class="chapter" data-level="15.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>15.3.2</b> TW Budget</a></li>
+<li class="chapter" data-level="14.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>14.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="14.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>14.3.2</b> TW Budget</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>16</b> ASSOCIATION</a>
+<li class="chapter" data-level="15" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>15</b> ASSOCIATION</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>16.1</b> 等比例座標軸</a>
+<li class="chapter" data-level="15.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>15.1</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>16.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="15.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>15.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>17</b> TIME &amp; TRENDS</a></li>
-<li class="chapter" data-level="18" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>18</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="16" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>16</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="17" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>17</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="18" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>18</b> Interactivity</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="ggplotly.html"><a href="ggplotly.html"><i class="fa fa-check"></i><b>18.1</b> ggplotly</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="ggplotly.html"><a href="ggplotly.html#line-chart"><i class="fa fa-check"></i><b>18.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="18.1.2" data-path="ggplotly.html"><a href="ggplotly.html#scatter"><i class="fa fa-check"></i><b>18.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="18.1.3" data-path="ggplotly.html"><a href="ggplotly.html#barplot"><i class="fa fa-check"></i><b>18.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="18.1.4" data-path="ggplotly.html"><a href="ggplotly.html#boxplot"><i class="fa fa-check"></i><b>18.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="18.1.5" data-path="ggplotly.html"><a href="ggplotly.html#treemap-global-carbon"><i class="fa fa-check"></i><b>18.1.5</b> Treemap (Global Carbon)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="19" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>19</b> Appendix</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>19.1</b> Dataset</a></li>
@@ -440,46 +454,566 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="box-plot-muitiple-distrubution" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">14.4</span> Box plot: Muitiple Distrubution<a href="box-plot-muitiple-distrubution.html#box-plot-muitiple-distrubution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="tw-salary-boxplot" class="section level3 hasAnchor" number="14.4.1">
-<h3><span class="header-section-number">14.4.1</span> TW-Salary (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="box-plot-muitiple-distrubution" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Box plot: Muitiple Distrubution<a href="box-plot-muitiple-distrubution.html#box-plot-muitiple-distrubution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tw-salary-boxplot" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> TW-Salary (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inspired by <a href="https://www.nytimes.com/2017/11/03/education/edlife/choosing-a-college-major.html">Six Myths About Choosing a College Major - The New York Times (nytimes.com)</a> and <a href="https://www.nytimes.com/2018/01/04/learning/whats-going-on-in-this-graph-jan-9-2018.html">What’s Going On in This Graph? | Jan. 9, 2018 - The New York Times (nytimes.com)</a></p>
 <p><img src="https://lh5.googleusercontent.com/sl38jyzhqytJUX60SZypH6ZcmoOyGCDk0-6lk3oOS-YxyXJpRgioK_iF5Y8ZkjESzkuFXPbl6k5qovTuHaJhX-_KdH1sHGWl9nJFy3ixt5sryeEhXmiRfEhrjZjvZi50RtKKTm7UceUL" /></p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="box-plot-muitiple-distrubution.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb495-2"><a href="box-plot-muitiple-distrubution.html#cb495-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/tw_salary109.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>, <span class="at">trim_ws =</span> T)</span>
-<span id="cb495-3"><a href="box-plot-muitiple-distrubution.html#cb495-3" aria-hidden="true" tabindex="-1"></a>raw</span></code></pre></div>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="box-plot-muitiple-distrubution.html#cb496-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
-<span id="cb496-2"><a href="box-plot-muitiple-distrubution.html#cb496-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb496-3"><a href="box-plot-muitiple-distrubution.html#cb496-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">reorder</span>(Category, <span class="fu">desc</span>(Median))) <span class="sc">%&gt;%</span></span>
-<span id="cb496-4"><a href="box-plot-muitiple-distrubution.html#cb496-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> Category, </span>
-<span id="cb496-5"><a href="box-plot-muitiple-distrubution.html#cb496-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>Q1, <span class="at">xmiddle=</span>Median, <span class="at">xupper=</span>Q3, <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">150</span>) <span class="sc">+</span></span>
-<span id="cb496-6"><a href="box-plot-muitiple-distrubution.html#cb496-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb496-7"><a href="box-plot-muitiple-distrubution.html#cb496-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Mean)) <span class="sc">+</span> </span>
-<span id="cb496-8"><a href="box-plot-muitiple-distrubution.html#cb496-8" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb496-9"><a href="box-plot-muitiple-distrubution.html#cb496-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb496-10"><a href="box-plot-muitiple-distrubution.html#cb496-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="box-plot-muitiple-distrubution.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb496-2"><a href="box-plot-muitiple-distrubution.html#cb496-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/tw_salary109.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>, <span class="at">trim_ws =</span> T)</span>
+<span id="cb496-3"><a href="box-plot-muitiple-distrubution.html#cb496-3" aria-hidden="true" tabindex="-1"></a>raw</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Category
+</th>
+<th style="text-align:right;">
+Q1
+</th>
+<th style="text-align:right;">
+Median
+</th>
+<th style="text-align:right;">
+Q3
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+　男
+</td>
+<td style="text-align:right;">
+39.0
+</td>
+<td style="text-align:right;">
+53.2
+</td>
+<td style="text-align:right;">
+82.3
+</td>
+<td style="text-align:right;">
+70.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　女
+</td>
+<td style="text-align:right;">
+35.1
+</td>
+<td style="text-align:right;">
+46.8
+</td>
+<td style="text-align:right;">
+67.6
+</td>
+<td style="text-align:right;">
+58.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　未滿25歲
+</td>
+<td style="text-align:right;">
+28.1
+</td>
+<td style="text-align:right;">
+35.8
+</td>
+<td style="text-align:right;">
+45.1
+</td>
+<td style="text-align:right;">
+37.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　25-29歲
+</td>
+<td style="text-align:right;">
+36.6
+</td>
+<td style="text-align:right;">
+47.8
+</td>
+<td style="text-align:right;">
+61.7
+</td>
+<td style="text-align:right;">
+53.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　30-39歲
+</td>
+<td style="text-align:right;">
+39.2
+</td>
+<td style="text-align:right;">
+53.3
+</td>
+<td style="text-align:right;">
+77.0
+</td>
+<td style="text-align:right;">
+64.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　40-49歲
+</td>
+<td style="text-align:right;">
+39.9
+</td>
+<td style="text-align:right;">
+56.9
+</td>
+<td style="text-align:right;">
+91.8
+</td>
+<td style="text-align:right;">
+74.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　50-64歲
+</td>
+<td style="text-align:right;">
+37.8
+</td>
+<td style="text-align:right;">
+53.3
+</td>
+<td style="text-align:right;">
+88.4
+</td>
+<td style="text-align:right;">
+75.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　65歲以上
+</td>
+<td style="text-align:right;">
+30.6
+</td>
+<td style="text-align:right;">
+40.9
+</td>
+<td style="text-align:right;">
+63.1
+</td>
+<td style="text-align:right;">
+62.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　國中及以下
+</td>
+<td style="text-align:right;">
+32.7
+</td>
+<td style="text-align:right;">
+40.5
+</td>
+<td style="text-align:right;">
+52.0
+</td>
+<td style="text-align:right;">
+45.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　高中（職）
+</td>
+<td style="text-align:right;">
+34.5
+</td>
+<td style="text-align:right;">
+44.7
+</td>
+<td style="text-align:right;">
+59.8
+</td>
+<td style="text-align:right;">
+51.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　大專
+</td>
+<td style="text-align:right;">
+38.6
+</td>
+<td style="text-align:right;">
+53.7
+</td>
+<td style="text-align:right;">
+80.2
+</td>
+<td style="text-align:right;">
+67.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　研究所
+</td>
+<td style="text-align:right;">
+60.9
+</td>
+<td style="text-align:right;">
+96.0
+</td>
+<td style="text-align:right;">
+139.3
+</td>
+<td style="text-align:right;">
+116.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　礦業及土石採取業
+</td>
+<td style="text-align:right;">
+34.2
+</td>
+<td style="text-align:right;">
+57.2
+</td>
+<td style="text-align:right;">
+91.7
+</td>
+<td style="text-align:right;">
+68.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　製造業
+</td>
+<td style="text-align:right;">
+38.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:right;">
+73.2
+</td>
+<td style="text-align:right;">
+64.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　電力及燃氣供應業
+</td>
+<td style="text-align:right;">
+73.9
+</td>
+<td style="text-align:right;">
+110.7
+</td>
+<td style="text-align:right;">
+139.9
+</td>
+<td style="text-align:right;">
+113.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　用水供應及污染整治業
+</td>
+<td style="text-align:right;">
+31.9
+</td>
+<td style="text-align:right;">
+45.7
+</td>
+<td style="text-align:right;">
+63.9
+</td>
+<td style="text-align:right;">
+54.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　營建工程業
+</td>
+<td style="text-align:right;">
+34.1
+</td>
+<td style="text-align:right;">
+46.1
+</td>
+<td style="text-align:right;">
+64.0
+</td>
+<td style="text-align:right;">
+54.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　批發及零售業
+</td>
+<td style="text-align:right;">
+36.6
+</td>
+<td style="text-align:right;">
+49.5
+</td>
+<td style="text-align:right;">
+71.7
+</td>
+<td style="text-align:right;">
+62.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　運輸及倉儲業
+</td>
+<td style="text-align:right;">
+40.3
+</td>
+<td style="text-align:right;">
+58.3
+</td>
+<td style="text-align:right;">
+81.4
+</td>
+<td style="text-align:right;">
+66.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　住宿及餐飲業
+</td>
+<td style="text-align:right;">
+30.1
+</td>
+<td style="text-align:right;">
+36.7
+</td>
+<td style="text-align:right;">
+49.3
+</td>
+<td style="text-align:right;">
+42.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　出版﹑影音製作﹑傳播及
+　　資通訊服務業
+</td>
+<td style="text-align:right;">
+53.0
+</td>
+<td style="text-align:right;">
+71.5
+</td>
+<td style="text-align:right;">
+111.2
+</td>
+<td style="text-align:right;">
+88.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　金融及保險業
+</td>
+<td style="text-align:right;">
+65.6
+</td>
+<td style="text-align:right;">
+96.9
+</td>
+<td style="text-align:right;">
+140.1
+</td>
+<td style="text-align:right;">
+113.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　不動產業
+</td>
+<td style="text-align:right;">
+36.8
+</td>
+<td style="text-align:right;">
+52.2
+</td>
+<td style="text-align:right;">
+76.6
+</td>
+<td style="text-align:right;">
+65.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　專業科學及技術服務業
+</td>
+<td style="text-align:right;">
+41.9
+</td>
+<td style="text-align:right;">
+61.3
+</td>
+<td style="text-align:right;">
+95.0
+</td>
+<td style="text-align:right;">
+77.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　支援服務業
+</td>
+<td style="text-align:right;">
+33.1
+</td>
+<td style="text-align:right;">
+42.1
+</td>
+<td style="text-align:right;">
+49.3
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　教育業-不含小學以上各級
+　　學校
+</td>
+<td style="text-align:right;">
+28.4
+</td>
+<td style="text-align:right;">
+33.7
+</td>
+<td style="text-align:right;">
+42.7
+</td>
+<td style="text-align:right;">
+37.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　醫療保健及社會工作服務業
+</td>
+<td style="text-align:right;">
+41.3
+</td>
+<td style="text-align:right;">
+60.1
+</td>
+<td style="text-align:right;">
+88.1
+</td>
+<td style="text-align:right;">
+77.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　藝術娛樂及休閒服務業
+</td>
+<td style="text-align:right;">
+28.8
+</td>
+<td style="text-align:right;">
+39.2
+</td>
+<td style="text-align:right;">
+57.2
+</td>
+<td style="text-align:right;">
+48.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+　其他服務業
+</td>
+<td style="text-align:right;">
+30.6
+</td>
+<td style="text-align:right;">
+35.8
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+43.6
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="box-plot-muitiple-distrubution.html#cb497-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
+<span id="cb497-2"><a href="box-plot-muitiple-distrubution.html#cb497-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb497-3"><a href="box-plot-muitiple-distrubution.html#cb497-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">reorder</span>(Category, <span class="fu">desc</span>(Median))) <span class="sc">%&gt;%</span></span>
+<span id="cb497-4"><a href="box-plot-muitiple-distrubution.html#cb497-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> Category, </span>
+<span id="cb497-5"><a href="box-plot-muitiple-distrubution.html#cb497-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>Q1, <span class="at">xmiddle=</span>Median, <span class="at">xupper=</span>Q3, <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">150</span>) <span class="sc">+</span></span>
+<span id="cb497-6"><a href="box-plot-muitiple-distrubution.html#cb497-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb497-7"><a href="box-plot-muitiple-distrubution.html#cb497-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Mean)) <span class="sc">+</span> </span>
+<span id="cb497-8"><a href="box-plot-muitiple-distrubution.html#cb497-8" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
+<span id="cb497-9"><a href="box-plot-muitiple-distrubution.html#cb497-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb497-10"><a href="box-plot-muitiple-distrubution.html#cb497-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/plot-salary-dist-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="tw-income-boxplot" class="section level3 hasAnchor" number="14.4.2">
-<h3><span class="header-section-number">14.4.2</span> TW-Income (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-income-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="box-plot-muitiple-distrubution.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb497-2"><a href="box-plot-muitiple-distrubution.html#cb497-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_income_107.csv&quot;</span>, ) <span class="sc">%&gt;%</span></span>
-<span id="cb497-3"><a href="box-plot-muitiple-distrubution.html#cb497-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">村里</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;合計&quot;</span>, <span class="st">&quot;其他&quot;</span>, <span class="st">&quot;福住里&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb497-4"><a href="box-plot-muitiple-distrubution.html#cb497-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(鄉鎮市區 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;信義區&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb497-5"><a href="box-plot-muitiple-distrubution.html#cb497-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(村里 <span class="ot">=</span> <span class="fu">reorder</span>(村里, <span class="fu">desc</span>(中位數)))</span>
-<span id="cb497-6"><a href="box-plot-muitiple-distrubution.html#cb497-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-7"><a href="box-plot-muitiple-distrubution.html#cb497-7" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> </span>
-<span id="cb497-8"><a href="box-plot-muitiple-distrubution.html#cb497-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>((平均數<span class="sc">&gt;</span>第三分位數), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb497-9"><a href="box-plot-muitiple-distrubution.html#cb497-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> 村里, </span>
-<span id="cb497-10"><a href="box-plot-muitiple-distrubution.html#cb497-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>第一分位數, <span class="at">xmiddle=</span>中位數, <span class="at">xupper=</span>第三分位數, </span>
-<span id="cb497-11"><a href="box-plot-muitiple-distrubution.html#cb497-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xmin=</span> <span class="fu">min</span>(第一分位數), <span class="at">xmax=</span><span class="fu">max</span>(第三分位數), <span class="at">fill=</span>group) <span class="sc">+</span></span>
-<span id="cb497-12"><a href="box-plot-muitiple-distrubution.html#cb497-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb497-13"><a href="box-plot-muitiple-distrubution.html#cb497-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;orangered&quot;</span>, <span class="st">&quot;none&quot;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb497-14"><a href="box-plot-muitiple-distrubution.html#cb497-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> 平均數)) <span class="sc">+</span> </span>
-<span id="cb497-15"><a href="box-plot-muitiple-distrubution.html#cb497-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;年所得（單位：千元）&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb497-16"><a href="box-plot-muitiple-distrubution.html#cb497-16" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb497-17"><a href="box-plot-muitiple-distrubution.html#cb497-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb497-18"><a href="box-plot-muitiple-distrubution.html#cb497-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<div id="tw-income-boxplot" class="section level3 hasAnchor" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> TW-Income (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-income-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="box-plot-muitiple-distrubution.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb498-2"><a href="box-plot-muitiple-distrubution.html#cb498-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_income_107.csv&quot;</span>, ) <span class="sc">%&gt;%</span></span>
+<span id="cb498-3"><a href="box-plot-muitiple-distrubution.html#cb498-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">村里</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;合計&quot;</span>, <span class="st">&quot;其他&quot;</span>, <span class="st">&quot;福住里&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb498-4"><a href="box-plot-muitiple-distrubution.html#cb498-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(鄉鎮市區 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;信義區&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb498-5"><a href="box-plot-muitiple-distrubution.html#cb498-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(村里 <span class="ot">=</span> <span class="fu">reorder</span>(村里, <span class="fu">desc</span>(中位數)))</span>
+<span id="cb498-6"><a href="box-plot-muitiple-distrubution.html#cb498-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb498-7"><a href="box-plot-muitiple-distrubution.html#cb498-7" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> </span>
+<span id="cb498-8"><a href="box-plot-muitiple-distrubution.html#cb498-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>((平均數<span class="sc">&gt;</span>第三分位數), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb498-9"><a href="box-plot-muitiple-distrubution.html#cb498-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> 村里, </span>
+<span id="cb498-10"><a href="box-plot-muitiple-distrubution.html#cb498-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>第一分位數, <span class="at">xmiddle=</span>中位數, <span class="at">xupper=</span>第三分位數, </span>
+<span id="cb498-11"><a href="box-plot-muitiple-distrubution.html#cb498-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xmin=</span> <span class="fu">min</span>(第一分位數), <span class="at">xmax=</span><span class="fu">max</span>(第三分位數), <span class="at">fill=</span>group) <span class="sc">+</span></span>
+<span id="cb498-12"><a href="box-plot-muitiple-distrubution.html#cb498-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb498-13"><a href="box-plot-muitiple-distrubution.html#cb498-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;orangered&quot;</span>, <span class="st">&quot;none&quot;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb498-14"><a href="box-plot-muitiple-distrubution.html#cb498-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> 平均數)) <span class="sc">+</span> </span>
+<span id="cb498-15"><a href="box-plot-muitiple-distrubution.html#cb498-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;年所得（單位：千元）&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb498-16"><a href="box-plot-muitiple-distrubution.html#cb498-16" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
+<span id="cb498-17"><a href="box-plot-muitiple-distrubution.html#cb498-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb498-18"><a href="box-plot-muitiple-distrubution.html#cb498-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/plot-box-plot-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

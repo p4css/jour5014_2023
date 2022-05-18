@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.4 Square-root scale | R for Data Journalism</title>
+  <title>11.3 Square-root scale | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.4 Square-root scale | R for Data Journalism" />
+  <meta property="og:title" content="11.3 Square-root scale | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.4 Square-root scale | R for Data Journalism" />
+  <meta name="twitter:title" content="11.3 Square-root scale | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-qqplot.html"/>
+<link rel="prev" href="用log-scale放大長尾頭部.html"/>
 <link rel="next" href="座標軸從數值到增加值.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -341,75 +345,85 @@ div.csl-indent {
 <li class="chapter" data-level="9.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>9.4.2</b> 使用gghighlight套件</a></li>
 <li class="chapter" data-level="9.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>9.4.3</b> 為視覺化建立群組</a></li>
 </ul></li>
+<li class="chapter" data-level="9.5" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>9.5</b> COLORS</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>10</b> COORDINATE</a>
+<li class="chapter" data-level="10" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>10</b> CHART TYPES</a></li>
+<li class="chapter" data-level="11" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>11</b> COORDINATE</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>10.1</b> 排序以展示分佈</a>
+<li class="chapter" data-level="11.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>11.1</b> 排序以展示分佈</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>10.1.1</b> </a></li>
+<li class="chapter" data-level="11.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>11.1.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>10.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="10.3" data-path="using-qqplot.html"><a href="using-qqplot.html"><i class="fa fa-check"></i><b>10.3</b> Using qqplot</a></li>
-<li class="chapter" data-level="10.4" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>10.4</b> Square-root scale</a></li>
-<li class="chapter" data-level="10.5" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>10.5</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>10.5.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="10.5.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>10.5.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="11.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.4.2</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>10.6</b> 等比例座標軸</a>
+<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>10.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="11.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>11</b> COLORS</a></li>
-<li class="chapter" data-level="12" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>12</b> CHART TYPES</a></li>
-<li class="chapter" data-level="13" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>13</b> AMOUNT</a>
+<li class="chapter" data-level="12" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>12</b> AMOUNT</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>13.1</b> Bar chart</a></li>
-<li class="chapter" data-level="13.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>13.2</b> Heatmap: Vaccination</a></li>
+<li class="chapter" data-level="12.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>12.1</b> Bar chart</a></li>
+<li class="chapter" data-level="12.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>12.2</b> Heatmap: Vaccination</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>14</b> DISTRIBUTION: Histogram &amp; Density</a>
+<li class="chapter" data-level="13" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>13</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>14.1</b> Density plot</a>
+<li class="chapter" data-level="13.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>13.1</b> Density plot</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>14.1.1</b> Density with different bandwidth</a></li>
+<li class="chapter" data-level="13.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>13.1.1</b> Density with different bandwidth</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>14.2</b> Histogram</a>
+<li class="chapter" data-level="13.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>13.2</b> Histogram</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>14.2.1</b> Histogram with different number of bins</a></li>
-<li class="chapter" data-level="14.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Density vs histogram</a></li>
-<li class="chapter" data-level="14.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>14.2.3</b> Positions of bar chart</a></li>
-<li class="chapter" data-level="14.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>14.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+<li class="chapter" data-level="13.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>13.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="13.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>13.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="13.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>13.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="13.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>13.2.4</b> Display two groups histogram by facet_wrap()</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>14.3</b> Pyramid Plot</a>
+<li class="chapter" data-level="13.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>13.3</b> Pyramid Plot</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>14.3.1</b> Modify geom_col() to pyramid plot</a></li>
+<li class="chapter" data-level="13.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>13.3.1</b> Modify geom_col() to pyramid plot</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>14.4</b> Box plot: Muitiple Distrubution</a>
+<li class="chapter" data-level="13.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>13.4</b> Box plot: Muitiple Distrubution</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>14.4.1</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="14.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>14.4.2</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="13.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>13.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>13.4.2</b> TW-Income (boxplot)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>15</b> PROPORTION</a>
+<li class="chapter" data-level="14" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>14</b> PROPORTION</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>15.1</b> Pie Chart</a></li>
-<li class="chapter" data-level="15.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>15.2</b> Dodged Bar Chart</a></li>
-<li class="chapter" data-level="15.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>15.3</b> Treemap: Nested Proportion</a>
+<li class="chapter" data-level="14.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>14.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="14.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>14.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="14.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>14.3</b> Treemap: Nested Proportion</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>15.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
-<li class="chapter" data-level="15.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>15.3.2</b> TW Budget</a></li>
+<li class="chapter" data-level="14.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>14.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="14.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>14.3.2</b> TW Budget</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>16</b> ASSOCIATION</a>
+<li class="chapter" data-level="15" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>15</b> ASSOCIATION</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>16.1</b> 等比例座標軸</a>
+<li class="chapter" data-level="15.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>15.1</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>16.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="15.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>15.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>17</b> TIME &amp; TRENDS</a></li>
-<li class="chapter" data-level="18" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>18</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="16" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>16</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="17" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>17</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="18" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>18</b> Interactivity</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="ggplotly.html"><a href="ggplotly.html"><i class="fa fa-check"></i><b>18.1</b> ggplotly</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="ggplotly.html"><a href="ggplotly.html#line-chart"><i class="fa fa-check"></i><b>18.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="18.1.2" data-path="ggplotly.html"><a href="ggplotly.html#scatter"><i class="fa fa-check"></i><b>18.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="18.1.3" data-path="ggplotly.html"><a href="ggplotly.html#barplot"><i class="fa fa-check"></i><b>18.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="18.1.4" data-path="ggplotly.html"><a href="ggplotly.html#boxplot"><i class="fa fa-check"></i><b>18.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="18.1.5" data-path="ggplotly.html"><a href="ggplotly.html#treemap-global-carbon"><i class="fa fa-check"></i><b>18.1.5</b> Treemap (Global Carbon)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="19" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>19</b> Appendix</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>19.1</b> Dataset</a></li>
@@ -440,8 +454,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="square-root-scale" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Square-root scale<a href="square-root-scale.html#square-root-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="square-root-scale" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Square-root scale<a href="square-root-scale.html#square-root-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Chap3 Coordination &amp; Axis <a href="https://clauswilke.com/dataviz/coordinate-systems-axes.html">Fundamentals of Data Visualization (clauswilke.com)</a></p>
 <div class="figure">
 <img src="images/paste-F8C01660.png" alt="" />
@@ -458,47 +472,58 @@ div.csl-indent {
 <span id="cb476-8"><a href="square-root-scale.html#cb476-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, area) <span class="sc">%&gt;%</span></span>
 <span id="cb476-9"><a href="square-root-scale.html#cb476-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb476-10"><a href="square-root-scale.html#cb476-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>() <span class="sc">+</span> </span>
-<span id="cb476-11"><a href="square-root-scale.html#cb476-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb476-12"><a href="square-root-scale.html#cb476-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-13"><a href="square-root-scale.html#cb476-13" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> town <span class="sc">%&gt;%</span></span>
-<span id="cb476-14"><a href="square-root-scale.html#cb476-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb476-15"><a href="square-root-scale.html#cb476-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
-<span id="cb476-16"><a href="square-root-scale.html#cb476-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb476-17"><a href="square-root-scale.html#cb476-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
-<span id="cb476-18"><a href="square-root-scale.html#cb476-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
-<span id="cb476-19"><a href="square-root-scale.html#cb476-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb476-20"><a href="square-root-scale.html#cb476-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb476-21"><a href="square-root-scale.html#cb476-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-22"><a href="square-root-scale.html#cb476-22" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
-<span id="cb476-23"><a href="square-root-scale.html#cb476-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb476-24"><a href="square-root-scale.html#cb476-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb476-25"><a href="square-root-scale.html#cb476-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb476-26"><a href="square-root-scale.html#cb476-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>) <span class="sc">+</span></span>
-<span id="cb476-27"><a href="square-root-scale.html#cb476-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale_y_sqrt() +</span></span>
-<span id="cb476-28"><a href="square-root-scale.html#cb476-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb476-29"><a href="square-root-scale.html#cb476-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-30"><a href="square-root-scale.html#cb476-30" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
-<span id="cb476-31"><a href="square-root-scale.html#cb476-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb476-32"><a href="square-root-scale.html#cb476-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb476-33"><a href="square-root-scale.html#cb476-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb476-34"><a href="square-root-scale.html#cb476-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;khaki&quot;</span>) <span class="sc">+</span></span>
-<span id="cb476-35"><a href="square-root-scale.html#cb476-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">250000</span>, <span class="dv">500000</span>, <span class="dv">1000000</span>, <span class="dv">2000000</span>, <span class="dv">4000000</span>)) <span class="sc">+</span></span>
-<span id="cb476-36"><a href="square-root-scale.html#cb476-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb476-37"><a href="square-root-scale.html#cb476-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-38"><a href="square-root-scale.html#cb476-38" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb476-39"><a href="square-root-scale.html#cb476-39" aria-hidden="true" tabindex="-1"></a>  p1, p2,</span>
-<span id="cb476-40"><a href="square-root-scale.html#cb476-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>
-<span id="cb476-41"><a href="square-root-scale.html#cb476-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span></span>
-<span id="cb476-42"><a href="square-root-scale.html#cb476-42" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="square-root-scale.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb477-2"><a href="square-root-scale.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
+<span id="cb476-11"><a href="square-root-scale.html#cb476-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Fig03-8-TW-Population-Density-1"></span>
+<img src="R-for-Data-Journalism_files/figure-html/Fig03-8-TW-Population-Density-1.png" alt="(ref:population-area)" width="100%" />
+<p class="caption">
+Figure 11.1: (ref:population-area)
+</p>
+</div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="square-root-scale.html#cb477-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> town <span class="sc">%&gt;%</span></span>
+<span id="cb477-2"><a href="square-root-scale.html#cb477-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb477-3"><a href="square-root-scale.html#cb477-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
+<span id="cb477-4"><a href="square-root-scale.html#cb477-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb477-5"><a href="square-root-scale.html#cb477-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
+<span id="cb477-6"><a href="square-root-scale.html#cb477-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
+<span id="cb477-7"><a href="square-root-scale.html#cb477-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb477-8"><a href="square-root-scale.html#cb477-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb477-9"><a href="square-root-scale.html#cb477-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb477-10"><a href="square-root-scale.html#cb477-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
+<span id="cb477-11"><a href="square-root-scale.html#cb477-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb477-12"><a href="square-root-scale.html#cb477-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb477-13"><a href="square-root-scale.html#cb477-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb477-14"><a href="square-root-scale.html#cb477-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>) <span class="sc">+</span></span>
+<span id="cb477-15"><a href="square-root-scale.html#cb477-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale_y_sqrt() +</span></span>
+<span id="cb477-16"><a href="square-root-scale.html#cb477-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb477-17"><a href="square-root-scale.html#cb477-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb477-18"><a href="square-root-scale.html#cb477-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
+<span id="cb477-19"><a href="square-root-scale.html#cb477-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb477-20"><a href="square-root-scale.html#cb477-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb477-21"><a href="square-root-scale.html#cb477-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb477-22"><a href="square-root-scale.html#cb477-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;khaki&quot;</span>) <span class="sc">+</span></span>
+<span id="cb477-23"><a href="square-root-scale.html#cb477-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">250000</span>, <span class="dv">500000</span>, <span class="dv">1000000</span>, <span class="dv">2000000</span>, <span class="dv">4000000</span>)) <span class="sc">+</span></span>
+<span id="cb477-24"><a href="square-root-scale.html#cb477-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb477-25"><a href="square-root-scale.html#cb477-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb477-26"><a href="square-root-scale.html#cb477-26" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb477-27"><a href="square-root-scale.html#cb477-27" aria-hidden="true" tabindex="-1"></a>  p1, p2,</span>
+<span id="cb477-28"><a href="square-root-scale.html#cb477-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>
+<span id="cb477-29"><a href="square-root-scale.html#cb477-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span></span>
+<span id="cb477-30"><a href="square-root-scale.html#cb477-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Fig03-8-TW-Population-Density-2"></span>
+<img src="R-for-Data-Journalism_files/figure-html/Fig03-8-TW-Population-Density-2.png" alt="(ref:population-area)" width="100%" />
+<p class="caption">
+Figure 11.2: (ref:population-area)
+</p>
+</div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="square-root-scale.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb478-2"><a href="square-root-scale.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="using-qqplot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="用log-scale放大長尾頭部.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="座標軸從數值到增加值.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -530,7 +555,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/V03_Coordinate_System.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/V04_Coordinate_System.Rmd",
 "text": "Edit"
 },
 "history": {
