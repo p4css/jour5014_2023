@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.1 Tweets 分析 | R for Data Journalism</title>
+  <title>6.1 Tweets 分析 | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.1 Tweets 分析 | R for Data Journalism" />
+  <meta property="og:title" content="6.1 Tweets 分析 | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.1 Tweets 分析 | R for Data Journalism" />
+  <meta name="twitter:title" content="6.1 Tweets 分析 | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-19" />
+<meta name="date" content="2022-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,10 +63,6 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -284,160 +280,166 @@ div.csl-indent {
 <li class="chapter" data-level="5.2.1" data-path="空值na處理.html"><a href="空值na處理.html#表格重整政府預算"><i class="fa fa-check"></i><b>5.2.1</b> 表格重整：政府預算</a></li>
 <li class="chapter" data-level="5.2.2" data-path="空值na處理.html"><a href="空值na處理.html#對齊資料世界各國疫苗接種比例"><i class="fa fa-check"></i><b>5.2.2</b> 對齊資料。世界各國疫苗接種比例</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>5.3</b> 時間軸的視覺化</a>
+<li class="chapter" data-level="5.3" data-path="categorical.html"><a href="categorical.html"><i class="fa fa-check"></i><b>5.3</b> 類別資料分析</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#文字轉時間"><i class="fa fa-check"></i><b>5.3.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="5.3.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>5.3.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="5.3.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐月統計資料"><i class="fa fa-check"></i><b>5.3.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="5.3.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐日統計資料佳"><i class="fa fa-check"></i><b>5.3.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="5.3.5" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#每日逐時資料"><i class="fa fa-check"></i><b>5.3.5</b> 每日逐時資料</a></li>
+<li class="chapter" data-level="5.3.1" data-path="categorical.html"><a href="categorical.html#清理資料"><i class="fa fa-check"></i><b>5.3.1</b> 清理資料</a></li>
+<li class="chapter" data-level="5.3.2" data-path="categorical.html"><a href="categorical.html#尺度轉類別指標"><i class="fa fa-check"></i><b>5.3.2</b> 尺度轉類別指標</a></li>
+<li class="chapter" data-level="5.3.3" data-path="categorical.html"><a href="categorical.html#cross-tabulating"><i class="fa fa-check"></i><b>5.3.3</b> Cross-tabulating</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>5.4</b> 時間軸的視覺化</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#文字轉時間"><i class="fa fa-check"></i><b>5.4.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="5.4.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>5.4.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="5.4.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐月統計資料"><i class="fa fa-check"></i><b>5.4.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="5.4.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐日統計資料佳"><i class="fa fa-check"></i><b>5.4.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="5.4.5" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#每日逐時資料"><i class="fa fa-check"></i><b>5.4.5</b> 每日逐時資料</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>6</b> Explore Data Analysis</a>
+<li class="chapter" data-level="6" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>6</b> Text Processing</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html"><i class="fa fa-check"></i><b>6.1</b> TW AQI Visual Studies</a>
+<li class="chapter" data-level="6.1" data-path="tweets-分析.html"><a href="tweets-分析.html"><i class="fa fa-check"></i><b>6.1</b> Tweets 分析</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-central-tendency"><i class="fa fa-check"></i><b>6.1.1</b> Trending: Central tendency</a></li>
-<li class="chapter" data-level="6.1.2" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-extreme-value"><i class="fa fa-check"></i><b>6.1.2</b> Trending: Extreme value</a></li>
+<li class="chapter" data-level="6.1.1" data-path="tweets-分析.html"><a href="tweets-分析.html#載入並清理資料"><i class="fa fa-check"></i><b>6.1.1</b> 載入並清理資料</a></li>
+<li class="chapter" data-level="6.1.2" data-path="tweets-分析.html"><a href="tweets-分析.html#萃取資料"><i class="fa fa-check"></i><b>6.1.2</b> 萃取資料</a></li>
+<li class="chapter" data-level="6.1.3" data-path="tweets-分析.html"><a href="tweets-分析.html#視覺化探索"><i class="fa fa-check"></i><b>6.1.3</b> 視覺化探索</a></li>
+<li class="chapter" data-level="6.1.4" data-path="tweets-分析.html"><a href="tweets-分析.html#keyness"><i class="fa fa-check"></i><b>6.1.4</b> Keyness</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>7</b> Text Processing</a>
+<li class="chapter" data-level="7" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>7</b> Crawler</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tweets-分析.html"><a href="tweets-分析.html"><i class="fa fa-check"></i><b>7.1</b> Tweets 分析</a>
+<li class="chapter" data-level="7.1" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>7.1</b> Scraping 104.com</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tweets-分析.html"><a href="tweets-分析.html#載入並清理資料"><i class="fa fa-check"></i><b>7.1.1</b> 載入並清理資料</a></li>
-<li class="chapter" data-level="7.1.2" data-path="tweets-分析.html"><a href="tweets-分析.html#萃取資料"><i class="fa fa-check"></i><b>7.1.2</b> 萃取資料</a></li>
-<li class="chapter" data-level="7.1.3" data-path="tweets-分析.html"><a href="tweets-分析.html#視覺化探索"><i class="fa fa-check"></i><b>7.1.3</b> 視覺化探索</a></li>
-<li class="chapter" data-level="7.1.4" data-path="tweets-分析.html"><a href="tweets-分析.html#keyness"><i class="fa fa-check"></i><b>7.1.4</b> Keyness</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>8</b> Crawler</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>8.1</b> Scraping 104.com</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="scraping-104.html"><a href="scraping-104.html#complete-code"><i class="fa fa-check"></i><b>8.1.1</b> Complete Code</a></li>
-<li class="chapter" data-level="8.1.2" data-path="scraping-104.html"><a href="scraping-104.html#step-by-step"><i class="fa fa-check"></i><b>8.1.2</b> Step-by-Step</a></li>
+<li class="chapter" data-level="7.1.1" data-path="scraping-104.html"><a href="scraping-104.html#complete-code"><i class="fa fa-check"></i><b>7.1.1</b> Complete Code</a></li>
+<li class="chapter" data-level="7.1.2" data-path="scraping-104.html"><a href="scraping-104.html#step-by-step"><i class="fa fa-check"></i><b>7.1.2</b> Step-by-Step</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II VISUALIZATION</b></span></li>
-<li class="chapter" data-level="9" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>9</b> Visualization</a>
+<li class="chapter" data-level="8" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>8</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9.1</b> ggplot簡介</a></li>
-<li class="chapter" data-level="9.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html"><i class="fa fa-check"></i><b>9.2</b> 繪圖基礎：折線圖</a>
+<li class="chapter" data-level="8.1" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>8.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="8.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html"><i class="fa fa-check"></i><b>8.2</b> 繪圖基礎：折線圖</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#繪圖三要素"><i class="fa fa-check"></i><b>9.2.1</b> 繪圖三要素</a></li>
-<li class="chapter" data-level="9.2.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>9.2.2</b> 範例-紐時世代貧富不均</a></li>
-<li class="chapter" data-level="9.2.3" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#加入自變項群組"><i class="fa fa-check"></i><b>9.2.3</b> 加入自變項群組</a></li>
+<li class="chapter" data-level="8.2.1" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#繪圖三要素"><i class="fa fa-check"></i><b>8.2.1</b> 繪圖三要素</a></li>
+<li class="chapter" data-level="8.2.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>8.2.2</b> 範例-紐時世代貧富不均</a></li>
+<li class="chapter" data-level="8.2.3" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#加入自變項群組"><i class="fa fa-check"></i><b>8.2.3</b> 加入自變項群組</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="圖表調整.html"><a href="圖表調整.html"><i class="fa fa-check"></i><b>9.3</b> 圖表調整</a>
+<li class="chapter" data-level="8.3" data-path="圖表調整.html"><a href="圖表調整.html"><i class="fa fa-check"></i><b>8.3</b> 圖表調整</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="圖表調整.html"><a href="圖表調整.html#點線型態"><i class="fa fa-check"></i><b>9.3.1</b> 點線型態</a></li>
-<li class="chapter" data-level="9.3.2" data-path="圖表調整.html"><a href="圖表調整.html#標題標籤與圖說"><i class="fa fa-check"></i><b>9.3.2</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="9.3.3" data-path="圖表調整.html"><a href="圖表調整.html#字體樣式"><i class="fa fa-check"></i><b>9.3.3</b> 字體樣式</a></li>
-<li class="chapter" data-level="9.3.4" data-path="圖表調整.html"><a href="圖表調整.html#圖表主題色調"><i class="fa fa-check"></i><b>9.3.4</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="9.3.5" data-path="圖表調整.html"><a href="圖表調整.html#預設主題"><i class="fa fa-check"></i><b>9.3.5</b> 預設主題</a></li>
-<li class="chapter" data-level="9.3.6" data-path="圖表調整.html"><a href="圖表調整.html#顯示中文字體"><i class="fa fa-check"></i><b>9.3.6</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="9.3.7" data-path="圖表調整.html"><a href="圖表調整.html#xy軸方向"><i class="fa fa-check"></i><b>9.3.7</b> X/Y軸方向</a></li>
+<li class="chapter" data-level="8.3.1" data-path="圖表調整.html"><a href="圖表調整.html#點線型態"><i class="fa fa-check"></i><b>8.3.1</b> 點線型態</a></li>
+<li class="chapter" data-level="8.3.2" data-path="圖表調整.html"><a href="圖表調整.html#標題標籤與圖說"><i class="fa fa-check"></i><b>8.3.2</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="8.3.3" data-path="圖表調整.html"><a href="圖表調整.html#字體樣式"><i class="fa fa-check"></i><b>8.3.3</b> 字體樣式</a></li>
+<li class="chapter" data-level="8.3.4" data-path="圖表調整.html"><a href="圖表調整.html#圖表主題色調"><i class="fa fa-check"></i><b>8.3.4</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="8.3.5" data-path="圖表調整.html"><a href="圖表調整.html#預設主題"><i class="fa fa-check"></i><b>8.3.5</b> 預設主題</a></li>
+<li class="chapter" data-level="8.3.6" data-path="圖表調整.html"><a href="圖表調整.html#顯示中文字體"><i class="fa fa-check"></i><b>8.3.6</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="8.3.7" data-path="圖表調整.html"><a href="圖表調整.html#xy軸方向"><i class="fa fa-check"></i><b>8.3.7</b> X/Y軸方向</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html"><i class="fa fa-check"></i><b>9.4</b> 視覺化說故事的技巧</a>
+<li class="chapter" data-level="8.4" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html"><i class="fa fa-check"></i><b>8.4</b> 視覺化說故事的技巧</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#依群組指定顏色"><i class="fa fa-check"></i><b>9.4.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="9.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>9.4.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="9.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>9.4.3</b> 為視覺化建立群組</a></li>
+<li class="chapter" data-level="8.4.1" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#依群組指定顏色"><i class="fa fa-check"></i><b>8.4.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="8.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>8.4.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="8.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>8.4.3</b> 為視覺化建立群組</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>9.5</b> COLORS</a></li>
+<li class="chapter" data-level="8.5" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>8.5</b> COLORS</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>10</b> CHART TYPES</a></li>
-<li class="chapter" data-level="11" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>11</b> COORDINATE</a>
+<li class="chapter" data-level="9" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>9</b> CHART TYPES</a></li>
+<li class="chapter" data-level="10" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>10</b> COORDINATE</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>11.1</b> 排序以展示分佈</a>
+<li class="chapter" data-level="10.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>10.1</b> 排序以展示分佈</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>11.1.1</b> </a></li>
+<li class="chapter" data-level="10.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>10.1.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="10.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>10.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="10.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>10.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="10.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>10.4</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="11.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.4.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="10.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>10.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>10.4.2</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a>
+<li class="chapter" data-level="10.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>10.5</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>12</b> AMOUNT</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>12.1</b> Bar chart</a></li>
-<li class="chapter" data-level="12.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>12.2</b> Heatmap: Vaccination</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>13</b> DISTRIBUTION: Histogram &amp; Density</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>13.1</b> Density plot</a>
-<ul>
-<li class="chapter" data-level="13.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>13.1.1</b> Density with different bandwidth</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>13.2</b> Histogram</a>
-<ul>
-<li class="chapter" data-level="13.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>13.2.1</b> Histogram with different number of bins</a></li>
-<li class="chapter" data-level="13.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>13.2.2</b> Density vs histogram</a></li>
-<li class="chapter" data-level="13.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>13.2.3</b> Positions of bar chart</a></li>
-<li class="chapter" data-level="13.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>13.2.4</b> Display two groups histogram by facet_wrap()</a></li>
-</ul></li>
-<li class="chapter" data-level="13.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>13.3</b> Pyramid Plot</a>
-<ul>
-<li class="chapter" data-level="13.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>13.3.1</b> Modify geom_col() to pyramid plot</a></li>
-</ul></li>
-<li class="chapter" data-level="13.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>13.4</b> Box plot: Muitiple Distrubution</a>
-<ul>
-<li class="chapter" data-level="13.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>13.4.1</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>13.4.2</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="10.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>10.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>14</b> PROPORTION</a>
+<li class="chapter" data-level="11" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>11</b> AMOUNT</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>14.1</b> Pie Chart</a></li>
-<li class="chapter" data-level="14.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>14.2</b> Dodged Bar Chart</a></li>
-<li class="chapter" data-level="14.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>14.3</b> Treemap: Nested Proportion</a>
+<li class="chapter" data-level="11.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>11.1</b> Bar chart</a></li>
+<li class="chapter" data-level="11.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>11.2</b> Heatmap: Vaccination</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>12</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>14.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
-<li class="chapter" data-level="14.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>14.3.2</b> TW Budget</a></li>
+<li class="chapter" data-level="12.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>12.1</b> Density plot</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>12.1.1</b> Density with different bandwidth</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>12.2</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>12.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="12.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>12.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="12.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>12.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="12.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>12.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>12.3</b> Pyramid Plot</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>12.3.1</b> Modify geom_col() to pyramid plot</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>12.4</b> Box plot: Muitiple Distrubution</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>12.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="12.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>12.4.2</b> TW-Income (boxplot)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>15</b> ASSOCIATION</a>
+<li class="chapter" data-level="13" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>13</b> PROPORTION</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>15.1</b> 等比例座標軸</a>
+<li class="chapter" data-level="13.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>13.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="13.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>13.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="13.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>13.3</b> Treemap: Nested Proportion</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>15.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="13.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>13.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="13.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>13.3.2</b> TW Budget</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>16</b> TIME &amp; TRENDS</a></li>
-<li class="chapter" data-level="17" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>17</b> GEOSPATIAL</a></li>
-<li class="chapter" data-level="18" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>18</b> Interactivity</a>
+<li class="chapter" data-level="14" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>14</b> ASSOCIATION</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="ggplotly.html"><a href="ggplotly.html"><i class="fa fa-check"></i><b>18.1</b> ggplotly</a>
+<li class="chapter" data-level="14.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>14.1</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="18.1.1" data-path="ggplotly.html"><a href="ggplotly.html#line-chart"><i class="fa fa-check"></i><b>18.1.1</b> LINE CHART</a></li>
-<li class="chapter" data-level="18.1.2" data-path="ggplotly.html"><a href="ggplotly.html#scatter"><i class="fa fa-check"></i><b>18.1.2</b> SCATTER</a></li>
-<li class="chapter" data-level="18.1.3" data-path="ggplotly.html"><a href="ggplotly.html#barplot"><i class="fa fa-check"></i><b>18.1.3</b> Barplot</a></li>
-<li class="chapter" data-level="18.1.4" data-path="ggplotly.html"><a href="ggplotly.html#boxplot"><i class="fa fa-check"></i><b>18.1.4</b> Boxplot</a></li>
-<li class="chapter" data-level="18.1.5" data-path="ggplotly.html"><a href="ggplotly.html#treemap-global-carbon"><i class="fa fa-check"></i><b>18.1.5</b> Treemap (Global Carbon)</a></li>
-</ul></li>
-<li class="chapter" data-level="18.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html"><i class="fa fa-check"></i><b>18.2</b> 產製圖表動畫</a>
-<ul>
-<li class="chapter" data-level="18.2.1" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>18.2.1</b> 地圖下載與轉換投影方法</a></li>
-<li class="chapter" data-level="18.2.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#靜態繪圖測試"><i class="fa fa-check"></i><b>18.2.2</b> 靜態繪圖測試</a></li>
+<li class="chapter" data-level="14.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>14.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>19</b> Appendix</a>
+<li class="chapter" data-level="15" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>15</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="16" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>16</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="17" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>17</b> Interactivity</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>19.1</b> Dataset</a></li>
+<li class="chapter" data-level="17.1" data-path="ggplotly.html"><a href="ggplotly.html"><i class="fa fa-check"></i><b>17.1</b> ggplotly</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="ggplotly.html"><a href="ggplotly.html#line-chart"><i class="fa fa-check"></i><b>17.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="17.1.2" data-path="ggplotly.html"><a href="ggplotly.html#scatter"><i class="fa fa-check"></i><b>17.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="17.1.3" data-path="ggplotly.html"><a href="ggplotly.html#barplot"><i class="fa fa-check"></i><b>17.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="17.1.4" data-path="ggplotly.html"><a href="ggplotly.html#boxplot"><i class="fa fa-check"></i><b>17.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="17.1.5" data-path="ggplotly.html"><a href="ggplotly.html#treemap-global-carbon"><i class="fa fa-check"></i><b>17.1.5</b> Treemap (Global Carbon)</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>20</b> WGOITG of NyTimes</a>
+<li class="chapter" data-level="17.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html"><i class="fa fa-check"></i><b>17.2</b> 產製圖表動畫</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>20.1</b> Inequality: Net Worth by Age Group</a></li>
-<li class="chapter" data-level="20.2" data-path="unicef-global-survey-optimism.html"><a href="unicef-global-survey-optimism.html"><i class="fa fa-check"></i><b>20.2</b> UNICEF-Global Survey Optimism</a></li>
-<li class="chapter" data-level="20.3" data-path="global-carbon-projects.html"><a href="global-carbon-projects.html"><i class="fa fa-check"></i><b>20.3</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="17.2.1" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>17.2.1</b> 地圖下載與轉換投影方法</a></li>
+<li class="chapter" data-level="17.2.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#靜態繪圖測試"><i class="fa fa-check"></i><b>17.2.2</b> 靜態繪圖測試</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>18</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>18.1</b> Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>19</b> WGOITG of NyTimes</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>19.1</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="19.2" data-path="unicef-global-survey-optimism.html"><a href="unicef-global-survey-optimism.html"><i class="fa fa-check"></i><b>19.2</b> UNICEF-Global Survey Optimism</a></li>
+<li class="chapter" data-level="19.3" data-path="global-carbon-projects.html"><a href="global-carbon-projects.html"><i class="fa fa-check"></i><b>19.3</b> Global Carbon Projects</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>20</b> Case Studies (Taiwan)</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html"><i class="fa fa-check"></i><b>20.1</b> TW AQI Visual Studies</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-central-tendency"><i class="fa fa-check"></i><b>20.1.1</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="20.1.2" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-extreme-value"><i class="fa fa-check"></i><b>20.1.2</b> Trending: Extreme value</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -459,68 +461,68 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tweets-分析" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Tweets 分析<a href="tweets-分析.html#tweets-分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tweets-分析" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Tweets 分析<a href="tweets-分析.html#tweets-分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>應用dplyr和ggplot做社群輿論資料（tweets）的探索性分析，其中除了dplyr和ggplot外，尚用到文字處理（stringr, <code>extract()</code>）、時間處理（lubridate），甚至包含一點<code>keyness</code>分析，為找出兩個群體文本中，對彼此相對突出關鍵字的文本探勘方法。</p>
 <p>本範例取材自David Robinson的blog文章「<a href="http://varianceexplained.org/r/trump-tweets/" title="Text analysis of Trump&#39;s tweets confirms he writes only the (angrier) Android half">Text analysis of Trump’s tweets confirms he writes only the (angrier) Android half</a>」。David Robinson是「<a href="https://www.tidytextmining.com/">Text Mining with R</a>」的共同作者， 可參考該書籍上的範例「<a href="https://www.tidytextmining.com/twitter.html">7 Case study: comparing Twitter archives | Text Mining with R (tidytextmining.com)</a>」。</p>
-<div id="載入並清理資料" class="section level3 hasAnchor" number="7.1.1">
-<h3><span class="header-section-number">7.1.1</span> 載入並清理資料<a href="tweets-分析.html#載入並清理資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="載入並清理資料" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> 載入並清理資料<a href="tweets-分析.html#載入並清理資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R4.0後<code>stringsAsFactors=F</code>變為預設值，便不用再另行用<code>options()</code>設為全域適用的參數。</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="tweets-分析.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb415-2"><a href="tweets-分析.html#cb415-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb415-3"><a href="tweets-分析.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb415-4"><a href="tweets-分析.html#cb415-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-5"><a href="tweets-分析.html#cb415-5" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb415-6"><a href="tweets-分析.html#cb415-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb415-7"><a href="tweets-分析.html#cb415-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb415-8"><a href="tweets-分析.html#cb415-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
-<span id="cb415-9"><a href="tweets-分析.html#cb415-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">18</span>,</span>
-<span id="cb415-10"><a href="tweets-分析.html#cb415-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">face=</span><span class="st">&quot;italic&quot;</span>),</span>
-<span id="cb415-11"><a href="tweets-分析.html#cb415-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>)</span>
-<span id="cb415-12"><a href="tweets-分析.html#cb415-12" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb415-13"><a href="tweets-分析.html#cb415-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-14"><a href="tweets-分析.html#cb415-14" aria-hidden="true" tabindex="-1"></a>new_style <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb415-15"><a href="tweets-分析.html#cb415-15" aria-hidden="true" tabindex="-1"></a>  font <span class="ot">&lt;-</span> <span class="st">&quot;Helvetica&quot;</span></span>
-<span id="cb415-16"><a href="tweets-分析.html#cb415-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb415-17"><a href="tweets-分析.html#cb415-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb415-18"><a href="tweets-分析.html#cb415-18" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size=</span><span class="dv">28</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb415-19"><a href="tweets-分析.html#cb415-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb415-20"><a href="tweets-分析.html#cb415-20" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">size=</span><span class="dv">22</span>,</span>
-<span id="cb415-21"><a href="tweets-分析.html#cb415-21" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">9</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">0</span>)),</span>
-<span id="cb415-22"><a href="tweets-分析.html#cb415-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-23"><a href="tweets-分析.html#cb415-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
-<span id="cb415-24"><a href="tweets-分析.html#cb415-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text.align =</span> <span class="dv">0</span>,</span>
-<span id="cb415-25"><a href="tweets-分析.html#cb415-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-26"><a href="tweets-分析.html#cb415-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># legend.title = element_blank(),</span></span>
-<span id="cb415-27"><a href="tweets-分析.html#cb415-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-28"><a href="tweets-分析.html#cb415-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb415-29"><a href="tweets-分析.html#cb415-29" aria-hidden="true" tabindex="-1"></a>                             <span class="at">size=</span><span class="dv">18</span>,</span>
-<span id="cb415-30"><a href="tweets-分析.html#cb415-30" aria-hidden="true" tabindex="-1"></a>                             <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
-<span id="cb415-31"><a href="tweets-分析.html#cb415-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb415-32"><a href="tweets-分析.html#cb415-32" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size=</span><span class="dv">18</span>,</span>
-<span id="cb415-33"><a href="tweets-分析.html#cb415-33" aria-hidden="true" tabindex="-1"></a>                               <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
-<span id="cb415-34"><a href="tweets-分析.html#cb415-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">5</span>, <span class="at">b =</span> <span class="dv">10</span>)),</span>
-<span id="cb415-35"><a href="tweets-分析.html#cb415-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-36"><a href="tweets-分析.html#cb415-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-37"><a href="tweets-分析.html#cb415-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-38"><a href="tweets-分析.html#cb415-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="st">&quot;#cbcbcb&quot;</span>),</span>
-<span id="cb415-39"><a href="tweets-分析.html#cb415-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-40"><a href="tweets-分析.html#cb415-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb415-41"><a href="tweets-分析.html#cb415-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>),</span>
-<span id="cb415-42"><a href="tweets-分析.html#cb415-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">22</span>,  <span class="at">hjust =</span> <span class="dv">0</span>)</span>
-<span id="cb415-43"><a href="tweets-分析.html#cb415-43" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb415-44"><a href="tweets-分析.html#cb415-44" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="tweets-分析.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">&quot;http://varianceexplained.org/files/trump_tweets_df.rda&quot;</span>))</span>
-<span id="cb416-2"><a href="tweets-分析.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(trump_tweets_df)</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="tweets-分析.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb439-2"><a href="tweets-分析.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb439-3"><a href="tweets-分析.html#cb439-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb439-4"><a href="tweets-分析.html#cb439-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-5"><a href="tweets-分析.html#cb439-5" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb439-6"><a href="tweets-分析.html#cb439-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb439-7"><a href="tweets-分析.html#cb439-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb439-8"><a href="tweets-分析.html#cb439-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb439-9"><a href="tweets-分析.html#cb439-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">18</span>,</span>
+<span id="cb439-10"><a href="tweets-分析.html#cb439-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">face=</span><span class="st">&quot;italic&quot;</span>),</span>
+<span id="cb439-11"><a href="tweets-分析.html#cb439-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>)</span>
+<span id="cb439-12"><a href="tweets-分析.html#cb439-12" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb439-13"><a href="tweets-分析.html#cb439-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-14"><a href="tweets-分析.html#cb439-14" aria-hidden="true" tabindex="-1"></a>new_style <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb439-15"><a href="tweets-分析.html#cb439-15" aria-hidden="true" tabindex="-1"></a>  font <span class="ot">&lt;-</span> <span class="st">&quot;Helvetica&quot;</span></span>
+<span id="cb439-16"><a href="tweets-分析.html#cb439-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb439-17"><a href="tweets-分析.html#cb439-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb439-18"><a href="tweets-分析.html#cb439-18" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size=</span><span class="dv">28</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb439-19"><a href="tweets-分析.html#cb439-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb439-20"><a href="tweets-分析.html#cb439-20" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">size=</span><span class="dv">22</span>,</span>
+<span id="cb439-21"><a href="tweets-分析.html#cb439-21" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">9</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">0</span>)),</span>
+<span id="cb439-22"><a href="tweets-分析.html#cb439-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-23"><a href="tweets-分析.html#cb439-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
+<span id="cb439-24"><a href="tweets-分析.html#cb439-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text.align =</span> <span class="dv">0</span>,</span>
+<span id="cb439-25"><a href="tweets-分析.html#cb439-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-26"><a href="tweets-分析.html#cb439-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># legend.title = element_blank(),</span></span>
+<span id="cb439-27"><a href="tweets-分析.html#cb439-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-28"><a href="tweets-分析.html#cb439-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb439-29"><a href="tweets-分析.html#cb439-29" aria-hidden="true" tabindex="-1"></a>                             <span class="at">size=</span><span class="dv">18</span>,</span>
+<span id="cb439-30"><a href="tweets-分析.html#cb439-30" aria-hidden="true" tabindex="-1"></a>                             <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
+<span id="cb439-31"><a href="tweets-分析.html#cb439-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb439-32"><a href="tweets-分析.html#cb439-32" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size=</span><span class="dv">18</span>,</span>
+<span id="cb439-33"><a href="tweets-分析.html#cb439-33" aria-hidden="true" tabindex="-1"></a>                               <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
+<span id="cb439-34"><a href="tweets-分析.html#cb439-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">5</span>, <span class="at">b =</span> <span class="dv">10</span>)),</span>
+<span id="cb439-35"><a href="tweets-分析.html#cb439-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-36"><a href="tweets-分析.html#cb439-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-37"><a href="tweets-分析.html#cb439-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-38"><a href="tweets-分析.html#cb439-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="st">&quot;#cbcbcb&quot;</span>),</span>
+<span id="cb439-39"><a href="tweets-分析.html#cb439-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-40"><a href="tweets-分析.html#cb439-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb439-41"><a href="tweets-分析.html#cb439-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>),</span>
+<span id="cb439-42"><a href="tweets-分析.html#cb439-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">22</span>,  <span class="at">hjust =</span> <span class="dv">0</span>)</span>
+<span id="cb439-43"><a href="tweets-分析.html#cb439-43" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb439-44"><a href="tweets-分析.html#cb439-44" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="tweets-分析.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">&quot;http://varianceexplained.org/files/trump_tweets_df.rda&quot;</span>))</span>
+<span id="cb440-2"><a href="tweets-分析.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(trump_tweets_df)</span></code></pre></div>
 <pre class="output"><code>## [1] 1512   16</code></pre>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="tweets-分析.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(trump_tweets_df)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="tweets-分析.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(trump_tweets_df)</span></code></pre></div>
 <pre class="output"><code>##  [1] &quot;text&quot;          &quot;favorited&quot;     &quot;favoriteCount&quot; &quot;replyToSN&quot;    
 ##  [5] &quot;created&quot;       &quot;truncated&quot;     &quot;replyToSID&quot;    &quot;id&quot;           
 ##  [9] &quot;replyToUID&quot;    &quot;statusSource&quot;  &quot;screenName&quot;    &quot;retweetCount&quot; 
 ## [13] &quot;isRetweet&quot;     &quot;retweeted&quot;     &quot;longitude&quot;     &quot;latitude&quot;</code></pre>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="tweets-分析.html#cb420-1" aria-hidden="true" tabindex="-1"></a>trump_tweets_df <span class="sc">%&gt;%</span></span>
-<span id="cb420-2"><a href="tweets-分析.html#cb420-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, created, favoriteCount,  retweetCount, statusSource) <span class="sc">%&gt;%</span></span>
-<span id="cb420-3"><a href="tweets-分析.html#cb420-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="tweets-分析.html#cb444-1" aria-hidden="true" tabindex="-1"></a>trump_tweets_df <span class="sc">%&gt;%</span></span>
+<span id="cb444-2"><a href="tweets-分析.html#cb444-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, created, favoriteCount,  retweetCount, statusSource) <span class="sc">%&gt;%</span></span>
+<span id="cb444-3"><a href="tweets-分析.html#cb444-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 20 × 6
 ##    id          text  created             favoriteCount retweetCount statusSource
 ##    &lt;chr&gt;       &lt;chr&gt; &lt;dttm&gt;                      &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;       
@@ -545,200 +547,200 @@ div.csl-indent {
 ## 19 7616938031… &quot;Tha… 2016-08-05 22:42:08         19431         5681 &quot;&lt;a href=\&quot;…
 ## 20 7616538754… &quot;#Ma… 2016-08-05 20:03:29         27568        13869 &quot;&lt;a href=\&quot;…</code></pre>
 </div>
-<div id="萃取資料" class="section level3 hasAnchor" number="7.1.2">
-<h3><span class="header-section-number">7.1.2</span> 萃取資料<a href="tweets-分析.html#萃取資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="萃取資料" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> 萃取資料<a href="tweets-分析.html#萃取資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Extracting publishing device of tweets</li>
 </ul>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="tweets-分析.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyr::extract()</span></span>
-<span id="cb422-2"><a href="tweets-分析.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="co"># stringr::str_replace</span></span>
-<span id="cb422-3"><a href="tweets-分析.html#cb422-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb422-4"><a href="tweets-分析.html#cb422-4" aria-hidden="true" tabindex="-1"></a>trump_tweets_df<span class="sc">$</span>statusSource[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="tweets-分析.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyr::extract()</span></span>
+<span id="cb446-2"><a href="tweets-分析.html#cb446-2" aria-hidden="true" tabindex="-1"></a><span class="co"># stringr::str_replace</span></span>
+<span id="cb446-3"><a href="tweets-分析.html#cb446-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb446-4"><a href="tweets-分析.html#cb446-4" aria-hidden="true" tabindex="-1"></a>trump_tweets_df<span class="sc">$</span>statusSource[<span class="dv">1</span>]</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;&lt;a href=\&quot;http://twitter.com/download/android\&quot; rel=\&quot;nofollow\&quot;&gt;Twitter for Android&lt;/a&gt;&quot;</code></pre>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="tweets-分析.html#cb424-1" aria-hidden="true" tabindex="-1"></a>tweets <span class="ot">&lt;-</span> trump_tweets_df <span class="sc">%&gt;%</span></span>
-<span id="cb424-2"><a href="tweets-分析.html#cb424-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, statusSource, text, created) <span class="sc">%&gt;%</span></span>
-<span id="cb424-3"><a href="tweets-分析.html#cb424-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_replace(statusSource, </span></span>
-<span id="cb424-4"><a href="tweets-分析.html#cb424-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                             &quot;.*Twitter for (.*?)&lt;.*&quot;, &quot;\\1&quot;)) %&gt;%</span></span>
-<span id="cb424-5"><a href="tweets-分析.html#cb424-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_extract(statusSource, &#39;Twitter for (.*?)&lt;&#39;)) %&gt;% View</span></span>
-<span id="cb424-6"><a href="tweets-分析.html#cb424-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(statusSource, <span class="st">&quot;source&quot;</span>, <span class="st">&quot;Twitter for (.*?)&lt;&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb424-7"><a href="tweets-分析.html#cb424-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(source <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;iPhone&quot;</span>, <span class="st">&quot;Android&quot;</span>))</span>
-<span id="cb424-8"><a href="tweets-分析.html#cb424-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-9"><a href="tweets-分析.html#cb424-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using stringr::str_replace() to mutate a new source variable, replacing tidyr::</span></span>
-<span id="cb424-10"><a href="tweets-分析.html#cb424-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-11"><a href="tweets-分析.html#cb424-11" aria-hidden="true" tabindex="-1"></a><span class="co"># str(tweets)</span></span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="tweets-分析.html#cb448-1" aria-hidden="true" tabindex="-1"></a>tweets <span class="ot">&lt;-</span> trump_tweets_df <span class="sc">%&gt;%</span></span>
+<span id="cb448-2"><a href="tweets-分析.html#cb448-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, statusSource, text, created) <span class="sc">%&gt;%</span></span>
+<span id="cb448-3"><a href="tweets-分析.html#cb448-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_replace(statusSource, </span></span>
+<span id="cb448-4"><a href="tweets-分析.html#cb448-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                             &quot;.*Twitter for (.*?)&lt;.*&quot;, &quot;\\1&quot;)) %&gt;%</span></span>
+<span id="cb448-5"><a href="tweets-分析.html#cb448-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_extract(statusSource, &#39;Twitter for (.*?)&lt;&#39;)) %&gt;% View</span></span>
+<span id="cb448-6"><a href="tweets-分析.html#cb448-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(statusSource, <span class="st">&quot;source&quot;</span>, <span class="st">&quot;Twitter for (.*?)&lt;&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb448-7"><a href="tweets-分析.html#cb448-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(source <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;iPhone&quot;</span>, <span class="st">&quot;Android&quot;</span>))</span>
+<span id="cb448-8"><a href="tweets-分析.html#cb448-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-9"><a href="tweets-分析.html#cb448-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using stringr::str_replace() to mutate a new source variable, replacing tidyr::</span></span>
+<span id="cb448-10"><a href="tweets-分析.html#cb448-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-11"><a href="tweets-分析.html#cb448-11" aria-hidden="true" tabindex="-1"></a><span class="co"># str(tweets)</span></span></code></pre></div>
 </div>
-<div id="視覺化探索" class="section level3 hasAnchor" number="7.1.3">
-<h3><span class="header-section-number">7.1.3</span> 視覺化探索<a href="tweets-分析.html#視覺化探索" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="發文時間" class="section level4 hasAnchor" number="7.1.3.1">
-<h4><span class="header-section-number">7.1.3.1</span> 發文時間<a href="tweets-分析.html#發文時間" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="視覺化探索" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> 視覺化探索<a href="tweets-分析.html#視覺化探索" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="發文時間" class="section level4 hasAnchor" number="6.1.3.1">
+<h4><span class="header-section-number">6.1.3.1</span> 發文時間<a href="tweets-分析.html#發文時間" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>Converting timezone <code>lubridate::with_tz()</code></li>
 <li>Extracting hour of timestamp by <code>lubridate::hour()</code></li>
 <li>Plotting number of tweets by hour</li>
 <li>Display y-axis as percentage by <code>scales::percent_format()</code></li>
 </ul>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="tweets-分析.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales) <span class="co"># for percent_format()</span></span>
-<span id="cb425-2"><a href="tweets-分析.html#cb425-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::hour()</span></span>
-<span id="cb425-3"><a href="tweets-分析.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::with_tz()</span></span>
-<span id="cb425-4"><a href="tweets-分析.html#cb425-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scales::percent_format()</span></span>
-<span id="cb425-5"><a href="tweets-分析.html#cb425-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb425-6"><a href="tweets-分析.html#cb425-6" aria-hidden="true" tabindex="-1"></a>toplot1 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb425-7"><a href="tweets-分析.html#cb425-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb425-8"><a href="tweets-分析.html#cb425-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># group_by(source) %&gt;%</span></span>
-<span id="cb425-9"><a href="tweets-分析.html#cb425-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
-<span id="cb425-10"><a href="tweets-分析.html#cb425-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ungroup() %&gt;%</span></span>
-<span id="cb425-11"><a href="tweets-分析.html#cb425-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb425-12"><a href="tweets-分析.html#cb425-12" aria-hidden="true" tabindex="-1"></a>toplot2 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb425-13"><a href="tweets-分析.html#cb425-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb425-14"><a href="tweets-分析.html#cb425-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(source) <span class="sc">%&gt;%</span></span>
-<span id="cb425-15"><a href="tweets-分析.html#cb425-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb425-16"><a href="tweets-分析.html#cb425-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb425-17"><a href="tweets-分析.html#cb425-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb425-18"><a href="tweets-分析.html#cb425-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot1 <span class="sc">%&gt;%</span></span>
-<span id="cb425-19"><a href="tweets-分析.html#cb425-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb425-20"><a href="tweets-分析.html#cb425-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
-<span id="cb425-21"><a href="tweets-分析.html#cb425-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb425-22"><a href="tweets-分析.html#cb425-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
-<span id="cb425-23"><a href="tweets-分析.html#cb425-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
-<span id="cb425-24"><a href="tweets-分析.html#cb425-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb425-25"><a href="tweets-分析.html#cb425-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
-<span id="cb425-26"><a href="tweets-分析.html#cb425-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
-<span id="cb425-27"><a href="tweets-分析.html#cb425-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
-<span id="cb425-28"><a href="tweets-分析.html#cb425-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb425-29"><a href="tweets-分析.html#cb425-29" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot2 <span class="sc">%&gt;%</span></span>
-<span id="cb425-30"><a href="tweets-分析.html#cb425-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb425-31"><a href="tweets-分析.html#cb425-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
-<span id="cb425-32"><a href="tweets-分析.html#cb425-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb425-33"><a href="tweets-分析.html#cb425-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
-<span id="cb425-34"><a href="tweets-分析.html#cb425-34" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
-<span id="cb425-35"><a href="tweets-分析.html#cb425-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb425-36"><a href="tweets-分析.html#cb425-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
-<span id="cb425-37"><a href="tweets-分析.html#cb425-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
-<span id="cb425-38"><a href="tweets-分析.html#cb425-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
-<span id="cb425-39"><a href="tweets-分析.html#cb425-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb425-40"><a href="tweets-分析.html#cb425-40" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb425-41"><a href="tweets-分析.html#cb425-41" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
-<span id="cb425-42"><a href="tweets-分析.html#cb425-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Normalized by all&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Normalized in group&quot;</span>),</span>
-<span id="cb425-43"><a href="tweets-分析.html#cb425-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb425-44"><a href="tweets-分析.html#cb425-44" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="tweets-分析.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales) <span class="co"># for percent_format()</span></span>
+<span id="cb449-2"><a href="tweets-分析.html#cb449-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::hour()</span></span>
+<span id="cb449-3"><a href="tweets-分析.html#cb449-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::with_tz()</span></span>
+<span id="cb449-4"><a href="tweets-分析.html#cb449-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scales::percent_format()</span></span>
+<span id="cb449-5"><a href="tweets-分析.html#cb449-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb449-6"><a href="tweets-分析.html#cb449-6" aria-hidden="true" tabindex="-1"></a>toplot1 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb449-7"><a href="tweets-分析.html#cb449-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb449-8"><a href="tweets-分析.html#cb449-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># group_by(source) %&gt;%</span></span>
+<span id="cb449-9"><a href="tweets-分析.html#cb449-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb449-10"><a href="tweets-分析.html#cb449-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ungroup() %&gt;%</span></span>
+<span id="cb449-11"><a href="tweets-分析.html#cb449-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb449-12"><a href="tweets-分析.html#cb449-12" aria-hidden="true" tabindex="-1"></a>toplot2 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb449-13"><a href="tweets-分析.html#cb449-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb449-14"><a href="tweets-分析.html#cb449-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(source) <span class="sc">%&gt;%</span></span>
+<span id="cb449-15"><a href="tweets-分析.html#cb449-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb449-16"><a href="tweets-分析.html#cb449-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb449-17"><a href="tweets-分析.html#cb449-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb449-18"><a href="tweets-分析.html#cb449-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot1 <span class="sc">%&gt;%</span></span>
+<span id="cb449-19"><a href="tweets-分析.html#cb449-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb449-20"><a href="tweets-分析.html#cb449-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
+<span id="cb449-21"><a href="tweets-分析.html#cb449-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb449-22"><a href="tweets-分析.html#cb449-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
+<span id="cb449-23"><a href="tweets-分析.html#cb449-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
+<span id="cb449-24"><a href="tweets-分析.html#cb449-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb449-25"><a href="tweets-分析.html#cb449-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb449-26"><a href="tweets-分析.html#cb449-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
+<span id="cb449-27"><a href="tweets-分析.html#cb449-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
+<span id="cb449-28"><a href="tweets-分析.html#cb449-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb449-29"><a href="tweets-分析.html#cb449-29" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot2 <span class="sc">%&gt;%</span></span>
+<span id="cb449-30"><a href="tweets-分析.html#cb449-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb449-31"><a href="tweets-分析.html#cb449-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
+<span id="cb449-32"><a href="tweets-分析.html#cb449-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb449-33"><a href="tweets-分析.html#cb449-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
+<span id="cb449-34"><a href="tweets-分析.html#cb449-34" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
+<span id="cb449-35"><a href="tweets-分析.html#cb449-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb449-36"><a href="tweets-分析.html#cb449-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb449-37"><a href="tweets-分析.html#cb449-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
+<span id="cb449-38"><a href="tweets-分析.html#cb449-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
+<span id="cb449-39"><a href="tweets-分析.html#cb449-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb449-40"><a href="tweets-分析.html#cb449-40" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb449-41"><a href="tweets-分析.html#cb449-41" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
+<span id="cb449-42"><a href="tweets-分析.html#cb449-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Normalized by all&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Normalized in group&quot;</span>),</span>
+<span id="cb449-43"><a href="tweets-分析.html#cb449-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb449-44"><a href="tweets-分析.html#cb449-44" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/tweets-by-hour-1.png" width="672" /></p>
 </div>
-<div id="發文附圖" class="section level4 hasAnchor" number="7.1.3.2">
-<h4><span class="header-section-number">7.1.3.2</span> 發文附圖<a href="tweets-分析.html#發文附圖" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="發文附圖" class="section level4 hasAnchor" number="6.1.3.2">
+<h4><span class="header-section-number">6.1.3.2</span> 發文附圖<a href="tweets-分析.html#發文附圖" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>Filtering out tweets starting with <code>"</code> (those tweets mention #realdonaldtrump)</li>
 <li>Mutating new variable <code>picture</code> to indicate whether text has picture or not?</li>
 <li>Counting <code>source</code> by <code>picture</code></li>
 <li>Plotting bar chart to compare difference between sources.</li>
 </ul>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="tweets-分析.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(stringr)</span></span>
-<span id="cb426-2"><a href="tweets-分析.html#cb426-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb426-3"><a href="tweets-分析.html#cb426-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb426-4"><a href="tweets-分析.html#cb426-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">picture =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;t.co&quot;</span>),</span>
-<span id="cb426-5"><a href="tweets-分析.html#cb426-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Picture/link&quot;</span>, <span class="st">&quot;No picture/link&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb426-6"><a href="tweets-分析.html#cb426-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, picture)</span>
-<span id="cb426-7"><a href="tweets-分析.html#cb426-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
-<span id="cb426-8"><a href="tweets-分析.html#cb426-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb426-9"><a href="tweets-分析.html#cb426-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
-<span id="cb426-10"><a href="tweets-分析.html#cb426-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb426-11"><a href="tweets-分析.html#cb426-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
-<span id="cb426-12"><a href="tweets-分析.html#cb426-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb426-13"><a href="tweets-分析.html#cb426-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb426-14"><a href="tweets-分析.html#cb426-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb426-15"><a href="tweets-分析.html#cb426-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb426-16"><a href="tweets-分析.html#cb426-16" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
-<span id="cb426-17"><a href="tweets-分析.html#cb426-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb426-18"><a href="tweets-分析.html#cb426-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
-<span id="cb426-19"><a href="tweets-分析.html#cb426-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb426-20"><a href="tweets-分析.html#cb426-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
-<span id="cb426-21"><a href="tweets-分析.html#cb426-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb426-22"><a href="tweets-分析.html#cb426-22" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb426-23"><a href="tweets-分析.html#cb426-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb426-24"><a href="tweets-分析.html#cb426-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb426-25"><a href="tweets-分析.html#cb426-25" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb426-26"><a href="tweets-分析.html#cb426-26" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
-<span id="cb426-27"><a href="tweets-分析.html#cb426-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Stacked&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Dodged&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb426-28"><a href="tweets-分析.html#cb426-28" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="tweets-分析.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(stringr)</span></span>
+<span id="cb450-2"><a href="tweets-分析.html#cb450-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb450-3"><a href="tweets-分析.html#cb450-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb450-4"><a href="tweets-分析.html#cb450-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">picture =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;t.co&quot;</span>),</span>
+<span id="cb450-5"><a href="tweets-分析.html#cb450-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Picture/link&quot;</span>, <span class="st">&quot;No picture/link&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb450-6"><a href="tweets-分析.html#cb450-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, picture)</span>
+<span id="cb450-7"><a href="tweets-分析.html#cb450-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
+<span id="cb450-8"><a href="tweets-分析.html#cb450-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb450-9"><a href="tweets-分析.html#cb450-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
+<span id="cb450-10"><a href="tweets-分析.html#cb450-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb450-11"><a href="tweets-分析.html#cb450-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
+<span id="cb450-12"><a href="tweets-分析.html#cb450-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb450-13"><a href="tweets-分析.html#cb450-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb450-14"><a href="tweets-分析.html#cb450-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb450-15"><a href="tweets-分析.html#cb450-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb450-16"><a href="tweets-分析.html#cb450-16" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
+<span id="cb450-17"><a href="tweets-分析.html#cb450-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb450-18"><a href="tweets-分析.html#cb450-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
+<span id="cb450-19"><a href="tweets-分析.html#cb450-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb450-20"><a href="tweets-分析.html#cb450-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
+<span id="cb450-21"><a href="tweets-分析.html#cb450-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb450-22"><a href="tweets-分析.html#cb450-22" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb450-23"><a href="tweets-分析.html#cb450-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb450-24"><a href="tweets-分析.html#cb450-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb450-25"><a href="tweets-分析.html#cb450-25" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb450-26"><a href="tweets-分析.html#cb450-26" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
+<span id="cb450-27"><a href="tweets-分析.html#cb450-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Stacked&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Dodged&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb450-28"><a href="tweets-分析.html#cb450-28" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 </div>
 </div>
-<div id="keyness" class="section level3 hasAnchor" number="7.1.4">
-<h3><span class="header-section-number">7.1.4</span> Keyness<a href="tweets-分析.html#keyness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="tweets-分析.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)   <span class="co"># unnest_tokens()</span></span>
-<span id="cb427-2"><a href="tweets-分析.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># str_detect(), str_replace_all()</span></span>
-<span id="cb427-3"><a href="tweets-分析.html#cb427-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb427-4"><a href="tweets-分析.html#cb427-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
-<span id="cb427-5"><a href="tweets-分析.html#cb427-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb427-6"><a href="tweets-分析.html#cb427-6" aria-hidden="true" tabindex="-1"></a><span class="co"># stop_words$word</span></span>
-<span id="cb427-7"><a href="tweets-分析.html#cb427-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb427-8"><a href="tweets-分析.html#cb427-8" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb427-9"><a href="tweets-分析.html#cb427-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb427-10"><a href="tweets-分析.html#cb427-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;https://t.co/[A-Za-z</span><span class="sc">\\</span><span class="st">d]+|&amp;amp;&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb427-11"><a href="tweets-分析.html#cb427-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text) %&gt;%</span></span>
-<span id="cb427-12"><a href="tweets-分析.html#cb427-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text, token = &quot;regex&quot;, pattern = &quot;[^A-Za-z\\d#@&#39;]&quot;) %&gt;%</span></span>
-<span id="cb427-13"><a href="tweets-分析.html#cb427-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">str_split</span>(text, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb427-14"><a href="tweets-分析.html#cb427-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, word, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb427-15"><a href="tweets-分析.html#cb427-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
-<span id="cb427-16"><a href="tweets-分析.html#cb427-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> stop_words<span class="sc">$</span>word,</span>
-<span id="cb427-17"><a href="tweets-分析.html#cb427-17" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(word, <span class="st">&quot;[a-z]&quot;</span>))</span>
-<span id="cb427-18"><a href="tweets-分析.html#cb427-18" aria-hidden="true" tabindex="-1"></a><span class="co"># View(tweet_words)</span></span></code></pre></div>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="tweets-分析.html#cb428-1" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="sc">%&gt;%</span></span>
-<span id="cb428-2"><a href="tweets-分析.html#cb428-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb428-3"><a href="tweets-分析.html#cb428-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb428-4"><a href="tweets-分析.html#cb428-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span></span>
-<span id="cb428-5"><a href="tweets-分析.html#cb428-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
-<span id="cb428-6"><a href="tweets-分析.html#cb428-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb428-7"><a href="tweets-分析.html#cb428-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Occurrences&quot;</span>) <span class="sc">+</span></span>
-<span id="cb428-8"><a href="tweets-分析.html#cb428-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb428-9"><a href="tweets-分析.html#cb428-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
-<div id="詞頻差異" class="section level4 hasAnchor" number="7.1.4.1">
-<h4><span class="header-section-number">7.1.4.1</span> 詞頻差異<a href="tweets-分析.html#詞頻差異" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="tweets-分析.html#cb429-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
-<span id="cb429-2"><a href="tweets-分析.html#cb429-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
-<span id="cb429-3"><a href="tweets-分析.html#cb429-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb429-4"><a href="tweets-分析.html#cb429-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
-<span id="cb429-5"><a href="tweets-分析.html#cb429-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
-<span id="cb429-6"><a href="tweets-分析.html#cb429-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
-<span id="cb429-7"><a href="tweets-分析.html#cb429-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
-<span id="cb429-8"><a href="tweets-分析.html#cb429-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-9"><a href="tweets-分析.html#cb429-9" aria-hidden="true" tabindex="-1"></a>word_by_source <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
-<span id="cb429-10"><a href="tweets-分析.html#cb429-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
-<span id="cb429-11"><a href="tweets-分析.html#cb429-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb429-12"><a href="tweets-分析.html#cb429-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
-<span id="cb429-13"><a href="tweets-分析.html#cb429-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
-<span id="cb429-14"><a href="tweets-分析.html#cb429-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb429-15"><a href="tweets-分析.html#cb429-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(source, n, fill = 0) %&gt;%</span></span>
-<span id="cb429-16"><a href="tweets-分析.html#cb429-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb429-17"><a href="tweets-分析.html#cb429-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-18"><a href="tweets-分析.html#cb429-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>iPhone)</span></code></pre></div>
+<div id="keyness" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Keyness<a href="tweets-分析.html#keyness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="tweets-分析.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)   <span class="co"># unnest_tokens()</span></span>
+<span id="cb451-2"><a href="tweets-分析.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># str_detect(), str_replace_all()</span></span>
+<span id="cb451-3"><a href="tweets-分析.html#cb451-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb451-4"><a href="tweets-分析.html#cb451-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
+<span id="cb451-5"><a href="tweets-分析.html#cb451-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb451-6"><a href="tweets-分析.html#cb451-6" aria-hidden="true" tabindex="-1"></a><span class="co"># stop_words$word</span></span>
+<span id="cb451-7"><a href="tweets-分析.html#cb451-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb451-8"><a href="tweets-分析.html#cb451-8" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb451-9"><a href="tweets-分析.html#cb451-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb451-10"><a href="tweets-分析.html#cb451-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;https://t.co/[A-Za-z</span><span class="sc">\\</span><span class="st">d]+|&amp;amp;&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb451-11"><a href="tweets-分析.html#cb451-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text) %&gt;%</span></span>
+<span id="cb451-12"><a href="tweets-分析.html#cb451-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text, token = &quot;regex&quot;, pattern = &quot;[^A-Za-z\\d#@&#39;]&quot;) %&gt;%</span></span>
+<span id="cb451-13"><a href="tweets-分析.html#cb451-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">str_split</span>(text, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb451-14"><a href="tweets-分析.html#cb451-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, word, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb451-15"><a href="tweets-分析.html#cb451-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb451-16"><a href="tweets-分析.html#cb451-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> stop_words<span class="sc">$</span>word,</span>
+<span id="cb451-17"><a href="tweets-分析.html#cb451-17" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(word, <span class="st">&quot;[a-z]&quot;</span>))</span>
+<span id="cb451-18"><a href="tweets-分析.html#cb451-18" aria-hidden="true" tabindex="-1"></a><span class="co"># View(tweet_words)</span></span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="tweets-分析.html#cb452-1" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="sc">%&gt;%</span></span>
+<span id="cb452-2"><a href="tweets-分析.html#cb452-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb452-3"><a href="tweets-分析.html#cb452-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb452-4"><a href="tweets-分析.html#cb452-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span></span>
+<span id="cb452-5"><a href="tweets-分析.html#cb452-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
+<span id="cb452-6"><a href="tweets-分析.html#cb452-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb452-7"><a href="tweets-分析.html#cb452-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Occurrences&quot;</span>) <span class="sc">+</span></span>
+<span id="cb452-8"><a href="tweets-分析.html#cb452-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb452-9"><a href="tweets-分析.html#cb452-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<div id="詞頻差異" class="section level4 hasAnchor" number="6.1.4.1">
+<h4><span class="header-section-number">6.1.4.1</span> 詞頻差異<a href="tweets-分析.html#詞頻差異" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="tweets-分析.html#cb453-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
+<span id="cb453-2"><a href="tweets-分析.html#cb453-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
+<span id="cb453-3"><a href="tweets-分析.html#cb453-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb453-4"><a href="tweets-分析.html#cb453-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
+<span id="cb453-5"><a href="tweets-分析.html#cb453-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
+<span id="cb453-6"><a href="tweets-分析.html#cb453-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
+<span id="cb453-7"><a href="tweets-分析.html#cb453-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
+<span id="cb453-8"><a href="tweets-分析.html#cb453-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb453-9"><a href="tweets-分析.html#cb453-9" aria-hidden="true" tabindex="-1"></a>word_by_source <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
+<span id="cb453-10"><a href="tweets-分析.html#cb453-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
+<span id="cb453-11"><a href="tweets-分析.html#cb453-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb453-12"><a href="tweets-分析.html#cb453-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
+<span id="cb453-13"><a href="tweets-分析.html#cb453-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
+<span id="cb453-14"><a href="tweets-分析.html#cb453-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb453-15"><a href="tweets-分析.html#cb453-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(source, n, fill = 0) %&gt;%</span></span>
+<span id="cb453-16"><a href="tweets-分析.html#cb453-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb453-17"><a href="tweets-分析.html#cb453-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb453-18"><a href="tweets-分析.html#cb453-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>iPhone)</span></code></pre></div>
 <pre class="output"><code>## [1] 1383</code></pre>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="tweets-分析.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>Android)</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="tweets-分析.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>Android)</span></code></pre></div>
 <pre class="output"><code>## [1] 2132</code></pre>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="tweets-分析.html#cb433-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="ot">&lt;-</span> word_by_source <span class="sc">%&gt;%</span></span>
-<span id="cb433-2"><a href="tweets-分析.html#cb433-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">iPhone =</span> (iPhone<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(iPhone<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb433-3"><a href="tweets-分析.html#cb433-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Android =</span> (Android<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(Android<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb433-4"><a href="tweets-分析.html#cb433-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate_at(.cols = vars(iPhone, Android),</span></span>
-<span id="cb433-5"><a href="tweets-分析.html#cb433-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># .funs = funs((. + 1) / sum(. + 1))) %&gt;%</span></span>
-<span id="cb433-6"><a href="tweets-分析.html#cb433-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">logratio =</span> <span class="fu">log2</span>(Android <span class="sc">/</span> iPhone)) <span class="sc">%&gt;%</span></span>
-<span id="cb433-7"><a href="tweets-分析.html#cb433-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(logratio))</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="tweets-分析.html#cb457-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="ot">&lt;-</span> word_by_source <span class="sc">%&gt;%</span></span>
+<span id="cb457-2"><a href="tweets-分析.html#cb457-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">iPhone =</span> (iPhone<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(iPhone<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb457-3"><a href="tweets-分析.html#cb457-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Android =</span> (Android<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(Android<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb457-4"><a href="tweets-分析.html#cb457-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate_at(.cols = vars(iPhone, Android),</span></span>
+<span id="cb457-5"><a href="tweets-分析.html#cb457-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># .funs = funs((. + 1) / sum(. + 1))) %&gt;%</span></span>
+<span id="cb457-6"><a href="tweets-分析.html#cb457-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">logratio =</span> <span class="fu">log2</span>(Android <span class="sc">/</span> iPhone)) <span class="sc">%&gt;%</span></span>
+<span id="cb457-7"><a href="tweets-分析.html#cb457-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(logratio))</span></code></pre></div>
 </div>
-<div id="視覺化log-ratio" class="section level4 hasAnchor" number="7.1.4.2">
-<h4><span class="header-section-number">7.1.4.2</span> 視覺化log-ratio<a href="tweets-分析.html#視覺化log-ratio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="tweets-分析.html#cb434-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="sc">%&gt;%</span></span>
-<span id="cb434-2"><a href="tweets-分析.html#cb434-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(logratio <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb434-3"><a href="tweets-分析.html#cb434-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">15</span>, <span class="fu">abs</span>(logratio)) <span class="sc">%&gt;%</span></span>
-<span id="cb434-4"><a href="tweets-分析.html#cb434-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb434-5"><a href="tweets-分析.html#cb434-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, logratio)) <span class="sc">%&gt;%</span></span>
-<span id="cb434-6"><a href="tweets-分析.html#cb434-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, logratio, <span class="at">fill =</span> logratio <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb434-7"><a href="tweets-分析.html#cb434-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb434-8"><a href="tweets-分析.html#cb434-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb434-9"><a href="tweets-分析.html#cb434-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Android / iPhone log ratio&quot;</span>) <span class="sc">+</span></span>
-<span id="cb434-10"><a href="tweets-分析.html#cb434-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
-<span id="cb434-11"><a href="tweets-分析.html#cb434-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb434-12"><a href="tweets-分析.html#cb434-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb434-13"><a href="tweets-分析.html#cb434-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
+<div id="視覺化log-ratio" class="section level4 hasAnchor" number="6.1.4.2">
+<h4><span class="header-section-number">6.1.4.2</span> 視覺化log-ratio<a href="tweets-分析.html#視覺化log-ratio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="tweets-分析.html#cb458-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="sc">%&gt;%</span></span>
+<span id="cb458-2"><a href="tweets-分析.html#cb458-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(logratio <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb458-3"><a href="tweets-分析.html#cb458-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">15</span>, <span class="fu">abs</span>(logratio)) <span class="sc">%&gt;%</span></span>
+<span id="cb458-4"><a href="tweets-分析.html#cb458-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb458-5"><a href="tweets-分析.html#cb458-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, logratio)) <span class="sc">%&gt;%</span></span>
+<span id="cb458-6"><a href="tweets-分析.html#cb458-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, logratio, <span class="at">fill =</span> logratio <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb458-7"><a href="tweets-分析.html#cb458-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb458-8"><a href="tweets-分析.html#cb458-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb458-9"><a href="tweets-分析.html#cb458-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Android / iPhone log ratio&quot;</span>) <span class="sc">+</span></span>
+<span id="cb458-10"><a href="tweets-分析.html#cb458-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
+<span id="cb458-11"><a href="tweets-分析.html#cb458-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb458-12"><a href="tweets-分析.html#cb458-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb458-13"><a href="tweets-分析.html#cb458-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 
 </div>
 </div>

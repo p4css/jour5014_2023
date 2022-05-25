@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.2 繪圖基礎：折線圖 | R for Data Journalism</title>
+  <title>8.2 繪圖基礎：折線圖 | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.2 繪圖基礎：折線圖 | R for Data Journalism" />
+  <meta property="og:title" content="8.2 繪圖基礎：折線圖 | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.2 繪圖基礎：折線圖 | R for Data Journalism" />
+  <meta name="twitter:title" content="8.2 繪圖基礎：折線圖 | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-19" />
+<meta name="date" content="2022-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,10 +63,6 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -284,160 +280,166 @@ div.csl-indent {
 <li class="chapter" data-level="5.2.1" data-path="空值na處理.html"><a href="空值na處理.html#表格重整政府預算"><i class="fa fa-check"></i><b>5.2.1</b> 表格重整：政府預算</a></li>
 <li class="chapter" data-level="5.2.2" data-path="空值na處理.html"><a href="空值na處理.html#對齊資料世界各國疫苗接種比例"><i class="fa fa-check"></i><b>5.2.2</b> 對齊資料。世界各國疫苗接種比例</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>5.3</b> 時間軸的視覺化</a>
+<li class="chapter" data-level="5.3" data-path="categorical.html"><a href="categorical.html"><i class="fa fa-check"></i><b>5.3</b> 類別資料分析</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#文字轉時間"><i class="fa fa-check"></i><b>5.3.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="5.3.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>5.3.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="5.3.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐月統計資料"><i class="fa fa-check"></i><b>5.3.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="5.3.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐日統計資料佳"><i class="fa fa-check"></i><b>5.3.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="5.3.5" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#每日逐時資料"><i class="fa fa-check"></i><b>5.3.5</b> 每日逐時資料</a></li>
+<li class="chapter" data-level="5.3.1" data-path="categorical.html"><a href="categorical.html#清理資料"><i class="fa fa-check"></i><b>5.3.1</b> 清理資料</a></li>
+<li class="chapter" data-level="5.3.2" data-path="categorical.html"><a href="categorical.html#尺度轉類別指標"><i class="fa fa-check"></i><b>5.3.2</b> 尺度轉類別指標</a></li>
+<li class="chapter" data-level="5.3.3" data-path="categorical.html"><a href="categorical.html#cross-tabulating"><i class="fa fa-check"></i><b>5.3.3</b> Cross-tabulating</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html"><i class="fa fa-check"></i><b>5.4</b> 時間軸的視覺化</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#文字轉時間"><i class="fa fa-check"></i><b>5.4.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="5.4.2" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>5.4.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="5.4.3" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐月統計資料"><i class="fa fa-check"></i><b>5.4.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="5.4.4" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#逐日統計資料佳"><i class="fa fa-check"></i><b>5.4.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="5.4.5" data-path="時間軸的視覺化.html"><a href="時間軸的視覺化.html#每日逐時資料"><i class="fa fa-check"></i><b>5.4.5</b> 每日逐時資料</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>6</b> Explore Data Analysis</a>
+<li class="chapter" data-level="6" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>6</b> Text Processing</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html"><i class="fa fa-check"></i><b>6.1</b> TW AQI Visual Studies</a>
+<li class="chapter" data-level="6.1" data-path="tweets-分析.html"><a href="tweets-分析.html"><i class="fa fa-check"></i><b>6.1</b> Tweets 分析</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-central-tendency"><i class="fa fa-check"></i><b>6.1.1</b> Trending: Central tendency</a></li>
-<li class="chapter" data-level="6.1.2" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-extreme-value"><i class="fa fa-check"></i><b>6.1.2</b> Trending: Extreme value</a></li>
+<li class="chapter" data-level="6.1.1" data-path="tweets-分析.html"><a href="tweets-分析.html#載入並清理資料"><i class="fa fa-check"></i><b>6.1.1</b> 載入並清理資料</a></li>
+<li class="chapter" data-level="6.1.2" data-path="tweets-分析.html"><a href="tweets-分析.html#萃取資料"><i class="fa fa-check"></i><b>6.1.2</b> 萃取資料</a></li>
+<li class="chapter" data-level="6.1.3" data-path="tweets-分析.html"><a href="tweets-分析.html#視覺化探索"><i class="fa fa-check"></i><b>6.1.3</b> 視覺化探索</a></li>
+<li class="chapter" data-level="6.1.4" data-path="tweets-分析.html"><a href="tweets-分析.html#keyness"><i class="fa fa-check"></i><b>6.1.4</b> Keyness</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>7</b> Text Processing</a>
+<li class="chapter" data-level="7" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>7</b> Crawler</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tweets-分析.html"><a href="tweets-分析.html"><i class="fa fa-check"></i><b>7.1</b> Tweets 分析</a>
+<li class="chapter" data-level="7.1" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>7.1</b> Scraping 104.com</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tweets-分析.html"><a href="tweets-分析.html#載入並清理資料"><i class="fa fa-check"></i><b>7.1.1</b> 載入並清理資料</a></li>
-<li class="chapter" data-level="7.1.2" data-path="tweets-分析.html"><a href="tweets-分析.html#萃取資料"><i class="fa fa-check"></i><b>7.1.2</b> 萃取資料</a></li>
-<li class="chapter" data-level="7.1.3" data-path="tweets-分析.html"><a href="tweets-分析.html#視覺化探索"><i class="fa fa-check"></i><b>7.1.3</b> 視覺化探索</a></li>
-<li class="chapter" data-level="7.1.4" data-path="tweets-分析.html"><a href="tweets-分析.html#keyness"><i class="fa fa-check"></i><b>7.1.4</b> Keyness</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>8</b> Crawler</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>8.1</b> Scraping 104.com</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="scraping-104.html"><a href="scraping-104.html#complete-code"><i class="fa fa-check"></i><b>8.1.1</b> Complete Code</a></li>
-<li class="chapter" data-level="8.1.2" data-path="scraping-104.html"><a href="scraping-104.html#step-by-step"><i class="fa fa-check"></i><b>8.1.2</b> Step-by-Step</a></li>
+<li class="chapter" data-level="7.1.1" data-path="scraping-104.html"><a href="scraping-104.html#complete-code"><i class="fa fa-check"></i><b>7.1.1</b> Complete Code</a></li>
+<li class="chapter" data-level="7.1.2" data-path="scraping-104.html"><a href="scraping-104.html#step-by-step"><i class="fa fa-check"></i><b>7.1.2</b> Step-by-Step</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II VISUALIZATION</b></span></li>
-<li class="chapter" data-level="9" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>9</b> Visualization</a>
+<li class="chapter" data-level="8" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>8</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9.1</b> ggplot簡介</a></li>
-<li class="chapter" data-level="9.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html"><i class="fa fa-check"></i><b>9.2</b> 繪圖基礎：折線圖</a>
+<li class="chapter" data-level="8.1" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>8.1</b> ggplot簡介</a></li>
+<li class="chapter" data-level="8.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html"><i class="fa fa-check"></i><b>8.2</b> 繪圖基礎：折線圖</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#繪圖三要素"><i class="fa fa-check"></i><b>9.2.1</b> 繪圖三要素</a></li>
-<li class="chapter" data-level="9.2.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>9.2.2</b> 範例-紐時世代貧富不均</a></li>
-<li class="chapter" data-level="9.2.3" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#加入自變項群組"><i class="fa fa-check"></i><b>9.2.3</b> 加入自變項群組</a></li>
+<li class="chapter" data-level="8.2.1" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#繪圖三要素"><i class="fa fa-check"></i><b>8.2.1</b> 繪圖三要素</a></li>
+<li class="chapter" data-level="8.2.2" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>8.2.2</b> 範例-紐時世代貧富不均</a></li>
+<li class="chapter" data-level="8.2.3" data-path="繪圖基礎折線圖.html"><a href="繪圖基礎折線圖.html#加入自變項群組"><i class="fa fa-check"></i><b>8.2.3</b> 加入自變項群組</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="圖表調整.html"><a href="圖表調整.html"><i class="fa fa-check"></i><b>9.3</b> 圖表調整</a>
+<li class="chapter" data-level="8.3" data-path="圖表調整.html"><a href="圖表調整.html"><i class="fa fa-check"></i><b>8.3</b> 圖表調整</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="圖表調整.html"><a href="圖表調整.html#點線型態"><i class="fa fa-check"></i><b>9.3.1</b> 點線型態</a></li>
-<li class="chapter" data-level="9.3.2" data-path="圖表調整.html"><a href="圖表調整.html#標題標籤與圖說"><i class="fa fa-check"></i><b>9.3.2</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="9.3.3" data-path="圖表調整.html"><a href="圖表調整.html#字體樣式"><i class="fa fa-check"></i><b>9.3.3</b> 字體樣式</a></li>
-<li class="chapter" data-level="9.3.4" data-path="圖表調整.html"><a href="圖表調整.html#圖表主題色調"><i class="fa fa-check"></i><b>9.3.4</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="9.3.5" data-path="圖表調整.html"><a href="圖表調整.html#預設主題"><i class="fa fa-check"></i><b>9.3.5</b> 預設主題</a></li>
-<li class="chapter" data-level="9.3.6" data-path="圖表調整.html"><a href="圖表調整.html#顯示中文字體"><i class="fa fa-check"></i><b>9.3.6</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="9.3.7" data-path="圖表調整.html"><a href="圖表調整.html#xy軸方向"><i class="fa fa-check"></i><b>9.3.7</b> X/Y軸方向</a></li>
+<li class="chapter" data-level="8.3.1" data-path="圖表調整.html"><a href="圖表調整.html#點線型態"><i class="fa fa-check"></i><b>8.3.1</b> 點線型態</a></li>
+<li class="chapter" data-level="8.3.2" data-path="圖表調整.html"><a href="圖表調整.html#標題標籤與圖說"><i class="fa fa-check"></i><b>8.3.2</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="8.3.3" data-path="圖表調整.html"><a href="圖表調整.html#字體樣式"><i class="fa fa-check"></i><b>8.3.3</b> 字體樣式</a></li>
+<li class="chapter" data-level="8.3.4" data-path="圖表調整.html"><a href="圖表調整.html#圖表主題色調"><i class="fa fa-check"></i><b>8.3.4</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="8.3.5" data-path="圖表調整.html"><a href="圖表調整.html#預設主題"><i class="fa fa-check"></i><b>8.3.5</b> 預設主題</a></li>
+<li class="chapter" data-level="8.3.6" data-path="圖表調整.html"><a href="圖表調整.html#顯示中文字體"><i class="fa fa-check"></i><b>8.3.6</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="8.3.7" data-path="圖表調整.html"><a href="圖表調整.html#xy軸方向"><i class="fa fa-check"></i><b>8.3.7</b> X/Y軸方向</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html"><i class="fa fa-check"></i><b>9.4</b> 視覺化說故事的技巧</a>
+<li class="chapter" data-level="8.4" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html"><i class="fa fa-check"></i><b>8.4</b> 視覺化說故事的技巧</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#依群組指定顏色"><i class="fa fa-check"></i><b>9.4.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="9.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>9.4.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="9.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>9.4.3</b> 為視覺化建立群組</a></li>
+<li class="chapter" data-level="8.4.1" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#依群組指定顏色"><i class="fa fa-check"></i><b>8.4.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="8.4.2" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#使用gghighlight套件"><i class="fa fa-check"></i><b>8.4.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="8.4.3" data-path="視覺化說故事的技巧.html"><a href="視覺化說故事的技巧.html#為視覺化建立群組"><i class="fa fa-check"></i><b>8.4.3</b> 為視覺化建立群組</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>9.5</b> COLORS</a></li>
+<li class="chapter" data-level="8.5" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>8.5</b> COLORS</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>10</b> CHART TYPES</a></li>
-<li class="chapter" data-level="11" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>11</b> COORDINATE</a>
+<li class="chapter" data-level="9" data-path="chart-types.html"><a href="chart-types.html"><i class="fa fa-check"></i><b>9</b> CHART TYPES</a></li>
+<li class="chapter" data-level="10" data-path="COORDINATE.html"><a href="COORDINATE.html"><i class="fa fa-check"></i><b>10</b> COORDINATE</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>11.1</b> 排序以展示分佈</a>
+<li class="chapter" data-level="10.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html"><i class="fa fa-check"></i><b>10.1</b> 排序以展示分佈</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>11.1.1</b> </a></li>
+<li class="chapter" data-level="10.1.1" data-path="排序以展示分佈.html"><a href="排序以展示分佈.html#section"><i class="fa fa-check"></i><b>10.1.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>11.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="11.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>11.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="11.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>11.4</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="10.2" data-path="用log-scale放大長尾頭部.html"><a href="用log-scale放大長尾頭部.html"><i class="fa fa-check"></i><b>10.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="10.3" data-path="square-root-scale.html"><a href="square-root-scale.html"><i class="fa fa-check"></i><b>10.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="10.4" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html"><i class="fa fa-check"></i><b>10.4</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>11.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="11.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>11.4.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="10.4.1" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>10.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="座標軸從數值到增加值.html"><a href="座標軸從數值到增加值.html#read-and-sort-data"><i class="fa fa-check"></i><b>10.4.2</b> Read and sort data</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>11.5</b> 等比例座標軸</a>
+<li class="chapter" data-level="10.5" data-path="等比例座標軸.html"><a href="等比例座標軸.html"><i class="fa fa-check"></i><b>10.5</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>11.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>12</b> AMOUNT</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>12.1</b> Bar chart</a></li>
-<li class="chapter" data-level="12.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>12.2</b> Heatmap: Vaccination</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>13</b> DISTRIBUTION: Histogram &amp; Density</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>13.1</b> Density plot</a>
-<ul>
-<li class="chapter" data-level="13.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>13.1.1</b> Density with different bandwidth</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>13.2</b> Histogram</a>
-<ul>
-<li class="chapter" data-level="13.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>13.2.1</b> Histogram with different number of bins</a></li>
-<li class="chapter" data-level="13.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>13.2.2</b> Density vs histogram</a></li>
-<li class="chapter" data-level="13.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>13.2.3</b> Positions of bar chart</a></li>
-<li class="chapter" data-level="13.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>13.2.4</b> Display two groups histogram by facet_wrap()</a></li>
-</ul></li>
-<li class="chapter" data-level="13.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>13.3</b> Pyramid Plot</a>
-<ul>
-<li class="chapter" data-level="13.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>13.3.1</b> Modify geom_col() to pyramid plot</a></li>
-</ul></li>
-<li class="chapter" data-level="13.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>13.4</b> Box plot: Muitiple Distrubution</a>
-<ul>
-<li class="chapter" data-level="13.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>13.4.1</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>13.4.2</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="10.5.1" data-path="等比例座標軸.html"><a href="等比例座標軸.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>10.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>14</b> PROPORTION</a>
+<li class="chapter" data-level="11" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>11</b> AMOUNT</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>14.1</b> Pie Chart</a></li>
-<li class="chapter" data-level="14.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>14.2</b> Dodged Bar Chart</a></li>
-<li class="chapter" data-level="14.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>14.3</b> Treemap: Nested Proportion</a>
+<li class="chapter" data-level="11.1" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>11.1</b> Bar chart</a></li>
+<li class="chapter" data-level="11.2" data-path="heatmap-vaccination.html"><a href="heatmap-vaccination.html"><i class="fa fa-check"></i><b>11.2</b> Heatmap: Vaccination</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>12</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>14.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
-<li class="chapter" data-level="14.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>14.3.2</b> TW Budget</a></li>
+<li class="chapter" data-level="12.1" data-path="density-plot.html"><a href="density-plot.html"><i class="fa fa-check"></i><b>12.1</b> Density plot</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="density-plot.html"><a href="density-plot.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>12.1.1</b> Density with different bandwidth</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>12.2</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="histogram.html"><a href="histogram.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>12.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="12.2.2" data-path="histogram.html"><a href="histogram.html#density-vs-histogram"><i class="fa fa-check"></i><b>12.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="12.2.3" data-path="histogram.html"><a href="histogram.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>12.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="12.2.4" data-path="histogram.html"><a href="histogram.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>12.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="pyramid-plot.html"><a href="pyramid-plot.html"><i class="fa fa-check"></i><b>12.3</b> Pyramid Plot</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="pyramid-plot.html"><a href="pyramid-plot.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>12.3.1</b> Modify geom_col() to pyramid plot</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html"><i class="fa fa-check"></i><b>12.4</b> Box plot: Muitiple Distrubution</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>12.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="12.4.2" data-path="box-plot-muitiple-distrubution.html"><a href="box-plot-muitiple-distrubution.html#tw-income-boxplot"><i class="fa fa-check"></i><b>12.4.2</b> TW-Income (boxplot)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>15</b> ASSOCIATION</a>
+<li class="chapter" data-level="13" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>13</b> PROPORTION</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>15.1</b> 等比例座標軸</a>
+<li class="chapter" data-level="13.1" data-path="pie-chart.html"><a href="pie-chart.html"><i class="fa fa-check"></i><b>13.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="13.2" data-path="dodged-bar-chart.html"><a href="dodged-bar-chart.html"><i class="fa fa-check"></i><b>13.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="13.3" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html"><i class="fa fa-check"></i><b>13.3</b> Treemap: Nested Proportion</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>15.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="13.3.1" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>13.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="13.3.2" data-path="treemap-nested-proportion.html"><a href="treemap-nested-proportion.html#tw-budget"><i class="fa fa-check"></i><b>13.3.2</b> TW Budget</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>16</b> TIME &amp; TRENDS</a></li>
-<li class="chapter" data-level="17" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>17</b> GEOSPATIAL</a></li>
-<li class="chapter" data-level="18" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>18</b> Interactivity</a>
+<li class="chapter" data-level="14" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>14</b> ASSOCIATION</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="ggplotly.html"><a href="ggplotly.html"><i class="fa fa-check"></i><b>18.1</b> ggplotly</a>
+<li class="chapter" data-level="14.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html"><i class="fa fa-check"></i><b>14.1</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="18.1.1" data-path="ggplotly.html"><a href="ggplotly.html#line-chart"><i class="fa fa-check"></i><b>18.1.1</b> LINE CHART</a></li>
-<li class="chapter" data-level="18.1.2" data-path="ggplotly.html"><a href="ggplotly.html#scatter"><i class="fa fa-check"></i><b>18.1.2</b> SCATTER</a></li>
-<li class="chapter" data-level="18.1.3" data-path="ggplotly.html"><a href="ggplotly.html#barplot"><i class="fa fa-check"></i><b>18.1.3</b> Barplot</a></li>
-<li class="chapter" data-level="18.1.4" data-path="ggplotly.html"><a href="ggplotly.html#boxplot"><i class="fa fa-check"></i><b>18.1.4</b> Boxplot</a></li>
-<li class="chapter" data-level="18.1.5" data-path="ggplotly.html"><a href="ggplotly.html#treemap-global-carbon"><i class="fa fa-check"></i><b>18.1.5</b> Treemap (Global Carbon)</a></li>
-</ul></li>
-<li class="chapter" data-level="18.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html"><i class="fa fa-check"></i><b>18.2</b> 產製圖表動畫</a>
-<ul>
-<li class="chapter" data-level="18.2.1" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>18.2.1</b> 地圖下載與轉換投影方法</a></li>
-<li class="chapter" data-level="18.2.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#靜態繪圖測試"><i class="fa fa-check"></i><b>18.2.2</b> 靜態繪圖測試</a></li>
+<li class="chapter" data-level="14.1.1" data-path="等比例座標軸-1.html"><a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>14.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>19</b> Appendix</a>
+<li class="chapter" data-level="15" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>15</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="16" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>16</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="17" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>17</b> Interactivity</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>19.1</b> Dataset</a></li>
+<li class="chapter" data-level="17.1" data-path="ggplotly.html"><a href="ggplotly.html"><i class="fa fa-check"></i><b>17.1</b> ggplotly</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="ggplotly.html"><a href="ggplotly.html#line-chart"><i class="fa fa-check"></i><b>17.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="17.1.2" data-path="ggplotly.html"><a href="ggplotly.html#scatter"><i class="fa fa-check"></i><b>17.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="17.1.3" data-path="ggplotly.html"><a href="ggplotly.html#barplot"><i class="fa fa-check"></i><b>17.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="17.1.4" data-path="ggplotly.html"><a href="ggplotly.html#boxplot"><i class="fa fa-check"></i><b>17.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="17.1.5" data-path="ggplotly.html"><a href="ggplotly.html#treemap-global-carbon"><i class="fa fa-check"></i><b>17.1.5</b> Treemap (Global Carbon)</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>20</b> WGOITG of NyTimes</a>
+<li class="chapter" data-level="17.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html"><i class="fa fa-check"></i><b>17.2</b> 產製圖表動畫</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>20.1</b> Inequality: Net Worth by Age Group</a></li>
-<li class="chapter" data-level="20.2" data-path="unicef-global-survey-optimism.html"><a href="unicef-global-survey-optimism.html"><i class="fa fa-check"></i><b>20.2</b> UNICEF-Global Survey Optimism</a></li>
-<li class="chapter" data-level="20.3" data-path="global-carbon-projects.html"><a href="global-carbon-projects.html"><i class="fa fa-check"></i><b>20.3</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="17.2.1" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>17.2.1</b> 地圖下載與轉換投影方法</a></li>
+<li class="chapter" data-level="17.2.2" data-path="產製圖表動畫.html"><a href="產製圖表動畫.html#靜態繪圖測試"><i class="fa fa-check"></i><b>17.2.2</b> 靜態繪圖測試</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>18</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="dataset.html"><a href="dataset.html"><i class="fa fa-check"></i><b>18.1</b> Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>19</b> WGOITG of NyTimes</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>19.1</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="19.2" data-path="unicef-global-survey-optimism.html"><a href="unicef-global-survey-optimism.html"><i class="fa fa-check"></i><b>19.2</b> UNICEF-Global Survey Optimism</a></li>
+<li class="chapter" data-level="19.3" data-path="global-carbon-projects.html"><a href="global-carbon-projects.html"><i class="fa fa-check"></i><b>19.3</b> Global Carbon Projects</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>20</b> Case Studies (Taiwan)</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html"><i class="fa fa-check"></i><b>20.1</b> TW AQI Visual Studies</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-central-tendency"><i class="fa fa-check"></i><b>20.1.1</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="20.1.2" data-path="tw-aqi-visual-studies.html"><a href="tw-aqi-visual-studies.html#trending-extreme-value"><i class="fa fa-check"></i><b>20.1.2</b> Trending: Extreme value</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -459,10 +461,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="繪圖基礎折線圖" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> 繪圖基礎：折線圖<a href="繪圖基礎折線圖.html#繪圖基礎折線圖" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="繪圖三要素" class="section level3 hasAnchor" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> 繪圖三要素<a href="繪圖基礎折線圖.html#繪圖三要素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="繪圖基礎折線圖" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 繪圖基礎：折線圖<a href="繪圖基礎折線圖.html#繪圖基礎折線圖" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="繪圖三要素" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> 繪圖三要素<a href="繪圖基礎折線圖.html#繪圖三要素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>用ggplot來繪製圖形有三個基本函式<code>ggplot()</code> + <code>aes()</code> + <code>geom_圖表類型</code>。</p>
 <ol style="list-style-type: decimal">
 <li><strong>指定要進行繪圖<code>ggplot()</code></strong>：用<code>%&gt;%</code>將資料（dataframe）pipe給<code>ggplot()</code>後，底下各增添的繪圖選項都用<code>+</code>的符號，類似不斷修正繪圖結果的意思。</li>
@@ -474,84 +476,70 @@ div.csl-indent {
 <p class="caption">ggplot-cheat-sheet</p>
 </div>
 <p><code>ggplot()</code> 會秀出預備要繪製的繪圖區</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="繪圖基礎折線圖.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb445-2"><a href="繪圖基礎折線圖.html#cb445-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/ggplot()-1.png" width="672" /></p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="繪圖基礎折線圖.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb469-2"><a href="繪圖基礎折線圖.html#cb469-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()</span></code></pre></div>
 <p><strong>指定X／Y軸與群組因子<code>aes()</code></strong>：<code>aes()</code>會在繪圖區上繪製X與Y軸</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="繪圖基礎折線圖.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb446-2"><a href="繪圖基礎折線圖.html#cb446-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb446-3"><a href="繪圖基礎折線圖.html#cb446-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/aes()-1.png" width="672" /></p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="繪圖基礎折線圖.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb470-2"><a href="繪圖基礎折線圖.html#cb470-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb470-3"><a href="繪圖基礎折線圖.html#cb470-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b)</span></code></pre></div>
 <p><strong>指定要繪製的圖表類型</strong>。例如Line-chart為<code>geom_line()</code>、</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="繪圖基礎折線圖.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb447-2"><a href="繪圖基礎折線圖.html#cb447-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb447-3"><a href="繪圖基礎折線圖.html#cb447-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
-<span id="cb447-4"><a href="繪圖基礎折線圖.html#cb447-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/geom_line-1.png" width="672" /></p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="繪圖基礎折線圖.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb471-2"><a href="繪圖基礎折線圖.html#cb471-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb471-3"><a href="繪圖基礎折線圖.html#cb471-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
+<span id="cb471-4"><a href="繪圖基礎折線圖.html#cb471-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p>此圖為一雙變數的圖，基於雙變數，可以將不同的圖同時繪製在同一個繪圖區上。例如以下同時繪製了<code>geom_line()</code>與<code>geom_plot()</code>。</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="繪圖基礎折線圖.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb448-2"><a href="繪圖基礎折線圖.html#cb448-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb448-3"><a href="繪圖基礎折線圖.html#cb448-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
-<span id="cb448-4"><a href="繪圖基礎折線圖.html#cb448-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb448-5"><a href="繪圖基礎折線圖.html#cb448-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/geom_point-1.png" width="672" /></p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="繪圖基礎折線圖.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb472-2"><a href="繪圖基礎折線圖.html#cb472-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb472-3"><a href="繪圖基礎折線圖.html#cb472-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
+<span id="cb472-4"><a href="繪圖基礎折線圖.html#cb472-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb472-5"><a href="繪圖基礎折線圖.html#cb472-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 </div>
-<div id="範例-紐時世代貧富不均" class="section level3 hasAnchor" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> 範例-紐時世代貧富不均<a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="範例-紐時世代貧富不均" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> 範例-紐時世代貧富不均<a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html">Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)</a></p>
 <p>ggplot是以變數為基礎的視覺化套件，也就是說，當準備好dataframe後，就可以在ggplot中指定要用哪些變數來繪圖。也因此，務必把dataframe整理為tidy型態，也就是長表格（long-form）的型態。整理完資料後，我會習慣地用<code>names(plot)</code>或<code>glimpse(plot)</code>來看一下該資料所有的變項，好可以在下一階段的繪圖做參考。</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="繪圖基礎折線圖.html#cb449-1" aria-hidden="true" tabindex="-1"></a>NW <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb449-2"><a href="繪圖基礎折線圖.html#cb449-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Category, year, Net_Worth)  <span class="sc">%&gt;%</span></span>
-<span id="cb449-3"><a href="繪圖基礎折線圖.html#cb449-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb449-4"><a href="繪圖基礎折線圖.html#cb449-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb449-5"><a href="繪圖基礎折線圖.html#cb449-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb449-6"><a href="繪圖基礎折線圖.html#cb449-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb449-7"><a href="繪圖基礎折線圖.html#cb449-7" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
-<pre class="output"><code>## Rows: 66
-## Columns: 3
-## $ Category  &lt;chr&gt; &quot;Less than 35&quot;, &quot;35-44&quot;, &quot;45-54&quot;, &quot;55-64&quot;, &quot;65-74&quot;, &quot;75 or o…
-## $ year      &lt;dbl&gt; 1989, 1989, 1989, 1989, 1989, 1989, 1992, 1992, 1992, 1992, …
-## $ Net_Worth &lt;dbl&gt; 16.17019, 112.47530, 195.11630, 195.25554, 154.34277, 144.29…</code></pre>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="繪圖基礎折線圖.html#cb473-1" aria-hidden="true" tabindex="-1"></a>NW <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb473-2"><a href="繪圖基礎折線圖.html#cb473-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Category, year, Net_Worth)  <span class="sc">%&gt;%</span></span>
+<span id="cb473-3"><a href="繪圖基礎折線圖.html#cb473-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb473-4"><a href="繪圖基礎折線圖.html#cb473-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb473-5"><a href="繪圖基礎折線圖.html#cb473-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb473-6"><a href="繪圖基礎折線圖.html#cb473-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb473-7"><a href="繪圖基礎折線圖.html#cb473-7" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
 <p>這是預期視覺化的結果</p>
 <p><img src="images/paste-B46B3CD7.png" /></p>
 <p>先將<code>year</code>和<code>Net_worth</code>分別繪製在X與Y軸上，並用<code>geom_line()</code>繪製為折現圖。結果圖表中呈現鋸齒狀的折線，看似有問題，但其實是合理的。因為<code>year</code>是一個離散變數，而我們希望每個年齡層一條線的話，那就要照年齡層來分組。也因此，每一年都有有每個年齡層的資料，當我們把「年」作為X軸時，自然同一年就會有數筆不同年齡層的資料，因此才會是鋸齒狀的。</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="繪圖基礎折線圖.html#cb451-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb451-2"><a href="繪圖基礎折線圖.html#cb451-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb451-3"><a href="繪圖基礎折線圖.html#cb451-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
-<span id="cb451-4"><a href="繪圖基礎折線圖.html#cb451-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/select-vars-and-plot-type-1.png" width="672" /></p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="繪圖基礎折線圖.html#cb474-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb474-2"><a href="繪圖基礎折線圖.html#cb474-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb474-3"><a href="繪圖基礎折線圖.html#cb474-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
+<span id="cb474-4"><a href="繪圖基礎折線圖.html#cb474-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><strong>不同的圖表類型是可以疊加在同一張圖上的</strong>。我們也可以把<code>geom_point()</code> 另一種圖表型態加入，也是可以的，兩者的X與Y不相衝突。<code>geom_line()</code>、<code>geom_point()</code>、<code>geom_text()</code>三者會經常伴隨出現。</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="繪圖基礎折線圖.html#cb452-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb452-2"><a href="繪圖基礎折線圖.html#cb452-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb452-3"><a href="繪圖基礎折線圖.html#cb452-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
-<span id="cb452-4"><a href="繪圖基礎折線圖.html#cb452-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb452-5"><a href="繪圖基礎折線圖.html#cb452-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/select-vars-and-plot-type-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="繪圖基礎折線圖.html#cb475-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb475-2"><a href="繪圖基礎折線圖.html#cb475-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb475-3"><a href="繪圖基礎折線圖.html#cb475-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
+<span id="cb475-4"><a href="繪圖基礎折線圖.html#cb475-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb475-5"><a href="繪圖基礎折線圖.html#cb475-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 </div>
-<div id="加入自變項群組" class="section level3 hasAnchor" number="9.2.3">
-<h3><span class="header-section-number">9.2.3</span> 加入自變項群組<a href="繪圖基礎折線圖.html#加入自變項群組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="加入自變項群組" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> 加入自變項群組<a href="繪圖基礎折線圖.html#加入自變項群組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>上圖是我們把多個年齡層的逐年資料畫在同一條折線上，所以會呈現鋸齒狀折現的狀況。但這些年齡層並非在同一條線上呀？因此，我們要根據<code>Category</code>這個變數來做分組。</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="繪圖基礎折線圖.html#cb453-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb453-2"><a href="繪圖基礎折線圖.html#cb453-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb453-3"><a href="繪圖基礎折線圖.html#cb453-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth, <span class="at">group=</span>Category) <span class="sc">+</span> </span>
-<span id="cb453-4"><a href="繪圖基礎折線圖.html#cb453-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb453-5"><a href="繪圖基礎折線圖.html#cb453-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="繪圖基礎折線圖.html#cb476-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb476-2"><a href="繪圖基礎折線圖.html#cb476-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb476-3"><a href="繪圖基礎折線圖.html#cb476-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth, <span class="at">group=</span>Category) <span class="sc">+</span> </span>
+<span id="cb476-4"><a href="繪圖基礎折線圖.html#cb476-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb476-5"><a href="繪圖基礎折線圖.html#cb476-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <p>如希望不同線條上不一樣的色彩，應指定<code>color=Category</code>。</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="繪圖基礎折線圖.html#cb454-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb454-2"><a href="繪圖基礎折線圖.html#cb454-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb454-3"><a href="繪圖基礎折線圖.html#cb454-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/grouping-1.png" width="672" /></p>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="繪圖基礎折線圖.html#cb477-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb477-2"><a href="繪圖基礎折線圖.html#cb477-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb477-3"><a href="繪圖基礎折線圖.html#cb477-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <dl>
 <dt>用color、fill或group來做分組？</dt>
 <dd>
 <p><code>geom_line()</code>的色彩是在<strong>線</strong>，而不是在<strong>面</strong>上。如果色彩是在點（如<code>geom_point()</code>）或線（<code>geom_line()</code>）上，就是用<code>color</code>來指定顏色。但如果是如類似下面的例子，用<code>geom_area()</code>來視覺化的話，因為顏色填的是<strong>面</strong>，所以要用<code>fill=Category</code>。以下範例甚至同時指定<code>color=Category, fill=Category</code>。但折線圖如果要用<code>geom_area()</code>來視覺化的話，最好要上顏色的不要超過二個，不然就會像底下這個例子一樣，即使設定<code>alpha=0.2</code>的半透明，仍然會看不懂哪些顏色疊在一起。</p>
 </dd>
 </dl>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="繪圖基礎折線圖.html#cb455-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb455-2"><a href="繪圖基礎折線圖.html#cb455-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category, <span class="at">fill=</span>Category) <span class="sc">+</span> </span>
-<span id="cb455-3"><a href="繪圖基礎折線圖.html#cb455-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/grouping-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="繪圖基礎折線圖.html#cb478-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb478-2"><a href="繪圖基礎折線圖.html#cb478-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category, <span class="at">fill=</span>Category) <span class="sc">+</span> </span>
+<span id="cb478-3"><a href="繪圖基礎折線圖.html#cb478-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code></pre></div>
 </div>
 </div>
             </section>
