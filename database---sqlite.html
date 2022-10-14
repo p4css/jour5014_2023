@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.5 Database - SQLite | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.5 Database - SQLite | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -493,17 +492,17 @@ div.csl-indent {
 # Import readxl package
 library(readxl)
 options(stringsAsFactors = FALSE)</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="database---sqlite.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use read_excel() to convert excel sheet to data.frame</span></span>
-<span id="cb244-2"><a href="database---sqlite.html#cb244-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="database---sqlite.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use read_excel() to convert excel sheet to data.frame</span></span>
+<span id="cb241-2"><a href="database---sqlite.html#cb241-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span></code></pre></div>
 <div id="previewing-data-by-view-class-dim-str-summary-and-names" class="section level3 hasAnchor" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code><a href="database---sqlite.html#previewing-data-by-view-class-dim-str-summary-and-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="database---sqlite.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span>
-<span id="cb245-2"><a href="database---sqlite.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)       <span class="co"># [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="database---sqlite.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span>
+<span id="cb242-2"><a href="database---sqlite.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)       <span class="co"># [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="database---sqlite.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="database---sqlite.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 197 156</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="database---sqlite.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show names of variables (vectors, columns) by names()</span></span>
-<span id="cb249-2"><a href="database---sqlite.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="database---sqlite.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show names of variables (vectors, columns) by names()</span></span>
+<span id="cb246-2"><a href="database---sqlite.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre class="output"><code>##   [1] &quot;country&quot;           &quot;iso2&quot;              &quot;iso3&quot;             
 ##   [4] &quot;region&quot;            &quot;wb_econ&quot;           &quot;matleave_95&quot;      
 ##   [7] &quot;matleave_96&quot;       &quot;matleave_97&quot;       &quot;matleave_98&quot;      
@@ -559,15 +558,15 @@ options(stringsAsFactors = FALSE)</code></pre>
 </div>
 <div id="select-variables" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Select variables<a href="database---sqlite.html#select-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="database---sqlite.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the 3rd and 6th to 24th columns</span></span>
-<span id="cb251-2"><a href="database---sqlite.html#cb251-2" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
-<span id="cb251-3"><a href="database---sqlite.html#cb251-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-4"><a href="database---sqlite.html#cb251-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use class(), dim(), and str() to inspect the data</span></span>
-<span id="cb251-5"><a href="database---sqlite.html#cb251-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="database---sqlite.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the 3rd and 6th to 24th columns</span></span>
+<span id="cb248-2"><a href="database---sqlite.html#cb248-2" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb248-3"><a href="database---sqlite.html#cb248-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-4"><a href="database---sqlite.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use class(), dim(), and str() to inspect the data</span></span>
+<span id="cb248-5"><a href="database---sqlite.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="database---sqlite.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(matleave)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="database---sqlite.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(matleave)</span></code></pre></div>
 <pre class="output"><code>## [1] 197  20</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="database---sqlite.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="database---sqlite.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
 <pre class="output"><code>## tibble [197 × 20] (S3: tbl_df/tbl/data.frame)
 ##  $ iso3       : chr [1:197] &quot;AFG&quot; &quot;ALB&quot; &quot;DZA&quot; &quot;AND&quot; ...
 ##  $ matleave_95: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
@@ -598,8 +597,8 @@ options(stringsAsFactors = FALSE)</code></pre>
 <li>以0取代NA的資料格。避免繪圖產生錯誤</li>
 <li><code>sum(is.na(matleave))</code>的目的是檢測還有沒有NA值。如果有的話<code>is.na()</code>就會是<code>TRUE</code>，那麼加總後，如果不是0，那就代表還有NA。</li>
 </ul>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="database---sqlite.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is.na() to indicate each element is NA or NOT(TRUE/FALSE)</span></span>
-<span id="cb257-2"><a href="database---sqlite.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">is.na</span>(matleave), <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="database---sqlite.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is.na() to indicate each element is NA or NOT(TRUE/FALSE)</span></span>
+<span id="cb254-2"><a href="database---sqlite.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">is.na</span>(matleave), <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1908,39 +1907,39 @@ FALSE
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="database---sqlite.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign 0 to those NA data</span></span>
-<span id="cb258-2"><a href="database---sqlite.html#cb258-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb258-3"><a href="database---sqlite.html#cb258-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-4"><a href="database---sqlite.html#cb258-4" aria-hidden="true" tabindex="-1"></a><span class="co"># anyNA() to check if there are still NA cells.</span></span>
-<span id="cb258-5"><a href="database---sqlite.html#cb258-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anyNA</span>(matleave)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="database---sqlite.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign 0 to those NA data</span></span>
+<span id="cb255-2"><a href="database---sqlite.html#cb255-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb255-3"><a href="database---sqlite.html#cb255-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb255-4"><a href="database---sqlite.html#cb255-4" aria-hidden="true" tabindex="-1"></a><span class="co"># anyNA() to check if there are still NA cells.</span></span>
+<span id="cb255-5"><a href="database---sqlite.html#cb255-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anyNA</span>(matleave)</span></code></pre></div>
 <pre class="output"><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="database---sqlite.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(is.na()) to count the number of NA</span></span>
-<span id="cb260-2"><a href="database---sqlite.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(matleave))</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="database---sqlite.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(is.na()) to count the number of NA</span></span>
+<span id="cb257-2"><a href="database---sqlite.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(matleave))</span></code></pre></div>
 <pre class="output"><code>## [1] 0</code></pre>
 </div>
 <div id="filtering-data" class="section level3 hasAnchor" number="4.5.4">
 <h3><span class="header-section-number">4.5.4</span> Filtering data<a href="database---sqlite.html#filtering-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="filtered-by-the-last-year-value" class="section level4 hasAnchor" number="4.5.4.1">
 <h4><span class="header-section-number">4.5.4.1</span> Filtered by the last year value<a href="database---sqlite.html#filtered-by-the-last-year-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="database---sqlite.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use logical comparison to see if the last year equals to 5</span></span>
-<span id="cb262-2"><a href="database---sqlite.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign matching data to var m5</span></span>
-<span id="cb262-3"><a href="database---sqlite.html#cb262-3" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span><span class="sc">==</span><span class="dv">5</span>, ]</span>
-<span id="cb262-4"><a href="database---sqlite.html#cb262-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb262-5"><a href="database---sqlite.html#cb262-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to count matching data</span></span>
-<span id="cb262-6"><a href="database---sqlite.html#cb262-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m5)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="database---sqlite.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use logical comparison to see if the last year equals to 5</span></span>
+<span id="cb259-2"><a href="database---sqlite.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign matching data to var m5</span></span>
+<span id="cb259-3"><a href="database---sqlite.html#cb259-3" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span><span class="sc">==</span><span class="dv">5</span>, ]</span>
+<span id="cb259-4"><a href="database---sqlite.html#cb259-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-5"><a href="database---sqlite.html#cb259-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to count matching data</span></span>
+<span id="cb259-6"><a href="database---sqlite.html#cb259-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m5)</span></code></pre></div>
 <pre class="output"><code>## [1] 34</code></pre>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="database---sqlite.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is it possible to use length() to check the data length?</span></span>
-<span id="cb264-2"><a href="database---sqlite.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;</span></span>
-<span id="cb264-3"><a href="database---sqlite.html#cb264-3" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;==5</span></span>
-<span id="cb264-4"><a href="database---sqlite.html#cb264-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(matleave$&#39;matleave_13&#39;==5)</span></span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="database---sqlite.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is it possible to use length() to check the data length?</span></span>
+<span id="cb261-2"><a href="database---sqlite.html#cb261-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;</span></span>
+<span id="cb261-3"><a href="database---sqlite.html#cb261-3" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;==5</span></span>
+<span id="cb261-4"><a href="database---sqlite.html#cb261-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(matleave$&#39;matleave_13&#39;==5)</span></span></code></pre></div>
 </div>
 <div id="filtered-data-by-the-first-year-value" class="section level4 hasAnchor" number="4.5.4.2">
 <h4><span class="header-section-number">4.5.4.2</span> Filtered data by the first year value<a href="database---sqlite.html#filtered-data-by-the-first-year-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="database---sqlite.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is 5, and assign to var m55</span></span>
-<span id="cb265-2"><a href="database---sqlite.html#cb265-2" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">==</span><span class="dv">5</span>,]</span>
-<span id="cb265-3"><a href="database---sqlite.html#cb265-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb265-4"><a href="database---sqlite.html#cb265-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is not 5, and assign to var m05</span></span>
-<span id="cb265-5"><a href="database---sqlite.html#cb265-5" aria-hidden="true" tabindex="-1"></a>m05<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">!=</span><span class="dv">5</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="database---sqlite.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is 5, and assign to var m55</span></span>
+<span id="cb262-2"><a href="database---sqlite.html#cb262-2" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">==</span><span class="dv">5</span>,]</span>
+<span id="cb262-3"><a href="database---sqlite.html#cb262-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb262-4"><a href="database---sqlite.html#cb262-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is not 5, and assign to var m05</span></span>
+<span id="cb262-5"><a href="database---sqlite.html#cb262-5" aria-hidden="true" tabindex="-1"></a>m05<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">!=</span><span class="dv">5</span>,]</span></code></pre></div>
 </div>
 </div>
 <div id="plotting" class="section level3 hasAnchor" number="4.5.5">
@@ -1952,46 +1951,46 @@ FALSE
 </ul>
 <div id="plotting-one-line" class="section level4 hasAnchor" number="4.5.5.1">
 <h4><span class="header-section-number">4.5.5.1</span> Plotting one line<a href="database---sqlite.html#plotting-one-line" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="database---sqlite.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row of m55</span></span>
-<span id="cb266-2"><a href="database---sqlite.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, ])       # raise error</span></span>
-<span id="cb266-3"><a href="database---sqlite.html#cb266-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-4"><a href="database---sqlite.html#cb266-4" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row when neglecting the first column</span></span>
-<span id="cb266-5"><a href="database---sqlite.html#cb266-5" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, -1])     # raise error</span></span>
-<span id="cb266-6"><a href="database---sqlite.html#cb266-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-7"><a href="database---sqlite.html#cb266-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the data type of matleave[2, ]</span></span>
-<span id="cb266-8"><a href="database---sqlite.html#cb266-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="database---sqlite.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row of m55</span></span>
+<span id="cb263-2"><a href="database---sqlite.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, ])       # raise error</span></span>
+<span id="cb263-3"><a href="database---sqlite.html#cb263-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-4"><a href="database---sqlite.html#cb263-4" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row when neglecting the first column</span></span>
+<span id="cb263-5"><a href="database---sqlite.html#cb263-5" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, -1])     # raise error</span></span>
+<span id="cb263-6"><a href="database---sqlite.html#cb263-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-7"><a href="database---sqlite.html#cb263-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the data type of matleave[2, ]</span></span>
+<span id="cb263-8"><a href="database---sqlite.html#cb263-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="database---sqlite.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="database---sqlite.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="database---sqlite.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unlist() to convert a single row data.frame to a vector for barplot()</span></span>
-<span id="cb270-2"><a href="database---sqlite.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="database---sqlite.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unlist() to convert a single row data.frame to a vector for barplot()</span></span>
+<span id="cb267-2"><a href="database---sqlite.html#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <ul>
 <li>Testing</li>
 </ul>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="database---sqlite.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1]) # select the 1st variable</span></span>
-<span id="cb271-2"><a href="database---sqlite.html#cb271-2" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[ ,1]) # select the 1st column</span></span>
-<span id="cb271-3"><a href="database---sqlite.html#cb271-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1, ]) # select the 1st row</span></span>
-<span id="cb271-4"><a href="database---sqlite.html#cb271-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb271-5"><a href="database---sqlite.html#cb271-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>])       <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="database---sqlite.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1]) # select the 1st variable</span></span>
+<span id="cb268-2"><a href="database---sqlite.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[ ,1]) # select the 1st column</span></span>
+<span id="cb268-3"><a href="database---sqlite.html#cb268-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1, ]) # select the 1st row</span></span>
+<span id="cb268-4"><a href="database---sqlite.html#cb268-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-5"><a href="database---sqlite.html#cb268-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>])       <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="database---sqlite.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[ ,<span class="dv">1</span>]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="database---sqlite.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[ ,<span class="dv">1</span>]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="database---sqlite.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>, ]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="database---sqlite.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>, ]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="database---sqlite.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55<span class="sc">$</span>iso3) <span class="co"># character (vector)</span></span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="database---sqlite.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55<span class="sc">$</span>iso3) <span class="co"># character (vector)</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="more-arguments-args" class="section level4 hasAnchor" number="4.5.5.2">
 <h4><span class="header-section-number">4.5.5.2</span> More arguments (args)<a href="database---sqlite.html#more-arguments-args" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="database---sqlite.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the unlisted second row (neglecting the first col)</span></span>
-<span id="cb279-2"><a href="database---sqlite.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="database---sqlite.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?barplot to know more argument of the function.</span></span>
-<span id="cb280-2"><a href="database---sqlite.html#cb280-2" aria-hidden="true" tabindex="-1"></a>?barplot</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="database---sqlite.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the unlisted second row (neglecting the first col)</span></span>
+<span id="cb276-2"><a href="database---sqlite.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="database---sqlite.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?barplot to know more argument of the function.</span></span>
+<span id="cb277-2"><a href="database---sqlite.html#cb277-2" aria-hidden="true" tabindex="-1"></a>?barplot</span></code></pre></div>
 <div class="r-help-page">
 <div class="container">
-<table width="100%" summary="page for barplot">
+<table style="width: 100%;">
 <tr>
 <td>
 barplot
@@ -2013,8 +2012,7 @@ Creates a bar plot with vertical or horizontal bars.
 <h3>
 Usage
 </h3>
-<pre class="r">
-barplot(height, ...)
+<pre class="r"><code class='language-R'>barplot(height, ...)
 
 ## Default S3 method:
 barplot(height, width = 1, space = NULL,
@@ -2031,12 +2029,12 @@ barplot(height, width = 1, space = NULL,
 ## S3 method for class 'formula'
 barplot(formula, data, subset, na.action,
         horiz = FALSE, xlab = NULL, ylab = NULL, ...)
-</pre>
+</code></pre>
 <h3>
 Arguments
 </h3>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>height</code>
 </td>
@@ -2055,7 +2053,7 @@ rather than stacked.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>width</code>
 </td>
@@ -2067,7 +2065,7 @@ visible effect unless <code>xlim</code> is specified.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>space</code>
 </td>
@@ -2085,7 +2083,7 @@ otherwise.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>names.arg</code>
 </td>
@@ -2098,7 +2096,7 @@ is a vector, or the column names if it is a matrix.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>legend.text</code>
 </td>
@@ -2113,7 +2111,7 @@ In that case given legend labels should correspond to the rows of
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>beside</code>
 </td>
@@ -2125,7 +2123,7 @@ the columns are portrayed as juxtaposed bars.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>horiz</code>
 </td>
@@ -2137,7 +2135,7 @@ bars are drawn horizontally with the first at the bottom.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>density</code>
 </td>
@@ -2151,7 +2149,7 @@ drawing of shading lines.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>angle</code>
 </td>
@@ -2162,19 +2160,20 @@ degrees (counter-clockwise), for the bars or bar components.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>col</code>
 </td>
 <td>
 <p>
 a vector of colors for the bars or bar components.
-By default, grey is used if <code>height</code> is a vector, and a
-gamma-corrected grey palette if <code>height</code> is a matrix.
+By default, <code>“grey”</code> is used if <code>height</code> is a vector, and a
+gamma-corrected grey palette if <code>height</code> is a matrix;
+see <code>grey.colors</code>.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>border</code>
 </td>
@@ -2187,17 +2186,17 @@ the border as for the shading lines.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>main,sub</code>
 </td>
 <td>
 <p>
-overall and sub title for the plot.
+main title and subtitle for the plot.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>xlab</code>
 </td>
@@ -2207,7 +2206,7 @@ a label for the x axis.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>ylab</code>
 </td>
@@ -2217,7 +2216,7 @@ a label for the y axis.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>xlim</code>
 </td>
@@ -2227,7 +2226,7 @@ limits for the x axis.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>ylim</code>
 </td>
@@ -2237,7 +2236,7 @@ limits for the y axis.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>xpd</code>
 </td>
@@ -2247,7 +2246,7 @@ logical. Should bars be allowed to go outside region?
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>log</code>
 </td>
@@ -2258,7 +2257,7 @@ string specifying if axis scales should be logarithmic; see
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>axes</code>
 </td>
@@ -2269,7 +2268,7 @@ logical. If <code>TRUE</code>, a vertical (or horizontal, if
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>axisnames</code>
 </td>
@@ -2281,7 +2280,7 @@ other axis is drawn (with <code>lty = 0</code>) and labeled.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>cex.axis</code>
 </td>
@@ -2292,7 +2291,7 @@ expansion factor for numeric axis labels (see
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>cex.names</code>
 </td>
@@ -2302,7 +2301,7 @@ expansion factor for axis names (bar labels).
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>inside</code>
 </td>
@@ -2315,8 +2314,8 @@ adjacent (non-stacked!) bars will be drawn. Only applies when
 </td>
 </tr>
 </table>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>plot</code>
 </td>
@@ -2326,7 +2325,7 @@ logical. If <code>FALSE</code>, nothing is plotted.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>axis.lty</code>
 </td>
@@ -2339,7 +2338,7 @@ that by default the axis is suppressed.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>offset</code>
 </td>
@@ -2350,7 +2349,7 @@ relative to the x axis.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>add</code>
 </td>
@@ -2361,7 +2360,7 @@ existing plot; defaults to <code>FALSE</code>.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>ann</code>
 </td>
@@ -2373,7 +2372,7 @@ logical specifying if the default annotation (<code>main</code>,
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>args.legend</code>
 </td>
@@ -2385,7 +2384,7 @@ names. Only used if <code>legend.text</code> is supplied.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>formula</code>
 </td>
@@ -2405,7 +2404,7 @@ can have one of three forms:
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>data</code>
 </td>
@@ -2416,7 +2415,7 @@ should be taken.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>subset</code>
 </td>
@@ -2427,7 +2426,7 @@ to be used.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>na.action</code>
 </td>
@@ -2439,7 +2438,7 @@ values in the given variables.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>…</code>
 </td>
@@ -2496,8 +2495,7 @@ See Also
 <h3>
 Examples
 </h3>
-<pre class="r">
-# Formula method
+<pre class="r"><code class='language-R'># Formula method
 barplot(GNP ~ Year, data = longley)
 barplot(cbind(Employed, Unemployed) ~ Year, data = longley)
 
@@ -2572,42 +2570,42 @@ barplot(height = cbind(x = c(465, 91) / 465 * 100,
         col = c(1, 2),
         legend.text = c("A", "B"),
         args.legend = list(x = "topleft"))
-</pre>
+</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="database---sqlite.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add arguments ylim, space, border, and axat/yaxt one by one to barplot()</span></span>
-<span id="cb281-2"><a href="database---sqlite.html#cb281-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-2.png" width="672" /></p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="database---sqlite.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-3.png" width="672" /></p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="database---sqlite.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-4.png" width="672" /></p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="database---sqlite.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-5.png" width="672" /></p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="database---sqlite.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add arguments ylim, space, border, and axat/yaxt one by one to barplot()</span></span>
+<span id="cb278-2"><a href="database---sqlite.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-54-2.png" width="672" /></p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="database---sqlite.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-54-3.png" width="672" /></p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="database---sqlite.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-54-4.png" width="672" /></p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="database---sqlite.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-54-5.png" width="672" /></p>
 </div>
 <div id="plotting-multiple-lines" class="section level4 hasAnchor" number="4.5.5.3">
 <h4><span class="header-section-number">4.5.5.3</span> Plotting multiple lines<a href="database---sqlite.html#plotting-multiple-lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>底下可以看見每一行非常相似且一致的特徵，僅有<code>matleave</code>內的索引由1被列出至6。因此，最好的方法是用迴圈（for-loop）的方式將相同的程式碼，從1~6之間做六次。</li>
 </ul>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="database---sqlite.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the first row</span></span>
-<span id="cb285-2"><a href="database---sqlite.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb285-3"><a href="database---sqlite.html#cb285-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb285-4"><a href="database---sqlite.html#cb285-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the second to 6th rows</span></span>
-<span id="cb285-5"><a href="database---sqlite.html#cb285-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="database---sqlite.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb286-2"><a href="database---sqlite.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb286-3"><a href="database---sqlite.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb286-4"><a href="database---sqlite.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">6</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="database---sqlite.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the first row</span></span>
+<span id="cb282-2"><a href="database---sqlite.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb282-3"><a href="database---sqlite.html#cb282-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb282-4"><a href="database---sqlite.html#cb282-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the second to 6th rows</span></span>
+<span id="cb282-5"><a href="database---sqlite.html#cb282-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="database---sqlite.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb283-2"><a href="database---sqlite.html#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb283-3"><a href="database---sqlite.html#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb283-4"><a href="database---sqlite.html#cb283-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">6</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 </div>
 <div id="for-loop-to-plot-multiple-lines" class="section level4 hasAnchor" number="4.5.5.4">
 <h4><span class="header-section-number">4.5.5.4</span> for-loop to plot multiple lines<a href="database---sqlite.html#for-loop-to-plot-multiple-lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="database---sqlite.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use for loop and use i as index to barplot multiple subgraphs</span></span>
-<span id="cb287-2"><a href="database---sqlite.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
-<span id="cb287-3"><a href="database---sqlite.html#cb287-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb287-4"><a href="database---sqlite.html#cb287-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-57-1.png" width="672" /><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-57-2.png" width="672" /></p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="database---sqlite.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use for loop and use i as index to barplot multiple subgraphs</span></span>
+<span id="cb284-2"><a href="database---sqlite.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
+<span id="cb284-3"><a href="database---sqlite.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb284-4"><a href="database---sqlite.html#cb284-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-56-1.png" width="672" /><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-56-2.png" width="672" /></p>
 </div>
 <div id="sub-plots" class="section level4 hasAnchor" number="4.5.5.5">
 <h4><span class="header-section-number">4.5.5.5</span> Sub-plots<a href="database---sqlite.html#sub-plots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -2616,11 +2614,11 @@ barplot(height = cbind(x = c(465, 91) / 465 * 100,
 <li><p><code>**mai**</code>: A numerical vector of the form c(bottom, left, top, right) which gives the margin size specified in inches.</p></li>
 <li><p><code>**mfcol, mfrow**</code>:A vector of the form c(nr, nc). Subsequent figures will be drawn in an nr-by-nc array on the device by columns (mfcol), or rows (mfrow), respectively.</p></li>
 </ul>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="database---sqlite.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?par to get more plotting parameters</span></span>
-<span id="cb288-2"><a href="database---sqlite.html#cb288-2" aria-hidden="true" tabindex="-1"></a>?par</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="database---sqlite.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?par to get more plotting parameters</span></span>
+<span id="cb285-2"><a href="database---sqlite.html#cb285-2" aria-hidden="true" tabindex="-1"></a>?par</span></code></pre></div>
 <div class="r-help-page">
 <div class="container">
-<table width="100%" summary="page for par">
+<table style="width: 100%;">
 <tr>
 <td>
 par
@@ -2645,28 +2643,27 @@ values.
 <h3>
 Usage
 </h3>
-<pre class="r">
-par(..., no.readonly = FALSE)
+<pre class="r"><code class='language-R'>par(..., no.readonly = FALSE)
 
-&lt;highlevel plot&gt; (..., &lt;tag&gt; = &lt;value&gt;)
-</pre>
+&lt;highlevel plot&gt; (...., &lt;tag&gt; = &lt;value&gt;)
+</code></pre>
 <h3>
 Arguments
 </h3>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>…</code>
 </td>
 <td>
 <p>
-arguments in <code>tag = value</code> form, or a list of tagged
-values. The tags must come from the names of graphical parameters
+arguments in <code>tag = value</code> form, a single list of tagged
+values, or character vectors of parameter names. Supported parameters are
 described in the ‘Graphical Parameters’ section.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>no.readonly</code>
 </td>
@@ -2824,7 +2821,7 @@ The value of <code>adj</code> determines the way in
 which text strings are justified in <code>text</code>,
 <code>mtext</code> and <code>title</code>. A value of <code>0</code> produces
 left-justified text, <code>0.5</code> (the default) centered text and <code>1</code>
-right-justified text. (Any value in <i>[0, 1]</i> is allowed, and
+right-justified text. (Any value in <code class="reqn">[0, 1]</code> is allowed, and
 on most devices values outside that interval will also work.)
 </p>
 <p>
@@ -3181,9 +3178,7 @@ A numerical vector of the form <code>c(x, y, len)</code>
 which modifies the default way that axes are annotated. The values of
 <code>x</code> and <code>y</code> give the (approximate) number of tickmarks
 on the x and y axes and <code>len</code> specifies the label length. The
-default is <code>c(5, 5, 7)</code>. Note that this only affects the way
-the parameters <code>xaxp</code> and <code>yaxp</code> are set when the user
-coordinate system is set up, and is not consulted when axes are drawn.
+default is <code>c(5, 5, 7)</code>.
 <code>len</code> <em>is unimplemented</em> in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
 </p>
 </dd>
@@ -3505,7 +3500,7 @@ right)</code> giving the size of the outer margins in lines of text.<br />
 <p>
 A vector of the form <code>c(x1, x2, y1, y2)</code>
 giving the region <em>inside</em> outer margins in NDC (=
-normalized device coordinates), i.e., as a fraction (in <i>[0, 1]</i>)
+normalized device coordinates), i.e., as a fraction (in <code class="reqn">[0, 1]</code>)
 of the device region.
 </p>
 </dd>
@@ -3663,7 +3658,7 @@ n = 1
 </dt>
 <dd>
 <p>
-will produce tick marks at <i>10^j</i> for integer <i>j</i>,
+will produce tick marks at <code class="reqn">10^j</code> for integer <code class="reqn">j</code>,
 </p>
 </dd>
 <dt>
@@ -3671,8 +3666,8 @@ n = 2
 </dt>
 <dd>
 <p>
-gives marks <i>k 10^j</i> with
-<i>k in {1,5}</i>,
+gives marks <code class="reqn">k 10^j</code> with
+<code class="reqn">k {1, 5}</code>,
 </p>
 </dd>
 <dt>
@@ -3680,8 +3675,8 @@ n = 3
 </dt>
 <dd>
 <p>
-gives marks <i>k 10^j</i> with
-<i>k in {1,2,5}</i>.
+gives marks <code class="reqn">k 10^j</code> with
+<code class="reqn">k {1, 2, 5}</code>.
 </p>
 </dd>
 </dl>
@@ -3909,8 +3904,7 @@ setting up device regions by <code>layout</code> and
 <h3>
 Examples
 </h3>
-<pre class="r">
-op &lt;- par(mfrow = c(2, 2), # 2 x 2 pictures on one plot
+<pre class="r"><code class='language-R'>op &lt;- par(mfrow = c(2, 2), # 2 x 2 pictures on one plot
           pty = "s")       # square plotting region,
                            # independent of device size
 
@@ -3972,84 +3966,84 @@ showLty(c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash"))
 par(new = TRUE)  # the same:
 showLty(c("solid", "44", "13", "1343", "73", "2262"), xoff = .2, col = 2)
 showLty(c("11", "22", "33", "44",   "12", "13", "14",   "21", "31"))
-</pre>
+</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="database---sqlite.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up the layout of subgraphs</span></span>
-<span id="cb289-2"><a href="database---sqlite.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use the parameter main=c(0.2, 0.2, 0.2, 0.2) to thrink the padding of figures.</span></span>
-<span id="cb289-3"><a href="database---sqlite.html#cb289-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
-<span id="cb289-4"><a href="database---sqlite.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
-<span id="cb289-5"><a href="database---sqlite.html#cb289-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb289-6"><a href="database---sqlite.html#cb289-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="database---sqlite.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot more rows to see what happens</span></span>
-<span id="cb290-2"><a href="database---sqlite.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
-<span id="cb290-3"><a href="database---sqlite.html#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb290-4"><a href="database---sqlite.html#cb290-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb290-5"><a href="database---sqlite.html#cb290-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="database---sqlite.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up the layout of subgraphs</span></span>
+<span id="cb286-2"><a href="database---sqlite.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use the parameter main=c(0.2, 0.2, 0.2, 0.2) to thrink the padding of figures.</span></span>
+<span id="cb286-3"><a href="database---sqlite.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb286-4"><a href="database---sqlite.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
+<span id="cb286-5"><a href="database---sqlite.html#cb286-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb286-6"><a href="database---sqlite.html#cb286-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="database---sqlite.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot more rows to see what happens</span></span>
+<span id="cb287-2"><a href="database---sqlite.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb287-3"><a href="database---sqlite.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb287-4"><a href="database---sqlite.html#cb287-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb287-5"><a href="database---sqlite.html#cb287-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/pml-plot-test-1.png" width="672" /></p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="database---sqlite.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all subplots in a figure</span></span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="database---sqlite.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all subplots in a figure</span></span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/pml-plot-test-2.png" width="672" /></p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="database---sqlite.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to check number of row of m55.</span></span>
-<span id="cb292-2"><a href="database---sqlite.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m55)</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="database---sqlite.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to check number of row of m55.</span></span>
+<span id="cb289-2"><a href="database---sqlite.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m55)</span></code></pre></div>
 <pre class="output"><code>## [1] 18</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="database---sqlite.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up plotting parameters.</span></span>
-<span id="cb294-2"><a href="database---sqlite.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
-<span id="cb294-3"><a href="database---sqlite.html#cb294-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-4"><a href="database---sqlite.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use for-loop to plot all graph as subgraph</span></span>
-<span id="cb294-5"><a href="database---sqlite.html#cb294-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
-<span id="cb294-6"><a href="database---sqlite.html#cb294-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
-<span id="cb294-7"><a href="database---sqlite.html#cb294-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="database---sqlite.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up plotting parameters.</span></span>
+<span id="cb291-2"><a href="database---sqlite.html#cb291-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb291-3"><a href="database---sqlite.html#cb291-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb291-4"><a href="database---sqlite.html#cb291-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use for-loop to plot all graph as subgraph</span></span>
+<span id="cb291-5"><a href="database---sqlite.html#cb291-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
+<span id="cb291-6"><a href="database---sqlite.html#cb291-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb291-7"><a href="database---sqlite.html#cb291-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/plot-m55-1.png" width="672" /></p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="database---sqlite.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
-<span id="cb295-2"><a href="database---sqlite.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
-<span id="cb295-3"><a href="database---sqlite.html#cb295-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
-<span id="cb295-4"><a href="database---sqlite.html#cb295-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
-<span id="cb295-5"><a href="database---sqlite.html#cb295-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="database---sqlite.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb292-2"><a href="database---sqlite.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
+<span id="cb292-3"><a href="database---sqlite.html#cb292-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb292-4"><a href="database---sqlite.html#cb292-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb292-5"><a href="database---sqlite.html#cb292-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/plot-caption-1.png" width="672" /></p>
 </div>
 </div>
 <div id="practice02_1_1-plotting-more" class="section level3 hasAnchor" number="4.5.6">
 <h3><span class="header-section-number">4.5.6</span> Practice02_1_1 Plotting more<a href="database---sqlite.html#practice02_1_1-plotting-more" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="database---sqlite.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting matleave_95 != 5 but matleve_13 == 5</span></span>
-<span id="cb296-2"><a href="database---sqlite.html#cb296-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb296-3"><a href="database---sqlite.html#cb296-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting for matleave_13 == 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="database---sqlite.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting matleave_95 != 5 but matleve_13 == 5</span></span>
+<span id="cb293-2"><a href="database---sqlite.html#cb293-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-3"><a href="database---sqlite.html#cb293-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting for matleave_13 == 4</span></span></code></pre></div>
 </div>
 <div id="practice02_2_2-selecting-and-filtering-by-dplyr-i" class="section level3 hasAnchor" number="4.5.7">
 <h3><span class="header-section-number">4.5.7</span> Practice02_2_2 selecting and filtering by dplyr I<a href="database---sqlite.html#practice02_2_2-selecting-and-filtering-by-dplyr-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="database---sqlite.html#cb297-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
-<span id="cb297-2"><a href="database---sqlite.html#cb297-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-3"><a href="database---sqlite.html#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns by index</span></span>
-<span id="cb297-4"><a href="database---sqlite.html#cb297-4" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave &lt;- df[ , c(3, 6:24)]</span></span>
-<span id="cb297-5"><a href="database---sqlite.html#cb297-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-6"><a href="database---sqlite.html#cb297-6" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
-<span id="cb297-7"><a href="database---sqlite.html#cb297-7" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave[is.na(matleave)] &lt;- 0</span></span>
-<span id="cb297-8"><a href="database---sqlite.html#cb297-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-9"><a href="database---sqlite.html#cb297-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
-<span id="cb297-10"><a href="database---sqlite.html#cb297-10" aria-hidden="true" tabindex="-1"></a><span class="co"># m5 &lt;- matleave[matleave$&#39;matleave_13&#39; == 5, ]</span></span>
-<span id="cb297-11"><a href="database---sqlite.html#cb297-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-12"><a href="database---sqlite.html#cb297-12" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
-<span id="cb297-13"><a href="database---sqlite.html#cb297-13" aria-hidden="true" tabindex="-1"></a><span class="co"># m55&lt;- m5[m5$&#39;matleave_95&#39; == 5,]</span></span>
-<span id="cb297-14"><a href="database---sqlite.html#cb297-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-15"><a href="database---sqlite.html#cb297-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb297-16"><a href="database---sqlite.html#cb297-16" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
-<span id="cb297-17"><a href="database---sqlite.html#cb297-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
-<span id="cb297-18"><a href="database---sqlite.html#cb297-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
-<span id="cb297-19"><a href="database---sqlite.html#cb297-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
-<span id="cb297-20"><a href="database---sqlite.html#cb297-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
-<span id="cb297-21"><a href="database---sqlite.html#cb297-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="database---sqlite.html#cb294-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
+<span id="cb294-2"><a href="database---sqlite.html#cb294-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-3"><a href="database---sqlite.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns by index</span></span>
+<span id="cb294-4"><a href="database---sqlite.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave &lt;- df[ , c(3, 6:24)]</span></span>
+<span id="cb294-5"><a href="database---sqlite.html#cb294-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-6"><a href="database---sqlite.html#cb294-6" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
+<span id="cb294-7"><a href="database---sqlite.html#cb294-7" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave[is.na(matleave)] &lt;- 0</span></span>
+<span id="cb294-8"><a href="database---sqlite.html#cb294-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-9"><a href="database---sqlite.html#cb294-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb294-10"><a href="database---sqlite.html#cb294-10" aria-hidden="true" tabindex="-1"></a><span class="co"># m5 &lt;- matleave[matleave$&#39;matleave_13&#39; == 5, ]</span></span>
+<span id="cb294-11"><a href="database---sqlite.html#cb294-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-12"><a href="database---sqlite.html#cb294-12" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb294-13"><a href="database---sqlite.html#cb294-13" aria-hidden="true" tabindex="-1"></a><span class="co"># m55&lt;- m5[m5$&#39;matleave_95&#39; == 5,]</span></span>
+<span id="cb294-14"><a href="database---sqlite.html#cb294-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-15"><a href="database---sqlite.html#cb294-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb294-16"><a href="database---sqlite.html#cb294-16" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb294-17"><a href="database---sqlite.html#cb294-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
+<span id="cb294-18"><a href="database---sqlite.html#cb294-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
+<span id="cb294-19"><a href="database---sqlite.html#cb294-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb294-20"><a href="database---sqlite.html#cb294-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb294-21"><a href="database---sqlite.html#cb294-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 </div>
 <div id="more-clean-version" class="section level3 hasAnchor" number="4.5.8">
 <h3><span class="header-section-number">4.5.8</span> (More) Clean version<a href="database---sqlite.html#more-clean-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="database---sqlite.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readxl::read_excel() to import the xls file</span></span>
-<span id="cb298-2"><a href="database---sqlite.html#cb298-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
-<span id="cb298-3"><a href="database---sqlite.html#cb298-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb298-4"><a href="database---sqlite.html#cb298-4" aria-hidden="true" tabindex="-1"></a><span class="co"># select iso3, and matleave columns by index</span></span>
-<span id="cb298-5"><a href="database---sqlite.html#cb298-5" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
-<span id="cb298-6"><a href="database---sqlite.html#cb298-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb298-7"><a href="database---sqlite.html#cb298-7" aria-hidden="true" tabindex="-1"></a><span class="co"># str() to inspect the data structure of </span></span>
-<span id="cb298-8"><a href="database---sqlite.html#cb298-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="database---sqlite.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readxl::read_excel() to import the xls file</span></span>
+<span id="cb295-2"><a href="database---sqlite.html#cb295-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
+<span id="cb295-3"><a href="database---sqlite.html#cb295-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb295-4"><a href="database---sqlite.html#cb295-4" aria-hidden="true" tabindex="-1"></a><span class="co"># select iso3, and matleave columns by index</span></span>
+<span id="cb295-5"><a href="database---sqlite.html#cb295-5" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb295-6"><a href="database---sqlite.html#cb295-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb295-7"><a href="database---sqlite.html#cb295-7" aria-hidden="true" tabindex="-1"></a><span class="co"># str() to inspect the data structure of </span></span>
+<span id="cb295-8"><a href="database---sqlite.html#cb295-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
 <pre class="output"><code>## tibble [197 × 20] (S3: tbl_df/tbl/data.frame)
 ##  $ iso3       : chr [1:197] &quot;AFG&quot; &quot;ALB&quot; &quot;DZA&quot; &quot;AND&quot; ...
 ##  $ matleave_95: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
@@ -4071,49 +4065,49 @@ showLty(c("11", "22", "33", "44",   "12", "13", "14",   "21", "31"))
 ##  $ matleave_11: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
 ##  $ matleave_12: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
 ##  $ matleave_13: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="database---sqlite.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
-<span id="cb300-2"><a href="database---sqlite.html#cb300-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb300-3"><a href="database---sqlite.html#cb300-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb300-4"><a href="database---sqlite.html#cb300-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
-<span id="cb300-5"><a href="database---sqlite.html#cb300-5" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span> <span class="sc">==</span> <span class="dv">5</span>, ]</span>
-<span id="cb300-6"><a href="database---sqlite.html#cb300-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb300-7"><a href="database---sqlite.html#cb300-7" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
-<span id="cb300-8"><a href="database---sqlite.html#cb300-8" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span> <span class="sc">==</span> <span class="dv">5</span>,]</span>
-<span id="cb300-9"><a href="database---sqlite.html#cb300-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb300-10"><a href="database---sqlite.html#cb300-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb300-11"><a href="database---sqlite.html#cb300-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
-<span id="cb300-12"><a href="database---sqlite.html#cb300-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
-<span id="cb300-13"><a href="database---sqlite.html#cb300-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
-<span id="cb300-14"><a href="database---sqlite.html#cb300-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
-<span id="cb300-15"><a href="database---sqlite.html#cb300-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
-<span id="cb300-16"><a href="database---sqlite.html#cb300-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="database---sqlite.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
+<span id="cb297-2"><a href="database---sqlite.html#cb297-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb297-3"><a href="database---sqlite.html#cb297-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb297-4"><a href="database---sqlite.html#cb297-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb297-5"><a href="database---sqlite.html#cb297-5" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span> <span class="sc">==</span> <span class="dv">5</span>, ]</span>
+<span id="cb297-6"><a href="database---sqlite.html#cb297-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb297-7"><a href="database---sqlite.html#cb297-7" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb297-8"><a href="database---sqlite.html#cb297-8" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span> <span class="sc">==</span> <span class="dv">5</span>,]</span>
+<span id="cb297-9"><a href="database---sqlite.html#cb297-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb297-10"><a href="database---sqlite.html#cb297-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb297-11"><a href="database---sqlite.html#cb297-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb297-12"><a href="database---sqlite.html#cb297-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
+<span id="cb297-13"><a href="database---sqlite.html#cb297-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
+<span id="cb297-14"><a href="database---sqlite.html#cb297-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb297-15"><a href="database---sqlite.html#cb297-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb297-16"><a href="database---sqlite.html#cb297-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="database---sqlite.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb298-2"><a href="database---sqlite.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb298-3"><a href="database---sqlite.html#cb298-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb298-4"><a href="database---sqlite.html#cb298-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-5"><a href="database---sqlite.html#cb298-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb298-6"><a href="database---sqlite.html#cb298-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb298-7"><a href="database---sqlite.html#cb298-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(iso3, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb298-8"><a href="database---sqlite.html#cb298-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(matleave_13 <span class="sc">==</span> <span class="dv">5</span>, matleave_95 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb298-9"><a href="database---sqlite.html#cb298-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;degree&quot;</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb298-10"><a href="database---sqlite.html#cb298-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(year, degree, fill = 0) %&gt;% View</span></span>
+<span id="cb298-11"><a href="database---sqlite.html#cb298-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb298-12"><a href="database---sqlite.html#cb298-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year2 =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(year, <span class="st">&quot;matleave_%y&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb298-13"><a href="database---sqlite.html#cb298-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year3 =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(year2)) <span class="sc">%&gt;%</span></span>
+<span id="cb298-14"><a href="database---sqlite.html#cb298-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb298-15"><a href="database---sqlite.html#cb298-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year3, degree) <span class="sc">+</span> </span>
+<span id="cb298-16"><a href="database---sqlite.html#cb298-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb298-17"><a href="database---sqlite.html#cb298-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> iso3) <span class="sc">+</span></span>
+<span id="cb298-18"><a href="database---sqlite.html#cb298-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="database---sqlite.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb301-2"><a href="database---sqlite.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
-<span id="cb301-3"><a href="database---sqlite.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb301-4"><a href="database---sqlite.html#cb301-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-5"><a href="database---sqlite.html#cb301-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb301-6"><a href="database---sqlite.html#cb301-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T) <span class="sc">%&gt;%</span> </span>
-<span id="cb301-7"><a href="database---sqlite.html#cb301-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(iso3, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb301-8"><a href="database---sqlite.html#cb301-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(matleave_13 <span class="sc">==</span> <span class="dv">5</span>, matleave_95 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb301-9"><a href="database---sqlite.html#cb301-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;degree&quot;</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb301-10"><a href="database---sqlite.html#cb301-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(year, degree, fill = 0) %&gt;% View</span></span>
-<span id="cb301-11"><a href="database---sqlite.html#cb301-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb301-12"><a href="database---sqlite.html#cb301-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year2 =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(year, <span class="st">&quot;matleave_%y&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb301-13"><a href="database---sqlite.html#cb301-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year3 =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(year2)) <span class="sc">%&gt;%</span></span>
-<span id="cb301-14"><a href="database---sqlite.html#cb301-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb301-15"><a href="database---sqlite.html#cb301-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year3, degree) <span class="sc">+</span> </span>
-<span id="cb301-16"><a href="database---sqlite.html#cb301-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb301-17"><a href="database---sqlite.html#cb301-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> iso3) <span class="sc">+</span></span>
-<span id="cb301-18"><a href="database---sqlite.html#cb301-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 </div>
 <div id="more-the-fittest-version-to-compute-staysame" class="section level3 hasAnchor" number="4.5.9">
 <h3><span class="header-section-number">4.5.9</span> (More) The fittest version to compute staySame<a href="database---sqlite.html#more-the-fittest-version-to-compute-staysame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="database---sqlite.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame version</span></span>
-<span id="cb302-2"><a href="database---sqlite.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame &lt;- apply(m5[,2:20], 1, function(x) length(unique(x[!is.na(x)]))) </span></span>
-<span id="cb302-3"><a href="database---sqlite.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="co"># m55 &lt;- m5[staySame, ]</span></span>
-<span id="cb302-4"><a href="database---sqlite.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="co"># m50 &lt;- m5[!staySame, ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="database---sqlite.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame version</span></span>
+<span id="cb299-2"><a href="database---sqlite.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame &lt;- apply(m5[,2:20], 1, function(x) length(unique(x[!is.na(x)]))) </span></span>
+<span id="cb299-3"><a href="database---sqlite.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="co"># m55 &lt;- m5[staySame, ]</span></span>
+<span id="cb299-4"><a href="database---sqlite.html#cb299-4" aria-hidden="true" tabindex="-1"></a><span class="co"># m50 &lt;- m5[!staySame, ]</span></span></code></pre></div>
 
 </div>
 </div>
@@ -4184,7 +4178,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

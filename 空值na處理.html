@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.2 空值（NA）處理 | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.2 空值（NA）處理 | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -472,8 +471,8 @@ div.csl-indent {
 </ol>
 <div id="表格重整政府預算" class="section level3 hasAnchor" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> 表格重整：政府預算<a href="空值na處理.html#表格重整政府預算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="空值na處理.html#cb380-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F)</span>
-<span id="cb380-2"><a href="空值na處理.html#cb380-2" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="空值na處理.html#cb377-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F)</span>
+<span id="cb377-2"><a href="空值na處理.html#cb377-2" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -816,14 +815,14 @@ NA
 <li>觀察資料，「款」可以說是支出大類的代號，例如總統府、行政支出、立法支出、軍事支出、教育支出等。「科」為該單位底下的部門或者項目，例如「行政支出」下有行政院、主計總處支出等。更底下的細類「目」並非本例的分析對象，所以可以刪除。所以，如果款、科均為空值的話，代表其為更細的「目」。因此篩去款科為空值的所有項目。<code>filter(!is.na(款) | !is.na(科))</code></li>
 <li>將機構id和機構名稱切分開來，視覺化的時候只會用到機構名稱。<code>separate(機構, c("oid", "org"), sep="\n")</code></li>
 </ol>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="空值na處理.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
-<span id="cb381-2"><a href="空值na處理.html#cb381-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-3"><a href="空值na處理.html#cb381-3" aria-hidden="true" tabindex="-1"></a>cleaned <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb381-4"><a href="空值na處理.html#cb381-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb381-5"><a href="空值na處理.html#cb381-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb381-6"><a href="空值na處理.html#cb381-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
-<span id="cb381-7"><a href="空值na處理.html#cb381-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(機構, <span class="fu">c</span>(<span class="st">&quot;oid&quot;</span>, <span class="st">&quot;org&quot;</span>), <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb381-8"><a href="空值na處理.html#cb381-8" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="空值na處理.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
+<span id="cb378-2"><a href="空值na處理.html#cb378-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-3"><a href="空值na處理.html#cb378-3" aria-hidden="true" tabindex="-1"></a>cleaned <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb378-4"><a href="空值na處理.html#cb378-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb378-5"><a href="空值na處理.html#cb378-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb378-6"><a href="空值na處理.html#cb378-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
+<span id="cb378-7"><a href="空值na處理.html#cb378-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(機構, <span class="fu">c</span>(<span class="st">&quot;oid&quot;</span>, <span class="st">&quot;org&quot;</span>), <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb378-8"><a href="空值na處理.html#cb378-8" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1119,8 +1118,8 @@ NA
 <div id="na處理" class="section level4 hasAnchor" number="5.2.1.1">
 <h4><span class="header-section-number">5.2.1.1</span> NA處理<a href="空值na處理.html#na處理" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>觀察一下現在的資料，發現，行政院、主計總處等均屬於行政支出，但行政支出卻自有一列。依照長表格的格式來說，應嘗試把「款」作為機構的變項。所以將款的數字取代為「行政支出」等支出類別的名稱。</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="空值na處理.html#cb382-1" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
-<span id="cb382-2"><a href="空值na處理.html#cb382-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="空值na處理.html#cb379-1" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
+<span id="cb379-2"><a href="空值na處理.html#cb379-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1414,11 +1413,11 @@ NA
 </tbody>
 </table>
 <p>接下來，希望能夠在「款==<code>NA</code>」的地方填入該欄的「前一個值」例如行政支出。查詢一下（關鍵字如「Fill in NA column values with the last value that was not NA」）還真的有這樣的函式可以操作。</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="空值na處理.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb383-2"><a href="空值na處理.html#cb383-2" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> </span>
-<span id="cb383-3"><a href="空值na處理.html#cb383-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
-<span id="cb383-4"><a href="空值na處理.html#cb383-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
-<span id="cb383-5"><a href="空值na處理.html#cb383-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="空值na處理.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb380-2"><a href="空值na處理.html#cb380-2" aria-hidden="true" tabindex="-1"></a>cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb380-3"><a href="空值na處理.html#cb380-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
+<span id="cb380-4"><a href="空值na處理.html#cb380-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb380-5"><a href="空值na處理.html#cb380-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1715,37 +1714,37 @@ NA
 </div>
 <div id="完整程式碼" class="section level4 hasAnchor" number="5.2.1.2">
 <h4><span class="header-section-number">5.2.1.2</span> 完整程式碼<a href="空值na處理.html#完整程式碼" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="空值na處理.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb384-2"><a href="空值na處理.html#cb384-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
-<span id="cb384-3"><a href="空值na處理.html#cb384-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
-<span id="cb384-4"><a href="空值na處理.html#cb384-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb384-5"><a href="空值na處理.html#cb384-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
-<span id="cb384-6"><a href="空值na處理.html#cb384-6" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
-<span id="cb384-7"><a href="空值na處理.html#cb384-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb384-8"><a href="空值na處理.html#cb384-8" aria-hidden="true" tabindex="-1"></a>cleaned <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb384-9"><a href="空值na處理.html#cb384-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb384-10"><a href="空值na處理.html#cb384-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb384-11"><a href="空值na處理.html#cb384-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
-<span id="cb384-12"><a href="空值na處理.html#cb384-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(機構, <span class="fu">c</span>(<span class="st">&quot;oid&quot;</span>, <span class="st">&quot;org&quot;</span>), <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb384-13"><a href="空值na處理.html#cb384-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
-<span id="cb384-14"><a href="空值na處理.html#cb384-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
-<span id="cb384-15"><a href="空值na處理.html#cb384-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb384-16"><a href="空值na處理.html#cb384-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
-<span id="cb384-17"><a href="空值na處理.html#cb384-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
-<span id="cb384-18"><a href="空值na處理.html#cb384-18" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
-<span id="cb384-19"><a href="空值na處理.html#cb384-19" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
-<span id="cb384-20"><a href="空值na處理.html#cb384-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb384-21"><a href="空值na處理.html#cb384-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="空值na處理.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb381-2"><a href="空值na處理.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
+<span id="cb381-3"><a href="空值na處理.html#cb381-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
+<span id="cb381-4"><a href="空值na處理.html#cb381-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-5"><a href="空值na處理.html#cb381-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
+<span id="cb381-6"><a href="空值na處理.html#cb381-6" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
+<span id="cb381-7"><a href="空值na處理.html#cb381-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-8"><a href="空值na處理.html#cb381-8" aria-hidden="true" tabindex="-1"></a>cleaned <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb381-9"><a href="空值na處理.html#cb381-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb381-10"><a href="空值na處理.html#cb381-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb381-11"><a href="空值na處理.html#cb381-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
+<span id="cb381-12"><a href="空值na處理.html#cb381-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(機構, <span class="fu">c</span>(<span class="st">&quot;oid&quot;</span>, <span class="st">&quot;org&quot;</span>), <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb381-13"><a href="空值na處理.html#cb381-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), org, 款)) <span class="sc">%&gt;%</span></span>
+<span id="cb381-14"><a href="空值na處理.html#cb381-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb381-15"><a href="空值na處理.html#cb381-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb381-16"><a href="空值na處理.html#cb381-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb381-17"><a href="空值na處理.html#cb381-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
+<span id="cb381-18"><a href="空值na處理.html#cb381-18" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
+<span id="cb381-19"><a href="空值na處理.html#cb381-19" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
+<span id="cb381-20"><a href="空值na處理.html#cb381-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb381-21"><a href="空值na處理.html#cb381-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
 </div>
 </div>
 <div id="對齊資料世界各國疫苗接種比例" class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> 對齊資料。世界各國疫苗接種比例<a href="空值na處理.html#對齊資料世界各國疫苗接種比例" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://ourworldindata.org/covid-vaccinations" class="uri">https://ourworldindata.org/covid-vaccinations</a> - <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" class="uri">https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations</a></p>
 <p>評估資料概況後可發現這個資料集每一列就是某一個國家某一天所上傳的紀錄。所以，一個國家會有很多列。乍聽之下不難處理，但事實上每個國家不會每天上傳、也不會固定某一天上傳、哪一週、哪一個月開始上傳也不一定，也有可能會漏掉一些月份或週次。所以，制定出一個時間單位（例如週、月）、然後延著時間軸將資料「對齊」，讓每個國家在每個時間單位都有資料。但每個國家疫情發展程度不一，所以也不可能有一個完美的對齊，所以通常會建議就所要觀察的國家進行對齊即可。至於想刪除的那些資料列，幾乎都可以當成是所謂的缺失值。</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="空值na處理.html#cb385-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
-<span id="cb385-2"><a href="空值na處理.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(raw)</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="空值na處理.html#cb382-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
+<span id="cb382-2"><a href="空值na處理.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(raw)</span></code></pre></div>
 <pre class="output"><code>## [1] 99442    16</code></pre>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="空值na處理.html#cb387-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="空值na處理.html#cb384-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2808,18 +2807,18 @@ NA
 <p>接下來便是空值處理，如果這個欄位沒有數值的就直接用<code>drop_na()</code>篩除即可。</p>
 <p>這個範例希望把該資料視覺化為Y軸為年、X軸為時間的熱區圖。但整個疫情資料橫亙二年多，如果以週為彙整單位的話，那勢必X軸會有近百個資料點。所以打算以「月」為單位來彙整這些資料，因為且資料中也有不少國家缺數週的資料，所以以月為彙整單位是一個權衡後的選擇（仍可以嘗試用週作為彙整單位試試看）。所以，運用了<code>lubridate::floor_date()</code>來將日期資料轉換為月，例如2022-03-12和2022-03-14都會被轉換為2022-03-01。</p>
 <p>依照國家與時間群組彙整資料。接下來就依照各國的月份來做彙整（注意，此時會有不少資料同屬於某個月的資料）。彙整的方法是，經過對「日期」（不是對月）做排序後，僅留下第一筆資料，也就是僅留下最接近月份開頭的資料。經由這樣的操作，會使得各國在每個月剛好留下一筆資料，如下面程式的範例輸出。</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="空值na處理.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb388-2"><a href="空值na處理.html#cb388-2" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
-<span id="cb388-3"><a href="空值na處理.html#cb388-3" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb388-4"><a href="空值na處理.html#cb388-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb388-5"><a href="空值na處理.html#cb388-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb388-6"><a href="空值na處理.html#cb388-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
-<span id="cb388-7"><a href="空值na處理.html#cb388-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb388-8"><a href="空值na處理.html#cb388-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb388-9"><a href="空值na處理.html#cb388-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb388-10"><a href="空值na處理.html#cb388-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
-<span id="cb388-11"><a href="空值na處理.html#cb388-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb388-12"><a href="空值na處理.html#cb388-12" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="空值na處理.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb385-2"><a href="空值na處理.html#cb385-2" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
+<span id="cb385-3"><a href="空值na處理.html#cb385-3" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb385-4"><a href="空值na處理.html#cb385-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb385-5"><a href="空值na處理.html#cb385-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb385-6"><a href="空值na處理.html#cb385-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
+<span id="cb385-7"><a href="空值na處理.html#cb385-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb385-8"><a href="空值na處理.html#cb385-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb385-9"><a href="空值na處理.html#cb385-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb385-10"><a href="空值na處理.html#cb385-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
+<span id="cb385-11"><a href="空值na處理.html#cb385-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-12"><a href="空值na處理.html#cb385-12" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2952,9 +2951,9 @@ Afghanistan
 <h4><span class="header-section-number">5.2.2.2</span> 處理遺漏資料的月份<a href="空值na處理.html#處理遺漏資料的月份" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>接下來要處理的是資料紀錄的缺漏值。每個國家登錄資料的時間是很不一致的，某些國家會缺某些月份，或者某些國家是在某年某月以後才開始登記，或者最近沒在登記。但這個範例所要視覺化的資料是接種疫苗的比例，所以即使是現在沒在登記了，但接種比例應列計最後一次資料紀錄的接種比例。</p>
 <p>首先我要讓每個國家都有所有月份，這裡應會有某個函式可以做到這件事，但我沒查到這個函式。不過我可以很技巧性地用<code>pivot_wider()</code>（<code>spread()</code>）和<code>pivot_longer()</code>（<code>gather()</code>）來完成這件事。<code>spread()</code>在展開時對於缺少的資料項可以自動補<code>NA</code>。所以我就只要把資料的月份展開後再<code>gather()</code>回來後，就可以自動讓每個國家所擁有的月份資料一致。以下為<code>spread()</code>後的結果，可以觀察到每一列是一個國家，每一欄是個月份，如果當月都沒資料紀錄，那該月的值就會是空值。可以看見空值是相當多的，也就是在那段時間都沒有資料紀錄。</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="空值na處理.html#cb389-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
-<span id="cb389-2"><a href="空值na處理.html#cb389-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb389-3"><a href="空值na處理.html#cb389-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="空值na處理.html#cb386-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb386-2"><a href="空值na處理.html#cb386-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb386-3"><a href="空值na處理.html#cb386-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3611,10 +3610,10 @@ NA
 </tbody>
 </table>
 <p>在以下的範例輸出可以看到<code>gather()</code>後的結果。注意，需要照國家和月份來排序後才便於觀察。</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="空值na處理.html#cb390-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
-<span id="cb390-2"><a href="空值na處理.html#cb390-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb390-3"><a href="空值na處理.html#cb390-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span> </span>
-<span id="cb390-4"><a href="空值na處理.html#cb390-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="空值na處理.html#cb387-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb387-2"><a href="空值na處理.html#cb387-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb387-3"><a href="空值na處理.html#cb387-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span> </span>
+<span id="cb387-4"><a href="空值na處理.html#cb387-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3854,15 +3853,15 @@ NA
 </table>
 <p>接下來是最技巧性的部分。就接種比例而言是個遞增數列，所以如果這個月有紀錄，但下個月沒紀錄（<code>NA</code>），那下個月的資料應以這個月的資料來替代。此時可以用<code>zoo</code>套件的<code>na.locf()</code>來填<code>NA</code>值，其填<code>NA</code>值的規則是用最後一筆非<code>NA</code>值的資料來替代<code>NA</code>值。但要注意的是，因為資料紀錄可能到第六個月或第七個月才開始紀錄，但在前面的月份都沒資料紀錄，也就是說那些<code>NA</code>值沒有更早的資料紀錄權充填充值。原本<code>na.locf()</code>會把這些找不到參考對象的<code>NA</code>值直接刪除，但我們可以在裡面加一個參數使其不會被刪除（<code>na.locf(perc, na.rm = F)</code>）。</p>
 <p>最後，就把這些沒被刪除也沒得參考的早期資料項，用<code>replace_na()</code>填上0即可。</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="空值na處理.html#cb391-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
-<span id="cb391-2"><a href="空值na處理.html#cb391-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb391-3"><a href="空值na處理.html#cb391-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb391-4"><a href="空值na處理.html#cb391-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb391-5"><a href="空值na處理.html#cb391-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb391-6"><a href="空值na處理.html#cb391-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb391-7"><a href="空值na處理.html#cb391-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
-<span id="cb391-8"><a href="空值na處理.html#cb391-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb391-9"><a href="空值na處理.html#cb391-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="空值na處理.html#cb388-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb388-2"><a href="空值na處理.html#cb388-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb388-3"><a href="空值na處理.html#cb388-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb388-4"><a href="空值na處理.html#cb388-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb388-5"><a href="空值na處理.html#cb388-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb388-6"><a href="空值na處理.html#cb388-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb388-7"><a href="空值na處理.html#cb388-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
+<span id="cb388-8"><a href="空值na處理.html#cb388-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb388-9"><a href="空值na處理.html#cb388-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3991,17 +3990,17 @@ Afghanistan
 </tbody>
 </table>
 <p>最後，就把這些沒被刪除也沒得參考的早期資料項，用<code>replace_na()</code>填上0即可。大功告成。</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="空值na處理.html#cb392-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
-<span id="cb392-2"><a href="空值na處理.html#cb392-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb392-3"><a href="空值na處理.html#cb392-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb392-4"><a href="空值na處理.html#cb392-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb392-5"><a href="空值na處理.html#cb392-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb392-6"><a href="空值na處理.html#cb392-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb392-7"><a href="空值na處理.html#cb392-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
-<span id="cb392-8"><a href="空值na處理.html#cb392-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb392-9"><a href="空值na處理.html#cb392-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb392-10"><a href="空值na處理.html#cb392-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb392-11"><a href="空值na處理.html#cb392-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="空值na處理.html#cb389-1" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb389-2"><a href="空值na處理.html#cb389-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb389-3"><a href="空值na處理.html#cb389-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb389-4"><a href="空值na處理.html#cb389-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb389-5"><a href="空值na處理.html#cb389-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb389-6"><a href="空值na處理.html#cb389-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb389-7"><a href="空值na處理.html#cb389-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
+<span id="cb389-8"><a href="空值na處理.html#cb389-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb389-9"><a href="空值na處理.html#cb389-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb389-10"><a href="空值na處理.html#cb389-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb389-11"><a href="空值na處理.html#cb389-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -4132,29 +4131,29 @@ Afghanistan
 </div>
 <div id="完整程式碼-1" class="section level4 hasAnchor" number="5.2.2.3">
 <h4><span class="header-section-number">5.2.2.3</span> 完整程式碼<a href="空值na處理.html#完整程式碼-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="空值na處理.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb393-2"><a href="空值na處理.html#cb393-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
-<span id="cb393-3"><a href="空值na處理.html#cb393-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-4"><a href="空值na處理.html#cb393-4" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
-<span id="cb393-5"><a href="空值na處理.html#cb393-5" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb393-6"><a href="空值na處理.html#cb393-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb393-7"><a href="空值na處理.html#cb393-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb393-8"><a href="空值na處理.html#cb393-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
-<span id="cb393-9"><a href="空值na處理.html#cb393-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb393-10"><a href="空值na處理.html#cb393-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb393-11"><a href="空值na處理.html#cb393-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb393-12"><a href="空值na處理.html#cb393-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
-<span id="cb393-13"><a href="空值na處理.html#cb393-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-14"><a href="空值na處理.html#cb393-14" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="ot">&lt;-</span> fullvaccinated <span class="sc">%&gt;%</span></span>
-<span id="cb393-15"><a href="空值na處理.html#cb393-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb393-16"><a href="空值na處理.html#cb393-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb393-17"><a href="空值na處理.html#cb393-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb393-18"><a href="空值na處理.html#cb393-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb393-19"><a href="空值na處理.html#cb393-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb393-20"><a href="空值na處理.html#cb393-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
-<span id="cb393-21"><a href="空值na處理.html#cb393-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb393-22"><a href="空值na處理.html#cb393-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb393-23"><a href="空值na處理.html#cb393-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="空值na處理.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb390-2"><a href="空值na處理.html#cb390-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
+<span id="cb390-3"><a href="空值na處理.html#cb390-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb390-4"><a href="空值na處理.html#cb390-4" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
+<span id="cb390-5"><a href="空值na處理.html#cb390-5" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb390-6"><a href="空值na處理.html#cb390-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb390-7"><a href="空值na處理.html#cb390-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb390-8"><a href="空值na處理.html#cb390-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
+<span id="cb390-9"><a href="空值na處理.html#cb390-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb390-10"><a href="空值na處理.html#cb390-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb390-11"><a href="空值na處理.html#cb390-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb390-12"><a href="空值na處理.html#cb390-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
+<span id="cb390-13"><a href="空值na處理.html#cb390-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb390-14"><a href="空值na處理.html#cb390-14" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="ot">&lt;-</span> fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb390-15"><a href="空值na處理.html#cb390-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb390-16"><a href="空值na處理.html#cb390-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb390-17"><a href="空值na處理.html#cb390-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb390-18"><a href="空值na處理.html#cb390-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb390-19"><a href="空值na處理.html#cb390-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb390-20"><a href="空值na處理.html#cb390-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
+<span id="cb390-21"><a href="空值na處理.html#cb390-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb390-22"><a href="空值na處理.html#cb390-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb390-23"><a href="空值na處理.html#cb390-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>))</span></code></pre></div>
 
 </div>
 </div>
@@ -4226,7 +4225,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

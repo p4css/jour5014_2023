@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.1 base to dplyr: TP Theft | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.1 base to dplyr: TP Theft | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -463,18 +462,18 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="base-to-dplyr-tp-theft" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> base to dplyr: TP Theft<a href="base-to-dplyr-tp-theft.html#base-to-dplyr-tp-theft" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="base-to-dplyr-tp-theft.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb369-2"><a href="base-to-dplyr-tp-theft.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default options in R ver.&gt; 4.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="base-to-dplyr-tp-theft.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb366-2"><a href="base-to-dplyr-tp-theft.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default options in R ver.&gt; 4.0</span></span></code></pre></div>
 <div id="reading-data" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Reading data<a href="base-to-dplyr-tp-theft.html#reading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="base-to-dplyr-tp-theft.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read by read_csv()</span></span>
-<span id="cb370-2"><a href="base-to-dplyr-tp-theft.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Will raise error</span></span>
-<span id="cb370-3"><a href="base-to-dplyr-tp-theft.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in make.names(x) : invalid multibyte string at &#39;&lt;bd&gt;s&lt;b8&gt;&lt;b9&gt;&#39;</span></span>
-<span id="cb370-4"><a href="base-to-dplyr-tp-theft.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/tp_theft.csv&quot;)</span></span>
-<span id="cb370-5"><a href="base-to-dplyr-tp-theft.html#cb370-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-6"><a href="base-to-dplyr-tp-theft.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv() with locale = locale(encoding = &quot;Big5&quot;)</span></span>
-<span id="cb370-7"><a href="base-to-dplyr-tp-theft.html#cb370-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb370-8"><a href="base-to-dplyr-tp-theft.html#cb370-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="base-to-dplyr-tp-theft.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read by read_csv()</span></span>
+<span id="cb367-2"><a href="base-to-dplyr-tp-theft.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Will raise error</span></span>
+<span id="cb367-3"><a href="base-to-dplyr-tp-theft.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in make.names(x) : invalid multibyte string at &#39;&lt;bd&gt;s&lt;b8&gt;&lt;b9&gt;&#39;</span></span>
+<span id="cb367-4"><a href="base-to-dplyr-tp-theft.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb367-5"><a href="base-to-dplyr-tp-theft.html#cb367-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb367-6"><a href="base-to-dplyr-tp-theft.html#cb367-6" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv() with locale = locale(encoding = &quot;Big5&quot;)</span></span>
+<span id="cb367-7"><a href="base-to-dplyr-tp-theft.html#cb367-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb367-8"><a href="base-to-dplyr-tp-theft.html#cb367-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="cleaning-data-i" class="section level3 hasAnchor" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Cleaning data I<a href="base-to-dplyr-tp-theft.html#cleaning-data-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -484,30 +483,30 @@ div.csl-indent {
 <li>Generating variable month</li>
 <li>Retrieving area</li>
 </ul>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="base-to-dplyr-tp-theft.html#cb371-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb371-2"><a href="base-to-dplyr-tp-theft.html#cb371-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
-<span id="cb371-3"><a href="base-to-dplyr-tp-theft.html#cb371-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類, </span>
-<span id="cb371-4"><a href="base-to-dplyr-tp-theft.html#cb371-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
-<span id="cb371-5"><a href="base-to-dplyr-tp-theft.html#cb371-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
-<span id="cb371-6"><a href="base-to-dplyr-tp-theft.html#cb371-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb371-7"><a href="base-to-dplyr-tp-theft.html#cb371-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb371-8"><a href="base-to-dplyr-tp-theft.html#cb371-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb371-9"><a href="base-to-dplyr-tp-theft.html#cb371-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb371-10"><a href="base-to-dplyr-tp-theft.html#cb371-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="base-to-dplyr-tp-theft.html#cb368-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb368-2"><a href="base-to-dplyr-tp-theft.html#cb368-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb368-3"><a href="base-to-dplyr-tp-theft.html#cb368-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類, </span>
+<span id="cb368-4"><a href="base-to-dplyr-tp-theft.html#cb368-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb368-5"><a href="base-to-dplyr-tp-theft.html#cb368-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb368-6"><a href="base-to-dplyr-tp-theft.html#cb368-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb368-7"><a href="base-to-dplyr-tp-theft.html#cb368-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb368-8"><a href="base-to-dplyr-tp-theft.html#cb368-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb368-9"><a href="base-to-dplyr-tp-theft.html#cb368-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb368-10"><a href="base-to-dplyr-tp-theft.html#cb368-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
 </div>
 <div id="cleaning-data-ii" class="section level3 hasAnchor" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Cleaning data II<a href="base-to-dplyr-tp-theft.html#cleaning-data-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Filtering out irrelevant data records</li>
 </ul>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="base-to-dplyr-tp-theft.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readr::guess_encoding(&quot;data/tp_theft.csv&quot;)</span></span>
-<span id="cb372-2"><a href="base-to-dplyr-tp-theft.html#cb372-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
-<span id="cb372-3"><a href="base-to-dplyr-tp-theft.html#cb372-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
-<span id="cb372-4"><a href="base-to-dplyr-tp-theft.html#cb372-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(county <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb372-5"><a href="base-to-dplyr-tp-theft.html#cb372-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb372-6"><a href="base-to-dplyr-tp-theft.html#cb372-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
-<span id="cb372-7"><a href="base-to-dplyr-tp-theft.html#cb372-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
-<span id="cb372-8"><a href="base-to-dplyr-tp-theft.html#cb372-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>area <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;中和市&quot;</span>, <span class="st">&quot;板橋市&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="base-to-dplyr-tp-theft.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readr::guess_encoding(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb369-2"><a href="base-to-dplyr-tp-theft.html#cb369-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb369-3"><a href="base-to-dplyr-tp-theft.html#cb369-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb369-4"><a href="base-to-dplyr-tp-theft.html#cb369-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(county <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb369-5"><a href="base-to-dplyr-tp-theft.html#cb369-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb369-6"><a href="base-to-dplyr-tp-theft.html#cb369-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb369-7"><a href="base-to-dplyr-tp-theft.html#cb369-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb369-8"><a href="base-to-dplyr-tp-theft.html#cb369-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>area <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;中和市&quot;</span>, <span class="st">&quot;板橋市&quot;</span>))</span></code></pre></div>
 </div>
 <div id="long-to-wide-form" class="section level3 hasAnchor" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> Long to wide form<a href="base-to-dplyr-tp-theft.html#long-to-wide-form" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -515,47 +514,47 @@ div.csl-indent {
 <li><code>count()</code> two variables</li>
 <li><code>spread()</code> spread one variable as columns to wide form</li>
 </ul>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="base-to-dplyr-tp-theft.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count() then spread()</span></span>
-<span id="cb373-2"><a href="base-to-dplyr-tp-theft.html#cb373-2" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
-<span id="cb373-3"><a href="base-to-dplyr-tp-theft.html#cb373-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
-<span id="cb373-4"><a href="base-to-dplyr-tp-theft.html#cb373-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="base-to-dplyr-tp-theft.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count() then spread()</span></span>
+<span id="cb370-2"><a href="base-to-dplyr-tp-theft.html#cb370-2" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb370-3"><a href="base-to-dplyr-tp-theft.html#cb370-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb370-4"><a href="base-to-dplyr-tp-theft.html#cb370-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) </span></code></pre></div>
 </div>
 <div id="setting-time-as-row.name-for-mosaicplot" class="section level3 hasAnchor" number="5.1.5">
 <h3><span class="header-section-number">5.1.5</span> Setting time as row.name for mosaicplot<a href="base-to-dplyr-tp-theft.html#setting-time-as-row.name-for-mosaicplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="base-to-dplyr-tp-theft.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
-<span id="cb374-2"><a href="base-to-dplyr-tp-theft.html#cb374-2" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="base-to-dplyr-tp-theft.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify fonts for Chinese</span></span>
-<span id="cb375-2"><a href="base-to-dplyr-tp-theft.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;)) </span></span>
-<span id="cb375-3"><a href="base-to-dplyr-tp-theft.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
-<span id="cb375-4"><a href="base-to-dplyr-tp-theft.html#cb375-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-5"><a href="base-to-dplyr-tp-theft.html#cb375-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
-<span id="cb375-6"><a href="base-to-dplyr-tp-theft.html#cb375-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
-<span id="cb375-7"><a href="base-to-dplyr-tp-theft.html#cb375-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
-<span id="cb375-8"><a href="base-to-dplyr-tp-theft.html#cb375-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
-<span id="cb375-9"><a href="base-to-dplyr-tp-theft.html#cb375-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-10"><a href="base-to-dplyr-tp-theft.html#cb375-10" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
-<span id="cb375-11"><a href="base-to-dplyr-tp-theft.html#cb375-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
-<span id="cb375-12"><a href="base-to-dplyr-tp-theft.html#cb375-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="base-to-dplyr-tp-theft.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb371-2"><a href="base-to-dplyr-tp-theft.html#cb371-2" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="base-to-dplyr-tp-theft.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify fonts for Chinese</span></span>
+<span id="cb372-2"><a href="base-to-dplyr-tp-theft.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;)) </span></span>
+<span id="cb372-3"><a href="base-to-dplyr-tp-theft.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb372-4"><a href="base-to-dplyr-tp-theft.html#cb372-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-5"><a href="base-to-dplyr-tp-theft.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb372-6"><a href="base-to-dplyr-tp-theft.html#cb372-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb372-7"><a href="base-to-dplyr-tp-theft.html#cb372-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb372-8"><a href="base-to-dplyr-tp-theft.html#cb372-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb372-9"><a href="base-to-dplyr-tp-theft.html#cb372-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-10"><a href="base-to-dplyr-tp-theft.html#cb372-10" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb372-11"><a href="base-to-dplyr-tp-theft.html#cb372-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb372-12"><a href="base-to-dplyr-tp-theft.html#cb372-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 </div>
 <div id="clean-version" class="section level3 hasAnchor" number="5.1.6">
 <h3><span class="header-section-number">5.1.6</span> Clean version<a href="base-to-dplyr-tp-theft.html#clean-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="base-to-dplyr-tp-theft.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb376-2"><a href="base-to-dplyr-tp-theft.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span>
-<span id="cb376-3"><a href="base-to-dplyr-tp-theft.html#cb376-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
-<span id="cb376-4"><a href="base-to-dplyr-tp-theft.html#cb376-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-5"><a href="base-to-dplyr-tp-theft.html#cb376-5" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb376-6"><a href="base-to-dplyr-tp-theft.html#cb376-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
-<span id="cb376-7"><a href="base-to-dplyr-tp-theft.html#cb376-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類,</span>
-<span id="cb376-8"><a href="base-to-dplyr-tp-theft.html#cb376-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
-<span id="cb376-9"><a href="base-to-dplyr-tp-theft.html#cb376-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
-<span id="cb376-10"><a href="base-to-dplyr-tp-theft.html#cb376-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb376-11"><a href="base-to-dplyr-tp-theft.html#cb376-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb376-12"><a href="base-to-dplyr-tp-theft.html#cb376-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb376-13"><a href="base-to-dplyr-tp-theft.html#cb376-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb376-14"><a href="base-to-dplyr-tp-theft.html#cb376-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb376-15"><a href="base-to-dplyr-tp-theft.html#cb376-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-16"><a href="base-to-dplyr-tp-theft.html#cb376-16" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(year)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="base-to-dplyr-tp-theft.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb373-2"><a href="base-to-dplyr-tp-theft.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span>
+<span id="cb373-3"><a href="base-to-dplyr-tp-theft.html#cb373-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb373-4"><a href="base-to-dplyr-tp-theft.html#cb373-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-5"><a href="base-to-dplyr-tp-theft.html#cb373-5" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb373-6"><a href="base-to-dplyr-tp-theft.html#cb373-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb373-7"><a href="base-to-dplyr-tp-theft.html#cb373-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類,</span>
+<span id="cb373-8"><a href="base-to-dplyr-tp-theft.html#cb373-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb373-9"><a href="base-to-dplyr-tp-theft.html#cb373-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb373-10"><a href="base-to-dplyr-tp-theft.html#cb373-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb373-11"><a href="base-to-dplyr-tp-theft.html#cb373-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb373-12"><a href="base-to-dplyr-tp-theft.html#cb373-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb373-13"><a href="base-to-dplyr-tp-theft.html#cb373-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb373-14"><a href="base-to-dplyr-tp-theft.html#cb373-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb373-15"><a href="base-to-dplyr-tp-theft.html#cb373-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-16"><a href="base-to-dplyr-tp-theft.html#cb373-16" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(year)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -642,7 +641,7 @@ n
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="base-to-dplyr-tp-theft.html#cb377-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="base-to-dplyr-tp-theft.html#cb374-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -737,7 +736,7 @@ n
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="base-to-dplyr-tp-theft.html#cb378-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="base-to-dplyr-tp-theft.html#cb375-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1063,33 +1062,33 @@ county
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="base-to-dplyr-tp-theft.html#cb379-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
-<span id="cb379-2"><a href="base-to-dplyr-tp-theft.html#cb379-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
-<span id="cb379-3"><a href="base-to-dplyr-tp-theft.html#cb379-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb379-4"><a href="base-to-dplyr-tp-theft.html#cb379-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;23~01&quot;</span>))</span>
-<span id="cb379-5"><a href="base-to-dplyr-tp-theft.html#cb379-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
-<span id="cb379-6"><a href="base-to-dplyr-tp-theft.html#cb379-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
-<span id="cb379-7"><a href="base-to-dplyr-tp-theft.html#cb379-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter(!area %in% c(&quot;中和市&quot;, &quot;板橋市&quot;))</span></span>
-<span id="cb379-8"><a href="base-to-dplyr-tp-theft.html#cb379-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-9"><a href="base-to-dplyr-tp-theft.html#cb379-9" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
-<span id="cb379-10"><a href="base-to-dplyr-tp-theft.html#cb379-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
-<span id="cb379-11"><a href="base-to-dplyr-tp-theft.html#cb379-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb379-12"><a href="base-to-dplyr-tp-theft.html#cb379-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
-<span id="cb379-13"><a href="base-to-dplyr-tp-theft.html#cb379-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-14"><a href="base-to-dplyr-tp-theft.html#cb379-14" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
-<span id="cb379-15"><a href="base-to-dplyr-tp-theft.html#cb379-15" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb379-16"><a href="base-to-dplyr-tp-theft.html#cb379-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-17"><a href="base-to-dplyr-tp-theft.html#cb379-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
-<span id="cb379-18"><a href="base-to-dplyr-tp-theft.html#cb379-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-19"><a href="base-to-dplyr-tp-theft.html#cb379-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
-<span id="cb379-20"><a href="base-to-dplyr-tp-theft.html#cb379-20" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
-<span id="cb379-21"><a href="base-to-dplyr-tp-theft.html#cb379-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
-<span id="cb379-22"><a href="base-to-dplyr-tp-theft.html#cb379-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
-<span id="cb379-23"><a href="base-to-dplyr-tp-theft.html#cb379-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-24"><a href="base-to-dplyr-tp-theft.html#cb379-24" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
-<span id="cb379-25"><a href="base-to-dplyr-tp-theft.html#cb379-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
-<span id="cb379-26"><a href="base-to-dplyr-tp-theft.html#cb379-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)  </span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="base-to-dplyr-tp-theft.html#cb376-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb376-2"><a href="base-to-dplyr-tp-theft.html#cb376-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb376-3"><a href="base-to-dplyr-tp-theft.html#cb376-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb376-4"><a href="base-to-dplyr-tp-theft.html#cb376-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;23~01&quot;</span>))</span>
+<span id="cb376-5"><a href="base-to-dplyr-tp-theft.html#cb376-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb376-6"><a href="base-to-dplyr-tp-theft.html#cb376-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb376-7"><a href="base-to-dplyr-tp-theft.html#cb376-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter(!area %in% c(&quot;中和市&quot;, &quot;板橋市&quot;))</span></span>
+<span id="cb376-8"><a href="base-to-dplyr-tp-theft.html#cb376-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-9"><a href="base-to-dplyr-tp-theft.html#cb376-9" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb376-10"><a href="base-to-dplyr-tp-theft.html#cb376-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb376-11"><a href="base-to-dplyr-tp-theft.html#cb376-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(area, n, <span class="at">fill=</span><span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb376-12"><a href="base-to-dplyr-tp-theft.html#cb376-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
+<span id="cb376-13"><a href="base-to-dplyr-tp-theft.html#cb376-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-14"><a href="base-to-dplyr-tp-theft.html#cb376-14" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb376-15"><a href="base-to-dplyr-tp-theft.html#cb376-15" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb376-16"><a href="base-to-dplyr-tp-theft.html#cb376-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-17"><a href="base-to-dplyr-tp-theft.html#cb376-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb376-18"><a href="base-to-dplyr-tp-theft.html#cb376-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-19"><a href="base-to-dplyr-tp-theft.html#cb376-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb376-20"><a href="base-to-dplyr-tp-theft.html#cb376-20" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb376-21"><a href="base-to-dplyr-tp-theft.html#cb376-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb376-22"><a href="base-to-dplyr-tp-theft.html#cb376-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb376-23"><a href="base-to-dplyr-tp-theft.html#cb376-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-24"><a href="base-to-dplyr-tp-theft.html#cb376-24" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb376-25"><a href="base-to-dplyr-tp-theft.html#cb376-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb376-26"><a href="base-to-dplyr-tp-theft.html#cb376-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)  </span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -1160,7 +1159,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

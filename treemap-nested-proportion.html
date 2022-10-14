@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13.3 Treemap: Nested Proportion | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13.3 Treemap: Nested Proportion | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -466,72 +465,72 @@ div.csl-indent {
 <div id="global-carbon-projects-wgoith-nytimes" class="section level3 hasAnchor" number="13.3.1">
 <h3><span class="header-section-number">13.3.1</span> Global Carbon Projects (WGOITH-NYTIMES)<a href="treemap-nested-proportion.html#global-carbon-projects-wgoith-nytimes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.nytimes.com/interactive/2021/11/12/climate/cop26-emissions-compensation.html?campaign_id=29&amp;emc=edit_up_20211112&amp;instance_id=45236&amp;nl=the-upshot&amp;regi_id=52022771&amp;segment_id=74222&amp;te=1&amp;user_id=7cc6d9cd8f523e256ae41958ee8a9cb5">Who Has The Most Historical Responsibility for Climate Change? - The New York Times (nytimes.com)</a></p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="treemap-nested-proportion.html#cb521-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb521-2"><a href="treemap-nested-proportion.html#cb521-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb521-3"><a href="treemap-nested-proportion.html#cb521-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-4"><a href="treemap-nested-proportion.html#cb521-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb521-5"><a href="treemap-nested-proportion.html#cb521-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-6"><a href="treemap-nested-proportion.html#cb521-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-7"><a href="treemap-nested-proportion.html#cb521-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb521-8"><a href="treemap-nested-proportion.html#cb521-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb521-9"><a href="treemap-nested-proportion.html#cb521-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
-<span id="cb521-10"><a href="treemap-nested-proportion.html#cb521-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
-<span id="cb521-11"><a href="treemap-nested-proportion.html#cb521-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb521-12"><a href="treemap-nested-proportion.html#cb521-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb521-13"><a href="treemap-nested-proportion.html#cb521-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb521-14"><a href="treemap-nested-proportion.html#cb521-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
-<span id="cb521-15"><a href="treemap-nested-proportion.html#cb521-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="treemap-nested-proportion.html#cb520-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb520-2"><a href="treemap-nested-proportion.html#cb520-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb520-3"><a href="treemap-nested-proportion.html#cb520-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb520-4"><a href="treemap-nested-proportion.html#cb520-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb520-5"><a href="treemap-nested-proportion.html#cb520-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb520-6"><a href="treemap-nested-proportion.html#cb520-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
+<span id="cb520-7"><a href="treemap-nested-proportion.html#cb520-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb520-8"><a href="treemap-nested-proportion.html#cb520-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb520-9"><a href="treemap-nested-proportion.html#cb520-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
+<span id="cb520-10"><a href="treemap-nested-proportion.html#cb520-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
+<span id="cb520-11"><a href="treemap-nested-proportion.html#cb520-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb520-12"><a href="treemap-nested-proportion.html#cb520-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb520-13"><a href="treemap-nested-proportion.html#cb520-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb520-14"><a href="treemap-nested-proportion.html#cb520-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
+<span id="cb520-15"><a href="treemap-nested-proportion.html#cb520-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
 </div>
 <div id="tw-budget" class="section level3 hasAnchor" number="13.3.2">
 <h3><span class="header-section-number">13.3.2</span> TW Budget<a href="treemap-nested-proportion.html#tw-budget" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="treemap-nested-proportion.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb522-2"><a href="treemap-nested-proportion.html#cb522-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
-<span id="cb522-3"><a href="treemap-nested-proportion.html#cb522-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
-<span id="cb522-4"><a href="treemap-nested-proportion.html#cb522-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
-<span id="cb522-5"><a href="treemap-nested-proportion.html#cb522-5" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
-<span id="cb522-6"><a href="treemap-nested-proportion.html#cb522-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb522-7"><a href="treemap-nested-proportion.html#cb522-7" aria-hidden="true" tabindex="-1"></a>cleand <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb522-8"><a href="treemap-nested-proportion.html#cb522-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb522-9"><a href="treemap-nested-proportion.html#cb522-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb522-10"><a href="treemap-nested-proportion.html#cb522-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
-<span id="cb522-11"><a href="treemap-nested-proportion.html#cb522-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">org =</span> purrr<span class="sc">::</span><span class="fu">map</span>(機構, <span class="cf">function</span>(x){<span class="fu">str_split</span>(x, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">2</span>]})) <span class="sc">%&gt;%</span></span>
-<span id="cb522-12"><a href="treemap-nested-proportion.html#cb522-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), <span class="fu">unlist</span>(org), <span class="fu">unlist</span>(款))) <span class="sc">%&gt;%</span></span>
-<span id="cb522-13"><a href="treemap-nested-proportion.html#cb522-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
-<span id="cb522-14"><a href="treemap-nested-proportion.html#cb522-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb522-15"><a href="treemap-nested-proportion.html#cb522-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
-<span id="cb522-16"><a href="treemap-nested-proportion.html#cb522-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
-<span id="cb522-17"><a href="treemap-nested-proportion.html#cb522-17" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
-<span id="cb522-18"><a href="treemap-nested-proportion.html#cb522-18" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
-<span id="cb522-19"><a href="treemap-nested-proportion.html#cb522-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb522-20"><a href="treemap-nested-proportion.html#cb522-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="treemap-nested-proportion.html#cb523-1" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
-<span id="cb523-2"><a href="treemap-nested-proportion.html#cb523-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(款 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;科學支出&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb523-3"><a href="treemap-nested-proportion.html#cb523-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org) <span class="sc">+</span></span>
-<span id="cb523-4"><a href="treemap-nested-proportion.html#cb523-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb523-5"><a href="treemap-nested-proportion.html#cb523-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb523-6"><a href="treemap-nested-proportion.html#cb523-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb523-7"><a href="treemap-nested-proportion.html#cb523-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span>,</span>
-<span id="cb523-8"><a href="treemap-nested-proportion.html#cb523-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
-<span id="cb523-9"><a href="treemap-nested-proportion.html#cb523-9" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
-<span id="cb523-10"><a href="treemap-nested-proportion.html#cb523-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb523-11"><a href="treemap-nested-proportion.html#cb523-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="treemap-nested-proportion.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb524-2"><a href="treemap-nested-proportion.html#cb524-2" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
-<span id="cb524-3"><a href="treemap-nested-proportion.html#cb524-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(款 %in% c(&quot;科學支出&quot;, &quot;教育支出&quot;, &quot;國防支出&quot;, &quot;司法支出&quot;)) %&gt;%</span></span>
-<span id="cb524-4"><a href="treemap-nested-proportion.html#cb524-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org, <span class="at">subgroup =</span> 款) <span class="sc">+</span></span>
-<span id="cb524-5"><a href="treemap-nested-proportion.html#cb524-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb524-6"><a href="treemap-nested-proportion.html#cb524-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_border</span>(<span class="at">color=</span><span class="st">&quot;gold&quot;</span>) <span class="sc">+</span></span>
-<span id="cb524-7"><a href="treemap-nested-proportion.html#cb524-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_text</span>(<span class="at">place =</span> <span class="st">&quot;centre&quot;</span>, <span class="at">grow =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">colour =</span></span>
-<span id="cb524-8"><a href="treemap-nested-proportion.html#cb524-8" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;gold&quot;</span>, <span class="at">min.size =</span> <span class="dv">0</span>,</span>
-<span id="cb524-9"><a href="treemap-nested-proportion.html#cb524-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span></span>
-<span id="cb524-10"><a href="treemap-nested-proportion.html#cb524-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb524-11"><a href="treemap-nested-proportion.html#cb524-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb524-12"><a href="treemap-nested-proportion.html#cb524-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span>F,</span>
-<span id="cb524-13"><a href="treemap-nested-proportion.html#cb524-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
-<span id="cb524-14"><a href="treemap-nested-proportion.html#cb524-14" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
-<span id="cb524-15"><a href="treemap-nested-proportion.html#cb524-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb524-16"><a href="treemap-nested-proportion.html#cb524-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb524-17"><a href="treemap-nested-proportion.html#cb524-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="treemap-nested-proportion.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb521-2"><a href="treemap-nested-proportion.html#cb521-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
+<span id="cb521-3"><a href="treemap-nested-proportion.html#cb521-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
+<span id="cb521-4"><a href="treemap-nested-proportion.html#cb521-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
+<span id="cb521-5"><a href="treemap-nested-proportion.html#cb521-5" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
+<span id="cb521-6"><a href="treemap-nested-proportion.html#cb521-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb521-7"><a href="treemap-nested-proportion.html#cb521-7" aria-hidden="true" tabindex="-1"></a>cleand <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb521-8"><a href="treemap-nested-proportion.html#cb521-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb521-9"><a href="treemap-nested-proportion.html#cb521-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb521-10"><a href="treemap-nested-proportion.html#cb521-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
+<span id="cb521-11"><a href="treemap-nested-proportion.html#cb521-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">org =</span> purrr<span class="sc">::</span><span class="fu">map</span>(機構, <span class="cf">function</span>(x){<span class="fu">str_split</span>(x, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">2</span>]})) <span class="sc">%&gt;%</span></span>
+<span id="cb521-12"><a href="treemap-nested-proportion.html#cb521-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), <span class="fu">unlist</span>(org), <span class="fu">unlist</span>(款))) <span class="sc">%&gt;%</span></span>
+<span id="cb521-13"><a href="treemap-nested-proportion.html#cb521-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb521-14"><a href="treemap-nested-proportion.html#cb521-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb521-15"><a href="treemap-nested-proportion.html#cb521-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb521-16"><a href="treemap-nested-proportion.html#cb521-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
+<span id="cb521-17"><a href="treemap-nested-proportion.html#cb521-17" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
+<span id="cb521-18"><a href="treemap-nested-proportion.html#cb521-18" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
+<span id="cb521-19"><a href="treemap-nested-proportion.html#cb521-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb521-20"><a href="treemap-nested-proportion.html#cb521-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="treemap-nested-proportion.html#cb522-1" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
+<span id="cb522-2"><a href="treemap-nested-proportion.html#cb522-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(款 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;科學支出&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb522-3"><a href="treemap-nested-proportion.html#cb522-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org) <span class="sc">+</span></span>
+<span id="cb522-4"><a href="treemap-nested-proportion.html#cb522-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb522-5"><a href="treemap-nested-proportion.html#cb522-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb522-6"><a href="treemap-nested-proportion.html#cb522-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb522-7"><a href="treemap-nested-proportion.html#cb522-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span>,</span>
+<span id="cb522-8"><a href="treemap-nested-proportion.html#cb522-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
+<span id="cb522-9"><a href="treemap-nested-proportion.html#cb522-9" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
+<span id="cb522-10"><a href="treemap-nested-proportion.html#cb522-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb522-11"><a href="treemap-nested-proportion.html#cb522-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="treemap-nested-proportion.html#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb523-2"><a href="treemap-nested-proportion.html#cb523-2" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
+<span id="cb523-3"><a href="treemap-nested-proportion.html#cb523-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(款 %in% c(&quot;科學支出&quot;, &quot;教育支出&quot;, &quot;國防支出&quot;, &quot;司法支出&quot;)) %&gt;%</span></span>
+<span id="cb523-4"><a href="treemap-nested-proportion.html#cb523-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org, <span class="at">subgroup =</span> 款) <span class="sc">+</span></span>
+<span id="cb523-5"><a href="treemap-nested-proportion.html#cb523-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb523-6"><a href="treemap-nested-proportion.html#cb523-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_border</span>(<span class="at">color=</span><span class="st">&quot;gold&quot;</span>) <span class="sc">+</span></span>
+<span id="cb523-7"><a href="treemap-nested-proportion.html#cb523-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_text</span>(<span class="at">place =</span> <span class="st">&quot;centre&quot;</span>, <span class="at">grow =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">colour =</span></span>
+<span id="cb523-8"><a href="treemap-nested-proportion.html#cb523-8" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;gold&quot;</span>, <span class="at">min.size =</span> <span class="dv">0</span>,</span>
+<span id="cb523-9"><a href="treemap-nested-proportion.html#cb523-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span></span>
+<span id="cb523-10"><a href="treemap-nested-proportion.html#cb523-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb523-11"><a href="treemap-nested-proportion.html#cb523-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb523-12"><a href="treemap-nested-proportion.html#cb523-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span>F,</span>
+<span id="cb523-13"><a href="treemap-nested-proportion.html#cb523-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
+<span id="cb523-14"><a href="treemap-nested-proportion.html#cb523-14" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
+<span id="cb523-15"><a href="treemap-nested-proportion.html#cb523-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb523-16"><a href="treemap-nested-proportion.html#cb523-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb523-17"><a href="treemap-nested-proportion.html#cb523-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -603,7 +602,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

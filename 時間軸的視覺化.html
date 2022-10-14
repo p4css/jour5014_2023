@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.4 時間軸的視覺化 | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.4 時間軸的視覺化 | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -463,24 +462,24 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="時間軸的視覺化" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> 時間軸的視覺化<a href="時間軸的視覺化.html#時間軸的視覺化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="時間軸的視覺化.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb425-2"><a href="時間軸的視覺化.html#cb425-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb425-3"><a href="時間軸的視覺化.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default option in R &gt; 4.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="時間軸的視覺化.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb424-2"><a href="時間軸的視覺化.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb424-3"><a href="時間軸的視覺化.html#cb424-3" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default option in R &gt; 4.0</span></span></code></pre></div>
 <div id="文字轉時間" class="section level3 hasAnchor" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> 文字轉時間<a href="時間軸的視覺化.html#文字轉時間" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Convert “character time” to R date.time object (POSIXct)</li>
 </ul>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="時間軸的視覺化.html#cb426-1" aria-hidden="true" tabindex="-1"></a>ptturl <span class="ot">&lt;-</span> <span class="st">&quot;https://github.com/P4CSS/R4CSSData/raw/main/ptt_hang_posts.csv&quot;</span></span>
-<span id="cb426-2"><a href="時間軸的視覺化.html#cb426-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">url</span>(ptturl))</span>
-<span id="cb426-3"><a href="時間軸的視覺化.html#cb426-3" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb426-4"><a href="時間軸的視覺化.html#cb426-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">ptime =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(ptime, <span class="st">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;ASIA/Taipeiw&quot;</span>)))</span>
-<span id="cb426-5"><a href="時間軸的視覺化.html#cb426-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb426-6"><a href="時間軸的視覺化.html#cb426-6" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">url</span>(ptturl))</span>
-<span id="cb426-7"><a href="時間軸的視覺化.html#cb426-7" aria-hidden="true" tabindex="-1"></a>?read_csv</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="時間軸的視覺化.html#cb425-1" aria-hidden="true" tabindex="-1"></a>ptturl <span class="ot">&lt;-</span> <span class="st">&quot;https://github.com/P4CSS/R4CSSData/raw/main/ptt_hang_posts.csv&quot;</span></span>
+<span id="cb425-2"><a href="時間軸的視覺化.html#cb425-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">url</span>(ptturl))</span>
+<span id="cb425-3"><a href="時間軸的視覺化.html#cb425-3" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb425-4"><a href="時間軸的視覺化.html#cb425-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">ptime =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(ptime, <span class="st">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;ASIA/Taipeiw&quot;</span>)))</span>
+<span id="cb425-5"><a href="時間軸的視覺化.html#cb425-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-6"><a href="時間軸的視覺化.html#cb425-6" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">url</span>(ptturl))</span>
+<span id="cb425-7"><a href="時間軸的視覺化.html#cb425-7" aria-hidden="true" tabindex="-1"></a>?read_csv</span></code></pre></div>
 <div class="r-help-page">
 <div class="container">
-<table width="100%" summary="page for read_delim">
+<table style="width: 100%;">
 <tr>
 <td>
 read_delim
@@ -500,14 +499,13 @@ Description
 <code>read_csv()</code> and <code>read_tsv()</code> are special cases of the more general
 <code>read_delim()</code>. They’re useful for reading the most common types of
 flat file data, comma separated values and tab separated values,
-respectively. <code>read_csv2()</code> uses <code style="white-space: pre;">;</code> for the field separator and <code style="white-space: pre;">,</code> for the
+respectively. <code>read_csv2()</code> uses <code style="white-space: pre;">⁠;⁠</code> for the field separator and <code style="white-space: pre;">⁠,⁠</code> for the
 decimal point. This format is common in some European countries.
 </p>
 <h3>
 Usage
 </h3>
-<pre class="r">
-read_delim(
+<pre class="r"><code class='language-R'>read_delim(
   file,
   delim = NULL,
   quote = "\"",
@@ -601,12 +599,12 @@ read_tsv(
   skip_empty_rows = TRUE,
   lazy = should_read_lazy()
 )
-</pre>
+</code></pre>
 <h3>
 Arguments
 </h3>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>file</code>
 </td>
@@ -617,8 +615,8 @@ Either a path to a file, a connection, or literal data
 </p>
 <p>
 Files ending in <code>.gz</code>, <code>.bz2</code>, <code>.xz</code>, or <code>.zip</code> will
-be automatically uncompressed. Files starting with <code style="white-space: pre;"><a href="http://" class="uri">http://</a></code>,
-<code style="white-space: pre;"><a href="https://" class="uri">https://</a></code>, <code style="white-space: pre;"><a href="ftp://" class="uri">ftp://</a></code>, or <code style="white-space: pre;">ftps://</code> will be automatically
+be automatically uncompressed. Files starting with <code style="white-space: pre;">⁠<a href="http://&amp;#8288" class="uri">http://&amp;#8288</a>;</code>,
+<code style="white-space: pre;">⁠<a href="https://&amp;#8288" class="uri">https://&amp;#8288</a>;</code>, <code style="white-space: pre;">⁠<a href="ftp://&amp;#8288" class="uri">ftp://&amp;#8288</a>;</code>, or <code style="white-space: pre;">⁠ftps://⁠</code> will be automatically
 downloaded. Remote gz files can also be automatically downloaded and
 decompressed.
 </p>
@@ -633,7 +631,7 @@ Using a value of <code>clipboard()</code> will read from the system clipboard.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>delim</code>
 </td>
@@ -643,7 +641,7 @@ Single character used to separate fields within a record.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>quote</code>
 </td>
@@ -653,7 +651,7 @@ Single character used to quote strings.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>escape_backslash</code>
 </td>
@@ -662,23 +660,23 @@ Single character used to quote strings.
 Does the file use backslashes to escape special
 characters? This is more general than <code>escape_double</code> as backslashes
 can be used to escape the delimiter character, the quote character, or
-to add special characters like <code style="white-space: pre;">\n</code>.
+to add special characters like <code style="white-space: pre;">⁠\n⁠</code>.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>escape_double</code>
 </td>
 <td>
 <p>
 Does the file escape quotes by doubling them?
-i.e. If this option is <code>TRUE</code>, the value <code style="white-space: pre;">““““</code> represents
-a single quote, <code style="white-space: pre;">"</code>.
+i.e. If this option is <code>TRUE</code>, the value <code style="white-space: pre;">⁠““““⁠</code> represents
+a single quote, <code style="white-space: pre;">⁠"⁠</code>.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>col_names</code>
 </td>
@@ -705,7 +703,7 @@ how this is done.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>col_types</code>
 </td>
@@ -793,7 +791,7 @@ set <code>show_col_types = FALSE</code> or set ’options(readr.show_col_types =
 </ul>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>col_select</code>
 </td>
@@ -808,7 +806,7 @@ selection language.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>id</code>
 </td>
@@ -821,7 +819,7 @@ column is created.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>locale</code>
 </td>
@@ -835,7 +833,7 @@ names.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>na</code>
 </td>
@@ -846,7 +844,7 @@ option to <code>character()</code> to indicate no missing values.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>quoted_na</code>
 </td>
@@ -858,7 +856,7 @@ parameter is soft deprecated as of readr 2.0.0.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>comment</code>
 </td>
@@ -869,7 +867,7 @@ comment characters will be silently ignored.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>trim_ws</code>
 </td>
@@ -880,7 +878,7 @@ each field before parsing it?
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>skip</code>
 </td>
@@ -891,7 +889,7 @@ supplied any commented lines are ignored <em>after</em> skipping.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>n_max</code>
 </td>
@@ -901,7 +899,7 @@ Maximum number of lines to read.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>guess_max</code>
 </td>
@@ -912,7 +910,7 @@ See <code>vignette(“column-types”, package = “readr”)</code> for more de
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>name_repair</code>
 </td>
@@ -962,7 +960,7 @@ to enforce them.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>num_threads</code>
 </td>
@@ -976,7 +974,7 @@ fields it is safest to set <code>num_threads = 1</code> explicitly.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>progress</code>
 </td>
@@ -989,7 +987,7 @@ progress bar can be disabled by setting option <code>readr.show_progress</code> 
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>show_col_types</code>
 </td>
@@ -1002,7 +1000,7 @@ by the <code>col_types</code> argument.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>skip_empty_rows</code>
 </td>
@@ -1014,7 +1012,7 @@ option is <code>TRUE</code> then blank rows will not be represented at all. If i
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>lazy</code>
 </td>
@@ -1040,8 +1038,7 @@ You can retrieve the full details by calling <code>problems()</code> on your dat
 <h3>
 Examples
 </h3>
-<pre class="r">
-# Input sources -------------------------------------------------------------
+<pre class="r"><code class='language-R'># Input sources -------------------------------------------------------------
 # Read from a path
 read_csv(readr_example("mtcars.csv"))
 read_csv(readr_example("mtcars.csv.zip"))
@@ -1074,16 +1071,16 @@ read_csv(I("a,b\n1.0,2.0"))
 read_csv2(I("a;b\n1,0;2,0"))
 read_tsv(I("a\tb\n1.0\t2.0"))
 read_delim(I("a|b\n1.0|2.0"), delim = "|")
-</pre>
+</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="時間軸的視覺化.html#cb427-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="st">&quot;2019-04-12T00:48:19Z&quot;</span></span>
-<span id="cb427-2"><a href="時間軸的視覺化.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(t)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="時間軸的視覺化.html#cb426-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="st">&quot;2019-04-12T00:48:19Z&quot;</span></span>
+<span id="cb426-2"><a href="時間軸的視覺化.html#cb426-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(t)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="時間軸的視覺化.html#cb429-1" aria-hidden="true" tabindex="-1"></a>?strptime</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="時間軸的視覺化.html#cb428-1" aria-hidden="true" tabindex="-1"></a>?strptime</span></code></pre></div>
 <div class="r-help-page">
 <div class="container">
-<table width="100%" summary="page for strptime">
+<table style="width: 100%;">
 <tr>
 <td>
 strptime
@@ -1107,23 +1104,23 @@ dates and times.
 <h3>
 Usage
 </h3>
-<pre class="r">
-## S3 method for class 'POSIXct'
+<pre class="r"><code class='language-R'>## S3 method for class 'POSIXct'
 format(x, format = "", tz = "", usetz = FALSE, ...)
 ## S3 method for class 'POSIXlt'
-format(x, format = "", usetz = FALSE, ...)
+format(x, format = "", usetz = FALSE,
+       digits = getOption("digits.secs"), ...)
 
 ## S3 method for class 'POSIXt'
 as.character(x, ...)
 
 strftime(x, format = "", tz = "", usetz = FALSE, ...)
 strptime(x, format, tz = "")
-</pre>
+</code></pre>
 <h3>
 Arguments
 </h3>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>x</code>
 </td>
@@ -1135,7 +1132,7 @@ An object to be converted: a character vector for
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>tz</code>
 </td>
@@ -1149,7 +1146,7 @@ a warning.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>format</code>
 </td>
@@ -1164,7 +1161,7 @@ the specified number of digits will be printed for seconds.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>…</code>
 </td>
@@ -1174,7 +1171,7 @@ Further arguments to be passed from or to other methods.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>usetz</code>
 </td>
@@ -1183,6 +1180,16 @@ Further arguments to be passed from or to other methods.
 logical. Should the time zone abbreviation be appended
 to the output? This is used in printing times, and more reliable
 than using <code>“%Z”</code>.
+</p>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td>
+<code>digits</code>
+</td>
+<td>
+<p>
+integer determining the <code>format()</code>ing of seconds when needed.
 </p>
 </td>
 </tr>
@@ -1207,6 +1214,11 @@ specified: any trailing characters are ignored.
 calling <code>as.POSIXlt</code> (so they also work for class
 <code>“Date”</code>). Note that only that conversion depends on the
 time zone.
+Since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 4.2.0, that <code>as.POSIXlt()</code> conversion now treats
+the non-finite numeric <code>-Inf</code>, <code>Inf</code>, <code>NA</code> and <code>NaN</code>
+differently (where previously all were treated as <code>NA</code>) and also
+the <code>format()</code> method for <code>POSIXlt</code> now treats these different
+non-finite times and dates analogously to type <code>double</code>.
 </p>
 <p>
 The usual vector re-cycling rules are applied to <code>x</code> and
@@ -1360,7 +1372,7 @@ Equivalent to <code>%b</code>.
 <dd>
 <p>
 Hours as decimal number (00–23). As a special
-exception strings such as <span class="samp">24:00:00</span> are accepted for input,
+exception strings such as ‘<span class="samp">⁠24:00:00⁠</span>’ are accepted for input,
 since ISO 8601 allows these.
 </p>
 </dd>
@@ -1591,7 +1603,7 @@ when a time zone has changed abbreviations over the years.
 optional on input. Names are matched case-insensitively on input:
 whether they are capitalized on output depends on the platform and the
 locale. Note that abbreviated names are platform-specific (although
-the standards specify that in the <span class="samp">C</span> locale they must be the
+the standards specify that in the ‘<span class="samp">⁠C⁠</span>’ locale they must be the
 first three letters of the capitalized English name: this convention
 is widely used in English-language locales but for example the French
 month abbreviations are not the same on any two of Linux, macOS, Solaris
@@ -1681,13 +1693,13 @@ longer strings are truncated at 255 or 256 bytes, but this is not
 guaranteed by the C99 standard.)
 </p>
 <p>
-<p><code>strptime</code> turns character representations into an object of
+<code>strptime</code> turns character representations into an object of
 class <code>“POSIXlt”</code>. The time zone is used to set the
 <code>isdst</code> component and to set the <code>“tzone”</code> attribute if
 <code>tz != ““</code>. If the specified time is invalid (for example
-<span class="samp">“2010-02-30 08:00”</span>) all the components of the result are
+‘<span class="samp">⁠“2010-02-30 08:00”⁠</span>’) all the components of the result are
 <code>NA</code>. (NB: this does means exactly what it says – if it is an
-invalid time, not just a time that does not exist in some time zone.)</p>
+invalid time, not just a time that does not exist in some time zone.)
 </p>
 <h3>
 Printing years
@@ -1750,14 +1762,14 @@ function <code>strftime</code>.
 <p>
 However, not all OSes (notably Windows) provided <code>strptime</code> and
 many issues were found for those which did, so since 2000 <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> has used
-a fork of code from <span class="samp">glibc</span>. The forked code uses the
+a fork of code from ‘<span class="samp">⁠glibc⁠</span>’. The forked code uses the
 system’s <code>strftime</code> to find the locale-specific day and month
 names and any AM/PM indicator.
 </p>
 <p>
 On some platforms (including Windows and by default on macOS) the
 system’s <code>strftime</code> is replaced (along with most of the rest of
-the C-level datetime code) by code modified from IANA’s <span class="samp">tzcode</span>
+the C-level datetime code) by code modified from IANA’s ‘<span class="samp">⁠tzcode⁠</span>’
 distribution (<a href="https://www.iana.org/time-zones">https://www.iana.org/time-zones</a>).
 </p>
 <h3>
@@ -1811,7 +1823,8 @@ information interchange – Part 1: Basic rules’.
 For links to versions available on-line see (at the time of writing)
 <a href="https://dotat.at/tmp/ISO_8601-2004_E.pdf">https://dotat.at/tmp/ISO_8601-2004_E.pdf</a> and
 <a href="https://www.qsl.net/g1smd/isopdf.htm">https://www.qsl.net/g1smd/isopdf.htm</a>; for information on the
-current official version, see <a href="https://www.iso.org/iso/iso8601">https://www.iso.org/iso/iso8601</a>.
+current official version, see <a href="https://www.iso.org/iso/iso8601">https://www.iso.org/iso/iso8601</a> and
+<a href="https://en.wikipedia.org/wiki/ISO_8601">https://en.wikipedia.org/wiki/ISO_8601</a>.
 </p>
 <p>
 The POSIX 1003.1 standard, which is in some respects stricter than ISO 8601.
@@ -1831,7 +1844,7 @@ replaced by more comprehensive internal code.)
 <h3>
 Examples
 </h3>
-<pre class="r">
+<pre class="r"><code class='language-R'>
 ## locale-specific version of date()
 format(Sys.time(), "%a %b %d %X %Y %Z")
 
@@ -1875,11 +1888,16 @@ strptime("Tue, 23 Mar 2010 14:36:38 -0400", "%a, %d %b %Y %H:%M:%S %z")
 ## to use them for input (they are matched case-insensitively):
 format(seq.Date(as.Date('1978-01-01'), by = 'day', len = 7), "%a")
 format(seq.Date(as.Date('2000-01-01'), by = 'month', len = 12), "%b")
-</pre>
+
+format(.POSIXct(Inf)) # "Inf"  (was  NA  in R &lt;= 4.1.x)
+notF &lt;- c(-Inf,Inf,NaN,NA)
+(fF &lt;- format(.POSIXct(notF))) # was all  NA, now the last is still NA (not "NA")
+stopifnot(identical(as.character(notF), fF))
+</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="時間軸的視覺化.html#cb430-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">strptime</span>(t, <span class="st">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</span>)</span>
-<span id="cb430-2"><a href="時間軸的視覺化.html#cb430-2" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="時間軸的視覺化.html#cb429-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">strptime</span>(t, <span class="st">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</span>)</span>
+<span id="cb429-2"><a href="時間軸的視覺化.html#cb429-2" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
 <pre class="output"><code>## Rows: 8,317
 ## Columns: 7
 ## $ plink    &lt;chr&gt; &quot;https://www.ptt.cc/bbs/HatePolitics/M.1555035677.A.24B.html&quot;…
@@ -1892,17 +1910,17 @@ format(seq.Date(as.Date('2000-01-01'), by = 'month', len = 12), "%b")
 </div>
 <div id="時間作為機率分佈x軸" class="section level3 hasAnchor" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> 時間作為機率分佈X軸<a href="時間軸的視覺化.html#時間作為機率分佈x軸" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="時間軸的視覺化.html#cb432-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
-<span id="cb432-2"><a href="時間軸的視覺化.html#cb432-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(ptime) <span class="sc">+</span> </span>
-<span id="cb432-3"><a href="時間軸的視覺化.html#cb432-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="時間軸的視覺化.html#cb431-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
+<span id="cb431-2"><a href="時間軸的視覺化.html#cb431-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(ptime) <span class="sc">+</span> </span>
+<span id="cb431-3"><a href="時間軸的視覺化.html#cb431-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
 </div>
 <div id="逐月統計資料" class="section level3 hasAnchor" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> 逐月統計資料<a href="時間軸的視覺化.html#逐月統計資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="時間軸的視覺化.html#cb433-1" aria-hidden="true" tabindex="-1"></a>?lubridate</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="時間軸的視覺化.html#cb432-1" aria-hidden="true" tabindex="-1"></a>?lubridate</span></code></pre></div>
 <div class="r-help-page">
 <div class="container">
-<table width="100%" summary="page for lubridate-package">
+<table style="width: 100%;">
 <tr>
 <td>
 lubridate-package
@@ -2202,37 +2220,37 @@ Report bugs at <a href="https://github.com/tidyverse/lubridate/issues">https://g
 </ul>
 </div>
 </div>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="時間軸的視覺化.html#cb434-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
-<span id="cb434-2"><a href="時間軸的視覺化.html#cb434-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">month</span>(ptime)) <span class="sc">%&gt;%</span> </span>
-<span id="cb434-3"><a href="時間軸的視覺化.html#cb434-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(m) <span class="sc">%&gt;%</span></span>
-<span id="cb434-4"><a href="時間軸的視覺化.html#cb434-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(m, n) <span class="sc">+</span> </span>
-<span id="cb434-5"><a href="時間軸的視覺化.html#cb434-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="時間軸的視覺化.html#cb433-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
+<span id="cb433-2"><a href="時間軸的視覺化.html#cb433-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">month</span>(ptime)) <span class="sc">%&gt;%</span> </span>
+<span id="cb433-3"><a href="時間軸的視覺化.html#cb433-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(m) <span class="sc">%&gt;%</span></span>
+<span id="cb433-4"><a href="時間軸的視覺化.html#cb433-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(m, n) <span class="sc">+</span> </span>
+<span id="cb433-5"><a href="時間軸的視覺化.html#cb433-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 </div>
 <div id="逐日統計資料佳" class="section level3 hasAnchor" number="5.4.4">
 <h3><span class="header-section-number">5.4.4</span> 逐日統計資料（佳）<a href="時間軸的視覺化.html#逐日統計資料佳" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="時間軸的視覺化.html#cb435-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
-<span id="cb435-2"><a href="時間軸的視覺化.html#cb435-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ptime <span class="sc">&gt;=</span> <span class="fu">as_date</span>(<span class="st">&quot;2019-03-18&quot;</span>) <span class="sc">&amp;</span> ptime <span class="sc">&lt;</span> <span class="fu">as_date</span>(<span class="st">&quot;2019-04-01&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb435-3"><a href="時間軸的視覺化.html#cb435-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(ptime, <span class="at">unit =</span> <span class="st">&quot;day&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb435-4"><a href="時間軸的視覺化.html#cb435-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(m) <span class="sc">%&gt;%</span></span>
-<span id="cb435-5"><a href="時間軸的視覺化.html#cb435-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(m, n) <span class="sc">+</span> </span>
-<span id="cb435-6"><a href="時間軸的視覺化.html#cb435-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="時間軸的視覺化.html#cb434-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
+<span id="cb434-2"><a href="時間軸的視覺化.html#cb434-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ptime <span class="sc">&gt;=</span> <span class="fu">as_date</span>(<span class="st">&quot;2019-03-18&quot;</span>) <span class="sc">&amp;</span> ptime <span class="sc">&lt;</span> <span class="fu">as_date</span>(<span class="st">&quot;2019-04-01&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb434-3"><a href="時間軸的視覺化.html#cb434-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(ptime, <span class="at">unit =</span> <span class="st">&quot;day&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb434-4"><a href="時間軸的視覺化.html#cb434-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(m) <span class="sc">%&gt;%</span></span>
+<span id="cb434-5"><a href="時間軸的視覺化.html#cb434-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(m, n) <span class="sc">+</span> </span>
+<span id="cb434-6"><a href="時間軸的視覺化.html#cb434-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
 </div>
 <div id="每日逐時資料" class="section level3 hasAnchor" number="5.4.5">
 <h3><span class="header-section-number">5.4.5</span> 每日逐時資料<a href="時間軸的視覺化.html#每日逐時資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="時間軸的視覺化.html#cb436-1" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb436-2"><a href="時間軸的視覺化.html#cb436-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ptime <span class="sc">&gt;=</span> <span class="fu">as_datetime</span>(<span class="st">&quot;2019-03-25&quot;</span>) <span class="sc">&amp;</span> ptime <span class="sc">&lt;</span> <span class="fu">as_datetime</span>(<span class="st">&quot;2019-04-01&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb436-3"><a href="時間軸的視覺化.html#cb436-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">d =</span> <span class="fu">floor_date</span>(ptime, <span class="at">unit =</span> <span class="st">&quot;day&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb436-4"><a href="時間軸的視覺化.html#cb436-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">h =</span> <span class="fu">hour</span>(ptime)) <span class="sc">%&gt;%</span></span>
-<span id="cb436-5"><a href="時間軸的視覺化.html#cb436-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(d, h) <span class="sc">%&gt;%</span></span>
-<span id="cb436-6"><a href="時間軸的視覺化.html#cb436-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">wd =</span> <span class="fu">wday</span>(d, <span class="at">label =</span> F, <span class="at">locale =</span> <span class="fu">Sys.getlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb436-7"><a href="時間軸的視覺化.html#cb436-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">isweekend =</span> <span class="fu">ifelse</span>(wd <span class="sc">&gt;=</span> <span class="dv">6</span>, <span class="st">&quot;weekend&quot;</span>, <span class="st">&quot;weekday&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb436-8"><a href="時間軸的視覺化.html#cb436-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(h, n, <span class="at">color =</span> <span class="fu">as.character</span>(d)) <span class="sc">+</span> </span>
-<span id="cb436-9"><a href="時間軸的視覺化.html#cb436-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb436-10"><a href="時間軸的視覺化.html#cb436-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>isweekend)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="時間軸的視覺化.html#cb437-1" aria-hidden="true" tabindex="-1"></a>?ifelse</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="時間軸的視覺化.html#cb435-1" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
+<span id="cb435-2"><a href="時間軸的視覺化.html#cb435-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ptime <span class="sc">&gt;=</span> <span class="fu">as_datetime</span>(<span class="st">&quot;2019-03-25&quot;</span>) <span class="sc">&amp;</span> ptime <span class="sc">&lt;</span> <span class="fu">as_datetime</span>(<span class="st">&quot;2019-04-01&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb435-3"><a href="時間軸的視覺化.html#cb435-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">d =</span> <span class="fu">floor_date</span>(ptime, <span class="at">unit =</span> <span class="st">&quot;day&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb435-4"><a href="時間軸的視覺化.html#cb435-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">h =</span> <span class="fu">hour</span>(ptime)) <span class="sc">%&gt;%</span></span>
+<span id="cb435-5"><a href="時間軸的視覺化.html#cb435-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(d, h) <span class="sc">%&gt;%</span></span>
+<span id="cb435-6"><a href="時間軸的視覺化.html#cb435-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">wd =</span> <span class="fu">wday</span>(d, <span class="at">label =</span> F, <span class="at">locale =</span> <span class="fu">Sys.getlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb435-7"><a href="時間軸的視覺化.html#cb435-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">isweekend =</span> <span class="fu">ifelse</span>(wd <span class="sc">&gt;=</span> <span class="dv">6</span>, <span class="st">&quot;weekend&quot;</span>, <span class="st">&quot;weekday&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb435-8"><a href="時間軸的視覺化.html#cb435-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(h, n, <span class="at">color =</span> <span class="fu">as.character</span>(d)) <span class="sc">+</span> </span>
+<span id="cb435-9"><a href="時間軸的視覺化.html#cb435-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb435-10"><a href="時間軸的視覺化.html#cb435-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>isweekend)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="時間軸的視覺化.html#cb436-1" aria-hidden="true" tabindex="-1"></a>?ifelse</span></code></pre></div>
 <pre class="output"><code>## Help on topic &#39;ifelse&#39; was found in the following packages:
 ## 
 ##   * base
@@ -2308,7 +2326,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

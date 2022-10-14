@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.1 基本操作 | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.1 基本操作 | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -468,21 +467,21 @@ div.csl-indent {
 <div id="複製資料至vector" class="section level4 hasAnchor" number="4.1.1.1">
 <h4><span class="header-section-number">4.1.1.1</span> 複製資料至vector<a href="基本操作.html#複製資料至vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>直接複製Wikipedia上的台北市某五區人口資料</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="基本操作.html#cb173-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">158228</span>, <span class="dv">126687</span>, <span class="dv">228075</span>, <span class="dv">204903</span>, <span class="dv">308383</span>, <span class="dv">187920</span>)</span>
-<span id="cb173-2"><a href="基本操作.html#cb173-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;中正&quot;</span>, <span class="st">&quot;大同&quot;</span>, <span class="st">&quot;中山&quot;</span>, <span class="st">&quot;松山&quot;</span>, <span class="st">&quot;大安&quot;</span>, <span class="st">&quot;萬華&quot;</span>)</span>
-<span id="cb173-3"><a href="基本操作.html#cb173-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.6071</span>, <span class="fl">5.6815</span>, <span class="fl">13.6821</span>, <span class="fl">9.2878</span>, <span class="fl">11.3614</span>, <span class="fl">8.8522</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="基本操作.html#cb170-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">158228</span>, <span class="dv">126687</span>, <span class="dv">228075</span>, <span class="dv">204903</span>, <span class="dv">308383</span>, <span class="dv">187920</span>)</span>
+<span id="cb170-2"><a href="基本操作.html#cb170-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;中正&quot;</span>, <span class="st">&quot;大同&quot;</span>, <span class="st">&quot;中山&quot;</span>, <span class="st">&quot;松山&quot;</span>, <span class="st">&quot;大安&quot;</span>, <span class="st">&quot;萬華&quot;</span>)</span>
+<span id="cb170-3"><a href="基本操作.html#cb170-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.6071</span>, <span class="fl">5.6815</span>, <span class="fl">13.6821</span>, <span class="fl">9.2878</span>, <span class="fl">11.3614</span>, <span class="fl">8.8522</span>)</span></code></pre></div>
 </div>
 <div id="合併等長vector為dataframe" class="section level4 hasAnchor" number="4.1.1.2">
 <h4><span class="header-section-number">4.1.1.2</span> 合併等長vector為dataframe<a href="基本操作.html#合併等長vector為dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="基本操作.html#cb174-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(town, population, area)</span>
-<span id="cb174-2"><a href="基本操作.html#cb174-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>density <span class="ot">=</span> df<span class="sc">$</span>population <span class="sc">/</span> df<span class="sc">$</span>area</span>
-<span id="cb174-3"><a href="基本操作.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="基本操作.html#cb171-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(town, population, area)</span>
+<span id="cb171-2"><a href="基本操作.html#cb171-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>density <span class="ot">=</span> df<span class="sc">$</span>population <span class="sc">/</span> df<span class="sc">$</span>area</span>
+<span id="cb171-3"><a href="基本操作.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre class="output"><code>## &#39;data.frame&#39;:    6 obs. of  4 variables:
 ##  $ town      : chr  &quot;中正&quot; &quot;大同&quot; &quot;中山&quot; &quot;松山&quot; ...
 ##  $ population: num  158228 126687 228075 204903 308383 ...
 ##  $ area      : num  7.61 5.68 13.68 9.29 11.36 ...
 ##  $ density   : num  20800 22298 16670 22062 27143 ...</code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="基本操作.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="基本操作.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -601,18 +600,18 @@ Max. :27143
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="基本操作.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="基本操作.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span></code></pre></div>
 </div>
 <div id="存放台灣貿易各國進出口量" class="section level4 hasAnchor" number="4.1.1.3">
 <h4><span class="header-section-number">4.1.1.3</span> 存放台灣貿易各國進出口量<a href="基本操作.html#存放台灣貿易各國進出口量" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>運用台灣出口進口資料 <a href="https://cus93.trade.gov.tw/FSC3040F/FSC3040F">台灣出口進口貿易資料查詢</a></li>
 </ul>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="基本操作.html#cb178-1" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CN&quot;</span>, <span class="st">&quot;US&quot;</span>, <span class="st">&quot;JP&quot;</span>, <span class="st">&quot;HK&quot;</span>, <span class="st">&quot;KR&quot;</span>, <span class="st">&quot;SG&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;MY&quot;</span>, <span class="st">&quot;VN&quot;</span>, <span class="st">&quot;PH&quot;</span>, <span class="st">&quot;TH&quot;</span>, <span class="st">&quot;AU&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;SA&quot;</span>, <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;GB&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;IT&quot;</span>, <span class="st">&quot;AE&quot;</span>)</span>
-<span id="cb178-2"><a href="基本操作.html#cb178-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-3"><a href="基本操作.html#cb178-3" aria-hidden="true" tabindex="-1"></a>import <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">26.142</span>, <span class="fl">12.008</span>, <span class="fl">7.032</span>, <span class="fl">13.646</span>, <span class="fl">4.589</span>, <span class="fl">5.768</span>, <span class="fl">2.131</span>, <span class="fl">2.802</span>, <span class="fl">3.428</span>, <span class="fl">3.019</span>, <span class="fl">1.976</span>, <span class="fl">1.118</span>, <span class="fl">1.624</span>, <span class="fl">0.449</span>, <span class="fl">0.983</span>, <span class="fl">1.302</span>, <span class="fl">1.027</span>, <span class="fl">0.553</span>, <span class="fl">0.670</span>, <span class="fl">0.455</span>)</span>
-<span id="cb178-4"><a href="基本操作.html#cb178-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-5"><a href="基本操作.html#cb178-5" aria-hidden="true" tabindex="-1"></a>export <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">22.987</span>, <span class="fl">12.204</span>, <span class="fl">11.837</span>, <span class="fl">7.739</span>, <span class="fl">5.381</span>, <span class="fl">4.610</span>, <span class="fl">2.866</span>, <span class="fl">2.784</span>, <span class="fl">2.414</span>, <span class="fl">2.092</span>, <span class="fl">1.839</span>, <span class="fl">1.788</span>, <span class="fl">1.665</span>, <span class="fl">1.409</span>, <span class="fl">1.391</span>, <span class="fl">1.075</span>, <span class="fl">0.974</span>, <span class="fl">0.899</span>, <span class="fl">0.800</span>, <span class="fl">0.728</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="基本操作.html#cb175-1" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CN&quot;</span>, <span class="st">&quot;US&quot;</span>, <span class="st">&quot;JP&quot;</span>, <span class="st">&quot;HK&quot;</span>, <span class="st">&quot;KR&quot;</span>, <span class="st">&quot;SG&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;MY&quot;</span>, <span class="st">&quot;VN&quot;</span>, <span class="st">&quot;PH&quot;</span>, <span class="st">&quot;TH&quot;</span>, <span class="st">&quot;AU&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;SA&quot;</span>, <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;GB&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;IT&quot;</span>, <span class="st">&quot;AE&quot;</span>)</span>
+<span id="cb175-2"><a href="基本操作.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-3"><a href="基本操作.html#cb175-3" aria-hidden="true" tabindex="-1"></a>import <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">26.142</span>, <span class="fl">12.008</span>, <span class="fl">7.032</span>, <span class="fl">13.646</span>, <span class="fl">4.589</span>, <span class="fl">5.768</span>, <span class="fl">2.131</span>, <span class="fl">2.802</span>, <span class="fl">3.428</span>, <span class="fl">3.019</span>, <span class="fl">1.976</span>, <span class="fl">1.118</span>, <span class="fl">1.624</span>, <span class="fl">0.449</span>, <span class="fl">0.983</span>, <span class="fl">1.302</span>, <span class="fl">1.027</span>, <span class="fl">0.553</span>, <span class="fl">0.670</span>, <span class="fl">0.455</span>)</span>
+<span id="cb175-4"><a href="基本操作.html#cb175-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-5"><a href="基本操作.html#cb175-5" aria-hidden="true" tabindex="-1"></a>export <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">22.987</span>, <span class="fl">12.204</span>, <span class="fl">11.837</span>, <span class="fl">7.739</span>, <span class="fl">5.381</span>, <span class="fl">4.610</span>, <span class="fl">2.866</span>, <span class="fl">2.784</span>, <span class="fl">2.414</span>, <span class="fl">2.092</span>, <span class="fl">1.839</span>, <span class="fl">1.788</span>, <span class="fl">1.665</span>, <span class="fl">1.409</span>, <span class="fl">1.391</span>, <span class="fl">1.075</span>, <span class="fl">0.974</span>, <span class="fl">0.899</span>, <span class="fl">0.800</span>, <span class="fl">0.728</span>)</span></code></pre></div>
 </div>
 <div id="合併vector為data.frame" class="section level4 hasAnchor" number="4.1.1.4">
 <h4><span class="header-section-number">4.1.1.4</span> 合併vector為data.frame<a href="基本操作.html#合併vector為data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -620,14 +619,14 @@ Max. :27143
 <li><p>這時候我們若以<code>str(df)</code>觀察該<code>df</code>的結構會發現，文字型態的資料被轉為<code>Factors</code>，這是我們所不樂見的。過去統計通常會把文字型態當成類別變數，於是用<code>Factors</code>作為資料型態，但資料科學中經常要處理大量的文字資料，此時，我們可以把<code>read.csv</code>的一個參數<code>stringsAsFactors</code>設為<code>FALSE</code>，意味著預設不要將文字的資料轉為Factor而是直接以文字變項來處理。* <code>stringsAsFactors = FALSE</code>也是<code>read.csv()</code>的參數（parameter、argument）。因為一般讀檔會預設把文字讀為類別變項也就是Factor，但資料分析經常要處理文字資料而不是類別變項，所以會希望預設不要把文字讀取為類別變項，因此要設定<code>stringsAsFactors = FALSE</code>。</p></li>
 <li><p>為了避免每次都要打這串參數，可以把它設定為全域參數，可以在程式一開始時便加上<code>options(stringsAsFactors = FASLE)</code>，意味著底下所有的函式如果有<code>stringsAsFactors</code>這個參數，一律自動設為<code>FALSE</code>。</p></li>
 </ul>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="基本操作.html#cb179-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export)</span>
-<span id="cb179-2"><a href="基本操作.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="基本操作.html#cb176-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export)</span>
+<span id="cb176-2"><a href="基本操作.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre class="output"><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ country: chr  &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; ...
 ##  $ import : num  26.14 12.01 7.03 13.65 4.59 ...
 ##  $ export : num  22.99 12.2 11.84 7.74 5.38 ...</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="基本操作.html#cb181-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb181-2"><a href="基本操作.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="基本操作.html#cb178-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(country, import, export, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb178-2"><a href="基本操作.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre class="output"><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ country: chr  &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; ...
 ##  $ import : num  26.14 12.01 7.03 13.65 4.59 ...
@@ -636,7 +635,7 @@ Max. :27143
 <li>甚至也可以建立一個新的、空的<code>data.frame</code>。</li>
 <li><code>df.test</code>就R的用法就是一個變數，並不是<code>df</code>和<code>test</code>各自是一個變數。</li>
 </ul>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="基本操作.html#cb183-1" aria-hidden="true" tabindex="-1"></a>df.test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="基本操作.html#cb180-1" aria-hidden="true" tabindex="-1"></a>df.test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span></code></pre></div>
 </div>
 </div>
 <div id="觀察dataframe" class="section level3 hasAnchor" number="4.1.2">
@@ -648,8 +647,8 @@ Max. :27143
 <li><code>str(df)</code></li>
 <li><code>summary(df)</code></li>
 </ul>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="基本操作.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span>
-<span id="cb184-2"><a href="基本操作.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)    <span class="co"># get first part of the data.frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="基本操作.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span>
+<span id="cb181-2"><a href="基本操作.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)    <span class="co"># get first part of the data.frame</span></span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -733,14 +732,14 @@ SG
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="基本操作.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="基本操作.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="基本操作.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="基本操作.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre class="output"><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ country: chr  &quot;CN&quot; &quot;US&quot; &quot;JP&quot; &quot;HK&quot; ...
 ##  $ import : num  26.14 12.01 7.03 13.65 4.59 ...
 ##  $ export : num  22.99 12.2 11.84 7.74 5.38 ...</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="基本操作.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="基本操作.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -838,11 +837,11 @@ Max. :22.987
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="基本操作.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look up help</span></span>
-<span id="cb190-2"><a href="基本操作.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(summary)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="基本操作.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look up help</span></span>
+<span id="cb187-2"><a href="基本操作.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(summary)</span></code></pre></div>
 <div class="r-help-page">
 <div class="container">
-<table width="100%" summary="page for summary">
+<table style="width: 100%;">
 <tr>
 <td>
 summary
@@ -867,8 +866,7 @@ invokes particular <code>methods</code> which depend on the
 <h3>
 Usage
 </h3>
-<pre class="r">
-summary(object, ...)
+<pre class="r"><code class='language-R'>summary(object, ...)
 
 ## Default S3 method:
 summary(object, ..., digits, quantile.type = 7)
@@ -886,12 +884,12 @@ summary(object, ...)
 format(x, digits = max(3L, getOption("digits") - 3L), ...)
  ## S3 method for class 'summaryDefault'
 print(x, digits = max(3L, getOption("digits") - 3L), ...)
-</pre>
+</code></pre>
 <h3>
 Arguments
 </h3>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>object</code>
 </td>
@@ -901,7 +899,7 @@ an object for which a summary is desired.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>x</code>
 </td>
@@ -911,7 +909,7 @@ a result of the <em>default</em> method of <code>summary()</code>.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>maxsum</code>
 </td>
@@ -922,7 +920,7 @@ integer, indicating how many levels should be shown for
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>digits</code>
 </td>
@@ -939,8 +937,8 @@ only round in the <code>print</code> and <code>format</code> methods).
 </td>
 </tr>
 </table>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>quantile.type</code>
 </td>
@@ -951,7 +949,7 @@ for the default method.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>…</code>
 </td>
@@ -1014,21 +1012,20 @@ See Also
 <h3>
 Examples
 </h3>
-<pre class="r">
-summary(attenu, digits = 4) #-&gt; summary.data.frame(...), default precision
+<pre class="r"><code class='language-R'>summary(attenu, digits = 4) #-&gt; summary.data.frame(...), default precision
 summary(attenu $ station, maxsum = 20) #-&gt; summary.factor(...)
 
 lst &lt;- unclass(attenu$station) &gt; 20 # logical with NAs
 ## summary.default() for logicals -- different from *.factor:
 summary(lst)
 summary(as.factor(lst))
-</pre>
+</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="基本操作.html#cb191-1" aria-hidden="true" tabindex="-1"></a>?summary</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="基本操作.html#cb188-1" aria-hidden="true" tabindex="-1"></a>?summary</span></code></pre></div>
 <div class="r-help-page">
 <div class="container">
-<table width="100%" summary="page for summary">
+<table style="width: 100%;">
 <tr>
 <td>
 summary
@@ -1053,8 +1050,7 @@ invokes particular <code>methods</code> which depend on the
 <h3>
 Usage
 </h3>
-<pre class="r">
-summary(object, ...)
+<pre class="r"><code class='language-R'>summary(object, ...)
 
 ## Default S3 method:
 summary(object, ..., digits, quantile.type = 7)
@@ -1072,12 +1068,12 @@ summary(object, ...)
 format(x, digits = max(3L, getOption("digits") - 3L), ...)
  ## S3 method for class 'summaryDefault'
 print(x, digits = max(3L, getOption("digits") - 3L), ...)
-</pre>
+</code></pre>
 <h3>
 Arguments
 </h3>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>object</code>
 </td>
@@ -1087,7 +1083,7 @@ an object for which a summary is desired.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>x</code>
 </td>
@@ -1097,7 +1093,7 @@ a result of the <em>default</em> method of <code>summary()</code>.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>maxsum</code>
 </td>
@@ -1108,7 +1104,7 @@ integer, indicating how many levels should be shown for
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>digits</code>
 </td>
@@ -1125,8 +1121,8 @@ only round in the <code>print</code> and <code>format</code> methods).
 </td>
 </tr>
 </table>
-<table summary="R argblock">
-<tr valign="top">
+<table>
+<tr style="vertical-align: top;">
 <td>
 <code>quantile.type</code>
 </td>
@@ -1137,7 +1133,7 @@ for the default method.
 </p>
 </td>
 </tr>
-<tr valign="top">
+<tr style="vertical-align: top;">
 <td>
 <code>…</code>
 </td>
@@ -1200,26 +1196,25 @@ See Also
 <h3>
 Examples
 </h3>
-<pre class="r">
-summary(attenu, digits = 4) #-&gt; summary.data.frame(...), default precision
+<pre class="r"><code class='language-R'>summary(attenu, digits = 4) #-&gt; summary.data.frame(...), default precision
 summary(attenu $ station, maxsum = 20) #-&gt; summary.factor(...)
 
 lst &lt;- unclass(attenu$station) &gt; 20 # logical with NAs
 ## summary.default() for logicals -- different from *.factor:
 summary(lst)
 summary(as.factor(lst))
-</pre>
+</code></pre>
 </div>
 </div>
 <div id="觀察資料維度" class="section level4 hasAnchor" number="4.1.2.1">
 <h4><span class="header-section-number">4.1.2.1</span> 觀察資料維度<a href="基本操作.html#觀察資料維度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="基本操作.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="基本操作.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 20  3</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="基本操作.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="基本操作.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="基本操作.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="基本操作.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 20</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="基本操作.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="基本操作.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 3</code></pre>
 </div>
 </div>
@@ -1233,15 +1228,15 @@ summary(as.factor(lst))
 <li><code>df$發生時段</code> 顯示該變數內容</li>
 <li><code>length(df$發生時段)</code> 顯示該變數的長度（相當於有幾個）</li>
 </ul>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="基本操作.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="基本操作.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;country&quot; &quot;import&quot;  &quot;export&quot;</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="基本操作.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>發生.現.地點)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="基本操作.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>發生.現.地點)</span></code></pre></div>
 <pre class="output"><code>## NULL</code></pre>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="基本操作.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>發生時段)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="基本操作.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>發生時段)</span></code></pre></div>
 <pre class="output"><code>## NULL</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="基本操作.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df<span class="sc">$</span>發生時段)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="基本操作.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df<span class="sc">$</span>發生時段)</span></code></pre></div>
 <pre class="output"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="基本操作.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="基本操作.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1346,7 +1341,7 @@ Max. :22.987
 <li>這裡容易犯錯的是，要記得跟程式講說你要加總或四則運算的是哪個df的variable。</li>
 <li>從下面的這個操作中，該data.frame會產生一個新的變數<code>sub</code>，這就相當於Excel中的某一行減去某一行，然後把資料放在新的一行。</li>
 </ul>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="基本操作.html#cb209-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>sub <span class="ot">&lt;-</span> df<span class="sc">$</span>import <span class="sc">-</span> df<span class="sc">$</span>export</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="基本操作.html#cb206-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>sub <span class="ot">&lt;-</span> df<span class="sc">$</span>import <span class="sc">-</span> df<span class="sc">$</span>export</span></code></pre></div>
 </div>
 <div id="filter篩選資料選取變數" class="section level4 hasAnchor" number="4.1.3.3">
 <h4><span class="header-section-number">4.1.3.3</span> (filter)篩選資料、選取變數<a href="基本操作.html#filter篩選資料選取變數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1356,7 +1351,7 @@ Max. :22.987
 <li><p>下面的例子<code>nrow(df)</code>為1894，有1894筆資料，所以自然df<span class="math inline">\(import與df\)</span>export的長度都是1894。因此，比較這兩個變數的大小會得到一個長度為1894的boolean (logical) variable。因此把這個長度為1894、充滿TRUE和FALSE的logical vector丟進df的row之處，因為取自df，大小判斷式結果的長度自然和原本的df的列數相同。因此當這個TRUE/FALSE被丟在df的列之處，便會篩選出<code>import</code>大於<code>p.xport</code>的數值。</p></li>
 <li><p>原本的df有五個variable，而上述的操作是篩選資料，所以被篩選的是列，因此行的數量、名稱都不會變。因此，我篩選完後，直接存取這個被篩選過的data.frame的country variable，自然是可以的。</p></li>
 </ul>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="基本操作.html#cb210-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="基本操作.html#cb207-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1657,12 +1652,12 @@ AE
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="基本操作.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="基本操作.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;country&quot; &quot;import&quot;  &quot;export&quot;  &quot;sub&quot;</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="基本操作.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="基本操作.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] 20</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="基本操作.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter row data by column value</span></span>
-<span id="cb215-2"><a href="基本操作.html#cb215-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,]</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="基本操作.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter row data by column value</span></span>
+<span id="cb212-2"><a href="基本操作.html#cb212-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,]</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1838,18 +1833,18 @@ IN
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="基本操作.html#cb216-1" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,]<span class="sc">$</span>country</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="基本操作.html#cb213-1" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,]<span class="sc">$</span>country</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;CN&quot; &quot;HK&quot; &quot;SG&quot; &quot;MY&quot; &quot;VN&quot; &quot;PH&quot; &quot;TH&quot; &quot;GB&quot; &quot;IN&quot;</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="基本操作.html#cb218-1" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="基本操作.html#cb215-1" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,<span class="dv">1</span>]</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;CN&quot; &quot;HK&quot; &quot;SG&quot; &quot;MY&quot; &quot;VN&quot; &quot;PH&quot; &quot;TH&quot; &quot;GB&quot; &quot;IN&quot;</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="基本操作.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 row == a data.frame with only one data entry</span></span>
-<span id="cb220-2"><a href="基本操作.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="基本操作.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 row == a data.frame with only one data entry</span></span>
+<span id="cb217-2"><a href="基本操作.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[df<span class="sc">$</span>import <span class="sc">&gt;</span> df<span class="sc">$</span>export,<span class="dv">1</span>])</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="基本操作.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[,<span class="dv">1</span>]) <span class="co"># character vector</span></span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="基本操作.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[,<span class="dv">1</span>]) <span class="co"># character vector</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="基本操作.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[<span class="dv">1</span>,]) <span class="co"># data.frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="基本操作.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[<span class="dv">1</span>,]) <span class="co"># data.frame</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="基本操作.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(df[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>])) <span class="co"># filter the 1st row and select all columns except 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="基本操作.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(df[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>])) <span class="co"># filter the 1st row and select all columns except 1</span></span></code></pre></div>
 <pre class="output"><code>## [1] &quot;numeric&quot;</code></pre>
 </div>
 <div id="arrange-按某個變數排序" class="section level4 hasAnchor" number="4.1.3.4">
@@ -1858,17 +1853,17 @@ IN
 <li><code>df.sorted &lt;- df[order(df$import),]</code>會使得整個df照<code>import</code>的大小排序重新做排列。因為<code>order(df$import)</code>會把資料照指定順序排列後的位置傳回來，所以把他丟給<code>df</code>的列的位置，便會使得<code>df</code>的資料照指定的順序排列。
 預設是由小到大，加上<code>decreasing = T</code>這個參數後變成由大而小。</li>
 </ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="基本操作.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort rows by df$import column</span></span>
-<span id="cb228-2"><a href="基本操作.html#cb228-2" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>import),]</span>
-<span id="cb228-3"><a href="基本操作.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df.sorted)</span></span>
-<span id="cb228-4"><a href="基本操作.html#cb228-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-5"><a href="基本操作.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sort rows in decreasing order</span></span>
-<span id="cb228-6"><a href="基本操作.html#cb228-6" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>import, <span class="at">decreasing =</span> T),]</span>
-<span id="cb228-7"><a href="基本操作.html#cb228-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-8"><a href="基本操作.html#cb228-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add - to column in order() can sort in decreasing order</span></span>
-<span id="cb228-9"><a href="基本操作.html#cb228-9" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(<span class="sc">-</span>df<span class="sc">$</span>import),]</span>
-<span id="cb228-10"><a href="基本操作.html#cb228-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-11"><a href="基本操作.html#cb228-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df.sorted)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="基本操作.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort rows by df$import column</span></span>
+<span id="cb225-2"><a href="基本操作.html#cb225-2" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>import),]</span>
+<span id="cb225-3"><a href="基本操作.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df.sorted)</span></span>
+<span id="cb225-4"><a href="基本操作.html#cb225-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-5"><a href="基本操作.html#cb225-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sort rows in decreasing order</span></span>
+<span id="cb225-6"><a href="基本操作.html#cb225-6" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>import, <span class="at">decreasing =</span> T),]</span>
+<span id="cb225-7"><a href="基本操作.html#cb225-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-8"><a href="基本操作.html#cb225-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add - to column in order() can sort in decreasing order</span></span>
+<span id="cb225-9"><a href="基本操作.html#cb225-9" aria-hidden="true" tabindex="-1"></a>df.sorted <span class="ot">&lt;-</span> df[<span class="fu">order</span>(<span class="sc">-</span>df<span class="sc">$</span>import),]</span>
+<span id="cb225-10"><a href="基本操作.html#cb225-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-11"><a href="基本操作.html#cb225-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df.sorted)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2063,7 +2058,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

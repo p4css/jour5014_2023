@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>19.3 Global Carbon Projects | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="19.3 Global Carbon Projects | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -464,21 +463,21 @@ div.csl-indent {
 <div id="global-carbon-projects" class="section level2 hasAnchor" number="19.3">
 <h2><span class="header-section-number">19.3</span> Global Carbon Projects<a href="global-carbon-projects.html#global-carbon-projects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a href="https://www.nytimes.com/interactive/2021/11/12/climate/cop26-emissions-compensation.html?campaign_id=29&amp;emc=edit_up_20211112&amp;instance_id=45236&amp;nl=the-upshot&amp;regi_id=52022771&amp;segment_id=74222&amp;te=1&amp;user_id=7cc6d9cd8f523e256ae41958ee8a9cb5">Who Has The Most Historical Responsibility for Climate Change? - The New York Times (nytimes.com)</a></p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="global-carbon-projects.html#cb552-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb552-2"><a href="global-carbon-projects.html#cb552-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb552-3"><a href="global-carbon-projects.html#cb552-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb552-4"><a href="global-carbon-projects.html#cb552-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb552-5"><a href="global-carbon-projects.html#cb552-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb552-6"><a href="global-carbon-projects.html#cb552-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
-<span id="cb552-7"><a href="global-carbon-projects.html#cb552-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb552-8"><a href="global-carbon-projects.html#cb552-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb552-9"><a href="global-carbon-projects.html#cb552-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
-<span id="cb552-10"><a href="global-carbon-projects.html#cb552-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
-<span id="cb552-11"><a href="global-carbon-projects.html#cb552-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb552-12"><a href="global-carbon-projects.html#cb552-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb552-13"><a href="global-carbon-projects.html#cb552-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb552-14"><a href="global-carbon-projects.html#cb552-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
-<span id="cb552-15"><a href="global-carbon-projects.html#cb552-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="global-carbon-projects.html#cb551-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb551-2"><a href="global-carbon-projects.html#cb551-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb551-3"><a href="global-carbon-projects.html#cb551-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb551-4"><a href="global-carbon-projects.html#cb551-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb551-5"><a href="global-carbon-projects.html#cb551-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb551-6"><a href="global-carbon-projects.html#cb551-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
+<span id="cb551-7"><a href="global-carbon-projects.html#cb551-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb551-8"><a href="global-carbon-projects.html#cb551-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb551-9"><a href="global-carbon-projects.html#cb551-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
+<span id="cb551-10"><a href="global-carbon-projects.html#cb551-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
+<span id="cb551-11"><a href="global-carbon-projects.html#cb551-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb551-12"><a href="global-carbon-projects.html#cb551-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb551-13"><a href="global-carbon-projects.html#cb551-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb551-14"><a href="global-carbon-projects.html#cb551-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
+<span id="cb551-15"><a href="global-carbon-projects.html#cb551-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
 
 </div>
 <!-- </div> -->
@@ -549,7 +548,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

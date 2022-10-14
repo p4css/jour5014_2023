@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.1 R Syntax | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.1 R Syntax | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -469,11 +468,11 @@ div.csl-indent {
 <li><code>&lt;-</code> 將右邊的算式或數值指派給左邊的變數。右邊如果是numeric，那左邊的變數就是numeric variable；右邊如果是character，左邊的變數就是character variable。</li>
 <li>在幾乎所有程式語言中，單等號<code>=</code>指的是assignment，把右方的算式、值或物件指給左方的變數。而比較兩者相不相等，則用雙等號<code>==</code>，例如<code>1==3-2</code>。</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-syntax.html#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb14-2"><a href="r-syntax.html#cb14-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb14-3"><a href="r-syntax.html#cb14-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>)</span>
-<span id="cb14-4"><a href="r-syntax.html#cb14-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(b, a)</span>
-<span id="cb14-5"><a href="r-syntax.html#cb14-5" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="st">&quot;abcd&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-syntax.html#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb11-2"><a href="r-syntax.html#cb11-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb11-3"><a href="r-syntax.html#cb11-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>)</span>
+<span id="cb11-4"><a href="r-syntax.html#cb11-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(b, a)</span>
+<span id="cb11-5"><a href="r-syntax.html#cb11-5" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="st">&quot;abcd&quot;</span></span></code></pre></div>
 </div>
 <div id="comments-註解" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> comments 註解<a href="r-syntax.html#comments-註解" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -481,7 +480,7 @@ div.csl-indent {
 <li><strong>註解</strong>：在程式碼區塊若前面有<code>#</code>字號後面跟著空白的話，那代表那行被標示為註解，程式執行時會自動跳過註解不執行。</li>
 <li><strong>快速鍵</strong>：當游標在某一行程式碼時打<code>cmd(ctrl)-shift-c</code>，就可以產生註解。</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-syntax.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- data.frame(a = c(1, 2, 3), b = c(3, 4, 5))</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-syntax.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- data.frame(a = c(1, 2, 3), b = c(3, 4, 5))</span></span></code></pre></div>
 </div>
 </div>
             </section>
@@ -551,7 +550,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

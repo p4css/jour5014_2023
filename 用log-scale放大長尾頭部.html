@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.2 用Log-scale放大長尾頭部 | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.2 用Log-scale放大長尾頭部 | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -463,33 +462,33 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="用log-scale放大長尾頭部" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> 用Log-scale放大長尾頭部<a href="用log-scale放大長尾頭部.html#用log-scale放大長尾頭部" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="用log-scale放大長尾頭部.html#cb498-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/opendata107Y020.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb498-2"><a href="用log-scale放大長尾頭部.html#cb498-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb498-3"><a href="用log-scale放大長尾頭部.html#cb498-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
-<span id="cb498-4"><a href="用log-scale放大長尾頭部.html#cb498-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-5"><a href="用log-scale放大長尾頭部.html#cb498-5" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb498-6"><a href="用log-scale放大長尾頭部.html#cb498-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(site_id, village, edu_age_15up_total) <span class="sc">%&gt;%</span></span>
-<span id="cb498-7"><a href="用log-scale放大長尾頭部.html#cb498-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(edu_age_15up_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb498-8"><a href="用log-scale放大長尾頭部.html#cb498-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb498-9"><a href="用log-scale放大長尾頭部.html#cb498-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(index <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">|</span> index <span class="sc">&gt;</span> <span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>, <span class="fu">paste0</span>(site_id, village), <span class="st">&quot;&quot;</span>))</span>
-<span id="cb498-10"><a href="用log-scale放大長尾頭部.html#cb498-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-11"><a href="用log-scale放大長尾頭部.html#cb498-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb498-12"><a href="用log-scale放大長尾頭部.html#cb498-12" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
-<span id="cb498-13"><a href="用log-scale放大長尾頭部.html#cb498-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb498-14"><a href="用log-scale放大長尾頭部.html#cb498-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">point.padding =</span> .<span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb498-15"><a href="用log-scale放大長尾頭部.html#cb498-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">min.segment.length =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb498-16"><a href="用log-scale放大長尾頭部.html#cb498-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb498-17"><a href="用log-scale放大長尾頭部.html#cb498-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)) <span class="sc">+</span> </span>
-<span id="cb498-18"><a href="用log-scale放大長尾頭部.html#cb498-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb498-19"><a href="用log-scale放大長尾頭部.html#cb498-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
-<span id="cb498-20"><a href="用log-scale放大長尾頭部.html#cb498-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb498-21"><a href="用log-scale放大長尾頭部.html#cb498-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb498-22"><a href="用log-scale放大長尾頭部.html#cb498-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb498-23"><a href="用log-scale放大長尾頭部.html#cb498-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-24"><a href="用log-scale放大長尾頭部.html#cb498-24" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb498-25"><a href="用log-scale放大長尾頭部.html#cb498-25" aria-hidden="true" tabindex="-1"></a>  p2, <span class="cn">NULL</span>, p1,</span>
-<span id="cb498-26"><a href="用log-scale放大長尾頭部.html#cb498-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb498-27"><a href="用log-scale放大長尾頭部.html#cb498-27" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="用log-scale放大長尾頭部.html#cb497-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/opendata107Y020.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb497-2"><a href="用log-scale放大長尾頭部.html#cb497-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb497-3"><a href="用log-scale放大長尾頭部.html#cb497-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
+<span id="cb497-4"><a href="用log-scale放大長尾頭部.html#cb497-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb497-5"><a href="用log-scale放大長尾頭部.html#cb497-5" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb497-6"><a href="用log-scale放大長尾頭部.html#cb497-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(site_id, village, edu_age_15up_total) <span class="sc">%&gt;%</span></span>
+<span id="cb497-7"><a href="用log-scale放大長尾頭部.html#cb497-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(edu_age_15up_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb497-8"><a href="用log-scale放大長尾頭部.html#cb497-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb497-9"><a href="用log-scale放大長尾頭部.html#cb497-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(index <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">|</span> index <span class="sc">&gt;</span> <span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>, <span class="fu">paste0</span>(site_id, village), <span class="st">&quot;&quot;</span>))</span>
+<span id="cb497-10"><a href="用log-scale放大長尾頭部.html#cb497-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb497-11"><a href="用log-scale放大長尾頭部.html#cb497-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb497-12"><a href="用log-scale放大長尾頭部.html#cb497-12" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
+<span id="cb497-13"><a href="用log-scale放大長尾頭部.html#cb497-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb497-14"><a href="用log-scale放大長尾頭部.html#cb497-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">point.padding =</span> .<span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb497-15"><a href="用log-scale放大長尾頭部.html#cb497-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">min.segment.length =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb497-16"><a href="用log-scale放大長尾頭部.html#cb497-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb497-17"><a href="用log-scale放大長尾頭部.html#cb497-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)) <span class="sc">+</span> </span>
+<span id="cb497-18"><a href="用log-scale放大長尾頭部.html#cb497-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb497-19"><a href="用log-scale放大長尾頭部.html#cb497-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
+<span id="cb497-20"><a href="用log-scale放大長尾頭部.html#cb497-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb497-21"><a href="用log-scale放大長尾頭部.html#cb497-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb497-22"><a href="用log-scale放大長尾頭部.html#cb497-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb497-23"><a href="用log-scale放大長尾頭部.html#cb497-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb497-24"><a href="用log-scale放大長尾頭部.html#cb497-24" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb497-25"><a href="用log-scale放大長尾頭部.html#cb497-25" aria-hidden="true" tabindex="-1"></a>  p2, <span class="cn">NULL</span>, p1,</span>
+<span id="cb497-26"><a href="用log-scale放大長尾頭部.html#cb497-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb497-27"><a href="用log-scale放大長尾頭部.html#cb497-27" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
             </section>
 
@@ -558,7 +557,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

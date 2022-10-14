@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.2 Heatmap: Vaccination | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.2 Heatmap: Vaccination | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -470,58 +469,58 @@ div.csl-indent {
 <p>另一種繪圖策略是該書上的做法，其Y軸的排序是依照疫苗覆蓋率達到某個數值（例如每百人中有20人完整注射二劑疫苗）的時間早晚來排序。有此作為基準，每個國家在後續時間點的覆蓋速度的比較便比較容易。</p>
 <p>另外需要注意到，顏色的取捨、以及相對於尺度的漸層設計也會影響讀圖。</p>
 <p>本例子的資料前處理難度較高（OS：惡魔級）。困難來自於每個國家登記資料的時間不同，因此會產生大量<code>NA</code>值。但在這樣的狀況下，又要找到以月為時間單位的共同數值，就會更挑戰程式編寫者的資料清理技術。除此之外，如何偵測「每個國家超過每百人有二十人完整注射疫苗的時間點」，更是技巧中的技巧。是個磨練<code>NA</code>值處理和高難度資料前處理的好例子。</p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="heatmap-vaccination.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb507-2"><a href="heatmap-vaccination.html#cb507-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
-<span id="cb507-3"><a href="heatmap-vaccination.html#cb507-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-4"><a href="heatmap-vaccination.html#cb507-4" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
-<span id="cb507-5"><a href="heatmap-vaccination.html#cb507-5" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb507-6"><a href="heatmap-vaccination.html#cb507-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
-<span id="cb507-7"><a href="heatmap-vaccination.html#cb507-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb507-8"><a href="heatmap-vaccination.html#cb507-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
-<span id="cb507-9"><a href="heatmap-vaccination.html#cb507-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb507-10"><a href="heatmap-vaccination.html#cb507-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb507-11"><a href="heatmap-vaccination.html#cb507-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb507-12"><a href="heatmap-vaccination.html#cb507-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
-<span id="cb507-13"><a href="heatmap-vaccination.html#cb507-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-14"><a href="heatmap-vaccination.html#cb507-14" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="ot">&lt;-</span> fullvaccinated <span class="sc">%&gt;%</span></span>
-<span id="cb507-15"><a href="heatmap-vaccination.html#cb507-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb507-16"><a href="heatmap-vaccination.html#cb507-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb507-17"><a href="heatmap-vaccination.html#cb507-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb507-18"><a href="heatmap-vaccination.html#cb507-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb507-19"><a href="heatmap-vaccination.html#cb507-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb507-20"><a href="heatmap-vaccination.html#cb507-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
-<span id="cb507-21"><a href="heatmap-vaccination.html#cb507-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb507-22"><a href="heatmap-vaccination.html#cb507-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
-<span id="cb507-23"><a href="heatmap-vaccination.html#cb507-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="heatmap-vaccination.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb506-2"><a href="heatmap-vaccination.html#cb506-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
+<span id="cb506-3"><a href="heatmap-vaccination.html#cb506-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb506-4"><a href="heatmap-vaccination.html#cb506-4" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
+<span id="cb506-5"><a href="heatmap-vaccination.html#cb506-5" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb506-6"><a href="heatmap-vaccination.html#cb506-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb506-7"><a href="heatmap-vaccination.html#cb506-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb506-8"><a href="heatmap-vaccination.html#cb506-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
+<span id="cb506-9"><a href="heatmap-vaccination.html#cb506-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb506-10"><a href="heatmap-vaccination.html#cb506-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb506-11"><a href="heatmap-vaccination.html#cb506-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb506-12"><a href="heatmap-vaccination.html#cb506-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
+<span id="cb506-13"><a href="heatmap-vaccination.html#cb506-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb506-14"><a href="heatmap-vaccination.html#cb506-14" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="ot">&lt;-</span> fullvaccinated <span class="sc">%&gt;%</span></span>
+<span id="cb506-15"><a href="heatmap-vaccination.html#cb506-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(m, people_fully_vaccinated_per_hundred, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb506-16"><a href="heatmap-vaccination.html#cb506-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb506-17"><a href="heatmap-vaccination.html#cb506-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb506-18"><a href="heatmap-vaccination.html#cb506-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb506-19"><a href="heatmap-vaccination.html#cb506-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb506-20"><a href="heatmap-vaccination.html#cb506-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(perc, <span class="at">na.rm =</span> F)) <span class="sc">%&gt;%</span></span>
+<span id="cb506-21"><a href="heatmap-vaccination.html#cb506-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb506-22"><a href="heatmap-vaccination.html#cb506-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country, month) <span class="sc">%&gt;%</span></span>
+<span id="cb506-23"><a href="heatmap-vaccination.html#cb506-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">perc=</span><span class="dv">0</span>))</span></code></pre></div>
 <p><a href="https://clauswilke.com/dataviz/visualizing-amounts.html" class="uri">https://clauswilke.com/dataviz/visualizing-amounts.html</a></p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="heatmap-vaccination.html#cb508-1" aria-hidden="true" tabindex="-1"></a>watched <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;United Arab Emirates&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Singapore&quot;</span>, </span>
-<span id="cb508-2"><a href="heatmap-vaccination.html#cb508-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;South Korea&quot;</span>, <span class="st">&quot;Taiwan&quot;</span>, <span class="st">&quot;Malaysia&quot;</span>, </span>
-<span id="cb508-3"><a href="heatmap-vaccination.html#cb508-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Hong Kong&quot;</span>, <span class="st">&quot;New Zealand&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, </span>
-<span id="cb508-4"><a href="heatmap-vaccination.html#cb508-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Netherlands&quot;</span>, <span class="st">&quot;United States&quot;</span>, <span class="st">&quot;Israel&quot;</span>, </span>
-<span id="cb508-5"><a href="heatmap-vaccination.html#cb508-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;United Kingdom&quot;</span>, <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Philippines&quot;</span>)</span>
-<span id="cb508-6"><a href="heatmap-vaccination.html#cb508-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb508-7"><a href="heatmap-vaccination.html#cb508-7" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
-<span id="cb508-8"><a href="heatmap-vaccination.html#cb508-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb508-9"><a href="heatmap-vaccination.html#cb508-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
-<span id="cb508-10"><a href="heatmap-vaccination.html#cb508-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="st">`</span><span class="at">2022-05-01</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb508-11"><a href="heatmap-vaccination.html#cb508-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb508-12"><a href="heatmap-vaccination.html#cb508-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
-<span id="cb508-13"><a href="heatmap-vaccination.html#cb508-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb508-14"><a href="heatmap-vaccination.html#cb508-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="heatmap-vaccination.html#cb507-1" aria-hidden="true" tabindex="-1"></a>watched <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;United Arab Emirates&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Singapore&quot;</span>, </span>
+<span id="cb507-2"><a href="heatmap-vaccination.html#cb507-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;South Korea&quot;</span>, <span class="st">&quot;Taiwan&quot;</span>, <span class="st">&quot;Malaysia&quot;</span>, </span>
+<span id="cb507-3"><a href="heatmap-vaccination.html#cb507-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Hong Kong&quot;</span>, <span class="st">&quot;New Zealand&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, </span>
+<span id="cb507-4"><a href="heatmap-vaccination.html#cb507-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Netherlands&quot;</span>, <span class="st">&quot;United States&quot;</span>, <span class="st">&quot;Israel&quot;</span>, </span>
+<span id="cb507-5"><a href="heatmap-vaccination.html#cb507-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;United Kingdom&quot;</span>, <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Philippines&quot;</span>)</span>
+<span id="cb507-6"><a href="heatmap-vaccination.html#cb507-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-7"><a href="heatmap-vaccination.html#cb507-7" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
+<span id="cb507-8"><a href="heatmap-vaccination.html#cb507-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb507-9"><a href="heatmap-vaccination.html#cb507-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
+<span id="cb507-10"><a href="heatmap-vaccination.html#cb507-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="st">`</span><span class="at">2022-05-01</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb507-11"><a href="heatmap-vaccination.html#cb507-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb507-12"><a href="heatmap-vaccination.html#cb507-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
+<span id="cb507-13"><a href="heatmap-vaccination.html#cb507-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb507-14"><a href="heatmap-vaccination.html#cb507-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
 <p><a href="https://clauswilke.com/dataviz/visualizing-amounts.html" class="uri">https://clauswilke.com/dataviz/visualizing-amounts.html</a></p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="heatmap-vaccination.html#cb509-1" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
-<span id="cb509-2"><a href="heatmap-vaccination.html#cb509-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
-<span id="cb509-3"><a href="heatmap-vaccination.html#cb509-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">as_date</span>(month)) <span class="sc">%&gt;%</span></span>
-<span id="cb509-4"><a href="heatmap-vaccination.html#cb509-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb509-5"><a href="heatmap-vaccination.html#cb509-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month1 =</span> <span class="fu">min</span>((month[perc <span class="sc">&gt;</span> <span class="dv">20</span>]))) <span class="sc">%&gt;%</span> </span>
-<span id="cb509-6"><a href="heatmap-vaccination.html#cb509-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb509-7"><a href="heatmap-vaccination.html#cb509-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb509-8"><a href="heatmap-vaccination.html#cb509-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="fu">as.numeric</span>(month1))) <span class="sc">%&gt;%</span></span>
-<span id="cb509-9"><a href="heatmap-vaccination.html#cb509-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month1) <span class="sc">%&gt;%</span></span>
-<span id="cb509-10"><a href="heatmap-vaccination.html#cb509-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
-<span id="cb509-11"><a href="heatmap-vaccination.html#cb509-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
-<span id="cb509-12"><a href="heatmap-vaccination.html#cb509-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb509-13"><a href="heatmap-vaccination.html#cb509-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="heatmap-vaccination.html#cb508-1" aria-hidden="true" tabindex="-1"></a>vperc_by_month <span class="sc">%&gt;%</span> </span>
+<span id="cb508-2"><a href="heatmap-vaccination.html#cb508-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> watched) <span class="sc">%&gt;%</span></span>
+<span id="cb508-3"><a href="heatmap-vaccination.html#cb508-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">as_date</span>(month)) <span class="sc">%&gt;%</span></span>
+<span id="cb508-4"><a href="heatmap-vaccination.html#cb508-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb508-5"><a href="heatmap-vaccination.html#cb508-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month1 =</span> <span class="fu">min</span>((month[perc <span class="sc">&gt;</span> <span class="dv">20</span>]))) <span class="sc">%&gt;%</span> </span>
+<span id="cb508-6"><a href="heatmap-vaccination.html#cb508-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb508-7"><a href="heatmap-vaccination.html#cb508-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(month, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb508-8"><a href="heatmap-vaccination.html#cb508-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span><span class="fu">as.numeric</span>(month1))) <span class="sc">%&gt;%</span></span>
+<span id="cb508-9"><a href="heatmap-vaccination.html#cb508-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month1) <span class="sc">%&gt;%</span></span>
+<span id="cb508-10"><a href="heatmap-vaccination.html#cb508-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(month, perc, <span class="sc">-</span>country) <span class="sc">%&gt;%</span></span>
+<span id="cb508-11"><a href="heatmap-vaccination.html#cb508-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(month, country, <span class="at">fill=</span>perc) <span class="sc">+</span> </span>
+<span id="cb508-12"><a href="heatmap-vaccination.html#cb508-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb508-13"><a href="heatmap-vaccination.html#cb508-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
 
 </div>
 <!-- </div> -->
@@ -598,7 +597,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.4 tibble, data_frame, data.frame | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.4 tibble, data_frame, data.frame | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-05-26" />
+<meta name="date" content="2022-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.22/datatables.js"></script>
+<script src="libs/datatables-binding-0.25/datatables.js"></script>
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
@@ -183,11 +183,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#載入dcard頁面資料"><i class="fa fa-check"></i><b>2.2.1</b> 載入dcard頁面資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.2</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.3</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.4</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.5" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.5</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
+<li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
 <ul>
@@ -464,14 +463,14 @@ div.csl-indent {
 <div id="tibble-data_frame-data.frame" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> tibble, data_frame, data.frame<a href="tibble-data_frame-data.html#tibble-data_frame-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>警告： "data_frame()" was deprecated in tibble 1.1.0. Please use "tibble()" instead.</code></p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="tibble-data_frame-data.html#cb237-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb237-2"><a href="tibble-data_frame-data.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="tibble-data_frame-data.html#cb234-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb234-2"><a href="tibble-data_frame-data.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="tibble-data_frame-data.html#cb239-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb239-2"><a href="tibble-data_frame-data.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="tibble-data_frame-data.html#cb236-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb236-2"><a href="tibble-data_frame-data.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="tibble-data_frame-data.html#cb241-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb241-2"><a href="tibble-data_frame-data.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="tibble-data_frame-data.html#cb238-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">b=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">c=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb238-2"><a href="tibble-data_frame-data.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 </div>
             </section>
@@ -541,7 +540,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
