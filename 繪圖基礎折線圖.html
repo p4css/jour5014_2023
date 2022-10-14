@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -477,21 +481,25 @@ div.csl-indent {
 <p><code>ggplot()</code> 會秀出預備要繪製的繪圖區</p>
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="繪圖基礎折線圖.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb468-2"><a href="繪圖基礎折線圖.html#cb468-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 <p><strong>指定X／Y軸與群組因子<code>aes()</code></strong>：<code>aes()</code>會在繪圖區上繪製X與Y軸</p>
 <div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="繪圖基礎折線圖.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb469-2"><a href="繪圖基礎折線圖.html#cb469-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb469-3"><a href="繪圖基礎折線圖.html#cb469-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
 <p><strong>指定要繪製的圖表類型</strong>。例如Line-chart為<code>geom_line()</code>、</p>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="繪圖基礎折線圖.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb470-2"><a href="繪圖基礎折線圖.html#cb470-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb470-3"><a href="繪圖基礎折線圖.html#cb470-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
 <span id="cb470-4"><a href="繪圖基礎折線圖.html#cb470-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
 <p>此圖為一雙變數的圖，基於雙變數，可以將不同的圖同時繪製在同一個繪圖區上。例如以下同時繪製了<code>geom_line()</code>與<code>geom_plot()</code>。</p>
 <div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="繪圖基礎折線圖.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb471-2"><a href="繪圖基礎折線圖.html#cb471-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb471-3"><a href="繪圖基礎折線圖.html#cb471-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
 <span id="cb471-4"><a href="繪圖基礎折線圖.html#cb471-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb471-5"><a href="繪圖基礎折線圖.html#cb471-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
 </div>
 <div id="範例-紐時世代貧富不均" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> 範例-紐時世代貧富不均<a href="繪圖基礎折線圖.html#範例-紐時世代貧富不均" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -504,41 +512,51 @@ div.csl-indent {
 <span id="cb472-5"><a href="繪圖基礎折線圖.html#cb472-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
 <span id="cb472-6"><a href="繪圖基礎折線圖.html#cb472-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb472-7"><a href="繪圖基礎折線圖.html#cb472-7" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre class="output"><code>## Rows: 66
+## Columns: 3
+## $ Category  &lt;chr&gt; &quot;Less than 35&quot;, &quot;35-44&quot;, &quot;45-54&quot;, &quot;55-64&quot;, &quot;65-74&quot;, &quot;75 or o…
+## $ year      &lt;dbl&gt; 1989, 1989, 1989, 1989, 1989, 1989, 1992, 1992, 1992, 1992, …
+## $ Net_Worth &lt;dbl&gt; 16.17019, 112.47530, 195.11630, 195.25554, 154.34277, 144.29…</code></pre>
 <p>這是預期視覺化的結果</p>
 <p><img src="images/paste-B46B3CD7.png" /></p>
 <p>先將<code>year</code>和<code>Net_worth</code>分別繪製在X與Y軸上，並用<code>geom_line()</code>繪製為折現圖。結果圖表中呈現鋸齒狀的折線，看似有問題，但其實是合理的。因為<code>year</code>是一個離散變數，而我們希望每個年齡層一條線的話，那就要照年齡層來分組。也因此，每一年都有有每個年齡層的資料，當我們把「年」作為X軸時，自然同一年就會有數筆不同年齡層的資料，因此才會是鋸齒狀的。</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="繪圖基礎折線圖.html#cb473-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb473-2"><a href="繪圖基礎折線圖.html#cb473-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb473-3"><a href="繪圖基礎折線圖.html#cb473-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
-<span id="cb473-4"><a href="繪圖基礎折線圖.html#cb473-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><strong>不同的圖表類型是可以疊加在同一張圖上的</strong>。我們也可以把<code>geom_point()</code> 另一種圖表型態加入，也是可以的，兩者的X與Y不相衝突。<code>geom_line()</code>、<code>geom_point()</code>、<code>geom_text()</code>三者會經常伴隨出現。</p>
 <div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="繪圖基礎折線圖.html#cb474-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
 <span id="cb474-2"><a href="繪圖基礎折線圖.html#cb474-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb474-3"><a href="繪圖基礎折線圖.html#cb474-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
-<span id="cb474-4"><a href="繪圖基礎折線圖.html#cb474-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb474-5"><a href="繪圖基礎折線圖.html#cb474-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<span id="cb474-4"><a href="繪圖基礎折線圖.html#cb474-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p><strong>不同的圖表類型是可以疊加在同一張圖上的</strong>。我們也可以把<code>geom_point()</code> 另一種圖表型態加入，也是可以的，兩者的X與Y不相衝突。<code>geom_line()</code>、<code>geom_point()</code>、<code>geom_text()</code>三者會經常伴隨出現。</p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="繪圖基礎折線圖.html#cb475-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb475-2"><a href="繪圖基礎折線圖.html#cb475-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb475-3"><a href="繪圖基礎折線圖.html#cb475-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
+<span id="cb475-4"><a href="繪圖基礎折線圖.html#cb475-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb475-5"><a href="繪圖基礎折線圖.html#cb475-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
 </div>
 <div id="加入自變項群組" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> 加入自變項群組<a href="繪圖基礎折線圖.html#加入自變項群組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>上圖是我們把多個年齡層的逐年資料畫在同一條折線上，所以會呈現鋸齒狀折現的狀況。但這些年齡層並非在同一條線上呀？因此，我們要根據<code>Category</code>這個變數來做分組。</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="繪圖基礎折線圖.html#cb475-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb475-2"><a href="繪圖基礎折線圖.html#cb475-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb475-3"><a href="繪圖基礎折線圖.html#cb475-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth, <span class="at">group=</span>Category) <span class="sc">+</span> </span>
-<span id="cb475-4"><a href="繪圖基礎折線圖.html#cb475-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb475-5"><a href="繪圖基礎折線圖.html#cb475-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="繪圖基礎折線圖.html#cb476-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb476-2"><a href="繪圖基礎折線圖.html#cb476-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb476-3"><a href="繪圖基礎折線圖.html#cb476-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth, <span class="at">group=</span>Category) <span class="sc">+</span> </span>
+<span id="cb476-4"><a href="繪圖基礎折線圖.html#cb476-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb476-5"><a href="繪圖基礎折線圖.html#cb476-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
 <p>如希望不同線條上不一樣的色彩，應指定<code>color=Category</code>。</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="繪圖基礎折線圖.html#cb476-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb476-2"><a href="繪圖基礎折線圖.html#cb476-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb476-3"><a href="繪圖基礎折線圖.html#cb476-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="繪圖基礎折線圖.html#cb477-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb477-2"><a href="繪圖基礎折線圖.html#cb477-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb477-3"><a href="繪圖基礎折線圖.html#cb477-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <dl>
 <dt>用color、fill或group來做分組？</dt>
 <dd>
 <p><code>geom_line()</code>的色彩是在<strong>線</strong>，而不是在<strong>面</strong>上。如果色彩是在點（如<code>geom_point()</code>）或線（<code>geom_line()</code>）上，就是用<code>color</code>來指定顏色。但如果是如類似下面的例子，用<code>geom_area()</code>來視覺化的話，因為顏色填的是<strong>面</strong>，所以要用<code>fill=Category</code>。以下範例甚至同時指定<code>color=Category, fill=Category</code>。但折線圖如果要用<code>geom_area()</code>來視覺化的話，最好要上顏色的不要超過二個，不然就會像底下這個例子一樣，即使設定<code>alpha=0.2</code>的半透明，仍然會看不懂哪些顏色疊在一起。</p>
 </dd>
 </dl>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="繪圖基礎折線圖.html#cb477-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb477-2"><a href="繪圖基礎折線圖.html#cb477-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category, <span class="at">fill=</span>Category) <span class="sc">+</span> </span>
-<span id="cb477-3"><a href="繪圖基礎折線圖.html#cb477-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="繪圖基礎折線圖.html#cb478-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb478-2"><a href="繪圖基礎折線圖.html#cb478-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category, <span class="at">fill=</span>Category) <span class="sc">+</span> </span>
+<span id="cb478-3"><a href="繪圖基礎折線圖.html#cb478-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 </div>
 </div>
             </section>

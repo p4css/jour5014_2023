@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -466,75 +470,82 @@ div.csl-indent {
 <h3><span class="header-section-number">8.3.1</span> 點線型態<a href="圖表調整.html#點線型態" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>下面的例子同時用了<code>geom_line()</code>和<code>geom_point()</code>，且分別設定了線寬（<code>size=1</code>）、點的大小(<code>size=2</code>)，折線型態（<code>linetype="dashed"</code>）、半透明程度（<code>alpha</code>）。</p>
 <p><a href="http://www.sthda.com/english/wiki/ggplot2-line-types-how-to-change-line-types-of-a-graph-in-r-software">ggplot2 line types : How to change line types of a graph in R software? - Easy Guides - Wiki - STHDA</a></p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="圖表調整.html#cb478-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb478-2"><a href="圖表調整.html#cb478-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb478-3"><a href="圖表調整.html#cb478-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb478-4"><a href="圖表調整.html#cb478-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="圖表調整.html#cb479-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb479-2"><a href="圖表調整.html#cb479-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb479-3"><a href="圖表調整.html#cb479-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb479-4"><a href="圖表調整.html#cb479-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
 </div>
 <div id="標題標籤與圖說" class="section level3 hasAnchor" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> 標題、標籤與圖說<a href="圖表調整.html#標題標籤與圖說" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Titles, labels, and legend
 <strong>設定標題與X／Y軸標題（法一）</strong>：以下設定了圖表的圖表標題、和X軸與Y軸的軸標題（<code>xlab</code>與<code>ylab</code>）。</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="圖表調整.html#cb479-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb479-2"><a href="圖表調整.html#cb479-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb479-3"><a href="圖表調整.html#cb479-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb479-4"><a href="圖表調整.html#cb479-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb479-5"><a href="圖表調整.html#cb479-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb479-6"><a href="圖表調整.html#cb479-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb479-7"><a href="圖表調整.html#cb479-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>)</span></code></pre></div>
-<p><strong>設定標題與X／Y軸標題（法二）</strong>：這是一次設定圖表標題（<code>title</code>）、次標題（<code>suttitle</code>）、X軸與Y軸標題的方法。</p>
 <div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="圖表調整.html#cb480-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
 <span id="cb480-2"><a href="圖表調整.html#cb480-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb480-3"><a href="圖表調整.html#cb480-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span>  </span>
+<span id="cb480-3"><a href="圖表調整.html#cb480-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb480-4"><a href="圖表調整.html#cb480-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb480-5"><a href="圖表調整.html#cb480-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb480-6"><a href="圖表調整.html#cb480-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;Source from: ...&quot;</span>,</span>
-<span id="cb480-7"><a href="圖表調整.html#cb480-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb480-8"><a href="圖表調整.html#cb480-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>)</span></code></pre></div>
-<p><strong>調整X軸與Y軸標題位置的</strong>：必須要透過<code>theme()</code>來設定<code>axis.title.x = element_text(hjust=1)</code>。</p>
+<span id="cb480-5"><a href="圖表調整.html#cb480-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb480-6"><a href="圖表調整.html#cb480-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb480-7"><a href="圖表調整.html#cb480-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
+<p><strong>設定標題與X／Y軸標題（法二）</strong>：這是一次設定圖表標題（<code>title</code>）、次標題（<code>suttitle</code>）、X軸與Y軸標題的方法。</p>
 <div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="圖表調整.html#cb481-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
 <span id="cb481-2"><a href="圖表調整.html#cb481-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb481-3"><a href="圖表調整.html#cb481-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb481-3"><a href="圖表調整.html#cb481-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span>  </span>
 <span id="cb481-4"><a href="圖表調整.html#cb481-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
 <span id="cb481-5"><a href="圖表調整.html#cb481-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb481-6"><a href="圖表調整.html#cb481-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb481-7"><a href="圖表調整.html#cb481-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb481-8"><a href="圖表調整.html#cb481-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>),</span>
-<span id="cb481-9"><a href="圖表調整.html#cb481-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
-<p><strong>去除X／Y軸標題（不佳）</strong>：直接將空字串Assign給<code>title</code>、<code>x</code>、與<code>y</code>即可。</p>
+<span id="cb481-6"><a href="圖表調整.html#cb481-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;Source from: ...&quot;</span>,</span>
+<span id="cb481-7"><a href="圖表調整.html#cb481-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb481-8"><a href="圖表調整.html#cb481-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+<p><strong>調整X軸與Y軸標題位置的</strong>：必須要透過<code>theme()</code>來設定<code>axis.title.x = element_text(hjust=1)</code>。</p>
 <div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="圖表調整.html#cb482-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
 <span id="cb482-2"><a href="圖表調整.html#cb482-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
 <span id="cb482-3"><a href="圖表調整.html#cb482-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb482-4"><a href="圖表調整.html#cb482-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb482-5"><a href="圖表調整.html#cb482-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<span id="cb482-5"><a href="圖表調整.html#cb482-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
+<span id="cb482-6"><a href="圖表調整.html#cb482-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb482-7"><a href="圖表調整.html#cb482-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb482-8"><a href="圖表調整.html#cb482-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>),</span>
+<span id="cb482-9"><a href="圖表調整.html#cb482-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<p><strong>去除X／Y軸標題（不佳）</strong>：直接將空字串Assign給<code>title</code>、<code>x</code>、與<code>y</code>即可。</p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="圖表調整.html#cb483-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb483-2"><a href="圖表調整.html#cb483-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb483-3"><a href="圖表調整.html#cb483-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb483-4"><a href="圖表調整.html#cb483-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb483-5"><a href="圖表調整.html#cb483-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 <p><strong>去除X／Y軸標題（較佳）</strong>：透過設定<code>theme()</code>來調整。可發現透過這種設定方法，原本標題和X／Y軸標題的邊界空間就會被釋放出來。</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="圖表調整.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No extra space for xlab, ylab and title</span></span>
-<span id="cb483-2"><a href="圖表調整.html#cb483-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb483-3"><a href="圖表調整.html#cb483-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb483-4"><a href="圖表調整.html#cb483-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb483-5"><a href="圖表調整.html#cb483-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb483-6"><a href="圖表調整.html#cb483-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb483-7"><a href="圖表調整.html#cb483-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb483-8"><a href="圖表調整.html#cb483-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="圖表調整.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No extra space for xlab, ylab and title</span></span>
+<span id="cb484-2"><a href="圖表調整.html#cb484-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb484-3"><a href="圖表調整.html#cb484-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb484-4"><a href="圖表調整.html#cb484-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb484-5"><a href="圖表調整.html#cb484-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb484-6"><a href="圖表調整.html#cb484-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb484-7"><a href="圖表調整.html#cb484-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb484-8"><a href="圖表調整.html#cb484-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
 </div>
 <div id="字體樣式" class="section level3 hasAnchor" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> 字體樣式<a href="圖表調整.html#字體樣式" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>調整字型會建議都從<code>theme()</code>來做調整，所有圖面上看得到的字都有相對應的變數可以調整字型。例如以下的例子中，把標題的字型大小調整為14粗體、X與Y軸的字型則調整了向右對齊、10粗斜體、顏色為dimgrey。</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="圖表調整.html#cb484-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb484-2"><a href="圖表調整.html#cb484-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb484-3"><a href="圖表調整.html#cb484-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb484-4"><a href="圖表調整.html#cb484-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb484-5"><a href="圖表調整.html#cb484-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb484-6"><a href="圖表調整.html#cb484-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb484-7"><a href="圖表調整.html#cb484-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb484-8"><a href="圖表調整.html#cb484-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb484-9"><a href="圖表調整.html#cb484-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb484-10"><a href="圖表調整.html#cb484-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb484-11"><a href="圖表調整.html#cb484-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
-<span id="cb484-12"><a href="圖表調整.html#cb484-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb484-13"><a href="圖表調整.html#cb484-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb484-14"><a href="圖表調整.html#cb484-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
-<span id="cb484-15"><a href="圖表調整.html#cb484-15" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="圖表調整.html#cb485-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb485-2"><a href="圖表調整.html#cb485-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb485-3"><a href="圖表調整.html#cb485-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb485-4"><a href="圖表調整.html#cb485-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb485-5"><a href="圖表調整.html#cb485-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
+<span id="cb485-6"><a href="圖表調整.html#cb485-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb485-7"><a href="圖表調整.html#cb485-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb485-8"><a href="圖表調整.html#cb485-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb485-9"><a href="圖表調整.html#cb485-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb485-10"><a href="圖表調整.html#cb485-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb485-11"><a href="圖表調整.html#cb485-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
+<span id="cb485-12"><a href="圖表調整.html#cb485-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb485-13"><a href="圖表調整.html#cb485-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb485-14"><a href="圖表調整.html#cb485-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
+<span id="cb485-15"><a href="圖表調整.html#cb485-15" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
 </div>
 <div id="圖表主題色調" class="section level3 hasAnchor" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> 圖表主題色調<a href="圖表調整.html#圖表主題色調" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -543,84 +554,90 @@ div.csl-indent {
 <li><a href="https://ggplot2.tidyverse.org/reference/theme.html">Modify components of a theme — theme • ggplot2 (tidyverse.org)</a></li>
 <li><a href="https://github.com/bbc/bbplot/blob/master/R/bbc_style.R">bbplot/bbc_style.R at master · bbc/bbplot (github.com)</a></li>
 </ul>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="圖表調整.html#cb485-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb485-2"><a href="圖表調整.html#cb485-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb485-3"><a href="圖表調整.html#cb485-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb485-4"><a href="圖表調整.html#cb485-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="圖表調整.html#cb486-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb486-2"><a href="圖表調整.html#cb486-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb486-3"><a href="圖表調整.html#cb486-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb486-4"><a href="圖表調整.html#cb486-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
 </div>
 <div id="預設主題" class="section level3 hasAnchor" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> 預設主題<a href="圖表調整.html#預設主題" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>如果希望所有的圖表都有一致的顏色和排版的調性，可以在一開始編輯Rmd的時候就設計好一套<code>theme()</code>並指給一個變數（例如以下的<code>th</code>）。</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="圖表調整.html#cb486-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb486-2"><a href="圖表調整.html#cb486-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb486-3"><a href="圖表調整.html#cb486-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb486-4"><a href="圖表調整.html#cb486-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
-<span id="cb486-5"><a href="圖表調整.html#cb486-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb486-6"><a href="圖表調整.html#cb486-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb486-7"><a href="圖表調整.html#cb486-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
-<span id="cb486-8"><a href="圖表調整.html#cb486-8" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb486-9"><a href="圖表調整.html#cb486-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb486-10"><a href="圖表調整.html#cb486-10" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb486-11"><a href="圖表調整.html#cb486-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb486-12"><a href="圖表調整.html#cb486-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb486-13"><a href="圖表調整.html#cb486-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb486-14"><a href="圖表調整.html#cb486-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb486-15"><a href="圖表調整.html#cb486-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb486-16"><a href="圖表調整.html#cb486-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb486-17"><a href="圖表調整.html#cb486-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> th</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="圖表調整.html#cb487-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb487-2"><a href="圖表調整.html#cb487-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb487-3"><a href="圖表調整.html#cb487-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb487-4"><a href="圖表調整.html#cb487-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
+<span id="cb487-5"><a href="圖表調整.html#cb487-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb487-6"><a href="圖表調整.html#cb487-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb487-7"><a href="圖表調整.html#cb487-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
+<span id="cb487-8"><a href="圖表調整.html#cb487-8" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb487-9"><a href="圖表調整.html#cb487-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb487-10"><a href="圖表調整.html#cb487-10" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb487-11"><a href="圖表調整.html#cb487-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb487-12"><a href="圖表調整.html#cb487-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb487-13"><a href="圖表調整.html#cb487-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb487-14"><a href="圖表調整.html#cb487-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb487-15"><a href="圖表調整.html#cb487-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
+<span id="cb487-16"><a href="圖表調整.html#cb487-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb487-17"><a href="圖表調整.html#cb487-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
 </div>
 <div id="顯示中文字體" class="section level3 hasAnchor" number="8.3.6">
 <h3><span class="header-section-number">8.3.6</span> 顯示中文字體<a href="圖表調整.html#顯示中文字體" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Python和R這些程式語言的預設視覺化套件都沒辦法顯示中文，所以如果要顯示中文的話，就要指定圖表標題、X、Y軸標籤、圖說和各個部件的字型。因為我在Mac上繪圖，所以我將字型指定為<strong>Heiti TC Light</strong>。如果想知道自己的電腦上有什麼可以用，可以到電腦的字體簿上查找中文字體名稱，或者上網google「ggplot 中文字型選擇」。</p>
 <p><img src="images/paste-A259BC75.png" /></p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="圖表調整.html#cb487-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb487-2"><a href="圖表調整.html#cb487-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb487-3"><a href="圖表調整.html#cb487-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb487-4"><a href="圖表調整.html#cb487-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb487-5"><a href="圖表調整.html#cb487-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
-<span id="cb487-6"><a href="圖表調整.html#cb487-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb487-7"><a href="圖表調整.html#cb487-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
-<span id="cb487-8"><a href="圖表調整.html#cb487-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
-<span id="cb487-9"><a href="圖表調整.html#cb487-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb487-10"><a href="圖表調整.html#cb487-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="圖表調整.html#cb488-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb488-2"><a href="圖表調整.html#cb488-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb488-3"><a href="圖表調整.html#cb488-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb488-4"><a href="圖表調整.html#cb488-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb488-5"><a href="圖表調整.html#cb488-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
+<span id="cb488-6"><a href="圖表調整.html#cb488-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb488-7"><a href="圖表調整.html#cb488-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
+<span id="cb488-8"><a href="圖表調整.html#cb488-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
+<span id="cb488-9"><a href="圖表調整.html#cb488-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb488-10"><a href="圖表調整.html#cb488-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
 <p>下面這是一個長條圖的範例（barplot，不是histogram）。Barplot可以直接指定X軸為縣市（county）和Y軸為總人口數（people_total），但是要用<code>geom_col()</code>而非<code>geom_bar()</code>。除此之外，Bar的顏色有「面」的特徵，所以若要自訂整條bar的顏色，要用<code>fill</code>而非<code>color</code>，<code>color</code>只會是每條Bar的外框。</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="圖表調整.html#cb488-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb488-2"><a href="圖表調整.html#cb488-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb488-3"><a href="圖表調整.html#cb488-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb488-4"><a href="圖表調整.html#cb488-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb488-5"><a href="圖表調整.html#cb488-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="圖表調整.html#cb489-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb489-2"><a href="圖表調整.html#cb489-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb489-3"><a href="圖表調整.html#cb489-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb489-4"><a href="圖表調整.html#cb489-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb489-5"><a href="圖表調整.html#cb489-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/barplot-1.png" width="672" /></p>
 <p>舉例來說，中文字型可以是標楷體（BiauKai）、宋體（Songti TC）、黑體（Heiti TC Light）、蘋方（PingFang TC）、Noto（Noto Sans CJK TC）</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="圖表調整.html#cb489-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> </span>
-<span id="cb489-2"><a href="圖表調整.html#cb489-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb489-3"><a href="圖表調整.html#cb489-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>), </span>
-<span id="cb489-4"><a href="圖表調整.html#cb489-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;PingFang TC&quot;</span>),</span>
-<span id="cb489-5"><a href="圖表調整.html#cb489-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb489-6"><a href="圖表調整.html#cb489-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb489-7"><a href="圖表調整.html#cb489-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>)</span>
-<span id="cb489-8"><a href="圖表調整.html#cb489-8" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb489-9"><a href="圖表調整.html#cb489-9" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb489-10"><a href="圖表調整.html#cb489-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb489-11"><a href="圖表調整.html#cb489-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb489-12"><a href="圖表調整.html#cb489-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb489-13"><a href="圖表調整.html#cb489-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="圖表調整.html#cb490-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> </span>
+<span id="cb490-2"><a href="圖表調整.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb490-3"><a href="圖表調整.html#cb490-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>), </span>
+<span id="cb490-4"><a href="圖表調整.html#cb490-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;PingFang TC&quot;</span>),</span>
+<span id="cb490-5"><a href="圖表調整.html#cb490-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb490-6"><a href="圖表調整.html#cb490-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb490-7"><a href="圖表調整.html#cb490-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>)</span>
+<span id="cb490-8"><a href="圖表調整.html#cb490-8" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb490-9"><a href="圖表調整.html#cb490-9" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb490-10"><a href="圖表調整.html#cb490-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb490-11"><a href="圖表調整.html#cb490-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb490-12"><a href="圖表調整.html#cb490-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb490-13"><a href="圖表調整.html#cb490-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
 </div>
 <div id="xy軸方向" class="section level3 hasAnchor" number="8.3.7">
 <h3><span class="header-section-number">8.3.7</span> X/Y軸方向<a href="圖表調整.html#xy軸方向" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>調整圖表方向</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="圖表調整.html#cb490-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb490-2"><a href="圖表調整.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb490-3"><a href="圖表調整.html#cb490-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb490-4"><a href="圖表調整.html#cb490-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb490-5"><a href="圖表調整.html#cb490-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb490-6"><a href="圖表調整.html#cb490-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
-<p>通常<code>coord_flip()</code>後往往會希望這些bar會是由上而下排序好的，但用<code>arrange(desc(people_total)</code>是無法解決問題的，因為Y軸原本會是照Y軸的刻度排列，而不是Y軸的數值。所以，要被排序的應該是Y軸的「文字」也就是那些縣市。因此，我們需要將該縣市轉為factor（1~n），並且讓這些縣市被安排的factor數值照<code>people_total</code>排列，因此要用<code>mutate(county = reorder(county, people_total))</code>。<code>reorder()</code>是一個將文字轉factor的函式，但在此特別指定照<code>people_total</code>的編排。</p>
 <div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="圖表調整.html#cb491-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb491-2"><a href="圖表調整.html#cb491-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange(desc(people_total) %&gt;%</span></span>
-<span id="cb491-3"><a href="圖表調整.html#cb491-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb491-4"><a href="圖表調整.html#cb491-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb491-5"><a href="圖表調整.html#cb491-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb491-6"><a href="圖表調整.html#cb491-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb491-7"><a href="圖表調整.html#cb491-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<span id="cb491-2"><a href="圖表調整.html#cb491-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb491-3"><a href="圖表調整.html#cb491-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb491-4"><a href="圖表調整.html#cb491-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb491-5"><a href="圖表調整.html#cb491-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb491-6"><a href="圖表調整.html#cb491-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/coord_flip()-1.png" width="672" /></p>
+<p>通常<code>coord_flip()</code>後往往會希望這些bar會是由上而下排序好的，但用<code>arrange(desc(people_total)</code>是無法解決問題的，因為Y軸原本會是照Y軸的刻度排列，而不是Y軸的數值。所以，要被排序的應該是Y軸的「文字」也就是那些縣市。因此，我們需要將該縣市轉為factor（1~n），並且讓這些縣市被安排的factor數值照<code>people_total</code>排列，因此要用<code>mutate(county = reorder(county, people_total))</code>。<code>reorder()</code>是一個將文字轉factor的函式，但在此特別指定照<code>people_total</code>的編排。</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="圖表調整.html#cb492-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb492-2"><a href="圖表調整.html#cb492-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange(desc(people_total) %&gt;%</span></span>
+<span id="cb492-3"><a href="圖表調整.html#cb492-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb492-4"><a href="圖表調整.html#cb492-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb492-5"><a href="圖表調整.html#cb492-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb492-6"><a href="圖表調整.html#cb492-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb492-7"><a href="圖表調整.html#cb492-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/coord_flip-with-reorder-1.png" width="672" /></p>
 </div>
 </div>
             </section>

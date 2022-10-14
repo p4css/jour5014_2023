@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -465,40 +469,168 @@ div.csl-indent {
 <div id="unicef-optimistic-wgoith-1" class="section level3 hasAnchor" number="14.1.1">
 <h3><span class="header-section-number">14.1.1</span> UNICEF-Optimistic (WGOITH)<a href="等比例座標軸-1.html#unicef-optimistic-wgoith-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html" class="uri">https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html</a> <a href="https://changingchildhood.unicef.org/about" class="uri">https://changingchildhood.unicef.org/about</a></p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="等比例座標軸-1.html#cb524-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb524-2"><a href="等比例座標軸-1.html#cb524-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
-<span id="cb524-3"><a href="等比例座標軸-1.html#cb524-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
-<span id="cb524-4"><a href="等比例座標軸-1.html#cb524-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
-<span id="cb524-5"><a href="等比例座標軸-1.html#cb524-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
-<span id="cb524-6"><a href="等比例座標軸-1.html#cb524-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
-<span id="cb524-7"><a href="等比例座標軸-1.html#cb524-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
-<span id="cb524-8"><a href="等比例座標軸-1.html#cb524-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
-<span id="cb524-9"><a href="等比例座標軸-1.html#cb524-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
-<span id="cb524-10"><a href="等比例座標軸-1.html#cb524-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
-<span id="cb524-11"><a href="等比例座標軸-1.html#cb524-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
-<span id="cb524-12"><a href="等比例座標軸-1.html#cb524-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
-<span id="cb524-13"><a href="等比例座標軸-1.html#cb524-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
-<span id="cb524-14"><a href="等比例座標軸-1.html#cb524-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
-<span id="cb524-15"><a href="等比例座標軸-1.html#cb524-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb524-16"><a href="等比例座標軸-1.html#cb524-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
-<span id="cb524-17"><a href="等比例座標軸-1.html#cb524-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
-<span id="cb524-18"><a href="等比例座標軸-1.html#cb524-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb524-19"><a href="等比例座標軸-1.html#cb524-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb524-20"><a href="等比例座標軸-1.html#cb524-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb524-21"><a href="等比例座標軸-1.html#cb524-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb524-22"><a href="等比例座標軸-1.html#cb524-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb524-23"><a href="等比例座標軸-1.html#cb524-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
-<span id="cb524-24"><a href="等比例座標軸-1.html#cb524-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb524-25"><a href="等比例座標軸-1.html#cb524-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="等比例座標軸-1.html#cb525-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
-<span id="cb525-2"><a href="等比例座標軸-1.html#cb525-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
-<span id="cb525-3"><a href="等比例座標軸-1.html#cb525-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb525-4"><a href="等比例座標軸-1.html#cb525-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb525-5"><a href="等比例座標軸-1.html#cb525-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb525-6"><a href="等比例座標軸-1.html#cb525-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
-<span id="cb525-7"><a href="等比例座標軸-1.html#cb525-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb525-8"><a href="等比例座標軸-1.html#cb525-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb525-9"><a href="等比例座標軸-1.html#cb525-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="等比例座標軸-1.html#cb526-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb526-2"><a href="等比例座標軸-1.html#cb526-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
+<span id="cb526-3"><a href="等比例座標軸-1.html#cb526-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
+<span id="cb526-4"><a href="等比例座標軸-1.html#cb526-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
+<span id="cb526-5"><a href="等比例座標軸-1.html#cb526-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
+<span id="cb526-6"><a href="等比例座標軸-1.html#cb526-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
+<span id="cb526-7"><a href="等比例座標軸-1.html#cb526-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
+<span id="cb526-8"><a href="等比例座標軸-1.html#cb526-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
+<span id="cb526-9"><a href="等比例座標軸-1.html#cb526-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
+<span id="cb526-10"><a href="等比例座標軸-1.html#cb526-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
+<span id="cb526-11"><a href="等比例座標軸-1.html#cb526-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
+<span id="cb526-12"><a href="等比例座標軸-1.html#cb526-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
+<span id="cb526-13"><a href="等比例座標軸-1.html#cb526-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
+<span id="cb526-14"><a href="等比例座標軸-1.html#cb526-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
+<span id="cb526-15"><a href="等比例座標軸-1.html#cb526-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb526-16"><a href="等比例座標軸-1.html#cb526-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
+<span id="cb526-17"><a href="等比例座標軸-1.html#cb526-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
+<span id="cb526-18"><a href="等比例座標軸-1.html#cb526-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb526-19"><a href="等比例座標軸-1.html#cb526-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb526-20"><a href="等比例座標軸-1.html#cb526-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb526-21"><a href="等比例座標軸-1.html#cb526-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb526-22"><a href="等比例座標軸-1.html#cb526-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb526-23"><a href="等比例座標軸-1.html#cb526-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
+<span id="cb526-24"><a href="等比例座標軸-1.html#cb526-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-25"><a href="等比例座標軸-1.html#cb526-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+15-24y
+</th>
+<th style="text-align:right;">
+40+y
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+0.6679842
+</td>
+<td style="text-align:right;">
+0.4611465
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Morocco
+</td>
+<td style="text-align:right;">
+0.4365079
+</td>
+<td style="text-align:right;">
+0.4735812
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lebanon
+</td>
+<td style="text-align:right;">
+0.5467197
+</td>
+<td style="text-align:right;">
+0.4435798
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indonesia
+</td>
+<td style="text-align:right;">
+0.7920605
+</td>
+<td style="text-align:right;">
+0.8027344
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bangladesh
+</td>
+<td style="text-align:right;">
+0.4624506
+</td>
+<td style="text-align:right;">
+0.4319527
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UK
+</td>
+<td style="text-align:right;">
+0.5040000
+</td>
+<td style="text-align:right;">
+0.4140000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+France
+</td>
+<td style="text-align:right;">
+0.3900000
+</td>
+<td style="text-align:right;">
+0.2640000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:right;">
+0.5900000
+</td>
+<td style="text-align:right;">
+0.3860000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:right;">
+0.5160000
+</td>
+<td style="text-align:right;">
+0.3340000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Japan
+</td>
+<td style="text-align:right;">
+0.6367265
+</td>
+<td style="text-align:right;">
+0.2586873
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="等比例座標軸-1.html#cb527-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
+<span id="cb527-2"><a href="等比例座標軸-1.html#cb527-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
+<span id="cb527-3"><a href="等比例座標軸-1.html#cb527-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb527-4"><a href="等比例座標軸-1.html#cb527-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb527-5"><a href="等比例座標軸-1.html#cb527-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb527-6"><a href="等比例座標軸-1.html#cb527-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
+<span id="cb527-7"><a href="等比例座標軸-1.html#cb527-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb527-8"><a href="等比例座標軸-1.html#cb527-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb527-9"><a href="等比例座標軸-1.html#cb527-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-204-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

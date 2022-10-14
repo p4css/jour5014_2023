@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -466,62 +470,67 @@ div.csl-indent {
 <div id="依群組指定顏色" class="section level3 hasAnchor" number="8.4.1">
 <h3><span class="header-section-number">8.4.1</span> 依群組指定顏色<a href="視覺化說故事的技巧.html#依群組指定顏色" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>scale_color_manual()</code> 與<code>scale_fill_manual()</code></p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="視覺化說故事的技巧.html#cb492-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> </span>
-<span id="cb492-2"><a href="視覺化說故事的技巧.html#cb492-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb492-3"><a href="視覺化說故事的技巧.html#cb492-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb492-4"><a href="視覺化說故事的技巧.html#cb492-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
-<span id="cb492-5"><a href="視覺化說故事的技巧.html#cb492-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
-<span id="cb492-6"><a href="視覺化說故事的技巧.html#cb492-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>),  <span class="co"># map to color</span></span>
-<span id="cb492-7"><a href="視覺化說故事的技巧.html#cb492-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">name=</span><span class="st">&quot;Age group&quot;</span>,             <span class="co"># legend title</span></span>
-<span id="cb492-8"><a href="視覺化說故事的技巧.html#cb492-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original legend group labels</span></span>
-<span id="cb492-9"><a href="視覺化說故事的技巧.html#cb492-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;elder(65-74)&quot;</span>,<span class="st">&quot;younger(35-44)&quot;</span>), <span class="co"># map to new labels</span></span>
-<span id="cb492-10"><a href="視覺化說故事的技巧.html#cb492-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.value =</span> <span class="st">&quot;lightgrey&quot;</span> <span class="co"># color for other groups</span></span>
-<span id="cb492-11"><a href="視覺化說故事的技巧.html#cb492-11" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
-<span id="cb492-12"><a href="視覺化說故事的技巧.html#cb492-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="視覺化說故事的技巧.html#cb493-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> </span>
+<span id="cb493-2"><a href="視覺化說故事的技巧.html#cb493-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb493-3"><a href="視覺化說故事的技巧.html#cb493-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb493-4"><a href="視覺化說故事的技巧.html#cb493-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb493-5"><a href="視覺化說故事的技巧.html#cb493-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
+<span id="cb493-6"><a href="視覺化說故事的技巧.html#cb493-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>),  <span class="co"># map to color</span></span>
+<span id="cb493-7"><a href="視覺化說故事的技巧.html#cb493-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">name=</span><span class="st">&quot;Age group&quot;</span>,             <span class="co"># legend title</span></span>
+<span id="cb493-8"><a href="視覺化說故事的技巧.html#cb493-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original legend group labels</span></span>
+<span id="cb493-9"><a href="視覺化說故事的技巧.html#cb493-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;elder(65-74)&quot;</span>,<span class="st">&quot;younger(35-44)&quot;</span>), <span class="co"># map to new labels</span></span>
+<span id="cb493-10"><a href="視覺化說故事的技巧.html#cb493-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.value =</span> <span class="st">&quot;lightgrey&quot;</span> <span class="co"># color for other groups</span></span>
+<span id="cb493-11"><a href="視覺化說故事的技巧.html#cb493-11" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb493-12"><a href="視覺化說故事的技巧.html#cb493-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 </div>
 <div id="使用gghighlight套件" class="section level3 hasAnchor" number="8.4.2">
 <h3><span class="header-section-number">8.4.2</span> 使用gghighlight套件<a href="視覺化說故事的技巧.html#使用gghighlight套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="視覺化說故事的技巧.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb493-2"><a href="視覺化說故事的技巧.html#cb493-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb493-3"><a href="視覺化說故事的技巧.html#cb493-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb493-4"><a href="視覺化說故事的技巧.html#cb493-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb493-5"><a href="視覺化說故事的技巧.html#cb493-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb493-6"><a href="視覺化說故事的技巧.html#cb493-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb493-7"><a href="視覺化說故事的技巧.html#cb493-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb493-8"><a href="視覺化說故事的技巧.html#cb493-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
-<span id="cb493-9"><a href="視覺化說故事的技巧.html#cb493-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
-<span id="cb493-10"><a href="視覺化說故事的技巧.html#cb493-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="視覺化說故事的技巧.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb494-2"><a href="視覺化說故事的技巧.html#cb494-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb494-3"><a href="視覺化說故事的技巧.html#cb494-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb494-4"><a href="視覺化說故事的技巧.html#cb494-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb494-5"><a href="視覺化說故事的技巧.html#cb494-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb494-6"><a href="視覺化說故事的技巧.html#cb494-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb494-7"><a href="視覺化說故事的技巧.html#cb494-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb494-8"><a href="視覺化說故事的技巧.html#cb494-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
+<span id="cb494-9"><a href="視覺化說故事的技巧.html#cb494-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
+<span id="cb494-10"><a href="視覺化說故事的技巧.html#cb494-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 <p>使用<code>gghighlight</code>仍能自己使用<code>scale_color_manual()</code>來指定顏色</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="視覺化說故事的技巧.html#cb494-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb494-2"><a href="視覺化說故事的技巧.html#cb494-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb494-3"><a href="視覺化說故事的技巧.html#cb494-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb494-4"><a href="視覺化說故事的技巧.html#cb494-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb494-5"><a href="視覺化說故事的技巧.html#cb494-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
-<span id="cb494-6"><a href="視覺化說故事的技巧.html#cb494-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
-<span id="cb494-7"><a href="視覺化說故事的技巧.html#cb494-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span>   <span class="co"># map to color</span></span>
-<span id="cb494-8"><a href="視覺化說故事的技巧.html#cb494-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="視覺化說故事的技巧.html#cb495-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb495-2"><a href="視覺化說故事的技巧.html#cb495-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb495-3"><a href="視覺化說故事的技巧.html#cb495-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb495-4"><a href="視覺化說故事的技巧.html#cb495-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb495-5"><a href="視覺化說故事的技巧.html#cb495-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb495-6"><a href="視覺化說故事的技巧.html#cb495-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
+<span id="cb495-7"><a href="視覺化說故事的技巧.html#cb495-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span>   <span class="co"># map to color</span></span>
+<span id="cb495-8"><a href="視覺化說故事的技巧.html#cb495-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
 </div>
 <div id="為視覺化建立群組" class="section level3 hasAnchor" number="8.4.3">
 <h3><span class="header-section-number">8.4.3</span> 為視覺化建立群組<a href="視覺化說故事的技巧.html#為視覺化建立群組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>這個方法是在原本的資料並沒有可以作為color或fill的因子，所以自行創建一個要突顯的群組。</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="視覺化說故事的技巧.html#cb495-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb495-2"><a href="視覺化說故事的技巧.html#cb495-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;other&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb495-3"><a href="視覺化說故事的技巧.html#cb495-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb495-4"><a href="視覺化說故事的技巧.html#cb495-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total, <span class="at">fill=</span>group) <span class="sc">%&gt;%</span></span>
-<span id="cb495-5"><a href="視覺化說故事的技巧.html#cb495-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb495-6"><a href="視覺化說故事的技巧.html#cb495-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;Khaki&quot;</span>, <span class="st">&quot;other&quot;</span><span class="ot">=</span><span class="st">&quot;lightgrey&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb495-7"><a href="視覺化說故事的技巧.html#cb495-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb495-8"><a href="視覺化說故事的技巧.html#cb495-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb495-9"><a href="視覺化說故事的技巧.html#cb495-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
-<p>但事實上也可以用<code>gghighlight</code>直接達成</p>
 <div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="視覺化說故事的技巧.html#cb496-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb496-2"><a href="視覺化說故事的技巧.html#cb496-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb496-3"><a href="視覺化說故事的技巧.html#cb496-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb496-4"><a href="視覺化說故事的技巧.html#cb496-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;deeppink&quot;</span>) <span class="sc">+</span></span>
-<span id="cb496-5"><a href="視覺化說故事的技巧.html#cb496-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb496-6"><a href="視覺化說故事的技巧.html#cb496-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb496-7"><a href="視覺化說故事的技巧.html#cb496-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb496-8"><a href="視覺化說故事的技巧.html#cb496-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<span id="cb496-2"><a href="視覺化說故事的技巧.html#cb496-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;other&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb496-3"><a href="視覺化說故事的技巧.html#cb496-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb496-4"><a href="視覺化說故事的技巧.html#cb496-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total, <span class="at">fill=</span>group) <span class="sc">%&gt;%</span></span>
+<span id="cb496-5"><a href="視覺化說故事的技巧.html#cb496-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb496-6"><a href="視覺化說故事的技巧.html#cb496-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;Khaki&quot;</span>, <span class="st">&quot;other&quot;</span><span class="ot">=</span><span class="st">&quot;lightgrey&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb496-7"><a href="視覺化說故事的技巧.html#cb496-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb496-8"><a href="視覺化說故事的技巧.html#cb496-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb496-9"><a href="視覺化說故事的技巧.html#cb496-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/income-by-town-1.png" width="672" /></p>
+<p>但事實上也可以用<code>gghighlight</code>直接達成</p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="視覺化說故事的技巧.html#cb497-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb497-2"><a href="視覺化說故事的技巧.html#cb497-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb497-3"><a href="視覺化說故事的技巧.html#cb497-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb497-4"><a href="視覺化說故事的技巧.html#cb497-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;deeppink&quot;</span>) <span class="sc">+</span></span>
+<span id="cb497-5"><a href="視覺化說故事的技巧.html#cb497-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb497-6"><a href="視覺化說故事的技巧.html#cb497-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb497-7"><a href="視覺化說故事的技巧.html#cb497-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb497-8"><a href="視覺化說故事的技巧.html#cb497-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
 
 </div>
 </div>

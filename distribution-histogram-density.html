@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -463,8 +467,8 @@ div.csl-indent {
 <div id="distribution-histogram-density" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">Chapter 12</span> DISTRIBUTION: Histogram &amp; Density<a href="distribution-histogram-density.html#distribution-histogram-density" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Most of contet in the chapter comes from the book Claus o. Wilke’s “Foundamentals of Data Visualization”</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="distribution-histogram-density.html#cb509-1" aria-hidden="true" tabindex="-1"></a>vilmaster <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/tw_vil2018_elccand.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb509-2"><a href="distribution-histogram-density.html#cb509-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(當選註記)</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="distribution-histogram-density.html#cb511-1" aria-hidden="true" tabindex="-1"></a>vilmaster <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/tw_vil2018_elccand.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb511-2"><a href="distribution-histogram-density.html#cb511-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(當選註記)</span></code></pre></div>
 </div>
             </section>
 

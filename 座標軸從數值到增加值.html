@@ -63,6 +63,10 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -474,38 +478,377 @@ div.csl-indent {
 <div id="read-and-sort-data" class="section level3 hasAnchor" number="10.4.2">
 <h3><span class="header-section-number">10.4.2</span> Read and sort data<a href="座標軸從數值到增加值.html#read-and-sort-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sorted by <code>arrange()</code> function.</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="座標軸從數值到增加值.html#cb500-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb500-2"><a href="座標軸從數值到增加值.html#cb500-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
-<span id="cb500-3"><a href="座標軸從數值到增加值.html#cb500-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb500-4"><a href="座標軸從數值到增加值.html#cb500-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb500-5"><a href="座標軸從數值到增加值.html#cb500-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb500-6"><a href="座標軸從數值到增加值.html#cb500-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="座標軸從數值到增加值.html#cb501-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb501-2"><a href="座標軸從數值到增加值.html#cb501-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb501-3"><a href="座標軸從數值到增加值.html#cb501-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb501-4"><a href="座標軸從數值到增加值.html#cb501-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb501-5"><a href="座標軸從數值到增加值.html#cb501-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb501-6"><a href="座標軸從數值到增加值.html#cb501-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb501-7"><a href="座標軸從數值到增加值.html#cb501-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb501-8"><a href="座標軸從數值到增加值.html#cb501-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb501-9"><a href="座標軸從數值到增加值.html#cb501-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="座標軸從數值到增加值.html#cb502-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb502-2"><a href="座標軸從數值到增加值.html#cb502-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="座標軸從數值到增加值.html#cb502-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb502-2"><a href="座標軸從數值到增加值.html#cb502-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
 <span id="cb502-3"><a href="座標軸從數值到增加值.html#cb502-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
 <span id="cb502-4"><a href="座標軸從數值到增加值.html#cb502-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb502-5"><a href="座標軸從數值到增加值.html#cb502-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
-<span id="cb502-6"><a href="座標軸從數值到增加值.html#cb502-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb502-7"><a href="座標軸從數值到增加值.html#cb502-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="座標軸從數值到增加值.html#cb503-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb502-5"><a href="座標軸從數值到增加值.html#cb502-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb502-6"><a href="座標軸從數值到增加值.html#cb502-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+Category
+</th>
+<th style="text-align:right;">
+Net_Worth
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+Less than 35
+</td>
+<td style="text-align:right;">
+16.17019
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+35-44
+</td>
+<td style="text-align:right;">
+112.47530
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+45-54
+</td>
+<td style="text-align:right;">
+195.11630
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+55-64
+</td>
+<td style="text-align:right;">
+195.25554
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+65-74
+</td>
+<td style="text-align:right;">
+154.34277
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+75 or older
+</td>
+<td style="text-align:right;">
+144.29855
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+Less than 35
+</td>
+<td style="text-align:right;">
+16.60780
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+35-44
+</td>
+<td style="text-align:right;">
+79.91050
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+45-54
+</td>
+<td style="text-align:right;">
+139.97745
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+55-64
+</td>
+<td style="text-align:right;">
+203.44104
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+65-74
+</td>
+<td style="text-align:right;">
+176.44667
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+75 or older
+</td>
+<td style="text-align:right;">
+155.35173
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="座標軸從數值到增加值.html#cb503-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
 <span id="cb503-2"><a href="座標軸從數值到增加值.html#cb503-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb503-3"><a href="座標軸從數值到增加值.html#cb503-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb503-4"><a href="座標軸從數值到增加值.html#cb503-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
 <span id="cb503-5"><a href="座標軸從數值到增加值.html#cb503-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb503-6"><a href="座標軸從數值到增加值.html#cb503-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
-<span id="cb503-7"><a href="座標軸從數值到增加值.html#cb503-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb503-8"><a href="座標軸從數值到增加值.html#cb503-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb503-9"><a href="座標軸從數值到增加值.html#cb503-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb503-10"><a href="座標軸從數值到增加值.html#cb503-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<span id="cb503-6"><a href="座標軸從數值到增加值.html#cb503-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb503-7"><a href="座標軸從數值到增加值.html#cb503-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb503-8"><a href="座標軸從數值到增加值.html#cb503-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb503-9"><a href="座標軸從數值到增加值.html#cb503-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-181-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="座標軸從數值到增加值.html#cb504-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb504-2"><a href="座標軸從數值到增加值.html#cb504-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
+<span id="cb504-3"><a href="座標軸從數值到增加值.html#cb504-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb504-4"><a href="座標軸從數值到增加值.html#cb504-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb504-5"><a href="座標軸從數值到增加值.html#cb504-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
+<span id="cb504-6"><a href="座標軸從數值到增加值.html#cb504-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb504-7"><a href="座標軸從數值到增加值.html#cb504-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+Category
+</th>
+<th style="text-align:right;">
+NW
+</th>
+<th style="text-align:right;">
+increase
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+Less than 35
+</td>
+<td style="text-align:right;">
+16.17019
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+35-44
+</td>
+<td style="text-align:right;">
+112.47530
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+45-54
+</td>
+<td style="text-align:right;">
+195.11630
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+55-64
+</td>
+<td style="text-align:right;">
+195.25554
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+65-74
+</td>
+<td style="text-align:right;">
+154.34277
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:left;">
+75 or older
+</td>
+<td style="text-align:right;">
+144.29855
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+Less than 35
+</td>
+<td style="text-align:right;">
+16.60780
+</td>
+<td style="text-align:right;">
+0.0270627
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+35-44
+</td>
+<td style="text-align:right;">
+79.91050
+</td>
+<td style="text-align:right;">
+-0.2895285
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+45-54
+</td>
+<td style="text-align:right;">
+139.97745
+</td>
+<td style="text-align:right;">
+-0.2825948
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+55-64
+</td>
+<td style="text-align:right;">
+203.44104
+</td>
+<td style="text-align:right;">
+0.0419220
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+65-74
+</td>
+<td style="text-align:right;">
+176.44667
+</td>
+<td style="text-align:right;">
+0.1432131
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:left;">
+75 or older
+</td>
+<td style="text-align:right;">
+155.35173
+</td>
+<td style="text-align:right;">
+0.0765994
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="座標軸從數值到增加值.html#cb505-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb505-2"><a href="座標軸從數值到增加值.html#cb505-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb505-3"><a href="座標軸從數值到增加值.html#cb505-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb505-4"><a href="座標軸從數值到增加值.html#cb505-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb505-5"><a href="座標軸從數值到增加值.html#cb505-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb505-6"><a href="座標軸從數值到增加值.html#cb505-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
+<span id="cb505-7"><a href="座標軸從數值到增加值.html#cb505-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb505-8"><a href="座標軸從數值到增加值.html#cb505-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb505-9"><a href="座標軸從數值到增加值.html#cb505-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb505-10"><a href="座標軸從數值到增加值.html#cb505-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-183-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
             </section>
