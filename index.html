@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2022-10-14" />
+<meta name="date" content="2023-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -107,7 +107,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -120,7 +120,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -176,14 +176,15 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="part"><span><b>I R BASIC</b></span></li>
-<li class="chapter" data-level="2" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>2</b> R語言基礎</a>
+<li class="chapter" data-level="2" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>2</b> R Basic</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="使用rstudio.html"><a href="使用rstudio.html"><i class="fa fa-check"></i><b>2.1</b> 使用RStudio</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="使用rstudio.html"><a href="使用rstudio.html#插入新的程式區"><i class="fa fa-check"></i><b>2.1.1</b> 插入新的程式區</a></li>
-<li class="chapter" data-level="2.1.2" data-path="使用rstudio.html"><a href="使用rstudio.html#安裝與載入套件"><i class="fa fa-check"></i><b>2.1.2</b> 安裝與載入套件</a></li>
-<li class="chapter" data-level="2.1.3" data-path="使用rstudio.html"><a href="使用rstudio.html#載入所安裝的第三方套件"><i class="fa fa-check"></i><b>2.1.3</b> 載入所安裝的第三方套件</a></li>
-<li class="chapter" data-level="2.1.4" data-path="使用rstudio.html"><a href="使用rstudio.html#註解"><i class="fa fa-check"></i><b>2.1.4</b> 註解</a></li>
+<li class="chapter" data-level="2.1.1" data-path="使用rstudio.html"><a href="使用rstudio.html#rstudio介面簡介"><i class="fa fa-check"></i><b>2.1.1</b> RStudio介面簡介</a></li>
+<li class="chapter" data-level="2.1.2" data-path="使用rstudio.html"><a href="使用rstudio.html#用rmarkdown來撰寫r"><i class="fa fa-check"></i><b>2.1.2</b> 用RMarkdown來撰寫R</a></li>
+<li class="chapter" data-level="2.1.3" data-path="使用rstudio.html"><a href="使用rstudio.html#撰寫r"><i class="fa fa-check"></i><b>2.1.3</b> 撰寫R</a></li>
+<li class="chapter" data-level="2.1.4" data-path="使用rstudio.html"><a href="使用rstudio.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.4</b> 安裝並載入第三方套件</a></li>
+<li class="chapter" data-level="2.1.5" data-path="使用rstudio.html"><a href="使用rstudio.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.5</b> 程式碼註解</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
@@ -192,26 +193,26 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.3" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
 <li class="chapter" data-level="2.2.4" data-path="第一次資料嘗試.html"><a href="第一次資料嘗試.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="其他環境設定.html"><a href="其他環境設定.html"><i class="fa fa-check"></i><b>2.3</b> 其他環境設定</a>
+<li class="chapter" data-level="2.3" data-path="r-qa.html"><a href="r-qa.html"><i class="fa fa-check"></i><b>2.3</b> R Q&amp;A</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="其他環境設定.html"><a href="其他環境設定.html#編碼與設定語系"><i class="fa fa-check"></i><b>2.3.1</b> 編碼與設定語系</a></li>
-<li class="chapter" data-level="2.3.2" data-path="其他環境設定.html"><a href="其他環境設定.html#rmdr-notebook無法儲存"><i class="fa fa-check"></i><b>2.3.2</b> RMD/R Notebook無法儲存</a></li>
+<li class="chapter" data-level="2.3.1" data-path="r-qa.html"><a href="r-qa.html#編碼與設定語系"><i class="fa fa-check"></i><b>2.3.1</b> 編碼與設定語系</a></li>
+<li class="chapter" data-level="2.3.2" data-path="r-qa.html"><a href="r-qa.html#rmdr-notebook無法儲存"><i class="fa fa-check"></i><b>2.3.2</b> RMD/R Notebook無法儲存</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3</b> Vectors</a>
+<li class="chapter" data-level="3" data-path="r-basic.html"><a href="r-basic.html"><i class="fa fa-check"></i><b>3</b> R Basic</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="r-syntax.html"><a href="r-syntax.html"><i class="fa fa-check"></i><b>3.1</b> R Syntax</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="r-syntax.html"><a href="r-syntax.html#assignment"><i class="fa fa-check"></i><b>3.1.1</b> Assignment</a></li>
-<li class="chapter" data-level="3.1.2" data-path="r-syntax.html"><a href="r-syntax.html#comments-註解"><i class="fa fa-check"></i><b>3.1.2</b> comments 註解</a></li>
+<li class="chapter" data-level="3.1.2" data-path="r-syntax.html"><a href="r-syntax.html#comments-註解"><i class="fa fa-check"></i><b>3.1.2</b> Comments 註解</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="basic-operations.html"><a href="basic-operations.html"><i class="fa fa-check"></i><b>3.2</b> Basic operations</a>
+<li class="chapter" data-level="3.2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>3.2</b> Vector</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-operations.html"><a href="basic-operations.html#creating"><i class="fa fa-check"></i><b>3.2.1</b> Creating</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-operations.html"><a href="basic-operations.html#viewing"><i class="fa fa-check"></i><b>3.2.2</b> Viewing</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-operations.html"><a href="basic-operations.html#subsetting-filtering"><i class="fa fa-check"></i><b>3.2.3</b> Subsetting, filtering</a></li>
-<li class="chapter" data-level="3.2.4" data-path="basic-operations.html"><a href="basic-operations.html#deleting"><i class="fa fa-check"></i><b>3.2.4</b> Deleting</a></li>
-<li class="chapter" data-level="3.2.5" data-path="basic-operations.html"><a href="basic-operations.html#concatinating"><i class="fa fa-check"></i><b>3.2.5</b> Concatinating</a></li>
+<li class="chapter" data-level="3.2.1" data-path="vector.html"><a href="vector.html#creating-vectors"><i class="fa fa-check"></i><b>3.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vector.html"><a href="vector.html#viewing"><i class="fa fa-check"></i><b>3.2.2</b> Viewing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vector.html"><a href="vector.html#subsetting-filtering"><i class="fa fa-check"></i><b>3.2.3</b> Subsetting, filtering</a></li>
+<li class="chapter" data-level="3.2.4" data-path="vector.html"><a href="vector.html#deleting"><i class="fa fa-check"></i><b>3.2.4</b> Deleting</a></li>
+<li class="chapter" data-level="3.2.5" data-path="vector.html"><a href="vector.html#concatinating"><i class="fa fa-check"></i><b>3.2.5</b> Concatinating</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="calculating-with-vectors.html"><a href="calculating-with-vectors.html"><i class="fa fa-check"></i><b>3.3</b> Calculating with vectors</a>
 <ul>
@@ -485,15 +486,15 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">R for Data Journalism</h1>
 <p class="author"><em>HSIEH, JI-LUNG</em></p>
-<p class="date"><em>2022-10-14</em></p>
+<p class="date"><em>2023-01-27</em></p>
 </div>
 <div id="about" class="section level1 unnumbered hasAnchor">
 <h1>About<a href="index.html#about" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>這本書是寫給臺大新聞所「<strong>新聞資料分析與視覺化</strong>」課程使用。該課程並重三個面向的訓練：程式語言、視覺化、資料新聞。學生必須先能夠熟練地使用R語言來操作、讀取、清理、視覺化資料；然後以產製新聞為課程目標，了解資料要如何清理，以及選擇適合的視覺化的方法來強化新聞敘事，並避免視覺化方式引起讀者對新聞的理解謬誤。準此，本書分為幾個部分，包含PART I介紹程式語言基礎；PART II則以國際或國內新聞為個案，來介紹資料獲取（爬蟲）、清理、合併、篩選、轉換；PART III則著重如何用資料視覺化來強化敘事。</p>
 <p>本書所沿用的資料分析與視覺化案例均為國內、國外的新聞案例如各國產假支薪等級、居住正義、空氣污染、人口議題、COVID-19、資源區域分佈不均、選舉與公投、運輸交通等相關議題的新聞。並大量採用紐約時報挑選作為數據理解與視覺化推廣的「<a href="https://www.nytimes.com/column/whats-going-on-in-this-graph">What’s going on in this graph?</a>」系列新聞，包含美國不同年代各年齡層的淨資產來做視覺化案例。在視覺化教材的設計上，本書大量參考紐時「<a href="https://www.nytimes.com/column/whats-going-on-in-this-graph">What’s going on in this graph?</a>」的分類與<span class="citation">(<a href="#ref-wilke2019fundamentals" role="doc-biblioref">Wilke 2019</a>)</span>所著「<a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a>」一書的內容安排，強調利用資料視覺化方法來呈現新聞數據中的數量、分佈、比例、趨勢等，並均換用國內或紐時的相關資料新聞案例做範例，以利中文讀者的理解。</p>
 <p><strong>學習路徑</strong></p>
-<div id="htmlwidget-4b7fa0d2492bf8a7137d" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4b7fa0d2492bf8a7137d">{"x":{"diagram":"\ndigraph G {\n  fontname=\"Helvetica,Arial,sans-serif\"\n  graph [layout = dot, rankdir=TD]\n  node [shape = rect,  height=0, fontname=\"Helvetica\", width=2]\n  node [style = filled, fillcolor=\"honeydew1\"]\n  edge [fontname=\"Courier\", splines=false, weight=2]\n\n  # define nodes\n  rbasic  [label = \"R Basic\"]\n  matleave[label = \"Filter & Select data\n(Maternal leave)\"]\n  tptheft [label = \"Pivot Analysis\n(Taipei Theft)\"]\n  \n  subgraph cluster_1{\n    label=\"base to dplyr\"\n    style=filled; fillcolor=\"lightgrey\";\n    dplyr_ml  [label = \"Filter & Select data with dplyr\n(Maternal leave)\"]\n    dplyr_tp  [label = \"Pivot Analysis with dplyr\n(Taipei Theft)\"]\n  }\n  \n  # define edge\n  node [fillcolor=\"azure1\"]\n    rbasic -> matleave -> tptheft -> {dplyr_tp, dplyr_ml} -> dplyr \n  node [fillcolor=\"gold\"]\n    dplyr -> {join, ggplot, textmining, scraper}\n  node [fillcolor=\"lightgrey\"]\n    join -> DB\n  node [fillcolor=\"yellow1\"]\n    ggplot -> temporal -> geospatial\n  node [fillcolor=\"skyblue\"]\n    scraper -> json -> htmlparser\n  node [fillcolor=\"pink1\"]\n    textmining -> doclevel -> wordlevel -> keyness -> POS -> sentiment\n  \n  # define path over edge\n  edge [constraint=false, penwidth=3, color=\"#ff000033\", weight=1, splines=curved]\n  rbasic -> matleave -> tptheft -> dplyr_ml\n  dplyr_ml -> dplyr_tp -> dplyr -> join -> ggplot\n  ggplot -> temporal -> geospatial -> textmining\n  textmining -> doclevel -> wordlevel -> keyness -> scraper\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c5da860ba7f8ae68206c" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-c5da860ba7f8ae68206c">{"x":{"diagram":"\ndigraph G {\n  fontname=\"Helvetica,Arial,sans-serif\"\n  graph [layout = dot, rankdir=TD]\n  node [shape = rect,  height=0, fontname=\"Helvetica\", width=2]\n  node [style = filled, fillcolor=\"honeydew1\"]\n  edge [fontname=\"Courier\", splines=false, weight=2]\n\n  # define nodes\n  rbasic  [label = \"R Basic\"]\n  matleave[label = \"Filter & Select data\n(Maternal leave)\"]\n  tptheft [label = \"Pivot Analysis\n(Taipei Theft)\"]\n  \n  subgraph cluster_1{\n    label=\"base to dplyr\"\n    style=filled; fillcolor=\"lightgrey\";\n    dplyr_ml  [label = \"Filter & Select data with dplyr\n(Maternal leave)\"]\n    dplyr_tp  [label = \"Pivot Analysis with dplyr\n(Taipei Theft)\"]\n  }\n  \n  # define edge\n  node [fillcolor=\"azure1\"]\n    rbasic -> matleave -> tptheft -> {dplyr_tp, dplyr_ml} -> dplyr \n  node [fillcolor=\"gold\"]\n    dplyr -> {join, ggplot, textmining, scraper}\n  node [fillcolor=\"lightgrey\"]\n    join -> DB\n  node [fillcolor=\"yellow1\"]\n    ggplot -> temporal -> geospatial\n  node [fillcolor=\"skyblue\"]\n    scraper -> json -> htmlparser\n  node [fillcolor=\"pink1\"]\n    textmining -> doclevel -> wordlevel -> keyness -> POS -> sentiment\n  \n  # define path over edge\n  edge [constraint=false, penwidth=3, color=\"#ff000033\", weight=1, splines=curved]\n  rbasic -> matleave -> tptheft -> dplyr_ml\n  dplyr_ml -> dplyr_tp -> dplyr -> join -> ggplot\n  ggplot -> temporal -> geospatial -> textmining\n  textmining -> doclevel -> wordlevel -> keyness -> scraper\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 <h3>References</h3>

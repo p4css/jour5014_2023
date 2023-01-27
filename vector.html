@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12.4 Box plot: Muitiple Distrubution | R for Data Journalism</title>
+  <title>3.2 Vector | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
+  <meta property="og:title" content="3.2 Vector | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
+  <meta name="twitter:title" content="3.2 Vector | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="pyramid-plot.html"/>
-<link rel="next" href="proportion.html"/>
+<link rel="prev" href="r-syntax.html"/>
+<link rel="next" href="calculating-with-vectors.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -483,577 +483,143 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="box-plot-muitiple-distrubution" class="section level2 hasAnchor" number="12.4">
-<h2><span class="header-section-number">12.4</span> Box plot: Muitiple Distrubution<a href="box-plot-muitiple-distrubution.html#box-plot-muitiple-distrubution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="tw-salary-boxplot" class="section level3 hasAnchor" number="12.4.1">
-<h3><span class="header-section-number">12.4.1</span> TW-Salary (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Inspired by <a href="https://www.nytimes.com/2017/11/03/education/edlife/choosing-a-college-major.html">Six Myths About Choosing a College Major - The New York Times (nytimes.com)</a> and <a href="https://www.nytimes.com/2018/01/04/learning/whats-going-on-in-this-graph-jan-9-2018.html">What’s Going On in This Graph? | Jan. 9, 2018 - The New York Times (nytimes.com)</a></p>
-<p><img src="https://lh5.googleusercontent.com/sl38jyzhqytJUX60SZypH6ZcmoOyGCDk0-6lk3oOS-YxyXJpRgioK_iF5Y8ZkjESzkuFXPbl6k5qovTuHaJhX-_KdH1sHGWl9nJFy3ixt5sryeEhXmiRfEhrjZjvZi50RtKKTm7UceUL" /></p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="box-plot-muitiple-distrubution.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb519-2"><a href="box-plot-muitiple-distrubution.html#cb519-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/tw_salary109.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>, <span class="at">trim_ws =</span> T)</span>
-<span id="cb519-3"><a href="box-plot-muitiple-distrubution.html#cb519-3" aria-hidden="true" tabindex="-1"></a>raw</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Category
-</th>
-<th style="text-align:right;">
-Q1
-</th>
-<th style="text-align:right;">
-Median
-</th>
-<th style="text-align:right;">
-Q3
-</th>
-<th style="text-align:right;">
-Mean
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-　男
-</td>
-<td style="text-align:right;">
-39.0
-</td>
-<td style="text-align:right;">
-53.2
-</td>
-<td style="text-align:right;">
-82.3
-</td>
-<td style="text-align:right;">
-70.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　女
-</td>
-<td style="text-align:right;">
-35.1
-</td>
-<td style="text-align:right;">
-46.8
-</td>
-<td style="text-align:right;">
-67.6
-</td>
-<td style="text-align:right;">
-58.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　未滿25歲
-</td>
-<td style="text-align:right;">
-28.1
-</td>
-<td style="text-align:right;">
-35.8
-</td>
-<td style="text-align:right;">
-45.1
-</td>
-<td style="text-align:right;">
-37.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　25-29歲
-</td>
-<td style="text-align:right;">
-36.6
-</td>
-<td style="text-align:right;">
-47.8
-</td>
-<td style="text-align:right;">
-61.7
-</td>
-<td style="text-align:right;">
-53.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　30-39歲
-</td>
-<td style="text-align:right;">
-39.2
-</td>
-<td style="text-align:right;">
-53.3
-</td>
-<td style="text-align:right;">
-77.0
-</td>
-<td style="text-align:right;">
-64.1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　40-49歲
-</td>
-<td style="text-align:right;">
-39.9
-</td>
-<td style="text-align:right;">
-56.9
-</td>
-<td style="text-align:right;">
-91.8
-</td>
-<td style="text-align:right;">
-74.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　50-64歲
-</td>
-<td style="text-align:right;">
-37.8
-</td>
-<td style="text-align:right;">
-53.3
-</td>
-<td style="text-align:right;">
-88.4
-</td>
-<td style="text-align:right;">
-75.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　65歲以上
-</td>
-<td style="text-align:right;">
-30.6
-</td>
-<td style="text-align:right;">
-40.9
-</td>
-<td style="text-align:right;">
-63.1
-</td>
-<td style="text-align:right;">
-62.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　國中及以下
-</td>
-<td style="text-align:right;">
-32.7
-</td>
-<td style="text-align:right;">
-40.5
-</td>
-<td style="text-align:right;">
-52.0
-</td>
-<td style="text-align:right;">
-45.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　高中（職）
-</td>
-<td style="text-align:right;">
-34.5
-</td>
-<td style="text-align:right;">
-44.7
-</td>
-<td style="text-align:right;">
-59.8
-</td>
-<td style="text-align:right;">
-51.9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　大專
-</td>
-<td style="text-align:right;">
-38.6
-</td>
-<td style="text-align:right;">
-53.7
-</td>
-<td style="text-align:right;">
-80.2
-</td>
-<td style="text-align:right;">
-67.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　研究所
-</td>
-<td style="text-align:right;">
-60.9
-</td>
-<td style="text-align:right;">
-96.0
-</td>
-<td style="text-align:right;">
-139.3
-</td>
-<td style="text-align:right;">
-116.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　礦業及土石採取業
-</td>
-<td style="text-align:right;">
-34.2
-</td>
-<td style="text-align:right;">
-57.2
-</td>
-<td style="text-align:right;">
-91.7
-</td>
-<td style="text-align:right;">
-68.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　製造業
-</td>
-<td style="text-align:right;">
-38.7
-</td>
-<td style="text-align:right;">
-50.4
-</td>
-<td style="text-align:right;">
-73.2
-</td>
-<td style="text-align:right;">
-64.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　電力及燃氣供應業
-</td>
-<td style="text-align:right;">
-73.9
-</td>
-<td style="text-align:right;">
-110.7
-</td>
-<td style="text-align:right;">
-139.9
-</td>
-<td style="text-align:right;">
-113.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　用水供應及污染整治業
-</td>
-<td style="text-align:right;">
-31.9
-</td>
-<td style="text-align:right;">
-45.7
-</td>
-<td style="text-align:right;">
-63.9
-</td>
-<td style="text-align:right;">
-54.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　營建工程業
-</td>
-<td style="text-align:right;">
-34.1
-</td>
-<td style="text-align:right;">
-46.1
-</td>
-<td style="text-align:right;">
-64.0
-</td>
-<td style="text-align:right;">
-54.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　批發及零售業
-</td>
-<td style="text-align:right;">
-36.6
-</td>
-<td style="text-align:right;">
-49.5
-</td>
-<td style="text-align:right;">
-71.7
-</td>
-<td style="text-align:right;">
-62.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　運輸及倉儲業
-</td>
-<td style="text-align:right;">
-40.3
-</td>
-<td style="text-align:right;">
-58.3
-</td>
-<td style="text-align:right;">
-81.4
-</td>
-<td style="text-align:right;">
-66.1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　住宿及餐飲業
-</td>
-<td style="text-align:right;">
-30.1
-</td>
-<td style="text-align:right;">
-36.7
-</td>
-<td style="text-align:right;">
-49.3
-</td>
-<td style="text-align:right;">
-42.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　出版﹑影音製作﹑傳播及
-　　資通訊服務業
-</td>
-<td style="text-align:right;">
-53.0
-</td>
-<td style="text-align:right;">
-71.5
-</td>
-<td style="text-align:right;">
-111.2
-</td>
-<td style="text-align:right;">
-88.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　金融及保險業
-</td>
-<td style="text-align:right;">
-65.6
-</td>
-<td style="text-align:right;">
-96.9
-</td>
-<td style="text-align:right;">
-140.1
-</td>
-<td style="text-align:right;">
-113.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　不動產業
-</td>
-<td style="text-align:right;">
-36.8
-</td>
-<td style="text-align:right;">
-52.2
-</td>
-<td style="text-align:right;">
-76.6
-</td>
-<td style="text-align:right;">
-65.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　專業科學及技術服務業
-</td>
-<td style="text-align:right;">
-41.9
-</td>
-<td style="text-align:right;">
-61.3
-</td>
-<td style="text-align:right;">
-95.0
-</td>
-<td style="text-align:right;">
-77.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　支援服務業
-</td>
-<td style="text-align:right;">
-33.1
-</td>
-<td style="text-align:right;">
-42.1
-</td>
-<td style="text-align:right;">
-49.3
-</td>
-<td style="text-align:right;">
-45.3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　教育業-不含小學以上各級
-　　學校
-</td>
-<td style="text-align:right;">
-28.4
-</td>
-<td style="text-align:right;">
-33.7
-</td>
-<td style="text-align:right;">
-42.7
-</td>
-<td style="text-align:right;">
-37.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　醫療保健及社會工作服務業
-</td>
-<td style="text-align:right;">
-41.3
-</td>
-<td style="text-align:right;">
-60.1
-</td>
-<td style="text-align:right;">
-88.1
-</td>
-<td style="text-align:right;">
-77.1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　藝術娛樂及休閒服務業
-</td>
-<td style="text-align:right;">
-28.8
-</td>
-<td style="text-align:right;">
-39.2
-</td>
-<td style="text-align:right;">
-57.2
-</td>
-<td style="text-align:right;">
-48.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　其他服務業
-</td>
-<td style="text-align:right;">
-30.6
-</td>
-<td style="text-align:right;">
-35.8
-</td>
-<td style="text-align:right;">
-49.1
-</td>
-<td style="text-align:right;">
-43.6
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="box-plot-muitiple-distrubution.html#cb520-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
-<span id="cb520-2"><a href="box-plot-muitiple-distrubution.html#cb520-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb520-3"><a href="box-plot-muitiple-distrubution.html#cb520-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">reorder</span>(Category, <span class="fu">desc</span>(Median))) <span class="sc">%&gt;%</span></span>
-<span id="cb520-4"><a href="box-plot-muitiple-distrubution.html#cb520-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> Category, </span>
-<span id="cb520-5"><a href="box-plot-muitiple-distrubution.html#cb520-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>Q1, <span class="at">xmiddle=</span>Median, <span class="at">xupper=</span>Q3, <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">150</span>) <span class="sc">+</span></span>
-<span id="cb520-6"><a href="box-plot-muitiple-distrubution.html#cb520-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb520-7"><a href="box-plot-muitiple-distrubution.html#cb520-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Mean)) <span class="sc">+</span> </span>
-<span id="cb520-8"><a href="box-plot-muitiple-distrubution.html#cb520-8" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb520-9"><a href="box-plot-muitiple-distrubution.html#cb520-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb520-10"><a href="box-plot-muitiple-distrubution.html#cb520-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/plot-salary-dist-1.png" width="672" /></p>
+<div id="vector" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Vector<a href="vector.html#vector" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vector是R語言最基本的</p>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/Gossiping/M.1535459575.A.54D.html">各縣市平均每月薪資所得</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E8%A1%8C%E6%94%BF%E5%8D%80%E4%BA%BA%E5%8F%A3%E5%88%97%E8%A1%A8">各縣市人口數</a></li>
+</ul>
+<div id="creating-vectors" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Creating vectors<a href="vector.html#creating-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>在程式碼中，只要是文字必用成對的雙引號或單引號包含其中，以區隔「變數」和「數字」。例如如果看到沒有雙引號的「英文字母」必定是變數名稱，或函式名稱。</li>
+<li>如果看到有雙引號的數字，那也是文字。</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="vector.html#cb13-1" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70100</span>, <span class="dv">51300</span>, <span class="dv">51100</span>, <span class="dv">48400</span>, <span class="dv">47600</span>, <span class="dv">43000</span>)</span>
+<span id="cb13-2"><a href="vector.html#cb13-2" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;台北&quot;</span>, <span class="st">&quot;新北&quot;</span>, <span class="st">&quot;桃園&quot;</span>, <span class="st">&quot;高雄&quot;</span>, <span class="st">&quot;台中&quot;</span>, <span class="st">&quot;台南&quot;</span>)</span>
+<span id="cb13-3"><a href="vector.html#cb13-3" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.6</span>, <span class="fl">3.9</span>, <span class="fl">2.2</span>, <span class="fl">2.7</span>, <span class="fl">2.8</span>, <span class="fl">1.8</span>)</span>
+<span id="cb13-4"><a href="vector.html#cb13-4" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">271.8</span>, <span class="fl">2052.5</span>, <span class="dv">1221</span>, <span class="fl">2951.9</span>, <span class="fl">2214.9</span>, <span class="fl">2191.7</span>)</span>
+<span id="cb13-5"><a href="vector.html#cb13-5" aria-hidden="true" tabindex="-1"></a>income</span></code></pre></div>
+<pre class="output"><code>## [1] 70100 51300 51100 48400 47600 43000</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="vector.html#cb15-1" aria-hidden="true" tabindex="-1"></a>county[<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;台中&quot; &quot;桃園&quot; &quot;台北&quot;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="vector.html#cb17-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> county[<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>)]</span>
+<span id="cb17-2"><a href="vector.html#cb17-2" aria-hidden="true" tabindex="-1"></a>county</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;台中&quot; &quot;桃園&quot; &quot;台北&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="vector.html#cb19-1" aria-hidden="true" tabindex="-1"></a>area</span></code></pre></div>
+<pre class="output"><code>## [1]  271.8 2052.5 1221.0 2951.9 2214.9 2191.7</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="vector.html#cb21-1" aria-hidden="true" tabindex="-1"></a>population</span></code></pre></div>
+<pre class="output"><code>## [1] 2.6 3.9 2.2 2.7 2.8 1.8</code></pre>
+<div id="creating-a-sequence" class="section level4 hasAnchor" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Creating a sequence<a href="vector.html#creating-a-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="vector.html#cb23-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">11</span>, <span class="dv">99</span>, <span class="dv">11</span>)</span>
+<span id="cb23-2"><a href="vector.html#cb23-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre class="output"><code>## [1] 11 22 33 44 55 66 77 88 99</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="vector.html#cb25-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb25-2"><a href="vector.html#cb25-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<pre class="output"><code>##  [1] 11 12 13 14 15 16 17 18 19 20</code></pre>
 </div>
-<div id="tw-income-boxplot" class="section level3 hasAnchor" number="12.4.2">
-<h3><span class="header-section-number">12.4.2</span> TW-Income (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-income-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="box-plot-muitiple-distrubution.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb521-2"><a href="box-plot-muitiple-distrubution.html#cb521-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_income_107.csv&quot;</span>, ) <span class="sc">%&gt;%</span></span>
-<span id="cb521-3"><a href="box-plot-muitiple-distrubution.html#cb521-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">村里</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;合計&quot;</span>, <span class="st">&quot;其他&quot;</span>, <span class="st">&quot;福住里&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-4"><a href="box-plot-muitiple-distrubution.html#cb521-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(鄉鎮市區 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;信義區&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-5"><a href="box-plot-muitiple-distrubution.html#cb521-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(村里 <span class="ot">=</span> <span class="fu">reorder</span>(村里, <span class="fu">desc</span>(中位數)))</span>
-<span id="cb521-6"><a href="box-plot-muitiple-distrubution.html#cb521-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb521-7"><a href="box-plot-muitiple-distrubution.html#cb521-7" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> </span>
-<span id="cb521-8"><a href="box-plot-muitiple-distrubution.html#cb521-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>((平均數<span class="sc">&gt;</span>第三分位數), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-9"><a href="box-plot-muitiple-distrubution.html#cb521-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> 村里, </span>
-<span id="cb521-10"><a href="box-plot-muitiple-distrubution.html#cb521-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>第一分位數, <span class="at">xmiddle=</span>中位數, <span class="at">xupper=</span>第三分位數, </span>
-<span id="cb521-11"><a href="box-plot-muitiple-distrubution.html#cb521-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xmin=</span> <span class="fu">min</span>(第一分位數), <span class="at">xmax=</span><span class="fu">max</span>(第三分位數), <span class="at">fill=</span>group) <span class="sc">+</span></span>
-<span id="cb521-12"><a href="box-plot-muitiple-distrubution.html#cb521-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb521-13"><a href="box-plot-muitiple-distrubution.html#cb521-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;orangered&quot;</span>, <span class="st">&quot;none&quot;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb521-14"><a href="box-plot-muitiple-distrubution.html#cb521-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> 平均數)) <span class="sc">+</span> </span>
-<span id="cb521-15"><a href="box-plot-muitiple-distrubution.html#cb521-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;年所得（單位：千元）&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb521-16"><a href="box-plot-muitiple-distrubution.html#cb521-16" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb521-17"><a href="box-plot-muitiple-distrubution.html#cb521-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb521-18"><a href="box-plot-muitiple-distrubution.html#cb521-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/plot-box-plot-1.png" width="672" /></p>
-
+<div id="creating-sequences-by-distribution" class="section level4 hasAnchor" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> Creating sequences by distribution<a href="vector.html#creating-sequences-by-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="vector.html#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000000</span>, <span class="dv">1</span>, <span class="dv">10</span>) <span class="co"># uniform dist, n=1000</span></span>
+<span id="cb27-2"><a href="vector.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(x))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="vector.html#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="dv">1</span>, <span class="dv">10</span>) <span class="co"># uniform dist, n=1000</span></span>
+<span id="cb28-2"><a href="vector.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(x))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="vector.html#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000000</span>, <span class="dv">1</span>, <span class="dv">10</span>) <span class="co"># normal dist, n=1000</span></span>
+<span id="cb29-2"><a href="vector.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(x))</span></code></pre></div>
+<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-15-3.png" width="672" /></p>
 </div>
 </div>
-<!-- </div> -->
+<div id="viewing" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Viewing<a href="vector.html#viewing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="vector.html#cb30-1" aria-hidden="true" tabindex="-1"></a>county</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;台中&quot; &quot;桃園&quot; &quot;台北&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="vector.html#cb32-1" aria-hidden="true" tabindex="-1"></a>income</span></code></pre></div>
+<pre class="output"><code>## [1] 70100 51300 51100 48400 47600 43000</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="vector.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(county)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;台中&quot; &quot;桃園&quot; &quot;台北&quot;</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="vector.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(county)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;台中&quot; &quot;桃園&quot; &quot;台北&quot;</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="vector.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(county)</span></code></pre></div>
+<pre class="output"><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="vector.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(county)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="vector.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(county)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="vector.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(county)</span></span>
+<span id="cb44-2"><a href="vector.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(county)</span></code></pre></div>
+<pre class="output"><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="vector.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(income)</span></code></pre></div>
+<pre class="output"><code>## [1] 6</code></pre>
+</div>
+<div id="subsetting-filtering" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Subsetting, filtering<a href="vector.html#subsetting-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is important to know how to neglect first n or last n elements. For example, a[1:(length(a)-2)] will neglect the last two elements. Thinking why I need parentheses for <code>length(a)-2</code> here.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="vector.html#cb48-1" aria-hidden="true" tabindex="-1"></a>county</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;台中&quot; &quot;桃園&quot; &quot;台北&quot;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="vector.html#cb50-1" aria-hidden="true" tabindex="-1"></a>county[<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>)] <span class="co"># how about country[c(1, 3, 5)]</span></span></code></pre></div>
+<pre class="output"><code>## [1] NA     &quot;台北&quot; &quot;台中&quot;</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="vector.html#cb52-1" aria-hidden="true" tabindex="-1"></a>county[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>] <span class="co"># is it equal to country[c(3, 4, 5, 6)]</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;台北&quot; NA     NA     NA</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="vector.html#cb54-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">19</span></span>
+<span id="cb54-2"><a href="vector.html#cb54-2" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">3</span><span class="sc">:</span><span class="fu">length</span>(a)]</span></code></pre></div>
+<pre class="output"><code>## [1] 13 14 15 16 17 18 19</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="vector.html#cb56-1" aria-hidden="true" tabindex="-1"></a>a[<span class="fu">length</span>(a)<span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre class="output"><code>## [1] 19 18 17 16 15 14 13</code></pre>
+</div>
+<div id="deleting" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Deleting<a href="vector.html#deleting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Without assignment, deletion won’t change original vectors</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="vector.html#cb58-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb58-2"><a href="vector.html#cb58-2" aria-hidden="true" tabindex="-1"></a>b[<span class="sc">-</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)]</span></code></pre></div>
+<pre class="output"><code>## [1] 11 12 16 17 18 19 20</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="vector.html#cb60-1" aria-hidden="true" tabindex="-1"></a>b[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<pre class="output"><code>## [1] 12 14 16 17 18 19 20</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="vector.html#cb62-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<pre class="output"><code>##  [1] 11 12 13 14 15 16 17 18 19 20</code></pre>
+<ul>
+<li>Correct deleting operations with assignment to replace original vector</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="vector.html#cb64-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> b[<span class="sc">-</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)]</span>
+<span id="cb64-2"><a href="vector.html#cb64-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<pre class="output"><code>## [1] 11 12 16 17 18 19 20</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="vector.html#cb66-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">11</span>, <span class="dv">99</span>, <span class="dv">11</span>)</span>
+<span id="cb66-2"><a href="vector.html#cb66-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> a[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span>
+<span id="cb66-3"><a href="vector.html#cb66-3" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre class="output"><code>## [1] 22 44 66 77 88 99</code></pre>
+</div>
+<div id="concatinating" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Concatinating<a href="vector.html#concatinating" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Concatinating is quite useful for web crawling when you crawl article links page by page. You may be not sure the number of page you need to crawl. So you need to append entire new vector to old vector. It is concatinating. (“Appending” often means adding one new element at the end of data.)</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="vector.html#cb68-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb68-2"><a href="vector.html#cb68-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a, <span class="dv">11</span>)</span>
+<span id="cb68-3"><a href="vector.html#cb68-3" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre class="output"><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="vector.html#cb70-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<pre class="output"><code>## [1] 11 12 16 17 18 19 20</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="vector.html#cb72-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a, b)</span>
+<span id="cb72-2"><a href="vector.html#cb72-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre class="output"><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 11 12 16 17 18 19 20</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="vector.html#cb74-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(a, a, b)</span>
+<span id="cb74-2"><a href="vector.html#cb74-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre class="output"><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 11 12 16 17 18 19 20  1  2  3  4  5  6  7
+## [26]  8  9 10 11 11 12 16 17 18 19 20 11 12 16 17 18 19 20</code></pre>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="pyramid-plot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="proportion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-syntax.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="calculating-with-vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1084,7 +650,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/V08_Distribution.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R12_vector.Rmd",
 "text": "Edit"
 },
 "history": {

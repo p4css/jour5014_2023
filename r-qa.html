@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12.4 Box plot: Muitiple Distrubution | R for Data Journalism</title>
+  <title>2.3 R Q&amp;A | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
+  <meta property="og:title" content="2.3 R Q&amp;A | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.4 Box plot: Muitiple Distrubution | R for Data Journalism" />
+  <meta name="twitter:title" content="2.3 R Q&amp;A | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="pyramid-plot.html"/>
-<link rel="next" href="proportion.html"/>
+<link rel="prev" href="第一次資料嘗試.html"/>
+<link rel="next" href="r-basic.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -483,566 +483,25 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="box-plot-muitiple-distrubution" class="section level2 hasAnchor" number="12.4">
-<h2><span class="header-section-number">12.4</span> Box plot: Muitiple Distrubution<a href="box-plot-muitiple-distrubution.html#box-plot-muitiple-distrubution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="tw-salary-boxplot" class="section level3 hasAnchor" number="12.4.1">
-<h3><span class="header-section-number">12.4.1</span> TW-Salary (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-salary-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Inspired by <a href="https://www.nytimes.com/2017/11/03/education/edlife/choosing-a-college-major.html">Six Myths About Choosing a College Major - The New York Times (nytimes.com)</a> and <a href="https://www.nytimes.com/2018/01/04/learning/whats-going-on-in-this-graph-jan-9-2018.html">What’s Going On in This Graph? | Jan. 9, 2018 - The New York Times (nytimes.com)</a></p>
-<p><img src="https://lh5.googleusercontent.com/sl38jyzhqytJUX60SZypH6ZcmoOyGCDk0-6lk3oOS-YxyXJpRgioK_iF5Y8ZkjESzkuFXPbl6k5qovTuHaJhX-_KdH1sHGWl9nJFy3ixt5sryeEhXmiRfEhrjZjvZi50RtKKTm7UceUL" /></p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="box-plot-muitiple-distrubution.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb519-2"><a href="box-plot-muitiple-distrubution.html#cb519-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/tw_salary109.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>, <span class="at">trim_ws =</span> T)</span>
-<span id="cb519-3"><a href="box-plot-muitiple-distrubution.html#cb519-3" aria-hidden="true" tabindex="-1"></a>raw</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Category
-</th>
-<th style="text-align:right;">
-Q1
-</th>
-<th style="text-align:right;">
-Median
-</th>
-<th style="text-align:right;">
-Q3
-</th>
-<th style="text-align:right;">
-Mean
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-　男
-</td>
-<td style="text-align:right;">
-39.0
-</td>
-<td style="text-align:right;">
-53.2
-</td>
-<td style="text-align:right;">
-82.3
-</td>
-<td style="text-align:right;">
-70.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　女
-</td>
-<td style="text-align:right;">
-35.1
-</td>
-<td style="text-align:right;">
-46.8
-</td>
-<td style="text-align:right;">
-67.6
-</td>
-<td style="text-align:right;">
-58.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　未滿25歲
-</td>
-<td style="text-align:right;">
-28.1
-</td>
-<td style="text-align:right;">
-35.8
-</td>
-<td style="text-align:right;">
-45.1
-</td>
-<td style="text-align:right;">
-37.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　25-29歲
-</td>
-<td style="text-align:right;">
-36.6
-</td>
-<td style="text-align:right;">
-47.8
-</td>
-<td style="text-align:right;">
-61.7
-</td>
-<td style="text-align:right;">
-53.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　30-39歲
-</td>
-<td style="text-align:right;">
-39.2
-</td>
-<td style="text-align:right;">
-53.3
-</td>
-<td style="text-align:right;">
-77.0
-</td>
-<td style="text-align:right;">
-64.1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　40-49歲
-</td>
-<td style="text-align:right;">
-39.9
-</td>
-<td style="text-align:right;">
-56.9
-</td>
-<td style="text-align:right;">
-91.8
-</td>
-<td style="text-align:right;">
-74.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　50-64歲
-</td>
-<td style="text-align:right;">
-37.8
-</td>
-<td style="text-align:right;">
-53.3
-</td>
-<td style="text-align:right;">
-88.4
-</td>
-<td style="text-align:right;">
-75.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　65歲以上
-</td>
-<td style="text-align:right;">
-30.6
-</td>
-<td style="text-align:right;">
-40.9
-</td>
-<td style="text-align:right;">
-63.1
-</td>
-<td style="text-align:right;">
-62.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　國中及以下
-</td>
-<td style="text-align:right;">
-32.7
-</td>
-<td style="text-align:right;">
-40.5
-</td>
-<td style="text-align:right;">
-52.0
-</td>
-<td style="text-align:right;">
-45.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　高中（職）
-</td>
-<td style="text-align:right;">
-34.5
-</td>
-<td style="text-align:right;">
-44.7
-</td>
-<td style="text-align:right;">
-59.8
-</td>
-<td style="text-align:right;">
-51.9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　大專
-</td>
-<td style="text-align:right;">
-38.6
-</td>
-<td style="text-align:right;">
-53.7
-</td>
-<td style="text-align:right;">
-80.2
-</td>
-<td style="text-align:right;">
-67.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　研究所
-</td>
-<td style="text-align:right;">
-60.9
-</td>
-<td style="text-align:right;">
-96.0
-</td>
-<td style="text-align:right;">
-139.3
-</td>
-<td style="text-align:right;">
-116.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　礦業及土石採取業
-</td>
-<td style="text-align:right;">
-34.2
-</td>
-<td style="text-align:right;">
-57.2
-</td>
-<td style="text-align:right;">
-91.7
-</td>
-<td style="text-align:right;">
-68.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　製造業
-</td>
-<td style="text-align:right;">
-38.7
-</td>
-<td style="text-align:right;">
-50.4
-</td>
-<td style="text-align:right;">
-73.2
-</td>
-<td style="text-align:right;">
-64.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　電力及燃氣供應業
-</td>
-<td style="text-align:right;">
-73.9
-</td>
-<td style="text-align:right;">
-110.7
-</td>
-<td style="text-align:right;">
-139.9
-</td>
-<td style="text-align:right;">
-113.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　用水供應及污染整治業
-</td>
-<td style="text-align:right;">
-31.9
-</td>
-<td style="text-align:right;">
-45.7
-</td>
-<td style="text-align:right;">
-63.9
-</td>
-<td style="text-align:right;">
-54.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　營建工程業
-</td>
-<td style="text-align:right;">
-34.1
-</td>
-<td style="text-align:right;">
-46.1
-</td>
-<td style="text-align:right;">
-64.0
-</td>
-<td style="text-align:right;">
-54.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　批發及零售業
-</td>
-<td style="text-align:right;">
-36.6
-</td>
-<td style="text-align:right;">
-49.5
-</td>
-<td style="text-align:right;">
-71.7
-</td>
-<td style="text-align:right;">
-62.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　運輸及倉儲業
-</td>
-<td style="text-align:right;">
-40.3
-</td>
-<td style="text-align:right;">
-58.3
-</td>
-<td style="text-align:right;">
-81.4
-</td>
-<td style="text-align:right;">
-66.1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　住宿及餐飲業
-</td>
-<td style="text-align:right;">
-30.1
-</td>
-<td style="text-align:right;">
-36.7
-</td>
-<td style="text-align:right;">
-49.3
-</td>
-<td style="text-align:right;">
-42.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　出版﹑影音製作﹑傳播及
-　　資通訊服務業
-</td>
-<td style="text-align:right;">
-53.0
-</td>
-<td style="text-align:right;">
-71.5
-</td>
-<td style="text-align:right;">
-111.2
-</td>
-<td style="text-align:right;">
-88.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　金融及保險業
-</td>
-<td style="text-align:right;">
-65.6
-</td>
-<td style="text-align:right;">
-96.9
-</td>
-<td style="text-align:right;">
-140.1
-</td>
-<td style="text-align:right;">
-113.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　不動產業
-</td>
-<td style="text-align:right;">
-36.8
-</td>
-<td style="text-align:right;">
-52.2
-</td>
-<td style="text-align:right;">
-76.6
-</td>
-<td style="text-align:right;">
-65.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　專業科學及技術服務業
-</td>
-<td style="text-align:right;">
-41.9
-</td>
-<td style="text-align:right;">
-61.3
-</td>
-<td style="text-align:right;">
-95.0
-</td>
-<td style="text-align:right;">
-77.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　支援服務業
-</td>
-<td style="text-align:right;">
-33.1
-</td>
-<td style="text-align:right;">
-42.1
-</td>
-<td style="text-align:right;">
-49.3
-</td>
-<td style="text-align:right;">
-45.3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　教育業-不含小學以上各級
-　　學校
-</td>
-<td style="text-align:right;">
-28.4
-</td>
-<td style="text-align:right;">
-33.7
-</td>
-<td style="text-align:right;">
-42.7
-</td>
-<td style="text-align:right;">
-37.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　醫療保健及社會工作服務業
-</td>
-<td style="text-align:right;">
-41.3
-</td>
-<td style="text-align:right;">
-60.1
-</td>
-<td style="text-align:right;">
-88.1
-</td>
-<td style="text-align:right;">
-77.1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　藝術娛樂及休閒服務業
-</td>
-<td style="text-align:right;">
-28.8
-</td>
-<td style="text-align:right;">
-39.2
-</td>
-<td style="text-align:right;">
-57.2
-</td>
-<td style="text-align:right;">
-48.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-　其他服務業
-</td>
-<td style="text-align:right;">
-30.6
-</td>
-<td style="text-align:right;">
-35.8
-</td>
-<td style="text-align:right;">
-49.1
-</td>
-<td style="text-align:right;">
-43.6
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="box-plot-muitiple-distrubution.html#cb520-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
-<span id="cb520-2"><a href="box-plot-muitiple-distrubution.html#cb520-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb520-3"><a href="box-plot-muitiple-distrubution.html#cb520-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">reorder</span>(Category, <span class="fu">desc</span>(Median))) <span class="sc">%&gt;%</span></span>
-<span id="cb520-4"><a href="box-plot-muitiple-distrubution.html#cb520-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> Category, </span>
-<span id="cb520-5"><a href="box-plot-muitiple-distrubution.html#cb520-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>Q1, <span class="at">xmiddle=</span>Median, <span class="at">xupper=</span>Q3, <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">150</span>) <span class="sc">+</span></span>
-<span id="cb520-6"><a href="box-plot-muitiple-distrubution.html#cb520-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb520-7"><a href="box-plot-muitiple-distrubution.html#cb520-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Mean)) <span class="sc">+</span> </span>
-<span id="cb520-8"><a href="box-plot-muitiple-distrubution.html#cb520-8" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb520-9"><a href="box-plot-muitiple-distrubution.html#cb520-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb520-10"><a href="box-plot-muitiple-distrubution.html#cb520-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/plot-salary-dist-1.png" width="672" /></p>
+<div id="r-qa" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> R Q&amp;A<a href="r-qa.html#r-qa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="編碼與設定語系" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 編碼與設定語系<a href="r-qa.html#編碼與設定語系" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;UTF-8&quot;)
+Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;cht&quot;)</code></pre>
+<p>如果讀取到資料有中文的話，此時，你只需要指定locale為cht，然後重開該data.frame就可以解決該問題。</p>
+<pre><code>Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;cht&quot;)</code></pre>
+<p>但你在寫程式剖析HTML時若使用了rvest這個套件，有可能在html_node()函式時會因為編碼而產生問題，此時你會需要把locale改為C。這個C指的是C語言的C。</p>
+<pre><code>Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;C&quot;)</code></pre>
+<p>參考連結：<a href="http://psmethods.postach.io/post/ru-he-geng-gai-rde-yu-she-yu-xi" class="uri">http://psmethods.postach.io/post/ru-he-geng-gai-rde-yu-she-yu-xi</a></p>
+<ul>
+<li><p>參考連結：<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/locales.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/base/html/locales.html</a></p></li>
+<li><p>The locale describes aspects of the internationalization of a program. Initially most aspects of the locale of R are set to “C” (which is the default for the C language and reflects North-American usage)</p></li>
+</ul>
 </div>
-<div id="tw-income-boxplot" class="section level3 hasAnchor" number="12.4.2">
-<h3><span class="header-section-number">12.4.2</span> TW-Income (boxplot)<a href="box-plot-muitiple-distrubution.html#tw-income-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="box-plot-muitiple-distrubution.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb521-2"><a href="box-plot-muitiple-distrubution.html#cb521-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_income_107.csv&quot;</span>, ) <span class="sc">%&gt;%</span></span>
-<span id="cb521-3"><a href="box-plot-muitiple-distrubution.html#cb521-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">村里</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;合計&quot;</span>, <span class="st">&quot;其他&quot;</span>, <span class="st">&quot;福住里&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-4"><a href="box-plot-muitiple-distrubution.html#cb521-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(鄉鎮市區 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;信義區&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-5"><a href="box-plot-muitiple-distrubution.html#cb521-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(村里 <span class="ot">=</span> <span class="fu">reorder</span>(村里, <span class="fu">desc</span>(中位數)))</span>
-<span id="cb521-6"><a href="box-plot-muitiple-distrubution.html#cb521-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb521-7"><a href="box-plot-muitiple-distrubution.html#cb521-7" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> </span>
-<span id="cb521-8"><a href="box-plot-muitiple-distrubution.html#cb521-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>((平均數<span class="sc">&gt;</span>第三分位數), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb521-9"><a href="box-plot-muitiple-distrubution.html#cb521-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> 村里, </span>
-<span id="cb521-10"><a href="box-plot-muitiple-distrubution.html#cb521-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlower=</span>第一分位數, <span class="at">xmiddle=</span>中位數, <span class="at">xupper=</span>第三分位數, </span>
-<span id="cb521-11"><a href="box-plot-muitiple-distrubution.html#cb521-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xmin=</span> <span class="fu">min</span>(第一分位數), <span class="at">xmax=</span><span class="fu">max</span>(第三分位數), <span class="at">fill=</span>group) <span class="sc">+</span></span>
-<span id="cb521-12"><a href="box-plot-muitiple-distrubution.html#cb521-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb521-13"><a href="box-plot-muitiple-distrubution.html#cb521-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;orangered&quot;</span>, <span class="st">&quot;none&quot;</span><span class="ot">=</span><span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb521-14"><a href="box-plot-muitiple-distrubution.html#cb521-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> 平均數)) <span class="sc">+</span> </span>
-<span id="cb521-15"><a href="box-plot-muitiple-distrubution.html#cb521-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;年所得（單位：千元）&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb521-16"><a href="box-plot-muitiple-distrubution.html#cb521-16" aria-hidden="true" tabindex="-1"></a>    th <span class="sc">+</span> </span>
-<span id="cb521-17"><a href="box-plot-muitiple-distrubution.html#cb521-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb521-18"><a href="box-plot-muitiple-distrubution.html#cb521-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/plot-box-plot-1.png" width="672" /></p>
+<div id="rmdr-notebook無法儲存" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> RMD/R Notebook無法儲存<a href="r-qa.html#rmdr-notebook無法儲存" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R Notebook 要存檔的時候檔名絕對不要有空白，若有空白就用底線<code>_</code>代替，否則Notebook寫到一半會無法預覽下半部的程式並出現錯誤訊息。若仍然無法儲存或出現錯誤訊息，應該只要開另外一個R Notebook檔案，複製程式碼即可。</p>
 
 </div>
 </div>
@@ -1052,8 +511,8 @@ Mean
           </div>
         </div>
       </div>
-<a href="pyramid-plot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="proportion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="第一次資料嘗試.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-basic.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1084,7 +543,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/V08_Distribution.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R11_using_r.Rmd",
 "text": "Edit"
 },
 "history": {
