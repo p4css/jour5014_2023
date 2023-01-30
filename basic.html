@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-01-28" />
+<meta name="date" content="2023-01-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.9" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html#more-clean-version"><i class="fa fa-check"></i><b>5.1.9</b> (More) Clean version</a></li>
 <li class="chapter" data-level="5.1.10" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html#more-the-fittest-version-to-compute-staysame"><i class="fa fa-check"></i><b>5.1.10</b> (More) The fittest version to compute staySame</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html#樞紐分析台北住宅竊盜點位"><i class="fa fa-check"></i><b>5.2</b> 樞紐分析：台北住宅竊盜點位</a>
+<li class="chapter" data-level="5.2" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html#計數與樞紐台北住宅竊盜點位"><i class="fa fa-check"></i><b>5.2</b> 計數與樞紐：台北住宅竊盜點位</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html#讀取檔案"><i class="fa fa-check"></i><b>5.2.1</b> 讀取檔案</a></li>
 <li class="chapter" data-level="5.2.2" data-path="使用基礎r套件.html"><a href="使用基礎r套件.html#查看資料內容"><i class="fa fa-check"></i><b>5.2.2</b> 查看資料內容</a></li>
@@ -555,567 +555,130 @@ div.csl-indent {
 </div>
 <div id="讀取先行下載的csv檔" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> 讀取先行下載的csv檔<a href="basic.html#讀取先行下載的csv檔" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic.html#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tptheft.csv&quot;</span>)</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic.html#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
 <span id="cb5-2"><a href="basic.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <table>
 <thead>
 <tr>
-<th style="text-align:left;">
-X.result..limit.20
-</th>
-<th style="text-align:left;">
-offset.0
-</th>
-<th style="text-align:left;">
-count.3513
-</th>
-<th style="text-align:left;">
-sort.
-</th>
-<th style="text-align:left;">
-results…_id.1
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.270425
-</th>
-<th style="text-align:left;">
-timezone_type.3
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei.
-</th>
-<th style="text-align:left;">
-編號.1
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜
-</th>
-<th style="text-align:left;">
-發生日期.1030623
-</th>
-<th style="text-align:left;">
-發生時段.08.10
-</th>
-<th style="text-align:left;">
-發生地點.臺北市中正區廈門街91.120號.
-</th>
-<th style="text-align:left;">
-X._id.2
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.280318
-</th>
-<th style="text-align:left;">
-timezone_type.3.1
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..1
-</th>
-<th style="text-align:left;">
-編號.2
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.1
-</th>
-<th style="text-align:left;">
-發生日期.1040101
-</th>
-<th style="text-align:left;">
-發生時段.00.02
-</th>
-<th style="text-align:left;">
-發生地點.臺北市文山區萬美里萬寧街1.30號.
-</th>
-<th style="text-align:left;">
-X._id.3
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.281881
-</th>
-<th style="text-align:left;">
-timezone_type.3.2
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..2
-</th>
-<th style="text-align:left;">
-編號.3
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.2
-</th>
-<th style="text-align:left;">
-發生日期.1040101.1
-</th>
-<th style="text-align:left;">
-發生時段.00.02.1
-</th>
-<th style="text-align:left;">
-發生地點.臺北市信義區富台里忠孝東路5段295巷6弄1.30號.
-</th>
-<th style="text-align:left;">
-X._id.4
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.283264
-</th>
-<th style="text-align:left;">
-timezone_type.3.3
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..3
-</th>
-<th style="text-align:left;">
-編號.4
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.3
-</th>
-<th style="text-align:left;">
-發生日期.1040101.2
-</th>
-<th style="text-align:left;">
-發生時段.06.08
-</th>
-<th style="text-align:left;">
-發生地點.臺北市中山區新生北路1段91.120號.
-</th>
-<th style="text-align:left;">
-X._id.5
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.284529
-</th>
-<th style="text-align:left;">
-timezone_type.3.4
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..4
-</th>
-<th style="text-align:left;">
-編號.5
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.4
-</th>
-<th style="text-align:left;">
-發生日期.1040101.3
-</th>
-<th style="text-align:left;">
-發生時段.10.12
-</th>
-<th style="text-align:left;">
-發生地點.臺北市文山區明興里興隆路4段1.30號.
-</th>
-<th style="text-align:left;">
-X._id.6
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.285693
-</th>
-<th style="text-align:left;">
-timezone_type.3.5
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..5
-</th>
-<th style="text-align:left;">
-編號.6
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.5
-</th>
-<th style="text-align:left;">
-發生日期.1040102
-</th>
-<th style="text-align:left;">
-發生時段.00.02.2
-</th>
-<th style="text-align:left;">
-發生地點.臺北市士林區天福里1鄰忠誠路2段130巷1.30號.
-</th>
-<th style="text-align:left;">
-X._id.7
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.287055
-</th>
-<th style="text-align:left;">
-timezone_type.3.6
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..6
-</th>
-<th style="text-align:left;">
-編號.7
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.6
-</th>
-<th style="text-align:left;">
-發生日期.1040102.1
-</th>
-<th style="text-align:left;">
-發生時段.06.08.1
-</th>
-<th style="text-align:left;">
-發生地點.臺北市萬華區糖.里大理街159巷1.30號.
-</th>
-<th style="text-align:left;">
-X._id.8
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.288206
-</th>
-<th style="text-align:left;">
-timezone_type.3.7
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..7
-</th>
-<th style="text-align:left;">
-編號.8
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.7
-</th>
-<th style="text-align:left;">
-發生日期.1040102.2
-</th>
-<th style="text-align:left;">
-發生時段.06.08.2
-</th>
-<th style="text-align:left;">
-發生地點.臺北市萬華區糖.里大理街159巷1.30號..1
-</th>
-<th style="text-align:left;">
-X._id.9
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.289253
-</th>
-<th style="text-align:left;">
-timezone_type.3.8
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..8
-</th>
-<th style="text-align:left;">
-編號.9
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.8
-</th>
-<th style="text-align:left;">
-發生日期.1040102.3
-</th>
-<th style="text-align:left;">
-發生時段.10.12.1
-</th>
-<th style="text-align:left;">
-發生地點.臺北市中山區吉林路121.150號.
-</th>
-<th style="text-align:left;">
-X._id.10
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.290610
-</th>
-<th style="text-align:left;">
-timezone_type.3.9
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..9
-</th>
-<th style="text-align:left;">
-編號.10
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.9
-</th>
-<th style="text-align:left;">
-發生日期.1040104
-</th>
-<th style="text-align:left;">
-發生時段.10.12.2
-</th>
-<th style="text-align:left;">
-發生地點.臺北市信義區五常里永吉路225巷32弄1.30號.
-</th>
-<th style="text-align:left;">
-X._id.11
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.291912
-</th>
-<th style="text-align:left;">
-timezone_type.3.10
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..10
-</th>
-<th style="text-align:left;">
-編號.11
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.10
-</th>
-<th style="text-align:left;">
-發生日期.1040104.1
-</th>
-<th style="text-align:left;">
-發生時段.12.14
-</th>
-<th style="text-align:left;">
-發生地點.臺北市士林區明勝里通河街31.60號.
-</th>
-<th style="text-align:left;">
-X._id.12
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.293083
-</th>
-<th style="text-align:left;">
-timezone_type.3.11
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..11
-</th>
-<th style="text-align:left;">
-編號.12
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.11
-</th>
-<th style="text-align:left;">
-發生日期.1040105
-</th>
-<th style="text-align:left;">
-發生時段.00.02.3
-</th>
-<th style="text-align:left;">
-發生地點.臺北市中山區南京東路3段181.210號.
-</th>
-<th style="text-align:left;">
-X._id.13
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.294598
-</th>
-<th style="text-align:left;">
-timezone_type.3.12
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..12
-</th>
-<th style="text-align:left;">
-編號.13
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.12
-</th>
-<th style="text-align:left;">
-發生日期.1040105.1
-</th>
-<th style="text-align:left;">
-發生時段.04.06
-</th>
-<th style="text-align:left;">
-發生地點.臺北市萬華區大理街159巷1.30號.
-</th>
-<th style="text-align:left;">
-X._id.14
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.295851
-</th>
-<th style="text-align:left;">
-timezone_type.3.13
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..13
-</th>
-<th style="text-align:left;">
-編號.14
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.13
-</th>
-<th style="text-align:left;">
-發生日期.1040105.2
-</th>
-<th style="text-align:left;">
-發生時段.04.06.1
-</th>
-<th style="text-align:left;">
-發生地點.臺北市萬華區糖.里大理街159巷1.30號..2
-</th>
-<th style="text-align:left;">
-X._id.15
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.297172
-</th>
-<th style="text-align:left;">
-timezone_type.3.14
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..14
-</th>
-<th style="text-align:left;">
-編號.15
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.14
-</th>
-<th style="text-align:left;">
-發生日期.1040105.3
-</th>
-<th style="text-align:left;">
-發生時段.12.14.1
-</th>
-<th style="text-align:left;">
-發生地點.臺北市北投區吉慶里實踐街56巷1.30號.
-</th>
-<th style="text-align:left;">
-X._id.16
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.298608
-</th>
-<th style="text-align:left;">
-timezone_type.3.15
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..15
-</th>
-<th style="text-align:left;">
-編號.16
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.15
-</th>
-<th style="text-align:left;">
-發生日期.1040105.4
-</th>
-<th style="text-align:left;">
-發生時段.16.18
-</th>
-<th style="text-align:left;">
-發生地點.臺北市中正區忠勤里中華路2段311巷1.30號.
-</th>
-<th style="text-align:left;">
-X._id.17
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.299840
-</th>
-<th style="text-align:left;">
-timezone_type.3.16
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..16
-</th>
-<th style="text-align:left;">
-編號.17
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.16
-</th>
-<th style="text-align:left;">
-發生日期.1040105.5
-</th>
-<th style="text-align:left;">
-發生時段.18.20
-</th>
-<th style="text-align:left;">
-發生地點.臺北市文山區興福里12鄰景華街61.90號.
-</th>
-<th style="text-align:left;">
-X._id.18
+<th style="text-align:right;">
+編號
 </th>
 <th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.301096
+案類
 </th>
-<th style="text-align:left;">
-timezone_type.3.17
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..17
-</th>
-<th style="text-align:left;">
-編號.18
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.17
-</th>
-<th style="text-align:left;">
-發生日期.1040106
-</th>
-<th style="text-align:left;">
-發生時段.04.06.2
-</th>
-<th style="text-align:left;">
-發生地點.臺北市信義區雅祥里基隆路1段1.30號.
-</th>
-<th style="text-align:left;">
-X._id.19
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.302420
-</th>
-<th style="text-align:left;">
-timezone_type.3.18
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..18
-</th>
-<th style="text-align:left;">
-編號.19
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.18
-</th>
-<th style="text-align:left;">
-發生日期.1040106.1
-</th>
-<th style="text-align:left;">
-發生時段.16.18.1
-</th>
-<th style="text-align:left;">
-發生地點.臺北市中正區水源里汀州路3段91.120號.
-</th>
-<th style="text-align:left;">
-X._id.20
-</th>
-<th style="text-align:left;">
-X_importdate..date.2023.01.09.10.04.19.303669
-</th>
-<th style="text-align:left;">
-timezone_type.3.19
-</th>
-<th style="text-align:left;">
-timezone.Asia..Taipei..19
-</th>
-<th style="text-align:left;">
-編號.20
-</th>
-<th style="text-align:left;">
-案類.住宅竊盜.19
-</th>
-<th style="text-align:left;">
-發生日期.1040107
+<th style="text-align:right;">
+發生日期
 </th>
 <th style="text-align:left;">
-發生時段.16.18.2
+發生時段
 </th>
 <th style="text-align:left;">
-發生地點.臺北市文山區萬芳里萬芳路31.60號….
+發生地點
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1030623
+</td>
+<td style="text-align:left;">
+08~10
+</td>
+<td style="text-align:left;">
+臺北市中正區廈門街91~120號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+00~02
+</td>
+<td style="text-align:left;">
+臺北市文山區萬美里萬寧街1~30號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+00~02
+</td>
+<td style="text-align:left;">
+臺北市信義區富台里忠孝東路5段295巷6弄1~30號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+06~08
+</td>
+<td style="text-align:left;">
+臺北市中山區新生北路1段91~120號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040101
+</td>
+<td style="text-align:left;">
+10~12
+</td>
+<td style="text-align:left;">
+臺北市文山區明興里興隆路4段1~30號
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+住宅竊盜
+</td>
+<td style="text-align:right;">
+1040102
+</td>
+<td style="text-align:left;">
+00~02
+</td>
+<td style="text-align:left;">
+臺北市士林區天福里1鄰忠誠路2段130巷1~30號
+</td>
 </tr>
 </tbody>
 </table>
@@ -1126,7 +689,8 @@ timezone.Asia..Taipei..19
 <span id="cb6-2"><a href="basic.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
 <span id="cb6-3"><a href="basic.html#cb6-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP024/107?page=1&quot;</span></span>
 <span id="cb6-4"><a href="basic.html#cb6-4" aria-hidden="true" tabindex="-1"></a>first_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb6-5"><a href="basic.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(戶長<span class="ot">=</span>headhousehold_count)</span></code></pre></div>
+<span id="cb6-5"><a href="basic.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># head(first_page$responseData)</span></span>
+<span id="cb6-6"><a href="basic.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(戶長<span class="ot">=</span>headhousehold_count)</span></code></pre></div>
 <table>
 <thead>
 <tr>
