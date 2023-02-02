@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,10 +63,6 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -182,16 +178,14 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="basic.html"><a href="basic.html#rstudio介面簡介"><i class="fa fa-check"></i><b>2.1.1</b> RStudio介面簡介</a></li>
 <li class="chapter" data-level="2.1.2" data-path="basic.html"><a href="basic.html#用rmarkdown來撰寫r"><i class="fa fa-check"></i><b>2.1.2</b> 用RMarkdown來撰寫R</a></li>
-<li class="chapter" data-level="2.1.3" data-path="basic.html"><a href="basic.html#撰寫r"><i class="fa fa-check"></i><b>2.1.3</b> 撰寫R</a></li>
-<li class="chapter" data-level="2.1.4" data-path="basic.html"><a href="basic.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.4</b> 安裝並載入第三方套件</a></li>
-<li class="chapter" data-level="2.1.5" data-path="basic.html"><a href="basic.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.5</b> 程式碼註解</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic.html"><a href="basic.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.3</b> 安裝並載入第三方套件</a></li>
+<li class="chapter" data-level="2.1.4" data-path="basic.html"><a href="basic.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.4</b> 程式碼註解</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="basic.html"><a href="basic.html#第一次資料嘗試"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="basic.html"><a href="basic.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="basic.html"><a href="basic.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.3" data-path="basic.html"><a href="basic.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.4" data-path="basic.html"><a href="basic.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="basic.html"><a href="basic.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.1</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic.html"><a href="basic.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.2</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic.html"><a href="basic.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.3</b> 讀取台北住宅竊盜點位資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="basic.html"><a href="basic.html#r-qa"><i class="fa fa-check"></i><b>2.3</b> R Q&amp;A</a>
 <ul>
@@ -502,75 +496,72 @@ div.csl-indent {
 <div id="global-carbon-projects-wgoith-nytimes" class="section level3 hasAnchor" number="14.3.1">
 <h3><span class="header-section-number">14.3.1</span> Global Carbon Projects (WGOITH-NYTIMES)<a href="proportion.html#global-carbon-projects-wgoith-nytimes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.nytimes.com/interactive/2021/11/12/climate/cop26-emissions-compensation.html?campaign_id=29&amp;emc=edit_up_20211112&amp;instance_id=45236&amp;nl=the-upshot&amp;regi_id=52022771&amp;segment_id=74222&amp;te=1&amp;user_id=7cc6d9cd8f523e256ae41958ee8a9cb5">Who Has The Most Historical Responsibility for Climate Change? - The New York Times (nytimes.com)</a></p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="proportion.html#cb492-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb492-2"><a href="proportion.html#cb492-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb492-3"><a href="proportion.html#cb492-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb492-4"><a href="proportion.html#cb492-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb492-5"><a href="proportion.html#cb492-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb492-6"><a href="proportion.html#cb492-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
-<span id="cb492-7"><a href="proportion.html#cb492-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb492-8"><a href="proportion.html#cb492-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb492-9"><a href="proportion.html#cb492-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
-<span id="cb492-10"><a href="proportion.html#cb492-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
-<span id="cb492-11"><a href="proportion.html#cb492-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb492-12"><a href="proportion.html#cb492-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb492-13"><a href="proportion.html#cb492-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb492-14"><a href="proportion.html#cb492-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
-<span id="cb492-15"><a href="proportion.html#cb492-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-194-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="proportion.html#cb491-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb491-2"><a href="proportion.html#cb491-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb491-3"><a href="proportion.html#cb491-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb491-4"><a href="proportion.html#cb491-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb491-5"><a href="proportion.html#cb491-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb491-6"><a href="proportion.html#cb491-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
+<span id="cb491-7"><a href="proportion.html#cb491-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb491-8"><a href="proportion.html#cb491-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb491-9"><a href="proportion.html#cb491-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
+<span id="cb491-10"><a href="proportion.html#cb491-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
+<span id="cb491-11"><a href="proportion.html#cb491-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb491-12"><a href="proportion.html#cb491-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb491-13"><a href="proportion.html#cb491-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb491-14"><a href="proportion.html#cb491-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
+<span id="cb491-15"><a href="proportion.html#cb491-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
 </div>
 <div id="tw-budget" class="section level3 hasAnchor" number="14.3.2">
 <h3><span class="header-section-number">14.3.2</span> TW Budget<a href="proportion.html#tw-budget" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="proportion.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb493-2"><a href="proportion.html#cb493-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
-<span id="cb493-3"><a href="proportion.html#cb493-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
-<span id="cb493-4"><a href="proportion.html#cb493-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
-<span id="cb493-5"><a href="proportion.html#cb493-5" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
-<span id="cb493-6"><a href="proportion.html#cb493-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb493-7"><a href="proportion.html#cb493-7" aria-hidden="true" tabindex="-1"></a>cleand <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb493-8"><a href="proportion.html#cb493-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb493-9"><a href="proportion.html#cb493-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb493-10"><a href="proportion.html#cb493-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
-<span id="cb493-11"><a href="proportion.html#cb493-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">org =</span> purrr<span class="sc">::</span><span class="fu">map</span>(機構, <span class="cf">function</span>(x){<span class="fu">str_split</span>(x, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">2</span>]})) <span class="sc">%&gt;%</span></span>
-<span id="cb493-12"><a href="proportion.html#cb493-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), <span class="fu">unlist</span>(org), <span class="fu">unlist</span>(款))) <span class="sc">%&gt;%</span></span>
-<span id="cb493-13"><a href="proportion.html#cb493-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
-<span id="cb493-14"><a href="proportion.html#cb493-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb493-15"><a href="proportion.html#cb493-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
-<span id="cb493-16"><a href="proportion.html#cb493-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
-<span id="cb493-17"><a href="proportion.html#cb493-17" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
-<span id="cb493-18"><a href="proportion.html#cb493-18" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
-<span id="cb493-19"><a href="proportion.html#cb493-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb493-20"><a href="proportion.html#cb493-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="proportion.html#cb494-1" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
-<span id="cb494-2"><a href="proportion.html#cb494-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(款 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;科學支出&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb494-3"><a href="proportion.html#cb494-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org) <span class="sc">+</span></span>
-<span id="cb494-4"><a href="proportion.html#cb494-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb494-5"><a href="proportion.html#cb494-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb494-6"><a href="proportion.html#cb494-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb494-7"><a href="proportion.html#cb494-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span>,</span>
-<span id="cb494-8"><a href="proportion.html#cb494-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
-<span id="cb494-9"><a href="proportion.html#cb494-9" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
-<span id="cb494-10"><a href="proportion.html#cb494-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb494-11"><a href="proportion.html#cb494-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-198-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="proportion.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb495-2"><a href="proportion.html#cb495-2" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
-<span id="cb495-3"><a href="proportion.html#cb495-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(款 %in% c(&quot;科學支出&quot;, &quot;教育支出&quot;, &quot;國防支出&quot;, &quot;司法支出&quot;)) %&gt;%</span></span>
-<span id="cb495-4"><a href="proportion.html#cb495-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org, <span class="at">subgroup =</span> 款) <span class="sc">+</span></span>
-<span id="cb495-5"><a href="proportion.html#cb495-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb495-6"><a href="proportion.html#cb495-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_border</span>(<span class="at">color=</span><span class="st">&quot;gold&quot;</span>) <span class="sc">+</span></span>
-<span id="cb495-7"><a href="proportion.html#cb495-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_text</span>(<span class="at">place =</span> <span class="st">&quot;centre&quot;</span>, <span class="at">grow =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">colour =</span></span>
-<span id="cb495-8"><a href="proportion.html#cb495-8" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;gold&quot;</span>, <span class="at">min.size =</span> <span class="dv">0</span>,</span>
-<span id="cb495-9"><a href="proportion.html#cb495-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span></span>
-<span id="cb495-10"><a href="proportion.html#cb495-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb495-11"><a href="proportion.html#cb495-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb495-12"><a href="proportion.html#cb495-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span>F,</span>
-<span id="cb495-13"><a href="proportion.html#cb495-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
-<span id="cb495-14"><a href="proportion.html#cb495-14" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
-<span id="cb495-15"><a href="proportion.html#cb495-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb495-16"><a href="proportion.html#cb495-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb495-17"><a href="proportion.html#cb495-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-199-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="proportion.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb492-2"><a href="proportion.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
+<span id="cb492-3"><a href="proportion.html#cb492-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
+<span id="cb492-4"><a href="proportion.html#cb492-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
+<span id="cb492-5"><a href="proportion.html#cb492-5" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
+<span id="cb492-6"><a href="proportion.html#cb492-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb492-7"><a href="proportion.html#cb492-7" aria-hidden="true" tabindex="-1"></a>cleand <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb492-8"><a href="proportion.html#cb492-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb492-9"><a href="proportion.html#cb492-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb492-10"><a href="proportion.html#cb492-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
+<span id="cb492-11"><a href="proportion.html#cb492-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">org =</span> purrr<span class="sc">::</span><span class="fu">map</span>(機構, <span class="cf">function</span>(x){<span class="fu">str_split</span>(x, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">2</span>]})) <span class="sc">%&gt;%</span></span>
+<span id="cb492-12"><a href="proportion.html#cb492-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), <span class="fu">unlist</span>(org), <span class="fu">unlist</span>(款))) <span class="sc">%&gt;%</span></span>
+<span id="cb492-13"><a href="proportion.html#cb492-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb492-14"><a href="proportion.html#cb492-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb492-15"><a href="proportion.html#cb492-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb492-16"><a href="proportion.html#cb492-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
+<span id="cb492-17"><a href="proportion.html#cb492-17" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
+<span id="cb492-18"><a href="proportion.html#cb492-18" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
+<span id="cb492-19"><a href="proportion.html#cb492-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb492-20"><a href="proportion.html#cb492-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="proportion.html#cb493-1" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
+<span id="cb493-2"><a href="proportion.html#cb493-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(款 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;科學支出&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb493-3"><a href="proportion.html#cb493-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org) <span class="sc">+</span></span>
+<span id="cb493-4"><a href="proportion.html#cb493-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb493-5"><a href="proportion.html#cb493-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb493-6"><a href="proportion.html#cb493-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb493-7"><a href="proportion.html#cb493-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span>,</span>
+<span id="cb493-8"><a href="proportion.html#cb493-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
+<span id="cb493-9"><a href="proportion.html#cb493-9" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
+<span id="cb493-10"><a href="proportion.html#cb493-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb493-11"><a href="proportion.html#cb493-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="proportion.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb494-2"><a href="proportion.html#cb494-2" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
+<span id="cb494-3"><a href="proportion.html#cb494-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(款 %in% c(&quot;科學支出&quot;, &quot;教育支出&quot;, &quot;國防支出&quot;, &quot;司法支出&quot;)) %&gt;%</span></span>
+<span id="cb494-4"><a href="proportion.html#cb494-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org, <span class="at">subgroup =</span> 款) <span class="sc">+</span></span>
+<span id="cb494-5"><a href="proportion.html#cb494-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb494-6"><a href="proportion.html#cb494-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_border</span>(<span class="at">color=</span><span class="st">&quot;gold&quot;</span>) <span class="sc">+</span></span>
+<span id="cb494-7"><a href="proportion.html#cb494-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_text</span>(<span class="at">place =</span> <span class="st">&quot;centre&quot;</span>, <span class="at">grow =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">colour =</span></span>
+<span id="cb494-8"><a href="proportion.html#cb494-8" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;gold&quot;</span>, <span class="at">min.size =</span> <span class="dv">0</span>,</span>
+<span id="cb494-9"><a href="proportion.html#cb494-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span></span>
+<span id="cb494-10"><a href="proportion.html#cb494-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb494-11"><a href="proportion.html#cb494-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb494-12"><a href="proportion.html#cb494-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span>F,</span>
+<span id="cb494-13"><a href="proportion.html#cb494-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
+<span id="cb494-14"><a href="proportion.html#cb494-14" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
+<span id="cb494-15"><a href="proportion.html#cb494-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb494-16"><a href="proportion.html#cb494-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb494-17"><a href="proportion.html#cb494-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>

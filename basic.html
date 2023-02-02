@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,10 +63,6 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -182,16 +178,14 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="basic.html"><a href="basic.html#rstudio介面簡介"><i class="fa fa-check"></i><b>2.1.1</b> RStudio介面簡介</a></li>
 <li class="chapter" data-level="2.1.2" data-path="basic.html"><a href="basic.html#用rmarkdown來撰寫r"><i class="fa fa-check"></i><b>2.1.2</b> 用RMarkdown來撰寫R</a></li>
-<li class="chapter" data-level="2.1.3" data-path="basic.html"><a href="basic.html#撰寫r"><i class="fa fa-check"></i><b>2.1.3</b> 撰寫R</a></li>
-<li class="chapter" data-level="2.1.4" data-path="basic.html"><a href="basic.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.4</b> 安裝並載入第三方套件</a></li>
-<li class="chapter" data-level="2.1.5" data-path="basic.html"><a href="basic.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.5</b> 程式碼註解</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic.html"><a href="basic.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.3</b> 安裝並載入第三方套件</a></li>
+<li class="chapter" data-level="2.1.4" data-path="basic.html"><a href="basic.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.4</b> 程式碼註解</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="basic.html"><a href="basic.html#第一次資料嘗試"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="basic.html"><a href="basic.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="basic.html"><a href="basic.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.3" data-path="basic.html"><a href="basic.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.4" data-path="basic.html"><a href="basic.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="basic.html"><a href="basic.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.1</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic.html"><a href="basic.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.2</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic.html"><a href="basic.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.3</b> 讀取台北住宅竊盜點位資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="basic.html"><a href="basic.html#r-qa"><i class="fa fa-check"></i><b>2.3</b> R Q&amp;A</a>
 <ul>
@@ -491,200 +485,61 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="basic" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> R Basic<a href="basic.html#basic" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The chapter introduces how to use RStudio to write and execute R programming language. It will also briefly introduce the basic syntax of R, as well as the vector and data.frame data types.</p>
+<p>本章介紹如何使用 RStudio 編寫和執行 R 程式語言、R語言的基本語法、以及Vector和data.frame資料型態。</p>
 <div id="使用rstudio" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> 使用RStudio<a href="basic.html#使用rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="rstudio介面簡介" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> RStudio介面簡介<a href="basic.html#rstudio介面簡介" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>RStudio的介面主要分為四大區塊，左上的區塊是「Source」（或現在可切換至「Visual」）是撰寫程式碼與R Markdown的區塊；每行程式碼的執行和執行結果都會出現在左下「Console」的區塊；右上角區塊最常用的是「Environment」這個分頁，程式碼執行過程產生的變數／變項都會出現在這裡。右下角區塊我最常用的是「Files」這個分頁，顯示的是我自己電腦本機端的檔案目錄。右下角區塊也常常用到「Packages」，可查閱現在的程式執行環境有載入哪些套件；當用<code>help(some_function)</code>查詢某個套件或某個函式的功能是，就會自動跳到「Help」分頁。</p>
-<p><img src="images/image-1718793539.png" /></p>
+<p><img src="images/image-1886736556.png" /></p>
 </div>
 <div id="用rmarkdown來撰寫r" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> 用RMarkdown來撰寫R<a href="basic.html#用rmarkdown來撰寫r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>R Markdown這種格式讓程式寫作者可以將程式碼和非程式碼的內容寫在同一份文件中。例如我想要寫作一本關於程式的書，裡面有很多的程式碼，但也要有很多說明、章節與段落。此時，這些非程式碼的區塊通常被稱為「Text Cell」，而程式碼的區塊就稱為「Code Cell」。尤其是資料分析師或資料科學家很愛用這種格式，因為經常要為程式的執行結果寫很多說明，甚至利用標題一、標題二來區分章節。</p>
-<p>R Markdown格式，顧名思義，支援用Markdown這種標記語法來快速撰寫如標題一、標題二、點列、編號等格式化文字。詳細指令可以參考<a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">rmarkdown-cheatsheet (rstudio.com)</a>。</p>
-</div>
-<div id="撰寫r" class="section level3 hasAnchor" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> 撰寫R<a href="basic.html#撰寫r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now try to run the following code with these keyboard operations:</p>
+<p>R Markdown這種格式讓程式寫作者可以將程式碼和非程式碼的內容寫在同一份文件中。例如我想要寫作一本關於程式的書，裡面有很多的程式碼，但也要有很多說明、章節與段落。此時，這些非程式碼的區塊通常被稱為「內容區塊（Text Cell）」，而程式碼的區塊就稱為「Code Cell」。尤其是資料分析師或資料科學家很愛用這種格式，因為經常要為程式的執行結果寫很多說明，甚至利用標題一、標題二來區分章節。</p>
+<p><strong>內容區塊</strong>使用Markdown格式撰寫，顧名思義，支援用Markdown這種標記語法來快速撰寫如標題一、標題二、點列、編號等格式化文字。詳細指令可以參考<a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">rmarkdown-cheatsheet (rstudio.com)</a>。</p>
+<p><strong>程式碼區塊</strong>可以用下列鍵盤指令來新增和執行。</p>
 <ul>
-<li>Using <code>Cmd+Enter</code> (<code>Ctrl+Enter</code> in Window) to execute the line where your cursor is located.</li>
-<li>Using <code>Cmd(Ctrl)+Shift+Enter</code> to run all code in a cell</li>
-<li>Using mouse to select multiple lines, then <code>Cmd(Ctrl)+Shift+c</code> to comment/un-comment multiple lines.</li>
-<li>Using <code>Cmd(Ctrl)+Option(Alt)+i</code> to insert a new cell</li>
+<li><code>Cmd(Ctrl)+Option(Alt)+i</code> 新增一個程式碼區塊</li>
+<li><code>Cmd+Enter</code> (<code>Ctrl+Enter</code> in Window) 執行程式碼區塊中游標所在的那一行指令。</li>
+<li><code>Cmd(Ctrl)+Shift+Enter</code> 執行游標所在的整個程式碼區塊</li>
+<li>其他常用鍵盤指令 - <strong>註解</strong>：用滑鼠或鍵盤圈選某幾行程式碼後，可用<code>Cmd(Ctrl)+Shift+c</code>來將這幾行標記為註解或將其去除註解標記。</li>
 </ul>
+<p><strong>練習：</strong>用鍵盤快速鍵新增一個程式碼區塊、輸入以下程式碼並嘗試用鍵盤快速鍵執行。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="basic.html#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb1-2"><a href="basic.html#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb1-3"><a href="basic.html#cb1-3" aria-hidden="true" tabindex="-1"></a>a<span class="sc">*</span>b</span></code></pre></div>
 <pre class="output"><code>## [1]  4  8 12 16 20</code></pre>
 </div>
-<div id="安裝並載入第三方套件" class="section level3 hasAnchor" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> 安裝並載入第三方套件<a href="basic.html#安裝並載入第三方套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="安裝並載入第三方套件" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 安裝並載入第三方套件<a href="basic.html#安裝並載入第三方套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>套件的使用分為<strong>安裝(<code>install.packages("pkg_name")</code>)</strong>和<strong>載入（<code>library(pkg_name)</code>）</strong>兩個動作。通常安裝好R的時候就已經安裝好基本<code>base</code>套件。當執行R時便會將base套件<strong>預載</strong>入程式的執行環境中。</li>
 <li>非常多的R使用者會編寫第三方套件，並且將這些套件開放給群眾使用。通常這些套件已經被上載到<strong>R cran</strong>提供下載。而<strong>R cran</strong>上的套件我們可以使用<code>install.packages("package_name")</code>來自動安裝到我們的電腦中。</li>
 </ul>
-<p><strong><em>Practice 1.</em></strong> Run the following code to install these R packages。</p>
-<div id="載入套件" class="section level4 hasAnchor" number="2.1.4.1">
-<h4><span class="header-section-number">2.1.4.1</span> <strong>載入套件</strong><a href="basic.html#載入套件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong><em>Practice 1.</em></strong> 執行以下程式碼</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb3-2"><a href="basic.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;jsonlite&quot;</span>)</span>
+<span id="cb3-3"><a href="basic.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</span></code></pre></div>
+<div id="載入套件" class="section level4 hasAnchor" number="2.1.3.1">
+<h4><span class="header-section-number">2.1.3.1</span> <strong>載入套件</strong><a href="basic.html#載入套件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>After these third-party packages are installed, they need to be loaded into the program’s runtime environment before they can be used. So you need to load them with <code>library(package_name)</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="basic.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb3-3"><a href="basic.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="basic.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="basic.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb4-3"><a href="basic.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span></code></pre></div>
 </div>
 </div>
-<div id="程式碼註解" class="section level3 hasAnchor" number="2.1.5">
-<h3><span class="header-section-number">2.1.5</span> 程式碼註解<a href="basic.html#程式碼註解" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="程式碼註解" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> 程式碼註解<a href="basic.html#程式碼註解" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>下列程式碼中開頭有<code>#</code>符號者為註解，程式設計師用這種註解來為程式碼做說明，便於自己日後閱讀或與他人溝通。程式在執行時會自動忽略前面有<code>#</code>符號的程式碼。如果要執行以下程式碼，要把前面的<code>#</code>記號給拿掉。在RStudio中你可以用滑鼠或鍵盤圈選下三行，然後用快速鍵<code>command(ctrl)+shift+c</code>就可以開關（Comment/Un-comment)這幾行程式碼。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="basic.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a &lt;- c(1, 2, 3, 4, 5)</span></span>
-<span id="cb4-2"><a href="basic.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># b &lt;- 4</span></span>
-<span id="cb4-3"><a href="basic.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># a*b</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a &lt;- c(1, 2, 3, 4, 5)</span></span>
+<span id="cb5-2"><a href="basic.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># b &lt;- 4</span></span>
+<span id="cb5-3"><a href="basic.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># a*b</span></span></code></pre></div>
 </div>
 </div>
 <div id="第一次資料嘗試" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> 第一次資料嘗試<a href="basic.html#第一次資料嘗試" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="讀取台北住宅竊盜點位資料" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> 讀取台北住宅竊盜點位資料<a href="basic.html#讀取台北住宅竊盜點位資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Go to data.taipei</li>
-<li>Make a query “住宅竊盜”</li>
-<li>Open “住宅竊盜點位資訊”</li>
-<li>Click “API”</li>
-<li>Copy the API address and assign to url</li>
-</ul>
-</div>
-<div id="讀取先行下載的csv檔" class="section level3 hasAnchor" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> 讀取先行下載的csv檔<a href="basic.html#讀取先行下載的csv檔" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic.html#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
-<span id="cb5-2"><a href="basic.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-編號
-</th>
-<th style="text-align:left;">
-案類
-</th>
-<th style="text-align:right;">
-發生日期
-</th>
-<th style="text-align:left;">
-發生時段
-</th>
-<th style="text-align:left;">
-發生地點
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-住宅竊盜
-</td>
-<td style="text-align:right;">
-1030623
-</td>
-<td style="text-align:left;">
-08~10
-</td>
-<td style="text-align:left;">
-臺北市中正區廈門街91~120號
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-住宅竊盜
-</td>
-<td style="text-align:right;">
-1040101
-</td>
-<td style="text-align:left;">
-00~02
-</td>
-<td style="text-align:left;">
-臺北市文山區萬美里萬寧街1~30號
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-住宅竊盜
-</td>
-<td style="text-align:right;">
-1040101
-</td>
-<td style="text-align:left;">
-00~02
-</td>
-<td style="text-align:left;">
-臺北市信義區富台里忠孝東路5段295巷6弄1~30號
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-住宅竊盜
-</td>
-<td style="text-align:right;">
-1040101
-</td>
-<td style="text-align:left;">
-06~08
-</td>
-<td style="text-align:left;">
-臺北市中山區新生北路1段91~120號
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-住宅竊盜
-</td>
-<td style="text-align:right;">
-1040101
-</td>
-<td style="text-align:left;">
-10~12
-</td>
-<td style="text-align:left;">
-臺北市文山區明興里興隆路4段1~30號
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-住宅竊盜
-</td>
-<td style="text-align:right;">
-1040102
-</td>
-<td style="text-align:left;">
-00~02
-</td>
-<td style="text-align:left;">
-臺北市士林區天福里1鄰忠誠路2段130巷1~30號
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="直接從網路載入內政部開放資料" class="section level3 hasAnchor" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> 直接從網路載入內政部開放資料<a href="basic.html#直接從網路載入內政部開放資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="直接從網路載入內政部開放資料" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> 直接從網路載入內政部開放資料<a href="basic.html#直接從網路載入內政部開放資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="basic.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
 <span id="cb6-2"><a href="basic.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
 <span id="cb6-3"><a href="basic.html#cb6-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP024/107?page=1&quot;</span></span>
@@ -859,8 +714,8 @@ sex
 </tbody>
 </table>
 </div>
-<div id="獲取ubike即時資料" class="section level3 hasAnchor" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> 獲取ubike即時資料<a href="basic.html#獲取ubike即時資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="獲取ubike即時資料" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> 獲取ubike即時資料<a href="basic.html#獲取ubike即時資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><a href="https://taipeicity.github.io/traffic_realtime/" class="uri">https://taipeicity.github.io/traffic_realtime/</a></li>
 </ul>
@@ -904,16 +759,16 @@ mday
 捷運市政府站(3號出口)
 </td>
 <td style="text-align:left;">
-88
+84
 </td>
 <td style="text-align:left;">
-71
+72
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20221014150033
+20221030161036
 </td>
 </tr>
 <tr>
@@ -927,13 +782,13 @@ mday
 16
 </td>
 <td style="text-align:left;">
-6
+3
 </td>
 <td style="text-align:left;">
 大安區
 </td>
 <td style="text-align:left;">
-20221014150018
+20221030161031
 </td>
 </tr>
 <tr>
@@ -947,13 +802,13 @@ mday
 32
 </td>
 <td style="text-align:left;">
-32
+0
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20221014150038
+20221030161017
 </td>
 </tr>
 <tr>
@@ -964,16 +819,16 @@ mday
 興雅國中
 </td>
 <td style="text-align:left;">
-32
+10
 </td>
 <td style="text-align:left;">
-20
+1
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20221014150027
+20221030161041
 </td>
 </tr>
 <tr>
@@ -987,13 +842,13 @@ mday
 54
 </td>
 <td style="text-align:left;">
-19
+12
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20221014150015
+20221030161029
 </td>
 </tr>
 <tr>
@@ -1004,32 +859,41 @@ mday
 信義廣場(台北101)
 </td>
 <td style="text-align:left;">
-40
+20
 </td>
 <td style="text-align:left;">
-20
+2
 </td>
 <td style="text-align:left;">
 信義區
 </td>
 <td style="text-align:left;">
-20221014150043
+20221030161027
 </td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="讀取台北住宅竊盜點位資料" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> 讀取台北住宅竊盜點位資料<a href="basic.html#讀取台北住宅竊盜點位資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>該資料網址可到<a href="https://data.taipei/">臺北市資料大平臺 (data.taipei)</a>上查詢「住宅竊盜點位資訊」後，點選「API」後複製取得。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic.html#cb8-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://data.taipei/api/v1/dataset/93d9bc2d-af08-4db7-a56b-9f0a49226fa3?scope=resourceAquire&quot;</span></span>
+<span id="cb8-2"><a href="basic.html#cb8-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">read_json</span>(url, <span class="at">simplifyVector =</span> T)</span>
+<span id="cb8-3"><a href="basic.html#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> res<span class="sc">$</span>result<span class="sc">$</span>results</span>
+<span id="cb8-4"><a href="basic.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb8-5"><a href="basic.html#cb8-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(df)</span></code></pre></div>
 </div>
 </div>
 <div id="r-qa" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> R Q&amp;A<a href="basic.html#r-qa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="編碼與設定語系" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> 編碼與設定語系<a href="basic.html#編碼與設定語系" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<pre><code>Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;UTF-8&quot;)
-Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;cht&quot;)</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb9-2"><a href="basic.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;cht&quot;</span>)</span></code></pre></div>
 <p>如果讀取到資料有中文的話，此時，你只需要指定locale為cht，然後重開該data.frame就可以解決該問題。</p>
-<pre><code>Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;cht&quot;)</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;cht&quot;</span>)</span></code></pre></div>
 <p>但你在寫程式剖析HTML時若使用了rvest這個套件，有可能在html_node()函式時會因為編碼而產生問題，此時你會需要把locale改為C。這個C指的是C語言的C。</p>
-<pre><code>Sys.setlocale(category = &quot;LC_ALL&quot;, locale = &quot;C&quot;)</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;C&quot;</span>)</span></code></pre></div>
 <p>參考連結：<a href="http://psmethods.postach.io/post/ru-he-geng-gai-rde-yu-she-yu-xi" class="uri">http://psmethods.postach.io/post/ru-he-geng-gai-rde-yu-she-yu-xi</a></p>
 <ul>
 <li><p>參考連結：<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/locales.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/base/html/locales.html</a></p></li>

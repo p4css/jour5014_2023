@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,10 +63,6 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -182,16 +178,14 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="basic.html"><a href="basic.html#rstudio介面簡介"><i class="fa fa-check"></i><b>2.1.1</b> RStudio介面簡介</a></li>
 <li class="chapter" data-level="2.1.2" data-path="basic.html"><a href="basic.html#用rmarkdown來撰寫r"><i class="fa fa-check"></i><b>2.1.2</b> 用RMarkdown來撰寫R</a></li>
-<li class="chapter" data-level="2.1.3" data-path="basic.html"><a href="basic.html#撰寫r"><i class="fa fa-check"></i><b>2.1.3</b> 撰寫R</a></li>
-<li class="chapter" data-level="2.1.4" data-path="basic.html"><a href="basic.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.4</b> 安裝並載入第三方套件</a></li>
-<li class="chapter" data-level="2.1.5" data-path="basic.html"><a href="basic.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.5</b> 程式碼註解</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic.html"><a href="basic.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.3</b> 安裝並載入第三方套件</a></li>
+<li class="chapter" data-level="2.1.4" data-path="basic.html"><a href="basic.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.4</b> 程式碼註解</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="basic.html"><a href="basic.html#第一次資料嘗試"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="basic.html"><a href="basic.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.1</b> 讀取台北住宅竊盜點位資料</a></li>
-<li class="chapter" data-level="2.2.2" data-path="basic.html"><a href="basic.html#讀取先行下載的csv檔"><i class="fa fa-check"></i><b>2.2.2</b> 讀取先行下載的csv檔</a></li>
-<li class="chapter" data-level="2.2.3" data-path="basic.html"><a href="basic.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.3</b> 直接從網路載入內政部開放資料</a></li>
-<li class="chapter" data-level="2.2.4" data-path="basic.html"><a href="basic.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.4</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.1" data-path="basic.html"><a href="basic.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.1</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic.html"><a href="basic.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.2</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic.html"><a href="basic.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.3</b> 讀取台北住宅竊盜點位資料</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="basic.html"><a href="basic.html#r-qa"><i class="fa fa-check"></i><b>2.3</b> R Q&amp;A</a>
 <ul>
@@ -496,140 +490,140 @@ div.csl-indent {
 <h2><span class="header-section-number">8.1</span> Scraping 104.com<a href="crawler.html#scraping-104.com" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="complete-code" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Complete Code<a href="crawler.html#complete-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="crawler.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb428-2"><a href="crawler.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb428-3"><a href="crawler.html#cb428-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb428-4"><a href="crawler.html#cb428-4" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span></code></pre></div>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="crawler.html#cb429-1" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
-<span id="cb429-2"><a href="crawler.html#cb429-2" aria-hidden="true" tabindex="-1"></a>refer_url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw&quot;</span></span>
-<span id="cb429-3"><a href="crawler.html#cb429-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-4"><a href="crawler.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb429-5"><a href="crawler.html#cb429-5" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=12&amp;asc=0&amp;page=&#39;</span>, </span>
-<span id="cb429-6"><a href="crawler.html#cb429-6" aria-hidden="true" tabindex="-1"></a>                 p, </span>
-<span id="cb429-7"><a href="crawler.html#cb429-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb429-8"><a href="crawler.html#cb429-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(p)</span>
-<span id="cb429-9"><a href="crawler.html#cb429-9" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url, <span class="fu">add_headers</span>(<span class="st">&quot;referer&quot;</span><span class="ot">=</span>refer_url)) <span class="sc">%&gt;%</span></span>
-<span id="cb429-10"><a href="crawler.html#cb429-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">content</span>(<span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb429-11"><a href="crawler.html#cb429-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fromJSON</span>()</span>
-<span id="cb429-12"><a href="crawler.html#cb429-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb429-13"><a href="crawler.html#cb429-13" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb429-14"><a href="crawler.html#cb429-14" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb429-15"><a href="crawler.html#cb429-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb429-16"><a href="crawler.html#cb429-16" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, res<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb429-17"><a href="crawler.html#cb429-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb429-18"><a href="crawler.html#cb429-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-19"><a href="crawler.html#cb429-19" aria-hidden="true" tabindex="-1"></a>all.df<span class="sc">$</span>jobNo <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> length</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="crawler.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb429-2"><a href="crawler.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb429-3"><a href="crawler.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb429-4"><a href="crawler.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="crawler.html#cb430-1" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb430-2"><a href="crawler.html#cb430-2" aria-hidden="true" tabindex="-1"></a>refer_url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw&quot;</span></span>
+<span id="cb430-3"><a href="crawler.html#cb430-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb430-4"><a href="crawler.html#cb430-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb430-5"><a href="crawler.html#cb430-5" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=12&amp;asc=0&amp;page=&#39;</span>, </span>
+<span id="cb430-6"><a href="crawler.html#cb430-6" aria-hidden="true" tabindex="-1"></a>                 p, </span>
+<span id="cb430-7"><a href="crawler.html#cb430-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb430-8"><a href="crawler.html#cb430-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(p)</span>
+<span id="cb430-9"><a href="crawler.html#cb430-9" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url, <span class="fu">add_headers</span>(<span class="st">&quot;referer&quot;</span><span class="ot">=</span>refer_url)) <span class="sc">%&gt;%</span></span>
+<span id="cb430-10"><a href="crawler.html#cb430-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">content</span>(<span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb430-11"><a href="crawler.html#cb430-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fromJSON</span>()</span>
+<span id="cb430-12"><a href="crawler.html#cb430-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb430-13"><a href="crawler.html#cb430-13" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb430-14"><a href="crawler.html#cb430-14" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span>data<span class="sc">$</span>list<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb430-15"><a href="crawler.html#cb430-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb430-16"><a href="crawler.html#cb430-16" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, res<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb430-17"><a href="crawler.html#cb430-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb430-18"><a href="crawler.html#cb430-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb430-19"><a href="crawler.html#cb430-19" aria-hidden="true" tabindex="-1"></a>all.df<span class="sc">$</span>jobNo <span class="sc">%&gt;%</span> unique <span class="sc">%&gt;%</span> length</span></code></pre></div>
 </div>
 <div id="step-by-step" class="section level3 hasAnchor" number="8.1.2">
 <h3><span class="header-section-number">8.1.2</span> Step-by-Step<a href="crawler.html#step-by-step" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="get-the-first-pages" class="section level4 hasAnchor" number="8.1.2.1">
 <h4><span class="header-section-number">8.1.2.1</span> Get the first pages<a href="crawler.html#get-the-first-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Must loading the second page</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="crawler.html#cb430-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb430-2"><a href="crawler.html#cb430-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-3"><a href="crawler.html#cb430-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 2nd page data url to url2</span></span>
-<span id="cb430-4"><a href="crawler.html#cb430-4" aria-hidden="true" tabindex="-1"></a>url2 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb430-5"><a href="crawler.html#cb430-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-6"><a href="crawler.html#cb430-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 3rd page data url to url3</span></span>
-<span id="cb430-7"><a href="crawler.html#cb430-7" aria-hidden="true" tabindex="-1"></a>url3 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb430-8"><a href="crawler.html#cb430-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-9"><a href="crawler.html#cb430-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the url1 data, assigning to result1</span></span>
-<span id="cb430-10"><a href="crawler.html#cb430-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-11"><a href="crawler.html#cb430-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url2, <span class="at">config =</span> <span class="fu">add_headers</span>(<span class="st">&quot;Referer&quot;</span> <span class="ot">=</span> <span class="st">&quot;https://www.104.com.tw/&quot;</span>))</span>
-<span id="cb430-12"><a href="crawler.html#cb430-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-13"><a href="crawler.html#cb430-13" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">content</span>(res, <span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
-<span id="cb430-14"><a href="crawler.html#cb430-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-15"><a href="crawler.html#cb430-15" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url2), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb430-16"><a href="crawler.html#cb430-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-17"><a href="crawler.html#cb430-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing variable result2 and finding the data.frame, assigning to df2</span></span>
-<span id="cb430-18"><a href="crawler.html#cb430-18" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> res1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="crawler.html#cb431-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb431-2"><a href="crawler.html#cb431-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-3"><a href="crawler.html#cb431-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 2nd page data url to url2</span></span>
+<span id="cb431-4"><a href="crawler.html#cb431-4" aria-hidden="true" tabindex="-1"></a>url2 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb431-5"><a href="crawler.html#cb431-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-6"><a href="crawler.html#cb431-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the 3rd page data url to url3</span></span>
+<span id="cb431-7"><a href="crawler.html#cb431-7" aria-hidden="true" tabindex="-1"></a>url3 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb431-8"><a href="crawler.html#cb431-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-9"><a href="crawler.html#cb431-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the url1 data, assigning to result1</span></span>
+<span id="cb431-10"><a href="crawler.html#cb431-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-11"><a href="crawler.html#cb431-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">GET</span>(url2, <span class="at">config =</span> <span class="fu">add_headers</span>(<span class="st">&quot;Referer&quot;</span> <span class="ot">=</span> <span class="st">&quot;https://www.104.com.tw/&quot;</span>))</span>
+<span id="cb431-12"><a href="crawler.html#cb431-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-13"><a href="crawler.html#cb431-13" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">content</span>(res, <span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
+<span id="cb431-14"><a href="crawler.html#cb431-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-15"><a href="crawler.html#cb431-15" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url2), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb431-16"><a href="crawler.html#cb431-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-17"><a href="crawler.html#cb431-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing variable result2 and finding the data.frame, assigning to df2</span></span>
+<span id="cb431-18"><a href="crawler.html#cb431-18" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> res1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
 </div>
 <div id="get-the-first-page-by-modifying-url" class="section level4 hasAnchor" number="8.1.2.2">
 <h4><span class="header-section-number">8.1.2.2</span> Get the first page by modifying url<a href="crawler.html#get-the-first-page-by-modifying-url" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="crawler.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guessing the 1st page data url to url1</span></span>
-<span id="cb431-2"><a href="crawler.html#cb431-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb431-3"><a href="crawler.html#cb431-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb431-4"><a href="crawler.html#cb431-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
-<span id="cb431-5"><a href="crawler.html#cb431-5" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb431-6"><a href="crawler.html#cb431-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb431-7"><a href="crawler.html#cb431-7" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb431-8"><a href="crawler.html#cb431-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb431-9"><a href="crawler.html#cb431-9" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="crawler.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guessing the 1st page data url to url1</span></span>
+<span id="cb432-2"><a href="crawler.html#cb432-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb432-3"><a href="crawler.html#cb432-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb432-4"><a href="crawler.html#cb432-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
+<span id="cb432-5"><a href="crawler.html#cb432-5" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb432-6"><a href="crawler.html#cb432-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb432-7"><a href="crawler.html#cb432-7" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb432-8"><a href="crawler.html#cb432-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb432-9"><a href="crawler.html#cb432-9" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list</span></code></pre></div>
 </div>
 <div id="combine-two-data-with-the-same-variables" class="section level4 hasAnchor" number="8.1.2.3">
 <h4><span class="header-section-number">8.1.2.3</span> Combine two data with the same variables<a href="crawler.html#combine-two-data-with-the-same-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="crawler.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all.df &lt;- bind_rows(df1, df2) # will raise error</span></span>
-<span id="cb432-2"><a href="crawler.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in bind_rows_(x, .id) : </span></span>
-<span id="cb432-3"><a href="crawler.html#cb432-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Argument 31 can&#39;t be a list containing data frames</span></span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="crawler.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all.df &lt;- bind_rows(df1, df2) # will raise error</span></span>
+<span id="cb433-2"><a href="crawler.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in bind_rows_(x, .id) : </span></span>
+<span id="cb433-3"><a href="crawler.html#cb433-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Argument 31 can&#39;t be a list containing data frames</span></span></code></pre></div>
 </div>
 <div id="drop-out-hierarchical-variables" class="section level4 hasAnchor" number="8.1.2.4">
 <h4><span class="header-section-number">8.1.2.4</span> Drop out hierarchical variables<a href="crawler.html#drop-out-hierarchical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Preserving numeric or character, dropping list of data.frame by assigning NULL to the variable</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="crawler.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop list and data.frame inside the data.frame</span></span>
-<span id="cb433-2"><a href="crawler.html#cb433-2" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb433-3"><a href="crawler.html#cb433-3" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb433-4"><a href="crawler.html#cb433-4" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb433-5"><a href="crawler.html#cb433-5" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb433-6"><a href="crawler.html#cb433-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb433-7"><a href="crawler.html#cb433-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-binding two data.frame df1 and df2</span></span>
-<span id="cb433-8"><a href="crawler.html#cb433-8" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="crawler.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop list and data.frame inside the data.frame</span></span>
+<span id="cb434-2"><a href="crawler.html#cb434-2" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb434-3"><a href="crawler.html#cb434-3" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb434-4"><a href="crawler.html#cb434-4" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>link <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb434-5"><a href="crawler.html#cb434-5" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>tags <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb434-6"><a href="crawler.html#cb434-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb434-7"><a href="crawler.html#cb434-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-binding two data.frame df1 and df2</span></span>
+<span id="cb434-8"><a href="crawler.html#cb434-8" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
 </div>
 <div id="dropping-hierarchical-variables-by-dplyr-way" class="section level4 hasAnchor" number="8.1.2.5">
 <h4><span class="header-section-number">8.1.2.5</span> Dropping hierarchical variables by dplyr way<a href="crawler.html#dropping-hierarchical-variables-by-dplyr-way" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="crawler.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 1st page data and dropping variable tags and link</span></span>
-<span id="cb434-2"><a href="crawler.html#cb434-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df1</span></span>
-<span id="cb434-3"><a href="crawler.html#cb434-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
-<span id="cb434-4"><a href="crawler.html#cb434-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb434-5"><a href="crawler.html#cb434-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 2nd page data and dropping variable tags and link</span></span>
-<span id="cb434-6"><a href="crawler.html#cb434-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df2</span></span>
-<span id="cb434-7"><a href="crawler.html#cb434-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> result2<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
-<span id="cb434-8"><a href="crawler.html#cb434-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb434-9"><a href="crawler.html#cb434-9" aria-hidden="true" tabindex="-1"></a><span class="co"># binding df1 and df2</span></span>
-<span id="cb434-10"><a href="crawler.html#cb434-10" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="crawler.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 1st page data and dropping variable tags and link</span></span>
+<span id="cb435-2"><a href="crawler.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df1</span></span>
+<span id="cb435-3"><a href="crawler.html#cb435-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
+<span id="cb435-4"><a href="crawler.html#cb435-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb435-5"><a href="crawler.html#cb435-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the 2nd page data and dropping variable tags and link</span></span>
+<span id="cb435-6"><a href="crawler.html#cb435-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning to df2</span></span>
+<span id="cb435-7"><a href="crawler.html#cb435-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> result2<span class="sc">$</span>data<span class="sc">$</span>list <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>tags, <span class="sc">-</span>link)</span>
+<span id="cb435-8"><a href="crawler.html#cb435-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb435-9"><a href="crawler.html#cb435-9" aria-hidden="true" tabindex="-1"></a><span class="co"># binding df1 and df2</span></span>
+<span id="cb435-10"><a href="crawler.html#cb435-10" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df1, df2)</span></code></pre></div>
 </div>
 <div id="finding-out-the-last-page-number" class="section level4 hasAnchor" number="8.1.2.6">
 <h4><span class="header-section-number">8.1.2.6</span> Finding out the last page number<a href="crawler.html#finding-out-the-last-page-number" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="crawler.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing the number of pages in result1</span></span>
-<span id="cb435-2"><a href="crawler.html#cb435-2" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
-<span id="cb435-3"><a href="crawler.html#cb435-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the availability of the last page</span></span>
-<span id="cb435-4"><a href="crawler.html#cb435-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb435-5"><a href="crawler.html#cb435-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examining if the last page data available by re-composing URL with paste0()</span></span>
-<span id="cb435-6"><a href="crawler.html#cb435-6" aria-hidden="true" tabindex="-1"></a>url.last_page <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, last_page_num, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb435-7"><a href="crawler.html#cb435-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb435-8"><a href="crawler.html#cb435-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back and parsing the last page data</span></span>
-<span id="cb435-9"><a href="crawler.html#cb435-9" aria-hidden="true" tabindex="-1"></a>result.last_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url.last_page), <span class="st">&quot;text&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="crawler.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing the number of pages in result1</span></span>
+<span id="cb436-2"><a href="crawler.html#cb436-2" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
+<span id="cb436-3"><a href="crawler.html#cb436-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the availability of the last page</span></span>
+<span id="cb436-4"><a href="crawler.html#cb436-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb436-5"><a href="crawler.html#cb436-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examining if the last page data available by re-composing URL with paste0()</span></span>
+<span id="cb436-6"><a href="crawler.html#cb436-6" aria-hidden="true" tabindex="-1"></a>url.last_page <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, last_page_num, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb436-7"><a href="crawler.html#cb436-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb436-8"><a href="crawler.html#cb436-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back and parsing the last page data</span></span>
+<span id="cb436-9"><a href="crawler.html#cb436-9" aria-hidden="true" tabindex="-1"></a>result.last_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url.last_page), <span class="st">&quot;text&quot;</span>))</span></code></pre></div>
 </div>
 <div id="using-for-loop-to-get-all-pages" class="section level4 hasAnchor" number="8.1.2.7">
 <h4><span class="header-section-number">8.1.2.7</span> Using for-loop to get all pages<a href="crawler.html#using-for-loop-to-get-all-pages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="crawler.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
-<span id="cb436-2"><a href="crawler.html#cb436-2" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb436-3"><a href="crawler.html#cb436-3" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb436-4"><a href="crawler.html#cb436-4" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb436-5"><a href="crawler.html#cb436-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(temp.df)))</span>
-<span id="cb436-6"><a href="crawler.html#cb436-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="crawler.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
+<span id="cb437-2"><a href="crawler.html#cb437-2" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb437-3"><a href="crawler.html#cb437-3" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb437-4"><a href="crawler.html#cb437-4" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb437-5"><a href="crawler.html#cb437-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(temp.df)))</span>
+<span id="cb437-6"><a href="crawler.html#cb437-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="combine-all-data.frame" class="section level4 hasAnchor" number="8.1.2.8">
 <h4><span class="header-section-number">8.1.2.8</span> combine all data.frame<a href="crawler.html#combine-all-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="crawler.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  The 1st url of the query</span></span>
-<span id="cb437-2"><a href="crawler.html#cb437-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
-<span id="cb437-3"><a href="crawler.html#cb437-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb437-4"><a href="crawler.html#cb437-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
-<span id="cb437-5"><a href="crawler.html#cb437-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb437-6"><a href="crawler.html#cb437-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb437-7"><a href="crawler.html#cb437-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing and getting total number of page</span></span>
-<span id="cb437-8"><a href="crawler.html#cb437-8" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
-<span id="cb437-9"><a href="crawler.html#cb437-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb437-10"><a href="crawler.html#cb437-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncating hierarchical variables: link and tags</span></span>
-<span id="cb437-11"><a href="crawler.html#cb437-11" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result1<span class="sc">$</span>data<span class="sc">$</span>list, <span class="sc">-</span>link, <span class="sc">-</span>tags)</span>
-<span id="cb437-12"><a href="crawler.html#cb437-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb437-13"><a href="crawler.html#cb437-13" aria-hidden="true" tabindex="-1"></a><span class="co"># for-loop to getting back data and joining them</span></span>
-<span id="cb437-14"><a href="crawler.html#cb437-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
-<span id="cb437-15"><a href="crawler.html#cb437-15" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
-<span id="cb437-16"><a href="crawler.html#cb437-16" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
-<span id="cb437-17"><a href="crawler.html#cb437-17" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
-<span id="cb437-18"><a href="crawler.html#cb437-18" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, temp.df)</span>
-<span id="cb437-19"><a href="crawler.html#cb437-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(all.df)))</span>
-<span id="cb437-20"><a href="crawler.html#cb437-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="crawler.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  The 1st url of the query</span></span>
+<span id="cb438-2"><a href="crawler.html#cb438-2" aria-hidden="true" tabindex="-1"></a>url1 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span></span>
+<span id="cb438-3"><a href="crawler.html#cb438-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-4"><a href="crawler.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting back the 1st page data</span></span>
+<span id="cb438-5"><a href="crawler.html#cb438-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url1), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb438-6"><a href="crawler.html#cb438-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-7"><a href="crawler.html#cb438-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracing and getting total number of page</span></span>
+<span id="cb438-8"><a href="crawler.html#cb438-8" aria-hidden="true" tabindex="-1"></a>last_page_num <span class="ot">&lt;-</span> result1<span class="sc">$</span>data<span class="sc">$</span>totalPage</span>
+<span id="cb438-9"><a href="crawler.html#cb438-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-10"><a href="crawler.html#cb438-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncating hierarchical variables: link and tags</span></span>
+<span id="cb438-11"><a href="crawler.html#cb438-11" aria-hidden="true" tabindex="-1"></a>all.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result1<span class="sc">$</span>data<span class="sc">$</span>list, <span class="sc">-</span>link, <span class="sc">-</span>tags)</span>
+<span id="cb438-12"><a href="crawler.html#cb438-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-13"><a href="crawler.html#cb438-13" aria-hidden="true" tabindex="-1"></a><span class="co"># for-loop to getting back data and joining them</span></span>
+<span id="cb438-14"><a href="crawler.html#cb438-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>last_page_num){</span>
+<span id="cb438-15"><a href="crawler.html#cb438-15" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=%E7%88%AC%E8%9F%B2&amp;order=1&amp;asc=0&amp;page=&quot;</span>, p, <span class="st">&quot;&amp;mode=s&amp;jobsource=2018indexpoc&quot;</span>)</span>
+<span id="cb438-16"><a href="crawler.html#cb438-16" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
+<span id="cb438-17"><a href="crawler.html#cb438-17" aria-hidden="true" tabindex="-1"></a>    temp.df <span class="ot">&lt;-</span> <span class="fu">select</span>(result<span class="sc">$</span>data<span class="sc">$</span>list)</span>
+<span id="cb438-18"><a href="crawler.html#cb438-18" aria-hidden="true" tabindex="-1"></a>    all.df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all.df, temp.df)</span>
+<span id="cb438-19"><a href="crawler.html#cb438-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(p, <span class="fu">nrow</span>(all.df)))</span>
+<span id="cb438-20"><a href="crawler.html#cb438-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
