@@ -56,13 +56,12 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.25/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -506,70 +505,91 @@ div.csl-indent {
 <p class="caption">ggplot-cheat-sheet</p>
 </div>
 <p><code>ggplot()</code> 會秀出預備要繪製的繪圖區</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="visualization.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb439-2"><a href="visualization.html#cb439-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="visualization.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb473-2"><a href="visualization.html#cb473-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-2-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>指定X／Y軸與群組因子<code>aes()</code></strong>：<code>aes()</code>會在繪圖區上繪製X與Y軸</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="visualization.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb440-2"><a href="visualization.html#cb440-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb440-3"><a href="visualization.html#cb440-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b)</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="visualization.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb474-2"><a href="visualization.html#cb474-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb474-3"><a href="visualization.html#cb474-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b)</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>指定要繪製的圖表類型</strong>。例如Line-chart為<code>geom_line()</code>、</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="visualization.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb441-2"><a href="visualization.html#cb441-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb441-3"><a href="visualization.html#cb441-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
-<span id="cb441-4"><a href="visualization.html#cb441-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="visualization.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb475-2"><a href="visualization.html#cb475-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb475-3"><a href="visualization.html#cb475-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
+<span id="cb475-4"><a href="visualization.html#cb475-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>此圖為一雙變數的圖，基於雙變數，可以將不同的圖同時繪製在同一個繪圖區上。例如以下同時繪製了<code>geom_line()</code>與<code>geom_plot()</code>。</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="visualization.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb442-2"><a href="visualization.html#cb442-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb442-3"><a href="visualization.html#cb442-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
-<span id="cb442-4"><a href="visualization.html#cb442-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb442-5"><a href="visualization.html#cb442-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="visualization.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb476-2"><a href="visualization.html#cb476-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb476-3"><a href="visualization.html#cb476-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>a, <span class="at">y=</span>b) <span class="sc">+</span> </span>
+<span id="cb476-4"><a href="visualization.html#cb476-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb476-5"><a href="visualization.html#cb476-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="範例-紐時世代貧富不均" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> 範例-紐時世代貧富不均<a href="visualization.html#範例-紐時世代貧富不均" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html">Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)</a></p>
 <p>ggplot是以變數為基礎的視覺化套件，也就是說，當準備好dataframe後，就可以在ggplot中指定要用哪些變數來繪圖。也因此，務必把dataframe整理為tidy型態，也就是長表格（long-form）的型態。整理完資料後，我會習慣地用<code>names(plot)</code>或<code>glimpse(plot)</code>來看一下該資料所有的變項，好可以在下一階段的繪圖做參考。</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="visualization.html#cb443-1" aria-hidden="true" tabindex="-1"></a>NW <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb443-2"><a href="visualization.html#cb443-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Category, year, Net_Worth)  <span class="sc">%&gt;%</span></span>
-<span id="cb443-3"><a href="visualization.html#cb443-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb443-4"><a href="visualization.html#cb443-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb443-5"><a href="visualization.html#cb443-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb443-6"><a href="visualization.html#cb443-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb443-7"><a href="visualization.html#cb443-7" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="visualization.html#cb477-1" aria-hidden="true" tabindex="-1"></a>NW <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;nytdata/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb477-2"><a href="visualization.html#cb477-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Category, year, Net_Worth)  <span class="sc">%&gt;%</span></span>
+<span id="cb477-3"><a href="visualization.html#cb477-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb477-4"><a href="visualization.html#cb477-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb477-5"><a href="visualization.html#cb477-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## Rows: 66 Columns: 37
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (1): Category
+## dbl (36): year, Before_Tax_Income, Net_Worth, Assets, Financial_Assets, Tran...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="visualization.html#cb479-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>## Rows: 66
+## Columns: 3
+## $ Category  &lt;chr&gt; &quot;Less than 35&quot;, &quot;35-44&quot;, &quot;45-54&quot;, &quot;55-64&quot;, &quot;65-74&quot;, &quot;75 or o…
+## $ year      &lt;dbl&gt; 1989, 1989, 1989, 1989, 1989, 1989, 1992, 1992, 1992, 1992, …
+## $ Net_Worth &lt;dbl&gt; 16.17019, 112.47530, 195.11630, 195.25554, 154.34277, 144.29…</code></pre>
 <p>這是預期視覺化的結果</p>
 <p><img src="images/paste-B46B3CD7.png" /></p>
 <p>先將<code>year</code>和<code>Net_worth</code>分別繪製在X與Y軸上，並用<code>geom_line()</code>繪製為折現圖。結果圖表中呈現鋸齒狀的折線，看似有問題，但其實是合理的。因為<code>year</code>是一個離散變數，而我們希望每個年齡層一條線的話，那就要照年齡層來分組。也因此，每一年都有有每個年齡層的資料，當我們把「年」作為X軸時，自然同一年就會有數筆不同年齡層的資料，因此才會是鋸齒狀的。</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="visualization.html#cb444-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb444-2"><a href="visualization.html#cb444-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb444-3"><a href="visualization.html#cb444-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
-<span id="cb444-4"><a href="visualization.html#cb444-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="visualization.html#cb481-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb481-2"><a href="visualization.html#cb481-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb481-3"><a href="visualization.html#cb481-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
+<span id="cb481-4"><a href="visualization.html#cb481-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>不同的圖表類型是可以疊加在同一張圖上的</strong>。我們也可以把<code>geom_point()</code> 另一種圖表型態加入，也是可以的，兩者的X與Y不相衝突。<code>geom_line()</code>、<code>geom_point()</code>、<code>geom_text()</code>三者會經常伴隨出現。</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="visualization.html#cb445-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb445-2"><a href="visualization.html#cb445-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb445-3"><a href="visualization.html#cb445-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
-<span id="cb445-4"><a href="visualization.html#cb445-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb445-5"><a href="visualization.html#cb445-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="visualization.html#cb482-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb482-2"><a href="visualization.html#cb482-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb482-3"><a href="visualization.html#cb482-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth) <span class="sc">+</span> </span>
+<span id="cb482-4"><a href="visualization.html#cb482-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb482-5"><a href="visualization.html#cb482-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="加入自變項群組" class="section level3 hasAnchor" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> 加入自變項群組<a href="visualization.html#加入自變項群組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>上圖是我們把多個年齡層的逐年資料畫在同一條折線上，所以會呈現鋸齒狀折現的狀況。但這些年齡層並非在同一條線上呀？因此，我們要根據<code>Category</code>這個變數來做分組。</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="visualization.html#cb446-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
-<span id="cb446-2"><a href="visualization.html#cb446-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb446-3"><a href="visualization.html#cb446-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth, <span class="at">group=</span>Category) <span class="sc">+</span> </span>
-<span id="cb446-4"><a href="visualization.html#cb446-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb446-5"><a href="visualization.html#cb446-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="visualization.html#cb483-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span></span>
+<span id="cb483-2"><a href="visualization.html#cb483-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb483-3"><a href="visualization.html#cb483-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Net_Worth, <span class="at">group=</span>Category) <span class="sc">+</span> </span>
+<span id="cb483-4"><a href="visualization.html#cb483-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb483-5"><a href="visualization.html#cb483-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>如希望不同線條上不一樣的色彩，應指定<code>color=Category</code>。</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="visualization.html#cb447-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb447-2"><a href="visualization.html#cb447-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb447-3"><a href="visualization.html#cb447-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="visualization.html#cb484-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb484-2"><a href="visualization.html#cb484-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb484-3"><a href="visualization.html#cb484-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" /></p>
 <dl>
 <dt>用color、fill或group來做分組？</dt>
 <dd>
 <p><code>geom_line()</code>的色彩是在<strong>線</strong>，而不是在<strong>面</strong>上。如果色彩是在點（如<code>geom_point()</code>）或線（<code>geom_line()</code>）上，就是用<code>color</code>來指定顏色。但如果是如類似下面的例子，用<code>geom_area()</code>來視覺化的話，因為顏色填的是<strong>面</strong>，所以要用<code>fill=Category</code>。以下範例甚至同時指定<code>color=Category, fill=Category</code>。但折線圖如果要用<code>geom_area()</code>來視覺化的話，最好要上顏色的不要超過二個，不然就會像底下這個例子一樣，即使設定<code>alpha=0.2</code>的半透明，仍然會看不懂哪些顏色疊在一起。</p>
 </dd>
 </dl>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="visualization.html#cb448-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb448-2"><a href="visualization.html#cb448-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category, <span class="at">fill=</span>Category) <span class="sc">+</span> </span>
-<span id="cb448-3"><a href="visualization.html#cb448-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="visualization.html#cb485-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb485-2"><a href="visualization.html#cb485-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category, <span class="at">fill=</span>Category) <span class="sc">+</span> </span>
+<span id="cb485-3"><a href="visualization.html#cb485-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="圖表調整" class="section level2 hasAnchor" number="9.3">
@@ -578,75 +598,84 @@ div.csl-indent {
 <h3><span class="header-section-number">9.3.1</span> 點線型態<a href="visualization.html#點線型態" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>下面的例子同時用了<code>geom_line()</code>和<code>geom_point()</code>，且分別設定了線寬（<code>size=1</code>）、點的大小(<code>size=2</code>)，折線型態（<code>linetype="dashed"</code>）、半透明程度（<code>alpha</code>）。</p>
 <p><a href="http://www.sthda.com/english/wiki/ggplot2-line-types-how-to-change-line-types-of-a-graph-in-r-software">ggplot2 line types : How to change line types of a graph in R software? - Easy Guides - Wiki - STHDA</a></p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="visualization.html#cb449-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb449-2"><a href="visualization.html#cb449-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb449-3"><a href="visualization.html#cb449-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb449-4"><a href="visualization.html#cb449-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="visualization.html#cb486-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb486-2"><a href="visualization.html#cb486-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb486-3"><a href="visualization.html#cb486-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb486-4"><a href="visualization.html#cb486-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.</code></pre>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="標題標籤與圖說" class="section level3 hasAnchor" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> 標題、標籤與圖說<a href="visualization.html#標題標籤與圖說" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Titles, labels, and legend
 <strong>設定標題與X／Y軸標題（法一）</strong>：以下設定了圖表的圖表標題、和X軸與Y軸的軸標題（<code>xlab</code>與<code>ylab</code>）。</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="visualization.html#cb450-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb450-2"><a href="visualization.html#cb450-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb450-3"><a href="visualization.html#cb450-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb450-4"><a href="visualization.html#cb450-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb450-5"><a href="visualization.html#cb450-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb450-6"><a href="visualization.html#cb450-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb450-7"><a href="visualization.html#cb450-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="visualization.html#cb488-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb488-2"><a href="visualization.html#cb488-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb488-3"><a href="visualization.html#cb488-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb488-4"><a href="visualization.html#cb488-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb488-5"><a href="visualization.html#cb488-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb488-6"><a href="visualization.html#cb488-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb488-7"><a href="visualization.html#cb488-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>)</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>設定標題與X／Y軸標題（法二）</strong>：這是一次設定圖表標題（<code>title</code>）、次標題（<code>suttitle</code>）、X軸與Y軸標題的方法。</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="visualization.html#cb451-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb451-2"><a href="visualization.html#cb451-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb451-3"><a href="visualization.html#cb451-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span>  </span>
-<span id="cb451-4"><a href="visualization.html#cb451-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb451-5"><a href="visualization.html#cb451-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb451-6"><a href="visualization.html#cb451-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;Source from: ...&quot;</span>,</span>
-<span id="cb451-7"><a href="visualization.html#cb451-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb451-8"><a href="visualization.html#cb451-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="visualization.html#cb489-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb489-2"><a href="visualization.html#cb489-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb489-3"><a href="visualization.html#cb489-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span>  </span>
+<span id="cb489-4"><a href="visualization.html#cb489-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb489-5"><a href="visualization.html#cb489-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
+<span id="cb489-6"><a href="visualization.html#cb489-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;Source from: ...&quot;</span>,</span>
+<span id="cb489-7"><a href="visualization.html#cb489-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb489-8"><a href="visualization.html#cb489-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>)</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>調整X軸與Y軸標題位置的</strong>：必須要透過<code>theme()</code>來設定<code>axis.title.x = element_text(hjust=1)</code>。</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="visualization.html#cb452-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb452-2"><a href="visualization.html#cb452-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb452-3"><a href="visualization.html#cb452-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb452-4"><a href="visualization.html#cb452-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb452-5"><a href="visualization.html#cb452-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb452-6"><a href="visualization.html#cb452-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb452-7"><a href="visualization.html#cb452-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb452-8"><a href="visualization.html#cb452-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>),</span>
-<span id="cb452-9"><a href="visualization.html#cb452-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="visualization.html#cb490-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb490-2"><a href="visualization.html#cb490-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb490-3"><a href="visualization.html#cb490-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb490-4"><a href="visualization.html#cb490-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb490-5"><a href="visualization.html#cb490-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
+<span id="cb490-6"><a href="visualization.html#cb490-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb490-7"><a href="visualization.html#cb490-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb490-8"><a href="visualization.html#cb490-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>),</span>
+<span id="cb490-9"><a href="visualization.html#cb490-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>去除X／Y軸標題（不佳）</strong>：直接將空字串Assign給<code>title</code>、<code>x</code>、與<code>y</code>即可。</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="visualization.html#cb453-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb453-2"><a href="visualization.html#cb453-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb453-3"><a href="visualization.html#cb453-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb453-4"><a href="visualization.html#cb453-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb453-5"><a href="visualization.html#cb453-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="visualization.html#cb491-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb491-2"><a href="visualization.html#cb491-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb491-3"><a href="visualization.html#cb491-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb491-4"><a href="visualization.html#cb491-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb491-5"><a href="visualization.html#cb491-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>去除X／Y軸標題（較佳）</strong>：透過設定<code>theme()</code>來調整。可發現透過這種設定方法，原本標題和X／Y軸標題的邊界空間就會被釋放出來。</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="visualization.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No extra space for xlab, ylab and title</span></span>
-<span id="cb454-2"><a href="visualization.html#cb454-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb454-3"><a href="visualization.html#cb454-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb454-4"><a href="visualization.html#cb454-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb454-5"><a href="visualization.html#cb454-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb454-6"><a href="visualization.html#cb454-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb454-7"><a href="visualization.html#cb454-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb454-8"><a href="visualization.html#cb454-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="visualization.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No extra space for xlab, ylab and title</span></span>
+<span id="cb492-2"><a href="visualization.html#cb492-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb492-3"><a href="visualization.html#cb492-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb492-4"><a href="visualization.html#cb492-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb492-5"><a href="visualization.html#cb492-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb492-6"><a href="visualization.html#cb492-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb492-7"><a href="visualization.html#cb492-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb492-8"><a href="visualization.html#cb492-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="字體樣式" class="section level3 hasAnchor" number="9.3.3">
 <h3><span class="header-section-number">9.3.3</span> 字體樣式<a href="visualization.html#字體樣式" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>調整字型會建議都從<code>theme()</code>來做調整，所有圖面上看得到的字都有相對應的變數可以調整字型。例如以下的例子中，把標題的字型大小調整為14粗體、X與Y軸的字型則調整了向右對齊、10粗斜體、顏色為dimgrey。</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="visualization.html#cb455-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb455-2"><a href="visualization.html#cb455-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb455-3"><a href="visualization.html#cb455-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb455-4"><a href="visualization.html#cb455-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb455-5"><a href="visualization.html#cb455-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb455-6"><a href="visualization.html#cb455-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb455-7"><a href="visualization.html#cb455-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb455-8"><a href="visualization.html#cb455-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb455-9"><a href="visualization.html#cb455-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb455-10"><a href="visualization.html#cb455-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb455-11"><a href="visualization.html#cb455-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
-<span id="cb455-12"><a href="visualization.html#cb455-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb455-13"><a href="visualization.html#cb455-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb455-14"><a href="visualization.html#cb455-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
-<span id="cb455-15"><a href="visualization.html#cb455-15" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="visualization.html#cb493-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb493-2"><a href="visualization.html#cb493-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb493-3"><a href="visualization.html#cb493-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb493-4"><a href="visualization.html#cb493-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb493-5"><a href="visualization.html#cb493-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
+<span id="cb493-6"><a href="visualization.html#cb493-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb493-7"><a href="visualization.html#cb493-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb493-8"><a href="visualization.html#cb493-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb493-9"><a href="visualization.html#cb493-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb493-10"><a href="visualization.html#cb493-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb493-11"><a href="visualization.html#cb493-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
+<span id="cb493-12"><a href="visualization.html#cb493-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb493-13"><a href="visualization.html#cb493-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb493-14"><a href="visualization.html#cb493-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
+<span id="cb493-15"><a href="visualization.html#cb493-15" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="圖表主題色調" class="section level3 hasAnchor" number="9.3.4">
 <h3><span class="header-section-number">9.3.4</span> 圖表主題色調<a href="visualization.html#圖表主題色調" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -655,84 +684,106 @@ div.csl-indent {
 <li><a href="https://ggplot2.tidyverse.org/reference/theme.html">Modify components of a theme — theme • ggplot2 (tidyverse.org)</a></li>
 <li><a href="https://github.com/bbc/bbplot/blob/master/R/bbc_style.R">bbplot/bbc_style.R at master · bbc/bbplot (github.com)</a></li>
 </ul>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="visualization.html#cb456-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb456-2"><a href="visualization.html#cb456-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb456-3"><a href="visualization.html#cb456-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb456-4"><a href="visualization.html#cb456-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="visualization.html#cb494-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb494-2"><a href="visualization.html#cb494-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb494-3"><a href="visualization.html#cb494-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb494-4"><a href="visualization.html#cb494-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="預設主題" class="section level3 hasAnchor" number="9.3.5">
 <h3><span class="header-section-number">9.3.5</span> 預設主題<a href="visualization.html#預設主題" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>如果希望所有的圖表都有一致的顏色和排版的調性，可以在一開始編輯Rmd的時候就設計好一套<code>theme()</code>並指給一個變數（例如以下的<code>th</code>）。</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="visualization.html#cb457-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb457-2"><a href="visualization.html#cb457-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb457-3"><a href="visualization.html#cb457-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb457-4"><a href="visualization.html#cb457-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
-<span id="cb457-5"><a href="visualization.html#cb457-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
-<span id="cb457-6"><a href="visualization.html#cb457-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
-<span id="cb457-7"><a href="visualization.html#cb457-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
-<span id="cb457-8"><a href="visualization.html#cb457-8" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb457-9"><a href="visualization.html#cb457-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb457-10"><a href="visualization.html#cb457-10" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb457-11"><a href="visualization.html#cb457-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
-<span id="cb457-12"><a href="visualization.html#cb457-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb457-13"><a href="visualization.html#cb457-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb457-14"><a href="visualization.html#cb457-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb457-15"><a href="visualization.html#cb457-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
-<span id="cb457-16"><a href="visualization.html#cb457-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb457-17"><a href="visualization.html#cb457-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> th</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="visualization.html#cb495-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb495-2"><a href="visualization.html#cb495-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb495-3"><a href="visualization.html#cb495-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb495-4"><a href="visualization.html#cb495-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>),</span>
+<span id="cb495-5"><a href="visualization.html#cb495-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb495-6"><a href="visualization.html#cb495-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, </span>
+<span id="cb495-7"><a href="visualization.html#cb495-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">face=</span><span class="st">&quot;bold.italic&quot;</span>)</span>
+<span id="cb495-8"><a href="visualization.html#cb495-8" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb495-9"><a href="visualization.html#cb495-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-10"><a href="visualization.html#cb495-10" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb495-11"><a href="visualization.html#cb495-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color=</span>Category) <span class="sc">+</span> </span>
+<span id="cb495-12"><a href="visualization.html#cb495-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb495-13"><a href="visualization.html#cb495-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&quot;dimgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb495-14"><a href="visualization.html#cb495-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb495-15"><a href="visualization.html#cb495-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Net Worth by year grouped by age groups&quot;</span>,</span>
+<span id="cb495-16"><a href="visualization.html#cb495-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb495-17"><a href="visualization.html#cb495-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Net Worth&quot;</span>) <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-20-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="顯示中文字體" class="section level3 hasAnchor" number="9.3.6">
 <h3><span class="header-section-number">9.3.6</span> 顯示中文字體<a href="visualization.html#顯示中文字體" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Python和R這些程式語言的預設視覺化套件都沒辦法顯示中文，所以如果要顯示中文的話，就要指定圖表標題、X、Y軸標籤、圖說和各個部件的字型。因為我在Mac上繪圖，所以我將字型指定為<strong>Heiti TC Light</strong>。如果想知道自己的電腦上有什麼可以用，可以到電腦的字體簿上查找中文字體名稱，或者上網google「ggplot 中文字型選擇」。</p>
 <p><img src="images/paste-A259BC75.png" /></p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="visualization.html#cb458-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb458-2"><a href="visualization.html#cb458-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb458-3"><a href="visualization.html#cb458-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb458-4"><a href="visualization.html#cb458-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb458-5"><a href="visualization.html#cb458-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
-<span id="cb458-6"><a href="visualization.html#cb458-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb458-7"><a href="visualization.html#cb458-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
-<span id="cb458-8"><a href="visualization.html#cb458-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
-<span id="cb458-9"><a href="visualization.html#cb458-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb458-10"><a href="visualization.html#cb458-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="visualization.html#cb496-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb496-2"><a href="visualization.html#cb496-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb496-3"><a href="visualization.html#cb496-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb496-4"><a href="visualization.html#cb496-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb496-5"><a href="visualization.html#cb496-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
+<span id="cb496-6"><a href="visualization.html#cb496-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb496-7"><a href="visualization.html#cb496-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
+<span id="cb496-8"><a href="visualization.html#cb496-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
+<span id="cb496-9"><a href="visualization.html#cb496-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb496-10"><a href="visualization.html#cb496-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## Rows: 375 Columns: 5
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): statistic_yyy, site_id, people_total, area, population_density
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   statistic_yyy = col_double(),
+##   site_id = col_character(),
+##   people_total = col_double(),
+##   area = col_double(),
+##   population_density = col_double()
+## )</code></pre>
 <p>下面這是一個長條圖的範例（barplot，不是histogram）。Barplot可以直接指定X軸為縣市（county）和Y軸為總人口數（people_total），但是要用<code>geom_col()</code>而非<code>geom_bar()</code>。除此之外，Bar的顏色有「面」的特徵，所以若要自訂整條bar的顏色，要用<code>fill</code>而非<code>color</code>，<code>color</code>只會是每條Bar的外框。</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="visualization.html#cb459-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb459-2"><a href="visualization.html#cb459-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb459-3"><a href="visualization.html#cb459-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb459-4"><a href="visualization.html#cb459-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb459-5"><a href="visualization.html#cb459-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="visualization.html#cb498-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb498-2"><a href="visualization.html#cb498-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb498-3"><a href="visualization.html#cb498-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb498-4"><a href="visualization.html#cb498-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb498-5"><a href="visualization.html#cb498-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/barplot-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>舉例來說，中文字型可以是標楷體（BiauKai）、宋體（Songti TC）、黑體（Heiti TC Light）、蘋方（PingFang TC）、Noto（Noto Sans CJK TC）</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="visualization.html#cb460-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> </span>
-<span id="cb460-2"><a href="visualization.html#cb460-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb460-3"><a href="visualization.html#cb460-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>), </span>
-<span id="cb460-4"><a href="visualization.html#cb460-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;PingFang TC&quot;</span>),</span>
-<span id="cb460-5"><a href="visualization.html#cb460-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb460-6"><a href="visualization.html#cb460-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb460-7"><a href="visualization.html#cb460-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>)</span>
-<span id="cb460-8"><a href="visualization.html#cb460-8" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb460-9"><a href="visualization.html#cb460-9" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb460-10"><a href="visualization.html#cb460-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb460-11"><a href="visualization.html#cb460-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb460-12"><a href="visualization.html#cb460-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb460-13"><a href="visualization.html#cb460-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="visualization.html#cb499-1" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> </span>
+<span id="cb499-2"><a href="visualization.html#cb499-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb499-3"><a href="visualization.html#cb499-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>), </span>
+<span id="cb499-4"><a href="visualization.html#cb499-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;PingFang TC&quot;</span>),</span>
+<span id="cb499-5"><a href="visualization.html#cb499-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb499-6"><a href="visualization.html#cb499-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb499-7"><a href="visualization.html#cb499-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>)</span>
+<span id="cb499-8"><a href="visualization.html#cb499-8" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb499-9"><a href="visualization.html#cb499-9" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb499-10"><a href="visualization.html#cb499-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb499-11"><a href="visualization.html#cb499-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb499-12"><a href="visualization.html#cb499-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb499-13"><a href="visualization.html#cb499-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="xy軸方向" class="section level3 hasAnchor" number="9.3.7">
 <h3><span class="header-section-number">9.3.7</span> X/Y軸方向<a href="visualization.html#xy軸方向" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>調整圖表方向</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="visualization.html#cb461-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb461-2"><a href="visualization.html#cb461-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb461-3"><a href="visualization.html#cb461-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb461-4"><a href="visualization.html#cb461-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb461-5"><a href="visualization.html#cb461-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
-<span id="cb461-6"><a href="visualization.html#cb461-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="visualization.html#cb500-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb500-2"><a href="visualization.html#cb500-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb500-3"><a href="visualization.html#cb500-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb500-4"><a href="visualization.html#cb500-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb500-5"><a href="visualization.html#cb500-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th <span class="sc">+</span> </span>
+<span id="cb500-6"><a href="visualization.html#cb500-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/coord_flip()-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>通常<code>coord_flip()</code>後往往會希望這些bar會是由上而下排序好的，但用<code>arrange(desc(people_total)</code>是無法解決問題的，因為Y軸原本會是照Y軸的刻度排列，而不是Y軸的數值。所以，要被排序的應該是Y軸的「文字」也就是那些縣市。因此，我們需要將該縣市轉為factor（1~n），並且讓這些縣市被安排的factor數值照<code>people_total</code>排列，因此要用<code>mutate(county = reorder(county, people_total))</code>。<code>reorder()</code>是一個將文字轉factor的函式，但在此特別指定照<code>people_total</code>的編排。</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="visualization.html#cb462-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb462-2"><a href="visualization.html#cb462-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange(desc(people_total) %&gt;%</span></span>
-<span id="cb462-3"><a href="visualization.html#cb462-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb462-4"><a href="visualization.html#cb462-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb462-5"><a href="visualization.html#cb462-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb462-6"><a href="visualization.html#cb462-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb462-7"><a href="visualization.html#cb462-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="visualization.html#cb501-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb501-2"><a href="visualization.html#cb501-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange(desc(people_total) %&gt;%</span></span>
+<span id="cb501-3"><a href="visualization.html#cb501-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb501-4"><a href="visualization.html#cb501-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb501-5"><a href="visualization.html#cb501-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb501-6"><a href="visualization.html#cb501-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb501-7"><a href="visualization.html#cb501-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/coord_flip-with-reorder-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="視覺化說故事的技巧" class="section level2 hasAnchor" number="9.4">
@@ -741,62 +792,70 @@ div.csl-indent {
 <div id="依群組指定顏色" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> 依群組指定顏色<a href="visualization.html#依群組指定顏色" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>scale_color_manual()</code> 與<code>scale_fill_manual()</code></p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="visualization.html#cb463-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> </span>
-<span id="cb463-2"><a href="visualization.html#cb463-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb463-3"><a href="visualization.html#cb463-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb463-4"><a href="visualization.html#cb463-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
-<span id="cb463-5"><a href="visualization.html#cb463-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
-<span id="cb463-6"><a href="visualization.html#cb463-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>),  <span class="co"># map to color</span></span>
-<span id="cb463-7"><a href="visualization.html#cb463-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">name=</span><span class="st">&quot;Age group&quot;</span>,             <span class="co"># legend title</span></span>
-<span id="cb463-8"><a href="visualization.html#cb463-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original legend group labels</span></span>
-<span id="cb463-9"><a href="visualization.html#cb463-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;elder(65-74)&quot;</span>,<span class="st">&quot;younger(35-44)&quot;</span>), <span class="co"># map to new labels</span></span>
-<span id="cb463-10"><a href="visualization.html#cb463-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.value =</span> <span class="st">&quot;lightgrey&quot;</span> <span class="co"># color for other groups</span></span>
-<span id="cb463-11"><a href="visualization.html#cb463-11" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
-<span id="cb463-12"><a href="visualization.html#cb463-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="visualization.html#cb502-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span> </span>
+<span id="cb502-2"><a href="visualization.html#cb502-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb502-3"><a href="visualization.html#cb502-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb502-4"><a href="visualization.html#cb502-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb502-5"><a href="visualization.html#cb502-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
+<span id="cb502-6"><a href="visualization.html#cb502-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>),  <span class="co"># map to color</span></span>
+<span id="cb502-7"><a href="visualization.html#cb502-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">name=</span><span class="st">&quot;Age group&quot;</span>,             <span class="co"># legend title</span></span>
+<span id="cb502-8"><a href="visualization.html#cb502-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original legend group labels</span></span>
+<span id="cb502-9"><a href="visualization.html#cb502-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;elder(65-74)&quot;</span>,<span class="st">&quot;younger(35-44)&quot;</span>), <span class="co"># map to new labels</span></span>
+<span id="cb502-10"><a href="visualization.html#cb502-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.value =</span> <span class="st">&quot;lightgrey&quot;</span> <span class="co"># color for other groups</span></span>
+<span id="cb502-11"><a href="visualization.html#cb502-11" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb502-12"><a href="visualization.html#cb502-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-23-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="使用gghighlight套件" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">9.4.2</span> 使用gghighlight套件<a href="visualization.html#使用gghighlight套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="visualization.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb464-2"><a href="visualization.html#cb464-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb464-3"><a href="visualization.html#cb464-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb464-4"><a href="visualization.html#cb464-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb464-5"><a href="visualization.html#cb464-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb464-6"><a href="visualization.html#cb464-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb464-7"><a href="visualization.html#cb464-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb464-8"><a href="visualization.html#cb464-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
-<span id="cb464-9"><a href="visualization.html#cb464-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
-<span id="cb464-10"><a href="visualization.html#cb464-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="visualization.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb503-2"><a href="visualization.html#cb503-2" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb503-3"><a href="visualization.html#cb503-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb503-4"><a href="visualization.html#cb503-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb503-5"><a href="visualization.html#cb503-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb503-6"><a href="visualization.html#cb503-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb503-7"><a href="visualization.html#cb503-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb503-8"><a href="visualization.html#cb503-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
+<span id="cb503-9"><a href="visualization.html#cb503-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;whitesmoke&quot;</span>,</span>
+<span id="cb503-10"><a href="visualization.html#cb503-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-24-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>使用<code>gghighlight</code>仍能自己使用<code>scale_color_manual()</code>來指定顏色</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="visualization.html#cb465-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
-<span id="cb465-2"><a href="visualization.html#cb465-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb465-3"><a href="visualization.html#cb465-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb465-4"><a href="visualization.html#cb465-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb465-5"><a href="visualization.html#cb465-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
-<span id="cb465-6"><a href="visualization.html#cb465-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
-<span id="cb465-7"><a href="visualization.html#cb465-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span>   <span class="co"># map to color</span></span>
-<span id="cb465-8"><a href="visualization.html#cb465-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="visualization.html#cb504-1" aria-hidden="true" tabindex="-1"></a>NW <span class="sc">%&gt;%</span>    </span>
+<span id="cb504-2"><a href="visualization.html#cb504-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb504-3"><a href="visualization.html#cb504-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb504-4"><a href="visualization.html#cb504-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb504-5"><a href="visualization.html#cb504-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb504-6"><a href="visualization.html#cb504-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>),   <span class="co"># original chart group</span></span>
+<span id="cb504-7"><a href="visualization.html#cb504-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span>   <span class="co"># map to color</span></span>
+<span id="cb504-8"><a href="visualization.html#cb504-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<pre><code>## Warning: Tried to calculate with group_by(), but the calculation failed.
+## Falling back to ungrouped filter operation...</code></pre>
+<pre><code>## label_key: Category</code></pre>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="為視覺化建立群組" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">9.4.3</span> 為視覺化建立群組<a href="visualization.html#為視覺化建立群組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>這個方法是在原本的資料並沒有可以作為color或fill的因子，所以自行創建一個要突顯的群組。</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="visualization.html#cb466-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb466-2"><a href="visualization.html#cb466-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;other&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb466-3"><a href="visualization.html#cb466-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb466-4"><a href="visualization.html#cb466-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total, <span class="at">fill=</span>group) <span class="sc">%&gt;%</span></span>
-<span id="cb466-5"><a href="visualization.html#cb466-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb466-6"><a href="visualization.html#cb466-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;Khaki&quot;</span>, <span class="st">&quot;other&quot;</span><span class="ot">=</span><span class="st">&quot;lightgrey&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb466-7"><a href="visualization.html#cb466-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb466-8"><a href="visualization.html#cb466-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb466-9"><a href="visualization.html#cb466-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="visualization.html#cb507-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb507-2"><a href="visualization.html#cb507-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>), <span class="st">&quot;highlight&quot;</span>, <span class="st">&quot;other&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb507-3"><a href="visualization.html#cb507-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb507-4"><a href="visualization.html#cb507-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total, <span class="at">fill=</span>group) <span class="sc">%&gt;%</span></span>
+<span id="cb507-5"><a href="visualization.html#cb507-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb507-6"><a href="visualization.html#cb507-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;highlight&quot;</span><span class="ot">=</span><span class="st">&quot;Khaki&quot;</span>, <span class="st">&quot;other&quot;</span><span class="ot">=</span><span class="st">&quot;lightgrey&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb507-7"><a href="visualization.html#cb507-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb507-8"><a href="visualization.html#cb507-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb507-9"><a href="visualization.html#cb507-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/income-by-town-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>但事實上也可以用<code>gghighlight</code>直接達成</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="visualization.html#cb467-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
-<span id="cb467-2"><a href="visualization.html#cb467-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb467-3"><a href="visualization.html#cb467-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb467-4"><a href="visualization.html#cb467-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;deeppink&quot;</span>) <span class="sc">+</span></span>
-<span id="cb467-5"><a href="visualization.html#cb467-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb467-6"><a href="visualization.html#cb467-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb467-7"><a href="visualization.html#cb467-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb467-8"><a href="visualization.html#cb467-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="visualization.html#cb508-1" aria-hidden="true" tabindex="-1"></a>county <span class="sc">%&gt;%</span></span>
+<span id="cb508-2"><a href="visualization.html#cb508-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">reorder</span>(county, people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb508-3"><a href="visualization.html#cb508-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(county, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb508-4"><a href="visualization.html#cb508-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;deeppink&quot;</span>) <span class="sc">+</span></span>
+<span id="cb508-5"><a href="visualization.html#cb508-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;新竹縣&quot;</span>, <span class="st">&quot;新竹市&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb508-6"><a href="visualization.html#cb508-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb508-7"><a href="visualization.html#cb508-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb508-8"><a href="visualization.html#cb508-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
+<p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

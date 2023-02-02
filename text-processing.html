@@ -56,13 +56,12 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.25/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -493,106 +492,108 @@ div.csl-indent {
 <div id="載入並清理資料" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> 載入並清理資料<a href="text-processing.html#載入並清理資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R4.0後<code>stringsAsFactors=F</code>變為預設值，便不用再另行用<code>options()</code>設為全域適用的參數。</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="text-processing.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb409-2"><a href="text-processing.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb409-3"><a href="text-processing.html#cb409-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb409-4"><a href="text-processing.html#cb409-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-5"><a href="text-processing.html#cb409-5" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb409-6"><a href="text-processing.html#cb409-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb409-7"><a href="text-processing.html#cb409-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb409-8"><a href="text-processing.html#cb409-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
-<span id="cb409-9"><a href="text-processing.html#cb409-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">18</span>,</span>
-<span id="cb409-10"><a href="text-processing.html#cb409-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">face=</span><span class="st">&quot;italic&quot;</span>),</span>
-<span id="cb409-11"><a href="text-processing.html#cb409-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>)</span>
-<span id="cb409-12"><a href="text-processing.html#cb409-12" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb409-13"><a href="text-processing.html#cb409-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-14"><a href="text-processing.html#cb409-14" aria-hidden="true" tabindex="-1"></a>new_style <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb409-15"><a href="text-processing.html#cb409-15" aria-hidden="true" tabindex="-1"></a>  font <span class="ot">&lt;-</span> <span class="st">&quot;Helvetica&quot;</span></span>
-<span id="cb409-16"><a href="text-processing.html#cb409-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb409-17"><a href="text-processing.html#cb409-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb409-18"><a href="text-processing.html#cb409-18" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size=</span><span class="dv">28</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb409-19"><a href="text-processing.html#cb409-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb409-20"><a href="text-processing.html#cb409-20" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">size=</span><span class="dv">22</span>,</span>
-<span id="cb409-21"><a href="text-processing.html#cb409-21" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">9</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">0</span>)),</span>
-<span id="cb409-22"><a href="text-processing.html#cb409-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-23"><a href="text-processing.html#cb409-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
-<span id="cb409-24"><a href="text-processing.html#cb409-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text.align =</span> <span class="dv">0</span>,</span>
-<span id="cb409-25"><a href="text-processing.html#cb409-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-26"><a href="text-processing.html#cb409-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># legend.title = element_blank(),</span></span>
-<span id="cb409-27"><a href="text-processing.html#cb409-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-28"><a href="text-processing.html#cb409-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb409-29"><a href="text-processing.html#cb409-29" aria-hidden="true" tabindex="-1"></a>                             <span class="at">size=</span><span class="dv">18</span>,</span>
-<span id="cb409-30"><a href="text-processing.html#cb409-30" aria-hidden="true" tabindex="-1"></a>                             <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
-<span id="cb409-31"><a href="text-processing.html#cb409-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
-<span id="cb409-32"><a href="text-processing.html#cb409-32" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size=</span><span class="dv">18</span>,</span>
-<span id="cb409-33"><a href="text-processing.html#cb409-33" aria-hidden="true" tabindex="-1"></a>                               <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
-<span id="cb409-34"><a href="text-processing.html#cb409-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">5</span>, <span class="at">b =</span> <span class="dv">10</span>)),</span>
-<span id="cb409-35"><a href="text-processing.html#cb409-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-36"><a href="text-processing.html#cb409-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-37"><a href="text-processing.html#cb409-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-38"><a href="text-processing.html#cb409-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="st">&quot;#cbcbcb&quot;</span>),</span>
-<span id="cb409-39"><a href="text-processing.html#cb409-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-40"><a href="text-processing.html#cb409-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb409-41"><a href="text-processing.html#cb409-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>),</span>
-<span id="cb409-42"><a href="text-processing.html#cb409-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">22</span>,  <span class="at">hjust =</span> <span class="dv">0</span>)</span>
-<span id="cb409-43"><a href="text-processing.html#cb409-43" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb409-44"><a href="text-processing.html#cb409-44" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="text-processing.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">&quot;http://varianceexplained.org/files/trump_tweets_df.rda&quot;</span>))</span>
-<span id="cb410-2"><a href="text-processing.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(trump_tweets_df)</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="text-processing.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb443-2"><a href="text-processing.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb443-3"><a href="text-processing.html#cb443-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb443-4"><a href="text-processing.html#cb443-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb443-5"><a href="text-processing.html#cb443-5" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb443-6"><a href="text-processing.html#cb443-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb443-7"><a href="text-processing.html#cb443-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb443-8"><a href="text-processing.html#cb443-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb443-9"><a href="text-processing.html#cb443-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">18</span>,</span>
+<span id="cb443-10"><a href="text-processing.html#cb443-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">face=</span><span class="st">&quot;italic&quot;</span>),</span>
+<span id="cb443-11"><a href="text-processing.html#cb443-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>)</span>
+<span id="cb443-12"><a href="text-processing.html#cb443-12" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb443-13"><a href="text-processing.html#cb443-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb443-14"><a href="text-processing.html#cb443-14" aria-hidden="true" tabindex="-1"></a>new_style <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb443-15"><a href="text-processing.html#cb443-15" aria-hidden="true" tabindex="-1"></a>  font <span class="ot">&lt;-</span> <span class="st">&quot;Helvetica&quot;</span></span>
+<span id="cb443-16"><a href="text-processing.html#cb443-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb443-17"><a href="text-processing.html#cb443-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb443-18"><a href="text-processing.html#cb443-18" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size=</span><span class="dv">28</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb443-19"><a href="text-processing.html#cb443-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb443-20"><a href="text-processing.html#cb443-20" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">size=</span><span class="dv">22</span>,</span>
+<span id="cb443-21"><a href="text-processing.html#cb443-21" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">9</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">0</span>)),</span>
+<span id="cb443-22"><a href="text-processing.html#cb443-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-23"><a href="text-processing.html#cb443-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
+<span id="cb443-24"><a href="text-processing.html#cb443-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text.align =</span> <span class="dv">0</span>,</span>
+<span id="cb443-25"><a href="text-processing.html#cb443-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-26"><a href="text-processing.html#cb443-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># legend.title = element_blank(),</span></span>
+<span id="cb443-27"><a href="text-processing.html#cb443-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-28"><a href="text-processing.html#cb443-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb443-29"><a href="text-processing.html#cb443-29" aria-hidden="true" tabindex="-1"></a>                             <span class="at">size=</span><span class="dv">18</span>,</span>
+<span id="cb443-30"><a href="text-processing.html#cb443-30" aria-hidden="true" tabindex="-1"></a>                             <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
+<span id="cb443-31"><a href="text-processing.html#cb443-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family=</span>font,</span>
+<span id="cb443-32"><a href="text-processing.html#cb443-32" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size=</span><span class="dv">18</span>,</span>
+<span id="cb443-33"><a href="text-processing.html#cb443-33" aria-hidden="true" tabindex="-1"></a>                               <span class="at">color=</span><span class="st">&quot;#222222&quot;</span>),</span>
+<span id="cb443-34"><a href="text-processing.html#cb443-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">margin=</span><span class="fu">margin</span>(<span class="dv">5</span>, <span class="at">b =</span> <span class="dv">10</span>)),</span>
+<span id="cb443-35"><a href="text-processing.html#cb443-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-36"><a href="text-processing.html#cb443-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-37"><a href="text-processing.html#cb443-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-38"><a href="text-processing.html#cb443-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="st">&quot;#cbcbcb&quot;</span>),</span>
+<span id="cb443-39"><a href="text-processing.html#cb443-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-40"><a href="text-processing.html#cb443-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb443-41"><a href="text-processing.html#cb443-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>),</span>
+<span id="cb443-42"><a href="text-processing.html#cb443-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">22</span>,  <span class="at">hjust =</span> <span class="dv">0</span>)</span>
+<span id="cb443-43"><a href="text-processing.html#cb443-43" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb443-44"><a href="text-processing.html#cb443-44" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="text-processing.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">&quot;http://varianceexplained.org/files/trump_tweets_df.rda&quot;</span>))</span>
+<span id="cb444-2"><a href="text-processing.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(trump_tweets_df)</span></code></pre></div>
 <pre class="output"><code>## [1] 1512   16</code></pre>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="text-processing.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(trump_tweets_df)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="text-processing.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(trump_tweets_df)</span></code></pre></div>
 <pre class="output"><code>##  [1] &quot;text&quot;          &quot;favorited&quot;     &quot;favoriteCount&quot; &quot;replyToSN&quot;    
 ##  [5] &quot;created&quot;       &quot;truncated&quot;     &quot;replyToSID&quot;    &quot;id&quot;           
 ##  [9] &quot;replyToUID&quot;    &quot;statusSource&quot;  &quot;screenName&quot;    &quot;retweetCount&quot; 
 ## [13] &quot;isRetweet&quot;     &quot;retweeted&quot;     &quot;longitude&quot;     &quot;latitude&quot;</code></pre>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="text-processing.html#cb414-1" aria-hidden="true" tabindex="-1"></a>trump_tweets_df <span class="sc">%&gt;%</span></span>
-<span id="cb414-2"><a href="text-processing.html#cb414-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, created, favoriteCount,  retweetCount, statusSource) <span class="sc">%&gt;%</span></span>
-<span id="cb414-3"><a href="text-processing.html#cb414-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="text-processing.html#cb448-1" aria-hidden="true" tabindex="-1"></a>trump_tweets_df <span class="sc">%&gt;%</span></span>
+<span id="cb448-2"><a href="text-processing.html#cb448-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, created, favoriteCount,  retweetCount, statusSource) <span class="sc">%&gt;%</span></span>
+<span id="cb448-3"><a href="text-processing.html#cb448-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 20 × 6
-##    id          text  created             favoriteCount retweetCount statusSource
-##    &lt;chr&gt;       &lt;chr&gt; &lt;dttm&gt;                      &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;       
-##  1 7626698825… &quot;My … 2016-08-08 15:20:44          9214         3107 &quot;&lt;a href=\&quot;…
-##  2 7626415954… &quot;Joi… 2016-08-08 13:28:20          6981         2390 &quot;&lt;a href=\&quot;…
-##  3 7624396589… &quot;#IC… 2016-08-08 00:05:54         15724         6691 &quot;&lt;a href=\&quot;…
-##  4 7624253718… &quot;Mic… 2016-08-07 23:09:08         19837         6402 &quot;&lt;a href=\&quot;…
-##  5 7624008698… &quot;The… 2016-08-07 21:31:46         34051        11717 &quot;&lt;a href=\&quot;…
-##  6 7622845333… &quot;I s… 2016-08-07 13:49:29         29831         9892 &quot;&lt;a href=\&quot;…
-##  7 7621109187… &quot;Tha… 2016-08-07 02:19:37         19223         5784 &quot;&lt;a href=\&quot;…
-##  8 7621069044… &quot;.@L… 2016-08-07 02:03:39         19543         7930 &quot;&lt;a href=\&quot;…
-##  9 7621044117… &quot;I a… 2016-08-07 01:53:45         75488        24663 &quot;&lt;a href=\&quot;…
-## 10 7620164261… &quot;#Cr… 2016-08-06 20:04:08         23661         7903 &quot;&lt;a href=\&quot;…
-## 11 7619881643… &quot;Hea… 2016-08-06 18:11:50         28069         8561 &quot;&lt;a href=\&quot;…
-## 12 7619369299… &quot;Any… 2016-08-06 14:48:14         35205        13129 &quot;&lt;a href=\&quot;…
-## 13 7619310105… &quot;Cro… 2016-08-06 14:24:43         36936        13250 &quot;&lt;a href=\&quot;…
-## 14 7618928294… &quot;Hil… 2016-08-06 11:53:00         32716         9356 &quot;&lt;a href=\&quot;…
-## 15 7617735761… &quot;Goo… 2016-08-06 03:59:08         34109        10385 &quot;&lt;a href=\&quot;…
-## 16 7617579885… &quot;&#39;Tr… 2016-08-06 02:57:11         19436         8066 &quot;&lt;a href=\&quot;…
-## 17 7617548986… &quot;Tha… 2016-08-06 02:44:55         19330         5418 &quot;&lt;a href=\&quot;…
-## 18 7617118564… &quot;DON… 2016-08-05 23:53:53         30869        16786 &quot;&lt;a href=\&quot;…
-## 19 7616938031… &quot;Tha… 2016-08-05 22:42:08         19431         5681 &quot;&lt;a href=\&quot;…
-## 20 7616538754… &quot;#Ma… 2016-08-05 20:03:29         27568        13869 &quot;&lt;a href=\&quot;…</code></pre>
+##    id                 text           created             favor…¹ retwe…² statu…³
+##    &lt;chr&gt;              &lt;chr&gt;          &lt;dttm&gt;                &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
+##  1 762669882571980801 &quot;My economic … 2016-08-08 15:20:44    9214    3107 &quot;&lt;a hr…
+##  2 762641595439190016 &quot;Join me in F… 2016-08-08 13:28:20    6981    2390 &quot;&lt;a hr…
+##  3 762439658911338496 &quot;#ICYMI: \&quot;Wi… 2016-08-08 00:05:54   15724    6691 &quot;&lt;a hr…
+##  4 762425371874557952 &quot;Michael More… 2016-08-07 23:09:08   19837    6402 &quot;&lt;a hr…
+##  5 762400869858115588 &quot;The media is… 2016-08-07 21:31:46   34051   11717 &quot;&lt;a hr…
+##  6 762284533341417472 &quot;I see where … 2016-08-07 13:49:29   29831    9892 &quot;&lt;a hr…
+##  7 762110918721310721 &quot;Thank you Wi… 2016-08-07 02:19:37   19223    5784 &quot;&lt;a hr…
+##  8 762106904436961280 &quot;.@Larry_Kudl… 2016-08-07 02:03:39   19543    7930 &quot;&lt;a hr…
+##  9 762104411707568128 &quot;I am not jus… 2016-08-07 01:53:45   75488   24663 &quot;&lt;a hr…
+## 10 762016426102296576 &quot;#CrookedHill… 2016-08-06 20:04:08   23661    7903 &quot;&lt;a hr…
+## 11 761988164382756864 &quot;Heading to N… 2016-08-06 18:11:50   28069    8561 &quot;&lt;a hr…
+## 12 761936929902452740 &quot;Anybody whos… 2016-08-06 14:48:14   35205   13129 &quot;&lt;a hr…
+## 13 761931010548305920 &quot;Crooked Hill… 2016-08-06 14:24:43   36936   13250 &quot;&lt;a hr…
+## 14 761892829434183684 &quot;Hillary Clin… 2016-08-06 11:53:00   32716    9356 &quot;&lt;a hr…
+## 15 761773576101953536 &quot;Good luck #T… 2016-08-06 03:59:08   34109   10385 &quot;&lt;a hr…
+## 16 761757988516401153 &quot;&#39;Trump is ri… 2016-08-06 02:57:11   19436    8066 &quot;&lt;a hr…
+## 17 761754898602061824 &quot;Thank you Gr… 2016-08-06 02:44:55   19330    5418 &quot;&lt;a hr…
+## 18 761711856457125888 &quot;DON&#39;T LET HI… 2016-08-05 23:53:53   30869   16786 &quot;&lt;a hr…
+## 19 761693803120041986 &quot;Thank you De… 2016-08-05 22:42:08   19431    5681 &quot;&lt;a hr…
+## 20 761653875413618689 &quot;#MakeAmerica… 2016-08-05 20:03:29   27568   13869 &quot;&lt;a hr…
+## # … with abbreviated variable names ¹​favoriteCount, ²​retweetCount,
+## #   ³​statusSource</code></pre>
 </div>
 <div id="萃取資料" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> 萃取資料<a href="text-processing.html#萃取資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Extracting publishing device of tweets</li>
 </ul>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="text-processing.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyr::extract()</span></span>
-<span id="cb416-2"><a href="text-processing.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="co"># stringr::str_replace</span></span>
-<span id="cb416-3"><a href="text-processing.html#cb416-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-4"><a href="text-processing.html#cb416-4" aria-hidden="true" tabindex="-1"></a>trump_tweets_df<span class="sc">$</span>statusSource[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="text-processing.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyr::extract()</span></span>
+<span id="cb450-2"><a href="text-processing.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="co"># stringr::str_replace</span></span>
+<span id="cb450-3"><a href="text-processing.html#cb450-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb450-4"><a href="text-processing.html#cb450-4" aria-hidden="true" tabindex="-1"></a>trump_tweets_df<span class="sc">$</span>statusSource[<span class="dv">1</span>]</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;&lt;a href=\&quot;http://twitter.com/download/android\&quot; rel=\&quot;nofollow\&quot;&gt;Twitter for Android&lt;/a&gt;&quot;</code></pre>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="text-processing.html#cb418-1" aria-hidden="true" tabindex="-1"></a>tweets <span class="ot">&lt;-</span> trump_tweets_df <span class="sc">%&gt;%</span></span>
-<span id="cb418-2"><a href="text-processing.html#cb418-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, statusSource, text, created) <span class="sc">%&gt;%</span></span>
-<span id="cb418-3"><a href="text-processing.html#cb418-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_replace(statusSource, </span></span>
-<span id="cb418-4"><a href="text-processing.html#cb418-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                             &quot;.*Twitter for (.*?)&lt;.*&quot;, &quot;\\1&quot;)) %&gt;%</span></span>
-<span id="cb418-5"><a href="text-processing.html#cb418-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_extract(statusSource, &#39;Twitter for (.*?)&lt;&#39;)) %&gt;% View</span></span>
-<span id="cb418-6"><a href="text-processing.html#cb418-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(statusSource, <span class="st">&quot;source&quot;</span>, <span class="st">&quot;Twitter for (.*?)&lt;&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb418-7"><a href="text-processing.html#cb418-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(source <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;iPhone&quot;</span>, <span class="st">&quot;Android&quot;</span>))</span>
-<span id="cb418-8"><a href="text-processing.html#cb418-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-9"><a href="text-processing.html#cb418-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using stringr::str_replace() to mutate a new source variable, replacing tidyr::</span></span>
-<span id="cb418-10"><a href="text-processing.html#cb418-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-11"><a href="text-processing.html#cb418-11" aria-hidden="true" tabindex="-1"></a><span class="co"># str(tweets)</span></span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="text-processing.html#cb452-1" aria-hidden="true" tabindex="-1"></a>tweets <span class="ot">&lt;-</span> trump_tweets_df <span class="sc">%&gt;%</span></span>
+<span id="cb452-2"><a href="text-processing.html#cb452-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, statusSource, text, created) <span class="sc">%&gt;%</span></span>
+<span id="cb452-3"><a href="text-processing.html#cb452-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_replace(statusSource, </span></span>
+<span id="cb452-4"><a href="text-processing.html#cb452-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                             &quot;.*Twitter for (.*?)&lt;.*&quot;, &quot;\\1&quot;)) %&gt;%</span></span>
+<span id="cb452-5"><a href="text-processing.html#cb452-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(source = str_extract(statusSource, &#39;Twitter for (.*?)&lt;&#39;)) %&gt;% View</span></span>
+<span id="cb452-6"><a href="text-processing.html#cb452-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(statusSource, <span class="st">&quot;source&quot;</span>, <span class="st">&quot;Twitter for (.*?)&lt;&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb452-7"><a href="text-processing.html#cb452-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(source <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;iPhone&quot;</span>, <span class="st">&quot;Android&quot;</span>))</span>
+<span id="cb452-8"><a href="text-processing.html#cb452-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb452-9"><a href="text-processing.html#cb452-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using stringr::str_replace() to mutate a new source variable, replacing tidyr::</span></span>
+<span id="cb452-10"><a href="text-processing.html#cb452-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb452-11"><a href="text-processing.html#cb452-11" aria-hidden="true" tabindex="-1"></a><span class="co"># str(tweets)</span></span></code></pre></div>
 </div>
 <div id="視覺化探索" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> 視覺化探索<a href="text-processing.html#視覺化探索" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -604,51 +605,51 @@ div.csl-indent {
 <li>Plotting number of tweets by hour</li>
 <li>Display y-axis as percentage by <code>scales::percent_format()</code></li>
 </ul>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="text-processing.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales) <span class="co"># for percent_format()</span></span>
-<span id="cb419-2"><a href="text-processing.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::hour()</span></span>
-<span id="cb419-3"><a href="text-processing.html#cb419-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::with_tz()</span></span>
-<span id="cb419-4"><a href="text-processing.html#cb419-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scales::percent_format()</span></span>
-<span id="cb419-5"><a href="text-processing.html#cb419-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-6"><a href="text-processing.html#cb419-6" aria-hidden="true" tabindex="-1"></a>toplot1 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb419-7"><a href="text-processing.html#cb419-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb419-8"><a href="text-processing.html#cb419-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># group_by(source) %&gt;%</span></span>
-<span id="cb419-9"><a href="text-processing.html#cb419-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
-<span id="cb419-10"><a href="text-processing.html#cb419-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ungroup() %&gt;%</span></span>
-<span id="cb419-11"><a href="text-processing.html#cb419-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb419-12"><a href="text-processing.html#cb419-12" aria-hidden="true" tabindex="-1"></a>toplot2 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb419-13"><a href="text-processing.html#cb419-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb419-14"><a href="text-processing.html#cb419-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(source) <span class="sc">%&gt;%</span></span>
-<span id="cb419-15"><a href="text-processing.html#cb419-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb419-16"><a href="text-processing.html#cb419-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb419-17"><a href="text-processing.html#cb419-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-18"><a href="text-processing.html#cb419-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot1 <span class="sc">%&gt;%</span></span>
-<span id="cb419-19"><a href="text-processing.html#cb419-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb419-20"><a href="text-processing.html#cb419-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
-<span id="cb419-21"><a href="text-processing.html#cb419-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb419-22"><a href="text-processing.html#cb419-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
-<span id="cb419-23"><a href="text-processing.html#cb419-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
-<span id="cb419-24"><a href="text-processing.html#cb419-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb419-25"><a href="text-processing.html#cb419-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
-<span id="cb419-26"><a href="text-processing.html#cb419-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
-<span id="cb419-27"><a href="text-processing.html#cb419-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
-<span id="cb419-28"><a href="text-processing.html#cb419-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb419-29"><a href="text-processing.html#cb419-29" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot2 <span class="sc">%&gt;%</span></span>
-<span id="cb419-30"><a href="text-processing.html#cb419-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb419-31"><a href="text-processing.html#cb419-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
-<span id="cb419-32"><a href="text-processing.html#cb419-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb419-33"><a href="text-processing.html#cb419-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
-<span id="cb419-34"><a href="text-processing.html#cb419-34" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
-<span id="cb419-35"><a href="text-processing.html#cb419-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb419-36"><a href="text-processing.html#cb419-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
-<span id="cb419-37"><a href="text-processing.html#cb419-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
-<span id="cb419-38"><a href="text-processing.html#cb419-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
-<span id="cb419-39"><a href="text-processing.html#cb419-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb419-40"><a href="text-processing.html#cb419-40" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb419-41"><a href="text-processing.html#cb419-41" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
-<span id="cb419-42"><a href="text-processing.html#cb419-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Normalized by all&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Normalized in group&quot;</span>),</span>
-<span id="cb419-43"><a href="text-processing.html#cb419-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb419-44"><a href="text-processing.html#cb419-44" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/tweets-by-hour-1.png" width="672" /></p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="text-processing.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales) <span class="co"># for percent_format()</span></span>
+<span id="cb453-2"><a href="text-processing.html#cb453-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::hour()</span></span>
+<span id="cb453-3"><a href="text-processing.html#cb453-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lubridate::with_tz()</span></span>
+<span id="cb453-4"><a href="text-processing.html#cb453-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scales::percent_format()</span></span>
+<span id="cb453-5"><a href="text-processing.html#cb453-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb453-6"><a href="text-processing.html#cb453-6" aria-hidden="true" tabindex="-1"></a>toplot1 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb453-7"><a href="text-processing.html#cb453-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb453-8"><a href="text-processing.html#cb453-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># group_by(source) %&gt;%</span></span>
+<span id="cb453-9"><a href="text-processing.html#cb453-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb453-10"><a href="text-processing.html#cb453-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ungroup() %&gt;%</span></span>
+<span id="cb453-11"><a href="text-processing.html#cb453-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb453-12"><a href="text-processing.html#cb453-12" aria-hidden="true" tabindex="-1"></a>toplot2 <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb453-13"><a href="text-processing.html#cb453-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb453-14"><a href="text-processing.html#cb453-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(source) <span class="sc">%&gt;%</span></span>
+<span id="cb453-15"><a href="text-processing.html#cb453-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb453-16"><a href="text-processing.html#cb453-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb453-17"><a href="text-processing.html#cb453-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb453-18"><a href="text-processing.html#cb453-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot1 <span class="sc">%&gt;%</span></span>
+<span id="cb453-19"><a href="text-processing.html#cb453-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb453-20"><a href="text-processing.html#cb453-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
+<span id="cb453-21"><a href="text-processing.html#cb453-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb453-22"><a href="text-processing.html#cb453-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
+<span id="cb453-23"><a href="text-processing.html#cb453-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
+<span id="cb453-24"><a href="text-processing.html#cb453-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb453-25"><a href="text-processing.html#cb453-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb453-26"><a href="text-processing.html#cb453-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
+<span id="cb453-27"><a href="text-processing.html#cb453-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
+<span id="cb453-28"><a href="text-processing.html#cb453-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb453-29"><a href="text-processing.html#cb453-29" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot2 <span class="sc">%&gt;%</span></span>
+<span id="cb453-30"><a href="text-processing.html#cb453-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb453-31"><a href="text-processing.html#cb453-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, percent, <span class="at">color =</span> source) <span class="sc">+</span></span>
+<span id="cb453-32"><a href="text-processing.html#cb453-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb453-33"><a href="text-processing.html#cb453-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Phone System&quot;</span>, </span>
+<span id="cb453-34"><a href="text-processing.html#cb453-34" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
+<span id="cb453-35"><a href="text-processing.html#cb453-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb453-36"><a href="text-processing.html#cb453-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb453-37"><a href="text-processing.html#cb453-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hour of day (EST)&quot;</span>,</span>
+<span id="cb453-38"><a href="text-processing.html#cb453-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;% of tweets&quot;</span>,</span>
+<span id="cb453-39"><a href="text-processing.html#cb453-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb453-40"><a href="text-processing.html#cb453-40" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb453-41"><a href="text-processing.html#cb453-41" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
+<span id="cb453-42"><a href="text-processing.html#cb453-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Normalized by all&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Normalized in group&quot;</span>),</span>
+<span id="cb453-43"><a href="text-processing.html#cb453-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb453-44"><a href="text-processing.html#cb453-44" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="R52_trump_tweet_dplyr_files/figure-html/tweets-by-hour-1.png" width="672" /></p>
 </div>
 <div id="發文附圖" class="section level4 hasAnchor" number="7.1.3.2">
 <h4><span class="header-section-number">7.1.3.2</span> 發文附圖<a href="text-processing.html#發文附圖" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -658,114 +659,114 @@ div.csl-indent {
 <li>Counting <code>source</code> by <code>picture</code></li>
 <li>Plotting bar chart to compare difference between sources.</li>
 </ul>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="text-processing.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(stringr)</span></span>
-<span id="cb420-2"><a href="text-processing.html#cb420-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb420-3"><a href="text-processing.html#cb420-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb420-4"><a href="text-processing.html#cb420-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">picture =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;t.co&quot;</span>),</span>
-<span id="cb420-5"><a href="text-processing.html#cb420-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Picture/link&quot;</span>, <span class="st">&quot;No picture/link&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb420-6"><a href="text-processing.html#cb420-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, picture)</span>
-<span id="cb420-7"><a href="text-processing.html#cb420-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
-<span id="cb420-8"><a href="text-processing.html#cb420-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb420-9"><a href="text-processing.html#cb420-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
-<span id="cb420-10"><a href="text-processing.html#cb420-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb420-11"><a href="text-processing.html#cb420-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
-<span id="cb420-12"><a href="text-processing.html#cb420-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb420-13"><a href="text-processing.html#cb420-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb420-14"><a href="text-processing.html#cb420-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb420-15"><a href="text-processing.html#cb420-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-16"><a href="text-processing.html#cb420-16" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
-<span id="cb420-17"><a href="text-processing.html#cb420-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb420-18"><a href="text-processing.html#cb420-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
-<span id="cb420-19"><a href="text-processing.html#cb420-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb420-20"><a href="text-processing.html#cb420-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
-<span id="cb420-21"><a href="text-processing.html#cb420-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb420-22"><a href="text-processing.html#cb420-22" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb420-23"><a href="text-processing.html#cb420-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb420-24"><a href="text-processing.html#cb420-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-25"><a href="text-processing.html#cb420-25" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb420-26"><a href="text-processing.html#cb420-26" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
-<span id="cb420-27"><a href="text-processing.html#cb420-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Stacked&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Dodged&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb420-28"><a href="text-processing.html#cb420-28" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="text-processing.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(stringr)</span></span>
+<span id="cb454-2"><a href="text-processing.html#cb454-2" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb454-3"><a href="text-processing.html#cb454-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb454-4"><a href="text-processing.html#cb454-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">picture =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;t.co&quot;</span>),</span>
+<span id="cb454-5"><a href="text-processing.html#cb454-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Picture/link&quot;</span>, <span class="st">&quot;No picture/link&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb454-6"><a href="text-processing.html#cb454-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(source, picture)</span>
+<span id="cb454-7"><a href="text-processing.html#cb454-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
+<span id="cb454-8"><a href="text-processing.html#cb454-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb454-9"><a href="text-processing.html#cb454-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
+<span id="cb454-10"><a href="text-processing.html#cb454-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb454-11"><a href="text-processing.html#cb454-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
+<span id="cb454-12"><a href="text-processing.html#cb454-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb454-13"><a href="text-processing.html#cb454-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb454-14"><a href="text-processing.html#cb454-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb454-15"><a href="text-processing.html#cb454-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb454-16"><a href="text-processing.html#cb454-16" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
+<span id="cb454-17"><a href="text-processing.html#cb454-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb454-18"><a href="text-processing.html#cb454-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(source, n, <span class="at">fill =</span> picture) <span class="sc">+</span> </span>
+<span id="cb454-19"><a href="text-processing.html#cb454-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb454-20"><a href="text-processing.html#cb454-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;With Picture/link?&quot;</span>, </span>
+<span id="cb454-21"><a href="text-processing.html#cb454-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb454-22"><a href="text-processing.html#cb454-22" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb454-23"><a href="text-processing.html#cb454-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of tweets&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb454-24"><a href="text-processing.html#cb454-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb454-25"><a href="text-processing.html#cb454-25" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb454-26"><a href="text-processing.html#cb454-26" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
+<span id="cb454-27"><a href="text-processing.html#cb454-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Stacked&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Dodged&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb454-28"><a href="text-processing.html#cb454-28" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="R52_trump_tweet_dplyr_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 </div>
 <div id="keyness" class="section level3 hasAnchor" number="7.1.4">
 <h3><span class="header-section-number">7.1.4</span> Keyness<a href="text-processing.html#keyness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="text-processing.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)   <span class="co"># unnest_tokens()</span></span>
-<span id="cb421-2"><a href="text-processing.html#cb421-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># str_detect(), str_replace_all()</span></span>
-<span id="cb421-3"><a href="text-processing.html#cb421-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb421-4"><a href="text-processing.html#cb421-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
-<span id="cb421-5"><a href="text-processing.html#cb421-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb421-6"><a href="text-processing.html#cb421-6" aria-hidden="true" tabindex="-1"></a><span class="co"># stop_words$word</span></span>
-<span id="cb421-7"><a href="text-processing.html#cb421-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb421-8"><a href="text-processing.html#cb421-8" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
-<span id="cb421-9"><a href="text-processing.html#cb421-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb421-10"><a href="text-processing.html#cb421-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;https://t.co/[A-Za-z</span><span class="sc">\\</span><span class="st">d]+|&amp;amp;&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb421-11"><a href="text-processing.html#cb421-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text) %&gt;%</span></span>
-<span id="cb421-12"><a href="text-processing.html#cb421-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text, token = &quot;regex&quot;, pattern = &quot;[^A-Za-z\\d#@&#39;]&quot;) %&gt;%</span></span>
-<span id="cb421-13"><a href="text-processing.html#cb421-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">str_split</span>(text, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb421-14"><a href="text-processing.html#cb421-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, word, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb421-15"><a href="text-processing.html#cb421-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
-<span id="cb421-16"><a href="text-processing.html#cb421-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> stop_words<span class="sc">$</span>word,</span>
-<span id="cb421-17"><a href="text-processing.html#cb421-17" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(word, <span class="st">&quot;[a-z]&quot;</span>))</span>
-<span id="cb421-18"><a href="text-processing.html#cb421-18" aria-hidden="true" tabindex="-1"></a><span class="co"># View(tweet_words)</span></span></code></pre></div>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="text-processing.html#cb422-1" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="sc">%&gt;%</span></span>
-<span id="cb422-2"><a href="text-processing.html#cb422-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb422-3"><a href="text-processing.html#cb422-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb422-4"><a href="text-processing.html#cb422-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span></span>
-<span id="cb422-5"><a href="text-processing.html#cb422-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
-<span id="cb422-6"><a href="text-processing.html#cb422-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb422-7"><a href="text-processing.html#cb422-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Occurrences&quot;</span>) <span class="sc">+</span></span>
-<span id="cb422-8"><a href="text-processing.html#cb422-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb422-9"><a href="text-processing.html#cb422-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="text-processing.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)   <span class="co"># unnest_tokens()</span></span>
+<span id="cb455-2"><a href="text-processing.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># str_detect(), str_replace_all()</span></span>
+<span id="cb455-3"><a href="text-processing.html#cb455-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb455-4"><a href="text-processing.html#cb455-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
+<span id="cb455-5"><a href="text-processing.html#cb455-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb455-6"><a href="text-processing.html#cb455-6" aria-hidden="true" tabindex="-1"></a><span class="co"># stop_words$word</span></span>
+<span id="cb455-7"><a href="text-processing.html#cb455-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb455-8"><a href="text-processing.html#cb455-8" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb455-9"><a href="text-processing.html#cb455-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">&#39;^&quot;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb455-10"><a href="text-processing.html#cb455-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;https://t.co/[A-Za-z</span><span class="sc">\\</span><span class="st">d]+|&amp;amp;&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb455-11"><a href="text-processing.html#cb455-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text) %&gt;%</span></span>
+<span id="cb455-12"><a href="text-processing.html#cb455-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unnest_tokens(word, text, token = &quot;regex&quot;, pattern = &quot;[^A-Za-z\\d#@&#39;]&quot;) %&gt;%</span></span>
+<span id="cb455-13"><a href="text-processing.html#cb455-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">str_split</span>(text, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb455-14"><a href="text-processing.html#cb455-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, text, word, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb455-15"><a href="text-processing.html#cb455-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb455-16"><a href="text-processing.html#cb455-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> stop_words<span class="sc">$</span>word,</span>
+<span id="cb455-17"><a href="text-processing.html#cb455-17" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(word, <span class="st">&quot;[a-z]&quot;</span>))</span>
+<span id="cb455-18"><a href="text-processing.html#cb455-18" aria-hidden="true" tabindex="-1"></a><span class="co"># View(tweet_words)</span></span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="text-processing.html#cb456-1" aria-hidden="true" tabindex="-1"></a>tweet_words <span class="sc">%&gt;%</span></span>
+<span id="cb456-2"><a href="text-processing.html#cb456-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb456-3"><a href="text-processing.html#cb456-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb456-4"><a href="text-processing.html#cb456-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span></span>
+<span id="cb456-5"><a href="text-processing.html#cb456-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
+<span id="cb456-6"><a href="text-processing.html#cb456-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb456-7"><a href="text-processing.html#cb456-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Occurrences&quot;</span>) <span class="sc">+</span></span>
+<span id="cb456-8"><a href="text-processing.html#cb456-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb456-9"><a href="text-processing.html#cb456-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
+<p><img src="R52_trump_tweet_dplyr_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <div id="詞頻差異" class="section level4 hasAnchor" number="7.1.4.1">
 <h4><span class="header-section-number">7.1.4.1</span> 詞頻差異<a href="text-processing.html#詞頻差異" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="text-processing.html#cb423-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
-<span id="cb423-2"><a href="text-processing.html#cb423-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
-<span id="cb423-3"><a href="text-processing.html#cb423-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb423-4"><a href="text-processing.html#cb423-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
-<span id="cb423-5"><a href="text-processing.html#cb423-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
-<span id="cb423-6"><a href="text-processing.html#cb423-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
-<span id="cb423-7"><a href="text-processing.html#cb423-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
-<span id="cb423-8"><a href="text-processing.html#cb423-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb423-9"><a href="text-processing.html#cb423-9" aria-hidden="true" tabindex="-1"></a>word_by_source <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
-<span id="cb423-10"><a href="text-processing.html#cb423-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
-<span id="cb423-11"><a href="text-processing.html#cb423-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb423-12"><a href="text-processing.html#cb423-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
-<span id="cb423-13"><a href="text-processing.html#cb423-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
-<span id="cb423-14"><a href="text-processing.html#cb423-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb423-15"><a href="text-processing.html#cb423-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(source, n, fill = 0) %&gt;%</span></span>
-<span id="cb423-16"><a href="text-processing.html#cb423-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb423-17"><a href="text-processing.html#cb423-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb423-18"><a href="text-processing.html#cb423-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>iPhone)</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="text-processing.html#cb457-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
+<span id="cb457-2"><a href="text-processing.html#cb457-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
+<span id="cb457-3"><a href="text-processing.html#cb457-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb457-4"><a href="text-processing.html#cb457-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
+<span id="cb457-5"><a href="text-processing.html#cb457-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
+<span id="cb457-6"><a href="text-processing.html#cb457-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
+<span id="cb457-7"><a href="text-processing.html#cb457-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View(test)</span></span>
+<span id="cb457-8"><a href="text-processing.html#cb457-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb457-9"><a href="text-processing.html#cb457-9" aria-hidden="true" tabindex="-1"></a>word_by_source <span class="ot">&lt;-</span> tweet_words <span class="sc">%&gt;%</span></span>
+<span id="cb457-10"><a href="text-processing.html#cb457-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, source) <span class="sc">%&gt;%</span></span>
+<span id="cb457-11"><a href="text-processing.html#cb457-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb457-12"><a href="text-processing.html#cb457-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, </span>
+<span id="cb457-13"><a href="text-processing.html#cb457-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n, </span>
+<span id="cb457-14"><a href="text-processing.html#cb457-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb457-15"><a href="text-processing.html#cb457-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(source, n, fill = 0) %&gt;%</span></span>
+<span id="cb457-16"><a href="text-processing.html#cb457-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb457-17"><a href="text-processing.html#cb457-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb457-18"><a href="text-processing.html#cb457-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>iPhone)</span></code></pre></div>
 <pre class="output"><code>## [1] 1383</code></pre>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="text-processing.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>Android)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="text-processing.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(word_by_source<span class="sc">$</span>Android)</span></code></pre></div>
 <pre class="output"><code>## [1] 2132</code></pre>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="text-processing.html#cb427-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="ot">&lt;-</span> word_by_source <span class="sc">%&gt;%</span></span>
-<span id="cb427-2"><a href="text-processing.html#cb427-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">iPhone =</span> (iPhone<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(iPhone<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb427-3"><a href="text-processing.html#cb427-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Android =</span> (Android<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(Android<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb427-4"><a href="text-processing.html#cb427-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate_at(.cols = vars(iPhone, Android),</span></span>
-<span id="cb427-5"><a href="text-processing.html#cb427-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># .funs = funs((. + 1) / sum(. + 1))) %&gt;%</span></span>
-<span id="cb427-6"><a href="text-processing.html#cb427-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">logratio =</span> <span class="fu">log2</span>(Android <span class="sc">/</span> iPhone)) <span class="sc">%&gt;%</span></span>
-<span id="cb427-7"><a href="text-processing.html#cb427-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(logratio))</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="text-processing.html#cb461-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="ot">&lt;-</span> word_by_source <span class="sc">%&gt;%</span></span>
+<span id="cb461-2"><a href="text-processing.html#cb461-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">iPhone =</span> (iPhone<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(iPhone<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb461-3"><a href="text-processing.html#cb461-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Android =</span> (Android<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(Android<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb461-4"><a href="text-processing.html#cb461-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate_at(.cols = vars(iPhone, Android),</span></span>
+<span id="cb461-5"><a href="text-processing.html#cb461-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># .funs = funs((. + 1) / sum(. + 1))) %&gt;%</span></span>
+<span id="cb461-6"><a href="text-processing.html#cb461-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">logratio =</span> <span class="fu">log2</span>(Android <span class="sc">/</span> iPhone)) <span class="sc">%&gt;%</span></span>
+<span id="cb461-7"><a href="text-processing.html#cb461-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(logratio))</span></code></pre></div>
 </div>
 <div id="視覺化log-ratio" class="section level4 hasAnchor" number="7.1.4.2">
 <h4><span class="header-section-number">7.1.4.2</span> 視覺化log-ratio<a href="text-processing.html#視覺化log-ratio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="text-processing.html#cb428-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="sc">%&gt;%</span></span>
-<span id="cb428-2"><a href="text-processing.html#cb428-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(logratio <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb428-3"><a href="text-processing.html#cb428-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">15</span>, <span class="fu">abs</span>(logratio)) <span class="sc">%&gt;%</span></span>
-<span id="cb428-4"><a href="text-processing.html#cb428-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb428-5"><a href="text-processing.html#cb428-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, logratio)) <span class="sc">%&gt;%</span></span>
-<span id="cb428-6"><a href="text-processing.html#cb428-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, logratio, <span class="at">fill =</span> logratio <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb428-7"><a href="text-processing.html#cb428-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb428-8"><a href="text-processing.html#cb428-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb428-9"><a href="text-processing.html#cb428-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Android / iPhone log ratio&quot;</span>) <span class="sc">+</span></span>
-<span id="cb428-10"><a href="text-processing.html#cb428-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
-<span id="cb428-11"><a href="text-processing.html#cb428-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb428-12"><a href="text-processing.html#cb428-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb428-13"><a href="text-processing.html#cb428-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
-<p><img src="R-for-Data-Journalism_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="text-processing.html#cb462-1" aria-hidden="true" tabindex="-1"></a>android_iphone_ratios <span class="sc">%&gt;%</span></span>
+<span id="cb462-2"><a href="text-processing.html#cb462-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(logratio <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb462-3"><a href="text-processing.html#cb462-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">15</span>, <span class="fu">abs</span>(logratio)) <span class="sc">%&gt;%</span></span>
+<span id="cb462-4"><a href="text-processing.html#cb462-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb462-5"><a href="text-processing.html#cb462-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, logratio)) <span class="sc">%&gt;%</span></span>
+<span id="cb462-6"><a href="text-processing.html#cb462-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, logratio, <span class="at">fill =</span> logratio <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb462-7"><a href="text-processing.html#cb462-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb462-8"><a href="text-processing.html#cb462-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb462-9"><a href="text-processing.html#cb462-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Android / iPhone log ratio&quot;</span>) <span class="sc">+</span></span>
+<span id="cb462-10"><a href="text-processing.html#cb462-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Android&quot;</span>, <span class="st">&quot;iPhone&quot;</span>),</span>
+<span id="cb462-11"><a href="text-processing.html#cb462-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;gold&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb462-12"><a href="text-processing.html#cb462-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb462-13"><a href="text-processing.html#cb462-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
+<p><img src="R52_trump_tweet_dplyr_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 
 </div>
 </div>

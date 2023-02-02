@@ -56,13 +56,12 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.25/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -546,354 +545,55 @@ div.csl-indent {
 <span id="cb6-4"><a href="basic.html#cb6-4" aria-hidden="true" tabindex="-1"></a>first_page <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url), <span class="st">&quot;text&quot;</span>))</span>
 <span id="cb6-5"><a href="basic.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># head(first_page$responseData)</span></span>
 <span id="cb6-6"><a href="basic.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(first_page<span class="sc">$</span>responseData) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(戶長<span class="ot">=</span>headhousehold_count)</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-statistic_yyy
-</th>
-<th style="text-align:left;">
-district_code
-</th>
-<th style="text-align:left;">
-site_id
-</th>
-<th style="text-align:left;">
-village
-</th>
-<th style="text-align:left;">
-edu
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-戶長
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-107
-</td>
-<td style="text-align:left;">
-65000010001
-</td>
-<td style="text-align:left;">
-新北市板橋區
-</td>
-<td style="text-align:left;">
-留侯里
-</td>
-<td style="text-align:left;">
-博畢
-</td>
-<td style="text-align:left;">
-男
-</td>
-<td style="text-align:left;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-107
-</td>
-<td style="text-align:left;">
-65000010001
-</td>
-<td style="text-align:left;">
-新北市板橋區
-</td>
-<td style="text-align:left;">
-留侯里
-</td>
-<td style="text-align:left;">
-碩畢
-</td>
-<td style="text-align:left;">
-男
-</td>
-<td style="text-align:left;">
-26
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-107
-</td>
-<td style="text-align:left;">
-65000010001
-</td>
-<td style="text-align:left;">
-新北市板橋區
-</td>
-<td style="text-align:left;">
-留侯里
-</td>
-<td style="text-align:left;">
-大畢
-</td>
-<td style="text-align:left;">
-男
-</td>
-<td style="text-align:left;">
-71
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-107
-</td>
-<td style="text-align:left;">
-65000010001
-</td>
-<td style="text-align:left;">
-新北市板橋區
-</td>
-<td style="text-align:left;">
-留侯里
-</td>
-<td style="text-align:left;">
-專畢
-</td>
-<td style="text-align:left;">
-男
-</td>
-<td style="text-align:left;">
-52
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-107
-</td>
-<td style="text-align:left;">
-65000010001
-</td>
-<td style="text-align:left;">
-新北市板橋區
-</td>
-<td style="text-align:left;">
-留侯里
-</td>
-<td style="text-align:left;">
-高中畢
-</td>
-<td style="text-align:left;">
-男
-</td>
-<td style="text-align:left;">
-122
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-107
-</td>
-<td style="text-align:left;">
-65000010001
-</td>
-<td style="text-align:left;">
-新北市板橋區
-</td>
-<td style="text-align:left;">
-留侯里
-</td>
-<td style="text-align:left;">
-國中畢
-</td>
-<td style="text-align:left;">
-男
-</td>
-<td style="text-align:left;">
-40
-</td>
-</tr>
-</tbody>
-</table>
+<pre class="output"><code>##   statistic_yyy district_code      site_id village    edu sex 戶長
+## 1           107   65000010001 新北市板橋區  留侯里   博畢  男    3
+## 2           107   65000010001 新北市板橋區  留侯里   碩畢  男   26
+## 3           107   65000010001 新北市板橋區  留侯里   大畢  男   71
+## 4           107   65000010001 新北市板橋區  留侯里   專畢  男   52
+## 5           107   65000010001 新北市板橋區  留侯里 高中畢  男  122
+## 6           107   65000010001 新北市板橋區  留侯里 國中畢  男   40</code></pre>
 </div>
 <div id="獲取ubike即時資料" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> 獲取ubike即時資料<a href="basic.html#獲取ubike即時資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><a href="https://taipeicity.github.io/traffic_realtime/" class="uri">https://taipeicity.github.io/traffic_realtime/</a></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic.html#cb7-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json&quot;</span></span>
-<span id="cb7-2"><a href="basic.html#cb7-2" aria-hidden="true" tabindex="-1"></a>ubike.list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url),<span class="st">&quot;text&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf-8&quot;</span>))</span>
-<span id="cb7-3"><a href="basic.html#cb7-3" aria-hidden="true" tabindex="-1"></a>ubike.v <span class="ot">&lt;-</span> <span class="fu">unlist</span>(ubike.list<span class="sc">$</span>retVal)</span>
-<span id="cb7-4"><a href="basic.html#cb7-4" aria-hidden="true" tabindex="-1"></a>ubike.m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ubike.v, <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">14</span>)</span>
-<span id="cb7-5"><a href="basic.html#cb7-5" aria-hidden="true" tabindex="-1"></a>ubike.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ubike.m)</span>
-<span id="cb7-6"><a href="basic.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
-<span id="cb7-7"><a href="basic.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="basic.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-sno
-</th>
-<th style="text-align:left;">
-sna
-</th>
-<th style="text-align:left;">
-tot
-</th>
-<th style="text-align:left;">
-sbi
-</th>
-<th style="text-align:left;">
-sarea
-</th>
-<th style="text-align:left;">
-mday
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-0001
-</td>
-<td style="text-align:left;">
-捷運市政府站(3號出口)
-</td>
-<td style="text-align:left;">
-84
-</td>
-<td style="text-align:left;">
-72
-</td>
-<td style="text-align:left;">
-信義區
-</td>
-<td style="text-align:left;">
-20221030161036
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-0002
-</td>
-<td style="text-align:left;">
-捷運國父紀念館站(2號出口)
-</td>
-<td style="text-align:left;">
-16
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-大安區
-</td>
-<td style="text-align:left;">
-20221030161031
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-0004
-</td>
-<td style="text-align:left;">
-市民廣場
-</td>
-<td style="text-align:left;">
-32
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-信義區
-</td>
-<td style="text-align:left;">
-20221030161017
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-0005
-</td>
-<td style="text-align:left;">
-興雅國中
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-信義區
-</td>
-<td style="text-align:left;">
-20221030161041
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-0006
-</td>
-<td style="text-align:left;">
-臺北南山廣場
-</td>
-<td style="text-align:left;">
-54
-</td>
-<td style="text-align:left;">
-12
-</td>
-<td style="text-align:left;">
-信義區
-</td>
-<td style="text-align:left;">
-20221030161029
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-0007
-</td>
-<td style="text-align:left;">
-信義廣場(台北101)
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-信義區
-</td>
-<td style="text-align:left;">
-20221030161027
-</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic.html#cb8-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json&quot;</span></span>
+<span id="cb8-2"><a href="basic.html#cb8-2" aria-hidden="true" tabindex="-1"></a>ubike.list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">content</span>(<span class="fu">GET</span>(url),<span class="st">&quot;text&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf-8&quot;</span>))</span>
+<span id="cb8-3"><a href="basic.html#cb8-3" aria-hidden="true" tabindex="-1"></a>ubike.v <span class="ot">&lt;-</span> <span class="fu">unlist</span>(ubike.list<span class="sc">$</span>retVal)</span>
+<span id="cb8-4"><a href="basic.html#cb8-4" aria-hidden="true" tabindex="-1"></a>ubike.m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ubike.v, <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">14</span>)</span>
+<span id="cb8-5"><a href="basic.html#cb8-5" aria-hidden="true" tabindex="-1"></a>ubike.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ubike.m)</span>
+<span id="cb8-6"><a href="basic.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ubike.df) <span class="ot">&lt;-</span> <span class="fu">names</span>(ubike.list<span class="sc">$</span>retVal<span class="sc">$</span><span class="st">`</span><span class="at">0001</span><span class="st">`</span>)</span>
+<span id="cb8-7"><a href="basic.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="basic.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ubike.df) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
+<pre class="output"><code>##    sno                       sna tot sbi  sarea           mday
+## 1 0001     捷運市政府站(3號出口)  84  72 信義區 20221030161036
+## 2 0002 捷運國父紀念館站(2號出口)  16   3 大安區 20221030161031
+## 3 0004                  市民廣場  32   0 信義區 20221030161017
+## 4 0005                  興雅國中  10   1 信義區 20221030161041
+## 5 0006              臺北南山廣場  54  12 信義區 20221030161029
+## 6 0007         信義廣場(台北101)  20   2 信義區 20221030161027</code></pre>
 </div>
 <div id="讀取台北住宅竊盜點位資料" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> 讀取台北住宅竊盜點位資料<a href="basic.html#讀取台北住宅竊盜點位資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>該資料網址可到<a href="https://data.taipei/">臺北市資料大平臺 (data.taipei)</a>上查詢「住宅竊盜點位資訊」後，點選「API」後複製取得。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic.html#cb8-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://data.taipei/api/v1/dataset/93d9bc2d-af08-4db7-a56b-9f0a49226fa3?scope=resourceAquire&quot;</span></span>
-<span id="cb8-2"><a href="basic.html#cb8-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">read_json</span>(url, <span class="at">simplifyVector =</span> T)</span>
-<span id="cb8-3"><a href="basic.html#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> res<span class="sc">$</span>result<span class="sc">$</span>results</span>
-<span id="cb8-4"><a href="basic.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb8-5"><a href="basic.html#cb8-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic.html#cb10-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://data.taipei/api/v1/dataset/93d9bc2d-af08-4db7-a56b-9f0a49226fa3?scope=resourceAquire&quot;</span></span>
+<span id="cb10-2"><a href="basic.html#cb10-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">read_json</span>(url, <span class="at">simplifyVector =</span> T)</span>
+<span id="cb10-3"><a href="basic.html#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> res<span class="sc">$</span>result<span class="sc">$</span>results</span>
+<span id="cb10-4"><a href="basic.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb10-5"><a href="basic.html#cb10-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(df)</span></code></pre></div>
 </div>
 </div>
 <div id="r-qa" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> R Q&amp;A<a href="basic.html#r-qa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="編碼與設定語系" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> 編碼與設定語系<a href="basic.html#編碼與設定語系" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb9-2"><a href="basic.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;cht&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb11-2"><a href="basic.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;cht&quot;</span>)</span></code></pre></div>
 <p>如果讀取到資料有中文的話，此時，你只需要指定locale為cht，然後重開該data.frame就可以解決該問題。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;cht&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="basic.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;cht&quot;</span>)</span></code></pre></div>
 <p>但你在寫程式剖析HTML時若使用了rvest這個套件，有可能在html_node()函式時會因為編碼而產生問題，此時你會需要把locale改為C。這個C指的是C語言的C。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;C&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="at">locale =</span> <span class="st">&quot;C&quot;</span>)</span></code></pre></div>
 <p>參考連結：<a href="http://psmethods.postach.io/post/ru-he-geng-gai-rde-yu-she-yu-xi" class="uri">http://psmethods.postach.io/post/ru-he-geng-gai-rde-yu-she-yu-xi</a></p>
 <ul>
 <li><p>參考連結：<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/locales.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/base/html/locales.html</a></p></li>
