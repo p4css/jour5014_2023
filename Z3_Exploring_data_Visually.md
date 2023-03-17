@@ -8,14 +8,16 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✔ ggplot2 3.4.0     ✔ purrr   0.3.4
-## ✔ tibble  3.1.8     ✔ dplyr   1.0.9
-## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
-## ✔ readr   2.1.2     ✔ forcats 0.5.1
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.0     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.1     ✔ tibble    3.1.8
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.1     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
 ```
 
 ```r
@@ -56,7 +58,10 @@ toplot <- aqi_data %>%
 ```
 
 ```
-## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `PM25 = as.numeric(PM25)`.
+## Caused by warning:
+## ! NAs introduced by coercion
 ```
 
 ```
@@ -87,7 +92,10 @@ aqi_data %>%
 ```
 
 ```
-## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `PM25 = as.numeric(PM25)`.
+## Caused by warning:
+## ! NAs introduced by coercion
 ```
 
 <img src="Z3_Exploring_data_Visually_files/figure-html/eda-exame-data-lose-1.png" width="672" />
@@ -145,7 +153,10 @@ toplot2 <- aqi_data %>%
 ```
 
 ```
-## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `PM25 = as.numeric(PM25)`.
+## Caused by warning:
+## ! NAs introduced by coercion
 ```
 
 ```
@@ -190,7 +201,10 @@ toplot3 <- aqi_data %>%
 ```
 
 ```
-## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `PM25 = as.numeric(PM25)`.
+## Caused by warning:
+## ! NAs introduced by coercion
 ```
 
 

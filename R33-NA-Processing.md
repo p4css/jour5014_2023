@@ -201,7 +201,6 @@ raw %>% head(20)
 ## #   daily_people_vaccinated <dbl>, daily_people_vaccinated_per_hundred <dbl>,
 ## #   and abbreviated variable names ¹​iso_code, ²​total_vaccinations,
 ## #   ³​people_vaccinated, ⁴​people_fully_vaccinated, ⁵​total_boosters, …
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 #### 按月對齊資料
@@ -279,7 +278,6 @@ fullvaccinated %>%
 ## #   `2022-04-01` <dbl>, `2022-05-01` <dbl>, and abbreviated variable names
 ## #   ¹​`2020-12-01`, ²​`2021-01-01`, ³​`2021-02-01`, ⁴​`2021-03-01`, ⁵​`2021-04-01`,
 ## #   ⁶​`2021-05-01`, ⁷​`2021-06-01`, ⁸​`2021-07-01`
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 在以下的範例輸出可以看到`gather()`後的結果。注意，需要照國家和月份來排序後才便於觀察。

@@ -1,23 +1,23 @@
 
 
-
 ## 案例：產假支薪跨國跨時比較
 
-* 本案例將利用R來重製華盛頓郵報在2016/08/13的一篇談論美國婦女產假支薪情形的報導。這個案例中將會應用到data.frame和基本的繪圖與資料摘要方法。The case adaped Washington Post's paid maternity leave as an exmaple to introduce basic skill of data.frame, plotting, and data mamipulation.
+-   本案例將使用R重新製作華盛頓郵報2016年8月13日的一篇報導，該報導探討了美國婦女產假支薪情況。案例中將應用data.frame和基本的繪圖與資料摘要方法。
 
-* 原始新聞來源：https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/?tid=sm_tw&utm_term=.f8cd50280326#comments
-
+-   原始新聞來源：[The world is getting better at paid maternity leave. The U.S. is not. - The Washington Post](https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/)
 
 ### Reading .xlsx by readxl package
 
-* readxl也包含在tidyverse的套件集中，所以應該已經在前次安裝過，不用特別安裝。
- 
+-   `readxl`也包含在`tidyverse`的套件集中，所以應該已經在前次安裝過，不用特別安裝。
+-   但`readxl`不會隨著`tidyverse`套件被載入R的執行環境，所以如果要用`readxl()`來讀取excel檔的話，需要用`library(readxl)`將其載入。
+
 
 ```r
 # Import readxl package
 library(readxl)
-options(stringsAsFactors = FALSE)
 ```
+
+這段程式碼使用`read_excel()`函式從`data`資料夾中的`WORLD-MACHE_Gender_6.8.15.xls`檔案中的`Sheet1`工作表讀取資料。其中`col_names=T`為該函式的參數，表示第一列為欄位名稱。讀取後的資料會被Assign給變數`df`。
 
 
 ```r
@@ -105,9 +105,9 @@ names(df)
 ## [154] "minwage_ppp_2013"  "mw_overtime"       "oecd"
 ```
 
-
-
 ### Select variables
+
+由於所需要的資料為第三欄的變數`iso3`（為國家代碼）和第六至24欄的`matleave95`\~`matleave13`共29年的資料，所以需要在`df[ , ]`中選出這幾欄。只要把所要取的欄以vector的型態放在`df[row,col]`之`col`的位置，便可以選出所要的欄。
 
 
 ```r
@@ -158,14 +158,12 @@ str(matleave)
 ##  $ matleave_13: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
 ```
 
-
-
 ### Check & Replace NAs
 
-* `NA: Not Available`
-* `v[is.na(v)]` will select all NA cells
-* 以0取代NA的資料格。避免繪圖產生錯誤
-* `sum(is.na(matleave))`的目的是檢測還有沒有NA值。如果有的話`is.na()`就會是`TRUE`，那麼加總後，如果不是0，那就代表還有NA。
+-   `NA: Not Available`
+-   `v[is.na(v)]` will select all NA cells
+-   以0取代NA的資料格。避免繪圖產生錯誤
+-   `sum(is.na(matleave))`的目的是檢測還有沒有NA值。如果有的話`is.na()`就會是`TRUE`，那麼加總後，如果不是0，那就代表還有NA。
 
 
 ```r
@@ -281,11 +279,10 @@ sum(is.na(matleave))
 ## [1] 0
 ```
 
-
-
-### Filtering data 
+### Filtering data
 
 #### Filtered by the last year value
+
 
 ```r
 # Use logical comparison to see if the last year equals to 5
@@ -307,10 +304,8 @@ nrow(m5)
 # length(matleave$'matleave_13'==5)
 ```
 
-
-
-
 #### Filtered data by the first year value
+
 
 ```r
 # filter rows whose 'matleave_95' is 5, and assign to var m55
@@ -320,15 +315,11 @@ m55<- m5[m5$'matleave_95'==5,]
 m05<- m5[m5$'matleave_95'!=5,]
 ```
 
-
-
-
-
 ### Plotting
 
-* Plotting the second rows and all columns except 1st column
-* **Question** 為何要`unlist()`？請試著執行`barplot(matleave[2, -1])`這個沒有`unlist()`的版本，看看會有什麼錯誤訊息。資料結構有何差異呢？
-* 嘗試用`class()`或`str()`嘗試觀察沒有`unlist()`版本的資料，看看資料型態和有`unlist()`的會有何不同？
+-   Plotting the second rows and all columns except 1st column
+-   **Question** 為何要`unlist()`？請試著執行`barplot(matleave[2, -1])`這個沒有`unlist()`的版本，看看會有什麼錯誤訊息。資料結構有何差異呢？
+-   嘗試用`class()`或`str()`嘗試觀察沒有`unlist()`版本的資料，看看資料型態和有`unlist()`的會有何不同？
 
 #### Plotting one line
 
@@ -363,7 +354,8 @@ barplot(unlist(m55[2, -1]))
 
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-* Testing
+-   Testing
+
 
 ```r
 # View(matleave[1]) # select the 1st variable
@@ -401,10 +393,8 @@ class(m55$iso3)	# character (vector)
 ## [1] "character"
 ```
 
-
-
-
 #### More arguments (args)
+
 
 ```r
 # barplot() the unlisted second row (neglecting the first col)
@@ -441,10 +431,9 @@ barplot(unlist(m55[2, -1]), ylim=c(0, 5), space=0, border=NA, xaxt="n", yaxt="n"
 
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-9-5.png" width="672" />
 
-
 #### Plotting multiple lines
 
-* 底下可以看見每一行非常相似且一致的特徵，僅有`matleave`內的索引由1被列出至6。因此，最好的方法是用迴圈（for-loop）的方式將相同的程式碼，從1~6之間做六次。
+-   底下可以看見每一行非常相似且一致的特徵，僅有`matleave`內的索引由1被列出至6。因此，最好的方法是用迴圈（for-loop）的方式將相同的程式碼，從1\~6之間做六次。
 
 
 ```r
@@ -464,9 +453,7 @@ barplot(unlist(m55[5, -1]), ylim=c(0, 5), space=0, border=NA, xaxt="n", yaxt="n"
 barplot(unlist(m55[6, -1]), ylim=c(0, 5), space=0, border=NA, xaxt="n", yaxt="n")
 ```
 
-
-
-#### for-loop to plot multiple lines 
+#### for-loop to plot multiple lines
 
 
 ```r
@@ -478,15 +465,13 @@ for(i in 1:6){
 
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-11-1.png" width="672" /><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-11-2.png" width="672" />
 
-
 #### Sub-plots
 
-* Check `?par` to get paremeters of plotting
+-   Check `?par` to get paremeters of plotting
 
-* `**mai**`: A numerical vector of the form c(bottom, left, top, right) which gives the margin size specified in inches.
+-   `**mai**`: A numerical vector of the form c(bottom, left, top, right) which gives the margin size specified in inches.
 
-* `**mfcol, mfrow**`:A vector of the form c(nr, nc). Subsequent figures will be drawn in an nr-by-nc array on the device by columns (mfcol), or rows (mfrow), respectively.
-
+-   `**mfcol, mfrow**`:A vector of the form c(nr, nc). Subsequent figures will be drawn in an nr-by-nc array on the device by columns (mfcol), or rows (mfrow), respectively.
 
 
 ```r
@@ -504,7 +489,6 @@ for(i in 1:6){
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 
-
 ```r
 # plot more rows to see what happens
 par(mfrow=c(3,2), mai= c(0.2, 0.2, 0.2, 0.2))
@@ -520,9 +504,6 @@ for(i in 1:10){
 ```
 
 <img src="R21_readxl_paid_maternal_files/figure-html/pml-plot-test-2.png" width="672" />
-
-
-
 
 
 ```r
@@ -547,8 +528,6 @@ for (i in 1:nrow(m55)){
 <img src="R21_readxl_paid_maternal_files/figure-html/plot-m55-1.png" width="672" />
 
 
-
-
 ```r
 par(mfrow=c(4,6), mai= c(0.2, 0.2, 0.2, 0.2))
 for (i in 1:nrow(m55)){
@@ -559,11 +538,8 @@ for (i in 1:nrow(m55)){
 
 <img src="R21_readxl_paid_maternal_files/figure-html/plot-caption-1.png" width="672" />
 
+### Practice02_1\_1 Plotting more
 
-
-
-
-### Practice02_1_1 Plotting more
 
 ```r
 # plotting matleave_95 != 5 but matleve_13 == 5
@@ -571,9 +547,8 @@ for (i in 1:nrow(m55)){
 # plotting for matleave_13 == 4
 ```
 
+### Practice02_2\_2 selecting and filtering by dplyr I
 
-
-### Practice02_2_2 selecting and filtering by dplyr I
 
 ```r
 df <- read_excel("data/WORLD-MACHE_Gender_6.8.15.xls", "Sheet1", col_names=T)
@@ -601,11 +576,8 @@ for (i in c(1:nrow(m55))){
 
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
-
-
-
-
 ### (More) Clean version
+
 
 ```r
 # readxl::read_excel() to import the xls file
@@ -664,7 +636,6 @@ for (i in c(1:nrow(m55))){
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 
-
 ```r
 library(tidyverse)
 options(stringsAsFactors = F)
@@ -688,9 +659,8 @@ read_excel("data/WORLD-MACHE_Gender_6.8.15.xls", "Sheet1", col_names=T) %>%
 
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
-
-
 ### (More) The fittest version to compute staySame
+
 
 ```r
 # staySame version
@@ -698,8 +668,3 @@ read_excel("data/WORLD-MACHE_Gender_6.8.15.xls", "Sheet1", col_names=T) %>%
 # m55 <- m5[staySame, ]
 # m50 <- m5[!staySame, ]
 ```
-
-
-
-
-

@@ -51,6 +51,7 @@ p1 %>% filter(year <= 1992) %>% knitr::kable()
 
 
 ```r
+library(gghighlight)
 p1 %>% ggplot() + aes(year, Net_Worth, color = Category) + 
     geom_line(linetype="dotted") + 
     geom_point() + 

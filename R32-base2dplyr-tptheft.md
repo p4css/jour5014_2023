@@ -1,6 +1,5 @@
 
 
-
 ## base to dplyr: TP Theft
 
 
@@ -10,6 +9,7 @@ library(tidyverse)
 ```
 
 ### Reading data
+
 
 ```r
 # Read by read_csv()
@@ -22,14 +22,16 @@ library(readr)
 df <- read_csv("data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv")
 ```
 
-
 ### Cleaning data I
-- Renaming variables by `select()`
-- Generating variable year
-- Generating variable month
-- Retrieving area
+
+-   Renaming variables by `select()`
+-   Generating variable year
+-   Generating variable month
+-   Retrieving area
+
 
 ```r
+library(stringr)
 selected_df <- df %>%
     select(id = 編號, 
            cat = 案類, 
@@ -38,12 +40,13 @@ selected_df <- df %>%
            location = `發生地點`) %>%
     mutate(year = date %/% 10000) %>%
     mutate(month = date %/% 100 %% 100) %>%
-    mutate(area = stringr::str_sub(location, 4, 6)) %>%
-    mutate(county = stringr::str_sub(location, 1, 3))
+    mutate(area = str_sub(location, 4, 6)) %>%
+    mutate(county = str_sub(location, 1, 3))
 ```
 
 ### Cleaning data II
-- Filtering out irrelevant data records
+
+-   Filtering out irrelevant data records
 
 
 ```r
@@ -57,29 +60,27 @@ filtered_df <- selected_df %>%
     filter(!area %in% c("中和市", "板橋市"))
 ```
 
-
 ### Long to wide form
-- `count()` two variables
-- `spread()` spread one variable as columns to wide form
+
+-   `count()` two variables
+-   `pivot_wider()` spread one variable as columns to wide form
 
 
 ```r
-# count() then spread()
+# count() then pivot_wider()
 df.wide <- filtered_df %>% 
-    count(time, area) %>%
-    spread(area, n, fill=0) 
+  count(time, area) %>%
+  pivot_wider(names_from = area, values_from = n, values_fill = 0)
+??pivot_wider
 ```
 
-
 ### Setting time as row.name for mosaicplot
+
 
 ```r
 row.names(df.wide) <- df.wide$time
 df.wide$time <- NULL
 ```
-
-
-
 
 
 ```r
@@ -100,6 +101,7 @@ mosaicplot(df.wide, color=colors, border=0, off = 3,
 <img src="R32-base2dplyr-tptheft_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 ### Clean version
+
 
 ```r
 library(readr)
@@ -186,7 +188,7 @@ filtered_df <- selected_df %>%
 
 df.wide <- filtered_df %>% 
     count(time, area) %>%
-    spread(area, n, fill=0) %>%
+    pivot_wider(names_from = area, values_from = n, values_fill = 0) %>%
     as.data.frame()
 
 row.names(df.wide) <- df.wide$time
@@ -205,4 +207,3 @@ mosaicplot(df.wide, color=colors, border=0, off = 3,
 ```
 
 <img src="R32-base2dplyr-tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" />
-
