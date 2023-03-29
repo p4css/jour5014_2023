@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 21 Appendix | R for Data Journalism</title>
+  <title>Chapter 6 From base R to dplyr | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 21 Appendix | R for Data Journalism" />
+  <meta property="og:title" content="Chapter 6 From base R to dplyr | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 21 Appendix | R for Data Journalism" />
+  <meta name="twitter:title" content="Chapter 6 From base R to dplyr | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="interactivity.html"/>
-<link rel="next" href="wgoitg.html"/>
+<link rel="prev" href="使用基礎r套件.html"/>
+<link rel="next" href="data-manipultaiton-join-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -507,23 +507,196 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="appendix" class="section level1 hasAnchor" number="21">
-<h1><span class="header-section-number">Chapter 21</span> Appendix<a href="appendix.html#appendix" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="dataset" class="section level2 hasAnchor" number="21.1">
-<h2><span class="header-section-number">21.1</span> Dataset<a href="appendix.html#dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="from-base-r-to-dplyr" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> From base R to dplyr<a href="from-base-r-to-dplyr.html#from-base-r-to-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="taipie-thefr-count-base-to-dplyr" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Taipie Thefr Count (base to dplyr)<a href="from-base-r-to-dplyr.html#taipie-thefr-count-base-to-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="from-base-r-to-dplyr.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb347-2"><a href="from-base-r-to-dplyr.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default options in R ver.&gt; 4.0</span></span></code></pre></div>
+<div id="reading-data" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Reading data<a href="from-base-r-to-dplyr.html#reading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="from-base-r-to-dplyr.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read by read_csv()</span></span>
+<span id="cb348-2"><a href="from-base-r-to-dplyr.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Will raise error</span></span>
+<span id="cb348-3"><a href="from-base-r-to-dplyr.html#cb348-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in make.names(x) : invalid multibyte string at &#39;&lt;bd&gt;s&lt;b8&gt;&lt;b9&gt;&#39;</span></span>
+<span id="cb348-4"><a href="from-base-r-to-dplyr.html#cb348-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb348-5"><a href="from-base-r-to-dplyr.html#cb348-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-6"><a href="from-base-r-to-dplyr.html#cb348-6" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv() with locale = locale(encoding = &quot;Big5&quot;)</span></span>
+<span id="cb348-7"><a href="from-base-r-to-dplyr.html#cb348-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb348-8"><a href="from-base-r-to-dplyr.html#cb348-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="cleaning-data-i" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Cleaning data I<a href="from-base-r-to-dplyr.html#cleaning-data-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>111B歲出政事別預算表.xls -</li>
-<li>111B歲出政事別預算總表.xls</li>
-<li>臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv</li>
-<li>opendata107Y020.csv</li>
-<li>opendata110Y060.csv</li>
-<li>tptheft.csv</li>
-<li>tw_income_107.csv</li>
-<li>tw_population_opendata110N010.csv</li>
-<li>tw_salary109.xlsx</li>
-<li>villmast_excel.xls</li>
-<li>WORLD-MACHE_Gender_6.8.15.xls</li>
+<li>Renaming variables by <code>select()</code></li>
+<li>Generating variable year</li>
+<li>Generating variable month</li>
+<li>Retrieving area</li>
 </ul>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="from-base-r-to-dplyr.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb349-2"><a href="from-base-r-to-dplyr.html#cb349-2" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb349-3"><a href="from-base-r-to-dplyr.html#cb349-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb349-4"><a href="from-base-r-to-dplyr.html#cb349-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類, </span>
+<span id="cb349-5"><a href="from-base-r-to-dplyr.html#cb349-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb349-6"><a href="from-base-r-to-dplyr.html#cb349-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb349-7"><a href="from-base-r-to-dplyr.html#cb349-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb349-8"><a href="from-base-r-to-dplyr.html#cb349-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb349-9"><a href="from-base-r-to-dplyr.html#cb349-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb349-10"><a href="from-base-r-to-dplyr.html#cb349-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> <span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb349-11"><a href="from-base-r-to-dplyr.html#cb349-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
+</div>
+<div id="cleaning-data-ii" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Cleaning data II<a href="from-base-r-to-dplyr.html#cleaning-data-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Filtering out irrelevant data records</li>
+</ul>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="from-base-r-to-dplyr.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readr::guess_encoding(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb350-2"><a href="from-base-r-to-dplyr.html#cb350-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb350-3"><a href="from-base-r-to-dplyr.html#cb350-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb350-4"><a href="from-base-r-to-dplyr.html#cb350-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(county <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb350-5"><a href="from-base-r-to-dplyr.html#cb350-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb350-6"><a href="from-base-r-to-dplyr.html#cb350-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb350-7"><a href="from-base-r-to-dplyr.html#cb350-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb350-8"><a href="from-base-r-to-dplyr.html#cb350-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>area <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;中和市&quot;</span>, <span class="st">&quot;板橋市&quot;</span>))</span></code></pre></div>
+</div>
+<div id="long-to-wide-form" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Long to wide form<a href="from-base-r-to-dplyr.html#long-to-wide-form" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>count()</code> two variables</li>
+<li><code>pivot_wider()</code> spread one variable as columns to wide form</li>
+</ul>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="from-base-r-to-dplyr.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count() then pivot_wider()</span></span>
+<span id="cb351-2"><a href="from-base-r-to-dplyr.html#cb351-2" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb351-3"><a href="from-base-r-to-dplyr.html#cb351-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb351-4"><a href="from-base-r-to-dplyr.html#cb351-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> area, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
+<span id="cb351-5"><a href="from-base-r-to-dplyr.html#cb351-5" aria-hidden="true" tabindex="-1"></a>??pivot_wider</span></code></pre></div>
+</div>
+<div id="setting-time-as-row.name-for-mosaicplot" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Setting time as row.name for mosaicplot<a href="from-base-r-to-dplyr.html#setting-time-as-row.name-for-mosaicplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="from-base-r-to-dplyr.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb352-2"><a href="from-base-r-to-dplyr.html#cb352-2" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="from-base-r-to-dplyr.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify fonts for Chinese</span></span>
+<span id="cb353-2"><a href="from-base-r-to-dplyr.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;)) </span></span>
+<span id="cb353-3"><a href="from-base-r-to-dplyr.html#cb353-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb353-4"><a href="from-base-r-to-dplyr.html#cb353-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-5"><a href="from-base-r-to-dplyr.html#cb353-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb353-6"><a href="from-base-r-to-dplyr.html#cb353-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb353-7"><a href="from-base-r-to-dplyr.html#cb353-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb353-8"><a href="from-base-r-to-dplyr.html#cb353-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb353-9"><a href="from-base-r-to-dplyr.html#cb353-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-10"><a href="from-base-r-to-dplyr.html#cb353-10" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb353-11"><a href="from-base-r-to-dplyr.html#cb353-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb353-12"><a href="from-base-r-to-dplyr.html#cb353-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
+<p><img src="R25-base2dplyr-tptheft_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="clean-version" class="section level3 hasAnchor" number="6.1.6">
+<h3><span class="header-section-number">6.1.6</span> Clean version<a href="from-base-r-to-dplyr.html#clean-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="from-base-r-to-dplyr.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb354-2"><a href="from-base-r-to-dplyr.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span>
+<span id="cb354-3"><a href="from-base-r-to-dplyr.html#cb354-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb354-4"><a href="from-base-r-to-dplyr.html#cb354-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-5"><a href="from-base-r-to-dplyr.html#cb354-5" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb354-6"><a href="from-base-r-to-dplyr.html#cb354-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb354-7"><a href="from-base-r-to-dplyr.html#cb354-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類,</span>
+<span id="cb354-8"><a href="from-base-r-to-dplyr.html#cb354-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb354-9"><a href="from-base-r-to-dplyr.html#cb354-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb354-10"><a href="from-base-r-to-dplyr.html#cb354-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb354-11"><a href="from-base-r-to-dplyr.html#cb354-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb354-12"><a href="from-base-r-to-dplyr.html#cb354-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb354-13"><a href="from-base-r-to-dplyr.html#cb354-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb354-14"><a href="from-base-r-to-dplyr.html#cb354-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb354-15"><a href="from-base-r-to-dplyr.html#cb354-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-16"><a href="from-base-r-to-dplyr.html#cb354-16" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(year)</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 9 × 2
+##    year     n
+##   &lt;dbl&gt; &lt;int&gt;
+## 1   103     1
+## 2   104   687
+## 3   105   663
+## 4   106   560
+## 5   107   501
+## 6   108   411
+## 7   109   304
+## 8   110   189
+## 9   111    31</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="from-base-r-to-dplyr.html#cb356-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 10 × 2
+##    time      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 00~02   272
+##  2 02~04   214
+##  3 03~05     8
+##  4 04~06   156
+##  5 05~07    23
+##  6 06~08   191
+##  7 08~10   305
+##  8 09~11     6
+##  9 10~12   338
+## 10 11~03     1</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="from-base-r-to-dplyr.html#cb358-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 10 × 9
+##       id cat         date time  location                 year month area  county
+##    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1     2 住宅竊盜 1040101 00~02 臺北市文山區萬美里萬寧…   104     1 文山… 臺北市
+##  2     3 住宅竊盜 1040101 00~02 臺北市信義區富台里忠孝…   104     1 信義… 臺北市
+##  3     6 住宅竊盜 1040102 00~02 臺北市士林區天福里1鄰…    104     1 士林… 臺北市
+##  4    12 住宅竊盜 1040105 00~02 臺北市中山區南京東路3…    104     1 中山… 臺北市
+##  5    33 住宅竊盜 1040115 00~02 臺北市松山區饒河街181~…   104     1 松山… 臺北市
+##  6    74 住宅竊盜 1040131 00~02 臺北市南港區重陽路57巷…   104     1 南港… 臺北市
+##  7    75 住宅竊盜 1040201 00~02 臺北市北投區中心里中和…   104     2 北投… 臺北市
+##  8    92 住宅竊盜 1040210 00~02 臺北市北投區大同路200…    104     2 北投… 臺北市
+##  9    95 住宅竊盜 1040212 00~02 臺北市萬華區萬大路493…    104     2 萬華… 臺北市
+## 10   106 住宅竊盜 1040216 00~02 臺北市信義區吳興街269…    104     2 信義… 臺北市</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="from-base-r-to-dplyr.html#cb360-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb360-2"><a href="from-base-r-to-dplyr.html#cb360-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb360-3"><a href="from-base-r-to-dplyr.html#cb360-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb360-4"><a href="from-base-r-to-dplyr.html#cb360-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;23~01&quot;</span>))</span>
+<span id="cb360-5"><a href="from-base-r-to-dplyr.html#cb360-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb360-6"><a href="from-base-r-to-dplyr.html#cb360-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb360-7"><a href="from-base-r-to-dplyr.html#cb360-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter(!area %in% c(&quot;中和市&quot;, &quot;板橋市&quot;))</span></span>
+<span id="cb360-8"><a href="from-base-r-to-dplyr.html#cb360-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-9"><a href="from-base-r-to-dplyr.html#cb360-9" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb360-10"><a href="from-base-r-to-dplyr.html#cb360-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb360-11"><a href="from-base-r-to-dplyr.html#cb360-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> area, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb360-12"><a href="from-base-r-to-dplyr.html#cb360-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
+<span id="cb360-13"><a href="from-base-r-to-dplyr.html#cb360-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-14"><a href="from-base-r-to-dplyr.html#cb360-14" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb360-15"><a href="from-base-r-to-dplyr.html#cb360-15" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb360-16"><a href="from-base-r-to-dplyr.html#cb360-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-17"><a href="from-base-r-to-dplyr.html#cb360-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb360-18"><a href="from-base-r-to-dplyr.html#cb360-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-19"><a href="from-base-r-to-dplyr.html#cb360-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb360-20"><a href="from-base-r-to-dplyr.html#cb360-20" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb360-21"><a href="from-base-r-to-dplyr.html#cb360-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb360-22"><a href="from-base-r-to-dplyr.html#cb360-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb360-23"><a href="from-base-r-to-dplyr.html#cb360-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-24"><a href="from-base-r-to-dplyr.html#cb360-24" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb360-25"><a href="from-base-r-to-dplyr.html#cb360-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb360-26"><a href="from-base-r-to-dplyr.html#cb360-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)  </span></code></pre></div>
+<p><img src="R25-base2dplyr-tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+
+</div>
+</div>
+<div id="paid-maternity-leave-base-to-dplyr" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Paid Maternity Leave (base to dplyr)<a href="from-base-r-to-dplyr.html#paid-maternity-leave-base-to-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="from-base-r-to-dplyr.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb361-2"><a href="from-base-r-to-dplyr.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb361-3"><a href="from-base-r-to-dplyr.html#cb361-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb361-4"><a href="from-base-r-to-dplyr.html#cb361-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-5"><a href="from-base-r-to-dplyr.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb361-6"><a href="from-base-r-to-dplyr.html#cb361-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb361-7"><a href="from-base-r-to-dplyr.html#cb361-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(iso3, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb361-8"><a href="from-base-r-to-dplyr.html#cb361-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(matleave_13 <span class="sc">==</span> <span class="dv">5</span>, matleave_95 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb361-9"><a href="from-base-r-to-dplyr.html#cb361-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;degree&quot;</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb361-10"><a href="from-base-r-to-dplyr.html#cb361-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(year, degree, fill = 0) %&gt;% View</span></span>
+<span id="cb361-11"><a href="from-base-r-to-dplyr.html#cb361-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb361-12"><a href="from-base-r-to-dplyr.html#cb361-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year2 =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(year, <span class="st">&quot;matleave_%y&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb361-13"><a href="from-base-r-to-dplyr.html#cb361-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year3 =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(year2)) <span class="sc">%&gt;%</span></span>
+<span id="cb361-14"><a href="from-base-r-to-dplyr.html#cb361-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb361-15"><a href="from-base-r-to-dplyr.html#cb361-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year3, degree) <span class="sc">+</span> </span>
+<span id="cb361-16"><a href="from-base-r-to-dplyr.html#cb361-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb361-17"><a href="from-base-r-to-dplyr.html#cb361-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> iso3) <span class="sc">+</span></span>
+<span id="cb361-18"><a href="from-base-r-to-dplyr.html#cb361-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="R26_base2dplyr_paid_maternity_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -532,8 +705,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="interactivity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="wgoitg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="使用基礎r套件.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-manipultaiton-join-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -564,7 +737,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/Z1_Appendix.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R25-base2dplyr-tptheft.Rmd",
 "text": "Edit"
 },
 "history": {
