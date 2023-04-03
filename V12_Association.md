@@ -2,7 +2,6 @@
 
 # ASSOCIATION
 
-
 ## 等比例座標軸
 
 ### UNICEF-Optimistic (WGOITH)
@@ -11,7 +10,7 @@
 
 
 ```r
-plot.opt <- read_csv("nytdata/unicef-changing-childhood-data.csv") %>% 
+plot.opt <- read_csv("data/unicef-changing-childhood-data.csv") %>% 
     select(country = WP5, age = WP22140, bw = WP22092) %>%
     mutate(country = ordered(country, 
                              levels=c(1, 3, 4, 10, 11, 12, 
@@ -67,5 +66,3 @@ plot.opt %>%
 ```
 
 <img src="V12_Association_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" />
-
-

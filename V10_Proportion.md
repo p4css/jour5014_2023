@@ -6,9 +6,7 @@
 
 ## Dodged Bar Chart
 
-
 ## Treemap: Nested Proportion
-
 
 ### Global Carbon Projects (WGOITH-NYTIMES)
 
@@ -16,7 +14,7 @@
 
 
 ```r
-totreemap <- read_csv("nytdata/GCB2021v34_MtCO2_flat.csv") %>% 
+totreemap <- read_csv("data/GCB2021v34_MtCO2_flat.csv") %>% 
     drop_na(`Total`) %>%
     filter(!Country %in% c("Global", "International Transport")) %>%
     filter(Year==2020) %>%
@@ -35,10 +33,7 @@ totreemap %>%
 
 <img src="V10_Proportion_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" />
 
-
-
 ### TW Budget
-
 
 
 
@@ -86,7 +81,6 @@ cleand %>%
 <img src="V10_Proportion_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
 
 
-
 ```r
 library(treemapify)
 cleand %>%
@@ -108,6 +102,3 @@ cleand %>%
 ```
 
 <img src="V10_Proportion_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
-
-
-

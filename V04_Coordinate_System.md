@@ -2,10 +2,9 @@
 
 # COORDINATE {#COORDINATE}
 
--   Chap3 Coordination & Axis [Fundamentals of Data Visualization (clauswilke.com)](https://clauswilke.com/dataviz/coordinate-systems-axes.html)
--   Chapter 8 [Visualizing distributions: Empirical cumulative distribution functions and q-q plots](https://clauswilke.com/dataviz/ecdf-qq.html)
+本章節談論的是視覺化圖表的座標軸，本章節所涵蓋的概念可參考*Claus O. Wilke*所著之[Fundamentals of Data Visualization](https://clauswilke.com/dataviz/coordinate-systems-axes.html)的Chap3 Coordination & Axis與Chapter 8 [Visualizing distributions: Empirical cumulative distribution functions and q-q plots](https://clauswilke.com/dataviz/ecdf-qq.html)。
 
-## 排序以展示分佈
+## 座標軸為資料排序
 
 學術論文若要呈現一群數據的分佈時，最常用的是密度（分佈）函數、累積分佈函數，最常視覺化的方法是密度分佈圖（`geom_density()`）或直方圖（`geom_histogram()`)。然而，對新聞等強調「說故事」的文體而言，說故事的技巧往往不是「**那一群**資源多或資源少的對象」，而經常要直指「**那個對象**」，要能夠看得見所敘述的對象在圖中的位置。此時，用密度分佈來呈現的話，只能看出，該對象在分佈的某個位置；但可以改用將資料對象根據某個數據來排序後，繪製折現圖的方式來表現。例如，若要繪製一個班級的成績分佈，通常X軸是分數（組），Y軸是獲得該分數（組）的人數；但其實可以將個體依照分數來做排序，Y軸不是某個分數（組）的個數，而是每個排序後的個體，而且以排序後的序號（Ranking）來表示。用折線圖繪製後，一樣可以看出分數的分佈，但卻能夠直接標記敘事中的某個對象是Y軸中得哪個點。
 
@@ -55,7 +54,6 @@ cowplot::plot_grid(
 ```
 
 <img src="V04_Coordinate_System_files/figure-html/Fig3-5-6-log-scale-village-level-population-1.png" width="100%" style="display: block; margin: auto;" />
-
 
 ## Square-root scale
 
@@ -149,7 +147,7 @@ Sorted by `arrange()` function.
 
 
 ```r
-p1 <- read_csv("nytdata/interactive_bulletin_charts_agecl_median.csv") %>%
+p1 <- read_csv("data/interactive_bulletin_charts_agecl_median.csv") %>%
     select(year, Category, Net_Worth) %>%
     group_by(Category) %>%
     arrange(year) %>%
@@ -191,7 +189,7 @@ p1 %>% ggplot() + aes(year, Net_Worth, color = Category) +
 
 
 ```r
-p2 <- read_csv("nytdata/interactive_bulletin_charts_agecl_median.csv") %>%
+p2 <- read_csv("data/interactive_bulletin_charts_agecl_median.csv") %>%
     select(year, Category, NW = Net_Worth)  %>%
     group_by(Category) %>%
     arrange(year) %>%
@@ -241,7 +239,7 @@ p2 %>% ggplot() + aes(year, increase, color = Category) +
 
 
 ```r
-plot.opt <- read_csv("nytdata/unicef-changing-childhood-data.csv") %>% 
+plot.opt <- read_csv("data/unicef-changing-childhood-data.csv") %>% 
     select(country = WP5, age = WP22140, bw = WP22092) %>%
     mutate(country = ordered(country, 
                              levels=c(1, 3, 4, 10, 11, 12, 
@@ -297,4 +295,3 @@ plot.opt %>%
 ```
 
 <img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
-

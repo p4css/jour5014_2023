@@ -31,10 +31,12 @@ library(readxl)
 
 
 
+### eda-load-data-from-github
 
 
 ```r
-aqi_data <- read_rds("https://github.com/p4css/R4CSS/raw/master/data/AQI_Chaozhou.rds")
+# aqi_data <- read_rds("https://github.com/p4css/R4CSS/raw/master/data/AQI_Chaozhou.rds")
+aqi_data <- read_rds("data/AQI_Chaozhou.rds")
 ```
 
 ### Trending: Central tendency
@@ -217,4 +219,4 @@ toplot3 %>%
     theme_minimal()
 ```
 
-<img src="Z3_Exploring_data_Visually_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="Z3_Exploring_data_Visually_files/figure-html/unnamed-chunk-6-1.png" width="672" />

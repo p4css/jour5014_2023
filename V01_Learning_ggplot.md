@@ -1,13 +1,12 @@
+## ggplot簡介 {#ggplot}
 
-## ggplot簡介{#ggplot}
-
-本節著重在介紹`ggplot`的基本概念與設定。不同類型的圖表則在下一節「ggplot圖表類型(II)」
-
+本節著重在介紹`ggplot`的基本概念與設定。
 
 
-可在一開始便透過`knitr::opts_chunk$set(echo = TRUE, fig.width = 2, fig.asp = 0.4)`來一次設定所有圖片。`fig.width = 8`與`fig.height = 6` 是以英吋（inches）為單位，或用`fig.dim = c(8, 6)`一次設定長寬[^1]。`echo = TRUE`是設定knit出輸出格式（如html）時，也要包含程式碼。如果`echo = FALSE`的話，就只會輸出文字和圖形。
 
-[^1]: 參考資料：[5.4 Control the size of plots/images \| R Markdown Cookbook (bookdown.org)](https://bookdown.org/yihui/rmarkdown-cookbook/figure-size.html)
+**訣竅：**可在一開始便透過`knitr::opts_chunk$set(echo = TRUE, fig.width = 2, fig.asp = 0.4)`來一次設定所有圖片。`fig.width = 8`與`fig.height = 6` 是以英吋（inches）為單位，或用`fig.dim = c(8, 6)`一次設定長寬[^v01_learning_ggplot-1]。`echo = TRUE`是設定knit出輸出格式（如html）時，也要包含程式碼。如果`echo = FALSE`的話，就只會輸出文字和圖形。
+
+[^v01_learning_ggplot-1]: 參考資料：[5.4 Control the size of plots/images \| R Markdown Cookbook (bookdown.org)](https://bookdown.org/yihui/rmarkdown-cookbook/figure-size.html)
 
 ## 繪圖基礎：折線圖
 
@@ -17,11 +16,11 @@
 
 1.  **指定要進行繪圖`ggplot()`**：用`%>%`將資料（dataframe）pipe給`ggplot()`後，底下各增添的繪圖選項都用`+`的符號，類似不斷修正繪圖結果的意思。
 2.  **指定X／Y軸與群組因子`aes()`**：指定圖表的X/Y軸分別是什麼變數，有些圖表只需要單一個變數（例如Density-chart和Histogram），有些需要X/Y兩個變數（例如Scatter-chart）什麼的變數要做視覺化，Boxplot甚至可以直接指定最大、最小、Q1、Q3和Median等多個變數。
-3.  **指定要繪製的圖表類型**。例如Line-chart為`geom_line()`、Scatter-chart為`geom_point()`、Bar-chart為`geom_col()`或`geom_bar()`。查閱[ggplot cheat sheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)可以快速翻閱有哪些圖表類型。
+3.  **指定要繪製的圖表類型**。例如Line-chart為`geom_line()`、Scatter-chart為`geom_point()`、Bar-chart為`geom_col()`或`geom_bar()`。查閱[ggplot cheat sheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)可以快速翻閱有哪些圖表類型（如截圖）。
 
 ![ggplot-cheat-sheet](images/paste-E7629FF5.png){alt="ggplot-cheat-sheet"}
 
-`ggplot()` 會秀出預備要繪製的繪圖區
+#### `ggplot()` 會秀出預備要繪製的繪圖區
 
 
 ```r
@@ -31,7 +30,7 @@ tibble(a=1:5, b=5:1) %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-2-1.png" width="576" style="display: block; margin: auto;" />
 
-**指定X／Y軸與群組因子`aes()`**：`aes()`會在繪圖區上繪製X與Y軸
+#### **指定X／Y軸與群組因子`aes()`**：`aes()`會在繪圖區上繪製X與Y軸
 
 
 ```r
@@ -42,7 +41,9 @@ tibble(a=1:5, b=5:1) %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;" />
 
-**指定要繪製的圖表類型**。例如Line-chart為`geom_line()`、
+#### **指定要繪製的圖表類型**。
+
+例如折線圖為為`geom_line()`、X/Y散佈圖為`geom_point()`、長條圖我多會使用`geom_col()`。
 
 
 ```r
@@ -54,7 +55,7 @@ tibble(a=1:5, b=5:1) %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" />
 
-此圖為一雙變數的圖，基於雙變數，可以將不同的圖同時繪製在同一個繪圖區上。例如以下同時繪製了`geom_line()`與`geom_plot()`。
+亦可同時繪製兩種類型的圖表於同一張圖上。例如以下同時繪製了`geom_line()`與`geom_plot()`。
 
 
 ```r
@@ -75,7 +76,7 @@ ggplot是以變數為基礎的視覺化套件，也就是說，當準備好dataf
 
 
 ```r
-NW <- read_csv("nytdata/interactive_bulletin_charts_agecl_median.csv") %>%
+NW <- read_csv("data/interactive_bulletin_charts_agecl_median.csv") %>%
     select(Category, year, Net_Worth)  %>%
     group_by(Category) %>%
     arrange(year) %>%
@@ -196,10 +197,9 @@ NW %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
 
-
 ### 標題、標籤與圖說
-Titles, labels, and legend
-**設定標題與X／Y軸標題（法一）**：以下設定了圖表的圖表標題、和X軸與Y軸的軸標題（`xlab`與`ylab`）。
+
+Titles, labels, and legend **設定標題與X／Y軸標題（法一）**：以下設定了圖表的圖表標題、和X軸與Y軸的軸標題（`xlab`與`ylab`）。
 
 
 ```r
@@ -419,6 +419,7 @@ county %>%
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" />
 
 ### X/Y軸方向
+
 調整圖表方向
 
 
@@ -453,6 +454,7 @@ county %>%
 「說故事」才是整則資料新聞的核心，在運用圖表來輔助敘事時，應搭配說理說服的內容來突顯（highlight）圖面上的特徵，而不是留待讀者自己觀察。以下有三種highlight圖表部分資料的方法。第一個方法是在繪圖時用`+ scale_color_manual()`或`+ scale_fill_manual()`指定顏色給不同群組；方法二是利用`gghighlight`這個套件來指定要上色的群組，而且`gghighlight`可以和`fill`與`color`相互搭配，仍然可以用`scale_fill_manual`和`scale_color_manual`來指定顏色。但會有個狀況是，如果原本沒群組那怎麼辦？就自己用`mutate()`打造群組就好。方法各有利弊與使用時機。
 
 ### 依群組指定顏色
+
 `scale_color_manual()` 與`scale_fill_manual()`
 
 

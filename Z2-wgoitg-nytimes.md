@@ -24,7 +24,7 @@ Sorted by `arrange()` function.
 
 
 ```r
-p1 <- read_csv("nytdata/interactive_bulletin_charts_agecl_median.csv") %>%
+p1 <- read_csv("data/interactive_bulletin_charts_agecl_median.csv") %>%
     select(year, Category, Net_Worth) %>%
     group_by(Category) %>%
     arrange(year) %>%
@@ -67,7 +67,7 @@ p1 %>% ggplot() + aes(year, Net_Worth, color = Category) +
 
 
 ```r
-p2 <- read_csv("nytdata/interactive_bulletin_charts_agecl_median.csv") %>%
+p2 <- read_csv("data/interactive_bulletin_charts_agecl_median.csv") %>%
     select(year, Category, NW = Net_Worth)  %>%
     group_by(Category) %>%
     arrange(year) %>%
@@ -116,7 +116,7 @@ p2 %>% ggplot() + aes(year, increase, color = Category) +
 
 
 ```r
-plot.opt <- read_csv("nytdata/unicef-changing-childhood-data.csv") %>% 
+plot.opt <- read_csv("data/unicef-changing-childhood-data.csv") %>% 
     select(country = WP5, age = WP22140, bw = WP22092) %>%
     mutate(country = ordered(country, 
                              levels=c(1, 3, 4, 10, 11, 12, 
@@ -179,7 +179,7 @@ plot.opt %>%
 
 
 ```r
-totreemap <- read_csv("nytdata/GCB2021v34_MtCO2_flat.csv") %>% 
+totreemap <- read_csv("data/GCB2021v34_MtCO2_flat.csv") %>% 
     drop_na(`Total`) %>%
     filter(!Country %in% c("Global", "International Transport")) %>%
     filter(Year==2020) %>%
