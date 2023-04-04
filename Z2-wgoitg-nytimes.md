@@ -2,6 +2,17 @@
 
 
 
+### WGOITG series of NYT
+
+紐約時報提供的what's going on in the graph 系列教學旨在幫助讀者更好地理解和解讀圖表，特別是在時事和政治等敏感領域中的圖表。這些教學以實際的新聞圖表為例，介紹了如何分析和評估圖表的質量、有效性和可靠性，並提供了一些技巧和策略，幫助讀者從圖表中獲取準確和全面的資訊。
+
+具體來說，what's going on in the graph系列教學的目的包括以下幾點：
+
+-   提高讀者對圖表的識讀能力和分析能力，讓讀者能夠更加自信和準確地理解和評估圖表。
+-   幫助讀者識別和處理常見的資訊偏差和誤導，如選擇性展示數據、扭曲比例、誤導標籤等。
+-   強調圖表應該為讀者服務，而不是為了強調某個立場或觀點而有意歪曲事實。
+-   提供了一些有效的技巧和策略，如注意圖表的標題、軸標籤和單位、比較數據的趨勢和範圍、理解圖表的背景和上下文等。
+
 
 ```r
 library(tidyverse)
@@ -17,6 +28,8 @@ library(gghighlight)
 :::
 
 這個教學案例來自紐約時報的「What's going on in this gragh」系列資料視覺化教學之[Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)](https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html) 。該圖表呈現在不同年代、不同年齡層的人所擁有的淨資產（包含土地、存款、投資等減去債務）。該圖表的結果指出，在不同年代的老年人是越來越有錢，但年輕人卻越來越窮（該曲線為減去1989年
+
+淨資產（Net worth）是一個財務術語，指的是一個人或機構的總資產減去總負債後剩餘的價值。換言之，Net worth是一個人或機構在財務上的價值或實力。如果一個人或機構的總資產超過了總負債，那麼其net worth為正值，反之則為負值。在個人財務上，Net worth通常用來評估一個人的財務健康狀況。一個人的Net worth越高，通常代表其擁有更多的財富和投資，並能夠更好地應對突發事件和生活變數。因此，許多投資者和財務顧問都會建議人們注重提高自己的net worth。
 
 [![Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)](images/paste-27DE8695.png)](https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html)
 

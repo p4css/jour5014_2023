@@ -1,7 +1,7 @@
 ---
 title: "Scraping_nba_players"
 output: html_document
-date: "2023-04-04"
+date: "2023-04-05"
 ---
 
 ## Scraping NBA players
