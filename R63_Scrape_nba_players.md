@@ -295,9 +295,9 @@ save(jabbar.log, james.log, top_players, top250, totals,
      file="../data/nba_players.rda")
 ```
 
-## (More) Scraping all players
+### (More) Scraping all players
 
-### Testing
+#### Testing
 
 
 ```r
@@ -318,7 +318,7 @@ table$plink <- table.path %>%
     str_c("https://www.basketball-reference.com",.)
 ```
 
-### Scrape from a-z except x(no x)
+#### Scrape from a-z except x(no x)
 
 
 ```r

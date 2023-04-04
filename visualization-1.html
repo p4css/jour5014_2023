@@ -350,11 +350,7 @@ div.csl-indent {
 <li class="chapter" data-level="10.2.3" data-path="crawler.html"><a href="crawler.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>10.2.3</b> Scrape life time scores</a></li>
 <li class="chapter" data-level="10.2.4" data-path="crawler.html"><a href="crawler.html#cleaning"><i class="fa fa-check"></i><b>10.2.4</b> Cleaning</a></li>
 <li class="chapter" data-level="10.2.5" data-path="crawler.html"><a href="crawler.html#visualization"><i class="fa fa-check"></i><b>10.2.5</b> Visualization</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="crawler.html"><a href="crawler.html#more-scraping-all-players"><i class="fa fa-check"></i><b>10.3</b> (More) Scraping all players</a>
-<ul>
-<li class="chapter" data-level="10.3.1" data-path="crawler.html"><a href="crawler.html#testing-1"><i class="fa fa-check"></i><b>10.3.1</b> Testing</a></li>
-<li class="chapter" data-level="10.3.2" data-path="crawler.html"><a href="crawler.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>10.3.2</b> Scrape from a-z except x(no x)</a></li>
+<li class="chapter" data-level="10.2.6" data-path="crawler.html"><a href="crawler.html#more-scraping-all-players"><i class="fa fa-check"></i><b>10.2.6</b> (More) Scraping all players</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III VISUALIZATION</b></span></li>
@@ -385,6 +381,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="visualization-1.html"><a href="visualization-1.html#colors"><i class="fa fa-check"></i><b>11.5</b> COLORS</a></li>
 <li class="chapter" data-level="11.6" data-path="visualization-1.html"><a href="visualization-1.html#chart-types"><i class="fa fa-check"></i><b>11.6</b> CHART TYPES</a></li>
+<li class="chapter" data-level="11.7" data-path="visualization-1.html"><a href="visualization-1.html#line-types"><i class="fa fa-check"></i><b>11.7</b> Line Types</a></li>
+<li class="chapter" data-level="11.8" data-path="visualization-1.html"><a href="visualization-1.html#smoothing"><i class="fa fa-check"></i><b>11.8</b> Smoothing</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>12</b> Coordinate</a>
 <ul>
@@ -407,7 +405,12 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>13</b> AMOUNT</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="amount.html"><a href="amount.html#bar-chart"><i class="fa fa-check"></i><b>13.1</b> Bar chart</a></li>
-<li class="chapter" data-level="13.2" data-path="amount.html"><a href="amount.html#heatmap-vaccination"><i class="fa fa-check"></i><b>13.2</b> Heatmap: Vaccination</a></li>
+<li class="chapter" data-level="13.2" data-path="amount.html"><a href="amount.html#heatmap-vaccination"><i class="fa fa-check"></i><b>13.2</b> Heatmap: Vaccination</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="amount.html"><a href="amount.html#the-case-vaccinating-coverage-by-month"><i class="fa fa-check"></i><b>13.2.1</b> The case: Vaccinating coverage by month</a></li>
+<li class="chapter" data-level="13.2.2" data-path="amount.html"><a href="amount.html#data-cleaning"><i class="fa fa-check"></i><b>13.2.2</b> Data cleaning</a></li>
+<li class="chapter" data-level="13.2.3" data-path="amount.html"><a href="amount.html#visualization-2"><i class="fa fa-check"></i><b>13.2.3</b> Visualization</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>14</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
@@ -905,6 +908,7 @@ div.csl-indent {
 <span id="cb536-8"><a href="visualization-1.html#cb536-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> th</span></code></pre></div>
 <p><img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" /></p>
 
+<hr />
 </div>
 </div>
 <div id="colors" class="section level2 hasAnchor" number="11.5">
@@ -912,6 +916,50 @@ div.csl-indent {
 </div>
 <div id="chart-types" class="section level2 hasAnchor" number="11.6">
 <h2><span class="header-section-number">11.6</span> CHART TYPES<a href="visualization-1.html#chart-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="line-types" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Line Types<a href="visualization-1.html#line-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>See more from ggthemes <a href="https://github.com/BTJ01/ggthemes/tree/master/inst/examples" class="uri">https://github.com/BTJ01/ggthemes/tree/master/inst/examples</a></p>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="visualization-1.html#cb537-1" aria-hidden="true" tabindex="-1"></a>rescale01 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb537-2"><a href="visualization-1.html#cb537-2" aria-hidden="true" tabindex="-1"></a>    (x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> <span class="fu">diff</span>(<span class="fu">range</span>(x))</span>
+<span id="cb537-3"><a href="visualization-1.html#cb537-3" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb537-4"><a href="visualization-1.html#cb537-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb537-5"><a href="visualization-1.html#cb537-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gather</span>(economics, variable, value, <span class="sc">-</span>date) <span class="sc">%&gt;%</span></span>
+<span id="cb537-6"><a href="visualization-1.html#cb537-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb537-7"><a href="visualization-1.html#cb537-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">rescale01</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb537-8"><a href="visualization-1.html#cb537-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value, <span class="at">linetype =</span> variable)) <span class="sc">+</span></span>
+<span id="cb537-9"><a href="visualization-1.html#cb537-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb537-10"><a href="visualization-1.html#cb537-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_linetype_stata</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="V02_Vis_tricks_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="smoothing" class="section level2 hasAnchor" number="11.8">
+<h2><span class="header-section-number">11.8</span> Smoothing<a href="visualization-1.html#smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Smooth by <a href="http://rafalab.dfci.harvard.edu/dsbook/smoothing.html#bin-smoothing">bin smoothing</a></p></li>
+<li><p>Example comes from <a href="http://rafalab.dfci.harvard.edu/dsbook/smoothing.html">Rafael’s online book</a></p></li>
+</ul>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="visualization-1.html#cb538-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/vaccinations.csv&quot;</span>)</span>
+<span id="cb538-2"><a href="visualization-1.html#cb538-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb538-3"><a href="visualization-1.html#cb538-3" aria-hidden="true" tabindex="-1"></a>fullvaccinated <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">country =</span> location, date, </span>
+<span id="cb538-4"><a href="visualization-1.html#cb538-4" aria-hidden="true" tabindex="-1"></a>                                people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb538-5"><a href="visualization-1.html#cb538-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(people_fully_vaccinated_per_hundred) <span class="sc">%&gt;%</span></span>
+<span id="cb538-6"><a href="visualization-1.html#cb538-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">floor_date</span>(date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb538-7"><a href="visualization-1.html#cb538-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, m) <span class="sc">%&gt;%</span></span>
+<span id="cb538-8"><a href="visualization-1.html#cb538-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb538-9"><a href="visualization-1.html#cb538-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb538-10"><a href="visualization-1.html#cb538-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb538-11"><a href="visualization-1.html#cb538-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="visualization-1.html#cb539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
+<span id="cb539-2"><a href="visualization-1.html#cb539-2" aria-hidden="true" tabindex="-1"></a>span <span class="ot">&lt;-</span> <span class="dv">7</span> </span>
+<span id="cb539-3"><a href="visualization-1.html#cb539-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">with</span>(polls_2008, </span>
+<span id="cb539-4"><a href="visualization-1.html#cb539-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ksmooth</span>(day, margin, <span class="at">kernel =</span> <span class="st">&quot;box&quot;</span>, <span class="at">bandwidth =</span> span))</span>
+<span id="cb539-5"><a href="visualization-1.html#cb539-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-6"><a href="visualization-1.html#cb539-6" aria-hidden="true" tabindex="-1"></a>polls_2008 <span class="sc">%&gt;%</span> </span>
+<span id="cb539-7"><a href="visualization-1.html#cb539-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">smooth =</span> fit<span class="sc">$</span>y) <span class="sc">%&gt;%</span></span>
+<span id="cb539-8"><a href="visualization-1.html#cb539-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(day, margin)) <span class="sc">+</span></span>
+<span id="cb539-9"><a href="visualization-1.html#cb539-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb539-10"><a href="visualization-1.html#cb539-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(day, smooth), <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="V02_Vis_tricks_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

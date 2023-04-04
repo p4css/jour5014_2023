@@ -2,10 +2,25 @@
 
 # DISTRIBUTION: Histogram & Density
 
-Most of contet in the chapter comes from the book Claus o. Wilke's "Foundamentals of Data Visualization"
+本章節將介紹與資料分布相關的視覺化方法。資料分布是指數據中每個值出現的頻率或概率。在統計學中，了解資料分布是非常重要的，因為它可以幫助我們判斷數據是否為正態分佈，或者是否存在異常值或極端值。本章節將涵蓋常見的資料分布視覺化方法，包括直方圖、密度圖、箱形圖和金字塔圖等。
+
+以下是R語言ggplot2套件中，用於資料分布視覺化的一些常用函式：
+
+-   `geom_histogram()`：用於創建直方圖。
+
+-   `geom_density()`：用於創建密度圖。
+
+-   `geom_boxplot()`：用於創建箱形圖。
+
+-   `geom_bar()`：用於創建柱狀圖。
+
+-   `geom_freqpoly()`：用於創建頻率多邊形圖。
+
+註：本節的設計概念不少是參考 Claus O. Wilke 所著的「Foundations of Data Visualization」一書的章節，同時也參考臺灣和資料新聞的案例進行了改編。
 
 
 
+接下來我們將使用Histogram和Density Plot這兩種資料視覺化方法來探索台灣村里長的年齡和性別分布情況。我們所使用的資料來源包括內政部和中選會的投票資料，這些資料能夠提供具有代表性的統計樣本，幫助我們更好地了解村里長的整體特徵。在進行資料視覺化的過程中，我們將會運用R語言中的ggplot2套件，並根據不同的視覺化需求進行相應的設置和調整。 <https://www.moi.gov.tw/LocalOfficial.aspx?n=577&TYP=KND0007>。
 
 
 ```r
@@ -14,6 +29,8 @@ vilmaster <- readr::read_csv("data/tw_vil2018_elccand.csv") %>%
 ```
 
 ## Density plot
+
+密度圖（Density Plot)是一種展示數據集分佈情況的圖表，它可以幫助我們更好地理解數據集中數值出現的概率。圖表的 X 軸代表數據集的數值範圍，Y 軸則代表每個數值的出現概率。與直方圖不同，密度圖的曲線是光滑的，因為它是通過連續的數值範圍估算出的概率密度函數。通過比較不同數據集的密度圖，我們可以更好地了解它們之間的差異。在ggplot2中，可以用`geom_density()`函數來創建密度圖。
 
 
 ```r
@@ -44,6 +61,8 @@ cowplot::plot_grid(
 
 ### Density with different bandwidth
 
+參數`bw`指的是bnadwidth，為繪製histogram時的bar所涵蓋的資料寬度。以step-plot來說，`bw`越大，則梯距越寬；以density-plot來說，若bw越大則越是平滑。
+
 
 ```r
 library(ggridges) # for geom_density_line()
@@ -57,7 +76,7 @@ p.b5 <- vilmaster %>% ggplot()  + aes(年齡) +
   geom_density_line(fill='gold', bw=5, kernel='gaussian') + th
 
 p.rect <- vilmaster %>% ggplot()  + aes(年齡) + 
-  geom_density_line(fill='gold', bw=8, kernel='rectangular') + th
+  geom_density_line(fill='gold', bw=10, kernel='rectangular') + th
 
 cowplot::plot_grid( p.b05, p.b1, p.b5, p.rect,
   labels = c("(a) bw=.5", "(b) bw=1", "(c) bw=2", "(b) rect"),
@@ -68,6 +87,8 @@ cowplot::plot_grid( p.b05, p.b1, p.b5, p.rect,
 <img src="V08_Distribution_files/figure-html/Fig.v1.geom_density_line-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Histogram
+
+直方圖（Histogram）是一種用於展示數據集分佈的圖表。它通過將數據範圍分成若干個區間（稱為 "bins" 或 "buckets"），然後計算落在每個區間內的數據的數量（稱為 "frequency"），來展示數據集的分佈情況。直方圖的 X 軸表示數據範圍，Y 軸表示每個區間中的頻數。直方圖可以幫助我們快速了解數據的分佈情況，特別是數據的中心趨勢、數據的離散程度和是否存在異常值等。
 
 ### Histogram with different number of bins
 
@@ -99,6 +120,10 @@ cowplot::plot_grid(
 <img src="V08_Distribution_files/figure-html/Fig.v1.geom_histogram-1.png" width="100%" style="display: block; margin: auto;" />
 
 ### Density vs histogram
+
+Histogram通常用來顯示數據的分佈情況，它會把數據區間分成若干個等寬的區間，然後計算每個區間內數據的頻率，再將這些頻率表示在y軸上。因此，histogram顯示的是數據的頻率，而不是數據的密度。
+
+Density plot則是用來顯示數據的概率密度函數，它會通過核密度估計（Kernel Density Estimation, KDE）方法，將數據點周圍的密度估計出來，然後將這些估計值表示在y軸上。因此，density plot顯示的是數據的密度，而不是數據的頻率。
 
 
 ```r
@@ -156,6 +181,14 @@ cowplot::plot_grid(
 
 ### Display two groups histogram by facet_wrap()
 
+1.  `geom_histogram(bins=20, position="dodge")` 用於繪製直方圖， `bins=20`表示將數據分成20個區間， `position="dodge"`表示將不同性別的數據分開顯示。
+
+2.  `th` 是本範例在最早先所建立的ggplot主題，用於設置圖表的樣式（例如背景顏色、字體等）。
+
+3.  `scale_fill_manual()` 用於手動設置填充顏色， `values=c("1"='gold', '2'="skyblue")` 表示性別為1時填充金色，性別為2時填充天藍色。 `labels=c('1'="Male",'2'="Female")` 表示將性別1標記為Male，性別2標記為Female。 `name='Sex'` 表示設置顏色圖例的標題為`Sex`。
+
+4.  `facet_wrap(.~性別, nrow=1)` 表示將不同性別的數據分開顯示，每直行顯示一個性別。`.~性別` 表示將數據按性別分組。
+
 
 ```r
 vilmaster %>%
@@ -172,6 +205,8 @@ vilmaster %>%
 <img src="V08_Distribution_files/figure-html/Fig.v1.hist.facet-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Pyramid Plot
+
+金字塔圖（Pyramid plot）是一種用於比較兩個群體的統計圖表。它的形狀像一座金字塔，通常用於展示男女或年齡分佈等相關的數據。金字塔圖以垂直線為軸線，其中一側代表一個群體（如男性），另一側代表另一個群體（如女性）。圖表的左右兩側是對稱的，並以一條中心線分開。圖表中的每一行表示一個年齡段，而每一列則表示一個群體的比例或頻數。金字塔圖的高度表示總人數或總比例，並且可以用不同的顏色區分不同的群體。金字塔圖可以直觀地顯示兩個群體之間的差異，特別是在不同年齡段之間。
 
 ### Modify geom_col() to pyramid plot
 
@@ -198,6 +233,8 @@ vilmaster %>%
 <img src="V08_Distribution_files/figure-html/Fig.v1.hist.pyramid-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Box plot: Muitiple Distrubution
+
+箱形圖（Box plot）是一種用於展示數據分佈情況的統計圖表。它通常顯示數據的中位數、四分位數、極值和異常值等統計量。箱形圖的中間線表示數據的中位數，箱子的上下邊界則分別表示數據的上四分位數和下四分位數。箱子的高度表示數據的變異程度，而箱子外的線段則表示數據的最大值和最小值。如果數據中存在異常值，則通常使用圓圈或星號等符號來標記。箱形圖可以用來比較不同數據集之間的分佈情況，以及檢查數據是否存在異常值。
 
 ### TW-Salary (boxplot)
 
@@ -265,6 +302,8 @@ raw %>%
 <img src="V08_Distribution_files/figure-html/plot-salary-dist-1.png" width="100%" style="display: block; margin: auto;" />
 
 ### TW-Income (boxplot)
+
+如果在箱型圖中，平均數高於第三分位數，這代表數據集呈現右偏分佈。也就是說，數據中的大部分觀測值都分佈在第一、二分位數之間，但存在一些較大的極端值，使平均值被往右偏移。
 
 
 ```r
