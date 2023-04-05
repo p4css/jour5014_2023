@@ -1,10 +1,12 @@
 
 
-## 案例：產假支薪跨國跨時比較
+## Paid Maternity Leave
 
--   本案例將使用R重新製作華盛頓郵報2016年8月13日的一篇報導，該報導探討了美國婦女產假支薪情況。案例中將應用data.frame和基本的繪圖與資料摘要方法。
+本案例將使用R重新製作華盛頓郵報2016年8月13日的一篇報導，該報導探討了美國婦女產假支薪情況。案例中將應用data.frame和基本的繪圖與資料摘要方法。
 
--   原始新聞來源：[The world is getting better at paid maternity leave. The U.S. is not. - The Washington Post](https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/)
+原始新聞來源：[The world is getting better at paid maternity leave. The U.S. is not. - The Washington Post](https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/)。該篇報導提及，美國因為目前的政策不保障帶薪產假，許多女性感到必須在工作和照顧家庭之間做出選擇，這種性別不平等破壞了她們在工作機會上的平等機會。同時，世界各地的婦女待遇正在逐漸改善。至少190個國家對嬰兒的母親規定了某種形式的帶薪假期，產假待遇在56個國家有所提高。專家表示，現在美國城市和州正通過不同形式的帶薪家庭假法案，這顯示美國雇主正在展示有競爭力的福利不會影響員工表現。特別是科技公司，如Twitter、Facebook和Google等，處於提供員工帶薪產假福利的前沿，美國可能有望追趕其他國家。
+
+![](https://www.washingtonpost.com/blogs/worldviews/files/2016/08/matleave-map.jpg)
 
 ### Reading .xlsx by readxl package
 
@@ -283,6 +285,8 @@ sum(is.na(matleave))
 
 #### Filtered by the last year value
 
+`matleave[matleave$'matleave_13'==5, ]`中的第一個`matleave`表示要篩選的資料集，中括號中的`matleave$'matleave_13'==5`是篩選條件，表示`matleave`資料集中的`matleave_13`變數的值等於`5`。中括號中的逗號後方未有欄為名稱表示保留所有欄位的資料，僅篩選出符合條件的列，並將篩選結果賦值給變數`m5`。
+
 
 ```r
 # Use logical comparison to see if the last year equals to 5
@@ -395,6 +399,20 @@ class(m55$iso3)	# character (vector)
 
 #### More arguments (args)
 
+這行程式碼使用R中的barplot函數繪製一個長條圖，其中的參數說明如下：
+
+1.  `unlist(m55[2, -1])`: 將`m55`資料集的第`2`行（不包括第1欄）轉換為一個向量，並作為長條圖的高度（即每個長條的高度）。
+
+2.  `ylim=c(0, 5)`: 設置y軸的範圍為0到5，即長條圖的最大高度為5。
+
+3.  `space=0`: 設置相鄰兩個長條之間的距離為0，即長條緊密相連。
+
+4.  `border=NA`: 設置長條的邊框為透明，即不顯示邊框。
+
+5.  `xaxt="n"`: 不顯示x軸的標籤。
+
+6.  `yaxt="n"`: 不顯示y軸的標籤。
+
 
 ```r
 # barplot() the unlisted second row (neglecting the first col)
@@ -433,7 +451,7 @@ barplot(unlist(m55[2, -1]), ylim=c(0, 5), space=0, border=NA, xaxt="n", yaxt="n"
 
 #### Plotting multiple lines
 
--   底下可以看見每一行非常相似且一致的特徵，僅有`matleave`內的索引由1被列出至6。因此，最好的方法是用迴圈（for-loop）的方式將相同的程式碼，從1\~6之間做六次。
+底下可以看見每一行非常相似且一致的特徵，僅有`matleave`內的索引由1被列出至6。因此，最好的方法是用迴圈（for-loop）的方式將相同的程式碼，從1\~6之間做六次。
 
 
 ```r
@@ -455,6 +473,10 @@ barplot(unlist(m55[6, -1]), ylim=c(0, 5), space=0, border=NA, xaxt="n", yaxt="n"
 
 #### for-loop to plot multiple lines
 
+這段R語言程式碼使用for-loop來重複執行一個指定的程式區塊，將`m55`資料集的前六行資料分別繪製成長條圖。在這段程式碼中，變數`i`控制了for-loop的迭代次數，它從1到6依次取值，然後依次執行所指定的程式區塊。
+
+一般的for-loop的結構如下：`for (variable in sequence) {# code block to be executed}`。其中，變數`variable`是用來控制for-loop的迭代次數的，它會從序列`sequence`中逐一取出元素，並將其賦值給變數`variable`，然後執行大括號`{...}`中所指定的程式區塊。
+
 
 ```r
 # use for loop and use i as index to barplot multiple subgraphs
@@ -465,13 +487,23 @@ for(i in 1:6){
 
 <img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-11-1.png" width="672" /><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-11-2.png" width="672" />
 
-#### Sub-plots
+#### Subplots
 
--   Check `?par` to get paremeters of plotting
+在R語言中，`par`（parameter的縮寫）是一個用於設置繪圖參數的函數，通過它可以控制繪圖的外觀、尺寸、排列等各方面，以便更好地展示數據和分析結果。par函數可以用來設置以下參數：
 
--   `**mai**`: A numerical vector of the form c(bottom, left, top, right) which gives the margin size specified in inches.
+1.  `mfrow`：設置畫布的分割，即將畫布分為多少行和多少列。
 
--   `**mfcol, mfrow**`:A vector of the form c(nr, nc). Subsequent figures will be drawn in an nr-by-nc array on the device by columns (mfcol), or rows (mfrow), respectively.
+2.  `mai`：設置畫布的邊緣大小，包括上下左右四個邊緣的大小。
+
+3.  `cex`：設置字體大小的縮放比例。
+
+4.  `col`：設置線條、點和字體的顏色。
+
+5.  `pch`：設置散點圖中點的形狀。
+
+6.  `lty`：設置線條的類型。
+
+在這段程式碼中，`par`函數被用來設置畫布的分割和邊緣大小，具體來說，`par(mfrow=c(3,2), mai= c(0.2, 0.2, 0.2, 0.2))`表示將畫布分為3行2列的子圖，並設置邊緣大小為0.2，包括上下左右四個邊緣。這樣可以方便地在同一張畫布上顯示多個圖形，並控制它們之間的排列和間距。
 
 
 ```r
@@ -538,7 +570,7 @@ for (i in 1:nrow(m55)){
 
 <img src="R21_readxl_paid_maternal_files/figure-html/plot-caption-1.png" width="672" />
 
-### Practice02_1\_1 Plotting more
+### Practice. Plotting more
 
 
 ```r
@@ -547,7 +579,7 @@ for (i in 1:nrow(m55)){
 # plotting for matleave_13 == 4
 ```
 
-### Practice02_2\_2 selecting and filtering by dplyr I
+### Practice. Selecting and filtering by dplyr I
 
 
 ```r

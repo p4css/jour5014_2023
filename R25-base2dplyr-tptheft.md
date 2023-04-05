@@ -2,7 +2,47 @@
 
 # From base R to dplyr
 
-## Taipie Thefr Count (base to dplyr)
+**From base to tidyverse style**
+
+相較於R base的較為傳統的R編程風格，tidyverse style的R programming具有以下幾個特點：
+
+1.  基於tidy data理念：tidyverse style的R programming基於tidy data理念，即資料應該以規律的方式組織，以方便分析和視覺化。tidyverse style的R程式庫提供了一些工具和函數，用於處理和轉換tidy data格式的資料，如dplyr、tidyr等。
+
+2.  使用管道操作符：tidyverse style的R programming通常使用管道操作符（%\>%），將資料通過多個函數連接起來，形成一個清晰和易於理解的資料處理流程。使用管道操作符可以簡化程式碼並提高程式的可讀性。
+
+3.  強調函數庫的一致性：tidyverse style的R programming強調函數庫之間的一致性，即不同函數庫之間使用相似的函數名稱、參數名稱和返回值等，以方便使用者的學習和使用。
+
+4.  使用簡潔的命名方式：tidyverse style的R programming通常使用簡潔和易於理解的變數和函數命名方式，例如使用動詞表示操作，使用名詞表示資料，以方便使用者理解程式碼的含義。
+
+5.  提供高級的視覺化工具：tidyverse style的R programming提供了一些高級的視覺化工具，如ggplot2、gganimate等，可以幫助使用者更加輕鬆地進行資料視覺化和探索。
+
+## dplyr
+
+dplyr是一個tidyverse風格的R程式庫，用於對資料進行快速、一致、直觀的操作和轉換。dplyr提供了一些高效能的函數和工具，如`filter`、`select`、`mutate`、`group_by`和`summarize`等，用於對資料進行選擇、篩選、轉換、分組和摘要等操作。
+
+以下是dplyr常用的函數：
+
+1.  `filter`：用於選擇符合特定條件的資料列。
+
+2.  `select`：用於選擇特定的欄位。
+
+3.  `mutate`：用於新增或修改欄位。
+
+4.  `group_by`：用於按照特定欄位進行分組。
+
+5.  `summarize`：用於對分組後的資料進行摘要統計。
+
+6.  `arrange`：用於按照欄位的特定順序進行排序。
+
+dplyr具有以下優點：
+
+1.  簡潔而直觀的語法：dplyr的函數名稱和語法都十分簡潔而直觀，易於使用和理解，尤其對於新手來說更加友好。
+
+2.  高效的運行速度：dplyr的設計考慮了資料處理的效率，使用C++實現了部分函數，因此dplyr在處理大型資料集時運行速度較快。
+
+3.  與tidyverse相容：dplyr與其他tidyverse程式庫，如ggplot2和tidyr，可以很好地相容，並且能夠與其他常用的R程式庫進行集成，提供更加全面和高效的資料分析和可視化工具。
+
+## Taipie Theft Count (base to dplyr)
 
 
 ```r

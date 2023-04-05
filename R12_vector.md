@@ -2,6 +2,24 @@
 
 # R Basic
 
+R base是R語言的基本程式庫和核心功能，提供了許多常用的指令和函數。以下是一些常見的R base指令：
+
+1.  assignment operators（賦值運算符）：\<- 或 = 用來將數值、向量、函數等資料物件賦值給變數。
+
+2.  arithmetic operators（算術運算符）：+、-、\*、/、\^、%/%和%%用於數值運算，如加、減、乘、除、指數、整除和取餘等。
+
+3.  relational operators（關係運算符）：==、!=、\>、\>=、\<和\<=用於比較數值或字符型資料的大小關係，返回邏輯值（TRUE或FALSE）。
+
+4.  logical operators（邏輯運算符）：&、\|和!用於對邏輯值進行運算，如AND、OR和NOT等。
+
+5.  control flow statements（流程控制語句）：if、else、for、while、repeat、break和next用於控制程式的執行流程。
+
+6.  functions（函數）：R base提供了許多內置函數，如sum、mean、var、sd、cor、lm等，用於數值計算、統計分析、線性回歸等常見操作。
+
+7.  data structures（資料結構）：R base提供了多種資料結構，如向量、矩陣、數組、列表、因子等，用於存儲和處理不同類型的資料。
+
+8.  data input/output（資料輸入輸出）：R base提供了多種函數和工具，如read.table、write.table、read.csv、write.csv等，用於讀取和寫入資料。
+
 ## R Syntax
 
 ### Assignment
@@ -30,15 +48,15 @@ e <- "abcd"
 
 ## Vector
 
-Vector是R語言最基本的
+在R語言中，vector是一種基本的資料類型，它是由相同類型的元素組成的序列，可以存儲數值、文字、邏輯值等不同類型的資料。例如，以下是一個由整數元素組成的vector：`my_vector <- c(1, 2, 3, 4, 5)`。
 
--   [各縣市平均每月薪資所得](https://www.ptt.cc/bbs/Gossiping/M.1535459575.A.54D.html)
--   [各縣市人口數](https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E8%A1%8C%E6%94%BF%E5%8D%80%E4%BA%BA%E5%8F%A3%E5%88%97%E8%A1%A8)
+-   在程式碼中，只要是文字必用成對的雙引號或單引號包含其中，以區隔「變數」和「數字」。例如如果看到沒有雙引號的「英文字母」必定是變數名稱，或函式名稱。如果看到有雙引號的數字，那也是文字。
+
+以下資料來自[各縣市平均每月薪資所得](https://www.ptt.cc/bbs/Gossiping/M.1535459575.A.54D.html)或[各縣市人口數](https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E8%A1%8C%E6%94%BF%E5%8D%80%E4%BA%BA%E5%8F%A3%E5%88%97%E8%A1%A8)。
 
 ### Creating vectors
 
--   在程式碼中，只要是文字必用成對的雙引號或單引號包含其中，以區隔「變數」和「數字」。例如如果看到沒有雙引號的「英文字母」必定是變數名稱，或函式名稱。
--   如果看到有雙引號的數字，那也是文字。
+vector通常用`c()`函數創建，其中c表示\"combine\"或\"concatenate\"，可以將多個元素組合成一個vector。
 
 
 ```r
@@ -209,6 +227,8 @@ length(income)
 
 ### Subsetting, filtering
 
+vector可以用中括號`[]`搭配數字來取用vector中的元素，下標從1開始。例如，要取用上述的vector中的第三個元素，可以使用`my_vector[3]`。
+
 It is important to know how to neglect first n or last n elements. For example, a[1:(length(a)-2)] will neglect the last two elements. Thinking why I need parentheses for `length(a)-2` here.
 
 
@@ -305,9 +325,9 @@ a
 ## [1] 22 44 66 77 88 99
 ```
 
-### Concatinating
+### Concatenating
 
--   Concatinating is quite useful for web crawling when you crawl article links page by page. You may be not sure the number of page you need to crawl. So you need to append entire new vector to old vector. It is concatinating. ("Appending" often means adding one new element at the end of data.)
+-   Concatenating is quite useful for web crawling when you crawl article links page by page. You may be not sure the number of page you need to crawl. So you need to append entire new vector to old vector. It is concatenating. ("Appending" often means adding one new element at the end of data.)
 
 
 ```r

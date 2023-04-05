@@ -1,6 +1,18 @@
 
 
-## 計數與樞紐：台北住宅竊盜點位
+## 交叉分析的概念
+
+交叉分析是一種對兩個或多個變數進行聯合分析的方法，通常用於研究不同類別或組別之間的關係和差異。交叉分析可以幫助我們發現變數之間的相互作用，以及不同類別或組別之間的異同點，進而進行更深入的分析和解釋。
+
+在交叉分析中，通常會使用交叉表（cross tabulation）或稱為列聯表（contingency table）來對變數進行分析。交叉表是一種二維資料表格，其中一個變數作為行標籤，另一個變數作為列標籤，每個資料格中則表示兩個變數的交叉次數或百分比。交叉表可以幫助我們從不同角度瞭解變數之間的關係和差異，例如：
+
+1.  發現變數之間的相關性：可以通過交叉表計算兩個變數之間的相關係數或卡方檢定值，以評估它們之間的相關性程度。
+
+2.  比較不同類別或組別之間的差異：可以通過交叉表比較不同類別或組別之間的差異，例如不同性別、年齡、教育程度、地區等對某一變數的影響。
+
+3.  發現變數之間的交互作用：可以通過交叉表比較不同類別或組別之間的差異，並分析它們之間的交互作用，以進一步瞭解變數之間的關係和影響。
+
+## 計數與交叉分析範例：台北市住宅竊盜點位資訊
 
 **觀察值、點位資料**：公部門所發布的開放資料通常會根據某些類別進行統計，例如年齡、性別、教育程度、地區等等，只有少部分的資料會用觀察值（Observation）的方式來記錄，也就是每一個案例紀錄一筆資料。例如疫情一開始人數還少的時候，會逐一記錄每個個案；地理資訊系統上面記錄某些機構或某些特定地點的時候也是點位資料；或在觀察輿情時，每筆發言或留言都是一筆觀察值。「[臺北市住宅竊盜點位資訊](https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02)」就是逐案紀錄的點位資料。而以下的例子也是點位資料，主要為主要為噪音、竊盜、交通事故等相關點位資料。
 
@@ -45,9 +57,11 @@ head(df)
 ## 6    6 住宅竊盜  1040102    00~02   臺北市士林區天福里1鄰忠誠路2段130巷1~30號
 ```
 
-**用readr::read_csv()來讀取。**除了 base套件的`read.csv()`外，也可使用`readr`套件的`read_csv()`函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用`install.packages("tidyverse")`安裝過，只要用`library(tidyverse)`就可以使用`read_csv()`函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，`read_csv()` 的功能和效果都會比`read.csv()`好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。
+**用read_csv()來讀取。**除了 base套件的`read.csv()`外，也可使用`readr`套件的`read_csv()`函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用`install.packages("tidyverse")`安裝過，只要用`library(tidyverse)`就可以使用`read_csv()`函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，`read_csv()` 的功能和效果都會比`read.csv()`好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。
 
--   除錯：萬一遇到中文檔案會有讀檔編碼問題時，有可能該檔案是用big5來儲存的，可以在`read_csv()`中設定`locale`來指定讀取的編碼方法。如`read_csv(url, locale = locale(encoding = "Big5"))`
+::: debug
+萬一遇到中文檔案會有讀檔編碼問題時，有可能該檔案是用big5來儲存的，可以在`read_csv()`中設定`locale`來指定讀取的編碼方法。如`read_csv(url, locale = locale(encoding = "Big5"))`
+:::
 
 
 ```r
@@ -68,6 +82,15 @@ head(df)
 ## 5     5 住宅竊盜  1040101 10~12    臺北市文山區明興里興隆路4段1~30號          
 ## 6     6 住宅竊盜  1040102 00~02    臺北市士林區天福里1鄰忠誠路2段130巷1~30號
 ```
+
+#### 觀察變數
+
+-   `names(df)` 列出所有變數名稱
+-   `df$發生地點` 顯示該變數內容
+-   `df$發生時段` 顯示該變數內容
+-   `length(df$發生時段)` 顯示該變數的長度（相當於有幾個）
+
+
 
 ### 萃取所需新變項
 
@@ -102,11 +125,9 @@ head(df)
 ## 6     6 住宅竊盜  1040102 00~02    臺北市士林區天福里1鄰忠誠路2段1… 00~02 士林
 ```
 
-### 樞紐分析：計數、加總與彙整。
-
-Pivot analysis: Counting and Summarizing 清理完資料後，我們要回答的第一個數據問題通常是「那XXX的案例有幾個？」例如：大安區有多少竊盜案？10\~12這個時段有多少案例。
-
 ### 使用`table()`計數
+
+清理完資料後，我們要回答的第一個數據問題通常是「那XXX的案例有幾個？」例如：大安區有多少竊盜案？10\~12這個時段有多少案例。
 
 `table()`函式可以對Vector中的值進行計數（Counting）。`table(df$time)` 相當於去計數不同的時間區間出現多少起案例；`table(df$region)` 相當於去計數不同地區各出現多少起案例。
 
@@ -153,8 +174,10 @@ class(tb_1)
 
 接下來要用base套件的R，根據某個變數值（例如上述的時間）來篩出符合條件的資料，或者篩去不符合條件的資料。其語法是要在`df[ , ]`逗號前加上篩選的條件，也就是對資料列進行篩選，篩出或篩除都是以整列為單位。在此的條件是`df$time`[在]{style="color:hotpink"}`00~02`、`02~04`、...之間；或者是`df$time`[不在]{style="color:hotpink"}`03~05`、`05~07`、...之間。表示法分別如下：
 
-    df$time %in% c("00~02", "02~04", "04~6",...)
-    !df$time %in% c("03~05", "05~07", ...)
+```         
+df$time %in% c("00~02", "02~04", "04~6",...)
+!df$time %in% c("03~05", "05~07", ...)
+```
 
 -   `%in%` 表示的是左方`df$time`的值是否是右方Vector中的其中一個
 
@@ -233,14 +256,14 @@ class(res_table)
 mosaicplot(res_table)
 ```
 
-<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 ```r
 # Add argument main (figure title)
 mosaicplot(res_table, main="mosaic plot")
 ```
 
-<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-8-2.png" width="672" />
+<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-9-2.png" width="672" />
 
 #### 解決圖表無法顯示中文
 
@@ -255,7 +278,7 @@ par(family=('STKaiti'))
 mosaicplot(res_table, main="mosaic plot", color=T)
 ```
 
-<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 #### 自訂顏色
 
@@ -273,87 +296,46 @@ mosaicplot(res_table, color=colors, border=0, off = 3,
 		   main="Theft rate of Taipei city (region by hour)")
 ```
 
-<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-## 補充資料
+### Practices
 
-### 讀取開放資料的其他方法
+#### 萃取月份作為新變項month
 
-**直接依資料網址讀取檔案。**現在的程式語言所設計的讀取檔案函式通常會允許使用者直接讀取資料所在的URL。所以，我們可以直接從網路上載入台北市竊盜案資料。首先要至[臺北資料大平台](https://data.taipei/#/)上查詢「住宅竊盜」，可以找到[臺北市住宅竊盜點位資訊](https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02)，點選後對右上方的[下載](https://data.taipei/api/getDatasetInfo/downloadResource?id=68785231-d6c5-47a1-b001-77eec70bec02&rid=93d9bc2d-af08-4db7-a56b-9f0a49226fa3)按右鍵可取得鏈結到該資料的URL（如<https://data.taipei/api/getDatasetInfo/downloadResource?id=68785231-d6c5-47a1-b001-77eec70bec02&rid=93d9bc2d-af08-4db7-a56b-9f0a49226fa3>）。
+::: {.practice style="color:OliveDrab;"}
+除了時間和地區可能會有差別外，那月份會不會竊盜案的數量也有差異呢？會不會冬天小偷也都在家休息了，夏天多呢？請嘗試從發生日期萃取出竊盜案發生的月份，並儲存為一個新的變項`month`。
+:::
+
+#### 使用count()來計數
+
+::: {.practice style="color:OliveDrab;"}
+請練習看看如果用`count()`來計數單一變項，如前述的`region`、`time`或前面練習中新產生的`month`。
+:::
+
+#### 分週末與週間計算
+
+::: {.practice style="color:OliveDrab;"}
+使用lubridate套件可以將文字表示的日期轉換為R的時間物件，進而可以用lubridate的`wday()`函式求取該日期是週幾，便可以計算，週間和週末的竊盜率有何差別。可以先計算看看，週一到週日分別有什麼差別，再去計算週間與週末的平均會有什麼差別（要注意，週末和週間天數並不同）
+:::
+
+## Read online files
+
+**方法一：直接依資料網址讀取檔案。**現在的程式語言所設計的讀取檔案函式通常會允許使用者直接讀取資料所在的URL。所以，我們可以直接從網路上載入台北市竊盜案資料。首先要至[臺北資料大平台](https://data.taipei/#/)上查詢「住宅竊盜」，可以找到[臺北市住宅竊盜點位資訊](https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02)，點選後對右上方的[下載](https://data.taipei/api/getDatasetInfo/downloadResource?id=68785231-d6c5-47a1-b001-77eec70bec02&rid=93d9bc2d-af08-4db7-a56b-9f0a49226fa3)按右鍵可取得鏈結到該資料的URL（如<https://data.taipei/api/getDatasetInfo/downloadResource?id=68785231-d6c5-47a1-b001-77eec70bec02&rid=93d9bc2d-af08-4db7-a56b-9f0a49226fa3>）。
 
 由於該資料網址似非永久網址，故本範例並未執行以下程式碼，僅提供範例程式碼讓個人替換網址來做測試。
 
 
 
-**(參考) 用R程式將該網址的檔案抓回本機端儲存。**部分Mac電腦無法使用`read.csv()`從網路上取得資料又轉為`data.frame`，一個可行的辦法是先用`GET(url,write_disk("data/tptheft.csv"))`將其取回並命名為`data/tptheft.csv`，之後再用`df <- read.csv("data/tptheft.csv")`直接讀取該檔案。
+**方法二：用R程式將該網址的檔案抓回本機端儲存。**部分Mac電腦無法使用`read.csv()`從網路上取得資料又轉為`data.frame`，一個可行的辦法是先用`GET(url,write_disk("data/tptheft.csv"))`將其取回並命名為`data/tptheft.csv`，之後再用`df <- read.csv("data/tptheft.csv")`直接讀取該檔案。
 
 ``` {library(httr)}
 GET(url, write_disk("data/tptheft.csv", overwrite = TRUE))
 df <- read.csv("data/tptheft.csv")
 ```
 
-### 觀察資料
+## Counting
 
-#### 查看資料內容
-
--   `View(df)` 用RStudio所提供的GUI直接觀看變數。自行移去#註解符號來測試，因為knit成html檔時，有`View()`的指令都會造成knit程序中斷。
--   `head(df)` 取前面六筆資料（也就是六列的資料來概觀該資料）
--   `class(df)` 印出該
--   `str(df)`
-
-<!-- -->
-
-    # View(df)
-    head(df)    # get first part of the data.frame
-
-    class(df)
-    ## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
-
-    str(df)
-    ## 'data.frame':    3347 obs. of  5 variables:
-    ##  $ 編號    : int  1 2 3 4 5 6 7 8 9 10 ...
-    ##  $ 案類    : chr  "住宅竊盜" "住宅竊盜" "住宅竊盜" "住宅竊盜" ...
-    ##  $ 發生日期: int  1030623 1040101 1040101 1040101 1040101 1040102 1040102 1040102 1040102 1040104 ...
-    ##  $ 發生時段: chr  "08~10" "00~02" "00~02" "06~08" ...
-    ##  $ 發生地點: chr  "臺北市中正區廈門街91~120號" "臺北市文山區萬美里萬寧街1~30號" "臺北市信義區富台里忠孝東路5段295巷6弄1~30號" "臺北市中山區新生北路1段91~120號" ...
-
-    summary(df)
-    ##      編號            案類              發生日期         發生時段           發生地點        
-    ## Min.   :   1.0   Length:3347        Min.   :1030623   Length:3347        Length:3347       
-    ## 1st Qu.: 837.5   Class :character   1st Qu.:1050320   Class :character   Class :character  
-    ## Median :1674.0   Mode  :character   Median :1060708   Mode  :character   Mode  :character  
-    ## Mean   :1674.0                      Mean   :1063954                                        
-    ## 3rd Qu.:2510.5                      3rd Qu.:1080306                                        
-    ## Max.   :3347.0                      Max.   :1110328  
-
-#### 觀察資料維度
-
-e.g., dim(), ncol(), nrow(),length()
-
-    dim(df)
-    ## [1] 3347    5
-
-    ncol(df)
-    ## [1] 5
-
-    nrow(df)
-    ## [1] 3347
-
-    length(df)
-    ## [1] 5
-
-#### 觀察變數
-
--   `names(df)` 列出所有變數名稱
--   `df$發生地點` 顯示該變數內容
--   `df$發生時段` 顯示該變數內容
--   `length(df$發生時段)` 顯示該變數的長度（相當於有幾個）
-
-
-
-### 計數方法
-
-#### `tapply()`
+### `tapply()`
 
 我們也可用`tapply()` 函式來達到一樣的目的。Apply家族的函式都是，針對某個資料，將某個函式套用到某個物件上。`tapply()` 即是用來做計數的，`tapply(df$編號, df$time, length)`有三個輸入，第一個輸入為整體物件，第二個輸入為要據以彙整的變項，在此為`df$time`，第三個是要用來彙整的函式，因為這裡要做計數，所以要用`length`函式。
 
@@ -361,7 +343,7 @@ e.g., dim(), ncol(), nrow(),length()
 
 
 
-#### 二維計數：`tapply()`
+### `tapply()` two variables
 
 用`tapply()`來做兩個變數交叉分析的語法如下，必須要把兩個Vector包在一個`list()`中。其他不變。兩個變項用`tapply()`交叉分析後的結果，變數型態會變成`matrix`。前者用`table()`來交叉分析的仍是`table`型態。
 
@@ -392,7 +374,7 @@ res_tapply
 # View(res)
 ```
 
-#### 二維計數：dplyr::count()
+### `dplyr::count()` two variables
 
 這邊多介紹一個用dplyr套件的`count()`函式來做交叉分析的方法（未來會常用這個方法，因為dplyr是tidyverse系列套件的核心套件。dplyr的函式第一個參數永遠是該data.frame， 例如`count()`；後面`time`與`region`則是這個data.frame中的兩個變項。不像`tapply()`或`table()`的結果一樣，欄與列分別為`time`與`region`，count()出來的結果會有兩個變項分別是指定要計數的`time`與`region` ，且會新增一個變項`n`，代表這組數據（`time` x `region`）共有幾個。這種表達型態通常稱為long-table（長表）、而`tapply()`或`table()` 的結果通常稱為wide-table（寬表）為典型的交叉分析表。
 
@@ -400,9 +382,9 @@ res_tapply
 
 
 
-### 長寬表轉換
+## Pivoting long-wide tables
 
-#### 長表轉寬表
+### long-to-wide
 
 那長表列可以轉為寬表嗎？可以，tidyverse系列套件中的tidyr套件有個函式`spread()`可以接著把某個變項展開為欄。例如原本上述的列是時間與行政區的交叉組合，但我可以把行政區展開為欄、或者把時間展開為欄 。如下例，`spread(res_count, region, n, fill = 0)` 有四個參數，遵循tidyverse系列套件的規則，第一個位置為data.frame，第二個參數則是要被展開至欄的變項這裡為`region`，第三個參數則是因應`region`被展開後，那中間交叉分析的數值就是n，最後一個參數是避免`spread`時有些交叉組是沒有資料的，因此`fill=0`可以指定，如果某個`time` x `region`的交叉組別是沒資料的，就填上`0`，也有可能是用`fill=NA`填上`NA`。以下的例子中也提供了將`time` 展開至欄的寫法供參考。
 
@@ -452,7 +434,7 @@ res_count_spread
 # ??dplyr::count
 ```
 
-#### 寬表轉長表
+### Wide-to-long
 
 寬表格亦可用tidyr的`gather()`函式轉回長表格型態。但`gather()`近期也已經被新的函式`pivot_longer()`取代。原先的`gather(res_count_spread, region, n, -time)`應取代為`pivot_longer(res_count_spread, -time, names_to = "region", values_to = "n")`。
 
@@ -462,7 +444,7 @@ res_count_spread
 long_table <- pivot_longer(res_count_spread, -time, names_to = "region", values_to = "n")
 ```
 
-### 視覺化殘差分析
+## Residuals analysis
 
 `mosaicplot()`有幾個參數可以用，包含`off`與`shade`可用於呈現殘差分析。
 
@@ -478,17 +460,3 @@ mosaicplot(res_table, color=T, shade = T, border=0, off = 3,
 ```
 
 <img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-19-1.png" width="672" />
-
-## 練習
-
-### 萃取月份作為新變項`month`
-
-除了時間和地區可能會有差別外，那月份會不會竊盜案的數量也有差異呢？會不會冬天小偷也都在家休息了，夏天多呢？請嘗試從發生日期萃取出竊盜案發生的月份，並儲存為一個新的變項`month`。
-
-### 使用`count()`來計數
-
-請練習看看如果用`count()`來計數單一變項，如前述的`region`、`time`或前面練習中新產生的`month`。
-
-### 進階練習：分週末與週間計算
-
-使用lubridate套件可以將文字表示的日期轉換為R的時間物件，進而可以用lubridate的`wday()`函式求取該日期是週幾，便可以計算，週間和週末的竊盜率有何差別。可以先計算看看，週一到週日分別有什麼差別，再去計算週間與週末的平均會有什麼差別（要注意，週末和週間天數並不同）

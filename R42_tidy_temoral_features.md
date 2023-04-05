@@ -10,7 +10,8 @@ library(lubridate)
 ```
 
 ### 文字轉時間
-- Convert "character time"  to R date.time object (POSIXct)
+
+-   Convert "character time" to R date.time object (POSIXct)
 
 
 ```r
@@ -22,7 +23,6 @@ clean <- raw %>%
 raw <- read_csv(url(ptturl))
 ?read_csv
 ```
-
 
 
 ```r
@@ -52,8 +52,8 @@ raw %>% glimpse()
 ## $ ipaddr   <chr> "83.221.204.163", "114.43.176.110", "118.163.130.181", "118.1…
 ```
 
-
 ### 時間作為機率分佈X軸
+
 
 ```r
 raw %>%
@@ -63,8 +63,8 @@ raw %>%
 
 <img src="R42_tidy_temoral_features_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
-
 ### 逐月統計資料
+
 
 ```r
 ?lubridate
@@ -77,8 +77,8 @@ raw %>%
 
 <img src="R42_tidy_temoral_features_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
-
 ### 逐日統計資料（佳）
+
 
 ```r
 raw %>%
@@ -91,9 +91,8 @@ raw %>%
 
 <img src="R42_tidy_temoral_features_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-
-
 ### 每日逐時資料
+
 
 ```r
 clean %>%
@@ -113,8 +112,3 @@ clean %>%
 ```r
 ?ifelse
 ```
-
-
-
-
-
