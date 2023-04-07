@@ -163,7 +163,11 @@ NW %>%
 
 用color、fill或group來做分組？
 
-:   `geom_line()`的色彩是在**線**，而不是在**面**上。如果色彩是在點（如`geom_point()`）或線（`geom_line()`）上，就是用`color`來指定顏色。但如果是如類似下面的例子，用`geom_area()`來視覺化的話，因為顏色填的是**面**，所以要用`fill=Category`。以下範例甚至同時指定`color=Category, fill=Category`。但折線圖如果要用`geom_area()`來視覺化的話，最好要上顏色的不要超過二個，不然就會像底下這個例子一樣，即使設定`alpha=0.2`的半透明，仍然會看不懂哪些顏色疊在一起。
+:   `geom_line()`的色彩是在**線**，而不是在**面**上。如果色彩是在點（如`geom_point()`）或線（`geom_line()`）上，就是用`color`來指定顏色。
+
+    但如果是如類似下面的例子，用`geom_area()`來視覺化的話，因為顏色填的是**面**，所以要用`fill=Category`。以下範例甚至同時指定`color=Category, fill=Category`。但折線圖如果要用`geom_area()`來視覺化的話，最好要上顏色的不要超過二個，不然就會像底下這個例子一樣，即使設定`alpha=0.2`的半透明，仍然會看不懂哪些顏色疊在一起。
+
+    `geom_area()`預設應該是累積分佈圖（也就是不同的群組會在Y軸方向疊加），如果希望觀察兩個分布的差別，而不是希望看見整體趨勢的話，那要增加`position="dodge"`的參數，並把`alpha`（半透明）設定為1以下的數值。
 
 
 ```r
@@ -392,7 +396,8 @@ county %>%
     arrange(desc(people_total)) %>%
     ggplot() + aes(county, people_total) %>%
     geom_col(fill="lightgrey", color="black") +
-    theme_minimal()
+    theme_minimal() + 
+    theme(axis.text.x = element_text(family="Heiti TC Light"))
 ```
 
 <img src="V01_Learning_ggplot_files/figure-html/barplot-1.png" width="576" style="display: block; margin: auto;" />
