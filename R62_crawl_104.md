@@ -1,8 +1,9 @@
 
 
-## Scraping 104.com
+# Scraping 104.com
 
-### Complete Code
+## Complete Code
+
 
 ```r
 library(tidyverse)
@@ -34,11 +35,10 @@ for(p in 1:10){
 all.df$jobNo %>% unique %>% length
 ```
 
+## Step-by-Step
 
+### Get the first pages
 
-### Step-by-Step
-
-#### Get the first pages
 Must loading the second page
 
 
@@ -63,7 +63,8 @@ result2 <- fromJSON(content(GET(url2), "text"))
 df2 <- res1$data$list
 ```
 
-#### Get the first page by modifying url
+### Get the first page by modifying url
+
 
 ```r
 # Guessing the 1st page data url to url1
@@ -77,8 +78,7 @@ result1 <- fromJSON(content(GET(url1), "text"))
 df1 <- result1$data$list
 ```
 
-
-#### Combine two data with the same variables
+### Combine two data with the same variables
 
 
 ```r
@@ -87,8 +87,10 @@ df1 <- result1$data$list
 #   Argument 31 can't be a list containing data frames
 ```
 
-#### Drop out hierarchical variables
+### Drop out hierarchical variables
+
 Preserving numeric or character, dropping list of data.frame by assigning NULL to the variable
+
 
 ```r
 # Drop list and data.frame inside the data.frame
@@ -101,7 +103,8 @@ df2$tags <- NULL
 all.df <- bind_rows(df1, df2)
 ```
 
-#### Dropping hierarchical variables by dplyr way
+### Dropping hierarchical variables by dplyr way
+
 
 ```r
 # Getting the 1st page data and dropping variable tags and link
@@ -116,8 +119,8 @@ df2 <- result2$data$list %>% select(-tags, -link)
 all.df <- bind_rows(df1, df2)
 ```
 
+### Finding out the last page number
 
-#### Finding out the last page number
 
 ```r
 # Tracing the number of pages in result1
@@ -131,7 +134,8 @@ url.last_page <- paste0("https://www.104.com.tw/jobs/search/list?ro=0&kwop=7&key
 result.last_page <- fromJSON(content(GET(url.last_page), "text"))
 ```
 
-#### Using for-loop to get all pages
+### Using for-loop to get all pages
+
 
 ```r
 for(p in 1:last_page_num){
@@ -142,7 +146,8 @@ for(p in 1:last_page_num){
 }
 ```
 
-#### combine all data.frame
+### combine all data.frame
+
 
 ```r
 #  The 1st url of the query
@@ -166,10 +171,3 @@ for(p in 1:last_page_num){
     print(paste(p, nrow(all.df)))
 }
 ```
-
-
-
-
-
-
-

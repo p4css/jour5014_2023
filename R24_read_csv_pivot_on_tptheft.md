@@ -1,12 +1,10 @@
 
 
-## 交叉分析的概念
+# Counting and Cross-tabulation
 
 交叉分析是一種對兩個或多個變數進行聯合分析的方法，通常用於研究不同類別或組別之間的關係和差異。交叉分析可以幫助我們發現變數之間的相互作用，以及不同類別或組別之間的異同點，進而進行更深入的分析和解釋。
 
-在交叉分析中，通常會使用交叉表（cross
-tabulation）或稱為列聯表（contingency
-table）來對變數進行分析。交叉表是一種二維資料表格，其中一個變數作為行標籤，另一個變數作為列標籤，每個資料格中則表示兩個變數的交叉次數或百分比。交叉表可以幫助我們從不同角度瞭解變數之間的關係和差異，例如：
+在交叉分析中，通常會使用交叉表（cross tabulation）或稱為列聯表（contingency table）來對變數進行分析。交叉表是一種二維資料表格，其中一個變數作為行標籤，另一個變數作為列標籤，每個資料格中則表示兩個變數的交叉次數或百分比。交叉表可以幫助我們從不同角度瞭解變數之間的關係和差異，例如：
 
 1.  發現變數之間的相關性：可以通過交叉表計算兩個變數之間的相關係數或卡方檢定值，以評估它們之間的相關性程度。
 
@@ -14,7 +12,7 @@ table）來對變數進行分析。交叉表是一種二維資料表格，其中
 
 3.  發現變數之間的交互作用：可以通過交叉表比較不同類別或組別之間的差異，並分析它們之間的交互作用，以進一步瞭解變數之間的關係和影響。
 
-## 計數與交叉分析範例：台北市住宅竊盜點位資訊
+## Taipei Residential Burglary
 
 **觀察值、點位資料**：公部門所發布的開放資料通常會根據某些類別進行統計，例如年齡、性別、教育程度、地區等等，只有少部分的資料會用觀察值（Observation）的方式來記錄，也就是每一個案例紀錄一筆資料。例如疫情一開始人數還少的時候，會逐一記錄每個個案；地理資訊系統上面記錄某些機構或某些特定地點的時候也是點位資料；或在觀察輿情時，每筆發言或留言都是一筆觀察值。「[臺北市住宅竊盜點位資訊](https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02)」就是逐案紀錄的點位資料。而以下的例子也是點位資料，主要為主要為噪音、竊盜、交通事故等相關點位資料。
 
@@ -30,10 +28,7 @@ table）來對變數進行分析。交叉表是一種二維資料表格，其中
 
 ### 讀取檔案
 
-規劃比較完善的開放資料平台會提供API給程式設計者存取，例如[臺北資料大平台](https://data.taipei/#/)或內政部開放資料平台。但我們這邊用下載CSV（Common
-Separated
-Value）檔的方式來讀取這筆資料，以理解CSV這種檔案型態如何儲存資料。首先要至[臺北資料大平台](https://data.taipei/#/)上查詢「住宅竊盜」，可以找到[臺北市住宅竊盜點位資訊](https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02)。將該CSV檔下載至個人本機端，置入`data`
-資料夾中，便可以用`read.csv()`讀取該檔案。或可用tidyverse系列套件中的`readr::read_csv()`來直接讀取該網址所指到的檔案。
+規劃比較完善的開放資料平台會提供API給程式設計者存取，例如[臺北資料大平台](https://data.taipei/#/)或內政部開放資料平台。但我們這邊用下載CSV（Common Separated Value）檔的方式來讀取這筆資料，以理解CSV這種檔案型態如何儲存資料。首先要至[臺北資料大平台](https://data.taipei/#/)上查詢「住宅竊盜」，可以找到[臺北市住宅竊盜點位資訊](https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02)。將該CSV檔下載至個人本機端，置入`data` 資料夾中，便可以用`read.csv()`讀取該檔案。或可用tidyverse系列套件中的`readr::read_csv()`來直接讀取該網址所指到的檔案。
 
 我習慣在**Console**視窗中用`??read_csv()`查詢到這些函式的用法。
 
@@ -62,9 +57,7 @@ head(df)
 ## 6    6 住宅竊盜  1040102    00~02   臺北市士林區天福里1鄰忠誠路2段130巷1~30號
 ```
 
-**用read_csv()來讀取。**除了
-base套件的`read.csv()`外，也可使用`readr`套件的`read_csv()`函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用`install.packages("tidyverse")`安裝過，只要用`library(tidyverse)`就可以使用`read_csv()`函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，`read_csv()`
-的功能和效果都會比`read.csv()`好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。
+**用read_csv()來讀取。**除了 base套件的`read.csv()`外，也可使用`readr`套件的`read_csv()`函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用`install.packages("tidyverse")`安裝過，只要用`library(tidyverse)`就可以使用`read_csv()`函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，`read_csv()` 的功能和效果都會比`read.csv()`好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。
 
 ::: debug
 萬一遇到中文檔案會有讀檔編碼問題時，有可能該檔案是用big5來儲存的，可以在`read_csv()`中設定`locale`來指定讀取的編碼方法。如`read_csv(url, locale = locale(encoding = "Big5"))`
@@ -138,12 +131,9 @@ head(df)
 
 清理完資料後，我們要回答的第一個數據問題通常是「那XXX的案例有幾個？」例如：大安區有多少竊盜案？10\~12這個時段有多少案例。
 
-`table()`函式可以對Vector中的值進行計數（Counting）。`table(df$time)`
-相當於去計數不同的時間區間出現多少起案例；`table(df$region)`
-相當於去計數不同地區各出現多少起案例。
+`table()`函式可以對Vector中的值進行計數（Counting）。`table(df$time)` 相當於去計數不同的時間區間出現多少起案例；`table(df$region)` 相當於去計數不同地區各出現多少起案例。
 
-提示：可以用`class(tb_1)` 觀察用`table()`
-計數後所產生的資料型態（`table`）。
+提示：可以用`class(tb_1)` 觀察用`table()` 計數後所產生的資料型態（`table`）。
 
 
 ```r
@@ -195,8 +185,7 @@ df$time %in% c("00~02", "02~04", "04~6",...)
 
 -   如果要表示不包含，就在`df%time`加一個NOT，也就是`!`。
 
-依照各組時間的案例個數統計後，篩除資料未足100的時間區間如下，最後再用`table(df$time)`
-計算一次，發現每個時段都兩三、百個案例，且涵蓋整日的時間。清理後沒有重疊的時間區間，做類別資料分析會比較準確。
+依照各組時間的案例個數統計後，篩除資料未足100的時間區間如下，最後再用`table(df$time)` 計算一次，發現每個時段都兩三、百個案例，且涵蓋整日的時間。清理後沒有重疊的時間區間，做類別資料分析會比較準確。
 
 
 ```r
@@ -261,9 +250,7 @@ class(res_table)
 
 ### 繪圖
 
-通常這種類別資料交叉分析最常用的圖表型態之一便是Mosaic
-Plot（但事實上Mosaic
-Plot不見能夠被一眼就了解）。我們可以把交叉分析後的變項`res_table`直接用MosaicPlot來繪圖。
+通常這種類別資料交叉分析最常用的圖表型態之一便是Mosaic Plot（但事實上Mosaic Plot不見能夠被一眼就了解）。我們可以把交叉分析後的變項`res_table`直接用MosaicPlot來繪圖。
 
 
 ```r
@@ -284,10 +271,7 @@ mosaicplot(res_table, main="mosaic plot")
 
 大部分的視覺化套件都無法順利顯示中文，除非特別指定所要用的中文字型。這方面網路上可以找到很多的說明，但非常討厭的是，幾乎每換一套視覺化工具，換一套語言，就有不同的中文字體指定方式。例如用base的`plot()`來繪圖或用`ggplot()`的中文字型指定方法便不同，且軸上面有中文、圖標有中文、或者圖內有中文都要分開指定，非常討人厭。
 
-Mosaic Plot屬於base
-R的`plot()`，其中文指定方法要指定在繪圖前的`par()`函式中（`par`為parameter的意思），指定方法為`par(family=('Heiti TC Light'))`，Heiti
-TC
-Light為字體名稱，為OSX上在用的黑體細字，STKaiti則為標楷體。然後，`par()`和`mosaicplot()`兩個函式要「同時執行」，也就是請你直接用shift-cmd(ctrl)-Enter執行整個code-cell，或者將該兩個函式選起來一次執行。
+Mosaic Plot屬於base R的`plot()`，其中文指定方法要指定在繪圖前的`par()`函式中（`par`為parameter的意思），指定方法為`par(family=('Heiti TC Light'))`，Heiti TC Light為字體名稱，為OSX上在用的黑體細字，STKaiti則為標楷體。然後，`par()`和`mosaicplot()`兩個函式要「同時執行」，也就是請你直接用shift-cmd(ctrl)-Enter執行整個code-cell，或者將該兩個函式選起來一次執行。
 
 
 ```r
@@ -351,13 +335,11 @@ GET(url, write_disk("data/tptheft.csv", overwrite = TRUE))
 df <- read.csv("data/tptheft.csv")
 ```
 
-## Counting
+## Counting Review
 
 ### `tapply()`
 
-我們也可用`tapply()`
-函式來達到一樣的目的。Apply家族的函式都是，針對某個資料，將某個函式套用到某個物件上。`tapply()`
-即是用來做計數的，`tapply(df$編號, df$time, length)`有三個輸入，第一個輸入為整體物件，第二個輸入為要據以彙整的變項，在此為`df$time`，第三個是要用來彙整的函式，因為這裡要做計數，所以要用`length`函式。
+我們也可用`tapply()` 函式來達到一樣的目的。Apply家族的函式都是，針對某個資料，將某個函式套用到某個物件上。`tapply()` 即是用來做計數的，`tapply(df$編號, df$time, length)`有三個輸入，第一個輸入為整體物件，第二個輸入為要據以彙整的變項，在此為`df$time`，第三個是要用來彙整的函式，因為這裡要做計數，所以要用`length`函式。
 
 註：同樣用`class()`來觀察彙整後的資料型態為`array`，和前者的`table`資料型態不同。
 
@@ -396,11 +378,7 @@ res_tapply
 
 ### `dplyr::count()` two variables
 
-這邊多介紹一個用dplyr套件的`count()`函式來做交叉分析的方法（未來會常用這個方法，因為dplyr是tidyverse系列套件的核心套件。dplyr的函式第一個參數永遠是該data.frame，
-例如`count()`；後面`time`與`region`則是這個data.frame中的兩個變項。不像`tapply()`或`table()`的結果一樣，欄與列分別為`time`與`region`，count()出來的結果會有兩個變項分別是指定要計數的`time`與`region`
-，且會新增一個變項`n`，代表這組數據（`time` x
-`region`）共有幾個。這種表達型態通常稱為long-table（長表）、而`tapply()`或`table()`
-的結果通常稱為wide-table（寬表）為典型的交叉分析表。
+這邊多介紹一個用dplyr套件的`count()`函式來做交叉分析的方法（未來會常用這個方法，因為dplyr是tidyverse系列套件的核心套件。dplyr的函式第一個參數永遠是該data.frame， 例如`count()`；後面`time`與`region`則是這個data.frame中的兩個變項。不像`tapply()`或`table()`的結果一樣，欄與列分別為`time`與`region`，count()出來的結果會有兩個變項分別是指定要計數的`time`與`region` ，且會新增一個變項`n`，代表這組數據（`time` x `region`）共有幾個。這種表達型態通常稱為long-table（長表）、而`tapply()`或`table()` 的結果通常稱為wide-table（寬表）為典型的交叉分析表。
 
 目前大部分的類別資料分析還是會採用交叉分析表的型態，但未來我們要用tidyverse系列套件做大量的數據彙整或視覺化時，都會盡可能想辦法轉為Long-table型態，讓每一欄剛好就是一個變項。只要是tidyverse系列套件所計算出來的資料型態幾乎都是[類似]{style="color:hotpink"}data.frame的型態，例如觀察`count`的結果便是`"tbl_df"     "tbl"        "data.frame"`。
 
@@ -410,15 +388,9 @@ res_tapply
 
 ### long-to-wide
 
-那長表列可以轉為寬表嗎？可以，tidyverse系列套件中的tidyr套件有個函式`spread()`可以接著把某個變項展開為欄。例如原本上述的列是時間與行政區的交叉組合，但我可以把行政區展開為欄、或者把時間展開為欄
-。如下例，`spread(res_count, region, n, fill = 0)`
-有四個參數，遵循tidyverse系列套件的規則，第一個位置為data.frame，第二個參數則是要被展開至欄的變項這裡為`region`，第三個參數則是因應`region`被展開後，那中間交叉分析的數值就是n，最後一個參數是避免`spread`時有些交叉組是沒有資料的，因此`fill=0`可以指定，如果某個`time`
-x
-`region`的交叉組別是沒資料的，就填上`0`，也有可能是用`fill=NA`填上`NA`。以下的例子中也提供了將`time`
-展開至欄的寫法供參考。
+那長表列可以轉為寬表嗎？可以，tidyverse系列套件中的tidyr套件有個函式`spread()`可以接著把某個變項展開為欄。例如原本上述的列是時間與行政區的交叉組合，但我可以把行政區展開為欄、或者把時間展開為欄 。如下例，`spread(res_count, region, n, fill = 0)` 有四個參數，遵循tidyverse系列套件的規則，第一個位置為data.frame，第二個參數則是要被展開至欄的變項這裡為`region`，第三個參數則是因應`region`被展開後，那中間交叉分析的數值就是n，最後一個參數是避免`spread`時有些交叉組是沒有資料的，因此`fill=0`可以指定，如果某個`time` x `region`的交叉組別是沒資料的，就填上`0`，也有可能是用`fill=NA`填上`NA`。以下的例子中也提供了將`time` 展開至欄的寫法供參考。
 
-現在`spread()`函式已經被新的函式取代，為`pivot_wider()`。`spread(res_count, region, n, fill = 0)`
-在此需要改寫為`pivot_wider(res_count, names_from = region, values_from = n, values_fill = 0)`。大致上和`spread()`用法是一樣的，只是要寫清楚，哪個變數要給哪一個參數。
+現在`spread()`函式已經被新的函式取代，為`pivot_wider()`。`spread(res_count, region, n, fill = 0)` 在此需要改寫為`pivot_wider(res_count, names_from = region, values_from = n, values_fill = 0)`。大致上和`spread()`用法是一樣的，只是要寫清楚，哪個變數要給哪一個參數。
 
 展開後的資料型態和前者計數後的資料型態一樣，都是`"tbl_df"     "tbl"        "data.frame"`。這是為什麼tidyverse系列的套件逐漸變成R的顯學的原因之一。
 
@@ -478,16 +450,8 @@ long_table <- pivot_longer(res_count_spread, -time, names_to = "region", values_
 
 `mosaicplot()`有幾個參數可以用，包含`off`與`shade`可用於呈現殘差分析。
 
--   **off**: vector of offsets to determine percentage spacing at each
-    level of the mosaic (appropriate values are between 0 and 20, and
-    the default is 20 times the number of splits for 2-dimensional
-    tables, and 10 otherwise). Rescaled to maximally 50, and recycled if
-    necessary.
--   **shade**: a logical indicating whether to produce extended mosaic
-    plots, or a numeric vector of at most 5 distinct positive numbers
-    giving the absolute values of the cut points for the residuals. By
-    default, shade is FALSE, and simple mosaics are created. Using shade
-    = TRUE cuts absolute values at 2 and 4.
+-   **off**: vector of offsets to determine percentage spacing at each level of the mosaic (appropriate values are between 0 and 20, and the default is 20 times the number of splits for 2-dimensional tables, and 10 otherwise). Rescaled to maximally 50, and recycled if necessary.
+-   **shade**: a logical indicating whether to produce extended mosaic plots, or a numeric vector of at most 5 distinct positive numbers giving the absolute values of the cut points for the residuals. By default, shade is FALSE, and simple mosaics are created. Using shade = TRUE cuts absolute values at 2 and 4.
 
 
 ```r
@@ -498,4 +462,3 @@ mosaicplot(res_table, color=T, shade = T, border=0, off = 3,
 ```
 
 <img src="R24_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-19-1.png" width="672" />
-

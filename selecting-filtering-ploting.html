@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Selecting-Filtering-Ploting | R for Data Journalism</title>
+  <meta name="description" content="For my Class teaching how to make data news reports" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Selecting-Filtering-Ploting | R for Data Journalism" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="For my Class teaching how to make data news reports" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Selecting-Filtering-Ploting | R for Data Journalism" />
+  
+  <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
+  
+
+<meta name="author" content="HSIEH, JI-LUNG" />
+
+
+<meta name="date" content="2023-04-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dataframe.html"/>
+<link rel="next" href="counting-and-cross-tabulation.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for Data Journalism</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I R BASIC</b></span></li>
+<li class="chapter" data-level="2" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>2</b> R Basic</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic.html"><a href="basic.html#使用rstudio"><i class="fa fa-check"></i><b>2.1</b> 使用RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="basic.html"><a href="basic.html#rstudio介面簡介"><i class="fa fa-check"></i><b>2.1.1</b> RStudio介面簡介</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic.html"><a href="basic.html#用rmarkdown來撰寫r"><i class="fa fa-check"></i><b>2.1.2</b> 用RMarkdown來撰寫R</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic.html"><a href="basic.html#安裝並載入第三方套件"><i class="fa fa-check"></i><b>2.1.3</b> 安裝並載入第三方套件</a></li>
+<li class="chapter" data-level="2.1.4" data-path="basic.html"><a href="basic.html#程式碼註解"><i class="fa fa-check"></i><b>2.1.4</b> 程式碼註解</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic.html"><a href="basic.html#第一次資料嘗試"><i class="fa fa-check"></i><b>2.2</b> 第一次資料嘗試</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic.html"><a href="basic.html#直接從網路載入內政部開放資料"><i class="fa fa-check"></i><b>2.2.1</b> 直接從網路載入內政部開放資料</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic.html"><a href="basic.html#獲取ubike即時資料"><i class="fa fa-check"></i><b>2.2.2</b> 獲取ubike即時資料</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic.html"><a href="basic.html#讀取台北住宅竊盜點位資料"><i class="fa fa-check"></i><b>2.2.3</b> 讀取台北住宅竊盜點位資料</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic.html"><a href="basic.html#r-qa"><i class="fa fa-check"></i><b>2.3</b> R Q&amp;A</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="basic.html"><a href="basic.html#編碼與設定語系"><i class="fa fa-check"></i><b>2.3.1</b> 編碼與設定語系</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic.html"><a href="basic.html#rmdr-notebook無法儲存"><i class="fa fa-check"></i><b>2.3.2</b> RMD/R Notebook無法儲存</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basic.html"><a href="r-basic.html"><i class="fa fa-check"></i><b>3</b> R Basic</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-basic.html"><a href="r-basic.html#r-syntax"><i class="fa fa-check"></i><b>3.1</b> R Syntax</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="r-basic.html"><a href="r-basic.html#assignment"><i class="fa fa-check"></i><b>3.1.1</b> Assignment</a></li>
+<li class="chapter" data-level="3.1.2" data-path="r-basic.html"><a href="r-basic.html#comments-註解"><i class="fa fa-check"></i><b>3.1.2</b> Comments 註解</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="r-basic.html"><a href="r-basic.html#vector"><i class="fa fa-check"></i><b>3.2</b> Vector</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="r-basic.html"><a href="r-basic.html#creating-vectors"><i class="fa fa-check"></i><b>3.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="r-basic.html"><a href="r-basic.html#viewing"><i class="fa fa-check"></i><b>3.2.2</b> Viewing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="r-basic.html"><a href="r-basic.html#subsetting-filtering"><i class="fa fa-check"></i><b>3.2.3</b> Subsetting, filtering</a></li>
+<li class="chapter" data-level="3.2.4" data-path="r-basic.html"><a href="r-basic.html#deleting"><i class="fa fa-check"></i><b>3.2.4</b> Deleting</a></li>
+<li class="chapter" data-level="3.2.5" data-path="r-basic.html"><a href="r-basic.html#concatenating"><i class="fa fa-check"></i><b>3.2.5</b> Concatenating</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="r-basic.html"><a href="r-basic.html#calculating-with-vectors"><i class="fa fa-check"></i><b>3.3</b> Calculating with vectors</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="r-basic.html"><a href="r-basic.html#arithmetic-operations"><i class="fa fa-check"></i><b>3.3.1</b> Arithmetic operations</a></li>
+<li class="chapter" data-level="3.3.2" data-path="r-basic.html"><a href="r-basic.html#logic-comparisons"><i class="fa fa-check"></i><b>3.3.2</b> Logic comparisons</a></li>
+<li class="chapter" data-level="3.3.3" data-path="r-basic.html"><a href="r-basic.html#subsetting-by-logic-comparisons"><i class="fa fa-check"></i><b>3.3.3</b> Subsetting by logic comparisons</a></li>
+<li class="chapter" data-level="3.3.4" data-path="r-basic.html"><a href="r-basic.html#sorting-and-ordering"><i class="fa fa-check"></i><b>3.3.4</b> Sorting and ordering</a></li>
+<li class="chapter" data-level="3.3.5" data-path="r-basic.html"><a href="r-basic.html#built-in-math-functions"><i class="fa fa-check"></i><b>3.3.5</b> Built-in math functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="r-basic.html"><a href="r-basic.html#data-types"><i class="fa fa-check"></i><b>3.4</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="r-basic.html"><a href="r-basic.html#checking-data-type"><i class="fa fa-check"></i><b>3.4.1</b> Checking data type</a></li>
+<li class="chapter" data-level="3.4.2" data-path="r-basic.html"><a href="r-basic.html#converting-data-type"><i class="fa fa-check"></i><b>3.4.2</b> Converting data type</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="r-basic.html"><a href="r-basic.html#character-operations"><i class="fa fa-check"></i><b>3.5</b> Character operations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>4</b> Dataframe</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="dataframe.html"><a href="dataframe.html#基本操作"><i class="fa fa-check"></i><b>4.1</b> 基本操作</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="dataframe.html"><a href="dataframe.html#產生新的dataframe"><i class="fa fa-check"></i><b>4.1.1</b> 產生新的Dataframe</a></li>
+<li class="chapter" data-level="4.1.2" data-path="dataframe.html"><a href="dataframe.html#觀察dataframe"><i class="fa fa-check"></i><b>4.1.2</b> 觀察dataframe</a></li>
+<li class="chapter" data-level="4.1.3" data-path="dataframe.html"><a href="dataframe.html#操作dataframe"><i class="fa fa-check"></i><b>4.1.3</b> 操作dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dataframe.html"><a href="dataframe.html#簡易繪圖"><i class="fa fa-check"></i><b>4.2</b> 簡易繪圖</a></li>
+<li class="chapter" data-level="4.3" data-path="dataframe.html"><a href="dataframe.html#基本操作使用dplyr"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="dataframe.html"><a href="dataframe.html#tibble-data_frame-data.frame"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
+<li class="chapter" data-level="4.5" data-path="dataframe.html"><a href="dataframe.html#database---sqlite"><i class="fa fa-check"></i><b>4.5</b> Database - SQLite</a></li>
+</ul></li>
+<li class="part"><span><b>II DATA MANIPULATION</b></span></li>
+<li class="chapter" data-level="5" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html"><i class="fa fa-check"></i><b>5</b> Selecting-Filtering-Ploting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#paid-maternity-leave"><i class="fa fa-check"></i><b>5.1</b> Paid Maternity Leave</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#reading-.xlsx-by-readxl-package"><i class="fa fa-check"></i><b>5.1.1</b> Reading .xlsx by readxl package</a></li>
+<li class="chapter" data-level="5.1.2" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#previewing-data-by-view-class-dim-str-summary-and-names"><i class="fa fa-check"></i><b>5.1.2</b> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#select-variables"><i class="fa fa-check"></i><b>5.1.3</b> Select variables</a></li>
+<li class="chapter" data-level="5.1.4" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#check-replace-nas"><i class="fa fa-check"></i><b>5.1.4</b> Check &amp; Replace NAs</a></li>
+<li class="chapter" data-level="5.1.5" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#filtering-data"><i class="fa fa-check"></i><b>5.1.5</b> Filtering data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#plotting"><i class="fa fa-check"></i><b>5.1.6</b> Plotting</a></li>
+<li class="chapter" data-level="5.1.7" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#practice.-plotting-more"><i class="fa fa-check"></i><b>5.1.7</b> Practice. Plotting more</a></li>
+<li class="chapter" data-level="5.1.8" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#practice.-selecting-and-filtering-by-dplyr-i"><i class="fa fa-check"></i><b>5.1.8</b> Practice. Selecting and filtering by dplyr I</a></li>
+<li class="chapter" data-level="5.1.9" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#more-clean-version"><i class="fa fa-check"></i><b>5.1.9</b> (More) Clean version</a></li>
+<li class="chapter" data-level="5.1.10" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#more-the-fittest-version-to-compute-staysame"><i class="fa fa-check"></i><b>5.1.10</b> (More) The fittest version to compute staySame</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="selecting-filtering-ploting.html"><a href="selecting-filtering-ploting.html#paid-maternity-leave-base-to-dplyr"><i class="fa fa-check"></i><b>5.2</b> Paid Maternity Leave (base to dplyr)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html"><i class="fa fa-check"></i><b>6</b> Counting and Cross-tabulation</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#taipei-residential-burglary"><i class="fa fa-check"></i><b>6.1</b> Taipei Residential Burglary</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#讀取檔案"><i class="fa fa-check"></i><b>6.1.1</b> 讀取檔案</a></li>
+<li class="chapter" data-level="6.1.2" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#萃取所需新變項"><i class="fa fa-check"></i><b>6.1.2</b> 萃取所需新變項</a></li>
+<li class="chapter" data-level="6.1.3" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#使用table計數"><i class="fa fa-check"></i><b>6.1.3</b> 使用<code>table()</code>計數</a></li>
+<li class="chapter" data-level="6.1.4" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#依變數值篩選資料"><i class="fa fa-check"></i><b>6.1.4</b> 依變數值篩選資料</a></li>
+<li class="chapter" data-level="6.1.5" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#做雙變數樞紐分析table"><i class="fa fa-check"></i><b>6.1.5</b> 做雙變數樞紐分析：<code>table()</code></a></li>
+<li class="chapter" data-level="6.1.6" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#繪圖"><i class="fa fa-check"></i><b>6.1.6</b> 繪圖</a></li>
+<li class="chapter" data-level="6.1.7" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#practices"><i class="fa fa-check"></i><b>6.1.7</b> Practices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#read-online-files"><i class="fa fa-check"></i><b>6.2</b> Read online files</a></li>
+<li class="chapter" data-level="6.3" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#counting-review"><i class="fa fa-check"></i><b>6.3</b> Counting Review</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#tapply"><i class="fa fa-check"></i><b>6.3.1</b> <code>tapply()</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#tapply-two-variables"><i class="fa fa-check"></i><b>6.3.2</b> <code>tapply()</code> two variables</a></li>
+<li class="chapter" data-level="6.3.3" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#dplyrcount-two-variables"><i class="fa fa-check"></i><b>6.3.3</b> <code>dplyr::count()</code> two variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#pivoting-long-wide-tables"><i class="fa fa-check"></i><b>6.4</b> Pivoting long-wide tables</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#long-to-wide"><i class="fa fa-check"></i><b>6.4.1</b> long-to-wide</a></li>
+<li class="chapter" data-level="6.4.2" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#wide-to-long"><i class="fa fa-check"></i><b>6.4.2</b> Wide-to-long</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#residuals-analysis"><i class="fa fa-check"></i><b>6.5</b> Residuals analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html"><i class="fa fa-check"></i><b>7</b> From base R to dplyr</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#dplyr"><i class="fa fa-check"></i><b>7.1</b> dplyr</a></li>
+<li class="chapter" data-level="7.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#taipie-theft-count-base-to-dplyr"><i class="fa fa-check"></i><b>7.2</b> Taipie Theft Count (base to dplyr)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#reading-data"><i class="fa fa-check"></i><b>7.2.1</b> Reading data</a></li>
+<li class="chapter" data-level="7.2.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#cleaning-data-i"><i class="fa fa-check"></i><b>7.2.2</b> Cleaning data I</a></li>
+<li class="chapter" data-level="7.2.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#cleaning-data-ii"><i class="fa fa-check"></i><b>7.2.3</b> Cleaning data II</a></li>
+<li class="chapter" data-level="7.2.4" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#long-to-wide-form"><i class="fa fa-check"></i><b>7.2.4</b> Long to wide form</a></li>
+<li class="chapter" data-level="7.2.5" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>7.2.5</b> Setting time as row.name for mosaicplot</a></li>
+<li class="chapter" data-level="7.2.6" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#clean-version"><i class="fa fa-check"></i><b>7.2.6</b> Clean version</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#paid-maternity-leave-base-to-dplyr-1"><i class="fa fa-check"></i><b>7.3</b> Paid Maternity Leave (base to dplyr)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html"><i class="fa fa-check"></i><b>8</b> Data manipultaiton: Join data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#讀取內政部人口統計資料"><i class="fa fa-check"></i><b>8.1</b> 讀取內政部人口統計資料</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#分析規劃"><i class="fa fa-check"></i><b>8.1.1</b> 分析規劃</a></li>
+<li class="chapter" data-level="8.1.2" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#清理資料"><i class="fa fa-check"></i><b>8.1.2</b> 清理資料</a></li>
+<li class="chapter" data-level="8.1.3" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#進階運用rowwise"><i class="fa fa-check"></i><b>8.1.3</b> 進階：運用<code>rowwise()</code></a></li>
+<li class="chapter" data-level="8.1.4" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#建立鄉鎮市區與村里指標"><i class="fa fa-check"></i><b>8.1.4</b> 建立鄉鎮市區與村里指標</a></li>
+<li class="chapter" data-level="8.1.5" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#視覺化測試老年人口數-x-曾婚人口數"><i class="fa fa-check"></i><b>8.1.5</b> 視覺化測試（老年人口數 x 曾婚人口數）</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#讀取公投資料"><i class="fa fa-check"></i><b>8.2</b> 讀取公投資料</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#合併公投資料並視覺化"><i class="fa fa-check"></i><b>8.2.1</b> 合併公投資料並視覺化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html"><i class="fa fa-check"></i><b>9</b> Data Manipulation II</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#categorical"><i class="fa fa-check"></i><b>9.1</b> 類別資料分析</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#清理資料-1"><i class="fa fa-check"></i><b>9.1.1</b> 清理資料</a></li>
+<li class="chapter" data-level="9.1.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#尺度轉類別指標"><i class="fa fa-check"></i><b>9.1.2</b> 尺度轉類別指標</a></li>
+<li class="chapter" data-level="9.1.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#cross-tabulating"><i class="fa fa-check"></i><b>9.1.3</b> Cross-tabulating</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#processing-timeline"><i class="fa fa-check"></i><b>9.2</b> Processing Timeline</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#文字轉時間"><i class="fa fa-check"></i><b>9.2.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="9.2.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>9.2.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="9.2.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#逐月統計資料"><i class="fa fa-check"></i><b>9.2.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="9.2.4" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#逐日統計資料佳"><i class="fa fa-check"></i><b>9.2.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="9.2.5" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#每日逐時資料"><i class="fa fa-check"></i><b>9.2.5</b> 每日逐時資料</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#空值na處理"><i class="fa fa-check"></i><b>9.3</b> 空值（NA）處理</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#表格重整政府預算"><i class="fa fa-check"></i><b>9.3.1</b> 表格重整：政府預算</a></li>
+<li class="chapter" data-level="9.3.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#對齊資料世界各國疫苗接種比例"><i class="fa fa-check"></i><b>9.3.2</b> 對齊資料。世界各國疫苗接種比例</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>10</b> Text Processing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="text-processing.html"><a href="text-processing.html#tweets-analysis"><i class="fa fa-check"></i><b>10.1</b> Tweets Analysis</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="text-processing.html"><a href="text-processing.html#loading-data"><i class="fa fa-check"></i><b>10.1.1</b> Loading data</a></li>
+<li class="chapter" data-level="10.1.2" data-path="text-processing.html"><a href="text-processing.html#cleaning-data"><i class="fa fa-check"></i><b>10.1.2</b> Cleaning data</a></li>
+<li class="chapter" data-level="10.1.3" data-path="text-processing.html"><a href="text-processing.html#visual-exploring"><i class="fa fa-check"></i><b>10.1.3</b> Visual Exploring</a></li>
+<li class="chapter" data-level="10.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>10.1.4</b> Keyness</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III CRAWLER</b></span></li>
+<li class="chapter" data-level="11" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>11</b> Scraping 104.com</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="scraping-104.html"><a href="scraping-104.html#complete-code"><i class="fa fa-check"></i><b>11.1</b> Complete Code</a></li>
+<li class="chapter" data-level="11.2" data-path="scraping-104.html"><a href="scraping-104.html#step-by-step"><i class="fa fa-check"></i><b>11.2</b> Step-by-Step</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="scraping-104.html"><a href="scraping-104.html#get-the-first-pages"><i class="fa fa-check"></i><b>11.2.1</b> Get the first pages</a></li>
+<li class="chapter" data-level="11.2.2" data-path="scraping-104.html"><a href="scraping-104.html#get-the-first-page-by-modifying-url"><i class="fa fa-check"></i><b>11.2.2</b> Get the first page by modifying url</a></li>
+<li class="chapter" data-level="11.2.3" data-path="scraping-104.html"><a href="scraping-104.html#combine-two-data-with-the-same-variables"><i class="fa fa-check"></i><b>11.2.3</b> Combine two data with the same variables</a></li>
+<li class="chapter" data-level="11.2.4" data-path="scraping-104.html"><a href="scraping-104.html#drop-out-hierarchical-variables"><i class="fa fa-check"></i><b>11.2.4</b> Drop out hierarchical variables</a></li>
+<li class="chapter" data-level="11.2.5" data-path="scraping-104.html"><a href="scraping-104.html#dropping-hierarchical-variables-by-dplyr-way"><i class="fa fa-check"></i><b>11.2.5</b> Dropping hierarchical variables by dplyr way</a></li>
+<li class="chapter" data-level="11.2.6" data-path="scraping-104.html"><a href="scraping-104.html#finding-out-the-last-page-number"><i class="fa fa-check"></i><b>11.2.6</b> Finding out the last page number</a></li>
+<li class="chapter" data-level="11.2.7" data-path="scraping-104.html"><a href="scraping-104.html#using-for-loop-to-get-all-pages"><i class="fa fa-check"></i><b>11.2.7</b> Using for-loop to get all pages</a></li>
+<li class="chapter" data-level="11.2.8" data-path="scraping-104.html"><a href="scraping-104.html#combine-all-data.frame"><i class="fa fa-check"></i><b>11.2.8</b> combine all data.frame</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html"><i class="fa fa-check"></i><b>12</b> WGOITG: LeBron James’s Achievement</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#get-top250-players"><i class="fa fa-check"></i><b>12.1</b> Get top250 players</a></li>
+<li class="chapter" data-level="12.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scraping-live-scores"><i class="fa fa-check"></i><b>12.2</b> Scraping live scores</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#testing"><i class="fa fa-check"></i><b>12.2.1</b> Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>12.3</b> Scrape life time scores</a></li>
+<li class="chapter" data-level="12.4" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#cleaning-data-1"><i class="fa fa-check"></i><b>12.4</b> Cleaning data</a></li>
+<li class="chapter" data-level="12.5" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#visualization"><i class="fa fa-check"></i><b>12.5</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-age-x-cumpts"><i class="fa fa-check"></i><b>12.5.1</b> Line: Age x cumPTS</a></li>
+<li class="chapter" data-level="12.5.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-year-x-cumpts"><i class="fa fa-check"></i><b>12.5.2</b> Line: year x cumPTS</a></li>
+<li class="chapter" data-level="12.5.3" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-age-x-per_by_year"><i class="fa fa-check"></i><b>12.5.3</b> Line: Age x PER_by_year</a></li>
+<li class="chapter" data-level="12.5.4" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#comparing-lebron-james-and-jabbar"><i class="fa fa-check"></i><b>12.5.4</b> Comparing LeBron James and Jabbar</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scraping-and-cleaning"><i class="fa fa-check"></i><b>12.6</b> Scraping and cleaning</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#vis-ljames-and-jabbar"><i class="fa fa-check"></i><b>12.6.1</b> VIS LJames and jabbar</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#more-scraping-all-players"><i class="fa fa-check"></i><b>12.7</b> (More) Scraping all players</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#testing-1"><i class="fa fa-check"></i><b>12.7.1</b> Testing</a></li>
+<li class="chapter" data-level="12.7.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>12.7.2</b> Scrape from a-z except x(no x)</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV VISUALIZATION</b></span></li>
+<li class="chapter" data-level="13" data-path="visualization-1.html"><a href="visualization-1.html"><i class="fa fa-check"></i><b>13</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="visualization-1.html"><a href="visualization-1.html#ggplot2"><i class="fa fa-check"></i><b>13.1</b> ggplot2</a></li>
+<li class="chapter" data-level="13.2" data-path="visualization-1.html"><a href="visualization-1.html#vis-packages"><i class="fa fa-check"></i><b>13.2</b> VIS packages</a></li>
+<li class="chapter" data-level="13.3" data-path="visualization-1.html"><a href="visualization-1.html#ggplot"><i class="fa fa-check"></i><b>13.3</b> ggplot簡介</a></li>
+<li class="chapter" data-level="13.4" data-path="visualization-1.html"><a href="visualization-1.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>13.4</b> 繪圖基礎：折線圖</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="visualization-1.html"><a href="visualization-1.html#繪圖三要素"><i class="fa fa-check"></i><b>13.4.1</b> 繪圖三要素</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="visualization-1.html"><a href="visualization-1.html#nyt-inequality"><i class="fa fa-check"></i><b>13.5</b> NYT: Inequality</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="visualization-1.html"><a href="visualization-1.html#visualizing"><i class="fa fa-check"></i><b>13.5.1</b> Visualizing</a></li>
+<li class="chapter" data-level="13.5.2" data-path="visualization-1.html"><a href="visualization-1.html#grouping"><i class="fa fa-check"></i><b>13.5.2</b> Grouping</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="visualization-1.html"><a href="visualization-1.html#adjusting-chart"><i class="fa fa-check"></i><b>13.6</b> Adjusting Chart</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="visualization-1.html"><a href="visualization-1.html#點線型態"><i class="fa fa-check"></i><b>13.6.1</b> 點線型態</a></li>
+<li class="chapter" data-level="13.6.2" data-path="visualization-1.html"><a href="visualization-1.html#line-types"><i class="fa fa-check"></i><b>13.6.2</b> Line Types</a></li>
+<li class="chapter" data-level="13.6.3" data-path="visualization-1.html"><a href="visualization-1.html#標題標籤與圖說"><i class="fa fa-check"></i><b>13.6.3</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="13.6.4" data-path="visualization-1.html"><a href="visualization-1.html#字體樣式"><i class="fa fa-check"></i><b>13.6.4</b> 字體樣式</a></li>
+<li class="chapter" data-level="13.6.5" data-path="visualization-1.html"><a href="visualization-1.html#圖表主題色調"><i class="fa fa-check"></i><b>13.6.5</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="13.6.6" data-path="visualization-1.html"><a href="visualization-1.html#預設主題"><i class="fa fa-check"></i><b>13.6.6</b> 預設主題</a></li>
+<li class="chapter" data-level="13.6.7" data-path="visualization-1.html"><a href="visualization-1.html#顯示中文字體"><i class="fa fa-check"></i><b>13.6.7</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="13.6.8" data-path="visualization-1.html"><a href="visualization-1.html#xy軸方向"><i class="fa fa-check"></i><b>13.6.8</b> X/Y軸方向</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="visualization-1.html"><a href="visualization-1.html#highlighting-storytelling"><i class="fa fa-check"></i><b>13.7</b> Highlighting &amp; Storytelling</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="visualization-1.html"><a href="visualization-1.html#依群組指定顏色"><i class="fa fa-check"></i><b>13.7.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="13.7.2" data-path="visualization-1.html"><a href="visualization-1.html#使用gghighlight套件"><i class="fa fa-check"></i><b>13.7.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="13.7.3" data-path="visualization-1.html"><a href="visualization-1.html#為視覺化建立群組"><i class="fa fa-check"></i><b>13.7.3</b> 為視覺化建立群組</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>14</b> Coordinate</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="coordinate.html"><a href="coordinate.html#座標軸為資料排序"><i class="fa fa-check"></i><b>14.1</b> 座標軸為資料排序</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="coordinate.html"><a href="coordinate.html#section"><i class="fa fa-check"></i><b>14.1.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="coordinate.html"><a href="coordinate.html#用log-scale放大長尾頭部"><i class="fa fa-check"></i><b>14.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="14.3" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>14.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="14.4" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>14.4</b> 座標軸從數值到增加值</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="coordinate.html"><a href="coordinate.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>14.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="14.4.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>14.4.2</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>14.5</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>14.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>15</b> AMOUNT</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="amount.html"><a href="amount.html#bar-chart"><i class="fa fa-check"></i><b>15.1</b> Bar chart</a></li>
+<li class="chapter" data-level="15.2" data-path="amount.html"><a href="amount.html#heatmap-vaccination"><i class="fa fa-check"></i><b>15.2</b> Heatmap: Vaccination</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="amount.html"><a href="amount.html#the-case-vaccinating-coverage-by-month"><i class="fa fa-check"></i><b>15.2.1</b> The case: Vaccinating coverage by month</a></li>
+<li class="chapter" data-level="15.2.2" data-path="amount.html"><a href="amount.html#data-cleaning"><i class="fa fa-check"></i><b>15.2.2</b> Data cleaning</a></li>
+<li class="chapter" data-level="15.2.3" data-path="amount.html"><a href="amount.html#visualization-2"><i class="fa fa-check"></i><b>15.2.3</b> Visualization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>16</b> DISTRIBUTION: Histogram &amp; Density</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-plot"><i class="fa fa-check"></i><b>16.1</b> Density plot</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>16.1.1</b> Density with different bandwidth</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram"><i class="fa fa-check"></i><b>16.2</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>16.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="16.2.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-vs-histogram"><i class="fa fa-check"></i><b>16.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="16.2.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>16.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="16.2.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>16.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#pyramid-plot"><i class="fa fa-check"></i><b>16.3</b> Pyramid Plot</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>16.3.1</b> Modify geom_col() to pyramid plot</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#box-plot-muitiple-distrubution"><i class="fa fa-check"></i><b>16.4</b> Box plot: Muitiple Distrubution</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>16.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="16.4.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-income-boxplot"><i class="fa fa-check"></i><b>16.4.2</b> TW-Income (boxplot)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>17</b> PROPORTION</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="proportion.html"><a href="proportion.html#pie-chart"><i class="fa fa-check"></i><b>17.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="17.2" data-path="proportion.html"><a href="proportion.html#dodged-bar-chart"><i class="fa fa-check"></i><b>17.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="17.3" data-path="proportion.html"><a href="proportion.html#treemap-nested-proportion"><i class="fa fa-check"></i><b>17.3</b> Treemap: Nested Proportion</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="proportion.html"><a href="proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>17.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="17.3.2" data-path="proportion.html"><a href="proportion.html#tw-budget"><i class="fa fa-check"></i><b>17.3.2</b> TW Budget</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>18</b> ASSOCIATION</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="association.html"><a href="association.html#等比例座標軸-1"><i class="fa fa-check"></i><b>18.1</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="association.html"><a href="association.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>18.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>19</b> TIME &amp; TRENDS</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="time-trends.html"><a href="time-trends.html#highlighting-unemployed-population"><i class="fa fa-check"></i><b>19.1</b> Highlighting: Unemployed Population</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="time-trends.html"><a href="time-trends.html#the-econimics-data"><i class="fa fa-check"></i><b>19.1.1</b> The econimics data</a></li>
+<li class="chapter" data-level="19.1.2" data-path="time-trends.html"><a href="time-trends.html#setting-marking-area"><i class="fa fa-check"></i><b>19.1.2</b> Setting marking area</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="time-trends.html"><a href="time-trends.html#smoothing-unemployed"><i class="fa fa-check"></i><b>19.2</b> Smoothing: Unemployed</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="time-trends.html"><a href="time-trends.html#polls_2008"><i class="fa fa-check"></i><b>19.2.1</b> Polls_2008</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="network-vis.html"><a href="network-vis.html"><i class="fa fa-check"></i><b>20</b> NETWORK VIS</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="network-vis.html"><a href="network-vis.html#generating-networks"><i class="fa fa-check"></i><b>20.1</b> Generating networks</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="network-vis.html"><a href="network-vis.html#random-network"><i class="fa fa-check"></i><b>20.1.1</b> Random network</a></li>
+<li class="chapter" data-level="20.1.2" data-path="network-vis.html"><a href="network-vis.html#random-network-1"><i class="fa fa-check"></i><b>20.1.2</b> Random network</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="network-vis.html"><a href="network-vis.html#retrieve-top3-components"><i class="fa fa-check"></i><b>20.2</b> Retrieve Top3 Components</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="network-vis.html"><a href="network-vis.html#visualize-again"><i class="fa fa-check"></i><b>20.2.1</b> Visualize again</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="network-vis.html"><a href="network-vis.html#motif-visualization-and-analysis"><i class="fa fa-check"></i><b>20.3</b> Motif visualization and analysis</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="network-vis.html"><a href="network-vis.html#motif-type"><i class="fa fa-check"></i><b>20.3.1</b> Motif type</a></li>
+<li class="chapter" data-level="20.3.2" data-path="network-vis.html"><a href="network-vis.html#motif-analysis"><i class="fa fa-check"></i><b>20.3.2</b> Motif analysis</a></li>
+<li class="chapter" data-level="20.3.3" data-path="network-vis.html"><a href="network-vis.html#generate-motives"><i class="fa fa-check"></i><b>20.3.3</b> Generate motives</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>21</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="22" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>22</b> Interactivity</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="interactivity.html"><a href="interactivity.html#ggplotly"><i class="fa fa-check"></i><b>22.1</b> ggplotly</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="interactivity.html"><a href="interactivity.html#line-chart"><i class="fa fa-check"></i><b>22.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="22.1.2" data-path="interactivity.html"><a href="interactivity.html#scatter"><i class="fa fa-check"></i><b>22.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="22.1.3" data-path="interactivity.html"><a href="interactivity.html#barplot"><i class="fa fa-check"></i><b>22.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="22.1.4" data-path="interactivity.html"><a href="interactivity.html#boxplot"><i class="fa fa-check"></i><b>22.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="22.1.5" data-path="interactivity.html"><a href="interactivity.html#treemap-global-carbon"><i class="fa fa-check"></i><b>22.1.5</b> Treemap (Global Carbon)</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="interactivity.html"><a href="interactivity.html#產製圖表動畫"><i class="fa fa-check"></i><b>22.2</b> 產製圖表動畫</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="interactivity.html"><a href="interactivity.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>22.2.1</b> 地圖下載與轉換投影方法</a></li>
+<li class="chapter" data-level="22.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>22.2.2</b> 靜態繪圖測試</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V CASE STUDIES</b></span></li>
+<li class="chapter" data-level="23" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>23</b> WGOITG of NyTimes</a></li>
+<li class="chapter" data-level="24" data-path="wgoitg-population-increase.html"><a href="wgoitg-population-increase.html"><i class="fa fa-check"></i><b>24</b> WGOITG: Population Increase</a></li>
+<li class="chapter" data-level="25" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>25</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="26" data-path="optimism-survey-by-countries.html"><a href="optimism-survey-by-countries.html"><i class="fa fa-check"></i><b>26</b> Optimism Survey by Countries</a></li>
+<li class="chapter" data-level="27" data-path="global-carbon-projects.html"><a href="global-carbon-projects.html"><i class="fa fa-check"></i><b>27</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="28" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>28</b> Case Studies (Taiwan)</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>28.1</b> TW AQI Visual Studies</a>
+<ul>
+<li class="chapter" data-level="28.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>28.1.1</b> eda-load-data-from-github</a></li>
+<li class="chapter" data-level="28.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>28.1.2</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="28.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>28.1.3</b> Trending: Extreme value</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>29</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>29.1</b> Dataset</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Journalism</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="selecting-filtering-ploting" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Selecting-Filtering-Ploting<a href="selecting-filtering-ploting.html#selecting-filtering-ploting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>R base指的是R語言的基本程式庫和核心功能，也被稱為「基本安裝」。R base是所有R程式庫和套件的基礎，提供了R語言的基本資料結構、運算符號、流程控制、函數庫等核心功能。</p>
+<p>R base包括了R語言的基本數據類型，如向量、矩陣、數組、列表和因子等，還包括了常用的數學和統計函數，如求和、平均數、標準差、線性回歸和假設檢驗等。此外，R base還提供了許多用於資料處理和探索的工具，如讀寫資料、繪製圖表、資料清理、合併和分組等。</p>
+<p>R base通常是R語言的默認安裝選項，也是新手學習R語言的基礎。在此基礎上，使用者可以通過安裝和載入其他R程式庫和套件，擴展R語言的功能和應用範圍，以滿足不同的需求和問題。</p>
+<div id="paid-maternity-leave" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Paid Maternity Leave<a href="selecting-filtering-ploting.html#paid-maternity-leave" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本案例將使用R重新製作華盛頓郵報2016年8月13日的一篇報導，該報導探討了美國婦女產假支薪情況。案例中將應用data.frame和基本的繪圖與資料摘要方法。</p>
+<p>原始新聞來源：<a href="https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/">The world is getting better at paid maternity leave. The U.S. is not. - The Washington Post</a>。該篇報導提及，美國因為目前的政策不保障帶薪產假，許多女性感到必須在工作和照顧家庭之間做出選擇，這種性別不平等破壞了她們在工作機會上的平等機會。同時，世界各地的婦女待遇正在逐漸改善。至少190個國家對嬰兒的母親規定了某種形式的帶薪假期，產假待遇在56個國家有所提高。專家表示，現在美國城市和州正通過不同形式的帶薪家庭假法案，這顯示美國雇主正在展示有競爭力的福利不會影響員工表現。特別是科技公司，如Twitter、Facebook和Google等，處於提供員工帶薪產假福利的前沿，美國可能有望追趕其他國家。</p>
+<p><img src="https://www.washingtonpost.com/blogs/worldviews/files/2016/08/matleave-map.jpg" /></p>
+<div id="reading-.xlsx-by-readxl-package" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Reading .xlsx by readxl package<a href="selecting-filtering-ploting.html#reading-.xlsx-by-readxl-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>readxl</code>也包含在<code>tidyverse</code>的套件集中，所以應該已經在前次安裝過，不用特別安裝。</li>
+<li>但<code>readxl</code>不會隨著<code>tidyverse</code>套件被載入R的執行環境，所以如果要用<code>readxl()</code>來讀取excel檔的話，需要用<code>library(readxl)</code>將其載入。</li>
+</ul>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="selecting-filtering-ploting.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import readxl package</span></span>
+<span id="cb251-2"><a href="selecting-filtering-ploting.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
+<p>這段程式碼使用<code>read_excel()</code>函式從<code>data</code>資料夾中的<code>WORLD-MACHE_Gender_6.8.15.xls</code>檔案中的<code>Sheet1</code>工作表讀取資料。其中<code>col_names=T</code>為該函式的參數，表示第一列為欄位名稱。讀取後的資料會被Assign給變數<code>df</code>。</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="selecting-filtering-ploting.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use read_excel() to convert excel sheet to data.frame</span></span>
+<span id="cb252-2"><a href="selecting-filtering-ploting.html#cb252-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span></code></pre></div>
+</div>
+<div id="previewing-data-by-view-class-dim-str-summary-and-names" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code><a href="selecting-filtering-ploting.html#previewing-data-by-view-class-dim-str-summary-and-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="selecting-filtering-ploting.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(df)</span></span>
+<span id="cb253-2"><a href="selecting-filtering-ploting.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)       <span class="co"># [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="selecting-filtering-ploting.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
+<pre class="output"><code>## [1] 197 156</code></pre>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="selecting-filtering-ploting.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show names of variables (vectors, columns) by names()</span></span>
+<span id="cb257-2"><a href="selecting-filtering-ploting.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre class="output"><code>##   [1] &quot;country&quot;           &quot;iso2&quot;              &quot;iso3&quot;             
+##   [4] &quot;region&quot;            &quot;wb_econ&quot;           &quot;matleave_95&quot;      
+##   [7] &quot;matleave_96&quot;       &quot;matleave_97&quot;       &quot;matleave_98&quot;      
+##  [10] &quot;matleave_99&quot;       &quot;matleave_00&quot;       &quot;matleave_01&quot;      
+##  [13] &quot;matleave_02&quot;       &quot;matleave_03&quot;       &quot;matleave_04&quot;      
+##  [16] &quot;matleave_05&quot;       &quot;matleave_06&quot;       &quot;matleave_07&quot;      
+##  [19] &quot;matleave_08&quot;       &quot;matleave_09&quot;       &quot;matleave_10&quot;      
+##  [22] &quot;matleave_11&quot;       &quot;matleave_12&quot;       &quot;matleave_13&quot;      
+##  [25] &quot;matleave_wrr_95&quot;   &quot;matleave_wrr_96&quot;   &quot;matleave_wrr_97&quot;  
+##  [28] &quot;matleave_wrr_98&quot;   &quot;matleave_wrr_99&quot;   &quot;matleave_wrr_00&quot;  
+##  [31] &quot;matleave_wrr_01&quot;   &quot;matleave_wrr_02&quot;   &quot;matleave_wrr_03&quot;  
+##  [34] &quot;matleave_wrr_04&quot;   &quot;matleave_wrr_05&quot;   &quot;matleave_wrr_06&quot;  
+##  [37] &quot;matleave_wrr_07&quot;   &quot;matleave_wrr_08&quot;   &quot;matleave_wrr_09&quot;  
+##  [40] &quot;matleave_wrr_10&quot;   &quot;matleave_wrr_11&quot;   &quot;matleave_wrr_12&quot;  
+##  [43] &quot;matleave_wrr_13&quot;   &quot;bf_dur_95&quot;         &quot;bf_dur_96&quot;        
+##  [46] &quot;bf_dur_97&quot;         &quot;bf_dur_98&quot;         &quot;bf_dur_99&quot;        
+##  [49] &quot;bf_dur_00&quot;         &quot;bf_dur_01&quot;         &quot;bf_dur_02&quot;        
+##  [52] &quot;bf_dur_03&quot;         &quot;bf_dur_04&quot;         &quot;bf_dur_05&quot;        
+##  [55] &quot;bf_dur_06&quot;         &quot;bf_dur_07&quot;         &quot;bf_dur_08&quot;        
+##  [58] &quot;bf_dur_09&quot;         &quot;bf_dur_10&quot;         &quot;bf_dur_11&quot;        
+##  [61] &quot;bf_dur_12&quot;         &quot;bf_dur_13&quot;         &quot;mat_bfeed_6mon_95&quot;
+##  [64] &quot;mat_bfeed_6mon_96&quot; &quot;mat_bfeed_6mon_97&quot; &quot;mat_bfeed_6mon_98&quot;
+##  [67] &quot;mat_bfeed_6mon_99&quot; &quot;mat_bfeed_6mon_00&quot; &quot;mat_bfeed_6mon_01&quot;
+##  [70] &quot;mat_bfeed_6mon_02&quot; &quot;mat_bfeed_6mon_03&quot; &quot;mat_bfeed_6mon_04&quot;
+##  [73] &quot;mat_bfeed_6mon_05&quot; &quot;mat_bfeed_6mon_06&quot; &quot;mat_bfeed_6mon_07&quot;
+##  [76] &quot;mat_bfeed_6mon_08&quot; &quot;mat_bfeed_6mon_09&quot; &quot;mat_bfeed_6mon_10&quot;
+##  [79] &quot;mat_bfeed_6mon_11&quot; &quot;mat_bfeed_6mon_12&quot; &quot;mat_bfeed_6mon_13&quot;
+##  [82] &quot;minage_fem_leg_95&quot; &quot;minage_fem_leg_96&quot; &quot;minage_fem_leg_97&quot;
+##  [85] &quot;minage_fem_leg_98&quot; &quot;minage_fem_leg_99&quot; &quot;minage_fem_leg_00&quot;
+##  [88] &quot;minage_fem_leg_01&quot; &quot;minage_fem_leg_02&quot; &quot;minage_fem_leg_03&quot;
+##  [91] &quot;minage_fem_leg_04&quot; &quot;minage_fem_leg_05&quot; &quot;minage_fem_leg_06&quot;
+##  [94] &quot;minage_fem_leg_07&quot; &quot;minage_fem_leg_08&quot; &quot;minage_fem_leg_09&quot;
+##  [97] &quot;minage_fem_leg_10&quot; &quot;minage_fem_leg_11&quot; &quot;minage_fem_leg_12&quot;
+## [100] &quot;legal_diff_leg_95&quot; &quot;legal_diff_leg_96&quot; &quot;legal_diff_leg_97&quot;
+## [103] &quot;legal_diff_leg_98&quot; &quot;legal_diff_leg_99&quot; &quot;legal_diff_leg_00&quot;
+## [106] &quot;legal_diff_leg_01&quot; &quot;legal_diff_leg_02&quot; &quot;legal_diff_leg_03&quot;
+## [109] &quot;legal_diff_leg_04&quot; &quot;legal_diff_leg_05&quot; &quot;legal_diff_leg_06&quot;
+## [112] &quot;legal_diff_leg_07&quot; &quot;legal_diff_leg_08&quot; &quot;legal_diff_leg_09&quot;
+## [115] &quot;legal_diff_leg_10&quot; &quot;legal_diff_leg_11&quot; &quot;legal_diff_leg_12&quot;
+## [118] &quot;minage_fem_pc_95&quot;  &quot;minage_fem_pc_96&quot;  &quot;minage_fem_pc_97&quot; 
+## [121] &quot;minage_fem_pc_98&quot;  &quot;minage_fem_pc_99&quot;  &quot;minage_fem_pc_00&quot; 
+## [124] &quot;minage_fem_pc_01&quot;  &quot;minage_fem_pc_02&quot;  &quot;minage_fem_pc_03&quot; 
+## [127] &quot;minage_fem_pc_04&quot;  &quot;minage_fem_pc_05&quot;  &quot;minage_fem_pc_06&quot; 
+## [130] &quot;minage_fem_pc_07&quot;  &quot;minage_fem_pc_08&quot;  &quot;minage_fem_pc_09&quot; 
+## [133] &quot;minage_fem_pc_10&quot;  &quot;minage_fem_pc_11&quot;  &quot;minage_fem_pc_12&quot; 
+## [136] &quot;legal_diff_pc_95&quot;  &quot;legal_diff_pc_96&quot;  &quot;legal_diff_pc_97&quot; 
+## [139] &quot;legal_diff_pc_98&quot;  &quot;legal_diff_pc_99&quot;  &quot;legal_diff_pc_00&quot; 
+## [142] &quot;legal_diff_pc_01&quot;  &quot;legal_diff_pc_02&quot;  &quot;legal_diff_pc_03&quot; 
+## [145] &quot;legal_diff_pc_04&quot;  &quot;legal_diff_pc_05&quot;  &quot;legal_diff_pc_06&quot; 
+## [148] &quot;legal_diff_pc_07&quot;  &quot;legal_diff_pc_08&quot;  &quot;legal_diff_pc_09&quot; 
+## [151] &quot;legal_diff_pc_10&quot;  &quot;legal_diff_pc_11&quot;  &quot;legal_diff_pc_12&quot; 
+## [154] &quot;minwage_ppp_2013&quot;  &quot;mw_overtime&quot;       &quot;oecd&quot;</code></pre>
+</div>
+<div id="select-variables" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Select variables<a href="selecting-filtering-ploting.html#select-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>由於所需要的資料為第三欄的變數<code>iso3</code>（為國家代碼）和第六至24欄的<code>matleave95</code>~<code>matleave13</code>共29年的資料，所以需要在<code>df[ , ]</code>中選出這幾欄。只要把所要取的欄以vector的型態放在<code>df[row,col]</code>之<code>col</code>的位置，便可以選出所要的欄。</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="selecting-filtering-ploting.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the 3rd and 6th to 24th columns</span></span>
+<span id="cb259-2"><a href="selecting-filtering-ploting.html#cb259-2" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb259-3"><a href="selecting-filtering-ploting.html#cb259-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-4"><a href="selecting-filtering-ploting.html#cb259-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use class(), dim(), and str() to inspect the data</span></span>
+<span id="cb259-5"><a href="selecting-filtering-ploting.html#cb259-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="selecting-filtering-ploting.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## [1] 197  20</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="selecting-filtering-ploting.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## tibble [197 × 20] (S3: tbl_df/tbl/data.frame)
+##  $ iso3       : chr [1:197] &quot;AFG&quot; &quot;ALB&quot; &quot;DZA&quot; &quot;AND&quot; ...
+##  $ matleave_95: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_96: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_97: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_98: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_99: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_00: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_01: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_02: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_03: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_04: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_05: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_06: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_07: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_08: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_09: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_10: num [1:197] 2 5 3 3 2 2 2 5 NA 5 ...
+##  $ matleave_11: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_12: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_13: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...</code></pre>
+</div>
+<div id="check-replace-nas" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Check &amp; Replace NAs<a href="selecting-filtering-ploting.html#check-replace-nas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>NA: Not Available</code></li>
+<li><code>v[is.na(v)]</code> will select all NA cells</li>
+<li>以0取代NA的資料格。避免繪圖產生錯誤</li>
+<li><code>sum(is.na(matleave))</code>的目的是檢測還有沒有NA值。如果有的話<code>is.na()</code>就會是<code>TRUE</code>，那麼加總後，如果不是0，那就代表還有NA。</li>
+</ul>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="selecting-filtering-ploting.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is.na() to indicate each element is NA or NOT(TRUE/FALSE)</span></span>
+<span id="cb265-2"><a href="selecting-filtering-ploting.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">is.na</span>(matleave), <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<pre class="output"><code>##        iso3 matleave_95 matleave_96 matleave_97 matleave_98 matleave_99
+##  [1,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [2,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [3,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [4,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [5,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [6,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [7,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [8,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [9,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [10,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [11,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [12,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [13,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [14,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [15,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [16,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [17,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [18,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [19,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [20,] FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##       matleave_00 matleave_01 matleave_02 matleave_03 matleave_04 matleave_05
+##  [1,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [2,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [3,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [4,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [5,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [6,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [7,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [8,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [9,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [10,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [11,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [12,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [13,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [14,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [15,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [16,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [17,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [18,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [19,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [20,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##       matleave_06 matleave_07 matleave_08 matleave_09 matleave_10 matleave_11
+##  [1,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [2,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [3,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [4,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [5,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [6,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [7,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [8,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+##  [9,]       FALSE       FALSE       FALSE       FALSE        TRUE       FALSE
+## [10,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [11,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [12,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [13,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [14,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [15,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [16,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [17,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [18,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [19,]       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE
+## [20,]       FALSE        TRUE        TRUE       FALSE       FALSE       FALSE
+##       matleave_12 matleave_13
+##  [1,]       FALSE       FALSE
+##  [2,]       FALSE       FALSE
+##  [3,]       FALSE       FALSE
+##  [4,]       FALSE       FALSE
+##  [5,]       FALSE       FALSE
+##  [6,]       FALSE       FALSE
+##  [7,]       FALSE       FALSE
+##  [8,]       FALSE       FALSE
+##  [9,]       FALSE       FALSE
+## [10,]       FALSE       FALSE
+## [11,]       FALSE       FALSE
+## [12,]       FALSE       FALSE
+## [13,]       FALSE       FALSE
+## [14,]       FALSE       FALSE
+## [15,]       FALSE       FALSE
+## [16,]       FALSE       FALSE
+## [17,]       FALSE       FALSE
+## [18,]       FALSE       FALSE
+## [19,]       FALSE       FALSE
+## [20,]       FALSE       FALSE</code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="selecting-filtering-ploting.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign 0 to those NA data</span></span>
+<span id="cb267-2"><a href="selecting-filtering-ploting.html#cb267-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb267-3"><a href="selecting-filtering-ploting.html#cb267-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb267-4"><a href="selecting-filtering-ploting.html#cb267-4" aria-hidden="true" tabindex="-1"></a><span class="co"># anyNA() to check if there are still NA cells.</span></span>
+<span id="cb267-5"><a href="selecting-filtering-ploting.html#cb267-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anyNA</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="selecting-filtering-ploting.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(is.na()) to count the number of NA</span></span>
+<span id="cb269-2"><a href="selecting-filtering-ploting.html#cb269-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(matleave))</span></code></pre></div>
+<pre class="output"><code>## [1] 0</code></pre>
+</div>
+<div id="filtering-data" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Filtering data<a href="selecting-filtering-ploting.html#filtering-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="filtered-by-the-last-year-value" class="section level4 hasAnchor" number="5.1.5.1">
+<h4><span class="header-section-number">5.1.5.1</span> Filtered by the last year value<a href="selecting-filtering-ploting.html#filtered-by-the-last-year-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>matleave[matleave$'matleave_13'==5, ]</code>中的第一個<code>matleave</code>表示要篩選的資料集，中括號中的<code>matleave$'matleave_13'==5</code>是篩選條件，表示<code>matleave</code>資料集中的<code>matleave_13</code>變數的值等於<code>5</code>。中括號中的逗號後方未有欄為名稱表示保留所有欄位的資料，僅篩選出符合條件的列，並將篩選結果賦值給變數<code>m5</code>。</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="selecting-filtering-ploting.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use logical comparison to see if the last year equals to 5</span></span>
+<span id="cb271-2"><a href="selecting-filtering-ploting.html#cb271-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign matching data to var m5</span></span>
+<span id="cb271-3"><a href="selecting-filtering-ploting.html#cb271-3" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span><span class="sc">==</span><span class="dv">5</span>, ]</span>
+<span id="cb271-4"><a href="selecting-filtering-ploting.html#cb271-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-5"><a href="selecting-filtering-ploting.html#cb271-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to count matching data</span></span>
+<span id="cb271-6"><a href="selecting-filtering-ploting.html#cb271-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m5)</span></code></pre></div>
+<pre class="output"><code>## [1] 34</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="selecting-filtering-ploting.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is it possible to use length() to check the data length?</span></span>
+<span id="cb273-2"><a href="selecting-filtering-ploting.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;</span></span>
+<span id="cb273-3"><a href="selecting-filtering-ploting.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave$&#39;matleave_13&#39;==5</span></span>
+<span id="cb273-4"><a href="selecting-filtering-ploting.html#cb273-4" aria-hidden="true" tabindex="-1"></a><span class="co"># length(matleave$&#39;matleave_13&#39;==5)</span></span></code></pre></div>
+</div>
+<div id="filtered-data-by-the-first-year-value" class="section level4 hasAnchor" number="5.1.5.2">
+<h4><span class="header-section-number">5.1.5.2</span> Filtered data by the first year value<a href="selecting-filtering-ploting.html#filtered-data-by-the-first-year-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="selecting-filtering-ploting.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is 5, and assign to var m55</span></span>
+<span id="cb274-2"><a href="selecting-filtering-ploting.html#cb274-2" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">==</span><span class="dv">5</span>,]</span>
+<span id="cb274-3"><a href="selecting-filtering-ploting.html#cb274-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb274-4"><a href="selecting-filtering-ploting.html#cb274-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows whose &#39;matleave_95&#39; is not 5, and assign to var m05</span></span>
+<span id="cb274-5"><a href="selecting-filtering-ploting.html#cb274-5" aria-hidden="true" tabindex="-1"></a>m05<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span><span class="sc">!=</span><span class="dv">5</span>,]</span></code></pre></div>
+</div>
+</div>
+<div id="plotting" class="section level3 hasAnchor" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Plotting<a href="selecting-filtering-ploting.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Plotting the second rows and all columns except 1st column</li>
+<li><strong>Question</strong> 為何要<code>unlist()</code>？請試著執行<code>barplot(matleave[2, -1])</code>這個沒有<code>unlist()</code>的版本，看看會有什麼錯誤訊息。資料結構有何差異呢？</li>
+<li>嘗試用<code>class()</code>或<code>str()</code>嘗試觀察沒有<code>unlist()</code>版本的資料，看看資料型態和有<code>unlist()</code>的會有何不同？</li>
+</ul>
+<div id="plotting-one-line" class="section level4 hasAnchor" number="5.1.6.1">
+<h4><span class="header-section-number">5.1.6.1</span> Plotting one line<a href="selecting-filtering-ploting.html#plotting-one-line" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="selecting-filtering-ploting.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row of m55</span></span>
+<span id="cb275-2"><a href="selecting-filtering-ploting.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, ])       # raise error</span></span>
+<span id="cb275-3"><a href="selecting-filtering-ploting.html#cb275-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb275-4"><a href="selecting-filtering-ploting.html#cb275-4" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the second row when neglecting the first column</span></span>
+<span id="cb275-5"><a href="selecting-filtering-ploting.html#cb275-5" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(m55[2, -1])     # raise error</span></span>
+<span id="cb275-6"><a href="selecting-filtering-ploting.html#cb275-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb275-7"><a href="selecting-filtering-ploting.html#cb275-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the data type of matleave[2, ]</span></span>
+<span id="cb275-8"><a href="selecting-filtering-ploting.html#cb275-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="selecting-filtering-ploting.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(matleave[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="selecting-filtering-ploting.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unlist() to convert a single row data.frame to a vector for barplot()</span></span>
+<span id="cb279-2"><a href="selecting-filtering-ploting.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<ul>
+<li>Testing</li>
+</ul>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="selecting-filtering-ploting.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1]) # select the 1st variable</span></span>
+<span id="cb280-2"><a href="selecting-filtering-ploting.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[ ,1]) # select the 1st column</span></span>
+<span id="cb280-3"><a href="selecting-filtering-ploting.html#cb280-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View(matleave[1, ]) # select the 1st row</span></span>
+<span id="cb280-4"><a href="selecting-filtering-ploting.html#cb280-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-5"><a href="selecting-filtering-ploting.html#cb280-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>])       <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="selecting-filtering-ploting.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[ ,<span class="dv">1</span>]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="selecting-filtering-ploting.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55[<span class="dv">1</span>, ]) <span class="co"># &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="selecting-filtering-ploting.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m55<span class="sc">$</span>iso3) <span class="co"># character (vector)</span></span></code></pre></div>
+<pre class="output"><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="more-arguments-args" class="section level4 hasAnchor" number="5.1.6.2">
+<h4><span class="header-section-number">5.1.6.2</span> More arguments (args)<a href="selecting-filtering-ploting.html#more-arguments-args" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>這行程式碼使用R中的barplot函數繪製一個長條圖，其中的參數說明如下：</p>
+<ol style="list-style-type: decimal">
+<li><p><code>unlist(m55[2, -1])</code>: 將<code>m55</code>資料集的第<code>2</code>行（不包括第1欄）轉換為一個向量，並作為長條圖的高度（即每個長條的高度）。</p></li>
+<li><p><code>ylim=c(0, 5)</code>: 設置y軸的範圍為0到5，即長條圖的最大高度為5。</p></li>
+<li><p><code>space=0</code>: 設置相鄰兩個長條之間的距離為0，即長條緊密相連。</p></li>
+<li><p><code>border=NA</code>: 設置長條的邊框為透明，即不顯示邊框。</p></li>
+<li><p><code>xaxt="n"</code>: 不顯示x軸的標籤。</p></li>
+<li><p><code>yaxt="n"</code>: 不顯示y軸的標籤。</p></li>
+</ol>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="selecting-filtering-ploting.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot() the unlisted second row (neglecting the first col)</span></span>
+<span id="cb288-2"><a href="selecting-filtering-ploting.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="selecting-filtering-ploting.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?barplot to know more argument of the function.</span></span>
+<span id="cb289-2"><a href="selecting-filtering-ploting.html#cb289-2" aria-hidden="true" tabindex="-1"></a>?barplot</span>
+<span id="cb289-3"><a href="selecting-filtering-ploting.html#cb289-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb289-4"><a href="selecting-filtering-ploting.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add arguments ylim, space, border, and axat/yaxt one by one to barplot()</span></span>
+<span id="cb289-5"><a href="selecting-filtering-ploting.html#cb289-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="selecting-filtering-ploting.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="selecting-filtering-ploting.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>)</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-9-4.png" width="672" /></p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="selecting-filtering-ploting.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-9-5.png" width="672" /></p>
+</div>
+<div id="plotting-multiple-lines" class="section level4 hasAnchor" number="5.1.6.3">
+<h4><span class="header-section-number">5.1.6.3</span> Plotting multiple lines<a href="selecting-filtering-ploting.html#plotting-multiple-lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>底下可以看見每一行非常相似且一致的特徵，僅有<code>matleave</code>內的索引由1被列出至6。因此，最好的方法是用迴圈（for-loop）的方式將相同的程式碼，從1~6之間做六次。</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="selecting-filtering-ploting.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the first row</span></span>
+<span id="cb293-2"><a href="selecting-filtering-ploting.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb293-3"><a href="selecting-filtering-ploting.html#cb293-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-4"><a href="selecting-filtering-ploting.html#cb293-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the second to 6th rows</span></span>
+<span id="cb293-5"><a href="selecting-filtering-ploting.html#cb293-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="selecting-filtering-ploting.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb294-2"><a href="selecting-filtering-ploting.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb294-3"><a href="selecting-filtering-ploting.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb294-4"><a href="selecting-filtering-ploting.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[<span class="dv">6</span>, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+</div>
+<div id="for-loop-to-plot-multiple-lines" class="section level4 hasAnchor" number="5.1.6.4">
+<h4><span class="header-section-number">5.1.6.4</span> for-loop to plot multiple lines<a href="selecting-filtering-ploting.html#for-loop-to-plot-multiple-lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>這段R語言程式碼使用for-loop來重複執行一個指定的程式區塊，將<code>m55</code>資料集的前六行資料分別繪製成長條圖。在這段程式碼中，變數<code>i</code>控制了for-loop的迭代次數，它從1到6依次取值，然後依次執行所指定的程式區塊。</p>
+<p>一般的for-loop的結構如下：<code>for (variable in sequence) {# code block to be executed}</code>。其中，變數<code>variable</code>是用來控制for-loop的迭代次數的，它會從序列<code>sequence</code>中逐一取出元素，並將其賦值給變數<code>variable</code>，然後執行大括號<code>{...}</code>中所指定的程式區塊。</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="selecting-filtering-ploting.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use for loop and use i as index to barplot multiple subgraphs</span></span>
+<span id="cb295-2"><a href="selecting-filtering-ploting.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
+<span id="cb295-3"><a href="selecting-filtering-ploting.html#cb295-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb295-4"><a href="selecting-filtering-ploting.html#cb295-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-11-1.png" width="672" /><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+</div>
+<div id="subplots" class="section level4 hasAnchor" number="5.1.6.5">
+<h4><span class="header-section-number">5.1.6.5</span> Subplots<a href="selecting-filtering-ploting.html#subplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>在R語言中，<code>par</code>（parameter的縮寫）是一個用於設置繪圖參數的函數，通過它可以控制繪圖的外觀、尺寸、排列等各方面，以便更好地展示數據和分析結果。par函數可以用來設置以下參數：</p>
+<ol style="list-style-type: decimal">
+<li><p><code>mfrow</code>：設置畫布的分割，即將畫布分為多少行和多少列。</p></li>
+<li><p><code>mai</code>：設置畫布的邊緣大小，包括上下左右四個邊緣的大小。</p></li>
+<li><p><code>cex</code>：設置字體大小的縮放比例。</p></li>
+<li><p><code>col</code>：設置線條、點和字體的顏色。</p></li>
+<li><p><code>pch</code>：設置散點圖中點的形狀。</p></li>
+<li><p><code>lty</code>：設置線條的類型。</p></li>
+</ol>
+<p>在這段程式碼中，<code>par</code>函數被用來設置畫布的分割和邊緣大小，具體來說，<code>par(mfrow=c(3,2), mai= c(0.2, 0.2, 0.2, 0.2))</code>表示將畫布分為3行2列的子圖，並設置邊緣大小為0.2，包括上下左右四個邊緣。這樣可以方便地在同一張畫布上顯示多個圖形，並控制它們之間的排列和間距。</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="selecting-filtering-ploting.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ?par to get more plotting parameters</span></span>
+<span id="cb296-2"><a href="selecting-filtering-ploting.html#cb296-2" aria-hidden="true" tabindex="-1"></a>?par</span>
+<span id="cb296-3"><a href="selecting-filtering-ploting.html#cb296-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-4"><a href="selecting-filtering-ploting.html#cb296-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up the layout of subgraphs</span></span>
+<span id="cb296-5"><a href="selecting-filtering-ploting.html#cb296-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use the parameter main=c(0.2, 0.2, 0.2, 0.2) to thrink the padding of figures.</span></span>
+<span id="cb296-6"><a href="selecting-filtering-ploting.html#cb296-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb296-7"><a href="selecting-filtering-ploting.html#cb296-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
+<span id="cb296-8"><a href="selecting-filtering-ploting.html#cb296-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb296-9"><a href="selecting-filtering-ploting.html#cb296-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="selecting-filtering-ploting.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot more rows to see what happens</span></span>
+<span id="cb297-2"><a href="selecting-filtering-ploting.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb297-3"><a href="selecting-filtering-ploting.html#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb297-4"><a href="selecting-filtering-ploting.html#cb297-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">space=</span><span class="dv">0</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb297-5"><a href="selecting-filtering-ploting.html#cb297-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/pml-plot-test-1.png" width="672" /></p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="selecting-filtering-ploting.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all subplots in a figure</span></span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/pml-plot-test-2.png" width="672" /></p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="selecting-filtering-ploting.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow() to check number of row of m55.</span></span>
+<span id="cb299-2"><a href="selecting-filtering-ploting.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m55)</span></code></pre></div>
+<pre class="output"><code>## [1] 18</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="selecting-filtering-ploting.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use par() to set-up plotting parameters.</span></span>
+<span id="cb301-2"><a href="selecting-filtering-ploting.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb301-3"><a href="selecting-filtering-ploting.html#cb301-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-4"><a href="selecting-filtering-ploting.html#cb301-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use for-loop to plot all graph as subgraph</span></span>
+<span id="cb301-5"><a href="selecting-filtering-ploting.html#cb301-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
+<span id="cb301-6"><a href="selecting-filtering-ploting.html#cb301-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb301-7"><a href="selecting-filtering-ploting.html#cb301-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/plot-m55-1.png" width="672" /></p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="selecting-filtering-ploting.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb302-2"><a href="selecting-filtering-ploting.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55)){</span>
+<span id="cb302-3"><a href="selecting-filtering-ploting.html#cb302-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb302-4"><a href="selecting-filtering-ploting.html#cb302-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb302-5"><a href="selecting-filtering-ploting.html#cb302-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/plot-caption-1.png" width="672" /></p>
+</div>
+</div>
+<div id="practice.-plotting-more" class="section level3 hasAnchor" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> Practice. Plotting more<a href="selecting-filtering-ploting.html#practice.-plotting-more" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="selecting-filtering-ploting.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting matleave_95 != 5 but matleve_13 == 5</span></span>
+<span id="cb303-2"><a href="selecting-filtering-ploting.html#cb303-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb303-3"><a href="selecting-filtering-ploting.html#cb303-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting for matleave_13 == 4</span></span></code></pre></div>
+</div>
+<div id="practice.-selecting-and-filtering-by-dplyr-i" class="section level3 hasAnchor" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Practice. Selecting and filtering by dplyr I<a href="selecting-filtering-ploting.html#practice.-selecting-and-filtering-by-dplyr-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="selecting-filtering-ploting.html#cb304-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
+<span id="cb304-2"><a href="selecting-filtering-ploting.html#cb304-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-3"><a href="selecting-filtering-ploting.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns by index</span></span>
+<span id="cb304-4"><a href="selecting-filtering-ploting.html#cb304-4" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave &lt;- df[ , c(3, 6:24)]</span></span>
+<span id="cb304-5"><a href="selecting-filtering-ploting.html#cb304-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-6"><a href="selecting-filtering-ploting.html#cb304-6" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
+<span id="cb304-7"><a href="selecting-filtering-ploting.html#cb304-7" aria-hidden="true" tabindex="-1"></a><span class="co"># matleave[is.na(matleave)] &lt;- 0</span></span>
+<span id="cb304-8"><a href="selecting-filtering-ploting.html#cb304-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-9"><a href="selecting-filtering-ploting.html#cb304-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb304-10"><a href="selecting-filtering-ploting.html#cb304-10" aria-hidden="true" tabindex="-1"></a><span class="co"># m5 &lt;- matleave[matleave$&#39;matleave_13&#39; == 5, ]</span></span>
+<span id="cb304-11"><a href="selecting-filtering-ploting.html#cb304-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-12"><a href="selecting-filtering-ploting.html#cb304-12" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb304-13"><a href="selecting-filtering-ploting.html#cb304-13" aria-hidden="true" tabindex="-1"></a><span class="co"># m55&lt;- m5[m5$&#39;matleave_95&#39; == 5,]</span></span>
+<span id="cb304-14"><a href="selecting-filtering-ploting.html#cb304-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-15"><a href="selecting-filtering-ploting.html#cb304-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb304-16"><a href="selecting-filtering-ploting.html#cb304-16" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb304-17"><a href="selecting-filtering-ploting.html#cb304-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
+<span id="cb304-18"><a href="selecting-filtering-ploting.html#cb304-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
+<span id="cb304-19"><a href="selecting-filtering-ploting.html#cb304-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb304-20"><a href="selecting-filtering-ploting.html#cb304-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb304-21"><a href="selecting-filtering-ploting.html#cb304-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="more-clean-version" class="section level3 hasAnchor" number="5.1.9">
+<h3><span class="header-section-number">5.1.9</span> (More) Clean version<a href="selecting-filtering-ploting.html#more-clean-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="selecting-filtering-ploting.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readxl::read_excel() to import the xls file</span></span>
+<span id="cb305-2"><a href="selecting-filtering-ploting.html#cb305-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
+<span id="cb305-3"><a href="selecting-filtering-ploting.html#cb305-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-4"><a href="selecting-filtering-ploting.html#cb305-4" aria-hidden="true" tabindex="-1"></a><span class="co"># select iso3, and matleave columns by index</span></span>
+<span id="cb305-5"><a href="selecting-filtering-ploting.html#cb305-5" aria-hidden="true" tabindex="-1"></a>matleave <span class="ot">&lt;-</span> df[ , <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb305-6"><a href="selecting-filtering-ploting.html#cb305-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-7"><a href="selecting-filtering-ploting.html#cb305-7" aria-hidden="true" tabindex="-1"></a><span class="co"># str() to inspect the data structure of </span></span>
+<span id="cb305-8"><a href="selecting-filtering-ploting.html#cb305-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matleave)</span></code></pre></div>
+<pre class="output"><code>## tibble [197 × 20] (S3: tbl_df/tbl/data.frame)
+##  $ iso3       : chr [1:197] &quot;AFG&quot; &quot;ALB&quot; &quot;DZA&quot; &quot;AND&quot; ...
+##  $ matleave_95: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_96: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_97: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_98: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_99: num [1:197] 2 5 3 2 2 2 2 3 1 5 ...
+##  $ matleave_00: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_01: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_02: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_03: num [1:197] 2 5 3 3 2 2 2 3 1 5 ...
+##  $ matleave_04: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_05: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_06: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_07: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_08: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_09: num [1:197] 2 5 3 3 2 2 2 5 1 5 ...
+##  $ matleave_10: num [1:197] 2 5 3 3 2 2 2 5 NA 5 ...
+##  $ matleave_11: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_12: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...
+##  $ matleave_13: num [1:197] 2 5 3 3 2 2 2 5 3 5 ...</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="selecting-filtering-ploting.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select all NA cells and assign 0 to them</span></span>
+<span id="cb307-2"><a href="selecting-filtering-ploting.html#cb307-2" aria-hidden="true" tabindex="-1"></a>matleave[<span class="fu">is.na</span>(matleave)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb307-3"><a href="selecting-filtering-ploting.html#cb307-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb307-4"><a href="selecting-filtering-ploting.html#cb307-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb307-5"><a href="selecting-filtering-ploting.html#cb307-5" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> matleave[matleave<span class="sc">$</span><span class="st">&#39;matleave_13&#39;</span> <span class="sc">==</span> <span class="dv">5</span>, ]</span>
+<span id="cb307-6"><a href="selecting-filtering-ploting.html#cb307-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb307-7"><a href="selecting-filtering-ploting.html#cb307-7" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows by condition</span></span>
+<span id="cb307-8"><a href="selecting-filtering-ploting.html#cb307-8" aria-hidden="true" tabindex="-1"></a>m55<span class="ot">&lt;-</span> m5[m5<span class="sc">$</span><span class="st">&#39;matleave_95&#39;</span> <span class="sc">==</span> <span class="dv">5</span>,]</span>
+<span id="cb307-9"><a href="selecting-filtering-ploting.html#cb307-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb307-10"><a href="selecting-filtering-ploting.html#cb307-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb307-11"><a href="selecting-filtering-ploting.html#cb307-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>), <span class="at">mai=</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))</span>
+<span id="cb307-12"><a href="selecting-filtering-ploting.html#cb307-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m55))){</span>
+<span id="cb307-13"><a href="selecting-filtering-ploting.html#cb307-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="fu">unlist</span>(m55[i,<span class="sc">-</span><span class="dv">1</span>]),</span>
+<span id="cb307-14"><a href="selecting-filtering-ploting.html#cb307-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">border=</span><span class="cn">NA</span>, <span class="at">space=</span><span class="dv">0</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
+<span id="cb307-15"><a href="selecting-filtering-ploting.html#cb307-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(m55[i,<span class="dv">1</span>], <span class="at">line =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">cex.main=</span><span class="dv">3</span>)</span>
+<span id="cb307-16"><a href="selecting-filtering-ploting.html#cb307-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="R21_readxl_paid_maternal_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="more-the-fittest-version-to-compute-staysame" class="section level3 hasAnchor" number="5.1.10">
+<h3><span class="header-section-number">5.1.10</span> (More) The fittest version to compute staySame<a href="selecting-filtering-ploting.html#more-the-fittest-version-to-compute-staysame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="selecting-filtering-ploting.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame version</span></span>
+<span id="cb308-2"><a href="selecting-filtering-ploting.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="co"># staySame &lt;- apply(m5[,2:20], 1, function(x) length(unique(x[!is.na(x)]))) </span></span>
+<span id="cb308-3"><a href="selecting-filtering-ploting.html#cb308-3" aria-hidden="true" tabindex="-1"></a><span class="co"># m55 &lt;- m5[staySame, ]</span></span>
+<span id="cb308-4"><a href="selecting-filtering-ploting.html#cb308-4" aria-hidden="true" tabindex="-1"></a><span class="co"># m50 &lt;- m5[!staySame, ]</span></span></code></pre></div>
+
+</div>
+</div>
+<div id="paid-maternity-leave-base-to-dplyr" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Paid Maternity Leave (base to dplyr)<a href="selecting-filtering-ploting.html#paid-maternity-leave-base-to-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="selecting-filtering-ploting.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb309-2"><a href="selecting-filtering-ploting.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb309-3"><a href="selecting-filtering-ploting.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb309-4"><a href="selecting-filtering-ploting.html#cb309-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-5"><a href="selecting-filtering-ploting.html#cb309-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb309-6"><a href="selecting-filtering-ploting.html#cb309-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-7"><a href="selecting-filtering-ploting.html#cb309-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(iso3, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-8"><a href="selecting-filtering-ploting.html#cb309-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(matleave_13 <span class="sc">==</span> <span class="dv">5</span>, matleave_95 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-9"><a href="selecting-filtering-ploting.html#cb309-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;degree&quot;</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-10"><a href="selecting-filtering-ploting.html#cb309-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(year, degree, fill = 0) %&gt;% View</span></span>
+<span id="cb309-11"><a href="selecting-filtering-ploting.html#cb309-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb309-12"><a href="selecting-filtering-ploting.html#cb309-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year2 =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(year, <span class="st">&quot;matleave_%y&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb309-13"><a href="selecting-filtering-ploting.html#cb309-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year3 =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(year2)) <span class="sc">%&gt;%</span></span>
+<span id="cb309-14"><a href="selecting-filtering-ploting.html#cb309-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb309-15"><a href="selecting-filtering-ploting.html#cb309-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year3, degree) <span class="sc">+</span> </span>
+<span id="cb309-16"><a href="selecting-filtering-ploting.html#cb309-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb309-17"><a href="selecting-filtering-ploting.html#cb309-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> iso3) <span class="sc">+</span></span>
+<span id="cb309-18"><a href="selecting-filtering-ploting.html#cb309-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="R22_base2dplyr_paid_maternity_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dataframe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="counting-and-cross-tabulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R21_readxl_paid_maternal.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R for Data Journalism.pdf", "R for Data Journalism.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

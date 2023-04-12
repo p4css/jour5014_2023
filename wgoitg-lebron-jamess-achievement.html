@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Data manipultaiton: Join data | R for Data Journalism</title>
+  <title>Chapter 12 WGOITG: LeBron James’s Achievement | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Data manipultaiton: Join data | R for Data Journalism" />
+  <meta property="og:title" content="Chapter 12 WGOITG: LeBron James’s Achievement | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Data manipultaiton: Join data | R for Data Journalism" />
+  <meta name="twitter:title" content="Chapter 12 WGOITG: LeBron James’s Achievement | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="from-base-r-to-dplyr.html"/>
-<link rel="next" href="data-manipulation-ii.html"/>
+<link rel="prev" href="scraping-104.html"/>
+<link rel="next" href="visualization-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -569,221 +569,270 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-manipultaiton-join-data" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Data manipultaiton: Join data<a href="data-manipultaiton-join-data.html#data-manipultaiton-join-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="讀取內政部人口統計資料" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> 讀取內政部人口統計資料<a href="data-manipultaiton-join-data.html#讀取內政部人口統計資料" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>先使用<code>slice(-1)</code>減去第一行中文欄位名稱。再來，目前縣市鄉鎮市區（<code>site_id</code>）和村里（<code>village</code>）分別是兩個變項，由於不同的鄉鎮市可能會有相同的村里名，所以把<code>site_id</code>與<code>village</code>粘接起來成為完整的村里名<code>vname</code>。</p>
-<p>這邊我多加了一行程式碼讓<code>vname</code>可以排到前面一點的變項欄，可以用<code>select()</code>達到這個目的，我之後的變項欄的還要寶劉，所以我多打一個<code>everything()</code>就可以把剩下的變項欄都擺放在後面。因此這個重排變項欄的完整程式碼為<code>select(vname, everything())</code>。</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="data-manipultaiton-join-data.html#cb361-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/opendata107Y030.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb361-2"><a href="data-manipultaiton-join-data.html#cb361-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb361-3"><a href="data-manipultaiton-join-data.html#cb361-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">vname =</span> <span class="fu">str_c</span>(site_id, village)) <span class="sc">%&gt;%</span></span>
-<span id="cb361-4"><a href="data-manipultaiton-join-data.html#cb361-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vname, <span class="fu">everything</span>())</span>
-<span id="cb361-5"><a href="data-manipultaiton-join-data.html#cb361-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-6"><a href="data-manipultaiton-join-data.html#cb361-6" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> head</span></code></pre></div>
-<pre class="output"><code>## # A tibble: 6 × 157
-##   vname statis…¹ distr…² site_id village singl…³ singl…⁴ singl…⁵ singl…⁶ singl…⁷
-##   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-## 1 新北… 107      650000… 新北市… 留侯里  118     36      44      57      39     
-## 2 新北… 107      650000… 新北市… 流芳里  119     35      52      41      24     
-## 3 新北… 107      650000… 新北市… 赤松里  60      25      31      14      9      
-## 4 新北… 107      650000… 新北市… 黃石里  113     36      30      29      28     
-## 5 新北… 107      650000… 新北市… 挹秀里  123     39      60      58      35     
-## 6 新北… 107      650000… 新北市… 湳興里  351     132     151     163     126    
-## # … with 147 more variables: single_age_35_39_m &lt;chr&gt;,
-## #   single_age_40_44_m &lt;chr&gt;, single_age_45_49_m &lt;chr&gt;,
-## #   single_age_50_54_m &lt;chr&gt;, single_age_55_59_m &lt;chr&gt;,
-## #   single_age_60_64_m &lt;chr&gt;, single_age_65_69_m &lt;chr&gt;,
-## #   single_age_70_74_m &lt;chr&gt;, single_age_75_79_m &lt;chr&gt;,
-## #   single_age_80_84_m &lt;chr&gt;, single_age_85_89_m &lt;chr&gt;,
-## #   single_age_90_94_m &lt;chr&gt;, single_age_95_99_m &lt;chr&gt;, …</code></pre>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="data-manipultaiton-join-data.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="co"># raw %&gt;% glimpse()</span></span></code></pre></div>
-<div id="分析規劃" class="section level3 hasAnchor" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> 分析規劃<a href="data-manipultaiton-join-data.html#分析規劃" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>建立各鄉鎮市區的老年人口比例</li>
-<li>建立各鄉鎮市區的年齡中位數</li>
-<li>讀取所有（某一）公投案的結果</li>
-<li>視覺化年齡與公投結果間的相關性</li>
-</ol>
-</div>
-<div id="清理資料" class="section level3 hasAnchor" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> 清理資料<a href="data-manipultaiton-join-data.html#清理資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我們之前在談資料的「觀察、統計、和二維表格」三種型態時，曾經談到統計型態和二維表格型態間的差異。當時所提到的「統計型態」，也就是每個變項欄恰好是我們所認知的單一變項（如每一個變項欄恰是人口統計變項的年齡、性別、教育程度、數量），會有助於進行統計分析，也就是tidy型態的資料。相較之下，上述的表格是把資料攤成二維的型態，每一個變項是某個年齡層的某種性別的某種婚姻狀況，包含了三個人口統計變項，是方便一般大眾讀的，但不是適合進行統計的tidy型態。 這類的資料tidyverse的相關套件把它稱為tidy form。遵守tidy form形式的資料是，每一個欄恰好一個變項。例如在內政部開放資料「15歲以上現住人口按性別、年齡、婚姻狀況及教育程度分」中，每個變數（年齡、婚姻狀況、教育程度、人口數等等）均各自為一個欄上的變項。</p>
+<div id="wgoitg-lebron-jamess-achievement" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> WGOITG: LeBron James’s Achievement<a href="wgoitg-lebron-jamess-achievement.html#wgoitg-lebron-jamess-achievement" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>這個案例的靈感來自於紐約時報於2023年2月7日所發布的一篇新聞「<a href="https://www.nytimes.com/interactive/2023/02/07/sports/basketball/lebron-james-kareem-abdul-jabbar-points.html">How LeBron James Outscored Kareem Abdul-Jabbar and All the N.B.A. Greats</a>」。該篇新聞的破題點在於LeBron James 打破 Kareem Abdul-Jabbar 的紀錄，成為 NBA 歷史上得分王，這是許多人認為無法達成的成就。今年 38 歲的 James，本季平均每場比賽可以攻下 30.2 分，以 38,390 分超越了 Abdul-Jabbar 的 38,387 分。Abdul-Jabbar 以 sky hook 聞名，而 James 則透過多種得分方式積累分數，包括近年來在聯盟中日益盛行的三分球。James 的長壽、創意、天賦和能力讓他達成了這個成就。但實際上，這篇新聞同時也凸顯了 NBA 在過去50年的演變。</p>
+<p>這篇新聞中運用了<a href="https://www.basketball-reference.com/">NBA球員與球賽資料庫</a>中250名頂尖球員的資料來繪製視覺圖表，頂尖球員援引該網站的定義，為歷年的每場平均得分（PTS）。其用了折線圖、長條圖、散佈圖等多種視覺呈現方法，並採用了多項指標來凸顯LeBron James的成就，包含年齡、累積得分數、場均得分數、三分球與二分球的比例等。</p>
+<p>除了資料視覺化外，這個案例也是相當好的爬蟲練習，可用R語言的rvest套件來爬取<a href="https://www.basketball-reference.com/" class="uri">https://www.basketball-reference.com/</a>網站的球員資料，包含每個球季的比分，甚至著名球員每場的得分和進球數等等。該網站的網頁多為具有id的HTML表格，相對來說爬取難度較低，但如果要仿照該篇新聞來製作視覺圖表，需要爬取多個頁面的資料，反而是訓練學生從篩檢資料到產生新聞的一個好範例。</p>
+<div id="get-top250-players" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Get top250 players<a href="wgoitg-lebron-jamess-achievement.html#get-top250-players" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>事實上我是知道有NBA球員比分網站的，看到這則新聞時我就去線上查找了相關的網站<a href="https://www.basketball-reference.com" class="uri">https://www.basketball-reference.com</a>。而且該網站的球員資料是表格形式，代表我們可以用一些比較方便的函式（<code>html_table()</code>）直接將該表格的內容轉為data.frame。</p>
+<p>但目前（2023/04/01）的球員數共有五千多人，我們不可能將所有的球員通通繪製在圖上，反而會影響我們看到重要的訊息，因此要有效且有意義地減少要視覺化的資料量。這有幾種策略，一種是根據目的取出想要比較的球員、一種是直接設一個閥值（例如職涯超過15年的約90人），一種是看看該資料網站上有沒有列出一些頂尖球員名單。（猜想）紐約時報用的是該網站上的Top 250，因此第一個步驟要做的就是先把要分析的這250名球員的名冊爬取下來，之後再逐一爬取每個球員的資料紀錄。</p>
+<p>這段程式碼的目的是從網站 “<a href="https://www.basketball-reference.com%22">https://www.basketball-reference.com”</a> 中提取出排名前幾位的籃球員生涯表現數據，以及每個球員的個人資料頁面連結。Top 250球員的頁面網址為<a href="https://www.basketball-reference.com/leaders/per_career.html" class="uri">https://www.basketball-reference.com/leaders/per_career.html</a>。</p>
+<p>現在，我們可以使用<code>rvest</code>套件中的<code>read_html()</code>函數讀取網頁的 HTML 內容，該。接著傳遞給下一個函數<code>html_node()</code>，並指定要選取的 HTML 元素 ID 為<code>nba</code>。這個 ID 代表了包含球員表現數據的表格。最後，使用<code>html_table()</code> 函數提取表格資料並將結果存入<code>top_players</code>變數中。</p>
 <ul>
-<li><a href="https://data.gov.tw/dataset/32944">15歲以上現住人口按性別、年齡、婚姻狀況及教育程度分 | 政府資料開放平臺 (data.gov.tw)</a></li>
+<li><p><strong><code>read_html(url)</code></strong> 函數是 <strong><code>rvest</code></strong> 套件中的一個函數，它可讀取指定網址的 HTML 內容，以轉換為R的物件。</p></li>
+<li><p><strong><code>html_node()</code></strong> 函數則可用於選擇 HTML 內容中的指定元素。指定元素的方法是使用XPath或CSS Selector，本範例採用的是CSS Selector。若所要選取的同類型元素大於一個，那就要使用<code>html_nodes()</code>，所取得的結果會存入一個由1開始編號的<code>List</code>。</p></li>
+<li><p>如果前一個步驟所指定的元素恰巧是一個表格的話，那我們就可以使用<code>html_table()</code>直接將表格轉換為一個R的data.frame，但如果不是表格的話，就必須要搭配使用<code>html_text()</code>或<code>html_attr()</code>來取出指定元素中的所需內容。</p></li>
 </ul>
-<p>接下來，我要把表格型態的資料轉為tidy型態資料。原本的資料是這樣的型態。</p>
-<p><img src="images/R04_fig1.png" /></p>
-<p>我要將後方的數值變項欄（<code>single_age_15down_m</code>等）轉為單一變項key的值，再把其所對應到的資料值，也轉為單一變項value。請注意看上圖和程式碼後方結果圖的顏色區塊。南投縣中寮鄉中寮村（綠色）被複製且展開為多列。而原本多個年齡層和資料的變數項（紅色）變成一個變項欄的資料，分別對應到其原本對應的數值（藍色）。</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="data-manipultaiton-join-data.html#cb364-1" aria-hidden="true" tabindex="-1"></a>tidy_data <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb364-2"><a href="data-manipultaiton-join-data.html#cb364-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;key&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>, <span class="at">cols =</span> <span class="dv">6</span><span class="sc">:</span><span class="fu">ncol</span>(.))</span></code></pre></div>
-<p>相對於<code>pivot_wider()</code>把變項展開成欄，<code>pivot_longer()</code>函式可以收合被展開的變項，在此將要收合的變數名稱統一稱為<code>key</code>，並將該變數所對應到的數值稱為<code>value</code>。並且我用<code>6:ncol(.)</code>來指定我要收合哪些變項欄。</p>
+<p>做完<code>html_table()</code>後的dataframe存於<code>top_players</code>，該dataframe共有三個變項：Rk（Rank）、PER（每場平均得分）、Player（球員名）。但該dataframe中缺少球員資料頁面的連結，所以需要另外再爬取一次球員名中的連結。取得的方式還是那三個步驟</p>
 <ul>
-<li><code>ncol(.)</code>的「<code>.</code>」代表從前面<code>%&gt;%</code> pipe進來的那個data.frame。</li>
-<li><code>pivot_longer()</code>後資料列從7760增加至1,179,520列。（灰底部分用來觀察結果用）</li>
+<li><p><code>read_html()</code>：取得該url的網頁內容並轉為R的物件。</p></li>
+<li><p><code>html_node()</code>/<code>html_nodes()</code>：選取所需的HTML元素。此時我們要娶的是<code>#nba</code>這個表格中每一列<code>&lt;tr&gt;</code>的第二欄<code>&lt;td&gt;</code>中的超鏈結<code>&lt;a&gt;</code>。</p></li>
+<li><p><code>html_text()</code>/<code>html_attr()</code>/<code>html_table()</code>：抽取所選取的HTML元素內容。此時要抽取的是<code>&lt;a&gt;</code>中的超鏈結，也就是<code>&lt;a&gt;</code>的<code>href</code>屬性（Attribute），所以要用<code>html_attr("href")</code>。</p></li>
 </ul>
-<p>由於每一列恰好是一種婚姻狀態、一個年齡層和一個性別，所以，我們可以把<code>key</code>中的婚姻狀態、年齡層和性別切割出來做為變數。觀察<code>key</code>欄位發現其格式有一些規律性，主要是婚姻狀態_年齡下界_年齡上界_性別的形式。標準的範例如<code>married_15_10_m或widowed_25_29_f</code>，但有一些並非這種形式，例如：</p>
-<ul>
-<li><p><code>single_age_15_19_m</code>：其中<code>single_age</code>之間多了一個底線，所以把<code>single_age</code>取代為<code>single</code>就好。</p></li>
-<li><p><code>married_15down_m</code>：因為是<code>15down</code>少了一個底線，所以取代為<code>0_14</code>。</p></li>
-<li><p><code>married_100up_f</code>：因為<code>100up</code>少了一個底線，所以取代為<code>100_105</code>。</p></li>
-</ul>
-<p>之後，我使用<code>tidyr::separate()</code>函式將<code>key</code>切成四個變項，分別為<code>married</code>、<code>ageLower</code>、<code>ageUpper</code>、<code>gender</code>。</p>
-<ul>
-<li><code>separate()</code>有一個參數是<code>remove=T</code>（預設值），意思是說，當把<code>key</code>變項切割為四個變項後，預設把key變項給丟棄；但如果未來你還會用到<code>key</code>變項的話，你可以把<code>remove</code>改為<code>FALSE</code>，代表切割完後，還保留<code>key</code>變項。</li>
-<li><code>tidyr::separate()</code>：Given either regular expression or a vector of character positions, separate() turns a single character column into multiple columns.</li>
-</ul>
-<p>此時我清理出來的資料大致如下：</p>
-<p><img src="images/%E6%88%AA%E5%9C%96%202023-03-29%20%E4%B8%8B%E5%8D%889.01.09.png" /></p>
-<p>最後就剩零星的操作，包含轉換資料為數值型態、或者你也可以在這裡建立新的指標（例如年齡平均）。最後加上一個<code>arrange(vname)</code>讓他按照村里的全名排序。</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="data-manipultaiton-join-data.html#cb365-1" aria-hidden="true" tabindex="-1"></a>tidy_data <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb365-2"><a href="data-manipultaiton-join-data.html#cb365-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;key&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>, <span class="at">cols =</span> <span class="dv">6</span><span class="sc">:</span><span class="fu">ncol</span>(.)) <span class="sc">%&gt;%</span> </span>
-<span id="cb365-3"><a href="data-manipultaiton-join-data.html#cb365-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">key =</span> <span class="fu">str_replace</span>(key, <span class="st">&quot;_age&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb365-4"><a href="data-manipultaiton-join-data.html#cb365-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">key =</span> <span class="fu">str_replace</span>(key, <span class="st">&quot;100up&quot;</span>, <span class="st">&quot;100_110&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb365-5"><a href="data-manipultaiton-join-data.html#cb365-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">key =</span> <span class="fu">str_replace</span>(key, <span class="st">&quot;15down&quot;</span>, <span class="st">&quot;0_15&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb365-6"><a href="data-manipultaiton-join-data.html#cb365-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(key, <span class="fu">c</span>(<span class="st">&quot;married&quot;</span>, <span class="st">&quot;ageLower&quot;</span>, <span class="st">&quot;ageUpper&quot;</span>, <span class="st">&quot;gender&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb365-7"><a href="data-manipultaiton-join-data.html#cb365-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ageLower =</span> <span class="fu">as.numeric</span>(ageLower),</span>
-<span id="cb365-8"><a href="data-manipultaiton-join-data.html#cb365-8" aria-hidden="true" tabindex="-1"></a>           <span class="co"># age = str(ageLower, ageUpper), </span></span>
-<span id="cb365-9"><a href="data-manipultaiton-join-data.html#cb365-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">ageUpper =</span> <span class="fu">as.numeric</span>(ageUpper),</span>
-<span id="cb365-10"><a href="data-manipultaiton-join-data.html#cb365-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">value =</span> <span class="fu">as.numeric</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb365-11"><a href="data-manipultaiton-join-data.html#cb365-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>statistic_yyy) <span class="sc">%&gt;%</span></span>
-<span id="cb365-12"><a href="data-manipultaiton-join-data.html#cb365-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(vname)</span></code></pre></div>
+<p>抽取出來的連結往往是相對於主要連結的後半段，因此，最後要將所取得的連結黏接在主頁連結的後方，如<code>str_c(url.base, .)</code>。</p>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="wgoitg-lebron-jamess-achievement.html#cb478-1" aria-hidden="true" tabindex="-1"></a>url.base <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com&quot;</span></span>
+<span id="cb478-2"><a href="wgoitg-lebron-jamess-achievement.html#cb478-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/leaders/per_career.html&quot;</span></span>
+<span id="cb478-3"><a href="wgoitg-lebron-jamess-achievement.html#cb478-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb478-4"><a href="wgoitg-lebron-jamess-achievement.html#cb478-4" aria-hidden="true" tabindex="-1"></a>top_players <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb478-5"><a href="wgoitg-lebron-jamess-achievement.html#cb478-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#nba&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb478-6"><a href="wgoitg-lebron-jamess-achievement.html#cb478-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>()</span>
+<span id="cb478-7"><a href="wgoitg-lebron-jamess-achievement.html#cb478-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb478-8"><a href="wgoitg-lebron-jamess-achievement.html#cb478-8" aria-hidden="true" tabindex="-1"></a>top_players<span class="sc">$</span>plink <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb478-9"><a href="wgoitg-lebron-jamess-achievement.html#cb478-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#nba&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb478-10"><a href="wgoitg-lebron-jamess-achievement.html#cb478-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tr td:nth-child(2) a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb478-11"><a href="wgoitg-lebron-jamess-achievement.html#cb478-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb478-12"><a href="wgoitg-lebron-jamess-achievement.html#cb478-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_c</span>(url.base, .)</span>
+<span id="cb478-13"><a href="wgoitg-lebron-jamess-achievement.html#cb478-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb478-14"><a href="wgoitg-lebron-jamess-achievement.html#cb478-14" aria-hidden="true" tabindex="-1"></a>top_players</span></code></pre></div>
 </div>
-<div id="進階運用rowwise" class="section level3 hasAnchor" number="8.1.3">
-<h3><span class="header-section-number">8.1.3</span> 進階：運用<code>rowwise()</code><a href="data-manipultaiton-join-data.html#進階運用rowwise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="data-manipultaiton-join-data.html#cb366-1" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span> </span>
-<span id="cb366-2"><a href="data-manipultaiton-join-data.html#cb366-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">157</span>), as.numeric) <span class="sc">%&gt;%</span></span>
-<span id="cb366-3"><a href="data-manipultaiton-join-data.html#cb366-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb366-4"><a href="data-manipultaiton-join-data.html#cb366-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb366-5"><a href="data-manipultaiton-join-data.html#cb366-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">married =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">matches</span>(<span class="st">&quot;widowed|divorced|married&quot;</span>)), <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
-<span id="cb366-6"><a href="data-manipultaiton-join-data.html#cb366-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lt65 =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">matches</span>(<span class="st">&quot;65|70|75|80|85|90|95|100&quot;</span>)), <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
-<span id="cb366-7"><a href="data-manipultaiton-join-data.html#cb366-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vname, married, lt65) <span class="sc">%&gt;%</span> head</span></code></pre></div>
-<pre class="output"><code>## # A tibble: 6 × 3
-## # Rowwise: 
-##   vname              married  lt65
-##   &lt;chr&gt;                &lt;dbl&gt; &lt;dbl&gt;
-## 1 新北市板橋區留侯里     920   272
-## 2 新北市板橋區流芳里     826   280
-## 3 新北市板橋區赤松里     463   149
-## 4 新北市板橋區黃石里     632   210
-## 5 新北市板橋區挹秀里    1061   365
-## 6 新北市板橋區湳興里    3157   838</code></pre>
-</div>
-<div id="建立鄉鎮市區與村里指標" class="section level3 hasAnchor" number="8.1.4">
-<h3><span class="header-section-number">8.1.4</span> 建立鄉鎮市區與村里指標<a href="data-manipultaiton-join-data.html#建立鄉鎮市區與村里指標" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="使用group_by建立村里指標" class="section level4 hasAnchor" number="8.1.4.1">
-<h4><span class="header-section-number">8.1.4.1</span> 使用group_by()建立村里指標<a href="data-manipultaiton-join-data.html#使用group_by建立村里指標" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>將資料轉換為tidy型態後，接下來要做的事情是建立村里、鄉鎮市區、縣市的分級指標。針對每個村里，我希望計算出總人口數<code>people</code>（原本依據年齡與性別、婚姻情形分割）、老年人總數<code>elderSum</code>、曾結婚人口總數<code>marriedSum</code>。之後再分別除以該村里的總人口數<code>people</code>，老年人的人口比例<code>elderPerc</code>以及結婚的人口比例<code>marriedPerc</code>。</p>
-<p>因為一個村里的資料會根據不同性別、不同婚姻情形、不同年齡層被切割為不同的資料列，共2X4X19個資料列。因此，如果我想知道一個村里的總人口數或相關統計資料，就不需彙整這些資料列。<code>dplyr</code>有非常強大的<code>group_by()</code>可以根據群組來進行運算，我用村里代號（<code>district_code</code>）來做群組運算，所以是<code>group_by(district_code)</code>或用我們所產生的<code>vname</code>作為群組基準來運算<code>group_by(vname)</code>。</p>
-<p>語法上，通常<code>group_by()</code>之後經常會跟著<code>summarise()</code>，跟<code>mutate()</code>的語法有點像，都會產生新變數，但因為這邊用<code>group_by()</code>針對某個或某幾個變數做彙整，相當於<code>base</code>套件的<code>apply()</code>函式，因此會根據每個不同的群組做組內的數值彙整運算。比方說，在以下的程式碼中，我用<code>sum(num)</code>計算了該群組內的總人數，然後同樣累計了年齡大於等於65歲的總人數，以及婚姻狀態不為single的總人數。</p>
-<p>簡單地說，相當於按照不同的村里（<code>district_code</code>）各別做<code>value</code>的加總（該村里的總人口數）、篩選出年齡65歲以上的人口組別進行加總、篩選出不是單身者的人口組別進行加總。之後會加一個<code>ungroup()</code>解開群組。</p>
-<p>最後一行<code>left_join(raw %&gt;% select(vname, site_id), by = "vname")</code>是由於<code>group_by()</code>後會讓其他變數消失（例如鄉鎮市區名<code>site_id</code>），所以我希望將原本資料<code>raw</code>中的<code>site_id</code>給併回來。我可以抽取出<code>raw</code>中的<code>vname</code>和<code>site_id</code>兩個變項，然後以<code>vname</code>為key，用<code>left_join()</code>將<code>site_id</code>給併回來。</p>
-<p>筆記：當<code>group_by()</code>、<code>summarize()</code>後不參與的變項會消失，但可以透過<code>left_join()</code>的方式將原有的變項併回來。</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="data-manipultaiton-join-data.html#cb368-1" aria-hidden="true" tabindex="-1"></a>village_stat <span class="ot">&lt;-</span> tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb368-2"><a href="data-manipultaiton-join-data.html#cb368-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ageLower <span class="sc">&gt;=</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb368-3"><a href="data-manipultaiton-join-data.html#cb368-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vname) <span class="sc">%&gt;%</span></span>
-<span id="cb368-4"><a href="data-manipultaiton-join-data.html#cb368-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">legalPopulation =</span> <span class="fu">sum</span>(value),</span>
-<span id="cb368-5"><a href="data-manipultaiton-join-data.html#cb368-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">elderSum =</span> <span class="fu">sum</span>(value[ageLower <span class="sc">&gt;=</span> <span class="dv">65</span>]),</span>
-<span id="cb368-6"><a href="data-manipultaiton-join-data.html#cb368-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">marriedSum =</span> <span class="fu">sum</span>(value[married <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;married&quot;</span>, <span class="st">&quot;divorced&quot;</span>, <span class="st">&quot;widowed&quot;</span>)]),</span>
-<span id="cb368-7"><a href="data-manipultaiton-join-data.html#cb368-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">womenSum =</span> <span class="fu">sum</span>(value[gender <span class="sc">==</span> <span class="st">&quot;f&quot;</span>])) <span class="sc">%&gt;%</span></span>
-<span id="cb368-8"><a href="data-manipultaiton-join-data.html#cb368-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb368-9"><a href="data-manipultaiton-join-data.html#cb368-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(vname, site_id), <span class="at">by =</span> <span class="st">&quot;vname&quot;</span>)</span></code></pre></div>
-<p>測試</p>
-</div>
-<div id="將村里指標匯總為鄉鎮市區指標" class="section level4 hasAnchor" number="8.1.4.2">
-<h4><span class="header-section-number">8.1.4.2</span> 將村里指標匯總為鄉鎮市區指標<a href="data-manipultaiton-join-data.html#將村里指標匯總為鄉鎮市區指標" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>剛剛是根據村里（village）來建立指標，現在要根據鄉鎮市區來建立指標。走過前方的邏輯後，我們只需要把原本用來做<code>group_by()</code>的村里變項<code>vname</code>改為鄉鎮市區的變項<code>site_id</code>，就可以完成這件事，其他都一樣，你發現沒？</p>
-<p>不過這邊我要多做一件事。因為三民區和鳳山區兩個區非常的大（我猜），所以內政資料中的鄉鎮市區資料有分「三民一」、「三民二」、「鳳山一」、「鳳山二」。我們只要在彙整資料前，將<code>site_id</code>的這四類值取代好，便可以在鄉鎮市區的指標中一併彙整。以下我一共彙整出四種資料，分別為該區人口數（<code>legalPopulation</code>）、老年人口數（<code>elderSum</code>）、曾婚人口數（<code>marriedSum</code>）、女性人口數（<code>womenSum</code>）。不難想像接下來可以計算出各鄉鎮市區的老年人口比例、曾婚比例、女性比例等。</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="data-manipultaiton-join-data.html#cb369-1" aria-hidden="true" tabindex="-1"></a>town_stat <span class="ot">&lt;-</span> village_stat <span class="sc">%&gt;%</span></span>
-<span id="cb369-2"><a href="data-manipultaiton-join-data.html#cb369-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(site_id = str_sub(vname, 1, 6)) %&gt;%</span></span>
-<span id="cb369-3"><a href="data-manipultaiton-join-data.html#cb369-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">str_replace</span>(site_id, <span class="st">&quot;三民一|三民二&quot;</span>, <span class="st">&quot;三民區&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb369-4"><a href="data-manipultaiton-join-data.html#cb369-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">str_replace</span>(site_id, <span class="st">&quot;鳳山一|鳳山二&quot;</span>, <span class="st">&quot;鳳山區&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb369-5"><a href="data-manipultaiton-join-data.html#cb369-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
-<span id="cb369-6"><a href="data-manipultaiton-join-data.html#cb369-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">legalPopulation =</span>  <span class="fu">sum</span>(legalPopulation),</span>
-<span id="cb369-7"><a href="data-manipultaiton-join-data.html#cb369-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">elderSum =</span> <span class="fu">sum</span>(elderSum),</span>
-<span id="cb369-8"><a href="data-manipultaiton-join-data.html#cb369-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">marriedSum =</span> <span class="fu">sum</span>(marriedSum),</span>
-<span id="cb369-9"><a href="data-manipultaiton-join-data.html#cb369-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">womenSum =</span> <span class="fu">sum</span>(womenSum)</span>
-<span id="cb369-10"><a href="data-manipultaiton-join-data.html#cb369-10" aria-hidden="true" tabindex="-1"></a>              )<span class="sc">%&gt;%</span></span>
-<span id="cb369-11"><a href="data-manipultaiton-join-data.html#cb369-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+<div id="scraping-live-scores" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Scraping live scores<a href="wgoitg-lebron-jamess-achievement.html#scraping-live-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="testing" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Testing<a href="wgoitg-lebron-jamess-achievement.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="wgoitg-lebron-jamess-achievement.html#cb479-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/c/chambto01.html&quot;</span></span>
+<span id="cb479-2"><a href="wgoitg-lebron-jamess-achievement.html#cb479-2" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
+<span id="cb479-3"><a href="wgoitg-lebron-jamess-achievement.html#cb479-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#per_game&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb479-4"><a href="wgoitg-lebron-jamess-achievement.html#cb479-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>(<span class="at">convert=</span>T)</span></code></pre></div>
 </div>
 </div>
-<div id="視覺化測試老年人口數-x-曾婚人口數" class="section level3 hasAnchor" number="8.1.5">
-<h3><span class="header-section-number">8.1.5</span> 視覺化測試（老年人口數 x 曾婚人口數）<a href="data-manipultaiton-join-data.html#視覺化測試老年人口數-x-曾婚人口數" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="data-manipultaiton-join-data.html#cb370-1" aria-hidden="true" tabindex="-1"></a>town_stat <span class="sc">%&gt;%</span></span>
-<span id="cb370-2"><a href="data-manipultaiton-join-data.html#cb370-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">marriedPerc =</span> marriedSum <span class="sc">/</span> legalPopulation) <span class="sc">%&gt;%</span></span>
-<span id="cb370-3"><a href="data-manipultaiton-join-data.html#cb370-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">womenPerc =</span> womenSum <span class="sc">/</span> legalPopulation) <span class="sc">%&gt;%</span></span>
-<span id="cb370-4"><a href="data-manipultaiton-join-data.html#cb370-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">elderPerc =</span> elderSum <span class="sc">/</span> legalPopulation) <span class="sc">%&gt;%</span> </span>
-<span id="cb370-5"><a href="data-manipultaiton-join-data.html#cb370-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb370-6"><a href="data-manipultaiton-join-data.html#cb370-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(marriedPerc, elderPerc) <span class="sc">+</span> </span>
-<span id="cb370-7"><a href="data-manipultaiton-join-data.html#cb370-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
-<p><img src="R31_join_twdemo_ref_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="data-manipultaiton-join-data.html#cb371-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># geom_jitter(alpha = 0.3)</span></span></code></pre></div>
+<div id="scrape-life-time-scores" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Scrape life time scores<a href="wgoitg-lebron-jamess-achievement.html#scrape-life-time-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="wgoitg-lebron-jamess-achievement.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pinks &lt;- long_players$plink</span></span>
+<span id="cb480-2"><a href="wgoitg-lebron-jamess-achievement.html#cb480-2" aria-hidden="true" tabindex="-1"></a>plinks <span class="ot">&lt;-</span> top_players<span class="sc">$</span>plink</span>
+<span id="cb480-3"><a href="wgoitg-lebron-jamess-achievement.html#cb480-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-4"><a href="wgoitg-lebron-jamess-achievement.html#cb480-4" aria-hidden="true" tabindex="-1"></a>totals <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb480-5"><a href="wgoitg-lebron-jamess-achievement.html#cb480-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(plinks)){</span>
+<span id="cb480-6"><a href="wgoitg-lebron-jamess-achievement.html#cb480-6" aria-hidden="true" tabindex="-1"></a>    plink <span class="ot">&lt;-</span> plinks[i]</span>
+<span id="cb480-7"><a href="wgoitg-lebron-jamess-achievement.html#cb480-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">sprintf</span>(<span class="st">&quot;[%s] &quot;</span>, i), plink)</span>
+<span id="cb480-8"><a href="wgoitg-lebron-jamess-achievement.html#cb480-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb480-9"><a href="wgoitg-lebron-jamess-achievement.html#cb480-9" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">read_html</span>(plink) <span class="sc">%&gt;%</span> </span>
+<span id="cb480-10"><a href="wgoitg-lebron-jamess-achievement.html#cb480-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#totals&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb480-11"><a href="wgoitg-lebron-jamess-achievement.html#cb480-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>()</span>
+<span id="cb480-12"><a href="wgoitg-lebron-jamess-achievement.html#cb480-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb480-13"><a href="wgoitg-lebron-jamess-achievement.html#cb480-13" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>plink <span class="ot">&lt;-</span> plink</span>
+<span id="cb480-14"><a href="wgoitg-lebron-jamess-achievement.html#cb480-14" aria-hidden="true" tabindex="-1"></a>    totals <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(totals, table)</span>
+<span id="cb480-15"><a href="wgoitg-lebron-jamess-achievement.html#cb480-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb480-16"><a href="wgoitg-lebron-jamess-achievement.html#cb480-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="cleaning-data-1" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Cleaning data<a href="wgoitg-lebron-jamess-achievement.html#cleaning-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="wgoitg-lebron-jamess-achievement.html#cb481-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="ot">&lt;-</span> totals <span class="sc">%&gt;%</span></span>
+<span id="cb481-2"><a href="wgoitg-lebron-jamess-achievement.html#cb481-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(Season, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb481-3"><a href="wgoitg-lebron-jamess-achievement.html#cb481-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(top_players, <span class="at">by=</span><span class="st">&quot;plink&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb481-4"><a href="wgoitg-lebron-jamess-achievement.html#cb481-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(<span class="dv">34</span><span class="sc">:</span><span class="dv">53</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb481-5"><a href="wgoitg-lebron-jamess-achievement.html#cb481-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span><span class="dv">31</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb481-6"><a href="wgoitg-lebron-jamess-achievement.html#cb481-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(<span class="fu">paste0</span>(<span class="fu">str_sub</span>(Season, <span class="dv">1</span>, <span class="dv">4</span>), <span class="st">&quot;-01-01&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb481-7"><a href="wgoitg-lebron-jamess-achievement.html#cb481-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">PERyear =</span> PTS<span class="sc">/</span>G) <span class="sc">%&gt;%</span></span>
+<span id="cb481-8"><a href="wgoitg-lebron-jamess-achievement.html#cb481-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(plink) <span class="sc">%&gt;%</span></span>
+<span id="cb481-9"><a href="wgoitg-lebron-jamess-achievement.html#cb481-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(Age) <span class="sc">%&gt;%</span></span>
+<span id="cb481-10"><a href="wgoitg-lebron-jamess-achievement.html#cb481-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cumPTS =</span> <span class="fu">cumsum</span>(PTS)) <span class="sc">%&gt;%</span></span>
+<span id="cb481-11"><a href="wgoitg-lebron-jamess-achievement.html#cb481-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+</div>
+<div id="visualization" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Visualization<a href="wgoitg-lebron-jamess-achievement.html#visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="wgoitg-lebron-jamess-achievement.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/nba_players.rda&quot;</span>)</span></code></pre></div>
+<div id="line-age-x-cumpts" class="section level3 hasAnchor" number="12.5.1">
+<h3><span class="header-section-number">12.5.1</span> Line: Age x cumPTS<a href="wgoitg-lebron-jamess-achievement.html#line-age-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="wgoitg-lebron-jamess-achievement.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb483-2"><a href="wgoitg-lebron-jamess-achievement.html#cb483-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb483-3"><a href="wgoitg-lebron-jamess-achievement.html#cb483-3" aria-hidden="true" tabindex="-1"></a>selected_players <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Michael Jordan*&quot;</span>, <span class="st">&quot;LeBron James&quot;</span>, <span class="st">&quot;Kobe Bryant*&quot;</span>,</span>
+<span id="cb483-4"><a href="wgoitg-lebron-jamess-achievement.html#cb483-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;Wilt Chamberlain*&quot;</span>, <span class="st">&quot;Kareem Abdul-Jabbar*&quot;</span>, <span class="st">&quot;Stephen Curry&quot;</span>)</span>
+<span id="cb483-5"><a href="wgoitg-lebron-jamess-achievement.html#cb483-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb483-6"><a href="wgoitg-lebron-jamess-achievement.html#cb483-6" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb483-7"><a href="wgoitg-lebron-jamess-achievement.html#cb483-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb483-8"><a href="wgoitg-lebron-jamess-achievement.html#cb483-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(Age, cumPTS, <span class="at">group=</span>Player) <span class="sc">+</span></span>
+<span id="cb483-9"><a href="wgoitg-lebron-jamess-achievement.html#cb483-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb483-10"><a href="wgoitg-lebron-jamess-achievement.html#cb483-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
+<span id="cb483-11"><a href="wgoitg-lebron-jamess-achievement.html#cb483-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb483-12"><a href="wgoitg-lebron-jamess-achievement.html#cb483-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="line-year-x-cumpts" class="section level3 hasAnchor" number="12.5.2">
+<h3><span class="header-section-number">12.5.2</span> Line: year x cumPTS<a href="wgoitg-lebron-jamess-achievement.html#line-year-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="wgoitg-lebron-jamess-achievement.html#cb484-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb484-2"><a href="wgoitg-lebron-jamess-achievement.html#cb484-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb484-3"><a href="wgoitg-lebron-jamess-achievement.html#cb484-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year, cumPTS, <span class="at">group=</span>Player) <span class="sc">+</span></span>
+<span id="cb484-4"><a href="wgoitg-lebron-jamess-achievement.html#cb484-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb484-5"><a href="wgoitg-lebron-jamess-achievement.html#cb484-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
+<span id="cb484-6"><a href="wgoitg-lebron-jamess-achievement.html#cb484-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb484-7"><a href="wgoitg-lebron-jamess-achievement.html#cb484-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="line-age-x-per_by_year" class="section level3 hasAnchor" number="12.5.3">
+<h3><span class="header-section-number">12.5.3</span> Line: Age x PER_by_year<a href="wgoitg-lebron-jamess-achievement.html#line-age-x-per_by_year" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="wgoitg-lebron-jamess-achievement.html#cb485-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb485-2"><a href="wgoitg-lebron-jamess-achievement.html#cb485-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb485-3"><a href="wgoitg-lebron-jamess-achievement.html#cb485-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(Age, PERyear, <span class="at">group=</span>Player) <span class="sc">+</span></span>
+<span id="cb485-4"><a href="wgoitg-lebron-jamess-achievement.html#cb485-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb485-5"><a href="wgoitg-lebron-jamess-achievement.html#cb485-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
+<span id="cb485-6"><a href="wgoitg-lebron-jamess-achievement.html#cb485-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb485-7"><a href="wgoitg-lebron-jamess-achievement.html#cb485-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="comparing-lebron-james-and-jabbar" class="section level3 hasAnchor" number="12.5.4">
+<h3><span class="header-section-number">12.5.4</span> Comparing LeBron James and Jabbar<a href="wgoitg-lebron-jamess-achievement.html#comparing-lebron-james-and-jabbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
-<div id="讀取公投資料" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> 讀取公投資料<a href="data-manipultaiton-join-data.html#讀取公投資料" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>首先，先讀取資料並重新命名每個變項。由於我們要連結公投資料和前面的內政部人口統計資料，所以要注意兩筆資料間是否有共通的key（資料庫稱為鍵值）。<code>town_stat</code>的是以<code>site_id</code>鄉鎮市區名為主鍵，所以公投資料這邊也產生一個同名的鄉鎮市區變項<code>site_id</code>。</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="data-manipultaiton-join-data.html#cb372-1" aria-hidden="true" tabindex="-1"></a>ref10 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/ref10.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb372-2"><a href="data-manipultaiton-join-data.html#cb372-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">county =</span> 縣市, <span class="at">town =</span> 鄉鎮市區,</span>
-<span id="cb372-3"><a href="data-manipultaiton-join-data.html#cb372-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">agree =</span> 同意票數, <span class="at">disagree =</span> 不同意票數,</span>
-<span id="cb372-4"><a href="data-manipultaiton-join-data.html#cb372-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">legalVote =</span> 有效票數, <span class="at">illegalVote =</span> 無效票數, </span>
-<span id="cb372-5"><a href="data-manipultaiton-join-data.html#cb372-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">vote =</span> 投票數, <span class="at">legalPopulation =</span>  投票權人數)  <span class="sc">%&gt;%</span></span>
-<span id="cb372-6"><a href="data-manipultaiton-join-data.html#cb372-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">str_c</span>(county, town)) <span class="sc">%&gt;%</span></span>
-<span id="cb372-7"><a href="data-manipultaiton-join-data.html#cb372-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(site_id)</span>
-<span id="cb372-8"><a href="data-manipultaiton-join-data.html#cb372-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb372-9"><a href="data-manipultaiton-join-data.html#cb372-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ref10)</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;county&quot;          &quot;town&quot;            &quot;agree&quot;           &quot;disagree&quot;       
-## [5] &quot;legalVote&quot;       &quot;illegalVote&quot;     &quot;vote&quot;            &quot;legalPopulation&quot;
-## [9] &quot;site_id&quot;</code></pre>
-<p>合併資料測試，注意，由於兩邊都有<code>legalPopulation</code>，所以<code>town_stat</code>中的<code>legalPopulation</code>增生為<code>legalPopulation.x</code>，而<code>ref10</code>中的<code>legalPopulation</code>則重新命名為<code>legalPopulation.y</code>。</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="data-manipultaiton-join-data.html#cb374-1" aria-hidden="true" tabindex="-1"></a>town_stat <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(ref10, <span class="at">by =</span> <span class="st">&quot;site_id&quot;</span>)</span></code></pre></div>
-<pre class="output"><code>## # A tibble: 368 × 13
-##    site_id   legalP…¹ elder…² marri…³ women…⁴ county town  agree disag…⁵ legal…⁶
-##    &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-##  1 南投縣中…    12791    3272    9553    5824 南投縣 中寮…  5748    1422    7170
-##  2 南投縣仁…    12172    1713    9078    5899 南投縣 仁愛…  5702    1196    6898
-##  3 南投縣信…    12860    1847    9050    5938 南投縣 信義…  6891    1216    8107
-##  4 南投縣南…    81874   15855   57042   41343 南投縣 南投… 37547   11607   49154
-##  5 南投縣名…    32388    7106   23375   15304 南投縣 名間… 14533    4339   18872
-##  6 南投縣國…    16196    3744   11826    7434 南投縣 國姓…  7089    1754    8843
-##  7 南投縣埔…    66699   13411   46316   33718 南投縣 埔里… 29571    8292   37863
-##  8 南投縣水…    15023    3644   10850    7106 南投縣 水里…  6392    1795    8187
-##  9 南投縣竹…    45629   10154   33201   22244 南投縣 竹山… 19254    5389   24643
-## 10 南投縣草…    80426   15141   56384   40008 南投縣 草屯… 35215   11289   46504
-## # … with 358 more rows, 3 more variables: illegalVote &lt;dbl&gt;, vote &lt;dbl&gt;,
-## #   legalPopulation.y &lt;dbl&gt;, and abbreviated variable names ¹​legalPopulation.x,
-## #   ²​elderSum, ³​marriedSum, ⁴​womenSum, ⁵​disagree, ⁶​legalVote</code></pre>
-<div id="合併公投資料並視覺化" class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> 合併公投資料並視覺化<a href="data-manipultaiton-join-data.html#合併公投資料並視覺化" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>由於人口統計資料中的鄉鎮市區若只有兩個字如「東區」中間有一全形空白「東　區」，但公投資料中並沒有這樣的空白，所以為了兩者要能夠正確合併，需要先做好取代。可以逐一取代，或者，直接取代掉該全形空白為空字串即可。</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="data-manipultaiton-join-data.html#cb376-1" aria-hidden="true" tabindex="-1"></a>town_stat <span class="sc">%&gt;%</span></span>
-<span id="cb376-2"><a href="data-manipultaiton-join-data.html#cb376-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">str_replace</span>(site_id, <span class="st">&quot;　&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb376-3"><a href="data-manipultaiton-join-data.html#cb376-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(site_id = str_replace(site_id, &quot;東　區&quot;, &quot;東區&quot;),</span></span>
-<span id="cb376-4"><a href="data-manipultaiton-join-data.html#cb376-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#        site_id = str_replace(site_id, &quot;西　區&quot;, &quot;西區&quot;),</span></span>
-<span id="cb376-5"><a href="data-manipultaiton-join-data.html#cb376-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#        site_id = str_replace(site_id, &quot;南　區&quot;, &quot;南區&quot;),</span></span>
-<span id="cb376-6"><a href="data-manipultaiton-join-data.html#cb376-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#        site_id = str_replace(site_id, &quot;北　區&quot;, &quot;北區&quot;),</span></span>
-<span id="cb376-7"><a href="data-manipultaiton-join-data.html#cb376-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#        site_id = str_replace(site_id, &quot;中　區&quot;, &quot;中區&quot;)) %&gt;%</span></span>
-<span id="cb376-8"><a href="data-manipultaiton-join-data.html#cb376-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(ref10, <span class="at">by =</span> <span class="st">&quot;site_id&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb376-9"><a href="data-manipultaiton-join-data.html#cb376-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">agreeRate =</span> agree <span class="sc">/</span> legalVote,</span>
-<span id="cb376-10"><a href="data-manipultaiton-join-data.html#cb376-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">marriedPerc =</span> marriedSum <span class="sc">/</span> legalPopulation.x) <span class="sc">%&gt;%</span></span>
-<span id="cb376-11"><a href="data-manipultaiton-join-data.html#cb376-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># select(site_id, agree, legalVote, marriedSum, legalPopulation.x) %&gt;%</span></span>
-<span id="cb376-12"><a href="data-manipultaiton-join-data.html#cb376-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb376-13"><a href="data-manipultaiton-join-data.html#cb376-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(agreeRate, marriedPerc) <span class="sc">+</span> </span>
-<span id="cb376-14"><a href="data-manipultaiton-join-data.html#cb376-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb376-15"><a href="data-manipultaiton-join-data.html#cb376-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_light</span>()</span></code></pre></div>
-<p><img src="R31_join_twdemo_ref_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div id="scraping-and-cleaning" class="section level2 hasAnchor" number="12.6">
+<h2><span class="header-section-number">12.6</span> Scraping and cleaning<a href="wgoitg-lebron-jamess-achievement.html#scraping-and-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="wgoitg-lebron-jamess-achievement.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plink &lt;- &quot;https://www.basketball-reference.com/players/j/jamesle01.html&quot;</span></span>
+<span id="cb486-2"><a href="wgoitg-lebron-jamess-achievement.html#cb486-2" aria-hidden="true" tabindex="-1"></a>plink <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/a/abdulka01.html&quot;</span></span>
+<span id="cb486-3"><a href="wgoitg-lebron-jamess-achievement.html#cb486-3" aria-hidden="true" tabindex="-1"></a>loglinks <span class="ot">&lt;-</span> <span class="fu">read_html</span>(plink) <span class="sc">%&gt;%</span> </span>
+<span id="cb486-4"><a href="wgoitg-lebron-jamess-achievement.html#cb486-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#totals&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb486-5"><a href="wgoitg-lebron-jamess-achievement.html#cb486-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tr th a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb486-6"><a href="wgoitg-lebron-jamess-achievement.html#cb486-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb486-7"><a href="wgoitg-lebron-jamess-achievement.html#cb486-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(url.base, .)</span>
+<span id="cb486-8"><a href="wgoitg-lebron-jamess-achievement.html#cb486-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-9"><a href="wgoitg-lebron-jamess-achievement.html#cb486-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-10"><a href="wgoitg-lebron-jamess-achievement.html#cb486-10" aria-hidden="true" tabindex="-1"></a>logtable <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb486-11"><a href="wgoitg-lebron-jamess-achievement.html#cb486-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-12"><a href="wgoitg-lebron-jamess-achievement.html#cb486-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(link <span class="cf">in</span> loglinks){</span>
+<span id="cb486-13"><a href="wgoitg-lebron-jamess-achievement.html#cb486-13" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">read_html</span>(link) <span class="sc">%&gt;%</span></span>
+<span id="cb486-14"><a href="wgoitg-lebron-jamess-achievement.html#cb486-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#pgl_basic&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb486-15"><a href="wgoitg-lebron-jamess-achievement.html#cb486-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>()</span>
+<span id="cb486-16"><a href="wgoitg-lebron-jamess-achievement.html#cb486-16" aria-hidden="true" tabindex="-1"></a>    logtable <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(logtable, table)</span>
+<span id="cb486-17"><a href="wgoitg-lebron-jamess-achievement.html#cb486-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">nrow</span>(logtable), link)</span>
+<span id="cb486-18"><a href="wgoitg-lebron-jamess-achievement.html#cb486-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb486-19"><a href="wgoitg-lebron-jamess-achievement.html#cb486-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-20"><a href="wgoitg-lebron-jamess-achievement.html#cb486-20" aria-hidden="true" tabindex="-1"></a>jabbar.log <span class="ot">&lt;-</span> logtable <span class="sc">%&gt;%</span></span>
+<span id="cb486-21"><a href="wgoitg-lebron-jamess-achievement.html#cb486-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Rk, G, Date, FG, <span class="st">`</span><span class="at">3P</span><span class="st">`</span>, FT, PTS) <span class="sc">%&gt;%</span></span>
+<span id="cb486-22"><a href="wgoitg-lebron-jamess-achievement.html#cb486-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rk =</span> <span class="fu">as.numeric</span>(Rk),</span>
+<span id="cb486-23"><a href="wgoitg-lebron-jamess-achievement.html#cb486-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">FG =</span> <span class="fu">as.numeric</span>(FG),</span>
+<span id="cb486-24"><a href="wgoitg-lebron-jamess-achievement.html#cb486-24" aria-hidden="true" tabindex="-1"></a>           <span class="st">`</span><span class="at">3P</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">3P</span><span class="st">`</span>),</span>
+<span id="cb486-25"><a href="wgoitg-lebron-jamess-achievement.html#cb486-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">FT =</span> <span class="fu">as.numeric</span>(FT),</span>
+<span id="cb486-26"><a href="wgoitg-lebron-jamess-achievement.html#cb486-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">PTS =</span> <span class="fu">as.numeric</span>(PTS)) <span class="sc">%&gt;%</span></span>
+<span id="cb486-27"><a href="wgoitg-lebron-jamess-achievement.html#cb486-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PTS)) <span class="sc">%&gt;%</span></span>
+<span id="cb486-28"><a href="wgoitg-lebron-jamess-achievement.html#cb486-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb486-29"><a href="wgoitg-lebron-jamess-achievement.html#cb486-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">try =</span> FG <span class="sc">+</span> <span class="st">`</span><span class="at">3P</span><span class="st">`</span> <span class="sc">+</span> FT) <span class="sc">%&gt;%</span></span>
+<span id="cb486-30"><a href="wgoitg-lebron-jamess-achievement.html#cb486-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">FGperc =</span> FG<span class="sc">/</span>try, </span>
+<span id="cb486-31"><a href="wgoitg-lebron-jamess-achievement.html#cb486-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">P3perc =</span> <span class="st">`</span><span class="at">3P</span><span class="st">`</span><span class="sc">/</span>try,</span>
+<span id="cb486-32"><a href="wgoitg-lebron-jamess-achievement.html#cb486-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">FTperc =</span> FT<span class="sc">/</span>try) <span class="sc">%&gt;%</span></span>
+<span id="cb486-33"><a href="wgoitg-lebron-jamess-achievement.html#cb486-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gid =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+<div id="vis-ljames-and-jabbar" class="section level3 hasAnchor" number="12.6.1">
+<h3><span class="header-section-number">12.6.1</span> VIS LJames and jabbar<a href="wgoitg-lebron-jamess-achievement.html#vis-ljames-and-jabbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="wgoitg-lebron-jamess-achievement.html#cb487-1" aria-hidden="true" tabindex="-1"></a>james.log <span class="sc">%&gt;%</span></span>
+<span id="cb487-2"><a href="wgoitg-lebron-jamess-achievement.html#cb487-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
+<span id="cb487-3"><a href="wgoitg-lebron-jamess-achievement.html#cb487-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
+<span id="cb487-4"><a href="wgoitg-lebron-jamess-achievement.html#cb487-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;perc&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb487-5"><a href="wgoitg-lebron-jamess-achievement.html#cb487-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb487-6"><a href="wgoitg-lebron-jamess-achievement.html#cb487-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
+<span id="cb487-7"><a href="wgoitg-lebron-jamess-achievement.html#cb487-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
+<span id="cb487-8"><a href="wgoitg-lebron-jamess-achievement.html#cb487-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="wgoitg-lebron-jamess-achievement.html#cb488-1" aria-hidden="true" tabindex="-1"></a>jabbar.log <span class="sc">%&gt;%</span></span>
+<span id="cb488-2"><a href="wgoitg-lebron-jamess-achievement.html#cb488-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
+<span id="cb488-3"><a href="wgoitg-lebron-jamess-achievement.html#cb488-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
+<span id="cb488-4"><a href="wgoitg-lebron-jamess-achievement.html#cb488-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;perc&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb488-5"><a href="wgoitg-lebron-jamess-achievement.html#cb488-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb488-6"><a href="wgoitg-lebron-jamess-achievement.html#cb488-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
+<span id="cb488-7"><a href="wgoitg-lebron-jamess-achievement.html#cb488-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
+<span id="cb488-8"><a href="wgoitg-lebron-jamess-achievement.html#cb488-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-12-2.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="wgoitg-lebron-jamess-achievement.html#cb489-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb489-2"><a href="wgoitg-lebron-jamess-achievement.html#cb489-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Player) <span class="sc">%&gt;%</span></span>
+<span id="cb489-3"><a href="wgoitg-lebron-jamess-achievement.html#cb489-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">FGsum =</span> <span class="fu">sum</span>(FG),</span>
+<span id="cb489-4"><a href="wgoitg-lebron-jamess-achievement.html#cb489-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">FTsum =</span> <span class="fu">sum</span>(FT),</span>
+<span id="cb489-5"><a href="wgoitg-lebron-jamess-achievement.html#cb489-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">P3sum =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">3P</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb489-6"><a href="wgoitg-lebron-jamess-achievement.html#cb489-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb489-7"><a href="wgoitg-lebron-jamess-achievement.html#cb489-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb489-8"><a href="wgoitg-lebron-jamess-achievement.html#cb489-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">trials =</span> FGsum <span class="sc">+</span> FTsum <span class="sc">+</span> P3sum) <span class="sc">%&gt;%</span></span>
+<span id="cb489-9"><a href="wgoitg-lebron-jamess-achievement.html#cb489-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">FGperc =</span> FGsum<span class="sc">/</span>trials,</span>
+<span id="cb489-10"><a href="wgoitg-lebron-jamess-achievement.html#cb489-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">FTperc =</span> FTsum<span class="sc">/</span>trials,</span>
+<span id="cb489-11"><a href="wgoitg-lebron-jamess-achievement.html#cb489-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">P3perc =</span> P3sum<span class="sc">/</span>trials) <span class="sc">%&gt;%</span></span>
+<span id="cb489-12"><a href="wgoitg-lebron-jamess-achievement.html#cb489-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb489-13"><a href="wgoitg-lebron-jamess-achievement.html#cb489-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(FGperc, P3perc) <span class="sc">+</span> </span>
+<span id="cb489-14"><a href="wgoitg-lebron-jamess-achievement.html#cb489-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb489-15"><a href="wgoitg-lebron-jamess-achievement.html#cb489-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Player), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb489-16"><a href="wgoitg-lebron-jamess-achievement.html#cb489-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span> </span>
+<span id="cb489-17"><a href="wgoitg-lebron-jamess-achievement.html#cb489-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb489-18"><a href="wgoitg-lebron-jamess-achievement.html#cb489-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="wgoitg-lebron-jamess-achievement.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(jabbar.log, james.log, top_players, top250, totals, </span>
+<span id="cb490-2"><a href="wgoitg-lebron-jamess-achievement.html#cb490-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">file=</span><span class="st">&quot;../data/nba_players.rda&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="more-scraping-all-players" class="section level2 hasAnchor" number="12.7">
+<h2><span class="header-section-number">12.7</span> (More) Scraping all players<a href="wgoitg-lebron-jamess-achievement.html#more-scraping-all-players" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="testing-1" class="section level3 hasAnchor" number="12.7.1">
+<h3><span class="header-section-number">12.7.1</span> Testing<a href="wgoitg-lebron-jamess-achievement.html#testing-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="wgoitg-lebron-jamess-achievement.html#cb491-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/x/&quot;</span></span>
+<span id="cb491-2"><a href="wgoitg-lebron-jamess-achievement.html#cb491-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-3"><a href="wgoitg-lebron-jamess-achievement.html#cb491-3" aria-hidden="true" tabindex="-1"></a>table.path <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb491-4"><a href="wgoitg-lebron-jamess-achievement.html#cb491-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#players&quot;</span>)</span>
+<span id="cb491-5"><a href="wgoitg-lebron-jamess-achievement.html#cb491-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-6"><a href="wgoitg-lebron-jamess-achievement.html#cb491-6" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span>
+<span id="cb491-7"><a href="wgoitg-lebron-jamess-achievement.html#cb491-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-8"><a href="wgoitg-lebron-jamess-achievement.html#cb491-8" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>pid <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb491-9"><a href="wgoitg-lebron-jamess-achievement.html#cb491-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb491-10"><a href="wgoitg-lebron-jamess-achievement.html#cb491-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;data-append-csv&quot;</span>)</span>
+<span id="cb491-11"><a href="wgoitg-lebron-jamess-achievement.html#cb491-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-12"><a href="wgoitg-lebron-jamess-achievement.html#cb491-12" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>plink <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb491-13"><a href="wgoitg-lebron-jamess-achievement.html#cb491-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb491-14"><a href="wgoitg-lebron-jamess-achievement.html#cb491-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb491-15"><a href="wgoitg-lebron-jamess-achievement.html#cb491-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com&quot;</span>,.)</span></code></pre></div>
+</div>
+<div id="scrape-from-a-z-except-xno-x" class="section level3 hasAnchor" number="12.7.2">
+<h3><span class="header-section-number">12.7.2</span> Scrape from a-z except x(no x)<a href="wgoitg-lebron-jamess-achievement.html#scrape-from-a-z-except-xno-x" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="wgoitg-lebron-jamess-achievement.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># letters[c(1:23, 25:26)]</span></span>
+<span id="cb492-2"><a href="wgoitg-lebron-jamess-achievement.html#cb492-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb492-3"><a href="wgoitg-lebron-jamess-achievement.html#cb492-3" aria-hidden="true" tabindex="-1"></a>players <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb492-4"><a href="wgoitg-lebron-jamess-achievement.html#cb492-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(letter <span class="cf">in</span> letters[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">23</span>, <span class="dv">25</span><span class="sc">:</span><span class="dv">26</span>)]){</span>
+<span id="cb492-5"><a href="wgoitg-lebron-jamess-achievement.html#cb492-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-6"><a href="wgoitg-lebron-jamess-achievement.html#cb492-6" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com/players/&quot;</span>, letter, <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb492-7"><a href="wgoitg-lebron-jamess-achievement.html#cb492-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(url)</span>
+<span id="cb492-8"><a href="wgoitg-lebron-jamess-achievement.html#cb492-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-9"><a href="wgoitg-lebron-jamess-achievement.html#cb492-9" aria-hidden="true" tabindex="-1"></a>    table.path <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb492-10"><a href="wgoitg-lebron-jamess-achievement.html#cb492-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#players&quot;</span>)</span>
+<span id="cb492-11"><a href="wgoitg-lebron-jamess-achievement.html#cb492-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-12"><a href="wgoitg-lebron-jamess-achievement.html#cb492-12" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span>
+<span id="cb492-13"><a href="wgoitg-lebron-jamess-achievement.html#cb492-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-14"><a href="wgoitg-lebron-jamess-achievement.html#cb492-14" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>pid <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb492-15"><a href="wgoitg-lebron-jamess-achievement.html#cb492-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb492-16"><a href="wgoitg-lebron-jamess-achievement.html#cb492-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_attr</span>(<span class="st">&quot;data-append-csv&quot;</span>)</span>
+<span id="cb492-17"><a href="wgoitg-lebron-jamess-achievement.html#cb492-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-18"><a href="wgoitg-lebron-jamess-achievement.html#cb492-18" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>plink <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb492-19"><a href="wgoitg-lebron-jamess-achievement.html#cb492-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb492-20"><a href="wgoitg-lebron-jamess-achievement.html#cb492-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb492-21"><a href="wgoitg-lebron-jamess-achievement.html#cb492-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com&quot;</span>,.)</span>
+<span id="cb492-22"><a href="wgoitg-lebron-jamess-achievement.html#cb492-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-23"><a href="wgoitg-lebron-jamess-achievement.html#cb492-23" aria-hidden="true" tabindex="-1"></a>    players <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(players, table)</span>
+<span id="cb492-24"><a href="wgoitg-lebron-jamess-achievement.html#cb492-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="from-base-r-to-dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-manipulation-ii.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="scraping-104.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualization-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -814,7 +863,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/R31_join_twdemo_ref.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R63_Scrape_nba_players.Rmd",
 "text": "Edit"
 },
 "history": {

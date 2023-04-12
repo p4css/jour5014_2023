@@ -68,11 +68,13 @@ tibble(a=1:5, b=5:1) %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" />
 
-### 範例-紐時世代貧富不均
+## NYT: Inequality
 
 [Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)](https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html)
 
 ggplot是以變數為基礎的視覺化套件，也就是說，當準備好dataframe後，就可以在ggplot中指定要用哪些變數來繪圖。也因此，務必把dataframe整理為tidy型態，也就是長表格（long-form）的型態。整理完資料後，我會習慣地用`names(plot)`或`glimpse(plot)`來看一下該資料所有的變項，好可以在下一階段的繪圖做參考。
+
+### Visualizing
 
 
 ```r
@@ -135,7 +137,7 @@ NW %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" />
 
-### 加入自變項群組
+### Grouping
 
 上圖是我們把多個年齡層的逐年資料畫在同一條折線上，所以會呈現鋸齒狀折現的狀況。但這些年齡層並非在同一條線上呀？因此，我們要根據`Category`這個變數來做分組。
 
@@ -178,7 +180,7 @@ NW %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" />
 
-## 圖表調整
+## Adjusting Chart
 
 ### 點線型態
 
@@ -197,9 +199,33 @@ NW %>%
 ```
 ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
 ```
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
+
+### Line Types
+
+See more from ggthemes <https://github.com/BTJ01/ggthemes/tree/master/inst/examples>
+
+
+```r
+library(ggthemes)
+rescale01 <- function(x) {
+    (x - min(x)) / diff(range(x))
+  }
+
+gather(economics, variable, value, -date) %>%
+    group_by(variable) %>%
+    mutate(value = rescale01(value)) %>%
+    ggplot(aes(x = date, y = value, linetype = variable)) +
+    geom_line() +
+    scale_linetype_stata() + theme_minimal()
+```
+
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
 
 ### 標題、標籤與圖說
 
@@ -216,7 +242,7 @@ NW %>%
     ggtitle("Net Worth by year grouped by age groups")
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
 
 **設定標題與X／Y軸標題（法二）**：這是一次設定圖表標題（`title`）、次標題（`suttitle`）、X軸與Y軸標題的方法。
 
@@ -232,7 +258,7 @@ NW %>%
          y = "Net Worth")
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" />
 
 **調整X軸與Y軸標題位置的**：必須要透過`theme()`來設定`axis.title.x = element_text(hjust=1)`。
 
@@ -249,7 +275,7 @@ NW %>%
           axis.title.y = element_text(hjust=1))
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" />
 
 **去除X／Y軸標題（不佳）**：直接將空字串Assign給`title`、`x`、與`y`即可。
 
@@ -262,7 +288,7 @@ NW %>%
     labs(title = "", x = "", y = "")
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" />
 
 **去除X／Y軸標題（較佳）**：透過設定`theme()`來調整。可發現透過這種設定方法，原本標題和X／Y軸標題的邊界空間就會被釋放出來。
 
@@ -278,7 +304,7 @@ NW %>%
           axis.title.y = element_blank())
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" />
 
 ### 字體樣式
 
@@ -303,7 +329,7 @@ NW %>%
           )
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" />
 
 ### 圖表主題色調
 
@@ -320,7 +346,7 @@ NW %>%
     theme_minimal()
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-20-1.png" width="576" style="display: block; margin: auto;" />
 
 ### 預設主題
 
@@ -347,7 +373,7 @@ NW %>%
          y = "Net Worth") + th
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-20-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-21-1.png" width="576" style="display: block; margin: auto;" />
 
 ### 顯示中文字體
 
@@ -421,7 +447,7 @@ county %>%
   theme(axis.text.x = element_text(angle = 45))
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-23-1.png" width="576" style="display: block; margin: auto;" />
 
 ### X/Y軸方向
 
@@ -454,7 +480,7 @@ county %>%
 
 <img src="V01_Learning_ggplot_files/figure-html/coord_flip-with-reorder-1.png" width="576" style="display: block; margin: auto;" />
 
-## 視覺化說故事的技巧
+## Highlighting & Storytelling
 
 「說故事」才是整則資料新聞的核心，在運用圖表來輔助敘事時，應搭配說理說服的內容來突顯（highlight）圖面上的特徵，而不是留待讀者自己觀察。以下有三種highlight圖表部分資料的方法。第一個方法是在繪圖時用`+ scale_color_manual()`或`+ scale_fill_manual()`指定顏色給不同群組；方法二是利用`gghighlight`這個套件來指定要上色的群組，而且`gghighlight`可以和`fill`與`color`相互搭配，仍然可以用`scale_fill_manual`和`scale_color_manual`來指定顏色。但會有個狀況是，如果原本沒群組那怎麼辦？就自己用`mutate()`打造群組就好。方法各有利弊與使用時機。
 
@@ -478,7 +504,7 @@ NW %>%
     theme_minimal()
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-23-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-24-1.png" width="576" style="display: block; margin: auto;" />
 
 ### 使用gghighlight套件
 
@@ -496,7 +522,7 @@ NW %>%
                                 size = 0.5, linetype = "solid"))
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-24-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" />
 
 使用`gghighlight`仍能自己使用`scale_color_manual()`來指定顏色
 
@@ -521,7 +547,7 @@ NW %>%
 ## label_key: Category
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" />
 
 ### 為視覺化建立群組
 
@@ -556,4 +582,5 @@ county %>%
     theme_minimal() + th
 ```
 
-<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" />
+<img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
+

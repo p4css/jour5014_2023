@@ -56,7 +56,7 @@ e <- "abcd"
 
 ### Creating vectors
 
-vector通常用`c()`函數創建，其中c表示\"combine\"或\"concatenate\"，可以將多個元素組合成一個vector。
+vector通常用`c()`函數創建，其中c表示"combine"或"concatenate"，可以將多個元素組合成一個vector。
 
 
 ```r

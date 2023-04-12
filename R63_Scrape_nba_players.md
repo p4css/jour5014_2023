@@ -1,6 +1,6 @@
 
 
-## WGOITG: LeBron James's Achievement
+# WGOITG: LeBron James's Achievement
 
 這個案例的靈感來自於紐約時報於2023年2月7日所發布的一篇新聞「[How LeBron James Outscored Kareem Abdul-Jabbar and All the N.B.A. Greats](https://www.nytimes.com/interactive/2023/02/07/sports/basketball/lebron-james-kareem-abdul-jabbar-points.html)」。該篇新聞的破題點在於LeBron James 打破 Kareem Abdul-Jabbar 的紀錄，成為 NBA 歷史上得分王，這是許多人認為無法達成的成就。今年 38 歲的 James，本季平均每場比賽可以攻下 30.2 分，以 38,390 分超越了 Abdul-Jabbar 的 38,387 分。Abdul-Jabbar 以 sky hook 聞名，而 James 則透過多種得分方式積累分數，包括近年來在聯盟中日益盛行的三分球。James 的長壽、創意、天賦和能力讓他達成了這個成就。但實際上，這篇新聞同時也凸顯了 NBA 在過去50年的演變。
 
@@ -10,7 +10,7 @@
 
 
 
-### Get top250 players
+## Get top250 players
 
 事實上我是知道有NBA球員比分網站的，看到這則新聞時我就去線上查找了相關的網站<https://www.basketball-reference.com>。而且該網站的球員資料是表格形式，代表我們可以用一些比較方便的函式（`html_table()`）直接將該表格的內容轉為data.frame。
 
@@ -54,9 +54,9 @@ top_players$plink <- read_html(url) %>%
 top_players
 ```
 
-### Scraping live scores
+## Scraping live scores
 
-#### Testing
+### Testing
 
 
 ```r
@@ -66,7 +66,7 @@ table2 <- read_html(url) %>%
         html_table(convert=T)
 ```
 
-### Scrape life time scores
+## Scrape life time scores
 
 
 ```r
@@ -88,7 +88,7 @@ for(i in 1:length(plinks)){
 }
 ```
 
-### Cleaning
+## Cleaning data
 
 
 ```r
@@ -105,14 +105,14 @@ top250 <- totals %>%
     ungroup()
 ```
 
-### Visualization
+## Visualization
 
 
 ```r
 load("data/nba_players.rda")
 ```
 
-#### Line: Age x cumPTS
+### Line: Age x cumPTS
 
 
 ```r
@@ -132,7 +132,7 @@ top250 %>%
 
 <img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
 
-#### Line: year x cumPTS
+### Line: year x cumPTS
 
 
 ```r
@@ -147,7 +147,7 @@ top250 %>%
 
 <img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 
-#### Line: Age x PER_by_year
+### Line: Age x PER_by_year
 
 
 ```r
@@ -162,9 +162,9 @@ top250 %>%
 
 <img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
 
-#### Comparing LeBron James and Jabbar
+### Comparing LeBron James and Jabbar
 
-##### Scraping and cleaning
+## Scraping and cleaning
 
 
 ```r
@@ -203,7 +203,7 @@ jabbar.log <- logtable %>%
     mutate(gid = row_number())
 ```
 
-#### VIS LJames and jabbar
+### VIS LJames and jabbar
 
 
 ```r
@@ -262,9 +262,9 @@ save(jabbar.log, james.log, top_players, top250, totals,
      file="../data/nba_players.rda")
 ```
 
-### (More) Scraping all players
+## (More) Scraping all players
 
-#### Testing
+### Testing
 
 
 ```r
@@ -285,7 +285,7 @@ table$plink <- table.path %>%
     str_c("https://www.basketball-reference.com",.)
 ```
 
-#### Scrape from a-z except x(no x)
+### Scrape from a-z except x(no x)
 
 
 ```r

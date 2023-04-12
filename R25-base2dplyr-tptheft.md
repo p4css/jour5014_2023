@@ -1,28 +1,20 @@
 
 
-## From base R to dplyr
+# From base R to dplyr
 
 **From base to tidyverse style**
 
-相較於R base的較為傳統的R編程風格，tidyverse style的R
-programming具有以下幾個特點：
+相較於R base的較為傳統的R編程風格，tidyverse style的R programming具有以下幾個特點：
 
-1.  基於tidy data理念：tidyverse style的R programming基於tidy
-    data理念，即資料應該以規律的方式組織，以方便分析和視覺化。tidyverse
-    style的R程式庫提供了一些工具和函數，用於處理和轉換tidy
-    data格式的資料，如dplyr、tidyr等。
+1.  基於tidy data理念：tidyverse style的R programming基於tidy data理念，即資料應該以規律的方式組織，以方便分析和視覺化。tidyverse style的R程式庫提供了一些工具和函數，用於處理和轉換tidy data格式的資料，如dplyr、tidyr等。
 
-2.  使用管道操作符：tidyverse style的R
-    programming通常使用管道操作符（%\>%），將資料通過多個函數連接起來，形成一個清晰和易於理解的資料處理流程。使用管道操作符可以簡化程式碼並提高程式的可讀性。
+2.  使用管道操作符：tidyverse style的R programming通常使用管道操作符（%\>%），將資料通過多個函數連接起來，形成一個清晰和易於理解的資料處理流程。使用管道操作符可以簡化程式碼並提高程式的可讀性。
 
-3.  強調函數庫的一致性：tidyverse style的R
-    programming強調函數庫之間的一致性，即不同函數庫之間使用相似的函數名稱、參數名稱和返回值等，以方便使用者的學習和使用。
+3.  強調函數庫的一致性：tidyverse style的R programming強調函數庫之間的一致性，即不同函數庫之間使用相似的函數名稱、參數名稱和返回值等，以方便使用者的學習和使用。
 
-4.  使用簡潔的命名方式：tidyverse style的R
-    programming通常使用簡潔和易於理解的變數和函數命名方式，例如使用動詞表示操作，使用名詞表示資料，以方便使用者理解程式碼的含義。
+4.  使用簡潔的命名方式：tidyverse style的R programming通常使用簡潔和易於理解的變數和函數命名方式，例如使用動詞表示操作，使用名詞表示資料，以方便使用者理解程式碼的含義。
 
-5.  提供高級的視覺化工具：tidyverse style的R
-    programming提供了一些高級的視覺化工具，如ggplot2、gganimate等，可以幫助使用者更加輕鬆地進行資料視覺化和探索。
+5.  提供高級的視覺化工具：tidyverse style的R programming提供了一些高級的視覺化工具，如ggplot2、gganimate等，可以幫助使用者更加輕鬆地進行資料視覺化和探索。
 
 ## dplyr
 
@@ -258,3 +250,28 @@ mosaicplot(df.wide, color=colors, border=0, off = 3,
 
 <img src="R25-base2dplyr-tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
+## Paid Maternity Leave (base to dplyr)
+
+
+```r
+library(tidyverse)
+options(stringsAsFactors = F)
+options(scipen = 999)
+
+library(readxl)
+read_excel("data/WORLD-MACHE_Gender_6.8.15.xls", "Sheet1", col_names=T) %>% 
+    select(iso3, 6:24) %>% 
+    filter(matleave_13 == 5, matleave_95 == 5) %>% 
+    gather("year", "degree", 2:20) %>% 
+    # spread(year, degree, fill = 0) %>% View
+    replace_na(list(degree = 0)) %>%
+    mutate(year2 = as.POSIXct(strptime(year, "matleave_%y"))) %>%
+    mutate(year3 = lubridate::year(year2)) %>%
+    ggplot() + 
+    aes(year3, degree) + 
+    geom_col(color = "royalblue", fill = "royalblue") + 
+    facet_wrap(~ iso3) +
+    theme_void()
+```
+
+<img src="R25-base2dplyr-tptheft_files/figure-html/unnamed-chunk-10-1.png" width="672" />
