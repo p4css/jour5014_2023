@@ -1,38 +1,72 @@
 
 
+## Tweets Analysis
 
-## Tweets 分析
+本範例取材自David Robinson的blog文章「[Text analysis of Trump's tweets
+confirms he writes only the (angrier) Android
+half](http://varianceexplained.org/r/trump-tweets/ "Text analysis of Trump's tweets confirms he writes only the (angrier) Android half")」。David
+Robinson是「[Text Mining with
+R](https://www.tidytextmining.com/)」的共同作者，
+可參考該書籍上的範例「[7 Case study: comparing Twitter archives \| Text
+Mining with R
+(tidytextmining.com)](https://www.tidytextmining.com/twitter.html)」。
 
-應用dplyr和ggplot做社群輿論資料（tweets）的探索性分析，其中除了dplyr和ggplot外，尚用到文字處理（stringr, `extract()`）、時間處理（lubridate），甚至包含一點`keyness`分析，為找出兩個群體文本中，對彼此相對突出關鍵字的文本探勘方法。
+這篇文章探討了美國前總統川普（Donald
+Trump）的推特帳號。有一個假設聲稱，當川普在推特上祝福奧運會選手好運時，他使用的是
+iPhone ；當他侮辱競爭對手時，他通常是用 Android
+來發推。文章作者想要透過數據分析來探討這個假設的真實性。
 
-本範例取材自David Robinson的blog文章「[Text analysis of Trump's tweets confirms he writes only the (angrier) Android half](http://varianceexplained.org/r/trump-tweets/ "Text analysis of Trump's tweets confirms he writes only the (angrier) Android half")」。David Robinson是「[Text Mining with R](https://www.tidytextmining.com/)」的共同作者， 可參考該書籍上的範例「[7 Case study: comparing Twitter archives \| Text Mining with R (tidytextmining.com)](https://www.tidytextmining.com/twitter.html)」。
+作者使用了文字探勘和情感分析等技術，從川普的推特內容入手，分析了不同時間和使用不同手機所發的推文。結果顯示，Android
+和 iPhone
+所發的推文顯然是由不同的人所發，他們在使用標籤、連結和轉推的方式上也不同。此外，Android
+的推文更加憤怒和負面，而 iPhone
+的推文則傾向於發佈善意的公告和圖片。整體而言，這些分析讓我們能夠區分出競選團隊所發佈的推文（iPhone）和川普自己所發佈的推文（Android）。
 
-### 載入並清理資料
+這個教學案例涵蓋了使用 R
+語言進行社群輿論資料（tweets）的探索性分析的各種技術和工具。除了使用常見的資料處理套件
+dplyr 和視覺化套件 ggplot 外，還使用了文字處理套件 stringr
+和時間處理套件 lubridate，以及關鍵字分析技術 keyness。
 
-R4.0後`stringsAsFactors=F`變為預設值，便不用再另行用`options()`設為全域適用的參數。
+透過這個教學案例，學習者可以掌握如何：
+
+-   使用 dplyr 和 ggplot 進行資料處理和視覺化。
+
+-   使用 stringr 和 extract() 進行文字處理，例如從文本中提取關鍵字。
+
+-   使用 lubridate 進行時間處理，例如轉換時間格式和提取時間戳記。
+
+-   學習關鍵字分析技術
+    keyness，以找出在不同文本之間對彼此相對突出的關鍵字。
+
+這段程式碼是用來設計 ggplot2 的主題風格。作者首先定義了一個名為 `th`
+的自訂主題，基於 ggplot2 的 `theme_minimal()`
+主題，並設置了不同元素的字型、大小和樣式等屬性。接著，作者定義了一個名為
+`new_style()`
+的函數，用於更精細的主題風格設置，包括圖表標題、圖例、軸標籤和刻度標籤等。透過這些設置，可以讓
+ggplot2
+圖表更具有視覺吸引力，並強調重要的圖形元素，使圖表更加清晰易懂。這兩種方式都可以用來定義主題
 
 
 ```r
 library(tidyverse)
-library(lubridate)
+# library(lubridate) # has been included in tidyverse
 options(scipen = 999)
 
+# Self-designed theme
 th <-  theme_minimal() + 
     theme(plot.title = element_text(size=24, face="bold"),
           legend.title = element_text(size=18, face="bold"),
           legend.text = element_text(size=18),
-          axis.title = element_text(hjust=0.5, size=18,
-                                    face="italic"),
+          axis.title = element_text(hjust=0.5, size=18, face="italic"),
           axis.text = element_text(size=18)
           )
 
+# more settings
 new_style <- function() {
   font <- "Helvetica"
   theme(
-      plot.title = element_text(family=font,
-                                size=28, face="bold"),
-      plot.subtitle = element_text(family=font,
-                                   size=22,
+      plot.title = element_text(family=font, size=28, face="bold"),
+      plot.subtitle = element_text(family=font, size=22, 
                                    margin=margin(9,0,9,0)),
       plot.caption = element_blank(),
       legend.position = "top",
@@ -40,12 +74,8 @@ new_style <- function() {
       legend.background = element_blank(),
       # legend.title = element_blank(),
       legend.key = element_blank(),
-      legend.text = element_text(family=font,
-                             size=18,
-                             color="#222222"),
-      axis.text = element_text(family=font,
-                               size=18,
-                               color="#222222"),
+      legend.text = element_text(family=font, size=18, color="#222222"),
+      axis.text = element_text(family=font, size=18, color="#222222"),
       axis.text.x = element_text(margin=margin(5, b = 10)),
       axis.ticks = element_blank(),
       axis.line = element_blank(),
@@ -58,6 +88,8 @@ new_style <- function() {
       )
   }
 ```
+
+### Loading data
 
 
 ```r
@@ -83,11 +115,11 @@ names(trump_tweets_df)
 ```r
 trump_tweets_df %>%
     select(id, text, created, favoriteCount,  retweetCount, statusSource) %>%
-    head(20)
+    head(10)
 ```
 
 ```{.output}
-## # A tibble: 20 × 6
+## # A tibble: 10 × 6
 ##    id                 text           created             favor…¹ retwe…² statu…³
 ##    <chr>              <chr>          <dttm>                <dbl>   <dbl> <chr>  
 ##  1 762669882571980801 "My economic … 2016-08-08 15:20:44    9214    3107 "<a hr…
@@ -100,23 +132,17 @@ trump_tweets_df %>%
 ##  8 762106904436961280 ".@Larry_Kudl… 2016-08-07 02:03:39   19543    7930 "<a hr…
 ##  9 762104411707568128 "I am not jus… 2016-08-07 01:53:45   75488   24663 "<a hr…
 ## 10 762016426102296576 "#CrookedHill… 2016-08-06 20:04:08   23661    7903 "<a hr…
-## 11 761988164382756864 "Heading to N… 2016-08-06 18:11:50   28069    8561 "<a hr…
-## 12 761936929902452740 "Anybody whos… 2016-08-06 14:48:14   35205   13129 "<a hr…
-## 13 761931010548305920 "Crooked Hill… 2016-08-06 14:24:43   36936   13250 "<a hr…
-## 14 761892829434183684 "Hillary Clin… 2016-08-06 11:53:00   32716    9356 "<a hr…
-## 15 761773576101953536 "Good luck #T… 2016-08-06 03:59:08   34109   10385 "<a hr…
-## 16 761757988516401153 "'Trump is ri… 2016-08-06 02:57:11   19436    8066 "<a hr…
-## 17 761754898602061824 "Thank you Gr… 2016-08-06 02:44:55   19330    5418 "<a hr…
-## 18 761711856457125888 "DON'T LET HI… 2016-08-05 23:53:53   30869   16786 "<a hr…
-## 19 761693803120041986 "Thank you De… 2016-08-05 22:42:08   19431    5681 "<a hr…
-## 20 761653875413618689 "#MakeAmerica… 2016-08-05 20:03:29   27568   13869 "<a hr…
 ## # … with abbreviated variable names ¹​favoriteCount, ²​retweetCount,
 ## #   ³​statusSource
 ```
 
-### 萃取資料
+### Cleaning data
 
--   Extracting publishing device of tweets
+這段程式碼的目的是從一個叫做**`trump_tweets_df`**的data.frame中，選擇幾個欄位並且進行過濾和轉換，最後將結果存儲在一個名為**`tweets`**的新data.frame中。
+
+**`extract()`**函數用於從**`statusSource`**欄位中提取出一個新欄位**`source`**，該欄位包含了**`statusSource`**中的**`Twitter for iPhone`**和**`Twitter for Android`**這兩種可能的字串。這裡使用了一個正則表達式**`Twitter for (.*?)<`**，該表達式表示提取出以**`Twitter for`**開頭，且在**`<`**符號之前的任意字元序列，並將結果存儲在名為**`source`**的新欄位中。
+
+最後，**`filter()`**函數用於過濾出**`source`**欄位中值為**`iPhone`**或**`Android`**的記錄，並將過濾結果存儲在**`tweets`**資料框中。
 
 
 ```r
@@ -144,14 +170,27 @@ tweets <- trump_tweets_df %>%
 # str(tweets)
 ```
 
-### 視覺化探索
+::: practice
+**Practice**.
+有時候我們會希望避免用太多種套件來寫程式，例如上面的`extract()`便屬於`tidyr`的函式。事實上我們可以用`stringr::str_replace()`來達到這個目的。嘗試寫寫看？或者嘗試問ChatGPT看看？
 
-#### 發文時間
+**Prompt.**
+我如果希望用`stringr::str_replace`來達到`extract(statusSource, "source", "Twitter for (.*?)<") %>%`的功能，我該怎麼寫？
 
--   Converting timezone `lubridate::with_tz()`
--   Extracting hour of timestamp by `lubridate::hour()`
--   Plotting number of tweets by hour
--   Display y-axis as percentage by `scales::percent_format()`
+`mutate(source = stringr::str_replace(statusSource, ".*Twitter for (.*?)<.*", "\\1")) %>%`
+:::
+
+### Visual Exploring
+
+#### Productivity by time
+
+`hour = hour(with_tz(created, "EST"))`這段程式碼使用了**`with_tz()`**函數將**`created`**欄位的時區轉換為**`"EST"`**所對應的時區，然後使用**`hour()`**函數提取出該日期時間對應的小時數，並將結果存儲在**`hour`**變數中。該程式碼會將例如**`"2023-04-12 12:30:00"`**轉換為美國東部標準時間對應的小時數，即`12`（因為12點30分所在的小時是12點）。他所取出的並非某日的12時，他就只是取出是12時。
+
+**`toplot1`和`toplot2`的差異在於對`source`欄位的分組處理不同**。具體來說，**`toplot1`**中沒有對**`source`**欄位進行分組，而是在後面使用**`mutate()`**函數將計數結果中的**`n`**列和**`sum(n)`**相除，得到了百分比列**`percent`**。這導致計算的是整個資料集中的**`hour`**和**`source`**的計數和百分比。相反，**`toplot2`**中使用了**`group_by()`**函數將**`source`**欄位進行分組處理，並在後面使用**`mutate()`**函數和**`ungroup()`**函數計算了每個**`source`**和**`hour`**的計數和百分比，即分別計算了**`iPhone`**和**`Android`**的計數和百分比。因此，**`toplot1`**和**`toplot2`**的計算結果是不同的，前者的計算結果中包含了整個資料集的計數和百分比，而後者的計算結果則分別對**`iPhone`**和**`Android`**進行了計數和百分比的計算。
+
+程式碼使用了**`ggplot()`**函數創建了一個**`ggplot2`**物件，並使用**`aes()`**函數設置了**`hour`**和**`percent`**欄位作為X軸和Y軸的變數，並且設置**`color = source`**表示以**`source`**欄位的值作為不同群組（`iPhone`
+vs.
+`Android`）折線的顏色。接著，程式碼使用**`geom_line()`**函數添加折線到圖中，設置了折線的粗細為1。使用**`scale_color_manual()`**函數設置了圖例的名稱為**`Phone System`**，標籤依照分組指定為為**`Android`**和**`iPhone`**，顏色分別為**`royalblue`**和**`gold`**，並使用**`scale_y_continuous()`**函數設置了Y軸刻度標籤的格式為百分比形式，即0%到100%之間的數值。注意：`percent_format()`並非ggplot2既有的函式，要另外安裝並匯入`library(scales)`。
 
 
 ```r
@@ -175,7 +214,7 @@ toplot2 <- tweets %>%
 p1 <- toplot1 %>%
     ggplot() +
     aes(hour, percent, color = source) +
-    geom_line(size = 1) +
+    geom_line(linewidth = 1) +
     scale_color_manual(name = "Phone System", 
                        labels = c("Android", "iPhone"),
                        values = c("royalblue", "gold")) +
@@ -183,10 +222,11 @@ p1 <- toplot1 %>%
     labs(x = "Hour of day (EST)",
          y = "% of tweets",
          color = "") + theme_minimal()
+
 p2 <- toplot2 %>%
     ggplot() +
     aes(hour, percent, color = source) +
-    geom_line(size = 1) + 
+    geom_line(linewidth = 1) + 
     scale_color_manual(name = "Phone System", 
                        labels = c("Android", "iPhone"),
                        values = c("royalblue", "gold")) +
@@ -203,21 +243,29 @@ cowplot::plot_grid(
 
 <img src="R52_trump_tweet_dplyr_files/figure-html/tweets-by-hour-1.png" width="672" />
 
-#### 發文附圖
+#### Tweeting with figures
 
--   Filtering out tweets starting with `"` (those tweets mention #realdonaldtrump)
--   Mutating new variable `picture` to indicate whether text has picture or not?
--   Counting `source` by `picture`
--   Plotting bar chart to compare difference between sources.
+首先，**`filter()`**函數用於從**`tweets`**資料框中過濾出不以**`"`**字符開頭的推文，即過濾掉引號開頭的推文。這裡使用了**`!str_detect(text, '^"')`**表示將**`text`**欄位中以**`"`**字符開頭的推文過濾掉，即保留那些不以引號開頭的推文。**`'^"'`**是一個正規表示式（Regular
+Expression），**`'^'`**符號代表字串的開頭。
+
+接著，**`mutate()`**函數用於在**`tweets`**資料框中添加一個新欄位**`picture`**，該欄位根據推文中是否包含**`t.co`**字串來判斷推文中是否包含圖片或者連結。具體來說，這裡使用了**`if_else()`**函數，如果**`text`**欄位中包含**`t.co`**字串，則將**`picture`**欄位設置為**`"Picture/link"`**，否則設置為**`"No picture/link"`**。
+
+最後，使用**`count()`**函數計算**`tweets`**資料框中每個**`source`**和**`picture`**的記錄數，並將結果存儲在**`toplot`**資料框中。最終的結果是一個展示**`tweets`**資料框中**`source`**和**`picture`**的記錄數的資料框，其中**`picture`**欄位表示推文中是否包含圖片或連結。
+
+**`p1`**和**`p2`**的主要區別在於barplot的呈現方式不同。具體來說：
+
+-   **`p1`**中使用了**`position="stack"`**的參數，表示將不同分組的bar疊加在一起，以展示每個**`source`**的總推文數量，並且bar的寬度設置為0.5（使用`width`參數），使得bar之間有一定的間隔。這種方式可以方便地比較不同**`source`**的總推文數量，並且可以看到每個**`source`**中有多少推文包含圖片或連結。
+
+-   **`p2`**中使用了**`position="dodge"`**的參數，表示將不同分組的bar並排放置，以便比較不同**`source`**中包含或不包含圖片或連結的推文數量。這種方式可以顯示出每個**`source`**中有多少推文包含或不包含圖片或連結，並且可以清楚地比較不同**`source`**之間的差異。
 
 
 ```r
-# library(stringr)
 toplot <- tweets %>%
     filter(!str_detect(text, '^"')) %>%
     mutate(picture = if_else(str_detect(text, "t.co"),
                              "Picture/link", "No picture/link")) %>%
     count(source, picture)
+
 p1 <- toplot %>%
     ggplot() + 
     aes(source, n, fill = picture) + 
@@ -246,6 +294,37 @@ cowplot::plot_grid(
 
 ### Keyness
 
+Keyness是一種文本分析方法，用於比較兩個文本集合中某些詞彙的使用頻率（例如我們要比較用`iPhone`和`Android`兩支手機所發表的內容是否有文字上的差異），以評估這些詞彙在不同文本集合中的重要性或關鍵程度。Keyness分析通常用於比較兩個文本集合，其中一個是目標文本集合，另一個是參照文本集合，並且通常會將這些文本集合中的單詞或詞彙按照出現頻率排序。
+
+1.  使用**`filter()`**函數過濾出不以**`"`**字符開頭的推文，即過濾掉引號開頭的推文，將結果存儲在**`tweets`**資料框中。
+
+2.  使用**`mutate()`**函數將推文中的URL和**`&amp;`**字符替換為空白字符，即將推文中的網址和HTML實體轉換為正常的字符，方便後續的文本處理。
+
+3.  使用**`mutate()`**函數將**`tweets`**資料框中的**`text`**欄位拆分為單詞序列，存儲在**`word`**欄位中。這裡使用了**`str_split()`**函數將每個推文按照空格進行拆分，得到一個由單詞序列組成的列表，然後將這個列表存儲在**`word`**欄位中。
+
+4.  使用**`select()`**函數選擇需要的欄位，包括**`tweets`**資料框中的**`id`**、**`text`**和**`word`**欄位，以及**`tweets`**資料框中的所有其他欄位。
+
+5.  使用**`unnest()`**函數將**`word`**欄位中的單詞序列展開成一個單詞資料框，每個單詞對應一行記錄。
+
+6.  使用**`filter()`**函數過濾掉停用詞和非英文字符，其中**停用詞（stop
+    words）**列表存儲在**`stop_words`**資料框中，通過**`!word %in% stop_words$word`**條件過濾掉停用詞，並且通過**`str_detect(word, "[a-z]")`**條件過濾掉不包含英文字母的單詞。最終，將結果存儲在**`tweets`**資料框中。
+
+::: notes
+**停用詞（stop
+words）**指的是在文本中出現頻率非常高，但對於文本的內容和意義貢獻不大的詞彙。這些詞彙通常是一些常見的介詞、連詞、代詞、冠詞、助動詞等，例如"the"、"and"、"a"、"in"等。在文本分析中，停用詞通常被過濾掉，以便更好地捕捉文本中的主題和意義。在中文文本分析中，常見的停用詞包括一些虛詞、代詞、介詞、助詞等，例如"的"、"是"、"在"、"和"、"了"、"一"等。這些詞在中文文本中出現的頻率非常高，但對於文本的內容和意義貢獻不大，因此在文本分析中通常被過濾掉。
+
+停用詞的列表通常是由人為構建的，根據具體的文本分析任務和文本的特徵來決定。在自然語言處理中，通常會使用預先定義好的停用詞列表，例如英文中的NLTK（Natural
+Language Toolkit）庫中就包含了一個預先定義好的停用詞列表。
+
+在進行文本分析時，過濾掉停用詞可以幫助減少文本資料的雜訊和冗余訊息，提高分析的準確性和效率。但是，在某些特定的文本分析任務中，停用詞可能具有一定的重要性，例如情感分析中的否定詞（如"not"）可能對情感分析的結果產生重要的影響，因此需要特殊處理。如果進行的是網絡舆情分析，那麼一些特定的網絡用語和表情符號可能也需要被加入停用詞列表中，以避免對分析結果產生干擾。
+:::
+
+::: notes
+**`unnest_tokens()`**和**`mutate()`**函數都可以用於將文本data.frame中的文本數據進行分詞處理，但它們的實現方式有所不同。**`mutate()`**函數使用**`str_split()`**函數將每個文本按照指定的分隔符（如上述程式碼即以空白`" "`做為分隔符號）進行拆分，得到一個由單詞序列組成的list。這樣做的缺點是無法同時將文本中的標點符號、空格、停用詞等過濾掉，因此在進行文本分析時需要額外進行過濾處理。
+
+**`unnest_tokens()`**函數則使用更靈活的正則表達式（regex）來指定單詞的分割方式，可以將文本中的單詞、標點符號、空格等都分割開來，並且可以通過指定特定的正則表達式來過濾停用詞、非英文字符等。**`unnest_tokens()`**函數還可以將分割後的單詞list展開成一個單詞data.frame，每個單詞對應一行記錄，這樣更容易進行後續的文本分析和可視化。在**`unnest_tokens(word, text, token = "regex", pattern = "[^A-Za-z\\d#@']") %>%`**中，**`word`**表示新建的單詞欄位的名稱，**`text`**表示原始文本欄位的名稱，**`token`**表示使用的分割方式，這裡指定為正則表達式；**`pattern`**則是指定的正則表達式，其中**`[^A-Za-z\\d#@']`**表示匹配不屬於字母、數字、\@、#、'的任意字符，即過濾掉非英文字符和一些標點符號。
+:::
+
 
 ```r
 library(tidytext)	# unnest_tokens()
@@ -268,6 +347,14 @@ tweet_words <- tweets %>%
 # View(tweet_words)
 ```
 
+這段程式碼用於分析文本數據中出現頻率最高的單詞（word），並使用barplot進行視覺化呈現。具體來說，這段程式碼實現了以下幾個步驟：
+
+1.  使用**`count()`**函數對data.frame中的單詞`word`進行計數，得到每個單詞出現的次數，並按照次數降序排列。
+
+2.  使用**`head()`**函數選擇出現次數最高的前20個單詞，並用**`mutate()`**函數將這20個單詞按照出現次數重新排序（注意`reorder()`的寫法）。
+
+3.  **`geom_col()`**函數用於繪製barplot，**`coord_flip()`**函數用於將x軸和y軸互換，以便更好地顯示barplot。
+
 
 ```r
 tweet_words %>%
@@ -283,7 +370,27 @@ tweet_words %>%
 
 <img src="R52_trump_tweet_dplyr_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
-#### 詞頻差異
+#### keyness by log-ratio
+
+`word_by_source`的程式碼用於將單詞按照來源（`source`）進行分類，並統計每個來源中每個單詞出現的次數：
+
+1.  使用**`count()`**函數對單詞資料框中的單詞按照來源進行計數，並且將計數結果按照單詞和來源兩個變數進行分組。並使用**`filter()`**函數過濾掉在所有來源中出現次數少於5次的單詞。
+
+2.  使用**`pivot_wider()`**函數將分組後的資料框進行重構，將每個來源的單詞出現次數作為新欄（也就是把`iPhone`和`Android`展開成為欄位名稱），以便更方便地進行後續分析和可視化。這裡的**`names_from`**參數指定重構後的欄位名稱來自原來的`source`欄位，**`values_from`**參數指定要重構的值來自原來的`count`欄位，**`values_fill`**參數指定在重構後的資料框中缺失值的填充值，這裡設置為0。
+
+`android_iphone_ratios`這段程式碼用於計算每個單詞在`Android`和`iPhone`兩個來源中的keyness的log
+likelihood ratio。具體來說，這段程式碼實現了以下幾個步驟：
+
+1.  從上一步驟得到的**`word_by_source`**資料框中，選擇了`Android`和`iPhone`兩個來源的單詞出現次數資訊。
+
+2.  對`Android`和`iPhone`兩個來源的單詞出現次數進行標準化處理，以便進行後續的keyness計算。具體來說，這裡使用了Laplace平滑處理（add-k
+    smoothing），將每個來源的所有單詞出現次數都增加1，然後再將這些出現次數除以各自來源的總次數加1，得到每個單詞在Android和iPhone兩個來源中的出現概率。
+
+3.  對Android和iPhone兩個來源中的每個單詞，分別計算其在Android和iPhone兩個來源中的keyness
+    log ratio。這裡使用了常見的對數比值（log
+    ratio）方法，計算Android來源中單詞出現概率和iPhone來源中單詞出現概率的比值的對數，以此來衡量單詞在Android和iPhone兩個來源中的關鍵性差異。
+
+4.  將計算得到的log ratio值按照降序排列，以便進一步進行分析和可視化。
 
 
 ```r
@@ -329,7 +436,25 @@ android_iphone_ratios <- word_by_source %>%
     arrange(desc(logratio))
 ```
 
+::: notes
+這兩行分子分母加1的處理稱為拉普拉斯平滑。`mutate(iPhone = (iPhone+1)/sum(iPhone+1)) %>%`
+
+拉普拉斯平滑（add-k
+smoothing）是一種用於處理計數資料中零值問題的技巧，其主要目的是將出現次數為零的類別在計算機率時賦予一個非零的機率值，以避免出現無限大的情況，從而影響後續的計算結果。
+
+在這段程式碼中，拉普拉斯平滑的目的是對每個單詞在Android和iPhone兩個來源中的出現次數進行標準化處理，以便進行後續的keyness計算。這是因為在標準化的計算中，如果某個來源中出現次數為0的單詞，則計算出來的概率值會為0，而這樣的結果可能會產生一些問題，例如無法取log或分母為零的情形。因此，為了避免這種問題，需要對每個單詞在Android和iPhone兩個來源中的出現次數進行拉普拉斯平滑處理，使得每個單詞在Android和iPhone兩個來源中的出現概率都能夠有一個非零的值，從而進行後續的計算和分析。
+:::
+
 #### 視覺化log-ratio
+
+這段程式碼是用來繪製Android和iPhone兩個來源中關鍵性差異最大的單詞的keyness
+log
+ratio的條形圖。在繪製條形圖時，使用了**`fill = logratio < 0`**的參數設置，這是一個布林值，當單詞在Android和iPhone兩個來源中的log
+ratio小於0時，填充的顏色是gold，否則填充的顏色是royalblue。
+
+這種設計原理的目的是將Android和iPhone兩個來源中關鍵性不同的單詞進行區分，並用不同的填充顏色來表示。當單詞在Android來源中的出現概率高於在iPhone來源中的出現概率時，其log
+ratio值會為正，此時填充的顏色為royalblue；反之，當單詞在Android來源中的出現概率低於在iPhone來源中的出現概率時，其log
+ratio值會為負，此時填充的顏色為gold。
 
 
 ```r

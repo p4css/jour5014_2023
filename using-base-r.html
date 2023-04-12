@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-04-07" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="dataframe.html"/>
-<link rel="next" href="from-base-r-to-dplyr.html"/>
+<link rel="next" href="data-manipultaiton-join-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -251,286 +251,284 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.9" data-path="using-base-r.html"><a href="using-base-r.html#more-clean-version"><i class="fa fa-check"></i><b>5.1.9</b> (More) Clean version</a></li>
 <li class="chapter" data-level="5.1.10" data-path="using-base-r.html"><a href="using-base-r.html#more-the-fittest-version-to-compute-staysame"><i class="fa fa-check"></i><b>5.1.10</b> (More) The fittest version to compute staySame</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="using-base-r.html"><a href="using-base-r.html#交叉分析的概念"><i class="fa fa-check"></i><b>5.2</b> 交叉分析的概念</a></li>
-<li class="chapter" data-level="5.3" data-path="using-base-r.html"><a href="using-base-r.html#計數與交叉分析範例台北市住宅竊盜點位資訊"><i class="fa fa-check"></i><b>5.3</b> 計數與交叉分析範例：台北市住宅竊盜點位資訊</a>
+<li class="chapter" data-level="5.2" data-path="using-base-r.html"><a href="using-base-r.html#paid-maternity-leave-base-to-dplyr"><i class="fa fa-check"></i><b>5.2</b> Paid Maternity Leave (base to dplyr)</a></li>
+<li class="chapter" data-level="5.3" data-path="using-base-r.html"><a href="using-base-r.html#交叉分析的概念"><i class="fa fa-check"></i><b>5.3</b> 交叉分析的概念</a></li>
+<li class="chapter" data-level="5.4" data-path="using-base-r.html"><a href="using-base-r.html#計數與交叉分析範例台北市住宅竊盜點位資訊"><i class="fa fa-check"></i><b>5.4</b> 計數與交叉分析範例：台北市住宅竊盜點位資訊</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="using-base-r.html"><a href="using-base-r.html#讀取檔案"><i class="fa fa-check"></i><b>5.3.1</b> 讀取檔案</a></li>
-<li class="chapter" data-level="5.3.2" data-path="using-base-r.html"><a href="using-base-r.html#萃取所需新變項"><i class="fa fa-check"></i><b>5.3.2</b> 萃取所需新變項</a></li>
-<li class="chapter" data-level="5.3.3" data-path="using-base-r.html"><a href="using-base-r.html#使用table計數"><i class="fa fa-check"></i><b>5.3.3</b> 使用<code>table()</code>計數</a></li>
-<li class="chapter" data-level="5.3.4" data-path="using-base-r.html"><a href="using-base-r.html#依變數值篩選資料"><i class="fa fa-check"></i><b>5.3.4</b> 依變數值篩選資料</a></li>
-<li class="chapter" data-level="5.3.5" data-path="using-base-r.html"><a href="using-base-r.html#做雙變數樞紐分析table"><i class="fa fa-check"></i><b>5.3.5</b> 做雙變數樞紐分析：<code>table()</code></a></li>
-<li class="chapter" data-level="5.3.6" data-path="using-base-r.html"><a href="using-base-r.html#繪圖"><i class="fa fa-check"></i><b>5.3.6</b> 繪圖</a></li>
-<li class="chapter" data-level="5.3.7" data-path="using-base-r.html"><a href="using-base-r.html#practices"><i class="fa fa-check"></i><b>5.3.7</b> Practices</a></li>
+<li class="chapter" data-level="5.4.1" data-path="using-base-r.html"><a href="using-base-r.html#讀取檔案"><i class="fa fa-check"></i><b>5.4.1</b> 讀取檔案</a></li>
+<li class="chapter" data-level="5.4.2" data-path="using-base-r.html"><a href="using-base-r.html#萃取所需新變項"><i class="fa fa-check"></i><b>5.4.2</b> 萃取所需新變項</a></li>
+<li class="chapter" data-level="5.4.3" data-path="using-base-r.html"><a href="using-base-r.html#使用table計數"><i class="fa fa-check"></i><b>5.4.3</b> 使用<code>table()</code>計數</a></li>
+<li class="chapter" data-level="5.4.4" data-path="using-base-r.html"><a href="using-base-r.html#依變數值篩選資料"><i class="fa fa-check"></i><b>5.4.4</b> 依變數值篩選資料</a></li>
+<li class="chapter" data-level="5.4.5" data-path="using-base-r.html"><a href="using-base-r.html#做雙變數樞紐分析table"><i class="fa fa-check"></i><b>5.4.5</b> 做雙變數樞紐分析：<code>table()</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="using-base-r.html"><a href="using-base-r.html#繪圖"><i class="fa fa-check"></i><b>5.4.6</b> 繪圖</a></li>
+<li class="chapter" data-level="5.4.7" data-path="using-base-r.html"><a href="using-base-r.html#practices"><i class="fa fa-check"></i><b>5.4.7</b> Practices</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="using-base-r.html"><a href="using-base-r.html#read-online-files"><i class="fa fa-check"></i><b>5.4</b> Read online files</a></li>
-<li class="chapter" data-level="5.5" data-path="using-base-r.html"><a href="using-base-r.html#counting"><i class="fa fa-check"></i><b>5.5</b> Counting</a>
+<li class="chapter" data-level="5.5" data-path="using-base-r.html"><a href="using-base-r.html#read-online-files"><i class="fa fa-check"></i><b>5.5</b> Read online files</a></li>
+<li class="chapter" data-level="5.6" data-path="using-base-r.html"><a href="using-base-r.html#counting"><i class="fa fa-check"></i><b>5.6</b> Counting</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="using-base-r.html"><a href="using-base-r.html#tapply"><i class="fa fa-check"></i><b>5.5.1</b> <code>tapply()</code></a></li>
-<li class="chapter" data-level="5.5.2" data-path="using-base-r.html"><a href="using-base-r.html#tapply-two-variables"><i class="fa fa-check"></i><b>5.5.2</b> <code>tapply()</code> two variables</a></li>
-<li class="chapter" data-level="5.5.3" data-path="using-base-r.html"><a href="using-base-r.html#dplyrcount-two-variables"><i class="fa fa-check"></i><b>5.5.3</b> <code>dplyr::count()</code> two variables</a></li>
+<li class="chapter" data-level="5.6.1" data-path="using-base-r.html"><a href="using-base-r.html#tapply"><i class="fa fa-check"></i><b>5.6.1</b> <code>tapply()</code></a></li>
+<li class="chapter" data-level="5.6.2" data-path="using-base-r.html"><a href="using-base-r.html#tapply-two-variables"><i class="fa fa-check"></i><b>5.6.2</b> <code>tapply()</code> two variables</a></li>
+<li class="chapter" data-level="5.6.3" data-path="using-base-r.html"><a href="using-base-r.html#dplyrcount-two-variables"><i class="fa fa-check"></i><b>5.6.3</b> <code>dplyr::count()</code> two variables</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="using-base-r.html"><a href="using-base-r.html#pivoting-long-wide-tables"><i class="fa fa-check"></i><b>5.6</b> Pivoting long-wide tables</a>
+<li class="chapter" data-level="5.7" data-path="using-base-r.html"><a href="using-base-r.html#pivoting-long-wide-tables"><i class="fa fa-check"></i><b>5.7</b> Pivoting long-wide tables</a>
 <ul>
-<li class="chapter" data-level="5.6.1" data-path="using-base-r.html"><a href="using-base-r.html#long-to-wide"><i class="fa fa-check"></i><b>5.6.1</b> long-to-wide</a></li>
-<li class="chapter" data-level="5.6.2" data-path="using-base-r.html"><a href="using-base-r.html#wide-to-long"><i class="fa fa-check"></i><b>5.6.2</b> Wide-to-long</a></li>
+<li class="chapter" data-level="5.7.1" data-path="using-base-r.html"><a href="using-base-r.html#long-to-wide"><i class="fa fa-check"></i><b>5.7.1</b> long-to-wide</a></li>
+<li class="chapter" data-level="5.7.2" data-path="using-base-r.html"><a href="using-base-r.html#wide-to-long"><i class="fa fa-check"></i><b>5.7.2</b> Wide-to-long</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="using-base-r.html"><a href="using-base-r.html#residuals-analysis"><i class="fa fa-check"></i><b>5.7</b> Residuals analysis</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html"><i class="fa fa-check"></i><b>6</b> From base R to dplyr</a>
+<li class="chapter" data-level="5.8" data-path="using-base-r.html"><a href="using-base-r.html#residuals-analysis"><i class="fa fa-check"></i><b>5.8</b> Residuals analysis</a></li>
+<li class="chapter" data-level="5.9" data-path="using-base-r.html"><a href="using-base-r.html#from-base-r-to-dplyr"><i class="fa fa-check"></i><b>5.9</b> From base R to dplyr</a></li>
+<li class="chapter" data-level="5.10" data-path="using-base-r.html"><a href="using-base-r.html#dplyr"><i class="fa fa-check"></i><b>5.10</b> dplyr</a></li>
+<li class="chapter" data-level="5.11" data-path="using-base-r.html"><a href="using-base-r.html#taipie-theft-count-base-to-dplyr"><i class="fa fa-check"></i><b>5.11</b> Taipie Theft Count (base to dplyr)</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#dplyr"><i class="fa fa-check"></i><b>6.1</b> dplyr</a></li>
-<li class="chapter" data-level="6.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#taipie-theft-count-base-to-dplyr"><i class="fa fa-check"></i><b>6.2</b> Taipie Theft Count (base to dplyr)</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#reading-data"><i class="fa fa-check"></i><b>6.2.1</b> Reading data</a></li>
-<li class="chapter" data-level="6.2.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#cleaning-data-i"><i class="fa fa-check"></i><b>6.2.2</b> Cleaning data I</a></li>
-<li class="chapter" data-level="6.2.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#cleaning-data-ii"><i class="fa fa-check"></i><b>6.2.3</b> Cleaning data II</a></li>
-<li class="chapter" data-level="6.2.4" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#long-to-wide-form"><i class="fa fa-check"></i><b>6.2.4</b> Long to wide form</a></li>
-<li class="chapter" data-level="6.2.5" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>6.2.5</b> Setting time as row.name for mosaicplot</a></li>
-<li class="chapter" data-level="6.2.6" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#clean-version"><i class="fa fa-check"></i><b>6.2.6</b> Clean version</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#paid-maternity-leave-base-to-dplyr"><i class="fa fa-check"></i><b>6.3</b> Paid Maternity Leave (base to dplyr)</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html"><i class="fa fa-check"></i><b>7</b> Data manipultaiton: Join data</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#讀取內政部人口統計資料"><i class="fa fa-check"></i><b>7.1</b> 讀取內政部人口統計資料</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#分析規劃"><i class="fa fa-check"></i><b>7.1.1</b> 分析規劃</a></li>
-<li class="chapter" data-level="7.1.2" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#清理資料"><i class="fa fa-check"></i><b>7.1.2</b> 清理資料</a></li>
-<li class="chapter" data-level="7.1.3" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#進階運用rowwise"><i class="fa fa-check"></i><b>7.1.3</b> 進階：運用<code>rowwise()</code></a></li>
-<li class="chapter" data-level="7.1.4" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#建立鄉鎮市區與村里指標"><i class="fa fa-check"></i><b>7.1.4</b> 建立鄉鎮市區與村里指標</a></li>
-<li class="chapter" data-level="7.1.5" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#視覺化測試老年人口數-x-曾婚人口數"><i class="fa fa-check"></i><b>7.1.5</b> 視覺化測試（老年人口數 x 曾婚人口數）</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#讀取公投資料"><i class="fa fa-check"></i><b>7.2</b> 讀取公投資料</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#合併公投資料並視覺化"><i class="fa fa-check"></i><b>7.2.1</b> 合併公投資料並視覺化</a></li>
+<li class="chapter" data-level="5.11.1" data-path="using-base-r.html"><a href="using-base-r.html#reading-data"><i class="fa fa-check"></i><b>5.11.1</b> Reading data</a></li>
+<li class="chapter" data-level="5.11.2" data-path="using-base-r.html"><a href="using-base-r.html#cleaning-data-i"><i class="fa fa-check"></i><b>5.11.2</b> Cleaning data I</a></li>
+<li class="chapter" data-level="5.11.3" data-path="using-base-r.html"><a href="using-base-r.html#cleaning-data-ii"><i class="fa fa-check"></i><b>5.11.3</b> Cleaning data II</a></li>
+<li class="chapter" data-level="5.11.4" data-path="using-base-r.html"><a href="using-base-r.html#long-to-wide-form"><i class="fa fa-check"></i><b>5.11.4</b> Long to wide form</a></li>
+<li class="chapter" data-level="5.11.5" data-path="using-base-r.html"><a href="using-base-r.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>5.11.5</b> Setting time as row.name for mosaicplot</a></li>
+<li class="chapter" data-level="5.11.6" data-path="using-base-r.html"><a href="using-base-r.html#clean-version"><i class="fa fa-check"></i><b>5.11.6</b> Clean version</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html"><i class="fa fa-check"></i><b>8</b> Data Manipulation II</a>
+<li class="chapter" data-level="6" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html"><i class="fa fa-check"></i><b>6</b> Data manipultaiton: Join data</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#categorical"><i class="fa fa-check"></i><b>8.1</b> 類別資料分析</a>
+<li class="chapter" data-level="6.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#讀取內政部人口統計資料"><i class="fa fa-check"></i><b>6.1</b> 讀取內政部人口統計資料</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#清理資料-1"><i class="fa fa-check"></i><b>8.1.1</b> 清理資料</a></li>
-<li class="chapter" data-level="8.1.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#尺度轉類別指標"><i class="fa fa-check"></i><b>8.1.2</b> 尺度轉類別指標</a></li>
-<li class="chapter" data-level="8.1.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#cross-tabulating"><i class="fa fa-check"></i><b>8.1.3</b> Cross-tabulating</a></li>
+<li class="chapter" data-level="6.1.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#分析規劃"><i class="fa fa-check"></i><b>6.1.1</b> 分析規劃</a></li>
+<li class="chapter" data-level="6.1.2" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#清理資料"><i class="fa fa-check"></i><b>6.1.2</b> 清理資料</a></li>
+<li class="chapter" data-level="6.1.3" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#進階運用rowwise"><i class="fa fa-check"></i><b>6.1.3</b> 進階：運用<code>rowwise()</code></a></li>
+<li class="chapter" data-level="6.1.4" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#建立鄉鎮市區與村里指標"><i class="fa fa-check"></i><b>6.1.4</b> 建立鄉鎮市區與村里指標</a></li>
+<li class="chapter" data-level="6.1.5" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#視覺化測試老年人口數-x-曾婚人口數"><i class="fa fa-check"></i><b>6.1.5</b> 視覺化測試（老年人口數 x 曾婚人口數）</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#processing-timeline"><i class="fa fa-check"></i><b>8.2</b> Processing Timeline</a>
+<li class="chapter" data-level="6.2" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#讀取公投資料"><i class="fa fa-check"></i><b>6.2</b> 讀取公投資料</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#文字轉時間"><i class="fa fa-check"></i><b>8.2.1</b> 文字轉時間</a></li>
-<li class="chapter" data-level="8.2.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>8.2.2</b> 時間作為機率分佈X軸</a></li>
-<li class="chapter" data-level="8.2.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#逐月統計資料"><i class="fa fa-check"></i><b>8.2.3</b> 逐月統計資料</a></li>
-<li class="chapter" data-level="8.2.4" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#逐日統計資料佳"><i class="fa fa-check"></i><b>8.2.4</b> 逐日統計資料（佳）</a></li>
-<li class="chapter" data-level="8.2.5" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#每日逐時資料"><i class="fa fa-check"></i><b>8.2.5</b> 每日逐時資料</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#空值na處理"><i class="fa fa-check"></i><b>8.3</b> 空值（NA）處理</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#表格重整政府預算"><i class="fa fa-check"></i><b>8.3.1</b> 表格重整：政府預算</a></li>
-<li class="chapter" data-level="8.3.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#對齊資料世界各國疫苗接種比例"><i class="fa fa-check"></i><b>8.3.2</b> 對齊資料。世界各國疫苗接種比例</a></li>
+<li class="chapter" data-level="6.2.1" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html#合併公投資料並視覺化"><i class="fa fa-check"></i><b>6.2.1</b> 合併公投資料並視覺化</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>9</b> Text Processing</a>
+<li class="chapter" data-level="7" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html"><i class="fa fa-check"></i><b>7</b> Data Manipulation II</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="text-processing.html"><a href="text-processing.html#tweets-分析"><i class="fa fa-check"></i><b>9.1</b> Tweets 分析</a>
+<li class="chapter" data-level="7.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#categorical"><i class="fa fa-check"></i><b>7.1</b> 類別資料分析</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="text-processing.html"><a href="text-processing.html#載入並清理資料"><i class="fa fa-check"></i><b>9.1.1</b> 載入並清理資料</a></li>
-<li class="chapter" data-level="9.1.2" data-path="text-processing.html"><a href="text-processing.html#萃取資料"><i class="fa fa-check"></i><b>9.1.2</b> 萃取資料</a></li>
-<li class="chapter" data-level="9.1.3" data-path="text-processing.html"><a href="text-processing.html#視覺化探索"><i class="fa fa-check"></i><b>9.1.3</b> 視覺化探索</a></li>
-<li class="chapter" data-level="9.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>9.1.4</b> Keyness</a></li>
+<li class="chapter" data-level="7.1.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#清理資料-1"><i class="fa fa-check"></i><b>7.1.1</b> 清理資料</a></li>
+<li class="chapter" data-level="7.1.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#尺度轉類別指標"><i class="fa fa-check"></i><b>7.1.2</b> 尺度轉類別指標</a></li>
+<li class="chapter" data-level="7.1.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#cross-tabulating"><i class="fa fa-check"></i><b>7.1.3</b> Cross-tabulating</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#processing-timeline"><i class="fa fa-check"></i><b>7.2</b> Processing Timeline</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#文字轉時間"><i class="fa fa-check"></i><b>7.2.1</b> 文字轉時間</a></li>
+<li class="chapter" data-level="7.2.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#時間作為機率分佈x軸"><i class="fa fa-check"></i><b>7.2.2</b> 時間作為機率分佈X軸</a></li>
+<li class="chapter" data-level="7.2.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#逐月統計資料"><i class="fa fa-check"></i><b>7.2.3</b> 逐月統計資料</a></li>
+<li class="chapter" data-level="7.2.4" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#逐日統計資料佳"><i class="fa fa-check"></i><b>7.2.4</b> 逐日統計資料（佳）</a></li>
+<li class="chapter" data-level="7.2.5" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#每日逐時資料"><i class="fa fa-check"></i><b>7.2.5</b> 每日逐時資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#空值na處理"><i class="fa fa-check"></i><b>7.3</b> 空值（NA）處理</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#表格重整政府預算"><i class="fa fa-check"></i><b>7.3.1</b> 表格重整：政府預算</a></li>
+<li class="chapter" data-level="7.3.2" data-path="data-manipulation-ii.html"><a href="data-manipulation-ii.html#對齊資料世界各國疫苗接種比例"><i class="fa fa-check"></i><b>7.3.2</b> 對齊資料。世界各國疫苗接種比例</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>10</b> Crawler</a>
+<li class="chapter" data-level="8" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>8</b> Text Processing</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>10.1</b> Scraping 104.com</a>
+<li class="chapter" data-level="8.1" data-path="text-processing.html"><a href="text-processing.html#tweets-analysis"><i class="fa fa-check"></i><b>8.1</b> Tweets Analysis</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="crawler.html"><a href="crawler.html#complete-code"><i class="fa fa-check"></i><b>10.1.1</b> Complete Code</a></li>
-<li class="chapter" data-level="10.1.2" data-path="crawler.html"><a href="crawler.html#step-by-step"><i class="fa fa-check"></i><b>10.1.2</b> Step-by-Step</a></li>
+<li class="chapter" data-level="8.1.1" data-path="text-processing.html"><a href="text-processing.html#loading-data"><i class="fa fa-check"></i><b>8.1.1</b> Loading data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-processing.html"><a href="text-processing.html#cleaning-data"><i class="fa fa-check"></i><b>8.1.2</b> Cleaning data</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-processing.html"><a href="text-processing.html#visual-exploring"><i class="fa fa-check"></i><b>8.1.3</b> Visual Exploring</a></li>
+<li class="chapter" data-level="8.1.4" data-path="text-processing.html"><a href="text-processing.html#keyness"><i class="fa fa-check"></i><b>8.1.4</b> Keyness</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="crawler.html"><a href="crawler.html#scraping-nba-players"><i class="fa fa-check"></i><b>10.2</b> Scraping NBA players</a>
+</ul></li>
+<li class="chapter" data-level="9" data-path="crawler.html"><a href="crawler.html"><i class="fa fa-check"></i><b>9</b> Crawler</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="crawler.html"><a href="crawler.html#get-top250-players"><i class="fa fa-check"></i><b>10.2.1</b> Get top250 players</a></li>
-<li class="chapter" data-level="10.2.2" data-path="crawler.html"><a href="crawler.html#scraping-live-scores"><i class="fa fa-check"></i><b>10.2.2</b> Scraping live scores</a></li>
-<li class="chapter" data-level="10.2.3" data-path="crawler.html"><a href="crawler.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>10.2.3</b> Scrape life time scores</a></li>
-<li class="chapter" data-level="10.2.4" data-path="crawler.html"><a href="crawler.html#cleaning"><i class="fa fa-check"></i><b>10.2.4</b> Cleaning</a></li>
-<li class="chapter" data-level="10.2.5" data-path="crawler.html"><a href="crawler.html#visualization"><i class="fa fa-check"></i><b>10.2.5</b> Visualization</a></li>
-<li class="chapter" data-level="10.2.6" data-path="crawler.html"><a href="crawler.html#more-scraping-all-players"><i class="fa fa-check"></i><b>10.2.6</b> (More) Scraping all players</a></li>
+<li class="chapter" data-level="9.1" data-path="crawler.html"><a href="crawler.html#scraping-104.com"><i class="fa fa-check"></i><b>9.1</b> Scraping 104.com</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="crawler.html"><a href="crawler.html#complete-code"><i class="fa fa-check"></i><b>9.1.1</b> Complete Code</a></li>
+<li class="chapter" data-level="9.1.2" data-path="crawler.html"><a href="crawler.html#step-by-step"><i class="fa fa-check"></i><b>9.1.2</b> Step-by-Step</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="crawler.html"><a href="crawler.html#scraping-nba-players"><i class="fa fa-check"></i><b>9.2</b> Scraping NBA players</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="crawler.html"><a href="crawler.html#get-top250-players"><i class="fa fa-check"></i><b>9.2.1</b> Get top250 players</a></li>
+<li class="chapter" data-level="9.2.2" data-path="crawler.html"><a href="crawler.html#scraping-live-scores"><i class="fa fa-check"></i><b>9.2.2</b> Scraping live scores</a></li>
+<li class="chapter" data-level="9.2.3" data-path="crawler.html"><a href="crawler.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>9.2.3</b> Scrape life time scores</a></li>
+<li class="chapter" data-level="9.2.4" data-path="crawler.html"><a href="crawler.html#cleaning"><i class="fa fa-check"></i><b>9.2.4</b> Cleaning</a></li>
+<li class="chapter" data-level="9.2.5" data-path="crawler.html"><a href="crawler.html#visualization"><i class="fa fa-check"></i><b>9.2.5</b> Visualization</a></li>
+<li class="chapter" data-level="9.2.6" data-path="crawler.html"><a href="crawler.html#more-scraping-all-players"><i class="fa fa-check"></i><b>9.2.6</b> (More) Scraping all players</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III VISUALIZATION</b></span></li>
-<li class="chapter" data-level="11" data-path="visualization-1.html"><a href="visualization-1.html"><i class="fa fa-check"></i><b>11</b> Visualization</a>
+<li class="chapter" data-level="10" data-path="visualization-1.html"><a href="visualization-1.html"><i class="fa fa-check"></i><b>10</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="visualization-1.html"><a href="visualization-1.html#ggplot2"><i class="fa fa-check"></i><b>11.1</b> ggplot2</a></li>
-<li class="chapter" data-level="11.2" data-path="visualization-1.html"><a href="visualization-1.html#vis-packages"><i class="fa fa-check"></i><b>11.2</b> VIS packages</a></li>
-<li class="chapter" data-level="11.3" data-path="visualization-1.html"><a href="visualization-1.html#ggplot"><i class="fa fa-check"></i><b>11.3</b> ggplot簡介</a></li>
-<li class="chapter" data-level="11.4" data-path="visualization-1.html"><a href="visualization-1.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>11.4</b> 繪圖基礎：折線圖</a>
+<li class="chapter" data-level="10.1" data-path="visualization-1.html"><a href="visualization-1.html#ggplot2"><i class="fa fa-check"></i><b>10.1</b> ggplot2</a></li>
+<li class="chapter" data-level="10.2" data-path="visualization-1.html"><a href="visualization-1.html#vis-packages"><i class="fa fa-check"></i><b>10.2</b> VIS packages</a></li>
+<li class="chapter" data-level="10.3" data-path="visualization-1.html"><a href="visualization-1.html#ggplot"><i class="fa fa-check"></i><b>10.3</b> ggplot簡介</a></li>
+<li class="chapter" data-level="10.4" data-path="visualization-1.html"><a href="visualization-1.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>10.4</b> 繪圖基礎：折線圖</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="visualization-1.html"><a href="visualization-1.html#繪圖三要素"><i class="fa fa-check"></i><b>11.4.1</b> 繪圖三要素</a></li>
-<li class="chapter" data-level="11.4.2" data-path="visualization-1.html"><a href="visualization-1.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>11.4.2</b> 範例-紐時世代貧富不均</a></li>
-<li class="chapter" data-level="11.4.3" data-path="visualization-1.html"><a href="visualization-1.html#加入自變項群組"><i class="fa fa-check"></i><b>11.4.3</b> 加入自變項群組</a></li>
+<li class="chapter" data-level="10.4.1" data-path="visualization-1.html"><a href="visualization-1.html#繪圖三要素"><i class="fa fa-check"></i><b>10.4.1</b> 繪圖三要素</a></li>
+<li class="chapter" data-level="10.4.2" data-path="visualization-1.html"><a href="visualization-1.html#範例-紐時世代貧富不均"><i class="fa fa-check"></i><b>10.4.2</b> 範例-紐時世代貧富不均</a></li>
+<li class="chapter" data-level="10.4.3" data-path="visualization-1.html"><a href="visualization-1.html#加入自變項群組"><i class="fa fa-check"></i><b>10.4.3</b> 加入自變項群組</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="visualization-1.html"><a href="visualization-1.html#圖表調整"><i class="fa fa-check"></i><b>11.5</b> 圖表調整</a>
+<li class="chapter" data-level="10.5" data-path="visualization-1.html"><a href="visualization-1.html#圖表調整"><i class="fa fa-check"></i><b>10.5</b> 圖表調整</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="visualization-1.html"><a href="visualization-1.html#點線型態"><i class="fa fa-check"></i><b>11.5.1</b> 點線型態</a></li>
-<li class="chapter" data-level="11.5.2" data-path="visualization-1.html"><a href="visualization-1.html#標題標籤與圖說"><i class="fa fa-check"></i><b>11.5.2</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="11.5.3" data-path="visualization-1.html"><a href="visualization-1.html#字體樣式"><i class="fa fa-check"></i><b>11.5.3</b> 字體樣式</a></li>
-<li class="chapter" data-level="11.5.4" data-path="visualization-1.html"><a href="visualization-1.html#圖表主題色調"><i class="fa fa-check"></i><b>11.5.4</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="11.5.5" data-path="visualization-1.html"><a href="visualization-1.html#預設主題"><i class="fa fa-check"></i><b>11.5.5</b> 預設主題</a></li>
-<li class="chapter" data-level="11.5.6" data-path="visualization-1.html"><a href="visualization-1.html#顯示中文字體"><i class="fa fa-check"></i><b>11.5.6</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="11.5.7" data-path="visualization-1.html"><a href="visualization-1.html#xy軸方向"><i class="fa fa-check"></i><b>11.5.7</b> X/Y軸方向</a></li>
+<li class="chapter" data-level="10.5.1" data-path="visualization-1.html"><a href="visualization-1.html#點線型態"><i class="fa fa-check"></i><b>10.5.1</b> 點線型態</a></li>
+<li class="chapter" data-level="10.5.2" data-path="visualization-1.html"><a href="visualization-1.html#標題標籤與圖說"><i class="fa fa-check"></i><b>10.5.2</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="10.5.3" data-path="visualization-1.html"><a href="visualization-1.html#字體樣式"><i class="fa fa-check"></i><b>10.5.3</b> 字體樣式</a></li>
+<li class="chapter" data-level="10.5.4" data-path="visualization-1.html"><a href="visualization-1.html#圖表主題色調"><i class="fa fa-check"></i><b>10.5.4</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="10.5.5" data-path="visualization-1.html"><a href="visualization-1.html#預設主題"><i class="fa fa-check"></i><b>10.5.5</b> 預設主題</a></li>
+<li class="chapter" data-level="10.5.6" data-path="visualization-1.html"><a href="visualization-1.html#顯示中文字體"><i class="fa fa-check"></i><b>10.5.6</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="10.5.7" data-path="visualization-1.html"><a href="visualization-1.html#xy軸方向"><i class="fa fa-check"></i><b>10.5.7</b> X/Y軸方向</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="visualization-1.html"><a href="visualization-1.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>11.6</b> 視覺化說故事的技巧</a>
+<li class="chapter" data-level="10.6" data-path="visualization-1.html"><a href="visualization-1.html#視覺化說故事的技巧"><i class="fa fa-check"></i><b>10.6</b> 視覺化說故事的技巧</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="visualization-1.html"><a href="visualization-1.html#依群組指定顏色"><i class="fa fa-check"></i><b>11.6.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="11.6.2" data-path="visualization-1.html"><a href="visualization-1.html#使用gghighlight套件"><i class="fa fa-check"></i><b>11.6.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="11.6.3" data-path="visualization-1.html"><a href="visualization-1.html#為視覺化建立群組"><i class="fa fa-check"></i><b>11.6.3</b> 為視覺化建立群組</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="visualization-ii.html"><a href="visualization-ii.html"><i class="fa fa-check"></i><b>12</b> Visualization II</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="visualization-ii.html"><a href="visualization-ii.html#colors"><i class="fa fa-check"></i><b>12.1</b> COLORS</a></li>
-<li class="chapter" data-level="12.2" data-path="visualization-ii.html"><a href="visualization-ii.html#chart-types"><i class="fa fa-check"></i><b>12.2</b> CHART TYPES</a></li>
-<li class="chapter" data-level="12.3" data-path="visualization-ii.html"><a href="visualization-ii.html#line-types"><i class="fa fa-check"></i><b>12.3</b> Line Types</a></li>
-<li class="chapter" data-level="12.4" data-path="visualization-ii.html"><a href="visualization-ii.html#marking-area"><i class="fa fa-check"></i><b>12.4</b> Marking area</a>
-<ul>
-<li class="chapter" data-level="12.4.1" data-path="visualization-ii.html"><a href="visualization-ii.html#the-econimics-data"><i class="fa fa-check"></i><b>12.4.1</b> The econimics data</a></li>
-<li class="chapter" data-level="12.4.2" data-path="visualization-ii.html"><a href="visualization-ii.html#setting-marking-area"><i class="fa fa-check"></i><b>12.4.2</b> Setting marking area</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="visualization-ii.html"><a href="visualization-ii.html#smoothing"><i class="fa fa-check"></i><b>12.5</b> Smoothing</a>
-<ul>
-<li class="chapter" data-level="12.5.1" data-path="visualization-ii.html"><a href="visualization-ii.html#economics-unemplyed"><i class="fa fa-check"></i><b>12.5.1</b> Economics: unemplyed</a></li>
-<li class="chapter" data-level="12.5.2" data-path="visualization-ii.html"><a href="visualization-ii.html#polls_2008"><i class="fa fa-check"></i><b>12.5.2</b> Polls_2008</a></li>
+<li class="chapter" data-level="10.6.1" data-path="visualization-1.html"><a href="visualization-1.html#依群組指定顏色"><i class="fa fa-check"></i><b>10.6.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="10.6.2" data-path="visualization-1.html"><a href="visualization-1.html#使用gghighlight套件"><i class="fa fa-check"></i><b>10.6.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="10.6.3" data-path="visualization-1.html"><a href="visualization-1.html#為視覺化建立群組"><i class="fa fa-check"></i><b>10.6.3</b> 為視覺化建立群組</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>13</b> Coordinate</a>
+<li class="chapter" data-level="11" data-path="visualization-ii.html"><a href="visualization-ii.html"><i class="fa fa-check"></i><b>11</b> Visualization II</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="coordinate.html"><a href="coordinate.html#座標軸為資料排序"><i class="fa fa-check"></i><b>13.1</b> 座標軸為資料排序</a>
+<li class="chapter" data-level="11.1" data-path="visualization-ii.html"><a href="visualization-ii.html#colors"><i class="fa fa-check"></i><b>11.1</b> COLORS</a></li>
+<li class="chapter" data-level="11.2" data-path="visualization-ii.html"><a href="visualization-ii.html#chart-types"><i class="fa fa-check"></i><b>11.2</b> CHART TYPES</a></li>
+<li class="chapter" data-level="11.3" data-path="visualization-ii.html"><a href="visualization-ii.html#line-types"><i class="fa fa-check"></i><b>11.3</b> Line Types</a></li>
+<li class="chapter" data-level="11.4" data-path="visualization-ii.html"><a href="visualization-ii.html#marking-area"><i class="fa fa-check"></i><b>11.4</b> Marking area</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="coordinate.html"><a href="coordinate.html#section"><i class="fa fa-check"></i><b>13.1.1</b> </a></li>
+<li class="chapter" data-level="11.4.1" data-path="visualization-ii.html"><a href="visualization-ii.html#the-econimics-data"><i class="fa fa-check"></i><b>11.4.1</b> The econimics data</a></li>
+<li class="chapter" data-level="11.4.2" data-path="visualization-ii.html"><a href="visualization-ii.html#setting-marking-area"><i class="fa fa-check"></i><b>11.4.2</b> Setting marking area</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="coordinate.html"><a href="coordinate.html#用log-scale放大長尾頭部"><i class="fa fa-check"></i><b>13.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="13.3" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>13.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="13.4" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>13.4</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="11.5" data-path="visualization-ii.html"><a href="visualization-ii.html#smoothing"><i class="fa fa-check"></i><b>11.5</b> Smoothing</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="coordinate.html"><a href="coordinate.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>13.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>13.4.2</b> Read and sort data</a></li>
-</ul></li>
-<li class="chapter" data-level="13.5" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>13.5</b> 等比例座標軸</a>
-<ul>
-<li class="chapter" data-level="13.5.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>13.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="11.5.1" data-path="visualization-ii.html"><a href="visualization-ii.html#economics-unemplyed"><i class="fa fa-check"></i><b>11.5.1</b> Economics: unemplyed</a></li>
+<li class="chapter" data-level="11.5.2" data-path="visualization-ii.html"><a href="visualization-ii.html#polls_2008"><i class="fa fa-check"></i><b>11.5.2</b> Polls_2008</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>14</b> AMOUNT</a>
+<li class="chapter" data-level="12" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>12</b> Coordinate</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="amount.html"><a href="amount.html#bar-chart"><i class="fa fa-check"></i><b>14.1</b> Bar chart</a></li>
-<li class="chapter" data-level="14.2" data-path="amount.html"><a href="amount.html#heatmap-vaccination"><i class="fa fa-check"></i><b>14.2</b> Heatmap: Vaccination</a>
+<li class="chapter" data-level="12.1" data-path="coordinate.html"><a href="coordinate.html#座標軸為資料排序"><i class="fa fa-check"></i><b>12.1</b> 座標軸為資料排序</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="amount.html"><a href="amount.html#the-case-vaccinating-coverage-by-month"><i class="fa fa-check"></i><b>14.2.1</b> The case: Vaccinating coverage by month</a></li>
-<li class="chapter" data-level="14.2.2" data-path="amount.html"><a href="amount.html#data-cleaning"><i class="fa fa-check"></i><b>14.2.2</b> Data cleaning</a></li>
-<li class="chapter" data-level="14.2.3" data-path="amount.html"><a href="amount.html#visualization-2"><i class="fa fa-check"></i><b>14.2.3</b> Visualization</a></li>
+<li class="chapter" data-level="12.1.1" data-path="coordinate.html"><a href="coordinate.html#section"><i class="fa fa-check"></i><b>12.1.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="coordinate.html"><a href="coordinate.html#用log-scale放大長尾頭部"><i class="fa fa-check"></i><b>12.2</b> 用Log-scale放大長尾頭部</a></li>
+<li class="chapter" data-level="12.3" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>12.3</b> Square-root scale</a></li>
+<li class="chapter" data-level="12.4" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>12.4</b> 座標軸從數值到增加值</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="coordinate.html"><a href="coordinate.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>12.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
+<li class="chapter" data-level="12.4.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>12.4.2</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>12.5</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>12.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>15</b> DISTRIBUTION: Histogram &amp; Density</a>
+<li class="chapter" data-level="13" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>13</b> AMOUNT</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-plot"><i class="fa fa-check"></i><b>15.1</b> Density plot</a>
+<li class="chapter" data-level="13.1" data-path="amount.html"><a href="amount.html#bar-chart"><i class="fa fa-check"></i><b>13.1</b> Bar chart</a></li>
+<li class="chapter" data-level="13.2" data-path="amount.html"><a href="amount.html#heatmap-vaccination"><i class="fa fa-check"></i><b>13.2</b> Heatmap: Vaccination</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>15.1.1</b> Density with different bandwidth</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram"><i class="fa fa-check"></i><b>15.2</b> Histogram</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>15.2.1</b> Histogram with different number of bins</a></li>
-<li class="chapter" data-level="15.2.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-vs-histogram"><i class="fa fa-check"></i><b>15.2.2</b> Density vs histogram</a></li>
-<li class="chapter" data-level="15.2.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>15.2.3</b> Positions of bar chart</a></li>
-<li class="chapter" data-level="15.2.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>15.2.4</b> Display two groups histogram by facet_wrap()</a></li>
-</ul></li>
-<li class="chapter" data-level="15.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#pyramid-plot"><i class="fa fa-check"></i><b>15.3</b> Pyramid Plot</a>
-<ul>
-<li class="chapter" data-level="15.3.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>15.3.1</b> Modify geom_col() to pyramid plot</a></li>
-</ul></li>
-<li class="chapter" data-level="15.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#box-plot-muitiple-distrubution"><i class="fa fa-check"></i><b>15.4</b> Box plot: Muitiple Distrubution</a>
-<ul>
-<li class="chapter" data-level="15.4.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>15.4.1</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="15.4.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-income-boxplot"><i class="fa fa-check"></i><b>15.4.2</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="13.2.1" data-path="amount.html"><a href="amount.html#the-case-vaccinating-coverage-by-month"><i class="fa fa-check"></i><b>13.2.1</b> The case: Vaccinating coverage by month</a></li>
+<li class="chapter" data-level="13.2.2" data-path="amount.html"><a href="amount.html#data-cleaning"><i class="fa fa-check"></i><b>13.2.2</b> Data cleaning</a></li>
+<li class="chapter" data-level="13.2.3" data-path="amount.html"><a href="amount.html#visualization-2"><i class="fa fa-check"></i><b>13.2.3</b> Visualization</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>16</b> PROPORTION</a>
+<li class="chapter" data-level="14" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>14</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="proportion.html"><a href="proportion.html#pie-chart"><i class="fa fa-check"></i><b>16.1</b> Pie Chart</a></li>
-<li class="chapter" data-level="16.2" data-path="proportion.html"><a href="proportion.html#dodged-bar-chart"><i class="fa fa-check"></i><b>16.2</b> Dodged Bar Chart</a></li>
-<li class="chapter" data-level="16.3" data-path="proportion.html"><a href="proportion.html#treemap-nested-proportion"><i class="fa fa-check"></i><b>16.3</b> Treemap: Nested Proportion</a>
+<li class="chapter" data-level="14.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-plot"><i class="fa fa-check"></i><b>14.1</b> Density plot</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="proportion.html"><a href="proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>16.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
-<li class="chapter" data-level="16.3.2" data-path="proportion.html"><a href="proportion.html#tw-budget"><i class="fa fa-check"></i><b>16.3.2</b> TW Budget</a></li>
+<li class="chapter" data-level="14.1.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>14.1.1</b> Density with different bandwidth</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram"><i class="fa fa-check"></i><b>14.2</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>14.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="14.2.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-vs-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="14.2.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>14.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="14.2.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>14.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#pyramid-plot"><i class="fa fa-check"></i><b>14.3</b> Pyramid Plot</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>14.3.1</b> Modify geom_col() to pyramid plot</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#box-plot-muitiple-distrubution"><i class="fa fa-check"></i><b>14.4</b> Box plot: Muitiple Distrubution</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>14.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="14.4.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-income-boxplot"><i class="fa fa-check"></i><b>14.4.2</b> TW-Income (boxplot)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>17</b> ASSOCIATION</a>
+<li class="chapter" data-level="15" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>15</b> PROPORTION</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="association.html"><a href="association.html#等比例座標軸-1"><i class="fa fa-check"></i><b>17.1</b> 等比例座標軸</a>
+<li class="chapter" data-level="15.1" data-path="proportion.html"><a href="proportion.html#pie-chart"><i class="fa fa-check"></i><b>15.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="15.2" data-path="proportion.html"><a href="proportion.html#dodged-bar-chart"><i class="fa fa-check"></i><b>15.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="15.3" data-path="proportion.html"><a href="proportion.html#treemap-nested-proportion"><i class="fa fa-check"></i><b>15.3</b> Treemap: Nested Proportion</a>
 <ul>
-<li class="chapter" data-level="17.1.1" data-path="association.html"><a href="association.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>17.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="15.3.1" data-path="proportion.html"><a href="proportion.html#global-carbon-projects-wgoith-nytimes"><i class="fa fa-check"></i><b>15.3.1</b> Global Carbon Projects (WGOITH-NYTIMES)</a></li>
+<li class="chapter" data-level="15.3.2" data-path="proportion.html"><a href="proportion.html#tw-budget"><i class="fa fa-check"></i><b>15.3.2</b> TW Budget</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>18</b> TIME &amp; TRENDS</a></li>
-<li class="chapter" data-level="19" data-path="network-vis.html"><a href="network-vis.html"><i class="fa fa-check"></i><b>19</b> NETWORK VIS</a>
+<li class="chapter" data-level="16" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>16</b> ASSOCIATION</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="network-vis.html"><a href="network-vis.html#generating-networks"><i class="fa fa-check"></i><b>19.1</b> Generating networks</a>
+<li class="chapter" data-level="16.1" data-path="association.html"><a href="association.html#等比例座標軸-1"><i class="fa fa-check"></i><b>16.1</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="19.1.1" data-path="network-vis.html"><a href="network-vis.html#random-network"><i class="fa fa-check"></i><b>19.1.1</b> Random network</a></li>
-<li class="chapter" data-level="19.1.2" data-path="network-vis.html"><a href="network-vis.html#random-network-1"><i class="fa fa-check"></i><b>19.1.2</b> Random network</a></li>
-</ul></li>
-<li class="chapter" data-level="19.2" data-path="network-vis.html"><a href="network-vis.html#retrieve-top3-components"><i class="fa fa-check"></i><b>19.2</b> Retrieve Top3 Components</a>
-<ul>
-<li class="chapter" data-level="19.2.1" data-path="network-vis.html"><a href="network-vis.html#visualize-again"><i class="fa fa-check"></i><b>19.2.1</b> Visualize again</a></li>
-</ul></li>
-<li class="chapter" data-level="19.3" data-path="network-vis.html"><a href="network-vis.html#motif-visualization-and-analysis"><i class="fa fa-check"></i><b>19.3</b> Motif visualization and analysis</a>
-<ul>
-<li class="chapter" data-level="19.3.1" data-path="network-vis.html"><a href="network-vis.html#motif-type"><i class="fa fa-check"></i><b>19.3.1</b> Motif type</a></li>
-<li class="chapter" data-level="19.3.2" data-path="network-vis.html"><a href="network-vis.html#motif-analysis"><i class="fa fa-check"></i><b>19.3.2</b> Motif analysis</a></li>
-<li class="chapter" data-level="19.3.3" data-path="network-vis.html"><a href="network-vis.html#generate-motives"><i class="fa fa-check"></i><b>19.3.3</b> Generate motives</a></li>
+<li class="chapter" data-level="16.1.1" data-path="association.html"><a href="association.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>16.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>20</b> GEOSPATIAL</a></li>
-<li class="chapter" data-level="21" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>21</b> Interactivity</a>
+<li class="chapter" data-level="17" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>17</b> TIME &amp; TRENDS</a></li>
+<li class="chapter" data-level="18" data-path="network-vis.html"><a href="network-vis.html"><i class="fa fa-check"></i><b>18</b> NETWORK VIS</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="interactivity.html"><a href="interactivity.html#ggplotly"><i class="fa fa-check"></i><b>21.1</b> ggplotly</a>
+<li class="chapter" data-level="18.1" data-path="network-vis.html"><a href="network-vis.html#generating-networks"><i class="fa fa-check"></i><b>18.1</b> Generating networks</a>
 <ul>
-<li class="chapter" data-level="21.1.1" data-path="interactivity.html"><a href="interactivity.html#line-chart"><i class="fa fa-check"></i><b>21.1.1</b> LINE CHART</a></li>
-<li class="chapter" data-level="21.1.2" data-path="interactivity.html"><a href="interactivity.html#scatter"><i class="fa fa-check"></i><b>21.1.2</b> SCATTER</a></li>
-<li class="chapter" data-level="21.1.3" data-path="interactivity.html"><a href="interactivity.html#barplot"><i class="fa fa-check"></i><b>21.1.3</b> Barplot</a></li>
-<li class="chapter" data-level="21.1.4" data-path="interactivity.html"><a href="interactivity.html#boxplot"><i class="fa fa-check"></i><b>21.1.4</b> Boxplot</a></li>
-<li class="chapter" data-level="21.1.5" data-path="interactivity.html"><a href="interactivity.html#treemap-global-carbon"><i class="fa fa-check"></i><b>21.1.5</b> Treemap (Global Carbon)</a></li>
+<li class="chapter" data-level="18.1.1" data-path="network-vis.html"><a href="network-vis.html#random-network"><i class="fa fa-check"></i><b>18.1.1</b> Random network</a></li>
+<li class="chapter" data-level="18.1.2" data-path="network-vis.html"><a href="network-vis.html#random-network-1"><i class="fa fa-check"></i><b>18.1.2</b> Random network</a></li>
 </ul></li>
-<li class="chapter" data-level="21.2" data-path="interactivity.html"><a href="interactivity.html#產製圖表動畫"><i class="fa fa-check"></i><b>21.2</b> 產製圖表動畫</a>
+<li class="chapter" data-level="18.2" data-path="network-vis.html"><a href="network-vis.html#retrieve-top3-components"><i class="fa fa-check"></i><b>18.2</b> Retrieve Top3 Components</a>
 <ul>
-<li class="chapter" data-level="21.2.1" data-path="interactivity.html"><a href="interactivity.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>21.2.1</b> 地圖下載與轉換投影方法</a></li>
-<li class="chapter" data-level="21.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>21.2.2</b> 靜態繪圖測試</a></li>
+<li class="chapter" data-level="18.2.1" data-path="network-vis.html"><a href="network-vis.html#visualize-again"><i class="fa fa-check"></i><b>18.2.1</b> Visualize again</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="22" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>22</b> WGOITG of NyTimes</a>
+<li class="chapter" data-level="18.3" data-path="network-vis.html"><a href="network-vis.html#motif-visualization-and-analysis"><i class="fa fa-check"></i><b>18.3</b> Motif visualization and analysis</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="wgoitg.html"><a href="wgoitg.html#population-increase"><i class="fa fa-check"></i><b>22.1</b> Population Increase</a></li>
-<li class="chapter" data-level="22.2" data-path="wgoitg.html"><a href="wgoitg.html#inequality-net-worth-by-age-group"><i class="fa fa-check"></i><b>22.2</b> Inequality: Net Worth by Age Group</a></li>
-<li class="chapter" data-level="22.3" data-path="wgoitg.html"><a href="wgoitg.html#global-survey-optimism"><i class="fa fa-check"></i><b>22.3</b> Global Survey Optimism</a></li>
-<li class="chapter" data-level="22.4" data-path="wgoitg.html"><a href="wgoitg.html#global-carbon-projects"><i class="fa fa-check"></i><b>22.4</b> Global Carbon Projects</a></li>
-<li class="chapter" data-level="22.5" data-path="wgoitg.html"><a href="wgoitg.html#lebron-james"><i class="fa fa-check"></i><b>22.5</b> LeBron James</a>
-<ul>
-<li class="chapter" data-level="22.5.1" data-path="wgoitg.html"><a href="wgoitg.html#line-age-x-cumpts-1"><i class="fa fa-check"></i><b>22.5.1</b> Line: Age x cumPTS</a></li>
-<li class="chapter" data-level="22.5.2" data-path="wgoitg.html"><a href="wgoitg.html#line-year-x-cumpts-1"><i class="fa fa-check"></i><b>22.5.2</b> Line: year x cumPTS</a></li>
-<li class="chapter" data-level="22.5.3" data-path="wgoitg.html"><a href="wgoitg.html#line-age-x-per_by_year-1"><i class="fa fa-check"></i><b>22.5.3</b> Line: Age x PER_by_year</a></li>
-<li class="chapter" data-level="22.5.4" data-path="wgoitg.html"><a href="wgoitg.html#comparing-lebron-james-and-jabbar-1"><i class="fa fa-check"></i><b>22.5.4</b> Comparing LeBron James and Jabbar</a></li>
-<li class="chapter" data-level="22.5.5" data-path="wgoitg.html"><a href="wgoitg.html#vis-ljames-and-jabbar-1"><i class="fa fa-check"></i><b>22.5.5</b> VIS LJames and jabbar</a></li>
-<li class="chapter" data-level="22.5.6" data-path="wgoitg.html"><a href="wgoitg.html#points-to-2-point"><i class="fa fa-check"></i><b>22.5.6</b> 3-points to 2-point</a></li>
+<li class="chapter" data-level="18.3.1" data-path="network-vis.html"><a href="network-vis.html#motif-type"><i class="fa fa-check"></i><b>18.3.1</b> Motif type</a></li>
+<li class="chapter" data-level="18.3.2" data-path="network-vis.html"><a href="network-vis.html#motif-analysis"><i class="fa fa-check"></i><b>18.3.2</b> Motif analysis</a></li>
+<li class="chapter" data-level="18.3.3" data-path="network-vis.html"><a href="network-vis.html#generate-motives"><i class="fa fa-check"></i><b>18.3.3</b> Generate motives</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>23</b> Case Studies (Taiwan)</a>
+<li class="chapter" data-level="19" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>19</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="20" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>20</b> Interactivity</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>23.1</b> TW AQI Visual Studies</a>
+<li class="chapter" data-level="20.1" data-path="interactivity.html"><a href="interactivity.html#ggplotly"><i class="fa fa-check"></i><b>20.1</b> ggplotly</a>
 <ul>
-<li class="chapter" data-level="23.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>23.1.1</b> eda-load-data-from-github</a></li>
-<li class="chapter" data-level="23.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>23.1.2</b> Trending: Central tendency</a></li>
-<li class="chapter" data-level="23.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>23.1.3</b> Trending: Extreme value</a></li>
+<li class="chapter" data-level="20.1.1" data-path="interactivity.html"><a href="interactivity.html#line-chart"><i class="fa fa-check"></i><b>20.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="20.1.2" data-path="interactivity.html"><a href="interactivity.html#scatter"><i class="fa fa-check"></i><b>20.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="20.1.3" data-path="interactivity.html"><a href="interactivity.html#barplot"><i class="fa fa-check"></i><b>20.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="20.1.4" data-path="interactivity.html"><a href="interactivity.html#boxplot"><i class="fa fa-check"></i><b>20.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="20.1.5" data-path="interactivity.html"><a href="interactivity.html#treemap-global-carbon"><i class="fa fa-check"></i><b>20.1.5</b> Treemap (Global Carbon)</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="interactivity.html"><a href="interactivity.html#產製圖表動畫"><i class="fa fa-check"></i><b>20.2</b> 產製圖表動畫</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="interactivity.html"><a href="interactivity.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>20.2.1</b> 地圖下載與轉換投影方法</a></li>
+<li class="chapter" data-level="20.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>20.2.2</b> 靜態繪圖測試</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>24</b> Appendix</a>
+<li class="chapter" data-level="21" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>21</b> WGOITG of NyTimes</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>24.1</b> Dataset</a></li>
+<li class="chapter" data-level="21.1" data-path="wgoitg.html"><a href="wgoitg.html#population-increase"><i class="fa fa-check"></i><b>21.1</b> Population Increase</a></li>
+<li class="chapter" data-level="21.2" data-path="wgoitg.html"><a href="wgoitg.html#inequality-net-worth-by-age-group"><i class="fa fa-check"></i><b>21.2</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="21.3" data-path="wgoitg.html"><a href="wgoitg.html#global-survey-optimism"><i class="fa fa-check"></i><b>21.3</b> Global Survey Optimism</a></li>
+<li class="chapter" data-level="21.4" data-path="wgoitg.html"><a href="wgoitg.html#global-carbon-projects"><i class="fa fa-check"></i><b>21.4</b> Global Carbon Projects</a></li>
+<li class="chapter" data-level="21.5" data-path="wgoitg.html"><a href="wgoitg.html#lebron-james"><i class="fa fa-check"></i><b>21.5</b> LeBron James</a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="wgoitg.html"><a href="wgoitg.html#line-age-x-cumpts-1"><i class="fa fa-check"></i><b>21.5.1</b> Line: Age x cumPTS</a></li>
+<li class="chapter" data-level="21.5.2" data-path="wgoitg.html"><a href="wgoitg.html#line-year-x-cumpts-1"><i class="fa fa-check"></i><b>21.5.2</b> Line: year x cumPTS</a></li>
+<li class="chapter" data-level="21.5.3" data-path="wgoitg.html"><a href="wgoitg.html#line-age-x-per_by_year-1"><i class="fa fa-check"></i><b>21.5.3</b> Line: Age x PER_by_year</a></li>
+<li class="chapter" data-level="21.5.4" data-path="wgoitg.html"><a href="wgoitg.html#comparing-lebron-james-and-jabbar-1"><i class="fa fa-check"></i><b>21.5.4</b> Comparing LeBron James and Jabbar</a></li>
+<li class="chapter" data-level="21.5.5" data-path="wgoitg.html"><a href="wgoitg.html#vis-ljames-and-jabbar-1"><i class="fa fa-check"></i><b>21.5.5</b> VIS LJames and jabbar</a></li>
+<li class="chapter" data-level="21.5.6" data-path="wgoitg.html"><a href="wgoitg.html#points-to-2-point"><i class="fa fa-check"></i><b>21.5.6</b> 3-points to 2-point</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>22</b> Case Studies (Taiwan)</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>22.1</b> TW AQI Visual Studies</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>22.1.1</b> eda-load-data-from-github</a></li>
+<li class="chapter" data-level="22.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>22.1.2</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="22.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>22.1.3</b> Trending: Extreme value</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>23</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>23.1</b> Dataset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1029,18 +1027,43 @@ div.csl-indent {
 
 </div>
 </div>
-<div id="交叉分析的概念" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> 交叉分析的概念<a href="using-base-r.html#交叉分析的概念" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paid-maternity-leave-base-to-dplyr" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Paid Maternity Leave (base to dplyr)<a href="using-base-r.html#paid-maternity-leave-base-to-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="using-base-r.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb309-2"><a href="using-base-r.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb309-3"><a href="using-base-r.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb309-4"><a href="using-base-r.html#cb309-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-5"><a href="using-base-r.html#cb309-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb309-6"><a href="using-base-r.html#cb309-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-7"><a href="using-base-r.html#cb309-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(iso3, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-8"><a href="using-base-r.html#cb309-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(matleave_13 <span class="sc">==</span> <span class="dv">5</span>, matleave_95 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-9"><a href="using-base-r.html#cb309-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;degree&quot;</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb309-10"><a href="using-base-r.html#cb309-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># spread(year, degree, fill = 0) %&gt;% View</span></span>
+<span id="cb309-11"><a href="using-base-r.html#cb309-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb309-12"><a href="using-base-r.html#cb309-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year2 =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(year, <span class="st">&quot;matleave_%y&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb309-13"><a href="using-base-r.html#cb309-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year3 =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(year2)) <span class="sc">%&gt;%</span></span>
+<span id="cb309-14"><a href="using-base-r.html#cb309-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb309-15"><a href="using-base-r.html#cb309-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year3, degree) <span class="sc">+</span> </span>
+<span id="cb309-16"><a href="using-base-r.html#cb309-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb309-17"><a href="using-base-r.html#cb309-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> iso3) <span class="sc">+</span></span>
+<span id="cb309-18"><a href="using-base-r.html#cb309-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="R22_base2dplyr_paid_maternity_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+
+</div>
+<div id="交叉分析的概念" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 交叉分析的概念<a href="using-base-r.html#交叉分析的概念" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>交叉分析是一種對兩個或多個變數進行聯合分析的方法，通常用於研究不同類別或組別之間的關係和差異。交叉分析可以幫助我們發現變數之間的相互作用，以及不同類別或組別之間的異同點，進而進行更深入的分析和解釋。</p>
-<p>在交叉分析中，通常會使用交叉表（cross tabulation）或稱為列聯表（contingency table）來對變數進行分析。交叉表是一種二維資料表格，其中一個變數作為行標籤，另一個變數作為列標籤，每個資料格中則表示兩個變數的交叉次數或百分比。交叉表可以幫助我們從不同角度瞭解變數之間的關係和差異，例如：</p>
+<p>在交叉分析中，通常會使用交叉表（cross
+tabulation）或稱為列聯表（contingency
+table）來對變數進行分析。交叉表是一種二維資料表格，其中一個變數作為行標籤，另一個變數作為列標籤，每個資料格中則表示兩個變數的交叉次數或百分比。交叉表可以幫助我們從不同角度瞭解變數之間的關係和差異，例如：</p>
 <ol style="list-style-type: decimal">
 <li><p>發現變數之間的相關性：可以通過交叉表計算兩個變數之間的相關係數或卡方檢定值，以評估它們之間的相關性程度。</p></li>
 <li><p>比較不同類別或組別之間的差異：可以通過交叉表比較不同類別或組別之間的差異，例如不同性別、年齡、教育程度、地區等對某一變數的影響。</p></li>
 <li><p>發現變數之間的交互作用：可以通過交叉表比較不同類別或組別之間的差異，並分析它們之間的交互作用，以進一步瞭解變數之間的關係和影響。</p></li>
 </ol>
 </div>
-<div id="計數與交叉分析範例台北市住宅竊盜點位資訊" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> 計數與交叉分析範例：台北市住宅竊盜點位資訊<a href="using-base-r.html#計數與交叉分析範例台北市住宅竊盜點位資訊" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="計數與交叉分析範例台北市住宅竊盜點位資訊" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> 計數與交叉分析範例：台北市住宅竊盜點位資訊<a href="using-base-r.html#計數與交叉分析範例台北市住宅竊盜點位資訊" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>觀察值、點位資料</strong>：公部門所發布的開放資料通常會根據某些類別進行統計，例如年齡、性別、教育程度、地區等等，只有少部分的資料會用觀察值（Observation）的方式來記錄，也就是每一個案例紀錄一筆資料。例如疫情一開始人數還少的時候，會逐一記錄每個個案；地理資訊系統上面記錄某些機構或某些特定地點的時候也是點位資料；或在觀察輿情時，每筆發言或留言都是一筆觀察值。「<a href="https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02">臺北市住宅竊盜點位資訊</a>」就是逐案紀錄的點位資料。而以下的例子也是點位資料，主要為主要為噪音、竊盜、交通事故等相關點位資料。</p>
 <ul>
 <li><a href="https://data.taipei/dataset/detail?id=ea2819ff-c869-480e-b7a9-2e5f7906a696">臺北市街頭隨機強盜案件點位資訊</a>、</li>
@@ -1053,21 +1076,24 @@ div.csl-indent {
 <li><a href="https://data.taipei/dataset/detail?id=912d38c3-92ca-49aa-9678-e3f85b969abc">臺北市非營業用卡拉OK噪音告發案件點位資訊</a>、</li>
 <li><a href="https://data.taipei/dataset/detail?id=1c01c0a5-9bd3-464b-b110-fbb6d0b26e25">臺北市營建工程噪音告發案件點位資訊</a>等，</li>
 </ul>
-<div id="讀取檔案" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> 讀取檔案<a href="using-base-r.html#讀取檔案" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>規劃比較完善的開放資料平台會提供API給程式設計者存取，例如<a href="https://data.taipei/#/">臺北資料大平台</a>或內政部開放資料平台。但我們這邊用下載CSV（Common Separated Value）檔的方式來讀取這筆資料，以理解CSV這種檔案型態如何儲存資料。首先要至<a href="https://data.taipei/#/">臺北資料大平台</a>上查詢「住宅竊盜」，可以找到<a href="https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02">臺北市住宅竊盜點位資訊</a>。將該CSV檔下載至個人本機端，置入<code>data</code> 資料夾中，便可以用<code>read.csv()</code>讀取該檔案。或可用tidyverse系列套件中的<code>readr::read_csv()</code>來直接讀取該網址所指到的檔案。</p>
+<div id="讀取檔案" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> 讀取檔案<a href="using-base-r.html#讀取檔案" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>規劃比較完善的開放資料平台會提供API給程式設計者存取，例如<a href="https://data.taipei/#/">臺北資料大平台</a>或內政部開放資料平台。但我們這邊用下載CSV（Common
+Separated
+Value）檔的方式來讀取這筆資料，以理解CSV這種檔案型態如何儲存資料。首先要至<a href="https://data.taipei/#/">臺北資料大平台</a>上查詢「住宅竊盜」，可以找到<a href="https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02">臺北市住宅竊盜點位資訊</a>。將該CSV檔下載至個人本機端，置入<code>data</code>
+資料夾中，便可以用<code>read.csv()</code>讀取該檔案。或可用tidyverse系列套件中的<code>readr::read_csv()</code>來直接讀取該網址所指到的檔案。</p>
 <p>我習慣在<strong>Console</strong>視窗中用<code>??read_csv()</code>查詢到這些函式的用法。</p>
 <ul>
 <li><code>read.csv()</code> to read csv and convert it to a data.frame</li>
 <li><code>readr::read_csv()</code> to read csv or read a csv by an url</li>
 </ul>
 <p>如果知道這個套件是<code>readr</code>的話，也可以到右下方的工作區塊找到「Packages」工作視窗，裡面有列出現在載入的所有的套件，也有套件中的所有函式。偶而看一看會發現一些自己平常忽略的好用工具。</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="using-base-r.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb309-2"><a href="using-base-r.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb309-3"><a href="using-base-r.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb309-4"><a href="using-base-r.html#cb309-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb309-5"><a href="using-base-r.html#cb309-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
-<span id="cb309-6"><a href="using-base-r.html#cb309-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df) </span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="using-base-r.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb310-2"><a href="using-base-r.html#cb310-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb310-3"><a href="using-base-r.html#cb310-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb310-4"><a href="using-base-r.html#cb310-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-5"><a href="using-base-r.html#cb310-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb310-6"><a href="using-base-r.html#cb310-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df) </span></code></pre></div>
 <pre class="output"><code>##   編號     案類 發生日期 發生時段                                    發生地點
 ## 1    1 住宅竊盜  1030623    08~10                  臺北市中正區廈門街91~120號
 ## 2    2 住宅竊盜  1040101    00~02              臺北市文山區萬美里萬寧街1~30號
@@ -1075,14 +1101,17 @@ div.csl-indent {
 ## 4    4 住宅竊盜  1040101    06~08             臺北市中山區新生北路1段91~120號
 ## 5    5 住宅竊盜  1040101    10~12           臺北市文山區明興里興隆路4段1~30號
 ## 6    6 住宅竊盜  1040102    00~02   臺北市士林區天福里1鄰忠誠路2段130巷1~30號</code></pre>
-<p><strong>用read_csv()來讀取。</strong>除了 base套件的<code>read.csv()</code>外，也可使用<code>readr</code>套件的<code>read_csv()</code>函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用<code>install.packages("tidyverse")</code>安裝過，只要用<code>library(tidyverse)</code>就可以使用<code>read_csv()</code>函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，<code>read_csv()</code> 的功能和效果都會比<code>read.csv()</code>好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。</p>
+<p><strong>用read_csv()來讀取。</strong>除了
+base套件的<code>read.csv()</code>外，也可使用<code>readr</code>套件的<code>read_csv()</code>函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用<code>install.packages("tidyverse")</code>安裝過，只要用<code>library(tidyverse)</code>就可以使用<code>read_csv()</code>函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，<code>read_csv()</code>
+的功能和效果都會比<code>read.csv()</code>好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。</p>
 <div class="debug">
 <p>萬一遇到中文檔案會有讀檔編碼問題時，有可能該檔案是用big5來儲存的，可以在<code>read_csv()</code>中設定<code>locale</code>來指定讀取的編碼方法。如<code>read_csv(url, locale = locale(encoding = "Big5"))</code></p>
 </div>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="using-base-r.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb311-2"><a href="using-base-r.html#cb311-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
-<span id="cb311-3"><a href="using-base-r.html#cb311-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;, locale = locale(encoding = &quot;Big5&quot;))</span></span>
-<span id="cb311-4"><a href="using-base-r.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<p>z</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="using-base-r.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb312-2"><a href="using-base-r.html#cb312-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb312-3"><a href="using-base-r.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;, locale = locale(encoding = &quot;Big5&quot;))</span></span>
+<span id="cb312-4"><a href="using-base-r.html#cb312-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 6 × 5
 ##    編號 案類     發生日期 發生時段 發生地點                                   
 ##   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;                                      
@@ -1092,8 +1121,8 @@ div.csl-indent {
 ## 4     4 住宅竊盜  1040101 06~08    臺北市中山區新生北路1段91~120號            
 ## 5     5 住宅竊盜  1040101 10~12    臺北市文山區明興里興隆路4段1~30號          
 ## 6     6 住宅竊盜  1040102 00~02    臺北市士林區天福里1鄰忠誠路2段130巷1~30號</code></pre>
-<div id="觀察變數" class="section level4 hasAnchor" number="5.3.1.1">
-<h4><span class="header-section-number">5.3.1.1</span> 觀察變數<a href="using-base-r.html#觀察變數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="觀察變數" class="section level4 hasAnchor" number="5.4.1.1">
+<h4><span class="header-section-number">5.4.1.1</span> 觀察變數<a href="using-base-r.html#觀察變數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><code>names(df)</code> 列出所有變數名稱</li>
 <li><code>df$發生地點</code> 顯示該變數內容</li>
@@ -1102,8 +1131,8 @@ div.csl-indent {
 </ul>
 </div>
 </div>
-<div id="萃取所需新變項" class="section level3 hasAnchor" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> 萃取所需新變項<a href="using-base-r.html#萃取所需新變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="萃取所需新變項" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> 萃取所需新變項<a href="using-base-r.html#萃取所需新變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>該data.frame包含編號、案類、發生日期、發生時段、發生地點五個變項。其中比較有意義的應該是發生日期、發生時段和發生地點。然而，發生地點幾乎是完整地址，除非要繪製發生的地圖點位地圖，才會需要近乎完整的地址。假設我們的目標是抽取出台北市的「行政區」，發生地點的格式還蠻一致的如「臺北市中正區廈門街91~120號」。因此，我們只要抽出發生地點的第4至6個字即可。</p>
 <p>從一個字串中抽取出第n個字到第m個字，要用<code>substr()</code>或<code>stringr</code>套件的<code>str_sub()</code>。可以用<code>?substr</code>或<code>?str_sub</code>查詢help中的相關用法。在此</p>
 <ul>
@@ -1112,12 +1141,12 @@ div.csl-indent {
 <li>或用<code>stringr::str_sub()</code></li>
 <li><code>?substr</code>查詢其用法和意義。相當於<code>getting sub string since x to y</code>。</li>
 </ul>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="using-base-r.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get substring of var &quot;發生時段&quot; and assign to a new time var</span></span>
-<span id="cb313-2"><a href="using-base-r.html#cb313-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>time <span class="ot">&lt;-</span> df<span class="sc">$</span>發生時段</span>
-<span id="cb313-3"><a href="using-base-r.html#cb313-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb313-4"><a href="using-base-r.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get substring of var &quot;發生地點&quot; and assign to a new region var</span></span>
-<span id="cb313-5"><a href="using-base-r.html#cb313-5" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>region <span class="ot">&lt;-</span> <span class="fu">substr</span>(df<span class="sc">$</span>發生地點, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb313-6"><a href="using-base-r.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="using-base-r.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get substring of var &quot;發生時段&quot; and assign to a new time var</span></span>
+<span id="cb314-2"><a href="using-base-r.html#cb314-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>time <span class="ot">&lt;-</span> df<span class="sc">$</span>發生時段</span>
+<span id="cb314-3"><a href="using-base-r.html#cb314-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-4"><a href="using-base-r.html#cb314-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get substring of var &quot;發生地點&quot; and assign to a new region var</span></span>
+<span id="cb314-5"><a href="using-base-r.html#cb314-5" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>region <span class="ot">&lt;-</span> <span class="fu">substr</span>(df<span class="sc">$</span>發生地點, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb314-6"><a href="using-base-r.html#cb314-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 6 × 7
 ##    編號 案類     發生日期 發生時段 發生地點                         time  region
 ##   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;                            &lt;chr&gt; &lt;chr&gt; 
@@ -1128,30 +1157,33 @@ div.csl-indent {
 ## 5     5 住宅竊盜  1040101 10~12    臺北市文山區明興里興隆路4段1~30… 10~12 文山  
 ## 6     6 住宅竊盜  1040102 00~02    臺北市士林區天福里1鄰忠誠路2段1… 00~02 士林</code></pre>
 </div>
-<div id="使用table計數" class="section level3 hasAnchor" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> 使用<code>table()</code>計數<a href="using-base-r.html#使用table計數" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="使用table計數" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> 使用<code>table()</code>計數<a href="using-base-r.html#使用table計數" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>清理完資料後，我們要回答的第一個數據問題通常是「那XXX的案例有幾個？」例如：大安區有多少竊盜案？10~12這個時段有多少案例。</p>
-<p><code>table()</code>函式可以對Vector中的值進行計數（Counting）。<code>table(df$time)</code> 相當於去計數不同的時間區間出現多少起案例；<code>table(df$region)</code> 相當於去計數不同地區各出現多少起案例。</p>
-<p>提示：可以用<code>class(tb_1)</code> 觀察用<code>table()</code> 計數後所產生的資料型態（<code>table</code>）。</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="using-base-r.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="do">## table</span></span>
-<span id="cb315-2"><a href="using-base-r.html#cb315-2" aria-hidden="true" tabindex="-1"></a><span class="co"># counting the frequency of region variable</span></span>
-<span id="cb315-3"><a href="using-base-r.html#cb315-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb315-4"><a href="using-base-r.html#cb315-4" aria-hidden="true" tabindex="-1"></a>(<span class="fu">table</span>(df<span class="sc">$</span>region))</span></code></pre></div>
+<p><code>table()</code>函式可以對Vector中的值進行計數（Counting）。<code>table(df$time)</code>
+相當於去計數不同的時間區間出現多少起案例；<code>table(df$region)</code>
+相當於去計數不同地區各出現多少起案例。</p>
+<p>提示：可以用<code>class(tb_1)</code> 觀察用<code>table()</code>
+計數後所產生的資料型態（<code>table</code>）。</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="using-base-r.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="do">## table</span></span>
+<span id="cb316-2"><a href="using-base-r.html#cb316-2" aria-hidden="true" tabindex="-1"></a><span class="co"># counting the frequency of region variable</span></span>
+<span id="cb316-3"><a href="using-base-r.html#cb316-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb316-4"><a href="using-base-r.html#cb316-4" aria-hidden="true" tabindex="-1"></a>(<span class="fu">table</span>(df<span class="sc">$</span>region))</span></code></pre></div>
 <pre class="output"><code>## 
 ## 中山 中正 信義 內湖 北投 南港 士林 大同 大安 文山 松山 萬華 
 ##  438  263  214  303  318  181  373  172  311  204  220  350</code></pre>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="using-base-r.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="co"># counting the frequency of time variable</span></span>
-<span id="cb317-2"><a href="using-base-r.html#cb317-2" aria-hidden="true" tabindex="-1"></a>(tb_1 <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>time)) </span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="using-base-r.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># counting the frequency of time variable</span></span>
+<span id="cb318-2"><a href="using-base-r.html#cb318-2" aria-hidden="true" tabindex="-1"></a>(tb_1 <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>time)) </span></code></pre></div>
 <pre class="output"><code>## 
 ## 00~02 02~04 03~05 04~06 05~07 06~08 08~10 09~11 10~12 11~03 11~13 12~14 12~15 
 ##   272   214     8   156    23   191   305     6   338     1    26   338     2 
 ## 14~16 15~17 15~18 16~18 17~19 18~20 18~21 19~21 20~22 21~23 21~24 22~24 23~01 
 ##   342     3     1   246    21   314     1     4   303     5     1   206    20</code></pre>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="using-base-r.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(tb_1)  </span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="using-base-r.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(tb_1)  </span></code></pre></div>
 <pre class="output"><code>## [1] &quot;table&quot;</code></pre>
 </div>
-<div id="依變數值篩選資料" class="section level3 hasAnchor" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> 依變數值篩選資料<a href="using-base-r.html#依變數值篩選資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="依變數值篩選資料" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> 依變數值篩選資料<a href="using-base-r.html#依變數值篩選資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>該項竊盜案資料整理時經常不慎用不同的時間區間來標記，有時候也會不小心把新北市的資料給那進來，所以需要做資料篩選。從各個時間區間的竊盜案出現次數來觀察，有少數的案件出現在奇數的時間區間如<code>09~11</code>或<code>12~15</code>等等需要篩除；從各個行政區的竊盜案出現次數來觀察，確實都是台北市的竊盜案。</p>
 <p>接下來要用base套件的R，根據某個變數值（例如上述的時間）來篩出符合條件的資料，或者篩去不符合條件的資料。其語法是要在<code>df[ , ]</code>逗號前加上篩選的條件，也就是對資料列進行篩選，篩出或篩除都是以整列為單位。在此的條件是<code>df$time</code><span style="color:hotpink">在</span><code>00~02</code>、<code>02~04</code>、…之間；或者是<code>df$time</code><span style="color:hotpink">不在</span><code>03~05</code>、<code>05~07</code>、…之間。表示法分別如下：</p>
 <pre><code>df$time %in% c(&quot;00~02&quot;, &quot;02~04&quot;, &quot;04~6&quot;,...)
@@ -1160,23 +1192,24 @@ div.csl-indent {
 <li><p><code>%in%</code> 表示的是左方<code>df$time</code>的值是否是右方Vector中的其中一個</p></li>
 <li><p>如果要表示不包含，就在<code>df%time</code>加一個NOT，也就是<code>!</code>。</p></li>
 </ul>
-<p>依照各組時間的案例個數統計後，篩除資料未足100的時間區間如下，最後再用<code>table(df$time)</code> 計算一次，發現每個時段都兩三、百個案例，且涵蓋整日的時間。清理後沒有重疊的時間區間，做類別資料分析會比較準確。</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="using-base-r.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out irrelevant timestamp</span></span>
-<span id="cb322-2"><a href="using-base-r.html#cb322-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="sc">!</span>df<span class="sc">$</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;11~03&quot;</span>, <span class="st">&quot;12~15&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;15~18&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;19~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;21~24&quot;</span>, <span class="st">&quot;23~01&quot;</span>), ]</span>
-<span id="cb322-3"><a href="using-base-r.html#cb322-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-4"><a href="using-base-r.html#cb322-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>time)</span></code></pre></div>
+<p>依照各組時間的案例個數統計後，篩除資料未足100的時間區間如下，最後再用<code>table(df$time)</code>
+計算一次，發現每個時段都兩三、百個案例，且涵蓋整日的時間。清理後沒有重疊的時間區間，做類別資料分析會比較準確。</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="using-base-r.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out irrelevant timestamp</span></span>
+<span id="cb323-2"><a href="using-base-r.html#cb323-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="sc">!</span>df<span class="sc">$</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;11~03&quot;</span>, <span class="st">&quot;12~15&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;15~18&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;19~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;21~24&quot;</span>, <span class="st">&quot;23~01&quot;</span>), ]</span>
+<span id="cb323-3"><a href="using-base-r.html#cb323-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-4"><a href="using-base-r.html#cb323-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>time)</span></code></pre></div>
 <pre class="output"><code>## 
 ## 00~02 02~04 04~06 06~08 08~10 10~12 12~14 14~16 16~18 18~20 20~22 22~24 
 ##   272   214   156   191   305   338   338   342   246   314   303   206</code></pre>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="using-base-r.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out irrelevant region(area)</span></span>
-<span id="cb324-2"><a href="using-base-r.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- df[!df$region %in% c(&quot;三重&quot;, &quot;中和&quot;, &quot;淡水&quot;, &quot;板橋&quot;), ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="using-base-r.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out irrelevant region(area)</span></span>
+<span id="cb325-2"><a href="using-base-r.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- df[!df$region %in% c(&quot;三重&quot;, &quot;中和&quot;, &quot;淡水&quot;, &quot;板橋&quot;), ]</span></span></code></pre></div>
 </div>
-<div id="做雙變數樞紐分析table" class="section level3 hasAnchor" number="5.3.5">
-<h3><span class="header-section-number">5.3.5</span> 做雙變數樞紐分析：<code>table()</code><a href="using-base-r.html#做雙變數樞紐分析table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="做雙變數樞紐分析table" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> 做雙變數樞紐分析：<code>table()</code><a href="using-base-r.html#做雙變數樞紐分析table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>類別變項分析通常是要考驗兩個變項間的關係，從上述的計數中，我可以看見不同行政區或者不同時間的竊盜案數量，但我進一步想知道，那不同行政區的竊盜案常發生時間是否不同？這時後就要做時間和行政區的交叉分析。我們同樣可以用<code>table()</code>和<code>tapply()</code>來做兩個變項的交叉分析，寫法如下。</p>
 <p>用<code>table()</code>來交叉分析的結果如下，所得到的結果之變數型態仍是<code>table</code>型態。</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="using-base-r.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulating time and region variables</span></span>
-<span id="cb325-2"><a href="using-base-r.html#cb325-2" aria-hidden="true" tabindex="-1"></a>(res_table <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>region))</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="using-base-r.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulating time and region variables</span></span>
+<span id="cb326-2"><a href="using-base-r.html#cb326-2" aria-hidden="true" tabindex="-1"></a>(res_table <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>region))</span></code></pre></div>
 <pre class="output"><code>##        
 ##         中山 中正 信義 內湖 北投 南港 士林 大同 大安 文山 松山 萬華
 ##   00~02   62   15   27   20   24   19   28   15   24   17    4   17
@@ -1191,84 +1224,91 @@ div.csl-indent {
 ##   18~20   39   42   23   22   40   18   31   13   23   23   17   23
 ##   20~22   40   13   22   34   17   20   41   13   26   15   25   37
 ##   22~24   33   20   16   18   15    9   23    9   12   17   14   20</code></pre>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="using-base-r.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking it class and its content</span></span>
-<span id="cb327-2"><a href="using-base-r.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(res_table)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="using-base-r.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking it class and its content</span></span>
+<span id="cb328-2"><a href="using-base-r.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(res_table)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;table&quot;</code></pre>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="using-base-r.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;table&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="using-base-r.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;table&quot;</span></span></code></pre></div>
 </div>
-<div id="繪圖" class="section level3 hasAnchor" number="5.3.6">
-<h3><span class="header-section-number">5.3.6</span> 繪圖<a href="using-base-r.html#繪圖" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>通常這種類別資料交叉分析最常用的圖表型態之一便是Mosaic Plot（但事實上Mosaic Plot不見能夠被一眼就了解）。我們可以把交叉分析後的變項<code>res_table</code>直接用MosaicPlot來繪圖。</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="using-base-r.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot() to plot 2-dim categorical vars.</span></span>
-<span id="cb330-2"><a href="using-base-r.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table)</span></code></pre></div>
-<p><img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="using-base-r.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add argument main (figure title)</span></span>
-<span id="cb331-2"><a href="using-base-r.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">main=</span><span class="st">&quot;mosaic plot&quot;</span>)</span></code></pre></div>
-<p><img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
-<div id="解決圖表無法顯示中文" class="section level4 hasAnchor" number="5.3.6.1">
-<h4><span class="header-section-number">5.3.6.1</span> 解決圖表無法顯示中文<a href="using-base-r.html#解決圖表無法顯示中文" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="繪圖" class="section level3 hasAnchor" number="5.4.6">
+<h3><span class="header-section-number">5.4.6</span> 繪圖<a href="using-base-r.html#繪圖" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>通常這種類別資料交叉分析最常用的圖表型態之一便是Mosaic
+Plot（但事實上Mosaic
+Plot不見能夠被一眼就了解）。我們可以把交叉分析後的變項<code>res_table</code>直接用MosaicPlot來繪圖。</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="using-base-r.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot() to plot 2-dim categorical vars.</span></span>
+<span id="cb331-2"><a href="using-base-r.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table)</span></code></pre></div>
+<p><img src="R24_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="using-base-r.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add argument main (figure title)</span></span>
+<span id="cb332-2"><a href="using-base-r.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">main=</span><span class="st">&quot;mosaic plot&quot;</span>)</span></code></pre></div>
+<p><img src="R24_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div id="解決圖表無法顯示中文" class="section level4 hasAnchor" number="5.4.6.1">
+<h4><span class="header-section-number">5.4.6.1</span> 解決圖表無法顯示中文<a href="using-base-r.html#解決圖表無法顯示中文" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>大部分的視覺化套件都無法順利顯示中文，除非特別指定所要用的中文字型。這方面網路上可以找到很多的說明，但非常討厭的是，幾乎每換一套視覺化工具，換一套語言，就有不同的中文字體指定方式。例如用base的<code>plot()</code>來繪圖或用<code>ggplot()</code>的中文字型指定方法便不同，且軸上面有中文、圖標有中文、或者圖內有中文都要分開指定，非常討人厭。</p>
-<p>Mosaic Plot屬於base R的<code>plot()</code>，其中文指定方法要指定在繪圖前的<code>par()</code>函式中（<code>par</code>為parameter的意思），指定方法為<code>par(family=('Heiti TC Light'))</code>，Heiti TC Light為字體名稱，為OSX上在用的黑體細字，STKaiti則為標楷體。然後，<code>par()</code>和<code>mosaicplot()</code>兩個函式要「同時執行」，也就是請你直接用shift-cmd(ctrl)-Enter執行整個code-cell，或者將該兩個函式選起來一次執行。</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="using-base-r.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;STKaiti&#39;</span>))</span>
-<span id="cb332-2"><a href="using-base-r.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;Heiti TC Light&#39;))</span></span>
-<span id="cb332-3"><a href="using-base-r.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">main=</span><span class="st">&quot;mosaic plot&quot;</span>, <span class="at">color=</span>T)</span></code></pre></div>
-<p><img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Mosaic Plot屬於base
+R的<code>plot()</code>，其中文指定方法要指定在繪圖前的<code>par()</code>函式中（<code>par</code>為parameter的意思），指定方法為<code>par(family=('Heiti TC Light'))</code>，Heiti
+TC
+Light為字體名稱，為OSX上在用的黑體細字，STKaiti則為標楷體。然後，<code>par()</code>和<code>mosaicplot()</code>兩個函式要「同時執行」，也就是請你直接用shift-cmd(ctrl)-Enter執行整個code-cell，或者將該兩個函式選起來一次執行。</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="using-base-r.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;STKaiti&#39;</span>))</span>
+<span id="cb333-2"><a href="using-base-r.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;Heiti TC Light&#39;))</span></span>
+<span id="cb333-3"><a href="using-base-r.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">main=</span><span class="st">&quot;mosaic plot&quot;</span>, <span class="at">color=</span>T)</span></code></pre></div>
+<p><img src="R24_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
-<div id="自訂顏色" class="section level4 hasAnchor" number="5.3.6.2">
-<h4><span class="header-section-number">5.3.6.2</span> 自訂顏色<a href="using-base-r.html#自訂顏色" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="自訂顏色" class="section level4 hasAnchor" number="5.4.6.2">
+<h4><span class="header-section-number">5.4.6.2</span> 自訂顏色<a href="using-base-r.html#自訂顏色" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>目前顏色實在過醜，你可以自訂顏色指給<code>mosaicplot()</code>。例如我底下便產製了12種顏色後，將其作為<code>mosaicplot()</code>的參數</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="using-base-r.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up color by yourself.</span></span>
-<span id="cb333-2"><a href="using-base-r.html#cb333-2" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
-<span id="cb333-3"><a href="using-base-r.html#cb333-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
-<span id="cb333-4"><a href="using-base-r.html#cb333-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
-<span id="cb333-5"><a href="using-base-r.html#cb333-5" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;))</span></span>
-<span id="cb333-6"><a href="using-base-r.html#cb333-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>))</span>
-<span id="cb333-7"><a href="using-base-r.html#cb333-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
-<span id="cb333-8"><a href="using-base-r.html#cb333-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
-<p><img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="using-base-r.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up color by yourself.</span></span>
+<span id="cb334-2"><a href="using-base-r.html#cb334-2" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb334-3"><a href="using-base-r.html#cb334-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb334-4"><a href="using-base-r.html#cb334-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb334-5"><a href="using-base-r.html#cb334-5" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;))</span></span>
+<span id="cb334-6"><a href="using-base-r.html#cb334-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>))</span>
+<span id="cb334-7"><a href="using-base-r.html#cb334-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb334-8"><a href="using-base-r.html#cb334-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
+<p><img src="R24_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </div>
-<div id="practices" class="section level3 hasAnchor" number="5.3.7">
-<h3><span class="header-section-number">5.3.7</span> Practices<a href="using-base-r.html#practices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="萃取月份作為新變項month" class="section level4 hasAnchor" number="5.3.7.1">
-<h4><span class="header-section-number">5.3.7.1</span> 萃取月份作為新變項month<a href="using-base-r.html#萃取月份作為新變項month" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="practices" class="section level3 hasAnchor" number="5.4.7">
+<h3><span class="header-section-number">5.4.7</span> Practices<a href="using-base-r.html#practices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="萃取月份作為新變項month" class="section level4 hasAnchor" number="5.4.7.1">
+<h4><span class="header-section-number">5.4.7.1</span> 萃取月份作為新變項month<a href="using-base-r.html#萃取月份作為新變項month" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="practice" style="color:OliveDrab;">
 <p>除了時間和地區可能會有差別外，那月份會不會竊盜案的數量也有差異呢？會不會冬天小偷也都在家休息了，夏天多呢？請嘗試從發生日期萃取出竊盜案發生的月份，並儲存為一個新的變項<code>month</code>。</p>
 </div>
 </div>
-<div id="使用count來計數" class="section level4 hasAnchor" number="5.3.7.2">
-<h4><span class="header-section-number">5.3.7.2</span> 使用count()來計數<a href="using-base-r.html#使用count來計數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="使用count來計數" class="section level4 hasAnchor" number="5.4.7.2">
+<h4><span class="header-section-number">5.4.7.2</span> 使用count()來計數<a href="using-base-r.html#使用count來計數" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="practice" style="color:OliveDrab;">
 <p>請練習看看如果用<code>count()</code>來計數單一變項，如前述的<code>region</code>、<code>time</code>或前面練習中新產生的<code>month</code>。</p>
 </div>
 </div>
-<div id="分週末與週間計算" class="section level4 hasAnchor" number="5.3.7.3">
-<h4><span class="header-section-number">5.3.7.3</span> 分週末與週間計算<a href="using-base-r.html#分週末與週間計算" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="分週末與週間計算" class="section level4 hasAnchor" number="5.4.7.3">
+<h4><span class="header-section-number">5.4.7.3</span> 分週末與週間計算<a href="using-base-r.html#分週末與週間計算" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="practice" style="color:OliveDrab;">
 <p>使用lubridate套件可以將文字表示的日期轉換為R的時間物件，進而可以用lubridate的<code>wday()</code>函式求取該日期是週幾，便可以計算，週間和週末的竊盜率有何差別。可以先計算看看，週一到週日分別有什麼差別，再去計算週間與週末的平均會有什麼差別（要注意，週末和週間天數並不同）</p>
 </div>
 </div>
 </div>
 </div>
-<div id="read-online-files" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Read online files<a href="using-base-r.html#read-online-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="read-online-files" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Read online files<a href="using-base-r.html#read-online-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>方法一：直接依資料網址讀取檔案。</strong>現在的程式語言所設計的讀取檔案函式通常會允許使用者直接讀取資料所在的URL。所以，我們可以直接從網路上載入台北市竊盜案資料。首先要至<a href="https://data.taipei/#/">臺北資料大平台</a>上查詢「住宅竊盜」，可以找到<a href="https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02">臺北市住宅竊盜點位資訊</a>，點選後對右上方的<a href="https://data.taipei/api/getDatasetInfo/downloadResource?id=68785231-d6c5-47a1-b001-77eec70bec02&amp;rid=93d9bc2d-af08-4db7-a56b-9f0a49226fa3">下載</a>按右鍵可取得鏈結到該資料的URL（如<a href="https://data.taipei/api/getDatasetInfo/downloadResource?id=68785231-d6c5-47a1-b001-77eec70bec02&amp;rid=93d9bc2d-af08-4db7-a56b-9f0a49226fa3" class="uri">https://data.taipei/api/getDatasetInfo/downloadResource?id=68785231-d6c5-47a1-b001-77eec70bec02&amp;rid=93d9bc2d-af08-4db7-a56b-9f0a49226fa3</a>）。</p>
 <p>由於該資料網址似非永久網址，故本範例並未執行以下程式碼，僅提供範例程式碼讓個人替換網址來做測試。</p>
 <p><strong>方法二：用R程式將該網址的檔案抓回本機端儲存。</strong>部分Mac電腦無法使用<code>read.csv()</code>從網路上取得資料又轉為<code>data.frame</code>，一個可行的辦法是先用<code>GET(url,write_disk("data/tptheft.csv"))</code>將其取回並命名為<code>data/tptheft.csv</code>，之後再用<code>df &lt;- read.csv("data/tptheft.csv")</code>直接讀取該檔案。</p>
 <pre class="{library(httr)}"><code>GET(url, write_disk(&quot;data/tptheft.csv&quot;, overwrite = TRUE))
 df &lt;- read.csv(&quot;data/tptheft.csv&quot;)</code></pre>
 </div>
-<div id="counting" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Counting<a href="using-base-r.html#counting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="tapply" class="section level3 hasAnchor" number="5.5.1">
-<h3><span class="header-section-number">5.5.1</span> <code>tapply()</code><a href="using-base-r.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我們也可用<code>tapply()</code> 函式來達到一樣的目的。Apply家族的函式都是，針對某個資料，將某個函式套用到某個物件上。<code>tapply()</code> 即是用來做計數的，<code>tapply(df$編號, df$time, length)</code>有三個輸入，第一個輸入為整體物件，第二個輸入為要據以彙整的變項，在此為<code>df$time</code>，第三個是要用來彙整的函式，因為這裡要做計數，所以要用<code>length</code>函式。</p>
+<div id="counting" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Counting<a href="using-base-r.html#counting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tapply" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> <code>tapply()</code><a href="using-base-r.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我們也可用<code>tapply()</code>
+函式來達到一樣的目的。Apply家族的函式都是，針對某個資料，將某個函式套用到某個物件上。<code>tapply()</code>
+即是用來做計數的，<code>tapply(df$編號, df$time, length)</code>有三個輸入，第一個輸入為整體物件，第二個輸入為要據以彙整的變項，在此為<code>df$time</code>，第三個是要用來彙整的函式，因為這裡要做計數，所以要用<code>length</code>函式。</p>
 <p>註：同樣用<code>class()</code>來觀察彙整後的資料型態為<code>array</code>，和前者的<code>table</code>資料型態不同。</p>
 </div>
-<div id="tapply-two-variables" class="section level3 hasAnchor" number="5.5.2">
-<h3><span class="header-section-number">5.5.2</span> <code>tapply()</code> two variables<a href="using-base-r.html#tapply-two-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tapply-two-variables" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> <code>tapply()</code> two variables<a href="using-base-r.html#tapply-two-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>用<code>tapply()</code>來做兩個變數交叉分析的語法如下，必須要把兩個Vector包在一個<code>list()</code>中。其他不變。兩個變項用<code>tapply()</code>交叉分析後的結果，變數型態會變成<code>matrix</code>。前者用<code>table()</code>來交叉分析的仍是<code>table</code>型態。</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="using-base-r.html#cb335-1" aria-hidden="true" tabindex="-1"></a>res_tapply</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="using-base-r.html#cb336-1" aria-hidden="true" tabindex="-1"></a>res_tapply</span></code></pre></div>
 <pre class="output"><code>##       中山 中正 信義 內湖 北投 南港 士林 大同 大安 文山 松山 萬華
 ## 00~02   62   15   27   20   24   19   28   15   24   17    4   17
 ## 02~04   26   22   12   15   17   12   29   10   15   14   13   29
@@ -1282,31 +1322,41 @@ df &lt;- read.csv(&quot;data/tptheft.csv&quot;)</code></pre>
 ## 18~20   39   42   23   22   40   18   31   13   23   23   17   23
 ## 20~22   40   13   22   34   17   20   41   13   26   15   25   37
 ## 22~24   33   20   16   18   15    9   23    9   12   17   14   20</code></pre>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="using-base-r.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(res)</span></span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="using-base-r.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(res)</span></span></code></pre></div>
 </div>
-<div id="dplyrcount-two-variables" class="section level3 hasAnchor" number="5.5.3">
-<h3><span class="header-section-number">5.5.3</span> <code>dplyr::count()</code> two variables<a href="using-base-r.html#dplyrcount-two-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>這邊多介紹一個用dplyr套件的<code>count()</code>函式來做交叉分析的方法（未來會常用這個方法，因為dplyr是tidyverse系列套件的核心套件。dplyr的函式第一個參數永遠是該data.frame， 例如<code>count()</code>；後面<code>time</code>與<code>region</code>則是這個data.frame中的兩個變項。不像<code>tapply()</code>或<code>table()</code>的結果一樣，欄與列分別為<code>time</code>與<code>region</code>，count()出來的結果會有兩個變項分別是指定要計數的<code>time</code>與<code>region</code> ，且會新增一個變項<code>n</code>，代表這組數據（<code>time</code> x <code>region</code>）共有幾個。這種表達型態通常稱為long-table（長表）、而<code>tapply()</code>或<code>table()</code> 的結果通常稱為wide-table（寬表）為典型的交叉分析表。</p>
+<div id="dplyrcount-two-variables" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> <code>dplyr::count()</code> two variables<a href="using-base-r.html#dplyrcount-two-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>這邊多介紹一個用dplyr套件的<code>count()</code>函式來做交叉分析的方法（未來會常用這個方法，因為dplyr是tidyverse系列套件的核心套件。dplyr的函式第一個參數永遠是該data.frame，
+例如<code>count()</code>；後面<code>time</code>與<code>region</code>則是這個data.frame中的兩個變項。不像<code>tapply()</code>或<code>table()</code>的結果一樣，欄與列分別為<code>time</code>與<code>region</code>，count()出來的結果會有兩個變項分別是指定要計數的<code>time</code>與<code>region</code>
+，且會新增一個變項<code>n</code>，代表這組數據（<code>time</code> x
+<code>region</code>）共有幾個。這種表達型態通常稱為long-table（長表）、而<code>tapply()</code>或<code>table()</code>
+的結果通常稱為wide-table（寬表）為典型的交叉分析表。</p>
 <p>目前大部分的類別資料分析還是會採用交叉分析表的型態，但未來我們要用tidyverse系列套件做大量的數據彙整或視覺化時，都會盡可能想辦法轉為Long-table型態，讓每一欄剛好就是一個變項。只要是tidyverse系列套件所計算出來的資料型態幾乎都是<span style="color:hotpink">類似</span>data.frame的型態，例如觀察<code>count</code>的結果便是<code>"tbl_df"     "tbl"        "data.frame"</code>。</p>
 </div>
 </div>
-<div id="pivoting-long-wide-tables" class="section level2 hasAnchor" number="5.6">
-<h2><span class="header-section-number">5.6</span> Pivoting long-wide tables<a href="using-base-r.html#pivoting-long-wide-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="long-to-wide" class="section level3 hasAnchor" number="5.6.1">
-<h3><span class="header-section-number">5.6.1</span> long-to-wide<a href="using-base-r.html#long-to-wide" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>那長表列可以轉為寬表嗎？可以，tidyverse系列套件中的tidyr套件有個函式<code>spread()</code>可以接著把某個變項展開為欄。例如原本上述的列是時間與行政區的交叉組合，但我可以把行政區展開為欄、或者把時間展開為欄 。如下例，<code>spread(res_count, region, n, fill = 0)</code> 有四個參數，遵循tidyverse系列套件的規則，第一個位置為data.frame，第二個參數則是要被展開至欄的變項這裡為<code>region</code>，第三個參數則是因應<code>region</code>被展開後，那中間交叉分析的數值就是n，最後一個參數是避免<code>spread</code>時有些交叉組是沒有資料的，因此<code>fill=0</code>可以指定，如果某個<code>time</code> x <code>region</code>的交叉組別是沒資料的，就填上<code>0</code>，也有可能是用<code>fill=NA</code>填上<code>NA</code>。以下的例子中也提供了將<code>time</code> 展開至欄的寫法供參考。</p>
-<p>現在<code>spread()</code>函式已經被新的函式取代，為<code>pivot_wider()</code>。<code>spread(res_count, region, n, fill = 0)</code> 在此需要改寫為<code>pivot_wider(res_count, names_from = region, values_from = n, values_fill = 0)</code>。大致上和<code>spread()</code>用法是一樣的，只是要寫清楚，哪個變數要給哪一個參數。</p>
+<div id="pivoting-long-wide-tables" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Pivoting long-wide tables<a href="using-base-r.html#pivoting-long-wide-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="long-to-wide" class="section level3 hasAnchor" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> long-to-wide<a href="using-base-r.html#long-to-wide" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>那長表列可以轉為寬表嗎？可以，tidyverse系列套件中的tidyr套件有個函式<code>spread()</code>可以接著把某個變項展開為欄。例如原本上述的列是時間與行政區的交叉組合，但我可以把行政區展開為欄、或者把時間展開為欄
+。如下例，<code>spread(res_count, region, n, fill = 0)</code>
+有四個參數，遵循tidyverse系列套件的規則，第一個位置為data.frame，第二個參數則是要被展開至欄的變項這裡為<code>region</code>，第三個參數則是因應<code>region</code>被展開後，那中間交叉分析的數值就是n，最後一個參數是避免<code>spread</code>時有些交叉組是沒有資料的，因此<code>fill=0</code>可以指定，如果某個<code>time</code>
+x
+<code>region</code>的交叉組別是沒資料的，就填上<code>0</code>，也有可能是用<code>fill=NA</code>填上<code>NA</code>。以下的例子中也提供了將<code>time</code>
+展開至欄的寫法供參考。</p>
+<p>現在<code>spread()</code>函式已經被新的函式取代，為<code>pivot_wider()</code>。<code>spread(res_count, region, n, fill = 0)</code>
+在此需要改寫為<code>pivot_wider(res_count, names_from = region, values_from = n, values_fill = 0)</code>。大致上和<code>spread()</code>用法是一樣的，只是要寫清楚，哪個變數要給哪一個參數。</p>
 <p>展開後的資料型態和前者計數後的資料型態一樣，都是<code>"tbl_df"     "tbl"        "data.frame"</code>。這是為什麼tidyverse系列的套件逐漸變成R的顯學的原因之一。</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="using-base-r.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb338-2"><a href="using-base-r.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spreading the region into columns</span></span>
-<span id="cb338-3"><a href="using-base-r.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (res_count_spread &lt;- spread(res_count, region, n, fill = 0))</span></span>
-<span id="cb338-4"><a href="using-base-r.html#cb338-4" aria-hidden="true" tabindex="-1"></a>res_count_spread <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(res_count, <span class="at">names_from =</span> region, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
-<span id="cb338-5"><a href="using-base-r.html#cb338-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(res_count_spread)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="using-base-r.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb339-2"><a href="using-base-r.html#cb339-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spreading the region into columns</span></span>
+<span id="cb339-3"><a href="using-base-r.html#cb339-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (res_count_spread &lt;- spread(res_count, region, n, fill = 0))</span></span>
+<span id="cb339-4"><a href="using-base-r.html#cb339-4" aria-hidden="true" tabindex="-1"></a>res_count_spread <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(res_count, <span class="at">names_from =</span> region, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
+<span id="cb339-5"><a href="using-base-r.html#cb339-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(res_count_spread)</span></code></pre></div>
 <pre class="output"><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="using-base-r.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spreading the time into columns</span></span>
-<span id="cb340-2"><a href="using-base-r.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="co"># res_count_spread &lt;- spread(res_count, time, n, fill = 0)</span></span>
-<span id="cb340-3"><a href="using-base-r.html#cb340-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-4"><a href="using-base-r.html#cb340-4" aria-hidden="true" tabindex="-1"></a>res_count_spread</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="using-base-r.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spreading the time into columns</span></span>
+<span id="cb341-2"><a href="using-base-r.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="co"># res_count_spread &lt;- spread(res_count, time, n, fill = 0)</span></span>
+<span id="cb341-3"><a href="using-base-r.html#cb341-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-4"><a href="using-base-r.html#cb341-4" aria-hidden="true" tabindex="-1"></a>res_count_spread</span></code></pre></div>
 <pre class="output"><code>## # A tibble: 12 × 13
 ##    time   中山  中正  信義  內湖  北投  南港  士林  大同  大安  文山  松山  萬華
 ##    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
@@ -1322,28 +1372,242 @@ df &lt;- read.csv(&quot;data/tptheft.csv&quot;)</code></pre>
 ## 10 18~20    39    42    23    22    40    18    31    13    23    23    17    23
 ## 11 20~22    40    13    22    34    17    20    41    13    26    15    25    37
 ## 12 22~24    33    20    16    18    15     9    23     9    12    17    14    20</code></pre>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="using-base-r.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ??dplyr::count</span></span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="using-base-r.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ??dplyr::count</span></span></code></pre></div>
 </div>
-<div id="wide-to-long" class="section level3 hasAnchor" number="5.6.2">
-<h3><span class="header-section-number">5.6.2</span> Wide-to-long<a href="using-base-r.html#wide-to-long" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="wide-to-long" class="section level3 hasAnchor" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> Wide-to-long<a href="using-base-r.html#wide-to-long" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>寬表格亦可用tidyr的<code>gather()</code>函式轉回長表格型態。但<code>gather()</code>近期也已經被新的函式<code>pivot_longer()</code>取代。原先的<code>gather(res_count_spread, region, n, -time)</code>應取代為<code>pivot_longer(res_count_spread, -time, names_to = "region", values_to = "n")</code>。</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="using-base-r.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (long_table &lt;- tidyr::gather(res_count_spread, region, n, -time))</span></span>
-<span id="cb343-2"><a href="using-base-r.html#cb343-2" aria-hidden="true" tabindex="-1"></a>long_table <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(res_count_spread, <span class="sc">-</span>time, <span class="at">names_to =</span> <span class="st">&quot;region&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="using-base-r.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (long_table &lt;- tidyr::gather(res_count_spread, region, n, -time))</span></span>
+<span id="cb344-2"><a href="using-base-r.html#cb344-2" aria-hidden="true" tabindex="-1"></a>long_table <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(res_count_spread, <span class="sc">-</span>time, <span class="at">names_to =</span> <span class="st">&quot;region&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="residuals-analysis" class="section level2 hasAnchor" number="5.7">
-<h2><span class="header-section-number">5.7</span> Residuals analysis<a href="using-base-r.html#residuals-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="residuals-analysis" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Residuals analysis<a href="using-base-r.html#residuals-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>mosaicplot()</code>有幾個參數可以用，包含<code>off</code>與<code>shade</code>可用於呈現殘差分析。</p>
 <ul>
-<li><strong>off</strong>: vector of offsets to determine percentage spacing at each level of the mosaic (appropriate values are between 0 and 20, and the default is 20 times the number of splits for 2-dimensional tables, and 10 otherwise). Rescaled to maximally 50, and recycled if necessary.</li>
-<li><strong>shade</strong>: a logical indicating whether to produce extended mosaic plots, or a numeric vector of at most 5 distinct positive numbers giving the absolute values of the cut points for the residuals. By default, shade is FALSE, and simple mosaics are created. Using shade = TRUE cuts absolute values at 2 and 4.</li>
+<li><strong>off</strong>: vector of offsets to determine percentage spacing at each
+level of the mosaic (appropriate values are between 0 and 20, and
+the default is 20 times the number of splits for 2-dimensional
+tables, and 10 otherwise). Rescaled to maximally 50, and recycled if
+necessary.</li>
+<li><strong>shade</strong>: a logical indicating whether to produce extended mosaic
+plots, or a numeric vector of at most 5 distinct positive numbers
+giving the absolute values of the cut points for the residuals. By
+default, shade is FALSE, and simple mosaics are created. Using shade
+= TRUE cuts absolute values at 2 and 4.</li>
 </ul>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="using-base-r.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;))</span></span>
-<span id="cb344-2"><a href="using-base-r.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>))</span>
-<span id="cb344-3"><a href="using-base-r.html#cb344-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">color=</span>T, <span class="at">shade =</span> T, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
-<span id="cb344-4"><a href="using-base-r.html#cb344-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
-<p><img src="R22_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="using-base-r.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;))</span></span>
+<span id="cb345-2"><a href="using-base-r.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>))</span>
+<span id="cb345-3"><a href="using-base-r.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">color=</span>T, <span class="at">shade =</span> T, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb345-4"><a href="using-base-r.html#cb345-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
+<p><img src="R24_read_csv_pivot_on_tptheft_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 
+</div>
+<div id="from-base-r-to-dplyr" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> From base R to dplyr<a href="using-base-r.html#from-base-r-to-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>From base to tidyverse style</strong></p>
+<p>相較於R base的較為傳統的R編程風格，tidyverse style的R
+programming具有以下幾個特點：</p>
+<ol style="list-style-type: decimal">
+<li><p>基於tidy data理念：tidyverse style的R programming基於tidy
+data理念，即資料應該以規律的方式組織，以方便分析和視覺化。tidyverse
+style的R程式庫提供了一些工具和函數，用於處理和轉換tidy
+data格式的資料，如dplyr、tidyr等。</p></li>
+<li><p>使用管道操作符：tidyverse style的R
+programming通常使用管道操作符（%&gt;%），將資料通過多個函數連接起來，形成一個清晰和易於理解的資料處理流程。使用管道操作符可以簡化程式碼並提高程式的可讀性。</p></li>
+<li><p>強調函數庫的一致性：tidyverse style的R
+programming強調函數庫之間的一致性，即不同函數庫之間使用相似的函數名稱、參數名稱和返回值等，以方便使用者的學習和使用。</p></li>
+<li><p>使用簡潔的命名方式：tidyverse style的R
+programming通常使用簡潔和易於理解的變數和函數命名方式，例如使用動詞表示操作，使用名詞表示資料，以方便使用者理解程式碼的含義。</p></li>
+<li><p>提供高級的視覺化工具：tidyverse style的R
+programming提供了一些高級的視覺化工具，如ggplot2、gganimate等，可以幫助使用者更加輕鬆地進行資料視覺化和探索。</p></li>
+</ol>
+</div>
+<div id="dplyr" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> dplyr<a href="using-base-r.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>dplyr是一個tidyverse風格的R程式庫，用於對資料進行快速、一致、直觀的操作和轉換。dplyr提供了一些高效能的函數和工具，如<code>filter</code>、<code>select</code>、<code>mutate</code>、<code>group_by</code>和<code>summarize</code>等，用於對資料進行選擇、篩選、轉換、分組和摘要等操作。</p>
+<p>以下是dplyr常用的函數：</p>
+<ol style="list-style-type: decimal">
+<li><p><code>filter</code>：用於選擇符合特定條件的資料列。</p></li>
+<li><p><code>select</code>：用於選擇特定的欄位。</p></li>
+<li><p><code>mutate</code>：用於新增或修改欄位。</p></li>
+<li><p><code>group_by</code>：用於按照特定欄位進行分組。</p></li>
+<li><p><code>summarize</code>：用於對分組後的資料進行摘要統計。</p></li>
+<li><p><code>arrange</code>：用於按照欄位的特定順序進行排序。</p></li>
+</ol>
+<p>dplyr具有以下優點：</p>
+<ol style="list-style-type: decimal">
+<li><p>簡潔而直觀的語法：dplyr的函數名稱和語法都十分簡潔而直觀，易於使用和理解，尤其對於新手來說更加友好。</p></li>
+<li><p>高效的運行速度：dplyr的設計考慮了資料處理的效率，使用C++實現了部分函數，因此dplyr在處理大型資料集時運行速度較快。</p></li>
+<li><p>與tidyverse相容：dplyr與其他tidyverse程式庫，如ggplot2和tidyr，可以很好地相容，並且能夠與其他常用的R程式庫進行集成，提供更加全面和高效的資料分析和可視化工具。</p></li>
+</ol>
+</div>
+<div id="taipie-theft-count-base-to-dplyr" class="section level2 hasAnchor" number="5.11">
+<h2><span class="header-section-number">5.11</span> Taipie Theft Count (base to dplyr)<a href="using-base-r.html#taipie-theft-count-base-to-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="using-base-r.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb346-2"><a href="using-base-r.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F) # default options in R ver.&gt; 4.0</span></span></code></pre></div>
+<div id="reading-data" class="section level3 hasAnchor" number="5.11.1">
+<h3><span class="header-section-number">5.11.1</span> Reading data<a href="using-base-r.html#reading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="using-base-r.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read by read_csv()</span></span>
+<span id="cb347-2"><a href="using-base-r.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Will raise error</span></span>
+<span id="cb347-3"><a href="using-base-r.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in make.names(x) : invalid multibyte string at &#39;&lt;bd&gt;s&lt;b8&gt;&lt;b9&gt;&#39;</span></span>
+<span id="cb347-4"><a href="using-base-r.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb347-5"><a href="using-base-r.html#cb347-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-6"><a href="using-base-r.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv() with locale = locale(encoding = &quot;Big5&quot;)</span></span>
+<span id="cb347-7"><a href="using-base-r.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb347-8"><a href="using-base-r.html#cb347-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="cleaning-data-i" class="section level3 hasAnchor" number="5.11.2">
+<h3><span class="header-section-number">5.11.2</span> Cleaning data I<a href="using-base-r.html#cleaning-data-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Renaming variables by <code>select()</code></li>
+<li>Generating variable year</li>
+<li>Generating variable month</li>
+<li>Retrieving area</li>
+</ul>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="using-base-r.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb348-2"><a href="using-base-r.html#cb348-2" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb348-3"><a href="using-base-r.html#cb348-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb348-4"><a href="using-base-r.html#cb348-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類, </span>
+<span id="cb348-5"><a href="using-base-r.html#cb348-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb348-6"><a href="using-base-r.html#cb348-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb348-7"><a href="using-base-r.html#cb348-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb348-8"><a href="using-base-r.html#cb348-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb348-9"><a href="using-base-r.html#cb348-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb348-10"><a href="using-base-r.html#cb348-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> <span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb348-11"><a href="using-base-r.html#cb348-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
+</div>
+<div id="cleaning-data-ii" class="section level3 hasAnchor" number="5.11.3">
+<h3><span class="header-section-number">5.11.3</span> Cleaning data II<a href="using-base-r.html#cleaning-data-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Filtering out irrelevant data records</li>
+</ul>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="using-base-r.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="co"># readr::guess_encoding(&quot;data/tp_theft.csv&quot;)</span></span>
+<span id="cb349-2"><a href="using-base-r.html#cb349-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb349-3"><a href="using-base-r.html#cb349-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb349-4"><a href="using-base-r.html#cb349-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(county <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb349-5"><a href="using-base-r.html#cb349-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb349-6"><a href="using-base-r.html#cb349-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb349-7"><a href="using-base-r.html#cb349-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb349-8"><a href="using-base-r.html#cb349-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>area <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;中和市&quot;</span>, <span class="st">&quot;板橋市&quot;</span>))</span></code></pre></div>
+</div>
+<div id="long-to-wide-form" class="section level3 hasAnchor" number="5.11.4">
+<h3><span class="header-section-number">5.11.4</span> Long to wide form<a href="using-base-r.html#long-to-wide-form" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>count()</code> two variables</li>
+<li><code>pivot_wider()</code> spread one variable as columns to wide form</li>
+</ul>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="using-base-r.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count() then pivot_wider()</span></span>
+<span id="cb350-2"><a href="using-base-r.html#cb350-2" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb350-3"><a href="using-base-r.html#cb350-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb350-4"><a href="using-base-r.html#cb350-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> area, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
+<span id="cb350-5"><a href="using-base-r.html#cb350-5" aria-hidden="true" tabindex="-1"></a>??pivot_wider</span></code></pre></div>
+</div>
+<div id="setting-time-as-row.name-for-mosaicplot" class="section level3 hasAnchor" number="5.11.5">
+<h3><span class="header-section-number">5.11.5</span> Setting time as row.name for mosaicplot<a href="using-base-r.html#setting-time-as-row.name-for-mosaicplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="using-base-r.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb351-2"><a href="using-base-r.html#cb351-2" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="using-base-r.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify fonts for Chinese</span></span>
+<span id="cb352-2"><a href="using-base-r.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;)) </span></span>
+<span id="cb352-3"><a href="using-base-r.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb352-4"><a href="using-base-r.html#cb352-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-5"><a href="using-base-r.html#cb352-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb352-6"><a href="using-base-r.html#cb352-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb352-7"><a href="using-base-r.html#cb352-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb352-8"><a href="using-base-r.html#cb352-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb352-9"><a href="using-base-r.html#cb352-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-10"><a href="using-base-r.html#cb352-10" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb352-11"><a href="using-base-r.html#cb352-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb352-12"><a href="using-base-r.html#cb352-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)</span></code></pre></div>
+<p><img src="R25-base2dplyr-tptheft_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="clean-version" class="section level3 hasAnchor" number="5.11.6">
+<h3><span class="header-section-number">5.11.6</span> Clean version<a href="using-base-r.html#clean-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="using-base-r.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb353-2"><a href="using-base-r.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="co"># options(stringsAsFactors = F)</span></span>
+<span id="cb353-3"><a href="using-base-r.html#cb353-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/臺北市住宅竊盜點位資訊-UTF8-BOM-1.csv&quot;</span>)</span>
+<span id="cb353-4"><a href="using-base-r.html#cb353-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-5"><a href="using-base-r.html#cb353-5" aria-hidden="true" tabindex="-1"></a>selected_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb353-6"><a href="using-base-r.html#cb353-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">id =</span> 編號, </span>
+<span id="cb353-7"><a href="using-base-r.html#cb353-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> 案類,</span>
+<span id="cb353-8"><a href="using-base-r.html#cb353-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">date =</span> <span class="st">`</span><span class="at">發生日期</span><span class="st">`</span>, </span>
+<span id="cb353-9"><a href="using-base-r.html#cb353-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">time =</span> <span class="st">`</span><span class="at">發生時段</span><span class="st">`</span>, </span>
+<span id="cb353-10"><a href="using-base-r.html#cb353-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">location =</span> <span class="st">`</span><span class="at">發生地點</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb353-11"><a href="using-base-r.html#cb353-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> date <span class="sc">%/%</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb353-12"><a href="using-base-r.html#cb353-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%/%</span> <span class="dv">100</span> <span class="sc">%%</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb353-13"><a href="using-base-r.html#cb353-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">area =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb353-14"><a href="using-base-r.html#cb353-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(location, <span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb353-15"><a href="using-base-r.html#cb353-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-16"><a href="using-base-r.html#cb353-16" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(year)</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 9 × 2
+##    year     n
+##   &lt;dbl&gt; &lt;int&gt;
+## 1   103     1
+## 2   104   687
+## 3   105   663
+## 4   106   560
+## 5   107   501
+## 6   108   411
+## 7   109   304
+## 8   110   189
+## 9   111    31</code></pre>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="using-base-r.html#cb355-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 10 × 2
+##    time      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 00~02   272
+##  2 02~04   214
+##  3 03~05     8
+##  4 04~06   156
+##  5 05~07    23
+##  6 06~08   191
+##  7 08~10   305
+##  8 09~11     6
+##  9 10~12   338
+## 10 11~03     1</code></pre>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="using-base-r.html#cb357-1" aria-hidden="true" tabindex="-1"></a>selected_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(time) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 10 × 9
+##       id cat         date time  location                 year month area  county
+##    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1     2 住宅竊盜 1040101 00~02 臺北市文山區萬美里萬寧…   104     1 文山… 臺北市
+##  2     3 住宅竊盜 1040101 00~02 臺北市信義區富台里忠孝…   104     1 信義… 臺北市
+##  3     6 住宅竊盜 1040102 00~02 臺北市士林區天福里1鄰…    104     1 士林… 臺北市
+##  4    12 住宅竊盜 1040105 00~02 臺北市中山區南京東路3…    104     1 中山… 臺北市
+##  5    33 住宅竊盜 1040115 00~02 臺北市松山區饒河街181~…   104     1 松山… 臺北市
+##  6    74 住宅竊盜 1040131 00~02 臺北市南港區重陽路57巷…   104     1 南港… 臺北市
+##  7    75 住宅竊盜 1040201 00~02 臺北市北投區中心里中和…   104     2 北投… 臺北市
+##  8    92 住宅竊盜 1040210 00~02 臺北市北投區大同路200…    104     2 北投… 臺北市
+##  9    95 住宅竊盜 1040212 00~02 臺北市萬華區萬大路493…    104     2 萬華… 臺北市
+## 10   106 住宅竊盜 1040216 00~02 臺北市信義區吳興街269…    104     2 信義… 臺北市</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="using-base-r.html#cb359-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> selected_df <span class="sc">%&gt;%</span></span>
+<span id="cb359-2"><a href="using-base-r.html#cb359-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(year) %&gt;% View</span></span>
+<span id="cb359-3"><a href="using-base-r.html#cb359-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">104</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb359-4"><a href="using-base-r.html#cb359-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;23~01&quot;</span>))</span>
+<span id="cb359-5"><a href="using-base-r.html#cb359-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(time) %&gt;% View</span></span>
+<span id="cb359-6"><a href="using-base-r.html#cb359-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count(location) %&gt;%</span></span>
+<span id="cb359-7"><a href="using-base-r.html#cb359-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter(!area %in% c(&quot;中和市&quot;, &quot;板橋市&quot;))</span></span>
+<span id="cb359-8"><a href="using-base-r.html#cb359-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-9"><a href="using-base-r.html#cb359-9" aria-hidden="true" tabindex="-1"></a>df.wide <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span> </span>
+<span id="cb359-10"><a href="using-base-r.html#cb359-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(time, area) <span class="sc">%&gt;%</span></span>
+<span id="cb359-11"><a href="using-base-r.html#cb359-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> area, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb359-12"><a href="using-base-r.html#cb359-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
+<span id="cb359-13"><a href="using-base-r.html#cb359-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-14"><a href="using-base-r.html#cb359-14" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df.wide) <span class="ot">&lt;-</span> df.wide<span class="sc">$</span>time</span>
+<span id="cb359-15"><a href="using-base-r.html#cb359-15" aria-hidden="true" tabindex="-1"></a>df.wide<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb359-16"><a href="using-base-r.html#cb359-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-17"><a href="using-base-r.html#cb359-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>)) <span class="co"># for mac</span></span>
+<span id="cb359-18"><a href="using-base-r.html#cb359-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-19"><a href="using-base-r.html#cb359-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify colors</span></span>
+<span id="cb359-20"><a href="using-base-r.html#cb359-20" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;#D0104C&#39;</span>, <span class="st">&#39;#DB4D6D&#39;</span>, <span class="st">&#39;#E83015&#39;</span>,  <span class="st">&#39;#F75C2F&#39;</span>,</span>
+<span id="cb359-21"><a href="using-base-r.html#cb359-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#E79460&#39;</span>, <span class="st">&#39;#E98B2A&#39;</span>, <span class="st">&#39;#9B6E23&#39;</span>, <span class="st">&#39;#F7C242&#39;</span>,</span>
+<span id="cb359-22"><a href="using-base-r.html#cb359-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;#BEC23F&#39;</span>, <span class="st">&#39;#90B44B&#39;</span>, <span class="st">&#39;#66BAB7&#39;</span>, <span class="st">&#39;#1E88A8&#39;</span>)</span>
+<span id="cb359-23"><a href="using-base-r.html#cb359-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-24"><a href="using-base-r.html#cb359-24" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot()</span></span>
+<span id="cb359-25"><a href="using-base-r.html#cb359-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(df.wide, <span class="at">color=</span>colors, <span class="at">border=</span><span class="dv">0</span>, <span class="at">off =</span> <span class="dv">3</span>,</span>
+<span id="cb359-26"><a href="using-base-r.html#cb359-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">main=</span><span class="st">&quot;Theft rate of Taipei city (region by hour)&quot;</span>)  </span></code></pre></div>
+<p><img src="R25-base2dplyr-tptheft_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+
+</div>
 </div>
 </div>
             </section>
@@ -1352,7 +1616,7 @@ df &lt;- read.csv(&quot;data/tptheft.csv&quot;)</code></pre>
         </div>
       </div>
 <a href="dataframe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="from-base-r-to-dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-manipultaiton-join-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
