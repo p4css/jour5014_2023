@@ -1,4 +1,6 @@
-## Scraping NBA players
+
+
+## WGOITG: LeBron James's Achievement
 
 這個案例的靈感來自於紐約時報於2023年2月7日所發布的一篇新聞「[How LeBron James Outscored Kareem Abdul-Jabbar and All the N.B.A. Greats](https://www.nytimes.com/interactive/2023/02/07/sports/basketball/lebron-james-kareem-abdul-jabbar-points.html)」。該篇新聞的破題點在於LeBron James 打破 Kareem Abdul-Jabbar 的紀錄，成為 NBA 歷史上得分王，這是許多人認為無法達成的成就。今年 38 歲的 James，本季平均每場比賽可以攻下 30.2 分，以 38,390 分超越了 Abdul-Jabbar 的 38,387 分。Abdul-Jabbar 以 sky hook 聞名，而 James 則透過多種得分方式積累分數，包括近年來在聯盟中日益盛行的三分球。James 的長壽、創意、天賦和能力讓他達成了這個成就。但實際上，這篇新聞同時也凸顯了 NBA 在過去50年的演變。
 
@@ -128,16 +130,7 @@ top250 %>%
     theme(legend.position = "none")
 ```
 
-```
-## Warning: Tried to calculate with group_by(), but the calculation failed.
-## Falling back to ungrouped filter operation...
-```
-
-```
-## label_key: Player
-```
-
-<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
 
 #### Line: year x cumPTS
 
@@ -152,16 +145,7 @@ top250 %>%
     theme(legend.position = "none")
 ```
 
-```
-## Warning: Tried to calculate with group_by(), but the calculation failed.
-## Falling back to ungrouped filter operation...
-```
-
-```
-## label_key: Player
-```
-
-<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 
 #### Line: Age x PER_by_year
 
@@ -176,18 +160,11 @@ top250 %>%
     theme(legend.position = "none")
 ```
 
-```
-## Warning: Tried to calculate with group_by(), but the calculation failed.
-## Falling back to ungrouped filter operation...
-```
-
-```
-## label_key: Player
-```
-
-<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
 
 #### Comparing LeBron James and Jabbar
+
+##### Scraping and cleaning
 
 
 ```r
@@ -240,7 +217,7 @@ james.log %>%
     theme_bw()
 ```
 
-<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" />
 
 ```r
 jabbar.log %>%
@@ -253,11 +230,7 @@ jabbar.log %>%
     theme_bw()
 ```
 
-```
-## Warning: Removed 3 rows containing non-finite values (`stat_align()`).
-```
-
-<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-10-2.png" width="672" />
+<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-12-2.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -281,7 +254,7 @@ top250 %>%
     theme(aspect.ratio = 2/3)
 ```
 
-<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="R63_Scrape_nba_players_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
