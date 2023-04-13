@@ -108,7 +108,7 @@ NW %>% glimpse()
 ## $ Net_Worth <dbl> 16.17019, 112.47530, 195.11630, 195.25554, 154.34277, 144.29…
 ```
 
-這是預期視覺化的結果
+這是預期視覺化的結果。
 
 ![](images/paste-B46B3CD7.png)
 
@@ -583,4 +583,3 @@ county %>%
 ```
 
 <img src="V01_Learning_ggplot_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
-

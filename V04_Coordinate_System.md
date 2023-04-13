@@ -175,9 +175,9 @@ p1 %>% filter(year <= 1992) %>% knitr::kable()
 
 ```r
 p1 %>% ggplot() + aes(year, Net_Worth, color = Category) + 
-    geom_line(linetype="dotted") + 
+    geom_line() + 
     geom_point() + 
-    gghighlight(Category %in% c("65-74", "35-44")) + 
+    gghighlight(Category %in% c("65-74", "Less than 35")) + 
     theme_minimal() + 
     scale_x_continuous(breaks = NULL) + 
     theme(panel.background = element_rect(fill = "white",
@@ -215,12 +215,14 @@ p2 %>% filter(year <= 1992) %>% knitr::kable()
 | 1992|65-74        | 176.44667|  0.1432131|
 | 1992|75 or older  | 155.35173|  0.0765994|
 
+美國35歲以下的年輕人的中位淨資產比起年長的美國人來說，一開始平均貧窮得多。從「Less than 35」這條線看來，現在的年輕世代比起2004年的年輕世代所擁有的淨資產低了40%。相比之下，65歲以上的美國人現在的淨資產，相較於2004年增加了9%。隨著時代變化，可想像會有一群人的淨資產越來越多，只是現在從這個圖表看來，年輕人所擁有的淨資產相較於過去是越來越低的，多半流入了成年人和老年人手中。
+
 
 ```r
 p2 %>% ggplot() + aes(year, increase, color = Category) + 
-    geom_line(linetype="dotted") + 
+    geom_line() + 
     geom_point() + 
-    gghighlight(Category %in% c("65-74", "35-44")) + 
+    gghighlight(Category %in% c("65-74", "Less than 35")) + 
     theme_minimal() + 
     scale_y_continuous(labels=scales::parse_format()) + 
     scale_x_continuous(breaks = NULL) + 
