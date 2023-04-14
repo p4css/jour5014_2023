@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 20 PROPORTION | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 20 PROPORTION | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -169,7 +169,10 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#cases-in-the-book"><i class="fa fa-check"></i><b>1.1</b> Cases in the book</a></li>
+</ul></li>
 <li class="part"><span><b>I R BASIC</b></span></li>
 <li class="chapter" data-level="2" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>2</b> R Basic</a>
 <ul>
@@ -234,7 +237,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.3" data-path="dataframe.html"><a href="dataframe.html#基本操作使用dplyr"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
 <li class="chapter" data-level="4.4" data-path="dataframe.html"><a href="dataframe.html#tibble-data_frame-data.frame"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
 <li class="chapter" data-level="4.5" data-path="dataframe.html"><a href="dataframe.html#database---sqlite"><i class="fa fa-check"></i><b>4.5</b> Database - SQLite</a></li>
-<li class="chapter" data-level="4.6" data-path="dataframe.html"><a href="dataframe.html#paid-maternity-leave"><i class="fa fa-check"></i><b>4.6</b> Paid Maternity Leave</a>
+<li class="chapter" data-level="4.6" data-path="dataframe.html"><a href="dataframe.html#maternity"><i class="fa fa-check"></i><b>4.6</b> Paid Maternity Leave</a>
 <ul>
 <li class="chapter" data-level="4.6.1" data-path="dataframe.html"><a href="dataframe.html#reading-.xlsx-by-readxl-package"><i class="fa fa-check"></i><b>4.6.1</b> Reading .xlsx by readxl package</a></li>
 <li class="chapter" data-level="4.6.2" data-path="dataframe.html"><a href="dataframe.html#previewing-data-by-view-class-dim-str-summary-and-names"><i class="fa fa-check"></i><b>4.6.2</b> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code></a></li>
@@ -250,7 +253,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html"><i class="fa fa-check"></i><b>5</b> Counting and Cross-tabulation</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#taipei-residential-burglary"><i class="fa fa-check"></i><b>5.1</b> Taipei Residential Burglary</a>
+<li class="chapter" data-level="5.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#tptheft"><i class="fa fa-check"></i><b>5.1</b> Taipei Residential Burglary</a>
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#讀取檔案"><i class="fa fa-check"></i><b>5.1.1</b> 讀取檔案</a></li>
 <li class="chapter" data-level="5.1.2" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#萃取所需新變項"><i class="fa fa-check"></i><b>5.1.2</b> 萃取所需新變項</a></li>
@@ -274,10 +277,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#residuals-analysis"><i class="fa fa-check"></i><b>5.5</b> Residuals analysis</a></li>
 </ul></li>
+<li class="part"><span><b>II DATA MANIPULATION</b></span></li>
 <li class="chapter" data-level="6" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html"><i class="fa fa-check"></i><b>6</b> From base R to dplyr</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#dplyr"><i class="fa fa-check"></i><b>6.1</b> dplyr</a></li>
-<li class="chapter" data-level="6.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#taipie-theft-count-base-to-dplyr"><i class="fa fa-check"></i><b>6.2</b> Taipie Theft Count (base to dplyr)</a>
+<li class="chapter" data-level="6.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#tptheft_dplyr"><i class="fa fa-check"></i><b>6.2</b> Taipie Theft Count (base to dplyr)</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#reading-data"><i class="fa fa-check"></i><b>6.2.1</b> Reading data</a></li>
 <li class="chapter" data-level="6.2.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#cleaning-data-i"><i class="fa fa-check"></i><b>6.2.2</b> Cleaning data I</a></li>
@@ -286,7 +290,13 @@ div.csl-indent {
 <li class="chapter" data-level="6.2.5" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>6.2.5</b> Setting time as row.name for mosaicplot</a></li>
 <li class="chapter" data-level="6.2.6" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#clean-version"><i class="fa fa-check"></i><b>6.2.6</b> Clean version</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#paid-maternity-leave-base-to-dplyr"><i class="fa fa-check"></i><b>6.3</b> Paid Maternity Leave (base to dplyr)</a></li>
+<li class="chapter" data-level="6.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#maternity_dplyr"><i class="fa fa-check"></i><b>6.3</b> Paid Maternity Leave</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#visual-strategies"><i class="fa fa-check"></i><b>6.3.1</b> Visual Strategies</a></li>
+<li class="chapter" data-level="6.3.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#code-by-dplyr"><i class="fa fa-check"></i><b>6.3.2</b> Code by dplyr</a></li>
+<li class="chapter" data-level="6.3.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#generating-each"><i class="fa fa-check"></i><b>6.3.3</b> Generating each</a></li>
+<li class="chapter" data-level="6.3.4" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#gathering-subplots-by-cowplot"><i class="fa fa-check"></i><b>6.3.4</b> Gathering subplots by cowplot</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html"><i class="fa fa-check"></i><b>7</b> Data manipultaiton: Join data</a>
 <ul>
@@ -314,30 +324,30 @@ div.csl-indent {
 <li class="chapter" data-level="8.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#order-to-factor"><i class="fa fa-check"></i><b>8.2</b> Order-to-factor</a></li>
 <li class="chapter" data-level="8.3" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#cross-tabulating"><i class="fa fa-check"></i><b>8.3</b> Cross-tabulating</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="processing-timeline.html"><a href="processing-timeline.html"><i class="fa fa-check"></i><b>9</b> Processing Timeline</a>
+<li class="chapter" data-level="9" data-path="timeline.html"><a href="timeline.html"><i class="fa fa-check"></i><b>9</b> Processing Timeline</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="processing-timeline.html"><a href="processing-timeline.html#char-to-timestamp"><i class="fa fa-check"></i><b>9.1</b> char-to-timestamp</a></li>
-<li class="chapter" data-level="9.2" data-path="processing-timeline.html"><a href="processing-timeline.html#density-plot-along-time"><i class="fa fa-check"></i><b>9.2</b> Density plot along time</a></li>
-<li class="chapter" data-level="9.3" data-path="processing-timeline.html"><a href="processing-timeline.html#freq-by-month"><i class="fa fa-check"></i><b>9.3</b> Freq by month</a></li>
-<li class="chapter" data-level="9.4" data-path="processing-timeline.html"><a href="processing-timeline.html#freq-by-date-good"><i class="fa fa-check"></i><b>9.4</b> Freq-by-date (good)</a></li>
-<li class="chapter" data-level="9.5" data-path="processing-timeline.html"><a href="processing-timeline.html#freq-by-hour"><i class="fa fa-check"></i><b>9.5</b> Freq-by-hour</a></li>
+<li class="chapter" data-level="9.1" data-path="timeline.html"><a href="timeline.html#char-to-timestamp"><i class="fa fa-check"></i><b>9.1</b> char-to-timestamp</a></li>
+<li class="chapter" data-level="9.2" data-path="timeline.html"><a href="timeline.html#density-plot-along-time"><i class="fa fa-check"></i><b>9.2</b> Density plot along time</a></li>
+<li class="chapter" data-level="9.3" data-path="timeline.html"><a href="timeline.html#freq-by-month"><i class="fa fa-check"></i><b>9.3</b> Freq by month</a></li>
+<li class="chapter" data-level="9.4" data-path="timeline.html"><a href="timeline.html#freq-by-date-good"><i class="fa fa-check"></i><b>9.4</b> Freq-by-date (good)</a></li>
+<li class="chapter" data-level="9.5" data-path="timeline.html"><a href="timeline.html#freq-by-hour"><i class="fa fa-check"></i><b>9.5</b> Freq-by-hour</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="na-processing.html"><a href="na-processing.html"><i class="fa fa-check"></i><b>10</b> NA Processing</a>
+<li class="chapter" data-level="10" data-path="na.html"><a href="na.html"><i class="fa fa-check"></i><b>10</b> NA Processing</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="na-processing.html"><a href="na-processing.html#cleaning-gov-annual-budget"><i class="fa fa-check"></i><b>10.1</b> Cleaning Gov Annual Budget</a>
+<li class="chapter" data-level="10.1" data-path="na.html"><a href="na.html#cleaning-gov-annual-budget"><i class="fa fa-check"></i><b>10.1</b> Cleaning Gov Annual Budget</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="na-processing.html"><a href="na-processing.html#basic-cleaning"><i class="fa fa-check"></i><b>10.1.1</b> Basic Cleaning</a></li>
-<li class="chapter" data-level="10.1.2" data-path="na-processing.html"><a href="na-processing.html#processing-na"><i class="fa fa-check"></i><b>10.1.2</b> Processing NA</a></li>
-<li class="chapter" data-level="10.1.3" data-path="na-processing.html"><a href="na-processing.html#complete-code"><i class="fa fa-check"></i><b>10.1.3</b> Complete Code</a></li>
+<li class="chapter" data-level="10.1.1" data-path="na.html"><a href="na.html#basic-cleaning"><i class="fa fa-check"></i><b>10.1.1</b> Basic Cleaning</a></li>
+<li class="chapter" data-level="10.1.2" data-path="na.html"><a href="na.html#processing-na"><i class="fa fa-check"></i><b>10.1.2</b> Processing NA</a></li>
+<li class="chapter" data-level="10.1.3" data-path="na.html"><a href="na.html#complete-code"><i class="fa fa-check"></i><b>10.1.3</b> Complete Code</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="na-processing.html"><a href="na-processing.html#case-vaccinating-proportion-by-countries"><i class="fa fa-check"></i><b>10.2</b> Case: Vaccinating Proportion by Countries</a>
+<li class="chapter" data-level="10.2" data-path="na.html"><a href="na.html#case-vaccinating-proportion-by-countries"><i class="fa fa-check"></i><b>10.2</b> Case: Vaccinating Proportion by Countries</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="na-processing.html"><a href="na-processing.html#按月對齊資料"><i class="fa fa-check"></i><b>10.2.1</b> 按月對齊資料</a></li>
-<li class="chapter" data-level="10.2.2" data-path="na-processing.html"><a href="na-processing.html#處理遺漏資料的月份"><i class="fa fa-check"></i><b>10.2.2</b> 處理遺漏資料的月份</a></li>
-<li class="chapter" data-level="10.2.3" data-path="na-processing.html"><a href="na-processing.html#完整程式碼"><i class="fa fa-check"></i><b>10.2.3</b> 完整程式碼</a></li>
+<li class="chapter" data-level="10.2.1" data-path="na.html"><a href="na.html#按月對齊資料"><i class="fa fa-check"></i><b>10.2.1</b> 按月對齊資料</a></li>
+<li class="chapter" data-level="10.2.2" data-path="na.html"><a href="na.html#處理遺漏資料的月份"><i class="fa fa-check"></i><b>10.2.2</b> 處理遺漏資料的月份</a></li>
+<li class="chapter" data-level="10.2.3" data-path="na.html"><a href="na.html#完整程式碼"><i class="fa fa-check"></i><b>10.2.3</b> 完整程式碼</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>II TEXT PROCESSING</b></span></li>
+<li class="part"><span><b>III TEXT PROCESSING</b></span></li>
 <li class="chapter" data-level="11" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>11</b> Text Processing</a></li>
 <li class="chapter" data-level="12" data-path="trumps-tweets.html"><a href="trumps-tweets.html"><i class="fa fa-check"></i><b>12</b> Trump’s tweets</a>
 <ul>
@@ -354,7 +364,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.4.2" data-path="trumps-tweets.html"><a href="trumps-tweets.html#plotting-keyness"><i class="fa fa-check"></i><b>12.4.2</b> Plotting keyness</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>III CRAWLER</b></span></li>
+<li class="part"><span><b>IV CRAWLER</b></span></li>
 <li class="chapter" data-level="13" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html"><i class="fa fa-check"></i><b>13</b> Introduction to Web Scraping</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#using-web-api"><i class="fa fa-check"></i><b>13.1</b> Using Web API</a></li>
@@ -378,33 +388,33 @@ div.csl-indent {
 <li class="chapter" data-level="14.2.8" data-path="scraping-104.html"><a href="scraping-104.html#combine-all-data.frame"><i class="fa fa-check"></i><b>14.2.8</b> combine all data.frame</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html"><i class="fa fa-check"></i><b>15</b> WGOITG: LeBron James’s Achievement</a>
+<li class="chapter" data-level="15" data-path="lebron.html"><a href="lebron.html"><i class="fa fa-check"></i><b>15</b> NYT: LeBron James Achievement</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#get-top250-players"><i class="fa fa-check"></i><b>15.1</b> Get top250 players</a></li>
-<li class="chapter" data-level="15.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scraping-live-scores"><i class="fa fa-check"></i><b>15.2</b> Scraping live scores</a>
+<li class="chapter" data-level="15.1" data-path="lebron.html"><a href="lebron.html#get-top250-players"><i class="fa fa-check"></i><b>15.1</b> Get top250 players</a></li>
+<li class="chapter" data-level="15.2" data-path="lebron.html"><a href="lebron.html#scraping-live-scores"><i class="fa fa-check"></i><b>15.2</b> Scraping live scores</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#testing"><i class="fa fa-check"></i><b>15.2.1</b> Testing</a></li>
+<li class="chapter" data-level="15.2.1" data-path="lebron.html"><a href="lebron.html#testing"><i class="fa fa-check"></i><b>15.2.1</b> Testing</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>15.3</b> Scrape life time scores</a></li>
-<li class="chapter" data-level="15.4" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#cleaning-data-1"><i class="fa fa-check"></i><b>15.4</b> Cleaning data</a></li>
-<li class="chapter" data-level="15.5" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#visualization"><i class="fa fa-check"></i><b>15.5</b> Visualization</a>
+<li class="chapter" data-level="15.3" data-path="lebron.html"><a href="lebron.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>15.3</b> Scrape life time scores</a></li>
+<li class="chapter" data-level="15.4" data-path="lebron.html"><a href="lebron.html#cleaning-data-1"><i class="fa fa-check"></i><b>15.4</b> Cleaning data</a></li>
+<li class="chapter" data-level="15.5" data-path="lebron.html"><a href="lebron.html#visualization"><i class="fa fa-check"></i><b>15.5</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-age-x-cumpts"><i class="fa fa-check"></i><b>15.5.1</b> Line: Age x cumPTS</a></li>
-<li class="chapter" data-level="15.5.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-year-x-cumpts"><i class="fa fa-check"></i><b>15.5.2</b> Line: year x cumPTS</a></li>
-<li class="chapter" data-level="15.5.3" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-age-x-per_by_year"><i class="fa fa-check"></i><b>15.5.3</b> Line: Age x PER_by_year</a></li>
-<li class="chapter" data-level="15.5.4" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#comparing-lebron-james-and-jabbar"><i class="fa fa-check"></i><b>15.5.4</b> Comparing LeBron James and Jabbar</a></li>
+<li class="chapter" data-level="15.5.1" data-path="lebron.html"><a href="lebron.html#line-age-x-cumpts"><i class="fa fa-check"></i><b>15.5.1</b> Line: Age x cumPTS</a></li>
+<li class="chapter" data-level="15.5.2" data-path="lebron.html"><a href="lebron.html#line-year-x-cumpts"><i class="fa fa-check"></i><b>15.5.2</b> Line: year x cumPTS</a></li>
+<li class="chapter" data-level="15.5.3" data-path="lebron.html"><a href="lebron.html#line-age-x-per_by_year"><i class="fa fa-check"></i><b>15.5.3</b> Line: Age x PER_by_year</a></li>
+<li class="chapter" data-level="15.5.4" data-path="lebron.html"><a href="lebron.html#comparing-lebron-james-and-jabbar"><i class="fa fa-check"></i><b>15.5.4</b> Comparing LeBron James and Jabbar</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scraping-and-cleaning"><i class="fa fa-check"></i><b>15.6</b> Scraping and cleaning</a>
+<li class="chapter" data-level="15.6" data-path="lebron.html"><a href="lebron.html#scraping-and-cleaning"><i class="fa fa-check"></i><b>15.6</b> Scraping and cleaning</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#vis-ljames-and-jabbar"><i class="fa fa-check"></i><b>15.6.1</b> VIS LJames and jabbar</a></li>
+<li class="chapter" data-level="15.6.1" data-path="lebron.html"><a href="lebron.html#vis-ljames-and-jabbar"><i class="fa fa-check"></i><b>15.6.1</b> VIS LJames and jabbar</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#more-scraping-all-players"><i class="fa fa-check"></i><b>15.7</b> (More) Scraping all players</a>
+<li class="chapter" data-level="15.7" data-path="lebron.html"><a href="lebron.html#more-scraping-all-players"><i class="fa fa-check"></i><b>15.7</b> (More) Scraping all players</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#testing-1"><i class="fa fa-check"></i><b>15.7.1</b> Testing</a></li>
-<li class="chapter" data-level="15.7.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>15.7.2</b> Scrape from a-z except x(no x)</a></li>
+<li class="chapter" data-level="15.7.1" data-path="lebron.html"><a href="lebron.html#testing-1"><i class="fa fa-check"></i><b>15.7.1</b> Testing</a></li>
+<li class="chapter" data-level="15.7.2" data-path="lebron.html"><a href="lebron.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>15.7.2</b> Scrape from a-z except x(no x)</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>IV VISUALIZATION</b></span></li>
+<li class="part"><span><b>V VISUALIZATION</b></span></li>
 <li class="chapter" data-level="16" data-path="visualization-1.html"><a href="visualization-1.html"><i class="fa fa-check"></i><b>16</b> Visualization</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="visualization-1.html"><a href="visualization-1.html#ggplot2"><i class="fa fa-check"></i><b>16.1</b> ggplot2</a></li>
@@ -439,20 +449,24 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="17" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>17</b> Coordinate</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="coordinate.html"><a href="coordinate.html#座標軸為資料排序"><i class="fa fa-check"></i><b>17.1</b> 座標軸為資料排序</a>
+<li class="chapter" data-level="17.1" data-path="coordinate.html"><a href="coordinate.html#order-as-axis"><i class="fa fa-check"></i><b>17.1</b> Order as axis</a>
 <ul>
 <li class="chapter" data-level="17.1.1" data-path="coordinate.html"><a href="coordinate.html#section"><i class="fa fa-check"></i><b>17.1.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="coordinate.html"><a href="coordinate.html#用log-scale放大長尾頭部"><i class="fa fa-check"></i><b>17.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="17.3" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>17.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="17.4" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>17.4</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="17.2" data-path="coordinate.html"><a href="coordinate.html#log-scale"><i class="fa fa-check"></i><b>17.2</b> Log-scale</a>
 <ul>
-<li class="chapter" data-level="17.4.1" data-path="coordinate.html"><a href="coordinate.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>17.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="17.4.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>17.4.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="17.2.1" data-path="coordinate.html"><a href="coordinate.html#nyt-population-growth"><i class="fa fa-check"></i><b>17.2.1</b> NYT: Population Growth</a></li>
 </ul></li>
-<li class="chapter" data-level="17.5" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>17.5</b> 等比例座標軸</a>
+<li class="chapter" data-level="17.3" data-path="coordinate.html"><a href="coordinate.html#section-1"><i class="fa fa-check"></i><b>17.3</b> </a></li>
+<li class="chapter" data-level="17.4" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>17.4</b> Square-root scale</a></li>
+<li class="chapter" data-level="17.5" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>17.5</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="17.5.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>17.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="17.5.1" data-path="coordinate.html"><a href="coordinate.html#nyt-net-worth-by-age-group"><i class="fa fa-check"></i><b>17.5.1</b> NYT: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="17.5.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>17.5.2</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>17.6</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>17.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>18</b> AMOUNT</a>
@@ -552,23 +566,22 @@ div.csl-indent {
 <li class="chapter" data-level="25.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>25.2.2</b> 靜態繪圖測試</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>V CASE STUDIES</b></span></li>
+<li class="part"><span><b>VI CASE STUDIES</b></span></li>
 <li class="chapter" data-level="26" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>26</b> WGOITG of NyTimes</a></li>
-<li class="chapter" data-level="27" data-path="wgoitg-population-increase.html"><a href="wgoitg-population-increase.html"><i class="fa fa-check"></i><b>27</b> WGOITG: Population Increase</a></li>
-<li class="chapter" data-level="28" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>28</b> Inequality: Net Worth by Age Group</a></li>
-<li class="chapter" data-level="29" data-path="optimism-survey-by-countries.html"><a href="optimism-survey-by-countries.html"><i class="fa fa-check"></i><b>29</b> Optimism Survey by Countries</a></li>
-<li class="chapter" data-level="30" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>30</b> Case Studies (Taiwan)</a>
+<li class="chapter" data-level="27" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>27</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="28" data-path="optimism-survey-by-countries.html"><a href="optimism-survey-by-countries.html"><i class="fa fa-check"></i><b>28</b> Optimism Survey by Countries</a></li>
+<li class="chapter" data-level="29" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>29</b> Case Studies (Taiwan)</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>30.1</b> TW AQI Visual Studies</a>
+<li class="chapter" data-level="29.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>29.1</b> TW AQI Visual Studies</a>
 <ul>
-<li class="chapter" data-level="30.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>30.1.1</b> eda-load-data-from-github</a></li>
-<li class="chapter" data-level="30.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>30.1.2</b> Trending: Central tendency</a></li>
-<li class="chapter" data-level="30.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>30.1.3</b> Trending: Extreme value</a></li>
+<li class="chapter" data-level="29.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>29.1.1</b> eda-load-data-from-github</a></li>
+<li class="chapter" data-level="29.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>29.1.2</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="29.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>29.1.3</b> Trending: Extreme value</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>31</b> Appendix</a>
+<li class="chapter" data-level="30" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>30</b> Appendix</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>31.1</b> Dataset</a></li>
+<li class="chapter" data-level="30.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>30.1</b> Dataset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -616,77 +629,77 @@ div.csl-indent {
 <h3><span class="header-section-number">20.3.1</span> NYT: Carbon by countries<a href="proportion.html#nyt-carbon-by-countries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>本案例取自紐時所報導之<a href="https://www.nytimes.com/interactive/2021/11/12/climate/cop26-emissions-compensation.html?campaign_id=29&amp;emc=edit_up_20211112&amp;instance_id=45236&amp;nl=the-upshot&amp;regi_id=52022771&amp;segment_id=74222&amp;te=1&amp;user_id=7cc6d9cd8f523e256ae41958ee8a9cb5">Who Has The Most Historical Responsibility for Climate Change? - The New York Times (nytimes.com)</a>。該新聞報導了聯合國氣候峰會在格拉斯哥舉行期間的一個重要議題：世界上最富裕的國家，即那些對全球暖化負責任的不成比例的國家，應如何賠償因全球氣溫上升所造成的貧困國家的損失。報導指出，現今全球人口中，包括美國、加拿大、日本以及西歐大部分國家在內的富裕國家僅佔12％，但是在過去的170年中，這些國家卻負責了50％的溫室氣體排放。貧困國家要求富裕國家提供更多資金以應對全球暖化所帶來的風險。在峰會上，來自最不發達國家聯盟的Sonam P. Wangdi指出，他的祖國不丹對全球暖化的責任較小，因為該國目前吸收的二氧化碳比汽車和房屋排放的少。然而，不丹仍然面臨著由氣溫上升所帶來的嚴重風險，喜馬拉雅山脈融化的冰川已經導致了洪水和泥石流，摧毀了村莊。報導指出，最不發達國家需要更多的資金和支持，以應對全球暖化所帶來的影響。</p>
 <p>本案例的Treemap以面積顯示了各國的碳排放所佔比例，並用顏色視覺化各國的人均GDP。Per Capita是拉丁語，通常用來表示某種統計數據與人口數量之間的關係。它是指將某一特定數量的總量除以人口數目，以得出每個人所擁有的平均數量。例如，國家的人均GDP（Gross Domestic Product，國內生產總值）是指該國的總GDP除以該國的人口數，以反映一個人在該國經濟中所創造的平均貢獻。Per Capita常用於比較不同國家或地區之間的平均水平，以及分析人均收入、人均支出、人均消費等數據。</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="proportion.html#cb552-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb552-2"><a href="proportion.html#cb552-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb552-3"><a href="proportion.html#cb552-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb552-4"><a href="proportion.html#cb552-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb552-5"><a href="proportion.html#cb552-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb552-6"><a href="proportion.html#cb552-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
-<span id="cb552-7"><a href="proportion.html#cb552-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb552-8"><a href="proportion.html#cb552-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb552-9"><a href="proportion.html#cb552-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
-<span id="cb552-10"><a href="proportion.html#cb552-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
-<span id="cb552-11"><a href="proportion.html#cb552-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb552-12"><a href="proportion.html#cb552-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb552-13"><a href="proportion.html#cb552-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb552-14"><a href="proportion.html#cb552-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
-<span id="cb552-15"><a href="proportion.html#cb552-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="proportion.html#cb567-1" aria-hidden="true" tabindex="-1"></a>totreemap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/GCB2021v34_MtCO2_flat.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb567-2"><a href="proportion.html#cb567-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb567-3"><a href="proportion.html#cb567-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Global&quot;</span>, <span class="st">&quot;International Transport&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb567-4"><a href="proportion.html#cb567-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb567-5"><a href="proportion.html#cb567-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb567-6"><a href="proportion.html#cb567-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> Total<span class="sc">/</span><span class="fu">sum</span>(Total)) <span class="sc">%&gt;%</span></span>
+<span id="cb567-7"><a href="proportion.html#cb567-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb567-8"><a href="proportion.html#cb567-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb567-9"><a href="proportion.html#cb567-9" aria-hidden="true" tabindex="-1"></a>totreemap <span class="sc">%&gt;%</span></span>
+<span id="cb567-10"><a href="proportion.html#cb567-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> perc, <span class="at">fill=</span><span class="st">`</span><span class="at">Per Capita</span><span class="st">`</span>, <span class="at">label=</span>Country) <span class="sc">+</span></span>
+<span id="cb567-11"><a href="proportion.html#cb567-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb567-12"><a href="proportion.html#cb567-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb567-13"><a href="proportion.html#cb567-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb567-14"><a href="proportion.html#cb567-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span></span>
+<span id="cb567-15"><a href="proportion.html#cb567-15" aria-hidden="true" tabindex="-1"></a>                      )</span></code></pre></div>
 <p><img src="V10_Proportion_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="tw-taiwan-annual-expenditure" class="section level3 hasAnchor" number="20.3.2">
 <h3><span class="header-section-number">20.3.2</span> TW: Taiwan Annual Expenditure<a href="proportion.html#tw-taiwan-annual-expenditure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>上述案例未能突顯出Treemap能夠呈現階層式資料的特色。因此本案例將使用台灣中央預算，階層化地顯示不同機構層級（大類、一級部會）等的預算佔比。例如衛福部、財政部與勞動部的預算均屬於社會福利支出。</p>
 <p>這段程式碼中，使用了 <strong><code>zoo</code></strong> 套件中的 <strong><code>na.locf()</code></strong> 函數。此函數用於將 <strong><code>raw</code></strong> 資料框中的 <strong><code>款</code></strong> 欄位的缺失值 (NA) 以最近已知的值 (向前填補) 進行填補。</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="proportion.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb553-2"><a href="proportion.html#cb553-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-3"><a href="proportion.html#cb553-3" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
-<span id="cb553-4"><a href="proportion.html#cb553-4" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
-<span id="cb553-5"><a href="proportion.html#cb553-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
-<span id="cb553-6"><a href="proportion.html#cb553-6" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
-<span id="cb553-7"><a href="proportion.html#cb553-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-8"><a href="proportion.html#cb553-8" aria-hidden="true" tabindex="-1"></a>cleand <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb553-9"><a href="proportion.html#cb553-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb553-10"><a href="proportion.html#cb553-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb553-11"><a href="proportion.html#cb553-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
-<span id="cb553-12"><a href="proportion.html#cb553-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">org =</span> purrr<span class="sc">::</span><span class="fu">map</span>(機構, <span class="cf">function</span>(x){<span class="fu">str_split</span>(x, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">2</span>]})) <span class="sc">%&gt;%</span></span>
-<span id="cb553-13"><a href="proportion.html#cb553-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), <span class="fu">unlist</span>(org), <span class="fu">unlist</span>(款))) <span class="sc">%&gt;%</span></span>
-<span id="cb553-14"><a href="proportion.html#cb553-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
-<span id="cb553-15"><a href="proportion.html#cb553-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
-<span id="cb553-16"><a href="proportion.html#cb553-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
-<span id="cb553-17"><a href="proportion.html#cb553-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
-<span id="cb553-18"><a href="proportion.html#cb553-18" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
-<span id="cb553-19"><a href="proportion.html#cb553-19" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
-<span id="cb553-20"><a href="proportion.html#cb553-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb553-21"><a href="proportion.html#cb553-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="proportion.html#cb554-1" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
-<span id="cb554-2"><a href="proportion.html#cb554-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(款 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;科學支出&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb554-3"><a href="proportion.html#cb554-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org) <span class="sc">+</span></span>
-<span id="cb554-4"><a href="proportion.html#cb554-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb554-5"><a href="proportion.html#cb554-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb554-6"><a href="proportion.html#cb554-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb554-7"><a href="proportion.html#cb554-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span>,</span>
-<span id="cb554-8"><a href="proportion.html#cb554-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
-<span id="cb554-9"><a href="proportion.html#cb554-9" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
-<span id="cb554-10"><a href="proportion.html#cb554-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb554-11"><a href="proportion.html#cb554-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="proportion.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb568-2"><a href="proportion.html#cb568-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb568-3"><a href="proportion.html#cb568-3" aria-hidden="true" tabindex="-1"></a><span class="co"># raw &lt;- readxl::read_excel(&quot;data/111B歲出政事別預算總表.xls&quot;)</span></span>
+<span id="cb568-4"><a href="proportion.html#cb568-4" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/111B歲出政事別預算表.xls&quot;</span>, <span class="at">skip=</span><span class="dv">3</span>, <span class="at">col_names =</span> F) </span>
+<span id="cb568-5"><a href="proportion.html#cb568-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;款&quot;</span>, <span class="st">&quot;科&quot;</span>, <span class="st">&quot;目&quot;</span>, <span class="st">&quot;節&quot;</span>, <span class="st">&quot;機構&quot;</span>, <span class="st">&quot;本年度預算&quot;</span>, <span class="st">&quot;上年度預算&quot;</span>, <span class="st">&quot;上年度決算&quot;</span>, <span class="st">&quot;預算差&quot;</span>)</span>
+<span id="cb568-6"><a href="proportion.html#cb568-6" aria-hidden="true" tabindex="-1"></a><span class="co"># raw$款 &lt;- na.locf(raw$款)</span></span>
+<span id="cb568-7"><a href="proportion.html#cb568-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb568-8"><a href="proportion.html#cb568-8" aria-hidden="true" tabindex="-1"></a>cleand <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb568-9"><a href="proportion.html#cb568-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(款) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb568-10"><a href="proportion.html#cb568-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb568-11"><a href="proportion.html#cb568-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>目, <span class="sc">-</span>節) <span class="sc">%&gt;%</span></span>
+<span id="cb568-12"><a href="proportion.html#cb568-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">org =</span> purrr<span class="sc">::</span><span class="fu">map</span>(機構, <span class="cf">function</span>(x){<span class="fu">str_split</span>(x, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">2</span>]})) <span class="sc">%&gt;%</span></span>
+<span id="cb568-13"><a href="proportion.html#cb568-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(款), <span class="fu">unlist</span>(org), <span class="fu">unlist</span>(款))) <span class="sc">%&gt;%</span></span>
+<span id="cb568-14"><a href="proportion.html#cb568-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(款 <span class="ot">=</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(款)) <span class="sc">%&gt;%</span></span>
+<span id="cb568-15"><a href="proportion.html#cb568-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(科)) <span class="sc">%&gt;%</span></span>
+<span id="cb568-16"><a href="proportion.html#cb568-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>科) <span class="sc">%&gt;%</span> <span class="fu">type_convert</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb568-17"><a href="proportion.html#cb568-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(上年度預算 <span class="ot">=</span> <span class="fu">as.numeric</span>(上年度預算), </span>
+<span id="cb568-18"><a href="proportion.html#cb568-18" aria-hidden="true" tabindex="-1"></a>              上年度決算 <span class="ot">=</span> <span class="fu">as.integer</span>(上年度決算),</span>
+<span id="cb568-19"><a href="proportion.html#cb568-19" aria-hidden="true" tabindex="-1"></a>              預算差 <span class="ot">=</span> <span class="fu">as.numeric</span>(預算差)) <span class="sc">%&gt;%</span></span>
+<span id="cb568-20"><a href="proportion.html#cb568-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(上年度預算 <span class="ot">=</span> <span class="dv">0</span>, 上年度決算 <span class="ot">=</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb568-21"><a href="proportion.html#cb568-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(預算差 <span class="ot">=</span> 本年度預算 <span class="sc">-</span> 上年度預算)</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="proportion.html#cb569-1" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
+<span id="cb569-2"><a href="proportion.html#cb569-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(款 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;科學支出&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb569-3"><a href="proportion.html#cb569-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org) <span class="sc">+</span></span>
+<span id="cb569-4"><a href="proportion.html#cb569-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb569-5"><a href="proportion.html#cb569-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb569-6"><a href="proportion.html#cb569-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb569-7"><a href="proportion.html#cb569-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span><span class="cn">TRUE</span>,</span>
+<span id="cb569-8"><a href="proportion.html#cb569-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
+<span id="cb569-9"><a href="proportion.html#cb569-9" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
+<span id="cb569-10"><a href="proportion.html#cb569-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb569-11"><a href="proportion.html#cb569-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
 <p><img src="V10_Proportion_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="proportion.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb555-2"><a href="proportion.html#cb555-2" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
-<span id="cb555-3"><a href="proportion.html#cb555-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(款 %in% c(&quot;科學支出&quot;, &quot;教育支出&quot;, &quot;國防支出&quot;, &quot;司法支出&quot;)) %&gt;%</span></span>
-<span id="cb555-4"><a href="proportion.html#cb555-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org, <span class="at">subgroup =</span> 款) <span class="sc">+</span></span>
-<span id="cb555-5"><a href="proportion.html#cb555-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
-<span id="cb555-6"><a href="proportion.html#cb555-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_border</span>(<span class="at">color=</span><span class="st">&quot;gold&quot;</span>) <span class="sc">+</span></span>
-<span id="cb555-7"><a href="proportion.html#cb555-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_text</span>(<span class="at">place =</span> <span class="st">&quot;centre&quot;</span>, <span class="at">grow =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">colour =</span></span>
-<span id="cb555-8"><a href="proportion.html#cb555-8" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;gold&quot;</span>, <span class="at">min.size =</span> <span class="dv">0</span>,</span>
-<span id="cb555-9"><a href="proportion.html#cb555-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span></span>
-<span id="cb555-10"><a href="proportion.html#cb555-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
-<span id="cb555-11"><a href="proportion.html#cb555-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
-<span id="cb555-12"><a href="proportion.html#cb555-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span>F,</span>
-<span id="cb555-13"><a href="proportion.html#cb555-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
-<span id="cb555-14"><a href="proportion.html#cb555-14" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
-<span id="cb555-15"><a href="proportion.html#cb555-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb555-16"><a href="proportion.html#cb555-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
-<span id="cb555-17"><a href="proportion.html#cb555-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="proportion.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb570-2"><a href="proportion.html#cb570-2" aria-hidden="true" tabindex="-1"></a>cleand <span class="sc">%&gt;%</span></span>
+<span id="cb570-3"><a href="proportion.html#cb570-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(款 %in% c(&quot;科學支出&quot;, &quot;教育支出&quot;, &quot;國防支出&quot;, &quot;司法支出&quot;)) %&gt;%</span></span>
+<span id="cb570-4"><a href="proportion.html#cb570-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">area =</span> 本年度預算, <span class="at">fill=</span><span class="st">`</span><span class="at">本年度預算</span><span class="st">`</span>, <span class="at">label=</span>org, <span class="at">subgroup =</span> 款) <span class="sc">+</span></span>
+<span id="cb570-5"><a href="proportion.html#cb570-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap</span>() <span class="sc">+</span> </span>
+<span id="cb570-6"><a href="proportion.html#cb570-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_border</span>(<span class="at">color=</span><span class="st">&quot;gold&quot;</span>) <span class="sc">+</span></span>
+<span id="cb570-7"><a href="proportion.html#cb570-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_subgroup_text</span>(<span class="at">place =</span> <span class="st">&quot;centre&quot;</span>, <span class="at">grow =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">colour =</span></span>
+<span id="cb570-8"><a href="proportion.html#cb570-8" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;gold&quot;</span>, <span class="at">min.size =</span> <span class="dv">0</span>,</span>
+<span id="cb570-9"><a href="proportion.html#cb570-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span></span>
+<span id="cb570-10"><a href="proportion.html#cb570-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, </span>
+<span id="cb570-11"><a href="proportion.html#cb570-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">place=</span><span class="st">&quot;centre&quot;</span>, </span>
+<span id="cb570-12"><a href="proportion.html#cb570-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grow=</span>F,</span>
+<span id="cb570-13"><a href="proportion.html#cb570-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span></span>
+<span id="cb570-14"><a href="proportion.html#cb570-14" aria-hidden="true" tabindex="-1"></a>                      ) <span class="sc">+</span> </span>
+<span id="cb570-15"><a href="proportion.html#cb570-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb570-16"><a href="proportion.html#cb570-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>),</span>
+<span id="cb570-17"><a href="proportion.html#cb570-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="V10_Proportion_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>

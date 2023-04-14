@@ -2,13 +2,30 @@
 
 # Trump's tweets
 
-本範例取材自David Robinson的blog文章「[Text analysis of Trump's tweets confirms he writes only the (angrier) Android half](http://varianceexplained.org/r/trump-tweets/ "Text analysis of Trump's tweets confirms he writes only the (angrier) Android half")」。David Robinson是「[Text Mining with R](https://www.tidytextmining.com/)」的共同作者， 可參考該書籍上的範例「[7 Case study: comparing Twitter archives \| Text Mining with R (tidytextmining.com)](https://www.tidytextmining.com/twitter.html)」。
+本範例取材自David Robinson的blog文章「[Text analysis of Trump's tweets
+confirms he writes only the (angrier) Android
+half](http://varianceexplained.org/r/trump-tweets/ "Text analysis of Trump's tweets confirms he writes only the (angrier) Android half")」。David
+Robinson是「[Text Mining with
+R](https://www.tidytextmining.com/)」的共同作者，
+可參考該書籍上的範例「[7 Case study: comparing Twitter archives \| Text
+Mining with R
+(tidytextmining.com)](https://www.tidytextmining.com/twitter.html)」。
 
-這篇文章探討了美國前總統川普（Donald Trump）的推特帳號。有一個假設聲稱，當川普在推特上祝福奧運會選手好運時，他使用的是 iPhone ；當他侮辱競爭對手時，他通常是用 Android 來發推。文章作者想要透過數據分析來探討這個假設的真實性。
+這篇文章探討了美國前總統川普（Donald
+Trump）的推特帳號。有一個假設聲稱，當川普在推特上祝福奧運會選手好運時，他使用的是
+iPhone ；當他侮辱競爭對手時，他通常是用 Android
+來發推。文章作者想要透過數據分析來探討這個假設的真實性。
 
-作者使用了文字探勘和情感分析等技術，從川普的推特內容入手，分析了不同時間和使用不同手機所發的推文。結果顯示，Android 和 iPhone 所發的推文顯然是由不同的人所發，他們在使用標籤、連結和轉推的方式上也不同。此外，Android 的推文更加憤怒和負面，而 iPhone 的推文則傾向於發佈善意的公告和圖片。整體而言，這些分析讓我們能夠區分出競選團隊所發佈的推文（iPhone）和川普自己所發佈的推文（Android）。
+作者使用了文字探勘和情感分析等技術，從川普的推特內容入手，分析了不同時間和使用不同手機所發的推文。結果顯示，Android
+和 iPhone
+所發的推文顯然是由不同的人所發，他們在使用標籤、連結和轉推的方式上也不同。此外，Android
+的推文更加憤怒和負面，而 iPhone
+的推文則傾向於發佈善意的公告和圖片。整體而言，這些分析讓我們能夠區分出競選團隊所發佈的推文（iPhone）和川普自己所發佈的推文（Android）。
 
-這個教學案例涵蓋了使用 R 語言進行社群輿論資料（tweets）的探索性分析的各種技術和工具。除了使用常見的資料處理套件 dplyr 和視覺化套件 ggplot 外，還使用了文字處理套件 stringr 和時間處理套件 lubridate，以及關鍵字分析技術 keyness。
+這個教學案例涵蓋了使用 R
+語言進行社群輿論資料（tweets）的探索性分析的各種技術和工具。除了使用常見的資料處理套件
+dplyr 和視覺化套件 ggplot 外，還使用了文字處理套件 stringr
+和時間處理套件 lubridate，以及關鍵字分析技術 keyness。
 
 透過這個教學案例，學習者可以掌握如何：
 
@@ -18,9 +35,16 @@
 
 -   使用 lubridate 進行時間處理，例如轉換時間格式和提取時間戳記。
 
--   學習關鍵字分析技術 keyness，以找出在不同文本之間對彼此相對突出的關鍵字。
+-   學習關鍵字分析技術
+    keyness，以找出在不同文本之間對彼此相對突出的關鍵字。
 
-這段程式碼是用來設計 ggplot2 的主題風格。作者首先定義了一個名為 `th` 的自訂主題，基於 ggplot2 的 `theme_minimal()` 主題，並設置了不同元素的字型、大小和樣式等屬性。接著，作者定義了一個名為 `new_style()` 的函數，用於更精細的主題風格設置，包括圖表標題、圖例、軸標籤和刻度標籤等。透過這些設置，可以讓 ggplot2 圖表更具有視覺吸引力，並強調重要的圖形元素，使圖表更加清晰易懂。這兩種方式都可以用來定義主題
+這段程式碼是用來設計 ggplot2 的主題風格。作者首先定義了一個名為 `th`
+的自訂主題，基於 ggplot2 的 `theme_minimal()`
+主題，並設置了不同元素的字型、大小和樣式等屬性。接著，作者定義了一個名為
+`new_style()`
+的函數，用於更精細的主題風格設置，包括圖表標題、圖例、軸標籤和刻度標籤等。透過這些設置，可以讓
+ggplot2
+圖表更具有視覺吸引力，並強調重要的圖形元素，使圖表更加清晰易懂。這兩種方式都可以用來定義主題
 
 
 ```r
@@ -147,9 +171,11 @@ tweets <- trump_tweets_df %>%
 ```
 
 ::: practice
-**Practice**. 有時候我們會希望避免用太多種套件來寫程式，例如上面的`extract()`便屬於`tidyr`的函式。事實上我們可以用`stringr::str_replace()`來達到這個目的。嘗試寫寫看？或者嘗試問ChatGPT看看？
+**Practice**.
+有時候我們會希望避免用太多種套件來寫程式，例如上面的`extract()`便屬於`tidyr`的函式。事實上我們可以用`stringr::str_replace()`來達到這個目的。嘗試寫寫看？或者嘗試問ChatGPT看看？
 
-**Prompt.** 我如果希望用`stringr::str_replace`來達到`extract(statusSource, "source", "Twitter for (.*?)<") %>%`的功能，我該怎麼寫？
+**Prompt.**
+我如果希望用`stringr::str_replace`來達到`extract(statusSource, "source", "Twitter for (.*?)<") %>%`的功能，我該怎麼寫？
 
 `mutate(source = stringr::str_replace(statusSource, ".*Twitter for (.*?)<.*", "\\1")) %>%`
 :::
@@ -162,7 +188,9 @@ tweets <- trump_tweets_df %>%
 
 **`toplot1`和`toplot2`的差異在於對`source`欄位的分組處理不同**。具體來說，**`toplot1`**中沒有對**`source`**欄位進行分組，而是在後面使用**`mutate()`**函數將計數結果中的**`n`**列和**`sum(n)`**相除，得到了百分比列**`percent`**。這導致計算的是整個資料集中的**`hour`**和**`source`**的計數和百分比。相反，**`toplot2`**中使用了**`group_by()`**函數將**`source`**欄位進行分組處理，並在後面使用**`mutate()`**函數和**`ungroup()`**函數計算了每個**`source`**和**`hour`**的計數和百分比，即分別計算了**`iPhone`**和**`Android`**的計數和百分比。因此，**`toplot1`**和**`toplot2`**的計算結果是不同的，前者的計算結果中包含了整個資料集的計數和百分比，而後者的計算結果則分別對**`iPhone`**和**`Android`**進行了計數和百分比的計算。
 
-程式碼使用了**`ggplot()`**函數創建了一個**`ggplot2`**物件，並使用**`aes()`**函數設置了**`hour`**和**`percent`**欄位作為X軸和Y軸的變數，並且設置**`color = source`**表示以**`source`**欄位的值作為不同群組（`iPhone` vs. `Android`）折線的顏色。接著，程式碼使用**`geom_line()`**函數添加折線到圖中，設置了折線的粗細為1。使用**`scale_color_manual()`**函數設置了圖例的名稱為**`Phone System`**，標籤依照分組指定為為**`Android`**和**`iPhone`**，顏色分別為**`royalblue`**和**`gold`**，並使用**`scale_y_continuous()`**函數設置了Y軸刻度標籤的格式為百分比形式，即0%到100%之間的數值。注意：`percent_format()`並非ggplot2既有的函式，要另外安裝並匯入`library(scales)`。
+程式碼使用了**`ggplot()`**函數創建了一個**`ggplot2`**物件，並使用**`aes()`**函數設置了**`hour`**和**`percent`**欄位作為X軸和Y軸的變數，並且設置**`color = source`**表示以**`source`**欄位的值作為不同群組（`iPhone`
+vs.
+`Android`）折線的顏色。接著，程式碼使用**`geom_line()`**函數添加折線到圖中，設置了折線的粗細為1。使用**`scale_color_manual()`**函數設置了圖例的名稱為**`Phone System`**，標籤依照分組指定為為**`Android`**和**`iPhone`**，顏色分別為**`royalblue`**和**`gold`**，並使用**`scale_y_continuous()`**函數設置了Y軸刻度標籤的格式為百分比形式，即0%到100%之間的數值。注意：`percent_format()`並非ggplot2既有的函式，要另外安裝並匯入`library(scales)`。
 
 
 ```r
@@ -217,7 +245,8 @@ cowplot::plot_grid(
 
 ### Tweeting with figures
 
-首先，**`filter()`**函數用於從**`tweets`**資料框中過濾出不以**`"`**字符開頭的推文，即過濾掉引號開頭的推文。這裡使用了**`!str_detect(text, '^"')`**表示將**`text`**欄位中以**`"`**字符開頭的推文過濾掉，即保留那些不以引號開頭的推文。**`'^"'`**是一個正規表示式（Regular Expression），**`'^'`**符號代表字串的開頭。
+首先，**`filter()`**函數用於從**`tweets`**資料框中過濾出不以**`"`**字符開頭的推文，即過濾掉引號開頭的推文。這裡使用了**`!str_detect(text, '^"')`**表示將**`text`**欄位中以**`"`**字符開頭的推文過濾掉，即保留那些不以引號開頭的推文。**`'^"'`**是一個正規表示式（Regular
+Expression），**`'^'`**符號代表字串的開頭。
 
 接著，**`mutate()`**函數用於在**`tweets`**資料框中添加一個新欄位**`picture`**，該欄位根據推文中是否包含**`t.co`**字串來判斷推文中是否包含圖片或者連結。具體來說，這裡使用了**`if_else()`**函數，如果**`text`**欄位中包含**`t.co`**字串，則將**`picture`**欄位設置為**`"Picture/link"`**，否則設置為**`"No picture/link"`**。
 
@@ -277,12 +306,15 @@ Keyness是一種文本分析方法，用於比較兩個文本集合中某些詞�
 
 5.  使用**`unnest()`**函數將**`word`**欄位中的單詞序列展開成一個單詞資料框，每個單詞對應一行記錄。
 
-6.  使用**`filter()`**函數過濾掉停用詞和非英文字符，其中**停用詞（stop words）**列表存儲在**`stop_words`**資料框中，通過**`!word %in% stop_words$word`**條件過濾掉停用詞，並且通過**`str_detect(word, "[a-z]")`**條件過濾掉不包含英文字母的單詞。最終，將結果存儲在**`tweets`**資料框中。
+6.  使用**`filter()`**函數過濾掉停用詞和非英文字符，其中**停用詞（stop
+    words）**列表存儲在**`stop_words`**資料框中，通過**`!word %in% stop_words$word`**條件過濾掉停用詞，並且通過**`str_detect(word, "[a-z]")`**條件過濾掉不包含英文字母的單詞。最終，將結果存儲在**`tweets`**資料框中。
 
 ::: notes
-**停用詞（stop words）**指的是在文本中出現頻率非常高，但對於文本的內容和意義貢獻不大的詞彙。這些詞彙通常是一些常見的介詞、連詞、代詞、冠詞、助動詞等，例如"the"、"and"、"a"、"in"等。在文本分析中，停用詞通常被過濾掉，以便更好地捕捉文本中的主題和意義。在中文文本分析中，常見的停用詞包括一些虛詞、代詞、介詞、助詞等，例如"的"、"是"、"在"、"和"、"了"、"一"等。這些詞在中文文本中出現的頻率非常高，但對於文本的內容和意義貢獻不大，因此在文本分析中通常被過濾掉。
+**停用詞（stop
+words）**指的是在文本中出現頻率非常高，但對於文本的內容和意義貢獻不大的詞彙。這些詞彙通常是一些常見的介詞、連詞、代詞、冠詞、助動詞等，例如"the"、"and"、"a"、"in"等。在文本分析中，停用詞通常被過濾掉，以便更好地捕捉文本中的主題和意義。在中文文本分析中，常見的停用詞包括一些虛詞、代詞、介詞、助詞等，例如"的"、"是"、"在"、"和"、"了"、"一"等。這些詞在中文文本中出現的頻率非常高，但對於文本的內容和意義貢獻不大，因此在文本分析中通常被過濾掉。
 
-停用詞的列表通常是由人為構建的，根據具體的文本分析任務和文本的特徵來決定。在自然語言處理中，通常會使用預先定義好的停用詞列表，例如英文中的NLTK（Natural Language Toolkit）庫中就包含了一個預先定義好的停用詞列表。
+停用詞的列表通常是由人為構建的，根據具體的文本分析任務和文本的特徵來決定。在自然語言處理中，通常會使用預先定義好的停用詞列表，例如英文中的NLTK（Natural
+Language Toolkit）庫中就包含了一個預先定義好的停用詞列表。
 
 在進行文本分析時，過濾掉停用詞可以幫助減少文本資料的雜訊和冗余訊息，提高分析的準確性和效率。但是，在某些特定的文本分析任務中，停用詞可能具有一定的重要性，例如情感分析中的否定詞（如"not"）可能對情感分析的結果產生重要的影響，因此需要特殊處理。如果進行的是網絡舆情分析，那麼一些特定的網絡用語和表情符號可能也需要被加入停用詞列表中，以避免對分析結果產生干擾。
 :::
@@ -346,13 +378,17 @@ tweet_words %>%
 
 2.  使用**`pivot_wider()`**函數將分組後的資料框進行重構，將每個來源的單詞出現次數作為新欄（也就是把`iPhone`和`Android`展開成為欄位名稱），以便更方便地進行後續分析和可視化。這裡的**`names_from`**參數指定重構後的欄位名稱來自原來的`source`欄位，**`values_from`**參數指定要重構的值來自原來的`count`欄位，**`values_fill`**參數指定在重構後的資料框中缺失值的填充值，這裡設置為0。
 
-`android_iphone_ratios`這段程式碼用於計算每個單詞在`Android`和`iPhone`兩個來源中的keyness的log likelihood ratio。具體來說，這段程式碼實現了以下幾個步驟：
+`android_iphone_ratios`這段程式碼用於計算每個單詞在`Android`和`iPhone`兩個來源中的keyness的log
+likelihood ratio。具體來說，這段程式碼實現了以下幾個步驟：
 
 1.  從上一步驟得到的**`word_by_source`**資料框中，選擇了`Android`和`iPhone`兩個來源的單詞出現次數資訊。
 
-2.  對`Android`和`iPhone`兩個來源的單詞出現次數進行標準化處理，以便進行後續的keyness計算。具體來說，這裡使用了Laplace平滑處理（add-k smoothing），將每個來源的所有單詞出現次數都增加1，然後再將這些出現次數除以各自來源的總次數加1，得到每個單詞在Android和iPhone兩個來源中的出現概率。
+2.  對`Android`和`iPhone`兩個來源的單詞出現次數進行標準化處理，以便進行後續的keyness計算。具體來說，這裡使用了Laplace平滑處理（add-k
+    smoothing），將每個來源的所有單詞出現次數都增加1，然後再將這些出現次數除以各自來源的總次數加1，得到每個單詞在Android和iPhone兩個來源中的出現概率。
 
-3.  對Android和iPhone兩個來源中的每個單詞，分別計算其在Android和iPhone兩個來源中的keyness log ratio。這裡使用了常見的對數比值（log ratio）方法，計算Android來源中單詞出現概率和iPhone來源中單詞出現概率的比值的對數，以此來衡量單詞在Android和iPhone兩個來源中的關鍵性差異。
+3.  對Android和iPhone兩個來源中的每個單詞，分別計算其在Android和iPhone兩個來源中的keyness
+    log ratio。這裡使用了常見的對數比值（log
+    ratio）方法，計算Android來源中單詞出現概率和iPhone來源中單詞出現概率的比值的對數，以此來衡量單詞在Android和iPhone兩個來源中的關鍵性差異。
 
 4.  將計算得到的log ratio值按照降序排列，以便進一步進行分析和可視化。
 
@@ -403,16 +439,22 @@ android_iphone_ratios <- word_by_source %>%
 ::: notes
 這兩行分子分母加1的處理稱為拉普拉斯平滑。`mutate(iPhone = (iPhone+1)/sum(iPhone+1)) %>%`
 
-拉普拉斯平滑（add-k smoothing）是一種用於處理計數資料中零值問題的技巧，其主要目的是將出現次數為零的類別在計算機率時賦予一個非零的機率值，以避免出現無限大的情況，從而影響後續的計算結果。
+拉普拉斯平滑（add-k
+smoothing）是一種用於處理計數資料中零值問題的技巧，其主要目的是將出現次數為零的類別在計算機率時賦予一個非零的機率值，以避免出現無限大的情況，從而影響後續的計算結果。
 
 在這段程式碼中，拉普拉斯平滑的目的是對每個單詞在Android和iPhone兩個來源中的出現次數進行標準化處理，以便進行後續的keyness計算。這是因為在標準化的計算中，如果某個來源中出現次數為0的單詞，則計算出來的概率值會為0，而這樣的結果可能會產生一些問題，例如無法取log或分母為零的情形。因此，為了避免這種問題，需要對每個單詞在Android和iPhone兩個來源中的出現次數進行拉普拉斯平滑處理，使得每個單詞在Android和iPhone兩個來源中的出現概率都能夠有一個非零的值，從而進行後續的計算和分析。
 :::
 
 ### Plotting keyness
 
-這段程式碼是用來繪製Android和iPhone兩個來源中關鍵性差異最大的單詞的keyness log ratio的條形圖。在繪製條形圖時，使用了**`fill = logratio < 0`**的參數設置，這是一個布林值，當單詞在Android和iPhone兩個來源中的log ratio小於0時，填充的顏色是gold，否則填充的顏色是royalblue。
+這段程式碼是用來繪製Android和iPhone兩個來源中關鍵性差異最大的單詞的keyness
+log
+ratio的條形圖。在繪製條形圖時，使用了**`fill = logratio < 0`**的參數設置，這是一個布林值，當單詞在Android和iPhone兩個來源中的log
+ratio小於0時，填充的顏色是gold，否則填充的顏色是royalblue。
 
-這種設計原理的目的是將Android和iPhone兩個來源中關鍵性不同的單詞進行區分，並用不同的填充顏色來表示。當單詞在Android來源中的出現概率高於在iPhone來源中的出現概率時，其log ratio值會為正，此時填充的顏色為royalblue；反之，當單詞在Android來源中的出現概率低於在iPhone來源中的出現概率時，其log ratio值會為負，此時填充的顏色為gold。
+這種設計原理的目的是將Android和iPhone兩個來源中關鍵性不同的單詞進行區分，並用不同的填充顏色來表示。當單詞在Android來源中的出現概率高於在iPhone來源中的出現概率時，其log
+ratio值會為正，此時填充的顏色為royalblue；反之，當單詞在Android來源中的出現概率低於在iPhone來源中的出現概率時，其log
+ratio值會為負，此時填充的顏色為gold。
 
 
 ```r

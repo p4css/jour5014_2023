@@ -1,14 +1,14 @@
 
 
-## Paid Maternity Leave
+## Paid Maternity Leave {#maternity}
 
 本案例將使用R重新製作華盛頓郵報2016年8月13日的一篇報導，該報導探討了美國婦女產假支薪情況。案例中將應用data.frame和基本的繪圖與資料摘要方法。
 
-原始新聞來源：[The world is getting better at paid maternity leave. The
-U.S. is not. - The Washington
-Post](https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/)。該篇報導提及，美國因為目前的政策不保障帶薪產假，許多女性感到必須在工作和照顧家庭之間做出選擇，這種性別不平等破壞了她們在工作機會上的平等機會。同時，世界各地的婦女待遇正在逐漸改善。至少190個國家對嬰兒的母親規定了某種形式的帶薪假期，產假待遇在56個國家有所提高。專家表示，現在美國城市和州正通過不同形式的帶薪家庭假法案，這顯示美國雇主正在展示有競爭力的福利不會影響員工表現。特別是科技公司，如Twitter、Facebook和Google等，處於提供員工帶薪產假福利的前沿，美國可能有望追趕其他國家。
+原始新聞來源：[The world is getting better at paid maternity leave. The U.S. is not. - The Washington Post](https://www.washingtonpost.com/news/worldviews/wp/2016/08/13/the-world-is-getting-better-at-paid-maternity-leave-the-u-s-is-not/)。該篇報導提及，美國因為目前的政策不保障帶薪產假，許多女性感到必須在工作和照顧家庭之間做出選擇，這種性別不平等破壞了她們在工作機會上的平等機會。同時，世界各地的婦女待遇正在逐漸改善。至少190個國家對嬰兒的母親規定了某種形式的帶薪假期，產假待遇在56個國家有所提高。專家表示，現在美國城市和州正通過不同形式的帶薪家庭假法案，這顯示美國雇主正在展示有競爭力的福利不會影響員工表現。特別是科技公司，如Twitter、Facebook和Google等，處於提供員工帶薪產假福利的前沿，美國可能有望追趕其他國家。
 
 ![](https://www.washingtonpost.com/blogs/worldviews/files/2016/08/matleave-map.jpg)
+
+本案例主要呈現核心的視覺化概念，可以在[Review Paid Maternity by dplyr](#maternity_dplyr)找到更詳盡的案例說明與解析。
 
 ### Reading .xlsx by readxl package
 
@@ -324,8 +324,7 @@ m05<- m5[m5$'matleave_95'!=5,]
 ### Plotting
 
 -   Plotting the second rows and all columns except 1st column
--   **Question**
-    為何要`unlist()`？請試著執行`barplot(matleave[2, -1])`這個沒有`unlist()`的版本，看看會有什麼錯誤訊息。資料結構有何差異呢？
+-   **Question** 為何要`unlist()`？請試著執行`barplot(matleave[2, -1])`這個沒有`unlist()`的版本，看看會有什麼錯誤訊息。資料結構有何差異呢？
 -   嘗試用`class()`或`str()`嘗試觀察沒有`unlist()`版本的資料，看看資料型態和有`unlist()`的會有何不同？
 
 #### Plotting one line
@@ -404,8 +403,7 @@ class(m55$iso3)	# character (vector)
 
 這行程式碼使用R中的barplot函數繪製一個長條圖，其中的參數說明如下：
 
-1.  `unlist(m55[2, -1])`:
-    將`m55`資料集的第`2`行（不包括第1欄）轉換為一個向量，並作為長條圖的高度（即每個長條的高度）。
+1.  `unlist(m55[2, -1])`: 將`m55`資料集的第`2`行（不包括第1欄）轉換為一個向量，並作為長條圖的高度（即每個長條的高度）。
 
 2.  `ylim=c(0, 5)`: 設置y軸的範圍為0到5，即長條圖的最大高度為5。
 
@@ -680,4 +678,3 @@ for (i in c(1:nrow(m55))){
 # m55 <- m5[staySame, ]
 # m50 <- m5[!staySame, ]
 ```
-

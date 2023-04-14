@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Counting and Cross-tabulation | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Counting and Cross-tabulation | R for Data Journalism" />
   <meta property="og:type" content="book" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -169,7 +169,10 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#cases-in-the-book"><i class="fa fa-check"></i><b>1.1</b> Cases in the book</a></li>
+</ul></li>
 <li class="part"><span><b>I R BASIC</b></span></li>
 <li class="chapter" data-level="2" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>2</b> R Basic</a>
 <ul>
@@ -234,7 +237,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.3" data-path="dataframe.html"><a href="dataframe.html#基本操作使用dplyr"><i class="fa fa-check"></i><b>4.3</b> 基本操作：使用dplyr</a></li>
 <li class="chapter" data-level="4.4" data-path="dataframe.html"><a href="dataframe.html#tibble-data_frame-data.frame"><i class="fa fa-check"></i><b>4.4</b> tibble, data_frame, data.frame</a></li>
 <li class="chapter" data-level="4.5" data-path="dataframe.html"><a href="dataframe.html#database---sqlite"><i class="fa fa-check"></i><b>4.5</b> Database - SQLite</a></li>
-<li class="chapter" data-level="4.6" data-path="dataframe.html"><a href="dataframe.html#paid-maternity-leave"><i class="fa fa-check"></i><b>4.6</b> Paid Maternity Leave</a>
+<li class="chapter" data-level="4.6" data-path="dataframe.html"><a href="dataframe.html#maternity"><i class="fa fa-check"></i><b>4.6</b> Paid Maternity Leave</a>
 <ul>
 <li class="chapter" data-level="4.6.1" data-path="dataframe.html"><a href="dataframe.html#reading-.xlsx-by-readxl-package"><i class="fa fa-check"></i><b>4.6.1</b> Reading .xlsx by readxl package</a></li>
 <li class="chapter" data-level="4.6.2" data-path="dataframe.html"><a href="dataframe.html#previewing-data-by-view-class-dim-str-summary-and-names"><i class="fa fa-check"></i><b>4.6.2</b> Previewing data by <code>View()</code>, <code>class()</code>, <code>dim()</code>, <code>str()</code>, <code>summary()</code> and <code>names()</code></a></li>
@@ -250,7 +253,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html"><i class="fa fa-check"></i><b>5</b> Counting and Cross-tabulation</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#taipei-residential-burglary"><i class="fa fa-check"></i><b>5.1</b> Taipei Residential Burglary</a>
+<li class="chapter" data-level="5.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#tptheft"><i class="fa fa-check"></i><b>5.1</b> Taipei Residential Burglary</a>
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#讀取檔案"><i class="fa fa-check"></i><b>5.1.1</b> 讀取檔案</a></li>
 <li class="chapter" data-level="5.1.2" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#萃取所需新變項"><i class="fa fa-check"></i><b>5.1.2</b> 萃取所需新變項</a></li>
@@ -274,10 +277,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="counting-and-cross-tabulation.html"><a href="counting-and-cross-tabulation.html#residuals-analysis"><i class="fa fa-check"></i><b>5.5</b> Residuals analysis</a></li>
 </ul></li>
+<li class="part"><span><b>II DATA MANIPULATION</b></span></li>
 <li class="chapter" data-level="6" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html"><i class="fa fa-check"></i><b>6</b> From base R to dplyr</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#dplyr"><i class="fa fa-check"></i><b>6.1</b> dplyr</a></li>
-<li class="chapter" data-level="6.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#taipie-theft-count-base-to-dplyr"><i class="fa fa-check"></i><b>6.2</b> Taipie Theft Count (base to dplyr)</a>
+<li class="chapter" data-level="6.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#tptheft_dplyr"><i class="fa fa-check"></i><b>6.2</b> Taipie Theft Count (base to dplyr)</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#reading-data"><i class="fa fa-check"></i><b>6.2.1</b> Reading data</a></li>
 <li class="chapter" data-level="6.2.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#cleaning-data-i"><i class="fa fa-check"></i><b>6.2.2</b> Cleaning data I</a></li>
@@ -286,7 +290,13 @@ div.csl-indent {
 <li class="chapter" data-level="6.2.5" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#setting-time-as-row.name-for-mosaicplot"><i class="fa fa-check"></i><b>6.2.5</b> Setting time as row.name for mosaicplot</a></li>
 <li class="chapter" data-level="6.2.6" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#clean-version"><i class="fa fa-check"></i><b>6.2.6</b> Clean version</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#paid-maternity-leave-base-to-dplyr"><i class="fa fa-check"></i><b>6.3</b> Paid Maternity Leave (base to dplyr)</a></li>
+<li class="chapter" data-level="6.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#maternity_dplyr"><i class="fa fa-check"></i><b>6.3</b> Paid Maternity Leave</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#visual-strategies"><i class="fa fa-check"></i><b>6.3.1</b> Visual Strategies</a></li>
+<li class="chapter" data-level="6.3.2" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#code-by-dplyr"><i class="fa fa-check"></i><b>6.3.2</b> Code by dplyr</a></li>
+<li class="chapter" data-level="6.3.3" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#generating-each"><i class="fa fa-check"></i><b>6.3.3</b> Generating each</a></li>
+<li class="chapter" data-level="6.3.4" data-path="from-base-r-to-dplyr.html"><a href="from-base-r-to-dplyr.html#gathering-subplots-by-cowplot"><i class="fa fa-check"></i><b>6.3.4</b> Gathering subplots by cowplot</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="data-manipultaiton-join-data.html"><a href="data-manipultaiton-join-data.html"><i class="fa fa-check"></i><b>7</b> Data manipultaiton: Join data</a>
 <ul>
@@ -314,30 +324,30 @@ div.csl-indent {
 <li class="chapter" data-level="8.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#order-to-factor"><i class="fa fa-check"></i><b>8.2</b> Order-to-factor</a></li>
 <li class="chapter" data-level="8.3" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#cross-tabulating"><i class="fa fa-check"></i><b>8.3</b> Cross-tabulating</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="processing-timeline.html"><a href="processing-timeline.html"><i class="fa fa-check"></i><b>9</b> Processing Timeline</a>
+<li class="chapter" data-level="9" data-path="timeline.html"><a href="timeline.html"><i class="fa fa-check"></i><b>9</b> Processing Timeline</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="processing-timeline.html"><a href="processing-timeline.html#char-to-timestamp"><i class="fa fa-check"></i><b>9.1</b> char-to-timestamp</a></li>
-<li class="chapter" data-level="9.2" data-path="processing-timeline.html"><a href="processing-timeline.html#density-plot-along-time"><i class="fa fa-check"></i><b>9.2</b> Density plot along time</a></li>
-<li class="chapter" data-level="9.3" data-path="processing-timeline.html"><a href="processing-timeline.html#freq-by-month"><i class="fa fa-check"></i><b>9.3</b> Freq by month</a></li>
-<li class="chapter" data-level="9.4" data-path="processing-timeline.html"><a href="processing-timeline.html#freq-by-date-good"><i class="fa fa-check"></i><b>9.4</b> Freq-by-date (good)</a></li>
-<li class="chapter" data-level="9.5" data-path="processing-timeline.html"><a href="processing-timeline.html#freq-by-hour"><i class="fa fa-check"></i><b>9.5</b> Freq-by-hour</a></li>
+<li class="chapter" data-level="9.1" data-path="timeline.html"><a href="timeline.html#char-to-timestamp"><i class="fa fa-check"></i><b>9.1</b> char-to-timestamp</a></li>
+<li class="chapter" data-level="9.2" data-path="timeline.html"><a href="timeline.html#density-plot-along-time"><i class="fa fa-check"></i><b>9.2</b> Density plot along time</a></li>
+<li class="chapter" data-level="9.3" data-path="timeline.html"><a href="timeline.html#freq-by-month"><i class="fa fa-check"></i><b>9.3</b> Freq by month</a></li>
+<li class="chapter" data-level="9.4" data-path="timeline.html"><a href="timeline.html#freq-by-date-good"><i class="fa fa-check"></i><b>9.4</b> Freq-by-date (good)</a></li>
+<li class="chapter" data-level="9.5" data-path="timeline.html"><a href="timeline.html#freq-by-hour"><i class="fa fa-check"></i><b>9.5</b> Freq-by-hour</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="na-processing.html"><a href="na-processing.html"><i class="fa fa-check"></i><b>10</b> NA Processing</a>
+<li class="chapter" data-level="10" data-path="na.html"><a href="na.html"><i class="fa fa-check"></i><b>10</b> NA Processing</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="na-processing.html"><a href="na-processing.html#cleaning-gov-annual-budget"><i class="fa fa-check"></i><b>10.1</b> Cleaning Gov Annual Budget</a>
+<li class="chapter" data-level="10.1" data-path="na.html"><a href="na.html#cleaning-gov-annual-budget"><i class="fa fa-check"></i><b>10.1</b> Cleaning Gov Annual Budget</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="na-processing.html"><a href="na-processing.html#basic-cleaning"><i class="fa fa-check"></i><b>10.1.1</b> Basic Cleaning</a></li>
-<li class="chapter" data-level="10.1.2" data-path="na-processing.html"><a href="na-processing.html#processing-na"><i class="fa fa-check"></i><b>10.1.2</b> Processing NA</a></li>
-<li class="chapter" data-level="10.1.3" data-path="na-processing.html"><a href="na-processing.html#complete-code"><i class="fa fa-check"></i><b>10.1.3</b> Complete Code</a></li>
+<li class="chapter" data-level="10.1.1" data-path="na.html"><a href="na.html#basic-cleaning"><i class="fa fa-check"></i><b>10.1.1</b> Basic Cleaning</a></li>
+<li class="chapter" data-level="10.1.2" data-path="na.html"><a href="na.html#processing-na"><i class="fa fa-check"></i><b>10.1.2</b> Processing NA</a></li>
+<li class="chapter" data-level="10.1.3" data-path="na.html"><a href="na.html#complete-code"><i class="fa fa-check"></i><b>10.1.3</b> Complete Code</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="na-processing.html"><a href="na-processing.html#case-vaccinating-proportion-by-countries"><i class="fa fa-check"></i><b>10.2</b> Case: Vaccinating Proportion by Countries</a>
+<li class="chapter" data-level="10.2" data-path="na.html"><a href="na.html#case-vaccinating-proportion-by-countries"><i class="fa fa-check"></i><b>10.2</b> Case: Vaccinating Proportion by Countries</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="na-processing.html"><a href="na-processing.html#按月對齊資料"><i class="fa fa-check"></i><b>10.2.1</b> 按月對齊資料</a></li>
-<li class="chapter" data-level="10.2.2" data-path="na-processing.html"><a href="na-processing.html#處理遺漏資料的月份"><i class="fa fa-check"></i><b>10.2.2</b> 處理遺漏資料的月份</a></li>
-<li class="chapter" data-level="10.2.3" data-path="na-processing.html"><a href="na-processing.html#完整程式碼"><i class="fa fa-check"></i><b>10.2.3</b> 完整程式碼</a></li>
+<li class="chapter" data-level="10.2.1" data-path="na.html"><a href="na.html#按月對齊資料"><i class="fa fa-check"></i><b>10.2.1</b> 按月對齊資料</a></li>
+<li class="chapter" data-level="10.2.2" data-path="na.html"><a href="na.html#處理遺漏資料的月份"><i class="fa fa-check"></i><b>10.2.2</b> 處理遺漏資料的月份</a></li>
+<li class="chapter" data-level="10.2.3" data-path="na.html"><a href="na.html#完整程式碼"><i class="fa fa-check"></i><b>10.2.3</b> 完整程式碼</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>II TEXT PROCESSING</b></span></li>
+<li class="part"><span><b>III TEXT PROCESSING</b></span></li>
 <li class="chapter" data-level="11" data-path="text-processing.html"><a href="text-processing.html"><i class="fa fa-check"></i><b>11</b> Text Processing</a></li>
 <li class="chapter" data-level="12" data-path="trumps-tweets.html"><a href="trumps-tweets.html"><i class="fa fa-check"></i><b>12</b> Trump’s tweets</a>
 <ul>
@@ -354,7 +364,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.4.2" data-path="trumps-tweets.html"><a href="trumps-tweets.html#plotting-keyness"><i class="fa fa-check"></i><b>12.4.2</b> Plotting keyness</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>III CRAWLER</b></span></li>
+<li class="part"><span><b>IV CRAWLER</b></span></li>
 <li class="chapter" data-level="13" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html"><i class="fa fa-check"></i><b>13</b> Introduction to Web Scraping</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#using-web-api"><i class="fa fa-check"></i><b>13.1</b> Using Web API</a></li>
@@ -378,33 +388,33 @@ div.csl-indent {
 <li class="chapter" data-level="14.2.8" data-path="scraping-104.html"><a href="scraping-104.html#combine-all-data.frame"><i class="fa fa-check"></i><b>14.2.8</b> combine all data.frame</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html"><i class="fa fa-check"></i><b>15</b> WGOITG: LeBron James’s Achievement</a>
+<li class="chapter" data-level="15" data-path="lebron.html"><a href="lebron.html"><i class="fa fa-check"></i><b>15</b> NYT: LeBron James Achievement</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#get-top250-players"><i class="fa fa-check"></i><b>15.1</b> Get top250 players</a></li>
-<li class="chapter" data-level="15.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scraping-live-scores"><i class="fa fa-check"></i><b>15.2</b> Scraping live scores</a>
+<li class="chapter" data-level="15.1" data-path="lebron.html"><a href="lebron.html#get-top250-players"><i class="fa fa-check"></i><b>15.1</b> Get top250 players</a></li>
+<li class="chapter" data-level="15.2" data-path="lebron.html"><a href="lebron.html#scraping-live-scores"><i class="fa fa-check"></i><b>15.2</b> Scraping live scores</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#testing"><i class="fa fa-check"></i><b>15.2.1</b> Testing</a></li>
+<li class="chapter" data-level="15.2.1" data-path="lebron.html"><a href="lebron.html#testing"><i class="fa fa-check"></i><b>15.2.1</b> Testing</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>15.3</b> Scrape life time scores</a></li>
-<li class="chapter" data-level="15.4" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#cleaning-data-1"><i class="fa fa-check"></i><b>15.4</b> Cleaning data</a></li>
-<li class="chapter" data-level="15.5" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#visualization"><i class="fa fa-check"></i><b>15.5</b> Visualization</a>
+<li class="chapter" data-level="15.3" data-path="lebron.html"><a href="lebron.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>15.3</b> Scrape life time scores</a></li>
+<li class="chapter" data-level="15.4" data-path="lebron.html"><a href="lebron.html#cleaning-data-1"><i class="fa fa-check"></i><b>15.4</b> Cleaning data</a></li>
+<li class="chapter" data-level="15.5" data-path="lebron.html"><a href="lebron.html#visualization"><i class="fa fa-check"></i><b>15.5</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-age-x-cumpts"><i class="fa fa-check"></i><b>15.5.1</b> Line: Age x cumPTS</a></li>
-<li class="chapter" data-level="15.5.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-year-x-cumpts"><i class="fa fa-check"></i><b>15.5.2</b> Line: year x cumPTS</a></li>
-<li class="chapter" data-level="15.5.3" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#line-age-x-per_by_year"><i class="fa fa-check"></i><b>15.5.3</b> Line: Age x PER_by_year</a></li>
-<li class="chapter" data-level="15.5.4" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#comparing-lebron-james-and-jabbar"><i class="fa fa-check"></i><b>15.5.4</b> Comparing LeBron James and Jabbar</a></li>
+<li class="chapter" data-level="15.5.1" data-path="lebron.html"><a href="lebron.html#line-age-x-cumpts"><i class="fa fa-check"></i><b>15.5.1</b> Line: Age x cumPTS</a></li>
+<li class="chapter" data-level="15.5.2" data-path="lebron.html"><a href="lebron.html#line-year-x-cumpts"><i class="fa fa-check"></i><b>15.5.2</b> Line: year x cumPTS</a></li>
+<li class="chapter" data-level="15.5.3" data-path="lebron.html"><a href="lebron.html#line-age-x-per_by_year"><i class="fa fa-check"></i><b>15.5.3</b> Line: Age x PER_by_year</a></li>
+<li class="chapter" data-level="15.5.4" data-path="lebron.html"><a href="lebron.html#comparing-lebron-james-and-jabbar"><i class="fa fa-check"></i><b>15.5.4</b> Comparing LeBron James and Jabbar</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scraping-and-cleaning"><i class="fa fa-check"></i><b>15.6</b> Scraping and cleaning</a>
+<li class="chapter" data-level="15.6" data-path="lebron.html"><a href="lebron.html#scraping-and-cleaning"><i class="fa fa-check"></i><b>15.6</b> Scraping and cleaning</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#vis-ljames-and-jabbar"><i class="fa fa-check"></i><b>15.6.1</b> VIS LJames and jabbar</a></li>
+<li class="chapter" data-level="15.6.1" data-path="lebron.html"><a href="lebron.html#vis-ljames-and-jabbar"><i class="fa fa-check"></i><b>15.6.1</b> VIS LJames and jabbar</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#more-scraping-all-players"><i class="fa fa-check"></i><b>15.7</b> (More) Scraping all players</a>
+<li class="chapter" data-level="15.7" data-path="lebron.html"><a href="lebron.html#more-scraping-all-players"><i class="fa fa-check"></i><b>15.7</b> (More) Scraping all players</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#testing-1"><i class="fa fa-check"></i><b>15.7.1</b> Testing</a></li>
-<li class="chapter" data-level="15.7.2" data-path="wgoitg-lebron-jamess-achievement.html"><a href="wgoitg-lebron-jamess-achievement.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>15.7.2</b> Scrape from a-z except x(no x)</a></li>
+<li class="chapter" data-level="15.7.1" data-path="lebron.html"><a href="lebron.html#testing-1"><i class="fa fa-check"></i><b>15.7.1</b> Testing</a></li>
+<li class="chapter" data-level="15.7.2" data-path="lebron.html"><a href="lebron.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>15.7.2</b> Scrape from a-z except x(no x)</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>IV VISUALIZATION</b></span></li>
+<li class="part"><span><b>V VISUALIZATION</b></span></li>
 <li class="chapter" data-level="16" data-path="visualization-1.html"><a href="visualization-1.html"><i class="fa fa-check"></i><b>16</b> Visualization</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="visualization-1.html"><a href="visualization-1.html#ggplot2"><i class="fa fa-check"></i><b>16.1</b> ggplot2</a></li>
@@ -439,20 +449,24 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="17" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>17</b> Coordinate</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="coordinate.html"><a href="coordinate.html#座標軸為資料排序"><i class="fa fa-check"></i><b>17.1</b> 座標軸為資料排序</a>
+<li class="chapter" data-level="17.1" data-path="coordinate.html"><a href="coordinate.html#order-as-axis"><i class="fa fa-check"></i><b>17.1</b> Order as axis</a>
 <ul>
 <li class="chapter" data-level="17.1.1" data-path="coordinate.html"><a href="coordinate.html#section"><i class="fa fa-check"></i><b>17.1.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="coordinate.html"><a href="coordinate.html#用log-scale放大長尾頭部"><i class="fa fa-check"></i><b>17.2</b> 用Log-scale放大長尾頭部</a></li>
-<li class="chapter" data-level="17.3" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>17.3</b> Square-root scale</a></li>
-<li class="chapter" data-level="17.4" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>17.4</b> 座標軸從數值到增加值</a>
+<li class="chapter" data-level="17.2" data-path="coordinate.html"><a href="coordinate.html#log-scale"><i class="fa fa-check"></i><b>17.2</b> Log-scale</a>
 <ul>
-<li class="chapter" data-level="17.4.1" data-path="coordinate.html"><a href="coordinate.html#net-worth-by-age-group-wgoitg-of-nytimes"><i class="fa fa-check"></i><b>17.4.1</b> Net Worth by Age Group (WGOITG of NYTIMES)</a></li>
-<li class="chapter" data-level="17.4.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>17.4.2</b> Read and sort data</a></li>
+<li class="chapter" data-level="17.2.1" data-path="coordinate.html"><a href="coordinate.html#nyt-population-growth"><i class="fa fa-check"></i><b>17.2.1</b> NYT: Population Growth</a></li>
 </ul></li>
-<li class="chapter" data-level="17.5" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>17.5</b> 等比例座標軸</a>
+<li class="chapter" data-level="17.3" data-path="coordinate.html"><a href="coordinate.html#section-1"><i class="fa fa-check"></i><b>17.3</b> </a></li>
+<li class="chapter" data-level="17.4" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>17.4</b> Square-root scale</a></li>
+<li class="chapter" data-level="17.5" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>17.5</b> 座標軸從數值到增加值</a>
 <ul>
-<li class="chapter" data-level="17.5.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>17.5.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="17.5.1" data-path="coordinate.html"><a href="coordinate.html#nyt-net-worth-by-age-group"><i class="fa fa-check"></i><b>17.5.1</b> NYT: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="17.5.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>17.5.2</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>17.6</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>17.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>18</b> AMOUNT</a>
@@ -552,23 +566,22 @@ div.csl-indent {
 <li class="chapter" data-level="25.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>25.2.2</b> 靜態繪圖測試</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>V CASE STUDIES</b></span></li>
+<li class="part"><span><b>VI CASE STUDIES</b></span></li>
 <li class="chapter" data-level="26" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>26</b> WGOITG of NyTimes</a></li>
-<li class="chapter" data-level="27" data-path="wgoitg-population-increase.html"><a href="wgoitg-population-increase.html"><i class="fa fa-check"></i><b>27</b> WGOITG: Population Increase</a></li>
-<li class="chapter" data-level="28" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>28</b> Inequality: Net Worth by Age Group</a></li>
-<li class="chapter" data-level="29" data-path="optimism-survey-by-countries.html"><a href="optimism-survey-by-countries.html"><i class="fa fa-check"></i><b>29</b> Optimism Survey by Countries</a></li>
-<li class="chapter" data-level="30" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>30</b> Case Studies (Taiwan)</a>
+<li class="chapter" data-level="27" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>27</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="28" data-path="optimism-survey-by-countries.html"><a href="optimism-survey-by-countries.html"><i class="fa fa-check"></i><b>28</b> Optimism Survey by Countries</a></li>
+<li class="chapter" data-level="29" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>29</b> Case Studies (Taiwan)</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>30.1</b> TW AQI Visual Studies</a>
+<li class="chapter" data-level="29.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>29.1</b> TW AQI Visual Studies</a>
 <ul>
-<li class="chapter" data-level="30.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>30.1.1</b> eda-load-data-from-github</a></li>
-<li class="chapter" data-level="30.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>30.1.2</b> Trending: Central tendency</a></li>
-<li class="chapter" data-level="30.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>30.1.3</b> Trending: Extreme value</a></li>
+<li class="chapter" data-level="29.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>29.1.1</b> eda-load-data-from-github</a></li>
+<li class="chapter" data-level="29.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>29.1.2</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="29.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>29.1.3</b> Trending: Extreme value</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>31</b> Appendix</a>
+<li class="chapter" data-level="30" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>30</b> Appendix</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>31.1</b> Dataset</a></li>
+<li class="chapter" data-level="30.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>30.1</b> Dataset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -593,16 +606,14 @@ div.csl-indent {
 <div id="counting-and-cross-tabulation" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Counting and Cross-tabulation<a href="counting-and-cross-tabulation.html#counting-and-cross-tabulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>交叉分析是一種對兩個或多個變數進行聯合分析的方法，通常用於研究不同類別或組別之間的關係和差異。交叉分析可以幫助我們發現變數之間的相互作用，以及不同類別或組別之間的異同點，進而進行更深入的分析和解釋。</p>
-<p>在交叉分析中，通常會使用交叉表（cross
-tabulation）或稱為列聯表（contingency
-table）來對變數進行分析。交叉表是一種二維資料表格，其中一個變數作為行標籤，另一個變數作為列標籤，每個資料格中則表示兩個變數的交叉次數或百分比。交叉表可以幫助我們從不同角度瞭解變數之間的關係和差異，例如：</p>
+<p>在交叉分析中，通常會使用交叉表（cross tabulation）或稱為列聯表（contingency table）來對變數進行分析。交叉表是一種二維資料表格，其中一個變數作為行標籤，另一個變數作為列標籤，每個資料格中則表示兩個變數的交叉次數或百分比。交叉表可以幫助我們從不同角度瞭解變數之間的關係和差異，例如：</p>
 <ol style="list-style-type: decimal">
 <li><p>發現變數之間的相關性：可以通過交叉表計算兩個變數之間的相關係數或卡方檢定值，以評估它們之間的相關性程度。</p></li>
 <li><p>比較不同類別或組別之間的差異：可以通過交叉表比較不同類別或組別之間的差異，例如不同性別、年齡、教育程度、地區等對某一變數的影響。</p></li>
 <li><p>發現變數之間的交互作用：可以通過交叉表比較不同類別或組別之間的差異，並分析它們之間的交互作用，以進一步瞭解變數之間的關係和影響。</p></li>
 </ol>
-<div id="taipei-residential-burglary" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Taipei Residential Burglary<a href="counting-and-cross-tabulation.html#taipei-residential-burglary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tptheft" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Taipei Residential Burglary<a href="counting-and-cross-tabulation.html#tptheft" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>觀察值、點位資料</strong>：公部門所發布的開放資料通常會根據某些類別進行統計，例如年齡、性別、教育程度、地區等等，只有少部分的資料會用觀察值（Observation）的方式來記錄，也就是每一個案例紀錄一筆資料。例如疫情一開始人數還少的時候，會逐一記錄每個個案；地理資訊系統上面記錄某些機構或某些特定地點的時候也是點位資料；或在觀察輿情時，每筆發言或留言都是一筆觀察值。「<a href="https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02">臺北市住宅竊盜點位資訊</a>」就是逐案紀錄的點位資料。而以下的例子也是點位資料，主要為主要為噪音、竊盜、交通事故等相關點位資料。</p>
 <ul>
 <li><a href="https://data.taipei/dataset/detail?id=ea2819ff-c869-480e-b7a9-2e5f7906a696">臺北市街頭隨機強盜案件點位資訊</a>、</li>
@@ -617,10 +628,7 @@ table）來對變數進行分析。交叉表是一種二維資料表格，其中
 </ul>
 <div id="讀取檔案" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> 讀取檔案<a href="counting-and-cross-tabulation.html#讀取檔案" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>規劃比較完善的開放資料平台會提供API給程式設計者存取，例如<a href="https://data.taipei/#/">臺北資料大平台</a>或內政部開放資料平台。但我們這邊用下載CSV（Common
-Separated
-Value）檔的方式來讀取這筆資料，以理解CSV這種檔案型態如何儲存資料。首先要至<a href="https://data.taipei/#/">臺北資料大平台</a>上查詢「住宅竊盜」，可以找到<a href="https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02">臺北市住宅竊盜點位資訊</a>。將該CSV檔下載至個人本機端，置入<code>data</code>
-資料夾中，便可以用<code>read.csv()</code>讀取該檔案。或可用tidyverse系列套件中的<code>readr::read_csv()</code>來直接讀取該網址所指到的檔案。</p>
+<p>規劃比較完善的開放資料平台會提供API給程式設計者存取，例如<a href="https://data.taipei/#/">臺北資料大平台</a>或內政部開放資料平台。但我們這邊用下載CSV（Common Separated Value）檔的方式來讀取這筆資料，以理解CSV這種檔案型態如何儲存資料。首先要至<a href="https://data.taipei/#/">臺北資料大平台</a>上查詢「住宅竊盜」，可以找到<a href="https://data.taipei/#/dataset/detail?id=68785231-d6c5-47a1-b001-77eec70bec02">臺北市住宅竊盜點位資訊</a>。將該CSV檔下載至個人本機端，置入<code>data</code> 資料夾中，便可以用<code>read.csv()</code>讀取該檔案。或可用tidyverse系列套件中的<code>readr::read_csv()</code>來直接讀取該網址所指到的檔案。</p>
 <p>我習慣在<strong>Console</strong>視窗中用<code>??read_csv()</code>查詢到這些函式的用法。</p>
 <ul>
 <li><code>read.csv()</code> to read csv and convert it to a data.frame</li>
@@ -640,9 +648,7 @@ Value）檔的方式來讀取這筆資料，以理解CSV這種檔案型態如何
 ## 4    4 住宅竊盜  1040101    06~08             臺北市中山區新生北路1段91~120號
 ## 5    5 住宅竊盜  1040101    10~12           臺北市文山區明興里興隆路4段1~30號
 ## 6    6 住宅竊盜  1040102    00~02   臺北市士林區天福里1鄰忠誠路2段130巷1~30號</code></pre>
-<p><strong>用read_csv()來讀取。</strong>除了
-base套件的<code>read.csv()</code>外，也可使用<code>readr</code>套件的<code>read_csv()</code>函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用<code>install.packages("tidyverse")</code>安裝過，只要用<code>library(tidyverse)</code>就可以使用<code>read_csv()</code>函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，<code>read_csv()</code>
-的功能和效果都會比<code>read.csv()</code>好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。</p>
+<p><strong>用read_csv()來讀取。</strong>除了 base套件的<code>read.csv()</code>外，也可使用<code>readr</code>套件的<code>read_csv()</code>函式來讀取，該套件屬於tidyverse套件系的其中一個套件，如果已經有用<code>install.packages("tidyverse")</code>安裝過，只要用<code>library(tidyverse)</code>就可以使用<code>read_csv()</code>函式。在此鼓勵各位使用tidyverse系列套件。普遍來說，<code>read_csv()</code> 的功能和效果都會比<code>read.csv()</code>好，該函式還會自動猜測每個變數的變數型態並直接進行轉換（尤其是有時間欄位的時候，會非常方便）。</p>
 <div class="debug">
 <p>萬一遇到中文檔案會有讀檔編碼問題時，有可能該檔案是用big5來儲存的，可以在<code>read_csv()</code>中設定<code>locale</code>來指定讀取的編碼方法。如<code>read_csv(url, locale = locale(encoding = "Big5"))</code></p>
 </div>
@@ -699,11 +705,8 @@ base套件的<code>read.csv()</code>外，也可使用<code>readr</code>套件�
 <div id="使用table計數" class="section level3 hasAnchor" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> 使用<code>table()</code>計數<a href="counting-and-cross-tabulation.html#使用table計數" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>清理完資料後，我們要回答的第一個數據問題通常是「那XXX的案例有幾個？」例如：大安區有多少竊盜案？10~12這個時段有多少案例。</p>
-<p><code>table()</code>函式可以對Vector中的值進行計數（Counting）。<code>table(df$time)</code>
-相當於去計數不同的時間區間出現多少起案例；<code>table(df$region)</code>
-相當於去計數不同地區各出現多少起案例。</p>
-<p>提示：可以用<code>class(tb_1)</code> 觀察用<code>table()</code>
-計數後所產生的資料型態（<code>table</code>）。</p>
+<p><code>table()</code>函式可以對Vector中的值進行計數（Counting）。<code>table(df$time)</code> 相當於去計數不同的時間區間出現多少起案例；<code>table(df$region)</code> 相當於去計數不同地區各出現多少起案例。</p>
+<p>提示：可以用<code>class(tb_1)</code> 觀察用<code>table()</code> 計數後所產生的資料型態（<code>table</code>）。</p>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="counting-and-cross-tabulation.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="do">## table</span></span>
 <span id="cb313-2"><a href="counting-and-cross-tabulation.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="co"># counting the frequency of region variable</span></span>
 <span id="cb313-3"><a href="counting-and-cross-tabulation.html#cb313-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -731,8 +734,7 @@ base套件的<code>read.csv()</code>外，也可使用<code>readr</code>套件�
 <li><p><code>%in%</code> 表示的是左方<code>df$time</code>的值是否是右方Vector中的其中一個</p></li>
 <li><p>如果要表示不包含，就在<code>df%time</code>加一個NOT，也就是<code>!</code>。</p></li>
 </ul>
-<p>依照各組時間的案例個數統計後，篩除資料未足100的時間區間如下，最後再用<code>table(df$time)</code>
-計算一次，發現每個時段都兩三、百個案例，且涵蓋整日的時間。清理後沒有重疊的時間區間，做類別資料分析會比較準確。</p>
+<p>依照各組時間的案例個數統計後，篩除資料未足100的時間區間如下，最後再用<code>table(df$time)</code> 計算一次，發現每個時段都兩三、百個案例，且涵蓋整日的時間。清理後沒有重疊的時間區間，做類別資料分析會比較準確。</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="counting-and-cross-tabulation.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out irrelevant timestamp</span></span>
 <span id="cb320-2"><a href="counting-and-cross-tabulation.html#cb320-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="sc">!</span>df<span class="sc">$</span>time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;03~05&quot;</span>, <span class="st">&quot;05~07&quot;</span>, <span class="st">&quot;09~11&quot;</span>, <span class="st">&quot;11~13&quot;</span>, <span class="st">&quot;11~03&quot;</span>, <span class="st">&quot;12~15&quot;</span>, <span class="st">&quot;15~17&quot;</span>, <span class="st">&quot;15~18&quot;</span>, <span class="st">&quot;17~19&quot;</span>, <span class="st">&quot;18~21&quot;</span>, <span class="st">&quot;19~21&quot;</span>, <span class="st">&quot;21~23&quot;</span>, <span class="st">&quot;21~24&quot;</span>, <span class="st">&quot;23~01&quot;</span>), ]</span>
 <span id="cb320-3"><a href="counting-and-cross-tabulation.html#cb320-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -770,9 +772,7 @@ base套件的<code>read.csv()</code>外，也可使用<code>readr</code>套件�
 </div>
 <div id="繪圖" class="section level3 hasAnchor" number="5.1.6">
 <h3><span class="header-section-number">5.1.6</span> 繪圖<a href="counting-and-cross-tabulation.html#繪圖" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>通常這種類別資料交叉分析最常用的圖表型態之一便是Mosaic
-Plot（但事實上Mosaic
-Plot不見能夠被一眼就了解）。我們可以把交叉分析後的變項<code>res_table</code>直接用MosaicPlot來繪圖。</p>
+<p>通常這種類別資料交叉分析最常用的圖表型態之一便是Mosaic Plot（但事實上Mosaic Plot不見能夠被一眼就了解）。我們可以把交叉分析後的變項<code>res_table</code>直接用MosaicPlot來繪圖。</p>
 <div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="counting-and-cross-tabulation.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mosaicplot() to plot 2-dim categorical vars.</span></span>
 <span id="cb328-2"><a href="counting-and-cross-tabulation.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table)</span></code></pre></div>
 <p><img src="R12_tptheft_base_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
@@ -782,10 +782,7 @@ Plot不見能夠被一眼就了解）。我們可以把交叉分析後的變項<
 <div id="解決圖表無法顯示中文" class="section level4 hasAnchor" number="5.1.6.1">
 <h4><span class="header-section-number">5.1.6.1</span> 解決圖表無法顯示中文<a href="counting-and-cross-tabulation.html#解決圖表無法顯示中文" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>大部分的視覺化套件都無法順利顯示中文，除非特別指定所要用的中文字型。這方面網路上可以找到很多的說明，但非常討厭的是，幾乎每換一套視覺化工具，換一套語言，就有不同的中文字體指定方式。例如用base的<code>plot()</code>來繪圖或用<code>ggplot()</code>的中文字型指定方法便不同，且軸上面有中文、圖標有中文、或者圖內有中文都要分開指定，非常討人厭。</p>
-<p>Mosaic Plot屬於base
-R的<code>plot()</code>，其中文指定方法要指定在繪圖前的<code>par()</code>函式中（<code>par</code>為parameter的意思），指定方法為<code>par(family=('Heiti TC Light'))</code>，Heiti
-TC
-Light為字體名稱，為OSX上在用的黑體細字，STKaiti則為標楷體。然後，<code>par()</code>和<code>mosaicplot()</code>兩個函式要「同時執行」，也就是請你直接用shift-cmd(ctrl)-Enter執行整個code-cell，或者將該兩個函式選起來一次執行。</p>
+<p>Mosaic Plot屬於base R的<code>plot()</code>，其中文指定方法要指定在繪圖前的<code>par()</code>函式中（<code>par</code>為parameter的意思），指定方法為<code>par(family=('Heiti TC Light'))</code>，Heiti TC Light為字體名稱，為OSX上在用的黑體細字，STKaiti則為標楷體。然後，<code>par()</code>和<code>mosaicplot()</code>兩個函式要「同時執行」，也就是請你直接用shift-cmd(ctrl)-Enter執行整個code-cell，或者將該兩個函式選起來一次執行。</p>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="counting-and-cross-tabulation.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;STKaiti&#39;</span>))</span>
 <span id="cb330-2"><a href="counting-and-cross-tabulation.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;Heiti TC Light&#39;))</span></span>
 <span id="cb330-3"><a href="counting-and-cross-tabulation.html#cb330-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(res_table, <span class="at">main=</span><span class="st">&quot;mosaic plot&quot;</span>, <span class="at">color=</span>T)</span></code></pre></div>
@@ -839,9 +836,7 @@ df &lt;- read.csv(&quot;data/tptheft.csv&quot;)</code></pre>
 <h2><span class="header-section-number">5.3</span> Counting Review<a href="counting-and-cross-tabulation.html#counting-review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="tapply" class="section level3 hasAnchor" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> <code>tapply()</code><a href="counting-and-cross-tabulation.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我們也可用<code>tapply()</code>
-函式來達到一樣的目的。Apply家族的函式都是，針對某個資料，將某個函式套用到某個物件上。<code>tapply()</code>
-即是用來做計數的，<code>tapply(df$編號, df$time, length)</code>有三個輸入，第一個輸入為整體物件，第二個輸入為要據以彙整的變項，在此為<code>df$time</code>，第三個是要用來彙整的函式，因為這裡要做計數，所以要用<code>length</code>函式。</p>
+<p>我們也可用<code>tapply()</code> 函式來達到一樣的目的。Apply家族的函式都是，針對某個資料，將某個函式套用到某個物件上。<code>tapply()</code> 即是用來做計數的，<code>tapply(df$編號, df$time, length)</code>有三個輸入，第一個輸入為整體物件，第二個輸入為要據以彙整的變項，在此為<code>df$time</code>，第三個是要用來彙整的函式，因為這裡要做計數，所以要用<code>length</code>函式。</p>
 <p>註：同樣用<code>class()</code>來觀察彙整後的資料型態為<code>array</code>，和前者的<code>table</code>資料型態不同。</p>
 </div>
 <div id="tapply-two-variables" class="section level3 hasAnchor" number="5.3.2">
@@ -865,11 +860,7 @@ df &lt;- read.csv(&quot;data/tptheft.csv&quot;)</code></pre>
 </div>
 <div id="dplyrcount-two-variables" class="section level3 hasAnchor" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> <code>dplyr::count()</code> two variables<a href="counting-and-cross-tabulation.html#dplyrcount-two-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>這邊多介紹一個用dplyr套件的<code>count()</code>函式來做交叉分析的方法（未來會常用這個方法，因為dplyr是tidyverse系列套件的核心套件。dplyr的函式第一個參數永遠是該data.frame，
-例如<code>count()</code>；後面<code>time</code>與<code>region</code>則是這個data.frame中的兩個變項。不像<code>tapply()</code>或<code>table()</code>的結果一樣，欄與列分別為<code>time</code>與<code>region</code>，count()出來的結果會有兩個變項分別是指定要計數的<code>time</code>與<code>region</code>
-，且會新增一個變項<code>n</code>，代表這組數據（<code>time</code> x
-<code>region</code>）共有幾個。這種表達型態通常稱為long-table（長表）、而<code>tapply()</code>或<code>table()</code>
-的結果通常稱為wide-table（寬表）為典型的交叉分析表。</p>
+<p>這邊多介紹一個用dplyr套件的<code>count()</code>函式來做交叉分析的方法（未來會常用這個方法，因為dplyr是tidyverse系列套件的核心套件。dplyr的函式第一個參數永遠是該data.frame， 例如<code>count()</code>；後面<code>time</code>與<code>region</code>則是這個data.frame中的兩個變項。不像<code>tapply()</code>或<code>table()</code>的結果一樣，欄與列分別為<code>time</code>與<code>region</code>，count()出來的結果會有兩個變項分別是指定要計數的<code>time</code>與<code>region</code> ，且會新增一個變項<code>n</code>，代表這組數據（<code>time</code> x <code>region</code>）共有幾個。這種表達型態通常稱為long-table（長表）、而<code>tapply()</code>或<code>table()</code> 的結果通常稱為wide-table（寬表）為典型的交叉分析表。</p>
 <p>目前大部分的類別資料分析還是會採用交叉分析表的型態，但未來我們要用tidyverse系列套件做大量的數據彙整或視覺化時，都會盡可能想辦法轉為Long-table型態，讓每一欄剛好就是一個變項。只要是tidyverse系列套件所計算出來的資料型態幾乎都是<span style="color:hotpink">類似</span>data.frame的型態，例如觀察<code>count</code>的結果便是<code>"tbl_df"     "tbl"        "data.frame"</code>。</p>
 </div>
 </div>
@@ -877,14 +868,8 @@ df &lt;- read.csv(&quot;data/tptheft.csv&quot;)</code></pre>
 <h2><span class="header-section-number">5.4</span> Pivoting long-wide tables<a href="counting-and-cross-tabulation.html#pivoting-long-wide-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="long-to-wide" class="section level3 hasAnchor" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> long-to-wide<a href="counting-and-cross-tabulation.html#long-to-wide" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>那長表列可以轉為寬表嗎？可以，tidyverse系列套件中的tidyr套件有個函式<code>spread()</code>可以接著把某個變項展開為欄。例如原本上述的列是時間與行政區的交叉組合，但我可以把行政區展開為欄、或者把時間展開為欄
-。如下例，<code>spread(res_count, region, n, fill = 0)</code>
-有四個參數，遵循tidyverse系列套件的規則，第一個位置為data.frame，第二個參數則是要被展開至欄的變項這裡為<code>region</code>，第三個參數則是因應<code>region</code>被展開後，那中間交叉分析的數值就是n，最後一個參數是避免<code>spread</code>時有些交叉組是沒有資料的，因此<code>fill=0</code>可以指定，如果某個<code>time</code>
-x
-<code>region</code>的交叉組別是沒資料的，就填上<code>0</code>，也有可能是用<code>fill=NA</code>填上<code>NA</code>。以下的例子中也提供了將<code>time</code>
-展開至欄的寫法供參考。</p>
-<p>現在<code>spread()</code>函式已經被新的函式取代，為<code>pivot_wider()</code>。<code>spread(res_count, region, n, fill = 0)</code>
-在此需要改寫為<code>pivot_wider(res_count, names_from = region, values_from = n, values_fill = 0)</code>。大致上和<code>spread()</code>用法是一樣的，只是要寫清楚，哪個變數要給哪一個參數。</p>
+<p>那長表列可以轉為寬表嗎？可以，tidyverse系列套件中的tidyr套件有個函式<code>spread()</code>可以接著把某個變項展開為欄。例如原本上述的列是時間與行政區的交叉組合，但我可以把行政區展開為欄、或者把時間展開為欄 。如下例，<code>spread(res_count, region, n, fill = 0)</code> 有四個參數，遵循tidyverse系列套件的規則，第一個位置為data.frame，第二個參數則是要被展開至欄的變項這裡為<code>region</code>，第三個參數則是因應<code>region</code>被展開後，那中間交叉分析的數值就是n，最後一個參數是避免<code>spread</code>時有些交叉組是沒有資料的，因此<code>fill=0</code>可以指定，如果某個<code>time</code> x <code>region</code>的交叉組別是沒資料的，就填上<code>0</code>，也有可能是用<code>fill=NA</code>填上<code>NA</code>。以下的例子中也提供了將<code>time</code> 展開至欄的寫法供參考。</p>
+<p>現在<code>spread()</code>函式已經被新的函式取代，為<code>pivot_wider()</code>。<code>spread(res_count, region, n, fill = 0)</code> 在此需要改寫為<code>pivot_wider(res_count, names_from = region, values_from = n, values_fill = 0)</code>。大致上和<code>spread()</code>用法是一樣的，只是要寫清楚，哪個變數要給哪一個參數。</p>
 <p>展開後的資料型態和前者計數後的資料型態一樣，都是<code>"tbl_df"     "tbl"        "data.frame"</code>。這是為什麼tidyverse系列的套件逐漸變成R的顯學的原因之一。</p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="counting-and-cross-tabulation.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb336-2"><a href="counting-and-cross-tabulation.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spreading the region into columns</span></span>
@@ -924,16 +909,8 @@ x
 <h2><span class="header-section-number">5.5</span> Residuals analysis<a href="counting-and-cross-tabulation.html#residuals-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>mosaicplot()</code>有幾個參數可以用，包含<code>off</code>與<code>shade</code>可用於呈現殘差分析。</p>
 <ul>
-<li><strong>off</strong>: vector of offsets to determine percentage spacing at each
-level of the mosaic (appropriate values are between 0 and 20, and
-the default is 20 times the number of splits for 2-dimensional
-tables, and 10 otherwise). Rescaled to maximally 50, and recycled if
-necessary.</li>
-<li><strong>shade</strong>: a logical indicating whether to produce extended mosaic
-plots, or a numeric vector of at most 5 distinct positive numbers
-giving the absolute values of the cut points for the residuals. By
-default, shade is FALSE, and simple mosaics are created. Using shade
-= TRUE cuts absolute values at 2 and 4.</li>
+<li><strong>off</strong>: vector of offsets to determine percentage spacing at each level of the mosaic (appropriate values are between 0 and 20, and the default is 20 times the number of splits for 2-dimensional tables, and 10 otherwise). Rescaled to maximally 50, and recycled if necessary.</li>
+<li><strong>shade</strong>: a logical indicating whether to produce extended mosaic plots, or a numeric vector of at most 5 distinct positive numbers giving the absolute values of the cut points for the residuals. By default, shade is FALSE, and simple mosaics are created. Using shade = TRUE cuts absolute values at 2 and 4.</li>
 </ul>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="counting-and-cross-tabulation.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par(family=(&#39;STKaiti&#39;))</span></span>
 <span id="cb342-2"><a href="counting-and-cross-tabulation.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span>(<span class="st">&#39;Heiti TC Light&#39;</span>))</span>
@@ -943,6 +920,9 @@ default, shade is FALSE, and simple mosaics are created. Using shade
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>

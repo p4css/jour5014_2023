@@ -15,3 +15,16 @@
 -   **`utils`**：這個套件包含了一些實用的函式，例如 **`install.packages()`**、**`help()`**、**`data()`** 等。
 
 -   **`datasets`**：這個套件包含了一些內建的數據集，可以用來進行測試和練習，例如 **`iris`**、**`mtcars`**、**`CO2`** 等。可以使用 **`data()`** 函式載入這些數據集。
+
+## Cases in the book
+
+-   WP: Paid maternity leave
+-   Taipei Residential Hot spot: Contingency table, categorical data
+-   Trump's tweets: Line plot, Bar chart, timeline, and text processing
+-   NYT: Net worth: Line plot
+-   NYT: Carbon Proportion: Treemap
+-   NYT: Optimism by countries
+-   NYT: Population growth
+-   Annual Budget of TW government: NA Processing, Treemap
+-   Vaccinating proportion by country x year: Proportion
+-   NYT: LeBron James's Achievement

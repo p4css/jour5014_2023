@@ -2,25 +2,43 @@
 
 # Coordinate
 
-本章節談論的是視覺化圖表的座標軸，本章節所涵蓋的概念可參考*Claus O. Wilke*所著之[Fundamentals of Data Visualization](https://clauswilke.com/dataviz/coordinate-systems-axes.html)的Chap3 Coordination & Axis與Chapter 8 [Visualizing distributions: Empirical cumulative distribution functions and q-q plots](https://clauswilke.com/dataviz/ecdf-qq.html)。
+本章節談論的是視覺化圖表的座標軸，本章節所涵蓋的概念可參考*Claus O.
+Wilke*所著之[Fundamentals of Data
+Visualization](https://clauswilke.com/dataviz/coordinate-systems-axes.html)的Chap3
+Coordination & Axis與Chapter 8 [Visualizing distributions: Empirical
+cumulative distribution functions and q-q
+plots](https://clauswilke.com/dataviz/ecdf-qq.html)。
 
-## 座標軸為資料排序
+## Order as axis
 
 學術論文若要呈現一群數據的分佈時，最常用的是密度（分佈）函數、累積分佈函數，最常視覺化的方法是密度分佈圖（`geom_density()`）或直方圖（`geom_histogram()`)。然而，對新聞等強調「說故事」的文體而言，說故事的技巧往往不是「**那一群**資源多或資源少的對象」，而經常要直指「**那個對象**」，要能夠看得見所敘述的對象在圖中的位置。此時，用密度分佈來呈現的話，只能看出，該對象在分佈的某個位置；但可以改用將資料對象根據某個數據來排序後，繪製折現圖的方式來表現。例如，若要繪製一個班級的成績分佈，通常X軸是分數（組），Y軸是獲得該分數（組）的人數；但其實可以將個體依照分數來做排序，Y軸不是某個分數（組）的個數，而是每個排序後的個體，而且以排序後的序號（Ranking）來表示。用折線圖繪製後，一樣可以看出分數的分佈，但卻能夠直接標記敘事中的某個對象是Y軸中得哪個點。
 
 ### 
 
-![Figure 3.5: Population numbers of Texas counties relative to their median value. Select counties are highlighted by name. The dashed line indicates a ratio of 1, corresponding to a county with median population number. The most populous counties have approximately 100 times more inhabitants than the median county, and the least populous counties have approximately 100 times fewer inhabitants than the median county. Data source: 2010 Decennial U.S. Census.](images/paste-FB7FC371.png)
+![Figure 3.5: Population numbers of Texas counties relative to their
+median value. Select counties are highlighted by name. The dashed line
+indicates a ratio of 1, corresponding to a county with median population
+number. The most populous counties have approximately 100 times more
+inhabitants than the median county, and the least populous counties have
+approximately 100 times fewer inhabitants than the median county. Data
+source: 2010 Decennial U.S. Census.](images/paste-FB7FC371.png)
 
--   See [What's Going On in This Graph? \| Vaccination by Country](https://www.nytimes.com/2022/01/06/learning/whats-going-on-in-this-graph-jan-12-2022.html) from[What Data Shows About Vaccine Supply and Demand in the Most Vulnerable Places - The New York Times (nytimes.com)](https://www.nytimes.com/interactive/2021/12/09/world/vaccine-inequity-supply.html)
+-   See [What's Going On in This Graph? \| Vaccination by
+    Country](https://www.nytimes.com/2022/01/06/learning/whats-going-on-in-this-graph-jan-12-2022.html)
+    from[What Data Shows About Vaccine Supply and Demand in the Most
+    Vulnerable Places - The New York Times
+    (nytimes.com)](https://www.nytimes.com/interactive/2021/12/09/world/vaccine-inequity-supply.html)
 
-    The original chart is animated along the timeline.[What Data Shows About Vaccine Supply and Demand in the Most Vulnerable Places - The New York Times (nytimes.com)](https://www.nytimes.com/interactive/2021/12/09/world/vaccine-inequity-supply.html)
+    The original chart is animated along the timeline.[What Data Shows
+    About Vaccine Supply and Demand in the Most Vulnerable Places - The
+    New York Times
+    (nytimes.com)](https://www.nytimes.com/interactive/2021/12/09/world/vaccine-inequity-supply.html)
 
 ![](https://lh3.googleusercontent.com/qDunt-J56_eLmFmjTlUn7VMRyg9rKn0-aeYjfmbXd9JcUV9xJojcG0oAoEXHZMU3SCUx64o2B_GH9mtpwqKuj6KUchZL4Zau4l7LnC3sclUdpbW-mQdv8cJqCvukqUsrbXMgeKSl)
 
 
 
-## 用Log-scale放大長尾頭部
+## Log-scale
 
 
 ```r
@@ -55,11 +73,111 @@ cowplot::plot_grid(
 
 <img src="V04_Coordinate_System_files/figure-html/Fig3-5-6-log-scale-village-level-population-1.png" width="100%" style="display: block; margin: auto;" />
 
+### NYT: Population Growth
+
+紐時這篇報導「[When Did the Anthropocene Start? Scientists Closer to
+Saying When. - The New York Times
+(nytimes.com)](https://www.nytimes.com/2022/12/17/climate/anthropocene-age-geology.html)」討論了人類活動對地球所產生的深遠影響，並探討人類是否已經進入了一個新的地質時期，被稱為「人新世」。報導指出，人類的經濟活動、能源消耗和人口增長是人新世的主要因素，並且這些因素已經在地球上留下了不可磨滅的痕跡。報導也提到，地質學家已經發現了人新世的證據，包括核爆炸中的鈽同位素、肥料中的氮和發電廠的灰燼等。然而，報導也問道，人新世是否真的已經開始，以及它的開始點是否應該是農業革命、工業革命、核彈（77年前）或其他發展。
+
+![](https://static01.nyt.com/images/2023/02/07/learning/AnthropoceneGraphLN/AnthropoceneGraphLN-superJumbo.png?quality=75&auto=webp)
+
+However, Package *tabulizer* cannot be installed in the current version
+of R.
+
+#### Parsing table from pdf
+
+
+```r
+# install.packages("tabulizer")
+# if (!require("remotes")) {
+#     install.packages("remotes")
+# }
+# remotes::install_github(c("ropensci/tabulizerjars", "ropensci/tabulizer"))
+
+library(tidyverse)
+library(tabulizer)
+# Extract the table
+
+tables <- extract_tables('data/world_population_change.pdf', pages = 1)
+
+# Extract the first element of the variable
+raw <- as.data.frame(tables[[1]])
+
+population_by_year <- raw %>%
+   select(1, 2) %>%
+   slice(-c(1:4)) %>%
+   rename(years_to_2020 = V1, population = V2)
+   # select(years_to_2020 = v1, population = v2)
+   # mutate(years_to_2020 = v1, population = v2)
+```
+
+#### X and Y with log-scale
+
+
+```r
+library(cowplot)
+
+load("data/world_population_change.rda")
+
+toplot <- population_by_year %>%
+   mutate(years_to_2020 = map(years_to_2020, ~(str_remove(., ",")))) %>%
+   mutate(years_to_2020 = as.numeric(years_to_2020),
+           population = as.numeric(population))
+
+toplot %>% head
+```
+
+```{.output}
+##   years_to_2020 population
+## 1         11720          4
+## 2         10020          5
+## 3          8220          8
+## 4          7020         11
+## 5          6020          7
+## 6          5020         14
+```
+
+```r
+p1 <- toplot %>%
+    ggplot() + 
+    aes(x=years_to_2020, y=population) + 
+    geom_point() + 
+    theme_bw()
+
+
+p2 <- toplot %>%
+    ggplot() + 
+    aes(x=years_to_2020, y=population) + 
+    geom_point() + 
+    scale_x_log10() + scale_y_log10() + 
+    scale_x_reverse() + 
+    theme_bw()
+
+cowplot::plot_grid(
+  p1, NULL, p2,
+  labels = c("(a) Original Scale", "", "(b) Low-Scale"),
+  nrow = 1, rel_widths = c(1, 0.1, 1)
+)
+```
+
+<img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" />
+
+
+```r
+library(tidyverse)
+library(gghighlight)
+```
+
+## 
+
 ## Square-root scale
 
-Chap3 Coordination & Axis [Fundamentals of Data Visualization (clauswilke.com)](https://clauswilke.com/dataviz/coordinate-systems-axes.html)
+Chap3 Coordination & Axis [Fundamentals of Data Visualization
+(clauswilke.com)](https://clauswilke.com/dataviz/coordinate-systems-axes.html)
 
-![Figure 3.8: Areas of Northeastern U.S. states. (a) Areas shown on a linear scale. (b) Areas shown on a square-root scale. Data source: Google.](images/paste-F8C01660.png)
+![Figure 3.8: Areas of Northeastern U.S. states. (a) Areas shown on a
+linear scale. (b) Areas shown on a square-root scale. Data source:
+Google.](images/paste-F8C01660.png)
 
 前面是視覺化了各村里大於十五歲以上人口的人口數分佈，採用對數尺度（log-scale）可以觀察到比較小的村里。那有什麼是適合用平方根尺度（sqrt-scale）的呢？是土地嗎？密度嗎？還是人口數？是村里等級嗎？鄉鎮市區等級嗎？還是縣市等級？
 
@@ -121,15 +239,9 @@ cowplot::plot_grid(
 <p class="caption">(\#fig:Fig03-8-TW-Population-Density-2)(ref:population-area)</p>
 </div>
 
-
-```r
-library(tidyverse)
-library(gghighlight)
-```
-
 ## 座標軸從數值到增加值
 
-### Net Worth by Age Group (WGOITG of NYTIMES)
+### NYT: Net Worth by Age Group
 
 ::: notes
 **LEARNING NOTES**
@@ -137,9 +249,15 @@ library(gghighlight)
 Median for Inequality
 :::
 
-這個教學案例來自紐約時報的「What's going on in this gragh」系列資料視覺化教學之[Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)](https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html) 。該圖表呈現在不同年代、不同年齡層的人所擁有的淨資產（包含土地、存款、投資等減去債務）。該圖表的結果指出，在不同年代的老年人是越來越有錢，但年輕人卻越來越窮（該曲線為減去1989年
+這個教學案例來自紐約時報的「What's going on in this
+gragh」系列資料視覺化教學之[Teach About Inequality With These 28 New
+York Times Graphs - The New York Times
+(nytimes.com)](https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html)
+。該圖表呈現在不同年代、不同年齡層的人所擁有的淨資產（包含土地、存款、投資等減去債務）。該圖表的結果指出，在不同年代的老年人是越來越有錢，但年輕人卻越來越窮（該曲線為減去1989年
 
-[![Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)](images/paste-27DE8695.png)](https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html)
+[![Teach About Inequality With These 28 New York Times Graphs - The New
+York Times
+(nytimes.com)](images/paste-27DE8695.png)](https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html)
 
 ### Read and sort data
 
@@ -185,7 +303,7 @@ p1 %>% ggplot() + aes(year, Net_Worth, color = Category) +
                                 size = 0.5, linetype = "solid"))
 ```
 
-<img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -215,7 +333,9 @@ p2 %>% filter(year <= 1992) %>% knitr::kable()
 | 1992|65-74        | 176.44667|  0.1432131|
 | 1992|75 or older  | 155.35173|  0.0765994|
 
-美國35歲以下的年輕人的中位淨資產比起年長的美國人來說，一開始平均貧窮得多。從「Less than 35」這條線看來，現在的年輕世代比起2004年的年輕世代所擁有的淨資產低了40%。相比之下，65歲以上的美國人現在的淨資產，相較於2004年增加了9%。隨著時代變化，可想像會有一群人的淨資產越來越多，只是現在從這個圖表看來，年輕人所擁有的淨資產相較於過去是越來越低的，多半流入了成年人和老年人手中。
+美國35歲以下的年輕人的中位淨資產比起年長的美國人來說，一開始平均貧窮得多。從「Less
+than
+35」這條線看來，現在的年輕世代比起2004年的年輕世代所擁有的淨資產低了40%。相比之下，65歲以上的美國人現在的淨資產，相較於2004年增加了9%。隨著時代變化，可想像會有一群人的淨資產越來越多，只是現在從這個圖表看來，年輕人所擁有的淨資產相較於過去是越來越低的，多半流入了成年人和老年人手中。
 
 
 ```r
@@ -231,13 +351,14 @@ p2 %>% ggplot() + aes(year, increase, color = Category) +
                                 size = 0.5, linetype = "solid"))
 ```
 
-<img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## 等比例座標軸
 
 ### UNICEF-Optimistic (WGOITH)
 
-<https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html> <https://changingchildhood.unicef.org/about>
+<https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html>
+<https://changingchildhood.unicef.org/about>
 
 
 ```r
@@ -296,4 +417,4 @@ plot.opt %>%
     theme(aspect.ratio=1)
 ```
 
-<img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
