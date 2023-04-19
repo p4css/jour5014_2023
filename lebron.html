@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 15 NYT: LeBron James Achievement | R for Data Journalism</title>
+  <title>Chapter 16 NYT: LeBron James Achievement | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 15 NYT: LeBron James Achievement | R for Data Journalism" />
+  <meta property="og:title" content="Chapter 16 NYT: LeBron James Achievement | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 NYT: LeBron James Achievement | R for Data Journalism" />
+  <meta name="twitter:title" content="Chapter 16 NYT: LeBron James Achievement | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-04-14" />
+<meta name="date" content="2023-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="scraping-104.html"/>
+<link rel="prev" href="html-parser.html"/>
 <link rel="next" href="visualization-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -370,7 +370,11 @@ div.csl-indent {
 <li class="chapter" data-level="13.1" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#using-web-api"><i class="fa fa-check"></i><b>13.1</b> Using Web API</a></li>
 <li class="chapter" data-level="13.2" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#webpage-scraping"><i class="fa fa-check"></i><b>13.2</b> Webpage Scraping</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#http回應代碼"><i class="fa fa-check"></i><b>13.2.1</b> HTTP回應代碼</a></li>
+<li class="chapter" data-level="13.2.1" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#http-status-code"><i class="fa fa-check"></i><b>13.2.1</b> HTTP Status Code</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#using-chrome-devtools"><i class="fa fa-check"></i><b>13.3</b> Using Chrome DevTools</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="introduction-to-web-scraping.html"><a href="introduction-to-web-scraping.html#observing-web-request"><i class="fa fa-check"></i><b>13.3.1</b> Observing web request</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="scraping-104.html"><a href="scraping-104.html"><i class="fa fa-check"></i><b>14</b> Scraping 104.com</a>
@@ -388,200 +392,208 @@ div.csl-indent {
 <li class="chapter" data-level="14.2.8" data-path="scraping-104.html"><a href="scraping-104.html#combine-all-data.frame"><i class="fa fa-check"></i><b>14.2.8</b> combine all data.frame</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lebron.html"><a href="lebron.html"><i class="fa fa-check"></i><b>15</b> NYT: LeBron James Achievement</a>
+<li class="chapter" data-level="15" data-path="html-parser.html"><a href="html-parser.html"><i class="fa fa-check"></i><b>15</b> HTML Parser</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="lebron.html"><a href="lebron.html#get-top250-players"><i class="fa fa-check"></i><b>15.1</b> Get top250 players</a></li>
-<li class="chapter" data-level="15.2" data-path="lebron.html"><a href="lebron.html#scraping-live-scores"><i class="fa fa-check"></i><b>15.2</b> Scraping live scores</a>
+<li class="chapter" data-level="15.1" data-path="html-parser.html"><a href="html-parser.html#detecting-element-path"><i class="fa fa-check"></i><b>15.1</b> Detecting Element Path</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="lebron.html"><a href="lebron.html#testing"><i class="fa fa-check"></i><b>15.2.1</b> Testing</a></li>
+<li class="chapter" data-level="15.1.1" data-path="html-parser.html"><a href="html-parser.html#xpath"><i class="fa fa-check"></i><b>15.1.1</b> XPath</a></li>
+<li class="chapter" data-level="15.1.2" data-path="html-parser.html"><a href="html-parser.html#css-selector"><i class="fa fa-check"></i><b>15.1.2</b> CSS Selector</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="lebron.html"><a href="lebron.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>15.3</b> Scrape life time scores</a></li>
-<li class="chapter" data-level="15.4" data-path="lebron.html"><a href="lebron.html#cleaning-data-1"><i class="fa fa-check"></i><b>15.4</b> Cleaning data</a></li>
-<li class="chapter" data-level="15.5" data-path="lebron.html"><a href="lebron.html#visualization"><i class="fa fa-check"></i><b>15.5</b> Visualization</a>
-<ul>
-<li class="chapter" data-level="15.5.1" data-path="lebron.html"><a href="lebron.html#line-age-x-cumpts"><i class="fa fa-check"></i><b>15.5.1</b> Line: Age x cumPTS</a></li>
-<li class="chapter" data-level="15.5.2" data-path="lebron.html"><a href="lebron.html#line-year-x-cumpts"><i class="fa fa-check"></i><b>15.5.2</b> Line: year x cumPTS</a></li>
-<li class="chapter" data-level="15.5.3" data-path="lebron.html"><a href="lebron.html#line-age-x-per_by_year"><i class="fa fa-check"></i><b>15.5.3</b> Line: Age x PER_by_year</a></li>
-<li class="chapter" data-level="15.5.4" data-path="lebron.html"><a href="lebron.html#comparing-lebron-james-and-jabbar"><i class="fa fa-check"></i><b>15.5.4</b> Comparing LeBron James and Jabbar</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="lebron.html"><a href="lebron.html#scraping-and-cleaning"><i class="fa fa-check"></i><b>15.6</b> Scraping and cleaning</a>
+<li class="chapter" data-level="16" data-path="lebron.html"><a href="lebron.html"><i class="fa fa-check"></i><b>16</b> NYT: LeBron James Achievement</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="lebron.html"><a href="lebron.html#vis-ljames-and-jabbar"><i class="fa fa-check"></i><b>15.6.1</b> VIS LJames and jabbar</a></li>
+<li class="chapter" data-level="16.1" data-path="lebron.html"><a href="lebron.html#get-top250-players"><i class="fa fa-check"></i><b>16.1</b> Get top250 players</a></li>
+<li class="chapter" data-level="16.2" data-path="lebron.html"><a href="lebron.html#scraping-live-scores"><i class="fa fa-check"></i><b>16.2</b> Scraping live scores</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="lebron.html"><a href="lebron.html#testing"><i class="fa fa-check"></i><b>16.2.1</b> Testing</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="lebron.html"><a href="lebron.html#more-scraping-all-players"><i class="fa fa-check"></i><b>15.7</b> (More) Scraping all players</a>
+<li class="chapter" data-level="16.3" data-path="lebron.html"><a href="lebron.html#scrape-life-time-scores"><i class="fa fa-check"></i><b>16.3</b> Scrape life time scores</a></li>
+<li class="chapter" data-level="16.4" data-path="lebron.html"><a href="lebron.html#cleaning-data-1"><i class="fa fa-check"></i><b>16.4</b> Cleaning data</a></li>
+<li class="chapter" data-level="16.5" data-path="lebron.html"><a href="lebron.html#visualization"><i class="fa fa-check"></i><b>16.5</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="lebron.html"><a href="lebron.html#testing-1"><i class="fa fa-check"></i><b>15.7.1</b> Testing</a></li>
-<li class="chapter" data-level="15.7.2" data-path="lebron.html"><a href="lebron.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>15.7.2</b> Scrape from a-z except x(no x)</a></li>
+<li class="chapter" data-level="16.5.1" data-path="lebron.html"><a href="lebron.html#line-age-x-cumpts"><i class="fa fa-check"></i><b>16.5.1</b> Line: Age x cumPTS</a></li>
+<li class="chapter" data-level="16.5.2" data-path="lebron.html"><a href="lebron.html#line-year-x-cumpts"><i class="fa fa-check"></i><b>16.5.2</b> Line: year x cumPTS</a></li>
+<li class="chapter" data-level="16.5.3" data-path="lebron.html"><a href="lebron.html#line-age-x-per_by_year"><i class="fa fa-check"></i><b>16.5.3</b> Line: Age x PER_by_year</a></li>
+<li class="chapter" data-level="16.5.4" data-path="lebron.html"><a href="lebron.html#comparing-lebron-james-and-jabbar"><i class="fa fa-check"></i><b>16.5.4</b> Comparing LeBron James and Jabbar</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="lebron.html"><a href="lebron.html#scraping-and-cleaning"><i class="fa fa-check"></i><b>16.6</b> Scraping and cleaning</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="lebron.html"><a href="lebron.html#vis-ljames-and-jabbar"><i class="fa fa-check"></i><b>16.6.1</b> VIS LJames and jabbar</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="lebron.html"><a href="lebron.html#more-scraping-all-players"><i class="fa fa-check"></i><b>16.7</b> (More) Scraping all players</a>
+<ul>
+<li class="chapter" data-level="16.7.1" data-path="lebron.html"><a href="lebron.html#testing-1"><i class="fa fa-check"></i><b>16.7.1</b> Testing</a></li>
+<li class="chapter" data-level="16.7.2" data-path="lebron.html"><a href="lebron.html#scrape-from-a-z-except-xno-x"><i class="fa fa-check"></i><b>16.7.2</b> Scrape from a-z except x(no x)</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>V VISUALIZATION</b></span></li>
-<li class="chapter" data-level="16" data-path="visualization-1.html"><a href="visualization-1.html"><i class="fa fa-check"></i><b>16</b> Visualization</a>
+<li class="chapter" data-level="17" data-path="visualization-1.html"><a href="visualization-1.html"><i class="fa fa-check"></i><b>17</b> Visualization</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="visualization-1.html"><a href="visualization-1.html#ggplot2"><i class="fa fa-check"></i><b>16.1</b> ggplot2</a></li>
-<li class="chapter" data-level="16.2" data-path="visualization-1.html"><a href="visualization-1.html#vis-packages"><i class="fa fa-check"></i><b>16.2</b> VIS packages</a></li>
-<li class="chapter" data-level="16.3" data-path="visualization-1.html"><a href="visualization-1.html#ggplot"><i class="fa fa-check"></i><b>16.3</b> ggplot簡介</a></li>
-<li class="chapter" data-level="16.4" data-path="visualization-1.html"><a href="visualization-1.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>16.4</b> 繪圖基礎：折線圖</a>
+<li class="chapter" data-level="17.1" data-path="visualization-1.html"><a href="visualization-1.html#ggplot2"><i class="fa fa-check"></i><b>17.1</b> ggplot2</a></li>
+<li class="chapter" data-level="17.2" data-path="visualization-1.html"><a href="visualization-1.html#vis-packages"><i class="fa fa-check"></i><b>17.2</b> VIS packages</a></li>
+<li class="chapter" data-level="17.3" data-path="visualization-1.html"><a href="visualization-1.html#ggplot"><i class="fa fa-check"></i><b>17.3</b> ggplot簡介</a></li>
+<li class="chapter" data-level="17.4" data-path="visualization-1.html"><a href="visualization-1.html#繪圖基礎折線圖"><i class="fa fa-check"></i><b>17.4</b> 繪圖基礎：折線圖</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="visualization-1.html"><a href="visualization-1.html#繪圖三要素"><i class="fa fa-check"></i><b>16.4.1</b> 繪圖三要素</a></li>
+<li class="chapter" data-level="17.4.1" data-path="visualization-1.html"><a href="visualization-1.html#繪圖三要素"><i class="fa fa-check"></i><b>17.4.1</b> 繪圖三要素</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="visualization-1.html"><a href="visualization-1.html#nyt-inequality"><i class="fa fa-check"></i><b>16.5</b> NYT: Inequality</a>
+<li class="chapter" data-level="17.5" data-path="visualization-1.html"><a href="visualization-1.html#nyt-inequality"><i class="fa fa-check"></i><b>17.5</b> NYT: Inequality</a>
 <ul>
-<li class="chapter" data-level="16.5.1" data-path="visualization-1.html"><a href="visualization-1.html#visualizing"><i class="fa fa-check"></i><b>16.5.1</b> Visualizing</a></li>
-<li class="chapter" data-level="16.5.2" data-path="visualization-1.html"><a href="visualization-1.html#grouping"><i class="fa fa-check"></i><b>16.5.2</b> Grouping</a></li>
+<li class="chapter" data-level="17.5.1" data-path="visualization-1.html"><a href="visualization-1.html#visualizing"><i class="fa fa-check"></i><b>17.5.1</b> Visualizing</a></li>
+<li class="chapter" data-level="17.5.2" data-path="visualization-1.html"><a href="visualization-1.html#grouping"><i class="fa fa-check"></i><b>17.5.2</b> Grouping</a></li>
 </ul></li>
-<li class="chapter" data-level="16.6" data-path="visualization-1.html"><a href="visualization-1.html#adjusting-chart"><i class="fa fa-check"></i><b>16.6</b> Adjusting Chart</a>
+<li class="chapter" data-level="17.6" data-path="visualization-1.html"><a href="visualization-1.html#adjusting-chart"><i class="fa fa-check"></i><b>17.6</b> Adjusting Chart</a>
 <ul>
-<li class="chapter" data-level="16.6.1" data-path="visualization-1.html"><a href="visualization-1.html#點線型態"><i class="fa fa-check"></i><b>16.6.1</b> 點線型態</a></li>
-<li class="chapter" data-level="16.6.2" data-path="visualization-1.html"><a href="visualization-1.html#line-types"><i class="fa fa-check"></i><b>16.6.2</b> Line Types</a></li>
-<li class="chapter" data-level="16.6.3" data-path="visualization-1.html"><a href="visualization-1.html#標題標籤與圖說"><i class="fa fa-check"></i><b>16.6.3</b> 標題、標籤與圖說</a></li>
-<li class="chapter" data-level="16.6.4" data-path="visualization-1.html"><a href="visualization-1.html#字體樣式"><i class="fa fa-check"></i><b>16.6.4</b> 字體樣式</a></li>
-<li class="chapter" data-level="16.6.5" data-path="visualization-1.html"><a href="visualization-1.html#圖表主題色調"><i class="fa fa-check"></i><b>16.6.5</b> 圖表主題色調</a></li>
-<li class="chapter" data-level="16.6.6" data-path="visualization-1.html"><a href="visualization-1.html#預設主題"><i class="fa fa-check"></i><b>16.6.6</b> 預設主題</a></li>
-<li class="chapter" data-level="16.6.7" data-path="visualization-1.html"><a href="visualization-1.html#顯示中文字體"><i class="fa fa-check"></i><b>16.6.7</b> 顯示中文字體</a></li>
-<li class="chapter" data-level="16.6.8" data-path="visualization-1.html"><a href="visualization-1.html#xy軸方向"><i class="fa fa-check"></i><b>16.6.8</b> X/Y軸方向</a></li>
+<li class="chapter" data-level="17.6.1" data-path="visualization-1.html"><a href="visualization-1.html#點線型態"><i class="fa fa-check"></i><b>17.6.1</b> 點線型態</a></li>
+<li class="chapter" data-level="17.6.2" data-path="visualization-1.html"><a href="visualization-1.html#line-types"><i class="fa fa-check"></i><b>17.6.2</b> Line Types</a></li>
+<li class="chapter" data-level="17.6.3" data-path="visualization-1.html"><a href="visualization-1.html#標題標籤與圖說"><i class="fa fa-check"></i><b>17.6.3</b> 標題、標籤與圖說</a></li>
+<li class="chapter" data-level="17.6.4" data-path="visualization-1.html"><a href="visualization-1.html#字體樣式"><i class="fa fa-check"></i><b>17.6.4</b> 字體樣式</a></li>
+<li class="chapter" data-level="17.6.5" data-path="visualization-1.html"><a href="visualization-1.html#圖表主題色調"><i class="fa fa-check"></i><b>17.6.5</b> 圖表主題色調</a></li>
+<li class="chapter" data-level="17.6.6" data-path="visualization-1.html"><a href="visualization-1.html#預設主題"><i class="fa fa-check"></i><b>17.6.6</b> 預設主題</a></li>
+<li class="chapter" data-level="17.6.7" data-path="visualization-1.html"><a href="visualization-1.html#顯示中文字體"><i class="fa fa-check"></i><b>17.6.7</b> 顯示中文字體</a></li>
+<li class="chapter" data-level="17.6.8" data-path="visualization-1.html"><a href="visualization-1.html#xy軸方向"><i class="fa fa-check"></i><b>17.6.8</b> X/Y軸方向</a></li>
 </ul></li>
-<li class="chapter" data-level="16.7" data-path="visualization-1.html"><a href="visualization-1.html#highlighting-storytelling"><i class="fa fa-check"></i><b>16.7</b> Highlighting &amp; Storytelling</a>
+<li class="chapter" data-level="17.7" data-path="visualization-1.html"><a href="visualization-1.html#highlighting-storytelling"><i class="fa fa-check"></i><b>17.7</b> Highlighting &amp; Storytelling</a>
 <ul>
-<li class="chapter" data-level="16.7.1" data-path="visualization-1.html"><a href="visualization-1.html#依群組指定顏色"><i class="fa fa-check"></i><b>16.7.1</b> 依群組指定顏色</a></li>
-<li class="chapter" data-level="16.7.2" data-path="visualization-1.html"><a href="visualization-1.html#使用gghighlight套件"><i class="fa fa-check"></i><b>16.7.2</b> 使用gghighlight套件</a></li>
-<li class="chapter" data-level="16.7.3" data-path="visualization-1.html"><a href="visualization-1.html#為視覺化建立群組"><i class="fa fa-check"></i><b>16.7.3</b> 為視覺化建立群組</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>17</b> Coordinate</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="coordinate.html"><a href="coordinate.html#order-as-axis"><i class="fa fa-check"></i><b>17.1</b> Order as axis</a>
-<ul>
-<li class="chapter" data-level="17.1.1" data-path="coordinate.html"><a href="coordinate.html#section"><i class="fa fa-check"></i><b>17.1.1</b> </a></li>
-</ul></li>
-<li class="chapter" data-level="17.2" data-path="coordinate.html"><a href="coordinate.html#log-scale"><i class="fa fa-check"></i><b>17.2</b> Log-scale</a>
-<ul>
-<li class="chapter" data-level="17.2.1" data-path="coordinate.html"><a href="coordinate.html#nyt-population-growth"><i class="fa fa-check"></i><b>17.2.1</b> NYT: Population Growth</a></li>
-</ul></li>
-<li class="chapter" data-level="17.3" data-path="coordinate.html"><a href="coordinate.html#section-1"><i class="fa fa-check"></i><b>17.3</b> </a></li>
-<li class="chapter" data-level="17.4" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>17.4</b> Square-root scale</a></li>
-<li class="chapter" data-level="17.5" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>17.5</b> 座標軸從數值到增加值</a>
-<ul>
-<li class="chapter" data-level="17.5.1" data-path="coordinate.html"><a href="coordinate.html#nyt-net-worth-by-age-group"><i class="fa fa-check"></i><b>17.5.1</b> NYT: Net Worth by Age Group</a></li>
-<li class="chapter" data-level="17.5.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>17.5.2</b> Read and sort data</a></li>
-</ul></li>
-<li class="chapter" data-level="17.6" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>17.6</b> 等比例座標軸</a>
-<ul>
-<li class="chapter" data-level="17.6.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>17.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="17.7.1" data-path="visualization-1.html"><a href="visualization-1.html#依群組指定顏色"><i class="fa fa-check"></i><b>17.7.1</b> 依群組指定顏色</a></li>
+<li class="chapter" data-level="17.7.2" data-path="visualization-1.html"><a href="visualization-1.html#使用gghighlight套件"><i class="fa fa-check"></i><b>17.7.2</b> 使用gghighlight套件</a></li>
+<li class="chapter" data-level="17.7.3" data-path="visualization-1.html"><a href="visualization-1.html#為視覺化建立群組"><i class="fa fa-check"></i><b>17.7.3</b> 為視覺化建立群組</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>18</b> AMOUNT</a>
+<li class="chapter" data-level="18" data-path="coordinate.html"><a href="coordinate.html"><i class="fa fa-check"></i><b>18</b> Coordinate</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="amount.html"><a href="amount.html#bar-chart"><i class="fa fa-check"></i><b>18.1</b> Bar chart</a></li>
-<li class="chapter" data-level="18.2" data-path="amount.html"><a href="amount.html#heatmap-vaccination"><i class="fa fa-check"></i><b>18.2</b> Heatmap: Vaccination</a>
+<li class="chapter" data-level="18.1" data-path="coordinate.html"><a href="coordinate.html#order-as-axis"><i class="fa fa-check"></i><b>18.1</b> Order as axis</a>
 <ul>
-<li class="chapter" data-level="18.2.1" data-path="amount.html"><a href="amount.html#the-case-vaccinating-coverage-by-month"><i class="fa fa-check"></i><b>18.2.1</b> The case: Vaccinating coverage by month</a></li>
-<li class="chapter" data-level="18.2.2" data-path="amount.html"><a href="amount.html#data-cleaning"><i class="fa fa-check"></i><b>18.2.2</b> Data cleaning</a></li>
-<li class="chapter" data-level="18.2.3" data-path="amount.html"><a href="amount.html#visualization-2"><i class="fa fa-check"></i><b>18.2.3</b> Visualization</a></li>
+<li class="chapter" data-level="18.1.1" data-path="coordinate.html"><a href="coordinate.html#section"><i class="fa fa-check"></i><b>18.1.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="coordinate.html"><a href="coordinate.html#log-scale"><i class="fa fa-check"></i><b>18.2</b> Log-scale</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="coordinate.html"><a href="coordinate.html#nyt-population-growth"><i class="fa fa-check"></i><b>18.2.1</b> NYT: Population Growth</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="coordinate.html"><a href="coordinate.html#section-1"><i class="fa fa-check"></i><b>18.3</b> </a></li>
+<li class="chapter" data-level="18.4" data-path="coordinate.html"><a href="coordinate.html#square-root-scale"><i class="fa fa-check"></i><b>18.4</b> Square-root scale</a></li>
+<li class="chapter" data-level="18.5" data-path="coordinate.html"><a href="coordinate.html#座標軸從數值到增加值"><i class="fa fa-check"></i><b>18.5</b> 座標軸從數值到增加值</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="coordinate.html"><a href="coordinate.html#nyt-net-worth-by-age-group"><i class="fa fa-check"></i><b>18.5.1</b> NYT: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="18.5.2" data-path="coordinate.html"><a href="coordinate.html#read-and-sort-data"><i class="fa fa-check"></i><b>18.5.2</b> Read and sort data</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="coordinate.html"><a href="coordinate.html#等比例座標軸"><i class="fa fa-check"></i><b>18.6</b> 等比例座標軸</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="coordinate.html"><a href="coordinate.html#unicef-optimistic-wgoith"><i class="fa fa-check"></i><b>18.6.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>19</b> DISTRIBUTION: Histogram &amp; Density</a>
+<li class="chapter" data-level="19" data-path="amount.html"><a href="amount.html"><i class="fa fa-check"></i><b>19</b> AMOUNT</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-plot"><i class="fa fa-check"></i><b>19.1</b> Density plot</a>
+<li class="chapter" data-level="19.1" data-path="amount.html"><a href="amount.html#bar-chart"><i class="fa fa-check"></i><b>19.1</b> Bar chart</a></li>
+<li class="chapter" data-level="19.2" data-path="amount.html"><a href="amount.html#heatmap-vaccination"><i class="fa fa-check"></i><b>19.2</b> Heatmap: Vaccination</a>
 <ul>
-<li class="chapter" data-level="19.1.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>19.1.1</b> Density with different bandwidth</a></li>
-</ul></li>
-<li class="chapter" data-level="19.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram"><i class="fa fa-check"></i><b>19.2</b> Histogram</a>
-<ul>
-<li class="chapter" data-level="19.2.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>19.2.1</b> Histogram with different number of bins</a></li>
-<li class="chapter" data-level="19.2.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-vs-histogram"><i class="fa fa-check"></i><b>19.2.2</b> Density vs histogram</a></li>
-<li class="chapter" data-level="19.2.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>19.2.3</b> Positions of bar chart</a></li>
-<li class="chapter" data-level="19.2.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>19.2.4</b> Display two groups histogram by facet_wrap()</a></li>
-</ul></li>
-<li class="chapter" data-level="19.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#pyramid-plot"><i class="fa fa-check"></i><b>19.3</b> Pyramid Plot</a>
-<ul>
-<li class="chapter" data-level="19.3.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>19.3.1</b> Modify geom_col() to pyramid plot</a></li>
-</ul></li>
-<li class="chapter" data-level="19.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#box-plot-muitiple-distrubution"><i class="fa fa-check"></i><b>19.4</b> Box plot: Muitiple Distrubution</a>
-<ul>
-<li class="chapter" data-level="19.4.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>19.4.1</b> TW-Salary (boxplot)</a></li>
-<li class="chapter" data-level="19.4.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-income-boxplot"><i class="fa fa-check"></i><b>19.4.2</b> TW-Income (boxplot)</a></li>
+<li class="chapter" data-level="19.2.1" data-path="amount.html"><a href="amount.html#the-case-vaccinating-coverage-by-month"><i class="fa fa-check"></i><b>19.2.1</b> The case: Vaccinating coverage by month</a></li>
+<li class="chapter" data-level="19.2.2" data-path="amount.html"><a href="amount.html#data-cleaning"><i class="fa fa-check"></i><b>19.2.2</b> Data cleaning</a></li>
+<li class="chapter" data-level="19.2.3" data-path="amount.html"><a href="amount.html#visualization-2"><i class="fa fa-check"></i><b>19.2.3</b> Visualization</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>20</b> PROPORTION</a>
+<li class="chapter" data-level="20" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html"><i class="fa fa-check"></i><b>20</b> DISTRIBUTION: Histogram &amp; Density</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="proportion.html"><a href="proportion.html#pie-chart"><i class="fa fa-check"></i><b>20.1</b> Pie Chart</a></li>
-<li class="chapter" data-level="20.2" data-path="proportion.html"><a href="proportion.html#dodged-bar-chart"><i class="fa fa-check"></i><b>20.2</b> Dodged Bar Chart</a></li>
-<li class="chapter" data-level="20.3" data-path="proportion.html"><a href="proportion.html#treemap-nested-proportion"><i class="fa fa-check"></i><b>20.3</b> Treemap: Nested Proportion</a>
+<li class="chapter" data-level="20.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-plot"><i class="fa fa-check"></i><b>20.1</b> Density plot</a>
 <ul>
-<li class="chapter" data-level="20.3.1" data-path="proportion.html"><a href="proportion.html#nyt-carbon-by-countries"><i class="fa fa-check"></i><b>20.3.1</b> NYT: Carbon by countries</a></li>
-<li class="chapter" data-level="20.3.2" data-path="proportion.html"><a href="proportion.html#tw-taiwan-annual-expenditure"><i class="fa fa-check"></i><b>20.3.2</b> TW: Taiwan Annual Expenditure</a></li>
+<li class="chapter" data-level="20.1.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-with-different-bandwidth"><i class="fa fa-check"></i><b>20.1.1</b> Density with different bandwidth</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram"><i class="fa fa-check"></i><b>20.2</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#histogram-with-different-number-of-bins"><i class="fa fa-check"></i><b>20.2.1</b> Histogram with different number of bins</a></li>
+<li class="chapter" data-level="20.2.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#density-vs-histogram"><i class="fa fa-check"></i><b>20.2.2</b> Density vs histogram</a></li>
+<li class="chapter" data-level="20.2.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#positions-of-bar-chart"><i class="fa fa-check"></i><b>20.2.3</b> Positions of bar chart</a></li>
+<li class="chapter" data-level="20.2.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#display-two-groups-histogram-by-facet_wrap"><i class="fa fa-check"></i><b>20.2.4</b> Display two groups histogram by facet_wrap()</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#pyramid-plot"><i class="fa fa-check"></i><b>20.3</b> Pyramid Plot</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#modify-geom_col-to-pyramid-plot"><i class="fa fa-check"></i><b>20.3.1</b> Modify geom_col() to pyramid plot</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#box-plot-muitiple-distrubution"><i class="fa fa-check"></i><b>20.4</b> Box plot: Muitiple Distrubution</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-salary-boxplot"><i class="fa fa-check"></i><b>20.4.1</b> TW-Salary (boxplot)</a></li>
+<li class="chapter" data-level="20.4.2" data-path="distribution-histogram-density.html"><a href="distribution-histogram-density.html#tw-income-boxplot"><i class="fa fa-check"></i><b>20.4.2</b> TW-Income (boxplot)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>21</b> ASSOCIATION</a>
+<li class="chapter" data-level="21" data-path="proportion.html"><a href="proportion.html"><i class="fa fa-check"></i><b>21</b> PROPORTION</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="association.html"><a href="association.html#等比例座標軸-1"><i class="fa fa-check"></i><b>21.1</b> 等比例座標軸</a>
+<li class="chapter" data-level="21.1" data-path="proportion.html"><a href="proportion.html#pie-chart"><i class="fa fa-check"></i><b>21.1</b> Pie Chart</a></li>
+<li class="chapter" data-level="21.2" data-path="proportion.html"><a href="proportion.html#dodged-bar-chart"><i class="fa fa-check"></i><b>21.2</b> Dodged Bar Chart</a></li>
+<li class="chapter" data-level="21.3" data-path="proportion.html"><a href="proportion.html#treemap-nested-proportion"><i class="fa fa-check"></i><b>21.3</b> Treemap: Nested Proportion</a>
 <ul>
-<li class="chapter" data-level="21.1.1" data-path="association.html"><a href="association.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>21.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
+<li class="chapter" data-level="21.3.1" data-path="proportion.html"><a href="proportion.html#nyt-carbon-by-countries"><i class="fa fa-check"></i><b>21.3.1</b> NYT: Carbon by countries</a></li>
+<li class="chapter" data-level="21.3.2" data-path="proportion.html"><a href="proportion.html#tw-taiwan-annual-expenditure"><i class="fa fa-check"></i><b>21.3.2</b> TW: Taiwan Annual Expenditure</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>22</b> TIME &amp; TRENDS</a>
+<li class="chapter" data-level="22" data-path="association.html"><a href="association.html"><i class="fa fa-check"></i><b>22</b> ASSOCIATION</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="time-trends.html"><a href="time-trends.html#highlighting-unemployed-population"><i class="fa fa-check"></i><b>22.1</b> Highlighting: Unemployed Population</a>
+<li class="chapter" data-level="22.1" data-path="association.html"><a href="association.html#等比例座標軸-1"><i class="fa fa-check"></i><b>22.1</b> 等比例座標軸</a>
 <ul>
-<li class="chapter" data-level="22.1.1" data-path="time-trends.html"><a href="time-trends.html#the-econimics-data"><i class="fa fa-check"></i><b>22.1.1</b> The econimics data</a></li>
-<li class="chapter" data-level="22.1.2" data-path="time-trends.html"><a href="time-trends.html#setting-marking-area"><i class="fa fa-check"></i><b>22.1.2</b> Setting marking area</a></li>
-</ul></li>
-<li class="chapter" data-level="22.2" data-path="time-trends.html"><a href="time-trends.html#smoothing-unemployed"><i class="fa fa-check"></i><b>22.2</b> Smoothing: Unemployed</a>
-<ul>
-<li class="chapter" data-level="22.2.1" data-path="time-trends.html"><a href="time-trends.html#polls_2008"><i class="fa fa-check"></i><b>22.2.1</b> Polls_2008</a></li>
+<li class="chapter" data-level="22.1.1" data-path="association.html"><a href="association.html#unicef-optimistic-wgoith-1"><i class="fa fa-check"></i><b>22.1.1</b> UNICEF-Optimistic (WGOITH)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="network-vis.html"><a href="network-vis.html"><i class="fa fa-check"></i><b>23</b> NETWORK VIS</a>
+<li class="chapter" data-level="23" data-path="time-trends.html"><a href="time-trends.html"><i class="fa fa-check"></i><b>23</b> TIME &amp; TRENDS</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="network-vis.html"><a href="network-vis.html#generating-networks"><i class="fa fa-check"></i><b>23.1</b> Generating networks</a>
+<li class="chapter" data-level="23.1" data-path="time-trends.html"><a href="time-trends.html#highlighting-unemployed-population"><i class="fa fa-check"></i><b>23.1</b> Highlighting: Unemployed Population</a>
 <ul>
-<li class="chapter" data-level="23.1.1" data-path="network-vis.html"><a href="network-vis.html#random-network"><i class="fa fa-check"></i><b>23.1.1</b> Random network</a></li>
-<li class="chapter" data-level="23.1.2" data-path="network-vis.html"><a href="network-vis.html#random-network-1"><i class="fa fa-check"></i><b>23.1.2</b> Random network</a></li>
+<li class="chapter" data-level="23.1.1" data-path="time-trends.html"><a href="time-trends.html#the-econimics-data"><i class="fa fa-check"></i><b>23.1.1</b> The econimics data</a></li>
+<li class="chapter" data-level="23.1.2" data-path="time-trends.html"><a href="time-trends.html#setting-marking-area"><i class="fa fa-check"></i><b>23.1.2</b> Setting marking area</a></li>
 </ul></li>
-<li class="chapter" data-level="23.2" data-path="network-vis.html"><a href="network-vis.html#retrieve-top3-components"><i class="fa fa-check"></i><b>23.2</b> Retrieve Top3 Components</a>
+<li class="chapter" data-level="23.2" data-path="time-trends.html"><a href="time-trends.html#smoothing-unemployed"><i class="fa fa-check"></i><b>23.2</b> Smoothing: Unemployed</a>
 <ul>
-<li class="chapter" data-level="23.2.1" data-path="network-vis.html"><a href="network-vis.html#visualize-again"><i class="fa fa-check"></i><b>23.2.1</b> Visualize again</a></li>
-</ul></li>
-<li class="chapter" data-level="23.3" data-path="network-vis.html"><a href="network-vis.html#motif-visualization-and-analysis"><i class="fa fa-check"></i><b>23.3</b> Motif visualization and analysis</a>
-<ul>
-<li class="chapter" data-level="23.3.1" data-path="network-vis.html"><a href="network-vis.html#motif-type"><i class="fa fa-check"></i><b>23.3.1</b> Motif type</a></li>
-<li class="chapter" data-level="23.3.2" data-path="network-vis.html"><a href="network-vis.html#motif-analysis"><i class="fa fa-check"></i><b>23.3.2</b> Motif analysis</a></li>
-<li class="chapter" data-level="23.3.3" data-path="network-vis.html"><a href="network-vis.html#generate-motives"><i class="fa fa-check"></i><b>23.3.3</b> Generate motives</a></li>
+<li class="chapter" data-level="23.2.1" data-path="time-trends.html"><a href="time-trends.html#polls_2008"><i class="fa fa-check"></i><b>23.2.1</b> Polls_2008</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>24</b> GEOSPATIAL</a></li>
-<li class="chapter" data-level="25" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>25</b> Interactivity</a>
+<li class="chapter" data-level="24" data-path="network-vis.html"><a href="network-vis.html"><i class="fa fa-check"></i><b>24</b> NETWORK VIS</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="interactivity.html"><a href="interactivity.html#ggplotly"><i class="fa fa-check"></i><b>25.1</b> ggplotly</a>
+<li class="chapter" data-level="24.1" data-path="network-vis.html"><a href="network-vis.html#generating-networks"><i class="fa fa-check"></i><b>24.1</b> Generating networks</a>
 <ul>
-<li class="chapter" data-level="25.1.1" data-path="interactivity.html"><a href="interactivity.html#line-chart"><i class="fa fa-check"></i><b>25.1.1</b> LINE CHART</a></li>
-<li class="chapter" data-level="25.1.2" data-path="interactivity.html"><a href="interactivity.html#scatter"><i class="fa fa-check"></i><b>25.1.2</b> SCATTER</a></li>
-<li class="chapter" data-level="25.1.3" data-path="interactivity.html"><a href="interactivity.html#barplot"><i class="fa fa-check"></i><b>25.1.3</b> Barplot</a></li>
-<li class="chapter" data-level="25.1.4" data-path="interactivity.html"><a href="interactivity.html#boxplot"><i class="fa fa-check"></i><b>25.1.4</b> Boxplot</a></li>
-<li class="chapter" data-level="25.1.5" data-path="interactivity.html"><a href="interactivity.html#treemap-global-carbon"><i class="fa fa-check"></i><b>25.1.5</b> Treemap (Global Carbon)</a></li>
+<li class="chapter" data-level="24.1.1" data-path="network-vis.html"><a href="network-vis.html#random-network"><i class="fa fa-check"></i><b>24.1.1</b> Random network</a></li>
+<li class="chapter" data-level="24.1.2" data-path="network-vis.html"><a href="network-vis.html#random-network-1"><i class="fa fa-check"></i><b>24.1.2</b> Random network</a></li>
 </ul></li>
-<li class="chapter" data-level="25.2" data-path="interactivity.html"><a href="interactivity.html#產製圖表動畫"><i class="fa fa-check"></i><b>25.2</b> 產製圖表動畫</a>
+<li class="chapter" data-level="24.2" data-path="network-vis.html"><a href="network-vis.html#retrieve-top3-components"><i class="fa fa-check"></i><b>24.2</b> Retrieve Top3 Components</a>
 <ul>
-<li class="chapter" data-level="25.2.1" data-path="interactivity.html"><a href="interactivity.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>25.2.1</b> 地圖下載與轉換投影方法</a></li>
-<li class="chapter" data-level="25.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>25.2.2</b> 靜態繪圖測試</a></li>
+<li class="chapter" data-level="24.2.1" data-path="network-vis.html"><a href="network-vis.html#visualize-again"><i class="fa fa-check"></i><b>24.2.1</b> Visualize again</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="network-vis.html"><a href="network-vis.html#motif-visualization-and-analysis"><i class="fa fa-check"></i><b>24.3</b> Motif visualization and analysis</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="network-vis.html"><a href="network-vis.html#motif-type"><i class="fa fa-check"></i><b>24.3.1</b> Motif type</a></li>
+<li class="chapter" data-level="24.3.2" data-path="network-vis.html"><a href="network-vis.html#motif-analysis"><i class="fa fa-check"></i><b>24.3.2</b> Motif analysis</a></li>
+<li class="chapter" data-level="24.3.3" data-path="network-vis.html"><a href="network-vis.html#generate-motives"><i class="fa fa-check"></i><b>24.3.3</b> Generate motives</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>25</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="26" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>26</b> Interactivity</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="interactivity.html"><a href="interactivity.html#ggplotly"><i class="fa fa-check"></i><b>26.1</b> ggplotly</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="interactivity.html"><a href="interactivity.html#line-chart"><i class="fa fa-check"></i><b>26.1.1</b> LINE CHART</a></li>
+<li class="chapter" data-level="26.1.2" data-path="interactivity.html"><a href="interactivity.html#scatter"><i class="fa fa-check"></i><b>26.1.2</b> SCATTER</a></li>
+<li class="chapter" data-level="26.1.3" data-path="interactivity.html"><a href="interactivity.html#barplot"><i class="fa fa-check"></i><b>26.1.3</b> Barplot</a></li>
+<li class="chapter" data-level="26.1.4" data-path="interactivity.html"><a href="interactivity.html#boxplot"><i class="fa fa-check"></i><b>26.1.4</b> Boxplot</a></li>
+<li class="chapter" data-level="26.1.5" data-path="interactivity.html"><a href="interactivity.html#treemap-global-carbon"><i class="fa fa-check"></i><b>26.1.5</b> Treemap (Global Carbon)</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="interactivity.html"><a href="interactivity.html#產製圖表動畫"><i class="fa fa-check"></i><b>26.2</b> 產製圖表動畫</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="interactivity.html"><a href="interactivity.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>26.2.1</b> 地圖下載與轉換投影方法</a></li>
+<li class="chapter" data-level="26.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>26.2.2</b> 靜態繪圖測試</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VI CASE STUDIES</b></span></li>
-<li class="chapter" data-level="26" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>26</b> WGOITG of NyTimes</a></li>
-<li class="chapter" data-level="27" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>27</b> Inequality: Net Worth by Age Group</a></li>
-<li class="chapter" data-level="28" data-path="optimism-survey-by-countries.html"><a href="optimism-survey-by-countries.html"><i class="fa fa-check"></i><b>28</b> Optimism Survey by Countries</a></li>
-<li class="chapter" data-level="29" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>29</b> Case Studies (Taiwan)</a>
+<li class="chapter" data-level="27" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>27</b> WGOITG of NyTimes</a></li>
+<li class="chapter" data-level="28" data-path="inequality-net-worth-by-age-group.html"><a href="inequality-net-worth-by-age-group.html"><i class="fa fa-check"></i><b>28</b> Inequality: Net Worth by Age Group</a></li>
+<li class="chapter" data-level="29" data-path="optimism-survey-by-countries.html"><a href="optimism-survey-by-countries.html"><i class="fa fa-check"></i><b>29</b> Optimism Survey by Countries</a></li>
+<li class="chapter" data-level="30" data-path="taiwan.html"><a href="taiwan.html"><i class="fa fa-check"></i><b>30</b> Case Studies (Taiwan)</a>
 <ul>
-<li class="chapter" data-level="29.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>29.1</b> TW AQI Visual Studies</a>
+<li class="chapter" data-level="30.1" data-path="taiwan.html"><a href="taiwan.html#tw-aqi-visual-studies"><i class="fa fa-check"></i><b>30.1</b> TW AQI Visual Studies</a>
 <ul>
-<li class="chapter" data-level="29.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>29.1.1</b> eda-load-data-from-github</a></li>
-<li class="chapter" data-level="29.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>29.1.2</b> Trending: Central tendency</a></li>
-<li class="chapter" data-level="29.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>29.1.3</b> Trending: Extreme value</a></li>
+<li class="chapter" data-level="30.1.1" data-path="taiwan.html"><a href="taiwan.html#eda-load-data-from-github"><i class="fa fa-check"></i><b>30.1.1</b> eda-load-data-from-github</a></li>
+<li class="chapter" data-level="30.1.2" data-path="taiwan.html"><a href="taiwan.html#trending-central-tendency"><i class="fa fa-check"></i><b>30.1.2</b> Trending: Central tendency</a></li>
+<li class="chapter" data-level="30.1.3" data-path="taiwan.html"><a href="taiwan.html#trending-extreme-value"><i class="fa fa-check"></i><b>30.1.3</b> Trending: Extreme value</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="30" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>30</b> Appendix</a>
+<li class="chapter" data-level="31" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>31</b> Appendix</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>30.1</b> Dataset</a></li>
+<li class="chapter" data-level="31.1" data-path="appendix.html"><a href="appendix.html#dataset"><i class="fa fa-check"></i><b>31.1</b> Dataset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -603,13 +615,13 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lebron" class="section level1 hasAnchor" number="15">
-<h1><span class="header-section-number">Chapter 15</span> NYT: LeBron James Achievement<a href="lebron.html#lebron" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lebron" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">Chapter 16</span> NYT: LeBron James Achievement<a href="lebron.html#lebron" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>這個案例的靈感來自於紐約時報於2023年2月7日所發布的一篇新聞「<a href="https://www.nytimes.com/interactive/2023/02/07/sports/basketball/lebron-james-kareem-abdul-jabbar-points.html">How LeBron James Outscored Kareem Abdul-Jabbar and All the N.B.A. Greats</a>」。該篇新聞的破題點在於LeBron James 打破 Kareem Abdul-Jabbar 的紀錄，成為 NBA 歷史上得分王，這是許多人認為無法達成的成就。今年 38 歲的 James，本季平均每場比賽可以攻下 30.2 分，以 38,390 分超越了 Abdul-Jabbar 的 38,387 分。Abdul-Jabbar 以 sky hook 聞名，而 James 則透過多種得分方式積累分數，包括近年來在聯盟中日益盛行的三分球。James 的長壽、創意、天賦和能力讓他達成了這個成就。但實際上，這篇新聞同時也凸顯了 NBA 在過去50年的演變。</p>
 <p>這篇新聞中運用了<a href="https://www.basketball-reference.com/">NBA球員與球賽資料庫</a>中250名頂尖球員的資料來繪製視覺圖表，頂尖球員援引該網站的定義，為歷年的每場平均得分（PTS）。其用了折線圖、長條圖、散佈圖等多種視覺呈現方法，並採用了多項指標來凸顯LeBron James的成就，包含年齡、累積得分數、場均得分數、三分球與二分球的比例等。</p>
 <p>除了資料視覺化外，這個案例也是相當好的爬蟲練習，可用R語言的rvest套件來爬取<a href="https://www.basketball-reference.com/" class="uri">https://www.basketball-reference.com/</a>網站的球員資料，包含每個球季的比分，甚至著名球員每場的得分和進球數等等。該網站的網頁多為具有id的HTML表格，相對來說爬取難度較低，但如果要仿照該篇新聞來製作視覺圖表，需要爬取多個頁面的資料，反而是訓練學生從篩檢資料到產生新聞的一個好範例。</p>
-<div id="get-top250-players" class="section level2 hasAnchor" number="15.1">
-<h2><span class="header-section-number">15.1</span> Get top250 players<a href="lebron.html#get-top250-players" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="get-top250-players" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Get top250 players<a href="lebron.html#get-top250-players" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>事實上我是知道有NBA球員比分網站的，看到這則新聞時我就去線上查找了相關的網站<a href="https://www.basketball-reference.com" class="uri">https://www.basketball-reference.com</a>。而且該網站的球員資料是表格形式，代表我們可以用一些比較方便的函式（<code>html_table()</code>）直接將該表格的內容轉為data.frame。</p>
 <p>但目前（2023/04/01）的球員數共有五千多人，我們不可能將所有的球員通通繪製在圖上，反而會影響我們看到重要的訊息，因此要有效且有意義地減少要視覺化的資料量。這有幾種策略，一種是根據目的取出想要比較的球員、一種是直接設一個閥值（例如職涯超過15年的約90人），一種是看看該資料網站上有沒有列出一些頂尖球員名單。（猜想）紐約時報用的是該網站上的Top 250，因此第一個步驟要做的就是先把要分析的這250名球員的名冊爬取下來，之後再逐一爬取每個球員的資料紀錄。</p>
 <p>這段程式碼的目的是從網站 “<a href="https://www.basketball-reference.com%22">https://www.basketball-reference.com”</a> 中提取出排名前幾位的籃球員生涯表現數據，以及每個球員的個人資料頁面連結。Top 250球員的頁面網址為<a href="https://www.basketball-reference.com/leaders/per_career.html" class="uri">https://www.basketball-reference.com/leaders/per_career.html</a>。</p>
@@ -641,18 +653,18 @@ div.csl-indent {
 <span id="cb487-13"><a href="lebron.html#cb487-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb487-14"><a href="lebron.html#cb487-14" aria-hidden="true" tabindex="-1"></a>top_players</span></code></pre></div>
 </div>
-<div id="scraping-live-scores" class="section level2 hasAnchor" number="15.2">
-<h2><span class="header-section-number">15.2</span> Scraping live scores<a href="lebron.html#scraping-live-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="testing" class="section level3 hasAnchor" number="15.2.1">
-<h3><span class="header-section-number">15.2.1</span> Testing<a href="lebron.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="scraping-live-scores" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Scraping live scores<a href="lebron.html#scraping-live-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="testing" class="section level3 hasAnchor" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Testing<a href="lebron.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="lebron.html#cb488-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/c/chambto01.html&quot;</span></span>
 <span id="cb488-2"><a href="lebron.html#cb488-2" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
 <span id="cb488-3"><a href="lebron.html#cb488-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#per_game&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb488-4"><a href="lebron.html#cb488-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>(<span class="at">convert=</span>T)</span></code></pre></div>
 </div>
 </div>
-<div id="scrape-life-time-scores" class="section level2 hasAnchor" number="15.3">
-<h2><span class="header-section-number">15.3</span> Scrape life time scores<a href="lebron.html#scrape-life-time-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="scrape-life-time-scores" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Scrape life time scores<a href="lebron.html#scrape-life-time-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="lebron.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pinks &lt;- long_players$plink</span></span>
 <span id="cb489-2"><a href="lebron.html#cb489-2" aria-hidden="true" tabindex="-1"></a>plinks <span class="ot">&lt;-</span> top_players<span class="sc">$</span>plink</span>
 <span id="cb489-3"><a href="lebron.html#cb489-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -670,8 +682,8 @@ div.csl-indent {
 <span id="cb489-15"><a href="lebron.html#cb489-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span>))</span>
 <span id="cb489-16"><a href="lebron.html#cb489-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="cleaning-data-1" class="section level2 hasAnchor" number="15.4">
-<h2><span class="header-section-number">15.4</span> Cleaning data<a href="lebron.html#cleaning-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cleaning-data-1" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Cleaning data<a href="lebron.html#cleaning-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="lebron.html#cb490-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="ot">&lt;-</span> totals <span class="sc">%&gt;%</span></span>
 <span id="cb490-2"><a href="lebron.html#cb490-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(Season, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb490-3"><a href="lebron.html#cb490-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(top_players, <span class="at">by=</span><span class="st">&quot;plink&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -684,11 +696,11 @@ div.csl-indent {
 <span id="cb490-10"><a href="lebron.html#cb490-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cumPTS =</span> <span class="fu">cumsum</span>(PTS)) <span class="sc">%&gt;%</span></span>
 <span id="cb490-11"><a href="lebron.html#cb490-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
 </div>
-<div id="visualization" class="section level2 hasAnchor" number="15.5">
-<h2><span class="header-section-number">15.5</span> Visualization<a href="lebron.html#visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="visualization" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> Visualization<a href="lebron.html#visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="lebron.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/nba_players.rda&quot;</span>)</span></code></pre></div>
-<div id="line-age-x-cumpts" class="section level3 hasAnchor" number="15.5.1">
-<h3><span class="header-section-number">15.5.1</span> Line: Age x cumPTS<a href="lebron.html#line-age-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="line-age-x-cumpts" class="section level3 hasAnchor" number="16.5.1">
+<h3><span class="header-section-number">16.5.1</span> Line: Age x cumPTS<a href="lebron.html#line-age-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="lebron.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
 <span id="cb492-2"><a href="lebron.html#cb492-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb492-3"><a href="lebron.html#cb492-3" aria-hidden="true" tabindex="-1"></a>selected_players <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Michael Jordan*&quot;</span>, <span class="st">&quot;LeBron James&quot;</span>, <span class="st">&quot;Kobe Bryant*&quot;</span>,</span>
@@ -701,10 +713,10 @@ div.csl-indent {
 <span id="cb492-10"><a href="lebron.html#cb492-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
 <span id="cb492-11"><a href="lebron.html#cb492-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb492-12"><a href="lebron.html#cb492-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="R43_Scrape_nba_players_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="R44_Scrape_nba_players_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="line-year-x-cumpts" class="section level3 hasAnchor" number="15.5.2">
-<h3><span class="header-section-number">15.5.2</span> Line: year x cumPTS<a href="lebron.html#line-year-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="line-year-x-cumpts" class="section level3 hasAnchor" number="16.5.2">
+<h3><span class="header-section-number">16.5.2</span> Line: year x cumPTS<a href="lebron.html#line-year-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="lebron.html#cb493-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
 <span id="cb493-2"><a href="lebron.html#cb493-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb493-3"><a href="lebron.html#cb493-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year, cumPTS, <span class="at">group=</span>Player) <span class="sc">+</span></span>
@@ -712,10 +724,10 @@ div.csl-indent {
 <span id="cb493-5"><a href="lebron.html#cb493-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
 <span id="cb493-6"><a href="lebron.html#cb493-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb493-7"><a href="lebron.html#cb493-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="R43_Scrape_nba_players_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="R44_Scrape_nba_players_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="line-age-x-per_by_year" class="section level3 hasAnchor" number="15.5.3">
-<h3><span class="header-section-number">15.5.3</span> Line: Age x PER_by_year<a href="lebron.html#line-age-x-per_by_year" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="line-age-x-per_by_year" class="section level3 hasAnchor" number="16.5.3">
+<h3><span class="header-section-number">16.5.3</span> Line: Age x PER_by_year<a href="lebron.html#line-age-x-per_by_year" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="lebron.html#cb494-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
 <span id="cb494-2"><a href="lebron.html#cb494-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb494-3"><a href="lebron.html#cb494-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(Age, PERyear, <span class="at">group=</span>Player) <span class="sc">+</span></span>
@@ -723,14 +735,14 @@ div.csl-indent {
 <span id="cb494-5"><a href="lebron.html#cb494-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
 <span id="cb494-6"><a href="lebron.html#cb494-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb494-7"><a href="lebron.html#cb494-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="R43_Scrape_nba_players_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="R44_Scrape_nba_players_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="comparing-lebron-james-and-jabbar" class="section level3 hasAnchor" number="15.5.4">
-<h3><span class="header-section-number">15.5.4</span> Comparing LeBron James and Jabbar<a href="lebron.html#comparing-lebron-james-and-jabbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="comparing-lebron-james-and-jabbar" class="section level3 hasAnchor" number="16.5.4">
+<h3><span class="header-section-number">16.5.4</span> Comparing LeBron James and Jabbar<a href="lebron.html#comparing-lebron-james-and-jabbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
-<div id="scraping-and-cleaning" class="section level2 hasAnchor" number="15.6">
-<h2><span class="header-section-number">15.6</span> Scraping and cleaning<a href="lebron.html#scraping-and-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="scraping-and-cleaning" class="section level2 hasAnchor" number="16.6">
+<h2><span class="header-section-number">16.6</span> Scraping and cleaning<a href="lebron.html#scraping-and-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="lebron.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plink &lt;- &quot;https://www.basketball-reference.com/players/j/jamesle01.html&quot;</span></span>
 <span id="cb495-2"><a href="lebron.html#cb495-2" aria-hidden="true" tabindex="-1"></a>plink <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/a/abdulka01.html&quot;</span></span>
 <span id="cb495-3"><a href="lebron.html#cb495-3" aria-hidden="true" tabindex="-1"></a>loglinks <span class="ot">&lt;-</span> <span class="fu">read_html</span>(plink) <span class="sc">%&gt;%</span> </span>
@@ -764,8 +776,8 @@ div.csl-indent {
 <span id="cb495-31"><a href="lebron.html#cb495-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">P3perc =</span> <span class="st">`</span><span class="at">3P</span><span class="st">`</span><span class="sc">/</span>try,</span>
 <span id="cb495-32"><a href="lebron.html#cb495-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">FTperc =</span> FT<span class="sc">/</span>try) <span class="sc">%&gt;%</span></span>
 <span id="cb495-33"><a href="lebron.html#cb495-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gid =</span> <span class="fu">row_number</span>())</span></code></pre></div>
-<div id="vis-ljames-and-jabbar" class="section level3 hasAnchor" number="15.6.1">
-<h3><span class="header-section-number">15.6.1</span> VIS LJames and jabbar<a href="lebron.html#vis-ljames-and-jabbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="vis-ljames-and-jabbar" class="section level3 hasAnchor" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> VIS LJames and jabbar<a href="lebron.html#vis-ljames-and-jabbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="lebron.html#cb496-1" aria-hidden="true" tabindex="-1"></a>james.log <span class="sc">%&gt;%</span></span>
 <span id="cb496-2"><a href="lebron.html#cb496-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
 <span id="cb496-3"><a href="lebron.html#cb496-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
@@ -774,7 +786,7 @@ div.csl-indent {
 <span id="cb496-6"><a href="lebron.html#cb496-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
 <span id="cb496-7"><a href="lebron.html#cb496-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
 <span id="cb496-8"><a href="lebron.html#cb496-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="R43_Scrape_nba_players_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="R44_Scrape_nba_players_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="lebron.html#cb497-1" aria-hidden="true" tabindex="-1"></a>jabbar.log <span class="sc">%&gt;%</span></span>
 <span id="cb497-2"><a href="lebron.html#cb497-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
 <span id="cb497-3"><a href="lebron.html#cb497-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
@@ -783,7 +795,7 @@ div.csl-indent {
 <span id="cb497-6"><a href="lebron.html#cb497-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
 <span id="cb497-7"><a href="lebron.html#cb497-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
 <span id="cb497-8"><a href="lebron.html#cb497-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="R43_Scrape_nba_players_files/figure-html/unnamed-chunk-12-2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="R44_Scrape_nba_players_files/figure-html/unnamed-chunk-12-2.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="lebron.html#cb498-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
 <span id="cb498-2"><a href="lebron.html#cb498-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Player) <span class="sc">%&gt;%</span></span>
 <span id="cb498-3"><a href="lebron.html#cb498-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">FGsum =</span> <span class="fu">sum</span>(FG),</span>
@@ -802,15 +814,15 @@ div.csl-indent {
 <span id="cb498-16"><a href="lebron.html#cb498-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span> </span>
 <span id="cb498-17"><a href="lebron.html#cb498-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb498-18"><a href="lebron.html#cb498-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="R43_Scrape_nba_players_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="R44_Scrape_nba_players_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="lebron.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(jabbar.log, james.log, top_players, top250, totals, </span>
 <span id="cb499-2"><a href="lebron.html#cb499-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">file=</span><span class="st">&quot;../data/nba_players.rda&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="more-scraping-all-players" class="section level2 hasAnchor" number="15.7">
-<h2><span class="header-section-number">15.7</span> (More) Scraping all players<a href="lebron.html#more-scraping-all-players" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="testing-1" class="section level3 hasAnchor" number="15.7.1">
-<h3><span class="header-section-number">15.7.1</span> Testing<a href="lebron.html#testing-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="more-scraping-all-players" class="section level2 hasAnchor" number="16.7">
+<h2><span class="header-section-number">16.7</span> (More) Scraping all players<a href="lebron.html#more-scraping-all-players" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="testing-1" class="section level3 hasAnchor" number="16.7.1">
+<h3><span class="header-section-number">16.7.1</span> Testing<a href="lebron.html#testing-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="lebron.html#cb500-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/x/&quot;</span></span>
 <span id="cb500-2"><a href="lebron.html#cb500-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb500-3"><a href="lebron.html#cb500-3" aria-hidden="true" tabindex="-1"></a>table.path <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
@@ -827,8 +839,8 @@ div.csl-indent {
 <span id="cb500-14"><a href="lebron.html#cb500-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb500-15"><a href="lebron.html#cb500-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com&quot;</span>,.)</span></code></pre></div>
 </div>
-<div id="scrape-from-a-z-except-xno-x" class="section level3 hasAnchor" number="15.7.2">
-<h3><span class="header-section-number">15.7.2</span> Scrape from a-z except x(no x)<a href="lebron.html#scrape-from-a-z-except-xno-x" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="scrape-from-a-z-except-xno-x" class="section level3 hasAnchor" number="16.7.2">
+<h3><span class="header-section-number">16.7.2</span> Scrape from a-z except x(no x)<a href="lebron.html#scrape-from-a-z-except-xno-x" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="lebron.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="co"># letters[c(1:23, 25:26)]</span></span>
 <span id="cb501-2"><a href="lebron.html#cb501-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb501-3"><a href="lebron.html#cb501-3" aria-hidden="true" tabindex="-1"></a>players <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
@@ -865,7 +877,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="scraping-104.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="html-parser.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="visualization-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -897,7 +909,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/R43_Scrape_nba_players.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R44_Scrape_nba_players.Rmd",
 "text": "Edit"
 },
 "history": {

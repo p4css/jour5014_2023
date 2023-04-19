@@ -45,7 +45,11 @@ all.df$jobNo %>% unique %>% length
 
 ### Get the first pages
 
-Must loading the second page
+這段程式碼是用於爬取104人力銀行網站上與「資料科學」相關的職缺資訊，並將其存儲到名為df2的Data.Frame中。首先，我們嘗試點選104人力銀行網站上的第1頁、第2頁和第3頁的職缺搜尋結果，並將這三個網址儲存為三個URL變量，應該不難觀察到，這三個網址有何差別？僅有`page=1`、`page=2`、`page=3`有所差別。接下來，我們使用R語言中的`httr`套件中的`GET()`函數，將URL作為參數傳入，從網站中獲取對應的數據，並使用`fromJSON()`函數將該JSON格式的內容轉換為R中的Data.Frame格式。下面程式在獲取第2頁數據時，使用了`add_headers()`函數設置了一個HTTP header，用於識別HTTP請求的來源。
+
+這段程式碼使用了`add_headers`函數添加了一個名為「`Referer`」的HTTP header。這個header的作用是告訴104人力銀行網站，訪問這個頁面的用戶是從哪個網頁轉跳過來的，也就是告訴網站當前HTTP請求的來源。具體來說，這裡設置的「Referer」值為[`https://www.104.com.tw/`](https://www.104.com.tw/)，代表我們偽裝這個請求是來自於104人力銀行首頁。如果沒有這個Referer，該網站會認為你是一個可疑的爬取，從沒根據和不當的頁面或用不當的方式（例如爬蟲）連過來。
+
+對的！人家網站不歡迎你爬它，所以我們應止於測試。
 
 
 ```r
