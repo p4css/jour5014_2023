@@ -295,7 +295,7 @@ cowplot::plot_grid(
 <p class="caption">(\#fig:Fig03-8-TW-Population-Density-2)(ref:population-area)</p>
 </div>
 
-## 座標軸從數值到增加值
+## Increasing percentage as Y
 
 ### NYT: Net Worth by Age Group
 
@@ -409,7 +409,7 @@ p2 %>% ggplot() + aes(year, increase, color = Category) +
 
 <img src="V04_Coordinate_System_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 
-## 等比例座標軸
+## X/Y aspect ratio
 
 ### UNICEF-Optimistic (WGOITH)
 
