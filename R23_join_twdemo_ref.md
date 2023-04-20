@@ -1,8 +1,8 @@
 
 
-# Data manipultaiton: Join data
+# Data manipultaiton: Join data {#joindata}
 
-## 讀取內政部人口統計資料
+## 讀取內政部人口統計資料 {#moi}
 
 先使用`slice(-1)`減去第一行中文欄位名稱。再來，目前縣市鄉鎮市區（`site_id`）和村里（`village`）分別是兩個變項，由於不同的鄉鎮市可能會有相同的村里名，所以把`site_id`與`village`粘接起來成為完整的村里名`vname`。
 
@@ -41,18 +41,21 @@ raw %>% head
 # raw %>% glimpse()
 ```
 
-### 分析規劃
+### 分析規劃 {#moi_plan}
 
 1.  建立各鄉鎮市區的老年人口比例
 2.  建立各鄉鎮市區的年齡中位數
 3.  讀取所有（某一）公投案的結果
 4.  視覺化年齡與公投結果間的相關性
 
-### 清理資料
+### 清理資料 {#moi_clean}
 
-我們之前在談資料的「觀察、統計、和二維表格」三種型態時，曾經談到統計型態和二維表格型態間的差異。當時所提到的「統計型態」，也就是每個變項欄恰好是我們所認知的單一變項（如每一個變項欄恰是人口統計變項的年齡、性別、教育程度、數量），會有助於進行統計分析，也就是tidy型態的資料。相較之下，上述的表格是把資料攤成二維的型態，每一個變項是某個年齡層的某種性別的某種婚姻狀況，包含了三個人口統計變項，是方便一般大眾讀的，但不是適合進行統計的tidy型態。 這類的資料tidyverse的相關套件把它稱為tidy form。遵守tidy form形式的資料是，每一個欄恰好一個變項。例如在內政部開放資料「15歲以上現住人口按性別、年齡、婚姻狀況及教育程度分」中，每個變數（年齡、婚姻狀況、教育程度、人口數等等）均各自為一個欄上的變項。
+我們之前在談資料的「觀察、統計、和二維表格」三種型態時，曾經談到統計型態和二維表格型態間的差異。當時所提到的「統計型態」，也就是每個變項欄恰好是我們所認知的單一變項（如每一個變項欄恰是人口統計變項的年齡、性別、教育程度、數量），會有助於進行統計分析，也就是tidy型態的資料。相較之下，上述的表格是把資料攤成二維的型態，每一個變項是某個年齡層的某種性別的某種婚姻狀況，包含了三個人口統計變項，是方便一般大眾讀的，但不是適合進行統計的tidy型態。
+這類的資料tidyverse的相關套件把它稱為tidy form。遵守tidy
+form形式的資料是，每一個欄恰好一個變項。例如在內政部開放資料「15歲以上現住人口按性別、年齡、婚姻狀況及教育程度分」中，每個變數（年齡、婚姻狀況、教育程度、人口數等等）均各自為一個欄上的變項。
 
--   [15歲以上現住人口按性別、年齡、婚姻狀況及教育程度分 \| 政府資料開放平臺 (data.gov.tw)](https://data.gov.tw/dataset/32944)
+-   [15歲以上現住人口按性別、年齡、婚姻狀況及教育程度分 \|
+    政府資料開放平臺 (data.gov.tw)](https://data.gov.tw/dataset/32944)
 
 接下來，我要把表格型態的資料轉為tidy型態資料。原本的資料是這樣的型態。
 
@@ -82,7 +85,9 @@ tidy_data <- raw %>%
 之後，我使用`tidyr::separate()`函式將`key`切成四個變項，分別為`married`、`ageLower`、`ageUpper`、`gender`。
 
 -   `separate()`有一個參數是`remove=T`（預設值），意思是說，當把`key`變項切割為四個變項後，預設把key變項給丟棄；但如果未來你還會用到`key`變項的話，你可以把`remove`改為`FALSE`，代表切割完後，還保留`key`變項。
--   `tidyr::separate()`：Given either regular expression or a vector of character positions, separate() turns a single character column into multiple columns.
+-   `tidyr::separate()`：Given either regular expression or a vector of
+    character positions, separate() turns a single character column into
+    multiple columns.
 
 此時我清理出來的資料大致如下：
 
@@ -106,7 +111,7 @@ tidy_data <- raw %>%
     arrange(vname)
 ```
 
-### 進階：運用`rowwise()`
+### 進階：運用`rowwise()` {#moi_rowwise}
 
 
 ```r
@@ -132,9 +137,9 @@ raw %>%
 ## 6 新北市板橋區湳興里    3157   838
 ```
 
-### 建立鄉鎮市區與村里指標
+### 建立鄉鎮市區與村里指標 {#moi_vil}
 
-#### 使用group_by()建立村里指標
+#### 使用group_by()建立村里指標 {#moi_vil_groupby}
 
 將資料轉換為tidy型態後，接下來要做的事情是建立村里、鄉鎮市區、縣市的分級指標。針對每個村里，我希望計算出總人口數`people`（原本依據年齡與性別、婚姻情形分割）、老年人總數`elderSum`、曾結婚人口總數`marriedSum`。之後再分別除以該村里的總人口數`people`，老年人的人口比例`elderPerc`以及結婚的人口比例`marriedPerc`。
 
@@ -165,7 +170,7 @@ village_stat <- tidy_data %>%
 
 
 
-#### 將村里指標匯總為鄉鎮市區指標
+#### 將村里指標匯總為鄉鎮市區指標 {#moi_town_groupby}
 
 剛剛是根據村里（village）來建立指標，現在要根據鄉鎮市區來建立指標。走過前方的邏輯後，我們只需要把原本用來做`group_by()`的村里變項`vname`改為鄉鎮市區的變項`site_id`，就可以完成這件事，其他都一樣，你發現沒？
 
@@ -186,7 +191,7 @@ town_stat <- village_stat %>%
     ungroup()
 ```
 
-### 視覺化測試（老年人口數 x 曾婚人口數）
+### 視覺化測試（老年人口數 x 曾婚人口數） {#moi_visual_popul}
 
 
 ```r
@@ -205,7 +210,7 @@ town_stat %>%
     # geom_jitter(alpha = 0.3)
 ```
 
-## 讀取公投資料
+## 讀取公投資料 {#referendum}
 
 首先，先讀取資料並重新命名每個變項。由於我們要連結公投資料和前面的內政部人口統計資料，所以要注意兩筆資料間是否有共通的key（資料庫稱為鍵值）。`town_stat`的是以`site_id`鄉鎮市區名為主鍵，所以公投資料這邊也產生一個同名的鄉鎮市區變項`site_id`。
 
@@ -254,7 +259,7 @@ town_stat %>% left_join(ref10, by = "site_id")
 ## #   vote <dbl>, legalPopulation.y <dbl>
 ```
 
-### 合併公投資料並視覺化
+### 合併公投資料並視覺化 {#moi_join_ref}
 
 由於人口統計資料中的鄉鎮市區若只有兩個字如「東區」中間有一全形空白「東　區」，但公投資料中並沒有這樣的空白，所以為了兩者要能夠正確合併，需要先做好取代。可以逐一取代，或者，直接取代掉該全形空白為空字串即可。
 

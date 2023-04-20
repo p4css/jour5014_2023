@@ -94,7 +94,9 @@ cleaned %>% mutate(款 = ifelse(!is.na(款), org, 款)) %>%
 ## 10 <NA>     6     3203900000 大陸委員會  900896     900866     792491.22… 30
 ```
 
-接下來，希望能夠在「款==`NA`」的地方填入該欄的「前一個值」例如行政支出。查詢一下（關鍵字如「Fill in NA column values with the last value that was not NA」）還真的有這樣的函式可以操作。
+接下來，希望能夠在「款==`NA`」的地方填入該欄的「前一個值」例如行政支出。查詢一下（關鍵字如「Fill
+in NA column values with the last value that was not
+NA」）還真的有這樣的函式可以操作。
 
 
 ```r
@@ -121,7 +123,8 @@ cleaned %>%
 ## 10 行政支出 6     3203900000 大陸委員會  900896     900866     792491.22… 30
 ```
 
-太神奇了！看見沒！接下來只要把「科 is `NA`」的那些該大類支出總數的紀錄給刪除，資料就乾淨了。最後就只會剩下一些資料清理的功伕。完整程式碼可以看下一節。
+太神奇了！看見沒！接下來只要把「科 is
+`NA`」的那些該大類支出總數的紀錄給刪除，資料就乾淨了。最後就只會剩下一些資料清理的功伕。完整程式碼可以看下一節。
 
 ### Complete Code
 
@@ -152,7 +155,8 @@ cleaned <- raw %>%
 
 ## Case: Vaccinating Proportion by Countries
 
-<https://ourworldindata.org/covid-vaccinations> - <https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations>
+<https://ourworldindata.org/covid-vaccinations> -
+<https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations>
 
 評估資料概況後可發現這個資料集每一列就是某一個國家某一天所上傳的紀錄。所以，一個國家會有很多列。乍聽之下不難處理，但事實上每個國家不會每天上傳、也不會固定某一天上傳、哪一週、哪一個月開始上傳也不一定，也有可能會漏掉一些月份或週次。所以，制定出一個時間單位（例如週、月）、然後延著時間軸將資料「對齊」，讓每個國家在每個時間單位都有資料。但每個國家疫情發展程度不一，所以也不可能有一個完美的對齊，所以通常會建議就所要觀察的國家進行對齊即可。至於想刪除的那些資料列，幾乎都可以當成是所謂的缺失值。
 

@@ -1,4 +1,4 @@
-# Categorical Data Analysis
+# Categorical Data Analysis {#categorical}
 
 
 
@@ -9,7 +9,7 @@
 raw <- read_rds("data/tfc_survey.rds")
 ```
 
-## Factorizing data
+## Factorizing data {#factorize}
 
 通常問卷會分為兩種類型的資料，一種是人口統計用的基本資料（如性別、年齡組、教育程度）、另一種是問卷本身要問的題項。以下是常見的問卷型態，包含把年齡從20歲開始每五年作為一組，70歲以上則歸類為一組，共會有十一組。而教育程度則常分為五至六組，但在問卷設計的時候，通常會需要增加「拒答」的選項。如果問卷中包含政黨意識形態，就必須要決定要以黨派作為類別變項，或者以意識形態做順序尺度。以下即為一個順序尺度的案例，從「非常接近泛綠」到「非常接近泛藍」共五個等第，但另增「拒答」選項。
 
@@ -38,7 +38,7 @@ dt <- raw %>%
                                  "都不接近", "接近泛藍", "非常接近泛藍")))
 ```
 
-### factor-to-order
+### factor-to-order {#factor2order}
 
 在一開始清理資料的時候，會建議先把類別變數（通常是文字型態）轉為`factor`型態。常用的函式是用`mutate()`搭配`ordered()`來改變變數型態。`ordered()`會照類別順序來標定該`factor`所對應到的數字。可以用`as.integer()`將`factor`轉為整數後就可以看到各類別的順序。
 
@@ -60,7 +60,7 @@ as.integer(dt$QA3[1:10])
 ##  [1] 2 4 4 1 6 2 3 1 1 8
 ```
 
-### Excluding
+### Excluding {#excluding}
 
 如果有某些類別變數的值（如「拒答」）不想被編入`factor`，可以在`reorder()`中加入`exclude`的參數指定不想被編入類別值。
 
@@ -83,7 +83,7 @@ as.integer(dt$QASide[1:10])
 ##  [1] 1 4 2 2 1 5 2 2 4 2
 ```
 
-### Grouping-up
+### Grouping-up {#groupup}
 
 如果有某些類別變數的類別過多，希望再次群組化為較少的組別，如重新群組各年齡層為青年、壯年、中年與老年四個尺度。此時除了`levels`參數外，可以另外加入`labels`的參數，指定每個類別變數值所要對應到的群組。以下為群組後的結果，仔細觀察剩下多少個尺度。
 
@@ -114,7 +114,7 @@ dt$QA3_lv[1:10]
 ## Levels: 青年 < 壯年 < 中年 < 老年
 ```
 
-## Order-to-factor
+## Order-to-factor {#order2factor}
 
 -   Q7 請問您會不會受到假消息影響？
 -   Q8 請問您認為其他人會不會受到假消息的影響？
@@ -170,7 +170,7 @@ dt2 %>% count(Q7_3rd_lv)
 ## 2 高          470
 ```
 
-## Cross-tabulating
+## Cross-tabulating {#crosstabing}
 
 
 ```r

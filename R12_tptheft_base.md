@@ -1,6 +1,6 @@
 
 
-# Counting and Cross-tabulation
+# Counting and Cross-tabulation {#crosstab}
 
 交叉分析是一種對兩個或多個變數進行聯合分析的方法，通常用於研究不同類別或組別之間的關係和差異。交叉分析可以幫助我們發現變數之間的相互作用，以及不同類別或組別之間的異同點，進而進行更深入的分析和解釋。
 
