@@ -54,18 +54,19 @@ cleaned %>% head(10)
 
 ```{.output}
 ## # A tibble: 10 × 8
-##    款    科    oid        org           本年度預算 上年度預算 上年度決算  預算差
-##    <chr> <chr> <chr>      <chr>         <chr>      <chr>      <chr>       <chr> 
-##  1 1     <NA>  3100000000 國務支出      1210301    1186955    1176955.12… 23346 
-##  2 <NA>  1     3102010000 總統府        1004797    978916     997305.545… 25881 
-##  3 <NA>  2     3102100000 國家安全會議  205504     208039     179649.579… -2535 
-##  4 2     <NA>  3200000000 行政支出      6134276    5836481    5477154.58… 297795
-##  5 <NA>  1     3203010000 行政院        1256043    1286646    1268295.23  -30603
-##  6 <NA>  2     3203100000 主計總處      1604967    1478173    1578781.89… 126794
-##  7 <NA>  3     3203300000 人事行政總處  555363     573447     489516.177… -18084
-##  8 <NA>  4     3203340000 公務人力發展… 244346     239453     229852.261… 4893  
-##  9 <NA>  5     3203420000 檔案管理局    787429     646081     443133.207… 141348
-## 10 <NA>  6     3203900000 大陸委員會    900896     900866     792491.221… 30
+##    款    科    oid        org              本年度預算 上年度預算 上年度…¹ 預算差
+##    <chr> <chr> <chr>      <chr>            <chr>      <chr>      <chr>    <chr> 
+##  1 1     <NA>  3100000000 國務支出         1210301    1186955    1176955… 23346 
+##  2 <NA>  1     3102010000 總統府           1004797    978916     997305.… 25881 
+##  3 <NA>  2     3102100000 國家安全會議     205504     208039     179649.… -2535 
+##  4 2     <NA>  3200000000 行政支出         6134276    5836481    5477154… 297795
+##  5 <NA>  1     3203010000 行政院           1256043    1286646    1268295… -30603
+##  6 <NA>  2     3203100000 主計總處         1604967    1478173    1578781… 126794
+##  7 <NA>  3     3203300000 人事行政總處     555363     573447     489516.… -18084
+##  8 <NA>  4     3203340000 公務人力發展學院 244346     239453     229852.… 4893  
+##  9 <NA>  5     3203420000 檔案管理局       787429     646081     443133.… 141348
+## 10 <NA>  6     3203900000 大陸委員會       900896     900866     792491.… 30    
+## # … with abbreviated variable name ¹​上年度決算
 ```
 
 ### Processing NA
@@ -80,18 +81,19 @@ cleaned %>% mutate(款 = ifelse(!is.na(款), org, 款)) %>%
 
 ```{.output}
 ## # A tibble: 10 × 8
-##    款       科    oid        org         本年度預算 上年度預算 上年度決算 預算差
-##    <chr>    <chr> <chr>      <chr>       <chr>      <chr>      <chr>      <chr> 
-##  1 國務支出 <NA>  3100000000 國務支出    1210301    1186955    1176955.1… 23346 
-##  2 <NA>     1     3102010000 總統府      1004797    978916     997305.54… 25881 
-##  3 <NA>     2     3102100000 國家安全會… 205504     208039     179649.57… -2535 
-##  4 行政支出 <NA>  3200000000 行政支出    6134276    5836481    5477154.5… 297795
-##  5 <NA>     1     3203010000 行政院      1256043    1286646    1268295.23 -30603
-##  6 <NA>     2     3203100000 主計總處    1604967    1478173    1578781.8… 126794
-##  7 <NA>     3     3203300000 人事行政總… 555363     573447     489516.17… -18084
-##  8 <NA>     4     3203340000 公務人力發… 244346     239453     229852.26… 4893  
-##  9 <NA>     5     3203420000 檔案管理局  787429     646081     443133.20… 141348
-## 10 <NA>     6     3203900000 大陸委員會  900896     900866     792491.22… 30
+##    款       科    oid        org              本年度預算 上年度…¹ 上年…²  預算差
+##    <chr>    <chr> <chr>      <chr>            <chr>      <chr>    <chr>   <chr> 
+##  1 國務支出 <NA>  3100000000 國務支出         1210301    1186955  117695… 23346 
+##  2 <NA>     1     3102010000 總統府           1004797    978916   997305… 25881 
+##  3 <NA>     2     3102100000 國家安全會議     205504     208039   179649… -2535 
+##  4 行政支出 <NA>  3200000000 行政支出         6134276    5836481  547715… 297795
+##  5 <NA>     1     3203010000 行政院           1256043    1286646  126829… -30603
+##  6 <NA>     2     3203100000 主計總處         1604967    1478173  157878… 126794
+##  7 <NA>     3     3203300000 人事行政總處     555363     573447   489516… -18084
+##  8 <NA>     4     3203340000 公務人力發展學院 244346     239453   229852… 4893  
+##  9 <NA>     5     3203420000 檔案管理局       787429     646081   443133… 141348
+## 10 <NA>     6     3203900000 大陸委員會       900896     900866   792491… 30    
+## # … with abbreviated variable names ¹​上年度預算, ²​上年度決算
 ```
 
 接下來，希望能夠在「款==`NA`」的地方填入該欄的「前一個值」例如行政支出。查詢一下（關鍵字如「Fill
@@ -109,18 +111,19 @@ cleaned %>%
 
 ```{.output}
 ## # A tibble: 10 × 8
-##    款       科    oid        org         本年度預算 上年度預算 上年度決算 預算差
-##    <chr>    <chr> <chr>      <chr>       <chr>      <chr>      <chr>      <chr> 
-##  1 國務支出 <NA>  3100000000 國務支出    1210301    1186955    1176955.1… 23346 
-##  2 國務支出 1     3102010000 總統府      1004797    978916     997305.54… 25881 
-##  3 國務支出 2     3102100000 國家安全會… 205504     208039     179649.57… -2535 
-##  4 行政支出 <NA>  3200000000 行政支出    6134276    5836481    5477154.5… 297795
-##  5 行政支出 1     3203010000 行政院      1256043    1286646    1268295.23 -30603
-##  6 行政支出 2     3203100000 主計總處    1604967    1478173    1578781.8… 126794
-##  7 行政支出 3     3203300000 人事行政總… 555363     573447     489516.17… -18084
-##  8 行政支出 4     3203340000 公務人力發… 244346     239453     229852.26… 4893  
-##  9 行政支出 5     3203420000 檔案管理局  787429     646081     443133.20… 141348
-## 10 行政支出 6     3203900000 大陸委員會  900896     900866     792491.22… 30
+##    款       科    oid        org              本年度預算 上年度…¹ 上年…²  預算差
+##    <chr>    <chr> <chr>      <chr>            <chr>      <chr>    <chr>   <chr> 
+##  1 國務支出 <NA>  3100000000 國務支出         1210301    1186955  117695… 23346 
+##  2 國務支出 1     3102010000 總統府           1004797    978916   997305… 25881 
+##  3 國務支出 2     3102100000 國家安全會議     205504     208039   179649… -2535 
+##  4 行政支出 <NA>  3200000000 行政支出         6134276    5836481  547715… 297795
+##  5 行政支出 1     3203010000 行政院           1256043    1286646  126829… -30603
+##  6 行政支出 2     3203100000 主計總處         1604967    1478173  157878… 126794
+##  7 行政支出 3     3203300000 人事行政總處     555363     573447   489516… -18084
+##  8 行政支出 4     3203340000 公務人力發展學院 244346     239453   229852… 4893  
+##  9 行政支出 5     3203420000 檔案管理局       787429     646081   443133… 141348
+## 10 行政支出 6     3203900000 大陸委員會       900896     900866   792491… 30    
+## # … with abbreviated variable names ¹​上年度預算, ²​上年度決算
 ```
 
 太神奇了！看見沒！接下來只要把「科 is
@@ -176,34 +179,35 @@ raw %>% head(20)
 
 ```{.output}
 ## # A tibble: 20 × 16
-##    location    iso_code date       total_vaccinations people_vaccinated
-##    <chr>       <chr>    <date>                  <dbl>             <dbl>
-##  1 Afghanistan AFG      2021-02-22                  0                 0
-##  2 Afghanistan AFG      2021-02-23                 NA                NA
-##  3 Afghanistan AFG      2021-02-24                 NA                NA
-##  4 Afghanistan AFG      2021-02-25                 NA                NA
-##  5 Afghanistan AFG      2021-02-26                 NA                NA
-##  6 Afghanistan AFG      2021-02-27                 NA                NA
-##  7 Afghanistan AFG      2021-02-28               8200              8200
-##  8 Afghanistan AFG      2021-03-01                 NA                NA
-##  9 Afghanistan AFG      2021-03-02                 NA                NA
-## 10 Afghanistan AFG      2021-03-03                 NA                NA
-## 11 Afghanistan AFG      2021-03-04                 NA                NA
-## 12 Afghanistan AFG      2021-03-05                 NA                NA
-## 13 Afghanistan AFG      2021-03-06                 NA                NA
-## 14 Afghanistan AFG      2021-03-07                 NA                NA
-## 15 Afghanistan AFG      2021-03-08                 NA                NA
-## 16 Afghanistan AFG      2021-03-09                 NA                NA
-## 17 Afghanistan AFG      2021-03-10                 NA                NA
-## 18 Afghanistan AFG      2021-03-11                 NA                NA
-## 19 Afghanistan AFG      2021-03-12                 NA                NA
-## 20 Afghanistan AFG      2021-03-13                 NA                NA
-## # ℹ 11 more variables: people_fully_vaccinated <dbl>, total_boosters <dbl>,
-## #   daily_vaccinations_raw <dbl>, daily_vaccinations <dbl>,
-## #   total_vaccinations_per_hundred <dbl>, people_vaccinated_per_hundred <dbl>,
+##    location   iso_c…¹ date       total…² peopl…³ peopl…⁴ total…⁵ daily…⁶ daily…⁷
+##    <chr>      <chr>   <date>       <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+##  1 Afghanist… AFG     2021-02-22       0       0      NA      NA      NA      NA
+##  2 Afghanist… AFG     2021-02-23      NA      NA      NA      NA      NA    1367
+##  3 Afghanist… AFG     2021-02-24      NA      NA      NA      NA      NA    1367
+##  4 Afghanist… AFG     2021-02-25      NA      NA      NA      NA      NA    1367
+##  5 Afghanist… AFG     2021-02-26      NA      NA      NA      NA      NA    1367
+##  6 Afghanist… AFG     2021-02-27      NA      NA      NA      NA      NA    1367
+##  7 Afghanist… AFG     2021-02-28    8200    8200      NA      NA      NA    1367
+##  8 Afghanist… AFG     2021-03-01      NA      NA      NA      NA      NA    1580
+##  9 Afghanist… AFG     2021-03-02      NA      NA      NA      NA      NA    1794
+## 10 Afghanist… AFG     2021-03-03      NA      NA      NA      NA      NA    2008
+## 11 Afghanist… AFG     2021-03-04      NA      NA      NA      NA      NA    2221
+## 12 Afghanist… AFG     2021-03-05      NA      NA      NA      NA      NA    2435
+## 13 Afghanist… AFG     2021-03-06      NA      NA      NA      NA      NA    2649
+## 14 Afghanist… AFG     2021-03-07      NA      NA      NA      NA      NA    2862
+## 15 Afghanist… AFG     2021-03-08      NA      NA      NA      NA      NA    2862
+## 16 Afghanist… AFG     2021-03-09      NA      NA      NA      NA      NA    2862
+## 17 Afghanist… AFG     2021-03-10      NA      NA      NA      NA      NA    2862
+## 18 Afghanist… AFG     2021-03-11      NA      NA      NA      NA      NA    2862
+## 19 Afghanist… AFG     2021-03-12      NA      NA      NA      NA      NA    2862
+## 20 Afghanist… AFG     2021-03-13      NA      NA      NA      NA      NA    2862
+## # … with 7 more variables: total_vaccinations_per_hundred <dbl>,
+## #   people_vaccinated_per_hundred <dbl>,
 ## #   people_fully_vaccinated_per_hundred <dbl>,
 ## #   total_boosters_per_hundred <dbl>, daily_vaccinations_per_million <dbl>,
-## #   daily_people_vaccinated <dbl>, daily_people_vaccinated_per_hundred <dbl>
+## #   daily_people_vaccinated <dbl>, daily_people_vaccinated_per_hundred <dbl>,
+## #   and abbreviated variable names ¹​iso_code, ²​total_vaccinations,
+## #   ³​people_vaccinated, ⁴​people_fully_vaccinated, ⁵​total_boosters, …
 ```
 
 ### 按月對齊資料
@@ -263,23 +267,24 @@ fullvaccinated %>%
 
 ```{.output}
 ## # A tibble: 10 × 19
-##    country      `2020-12-01` `2021-01-01` `2021-02-01` `2021-03-01` `2021-04-01`
-##    <chr>               <dbl>        <dbl>        <dbl>        <dbl>        <dbl>
-##  1 Afghanistan            NA           NA        NA           NA           NA   
-##  2 Africa                 NA           NA         0            0.02         0.3 
-##  3 Albania                NA           NA         0           NA           NA   
-##  4 Algeria                NA           NA        NA           NA           NA   
-##  5 Andorra                NA           NA        NA            1.52         5.8 
-##  6 Angola                 NA           NA        NA           NA           NA   
-##  7 Anguilla               NA           NA        NA           NA            5.18
-##  8 Antigua and…           NA           NA        NA           NA           NA   
-##  9 Argentina               0            0         0.26         0.69         1.56
-## 10 Armenia                NA           NA        NA           NA           NA   
-## # ℹ 13 more variables: `2021-05-01` <dbl>, `2021-06-01` <dbl>,
-## #   `2021-07-01` <dbl>, `2021-08-01` <dbl>, `2021-09-01` <dbl>,
+##    country       2020-…¹ 2021-…² 2021-…³ 2021-…⁴ 2021-…⁵ 2021-…⁶ 2021-…⁷ 2021-…⁸
+##    <chr>           <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+##  1 Afghanistan        NA      NA   NA      NA      NA       0.14    0.36    0.48
+##  2 Africa             NA      NA    0       0.02    0.3     0.36    0.63    1.15
+##  3 Albania            NA      NA    0      NA      NA       6.32   10.2    14.2 
+##  4 Algeria            NA      NA   NA      NA      NA      NA      NA      NA   
+##  5 Andorra            NA      NA   NA       1.52    5.8     6.07   14.1    34.9 
+##  6 Angola             NA      NA   NA      NA      NA       0.12    1.11    1.66
+##  7 Anguilla           NA      NA   NA      NA       5.18   29.2    36.4    47.3 
+##  8 Antigua and …      NA      NA   NA      NA      NA       2.61   18.4    28.2 
+##  9 Argentina           0       0    0.26    0.69    1.56    2.24    6.68    9.71
+## 10 Armenia            NA      NA   NA      NA      NA      NA       0.4     1.03
+## # … with 10 more variables: `2021-08-01` <dbl>, `2021-09-01` <dbl>,
 ## #   `2021-10-01` <dbl>, `2021-11-01` <dbl>, `2021-12-01` <dbl>,
 ## #   `2022-01-01` <dbl>, `2022-02-01` <dbl>, `2022-03-01` <dbl>,
-## #   `2022-04-01` <dbl>, `2022-05-01` <dbl>
+## #   `2022-04-01` <dbl>, `2022-05-01` <dbl>, and abbreviated variable names
+## #   ¹​`2020-12-01`, ²​`2021-01-01`, ³​`2021-02-01`, ⁴​`2021-03-01`, ⁵​`2021-04-01`,
+## #   ⁶​`2021-05-01`, ⁷​`2021-06-01`, ⁸​`2021-07-01`
 ```
 
 在以下的範例輸出可以看到`gather()`後的結果。注意，需要照國家和月份來排序後才便於觀察。
