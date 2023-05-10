@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-05-10" />
+<meta name="date" content="2023-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -655,6 +655,13 @@ div.csl-indent {
 <li class="chapter" data-level="28.2.1" data-path="interactivity.html"><a href="interactivity.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>28.2.1</b> 地圖下載與轉換投影方法</a></li>
 <li class="chapter" data-level="28.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>28.2.2</b> 靜態繪圖測試</a></li>
 </ul></li>
+<li class="chapter" data-level="28.3" data-path="interactivity.html"><a href="interactivity.html#mapping-data-with-grid"><i class="fa fa-check"></i><b>28.3</b> Mapping data with grid</a>
+<ul>
+<li class="chapter" data-level="28.3.1" data-path="interactivity.html"><a href="interactivity.html#loading-taiwan-map"><i class="fa fa-check"></i><b>28.3.1</b> Loading Taiwan map</a></li>
+<li class="chapter" data-level="28.3.2" data-path="interactivity.html"><a href="interactivity.html#building-grid"><i class="fa fa-check"></i><b>28.3.2</b> Building grid</a></li>
+<li class="chapter" data-level="28.3.3" data-path="interactivity.html"><a href="interactivity.html#loading-data-1"><i class="fa fa-check"></i><b>28.3.3</b> loading data</a></li>
+<li class="chapter" data-level="28.3.4" data-path="interactivity.html"><a href="interactivity.html#merging-data"><i class="fa fa-check"></i><b>28.3.4</b> Merging data</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>VI CASE STUDIES</b></span></li>
 <li class="chapter" data-level="29" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>29</b> WGOITG of NyTimes</a></li>
@@ -703,12 +710,12 @@ div.csl-indent {
 <p>淨資產（Net worth）是一個財務術語，指的是一個人或機構的總資產減去總負債後剩餘的價值。換言之，Net worth是一個人或機構在財務上的價值或實力。如果一個人或機構的總資產超過了總負債，那麼其net worth為正值，反之則為負值。在個人財務上，Net worth通常用來評估一個人的財務健康狀況。一個人的Net worth越高，通常代表其擁有更多的財富和投資，並能夠更好地應對突發事件和生活變數。因此，許多投資者和財務顧問都會建議人們注重提高自己的net worth。</p>
 <p><a href="https://www.nytimes.com/2021/05/11/learning/lesson-plans/teach-about-inequality-with-these-28-new-york-times-graphs.html"><img src="images/paste-27DE8695.png" alt="Teach About Inequality With These 28 New York Times Graphs - The New York Times (nytimes.com)" /></a></p>
 <p>Sorted by <code>arrange()</code> function.</p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="inequality-net-worth-by-age-group.html#cb726-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb726-2"><a href="inequality-net-worth-by-age-group.html#cb726-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
-<span id="cb726-3"><a href="inequality-net-worth-by-age-group.html#cb726-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb726-4"><a href="inequality-net-worth-by-age-group.html#cb726-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb726-5"><a href="inequality-net-worth-by-age-group.html#cb726-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb726-6"><a href="inequality-net-worth-by-age-group.html#cb726-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="inequality-net-worth-by-age-group.html#cb735-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb735-2"><a href="inequality-net-worth-by-age-group.html#cb735-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
+<span id="cb735-3"><a href="inequality-net-worth-by-age-group.html#cb735-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb735-4"><a href="inequality-net-worth-by-age-group.html#cb735-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb735-5"><a href="inequality-net-worth-by-age-group.html#cb735-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb735-6"><a href="inequality-net-worth-by-age-group.html#cb735-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -780,24 +787,24 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="inequality-net-worth-by-age-group.html#cb727-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb727-2"><a href="inequality-net-worth-by-age-group.html#cb727-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb727-3"><a href="inequality-net-worth-by-age-group.html#cb727-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb727-4"><a href="inequality-net-worth-by-age-group.html#cb727-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb727-5"><a href="inequality-net-worth-by-age-group.html#cb727-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb727-6"><a href="inequality-net-worth-by-age-group.html#cb727-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb727-7"><a href="inequality-net-worth-by-age-group.html#cb727-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb727-8"><a href="inequality-net-worth-by-age-group.html#cb727-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb727-9"><a href="inequality-net-worth-by-age-group.html#cb727-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb727-10"><a href="inequality-net-worth-by-age-group.html#cb727-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="inequality-net-worth-by-age-group.html#cb736-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb736-2"><a href="inequality-net-worth-by-age-group.html#cb736-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb736-3"><a href="inequality-net-worth-by-age-group.html#cb736-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb736-4"><a href="inequality-net-worth-by-age-group.html#cb736-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb736-5"><a href="inequality-net-worth-by-age-group.html#cb736-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb736-6"><a href="inequality-net-worth-by-age-group.html#cb736-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb736-7"><a href="inequality-net-worth-by-age-group.html#cb736-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb736-8"><a href="inequality-net-worth-by-age-group.html#cb736-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb736-9"><a href="inequality-net-worth-by-age-group.html#cb736-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb736-10"><a href="inequality-net-worth-by-age-group.html#cb736-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
 <p><img src="W3_NetWorth_by_Age_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="inequality-net-worth-by-age-group.html#cb728-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb728-2"><a href="inequality-net-worth-by-age-group.html#cb728-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
-<span id="cb728-3"><a href="inequality-net-worth-by-age-group.html#cb728-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb728-4"><a href="inequality-net-worth-by-age-group.html#cb728-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb728-5"><a href="inequality-net-worth-by-age-group.html#cb728-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
-<span id="cb728-6"><a href="inequality-net-worth-by-age-group.html#cb728-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb728-7"><a href="inequality-net-worth-by-age-group.html#cb728-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="inequality-net-worth-by-age-group.html#cb737-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb737-2"><a href="inequality-net-worth-by-age-group.html#cb737-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
+<span id="cb737-3"><a href="inequality-net-worth-by-age-group.html#cb737-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb737-4"><a href="inequality-net-worth-by-age-group.html#cb737-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb737-5"><a href="inequality-net-worth-by-age-group.html#cb737-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
+<span id="cb737-6"><a href="inequality-net-worth-by-age-group.html#cb737-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb737-7"><a href="inequality-net-worth-by-age-group.html#cb737-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -882,16 +889,16 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="inequality-net-worth-by-age-group.html#cb729-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb729-2"><a href="inequality-net-worth-by-age-group.html#cb729-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb729-3"><a href="inequality-net-worth-by-age-group.html#cb729-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb729-4"><a href="inequality-net-worth-by-age-group.html#cb729-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb729-5"><a href="inequality-net-worth-by-age-group.html#cb729-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb729-6"><a href="inequality-net-worth-by-age-group.html#cb729-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
-<span id="cb729-7"><a href="inequality-net-worth-by-age-group.html#cb729-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb729-8"><a href="inequality-net-worth-by-age-group.html#cb729-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb729-9"><a href="inequality-net-worth-by-age-group.html#cb729-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb729-10"><a href="inequality-net-worth-by-age-group.html#cb729-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="inequality-net-worth-by-age-group.html#cb738-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb738-2"><a href="inequality-net-worth-by-age-group.html#cb738-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb738-3"><a href="inequality-net-worth-by-age-group.html#cb738-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb738-4"><a href="inequality-net-worth-by-age-group.html#cb738-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb738-5"><a href="inequality-net-worth-by-age-group.html#cb738-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb738-6"><a href="inequality-net-worth-by-age-group.html#cb738-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
+<span id="cb738-7"><a href="inequality-net-worth-by-age-group.html#cb738-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb738-8"><a href="inequality-net-worth-by-age-group.html#cb738-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb738-9"><a href="inequality-net-worth-by-age-group.html#cb738-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb738-10"><a href="inequality-net-worth-by-age-group.html#cb738-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
 <p><img src="W3_NetWorth_by_Age_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>

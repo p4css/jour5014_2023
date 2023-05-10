@@ -23,7 +23,7 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-05-10" />
+<meta name="date" content="2023-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -655,6 +655,13 @@ div.csl-indent {
 <li class="chapter" data-level="28.2.1" data-path="interactivity.html"><a href="interactivity.html#地圖下載與轉換投影方法"><i class="fa fa-check"></i><b>28.2.1</b> 地圖下載與轉換投影方法</a></li>
 <li class="chapter" data-level="28.2.2" data-path="interactivity.html"><a href="interactivity.html#靜態繪圖測試"><i class="fa fa-check"></i><b>28.2.2</b> 靜態繪圖測試</a></li>
 </ul></li>
+<li class="chapter" data-level="28.3" data-path="interactivity.html"><a href="interactivity.html#mapping-data-with-grid"><i class="fa fa-check"></i><b>28.3</b> Mapping data with grid</a>
+<ul>
+<li class="chapter" data-level="28.3.1" data-path="interactivity.html"><a href="interactivity.html#loading-taiwan-map"><i class="fa fa-check"></i><b>28.3.1</b> Loading Taiwan map</a></li>
+<li class="chapter" data-level="28.3.2" data-path="interactivity.html"><a href="interactivity.html#building-grid"><i class="fa fa-check"></i><b>28.3.2</b> Building grid</a></li>
+<li class="chapter" data-level="28.3.3" data-path="interactivity.html"><a href="interactivity.html#loading-data-1"><i class="fa fa-check"></i><b>28.3.3</b> loading data</a></li>
+<li class="chapter" data-level="28.3.4" data-path="interactivity.html"><a href="interactivity.html#merging-data"><i class="fa fa-check"></i><b>28.3.4</b> Merging data</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>VI CASE STUDIES</b></span></li>
 <li class="chapter" data-level="29" data-path="wgoitg.html"><a href="wgoitg.html"><i class="fa fa-check"></i><b>29</b> WGOITG of NyTimes</a></li>
@@ -956,6 +963,82 @@ div.csl-indent {
 <div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="interactivity.html#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anim_save</span>(<span class="st">&quot;jour5014/pml2.gif&quot;</span>, <span class="at">animation =</span> <span class="fu">last_animation</span>())</span></code></pre></div>
 <div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="interactivity.html#cb725-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;jour5014/pml2.gif&quot;</span>)</span></code></pre></div>
 <p><img src="jour5014/pml2.gif" width="100%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+<div id="mapping-data-with-grid" class="section level2 hasAnchor" number="28.3">
+<h2><span class="header-section-number">28.3</span> Mapping data with grid<a href="interactivity.html#mapping-data-with-grid" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="interactivity.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<div id="loading-taiwan-map" class="section level3 hasAnchor" number="28.3.1">
+<h3><span class="header-section-number">28.3.1</span> Loading Taiwan map<a href="interactivity.html#loading-taiwan-map" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="interactivity.html#cb727-1" aria-hidden="true" tabindex="-1"></a>TW.island <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb727-2"><a href="interactivity.html#cb727-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="dv">3826</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb727-3"><a href="interactivity.html#cb727-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
+##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
+##   using driver `ESRI Shapefile&#39;
+## Simple feature collection with 22 features and 4 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
+## Geodetic CRS:  TWD97</code></pre>
+</div>
+<div id="building-grid" class="section level3 hasAnchor" number="28.3.2">
+<h3><span class="header-section-number">28.3.2</span> Building grid<a href="interactivity.html#building-grid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="interactivity.html#cb729-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining grid size</span></span>
+<span id="cb729-2"><a href="interactivity.html#cb729-2" aria-hidden="true" tabindex="-1"></a>grid.extent <span class="ot">&lt;-</span> </span>
+<span id="cb729-3"><a href="interactivity.html#cb729-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">50000</span>,  <span class="dv">2920000</span>,   <span class="co"># (Xmin, Ymax)</span></span>
+<span id="cb729-4"><a href="interactivity.html#cb729-4" aria-hidden="true" tabindex="-1"></a>           <span class="dv">610000</span>,  <span class="dv">2920000</span>,   <span class="co"># (Xmax, Ymax)</span></span>
+<span id="cb729-5"><a href="interactivity.html#cb729-5" aria-hidden="true" tabindex="-1"></a>           <span class="dv">610000</span>, <span class="dv">2420000</span>,    <span class="co"># (Xmax, Ymin)</span></span>
+<span id="cb729-6"><a href="interactivity.html#cb729-6" aria-hidden="true" tabindex="-1"></a>           <span class="sc">-</span><span class="dv">50000</span>, <span class="dv">2420000</span>,    <span class="co"># (Xmin, Ymin)</span></span>
+<span id="cb729-7"><a href="interactivity.html#cb729-7" aria-hidden="true" tabindex="-1"></a>           <span class="sc">-</span><span class="dv">50000</span>,  <span class="dv">2920000</span>),  <span class="co"># (Xmin, Ymax) </span></span>
+<span id="cb729-8"><a href="interactivity.html#cb729-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb729-9"><a href="interactivity.html#cb729-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>() <span class="sc">%&gt;%</span> <span class="co"># convert to list for st_polygon()</span></span>
+<span id="cb729-10"><a href="interactivity.html#cb729-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_polygon</span>() <span class="sc">%&gt;%</span> <span class="co"># generate polygon</span></span>
+<span id="cb729-11"><a href="interactivity.html#cb729-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sfc</span>(<span class="at">crs =</span> <span class="dv">3826</span>) <span class="co"># convert format and crs</span></span>
+<span id="cb729-12"><a href="interactivity.html#cb729-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(grid.extent)</span></span>
+<span id="cb729-13"><a href="interactivity.html#cb729-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb729-14"><a href="interactivity.html#cb729-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb729-15"><a href="interactivity.html#cb729-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating grid</span></span>
+<span id="cb729-16"><a href="interactivity.html#cb729-16" aria-hidden="true" tabindex="-1"></a>Grid.sys <span class="ot">&lt;-</span> </span>
+<span id="cb729-17"><a href="interactivity.html#cb729-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_make_grid</span>(grid.extent,</span>
+<span id="cb729-18"><a href="interactivity.html#cb729-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">132</span>, <span class="dv">100</span>),   <span class="co"># Resolution of grids</span></span>
+<span id="cb729-19"><a href="interactivity.html#cb729-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">crs =</span> <span class="dv">3826</span>,  <span class="co"># crs: TWD97 121</span></span>
+<span id="cb729-20"><a href="interactivity.html#cb729-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">what =</span> <span class="st">&#39;polygons&#39;</span>) <span class="sc">%&gt;%</span>   <span class="co"># output format: polygon</span></span>
+<span id="cb729-21"><a href="interactivity.html#cb729-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>(<span class="st">&#39;geometry&#39;</span> <span class="ot">=</span> ., <span class="fu">data.frame</span>(<span class="st">&#39;ID&#39;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(.))) <span class="co"># convert to sf with id</span></span>
+<span id="cb729-22"><a href="interactivity.html#cb729-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># st_transform(3826) # assigning crs again ? </span></span>
+<span id="cb729-23"><a href="interactivity.html#cb729-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Grid.sys)</span></code></pre></div>
+<p><img src="V44_map_grid_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="interactivity.html#cb730-1" aria-hidden="true" tabindex="-1"></a>Grid.TW <span class="ot">&lt;-</span> </span>
+<span id="cb730-2"><a href="interactivity.html#cb730-2" aria-hidden="true" tabindex="-1"></a>  Grid.sys[<span class="fu">subset</span>(TW.island),]</span>
+<span id="cb730-3"><a href="interactivity.html#cb730-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Grid.TW)</span></code></pre></div>
+<p><img src="V44_map_grid_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="loading-data-1" class="section level3 hasAnchor" number="28.3.3">
+<h3><span class="header-section-number">28.3.3</span> loading data<a href="interactivity.html#loading-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="interactivity.html#cb731-1" aria-hidden="true" tabindex="-1"></a>president_vote <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&#39;data/president.xlsx&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb731-2"><a href="interactivity.html#cb731-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> chu <span class="sc">+</span> tsai <span class="sc">+</span> song) <span class="sc">%&gt;%</span> </span>
+<span id="cb731-3"><a href="interactivity.html#cb731-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chu_ratio =</span> chu <span class="sc">/</span> total,</span>
+<span id="cb731-4"><a href="interactivity.html#cb731-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_ratio =</span> tsai <span class="sc">/</span> total,</span>
+<span id="cb731-5"><a href="interactivity.html#cb731-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">song_ratio =</span> song <span class="sc">/</span> total,</span>
+<span id="cb731-6"><a href="interactivity.html#cb731-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_chu_ratio =</span> tsai <span class="sc">/</span> chu)</span></code></pre></div>
+</div>
+<div id="merging-data" class="section level3 hasAnchor" number="28.3.4">
+<h3><span class="header-section-number">28.3.4</span> Merging data<a href="interactivity.html#merging-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="interactivity.html#cb732-1" aria-hidden="true" tabindex="-1"></a>tw_info <span class="ot">&lt;-</span> TW.island <span class="sc">%&gt;%</span> </span>
+<span id="cb732-2"><a href="interactivity.html#cb732-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_set_geometry</span>(<span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb732-3"><a href="interactivity.html#cb732-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(president_vote, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;COUNTYNAME&quot;</span><span class="ot">=</span><span class="st">&quot;county&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="interactivity.html#cb733-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TW_info &lt;- sf::st_intersects(Grid.TW, TW.island)  # creat a data.frame of IDs in IBA for 1km grid</span></span>
+<span id="cb733-2"><a href="interactivity.html#cb733-2" aria-hidden="true" tabindex="-1"></a>grid_id <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">st_intersects</span>(Grid.TW, TW.island), <span class="cf">function</span>(z) <span class="cf">if</span> (<span class="fu">length</span>(z)<span class="sc">==</span><span class="dv">0</span>) <span class="cn">NA_integer_</span> <span class="cf">else</span> z[<span class="dv">1</span>])</span>
+<span id="cb733-3"><a href="interactivity.html#cb733-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb733-4"><a href="interactivity.html#cb733-4" aria-hidden="true" tabindex="-1"></a>Grid.TW <span class="ot">&lt;-</span>  Grid.TW <span class="sc">%&gt;%</span></span>
+<span id="cb733-5"><a href="interactivity.html#cb733-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grid_id =</span> grid_id) <span class="sc">%&gt;%</span></span>
+<span id="cb733-6"><a href="interactivity.html#cb733-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(tw_info, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;grid_id&quot;</span><span class="ot">=</span><span class="st">&quot;id&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="interactivity.html#cb734-1" aria-hidden="true" tabindex="-1"></a>Grid.TW <span class="sc">%&gt;%</span></span>
+<span id="cb734-2"><a href="interactivity.html#cb734-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> tsai_ratio)) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">lwd =</span> <span class="fl">0.1</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb734-3"><a href="interactivity.html#cb734-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_continuous</span>(<span class="at">high=</span><span class="st">&quot;#2EFF71&quot;</span>, <span class="at">low=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb734-4"><a href="interactivity.html#cb734-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="V44_map_grid_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
