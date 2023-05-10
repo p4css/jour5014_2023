@@ -12,7 +12,7 @@
 
 ![](https://www.washingtonpost.com/blogs/worldviews/files/2016/08/matleave-map.jpg)
 
-### Code by dplyr 
+### Code by dplyr
 
 首先，程式碼使用 **`filter()`** 函數篩選出符合條件的列，其中 **`matleave_13`** 和 **`matleave_95`** 兩欄都必須等於 5。接著，**`pivot_longer()`** 函數將資料框轉換成長格式（long format），將從第二欄到第二十欄的資料整合到兩個欄位 **`year`** 和 **`degree`** 中。這裡 **`names_to`** 參數指定新欄位 **`year`** 的名稱，**`values_to`** 參數指定新欄位 **`degree`** 的名稱，**`cols`** 參數指定要整合的欄位範圍。
 

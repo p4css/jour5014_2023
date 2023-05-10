@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 27 GEOSPATIAL | R for Data Journalism</title>
+  <title>Chapter 26 GEOSPATIAL | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 27 GEOSPATIAL | R for Data Journalism" />
+  <meta property="og:title" content="Chapter 26 GEOSPATIAL | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 27 GEOSPATIAL | R for Data Journalism" />
+  <meta name="twitter:title" content="Chapter 26 GEOSPATIAL | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="HSIEH, JI-LUNG" />
 
 
-<meta name="date" content="2023-04-26" />
+<meta name="date" content="2023-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="network-vis.html"/>
-<link rel="next" href="interactivity.html"/>
+<link rel="prev" href="time-trends.html"/>
+<link rel="next" href="network-vis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -341,11 +341,12 @@ div.csl-indent {
 <li class="chapter" data-level="10.1.2" data-path="na.html"><a href="na.html#processing-na"><i class="fa fa-check"></i><b>10.1.2</b> Processing NA</a></li>
 <li class="chapter" data-level="10.1.3" data-path="na.html"><a href="na.html#complete-code"><i class="fa fa-check"></i><b>10.1.3</b> Complete Code</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="na.html"><a href="na.html#case-vaccinating-proportion-by-countries"><i class="fa fa-check"></i><b>10.2</b> Case: Vaccinating Proportion by Countries</a>
+<li class="chapter" data-level="10.2" data-path="na.html"><a href="na.html#cleaning-covid-vaccinating-data"><i class="fa fa-check"></i><b>10.2</b> Cleaning Covid Vaccinating data</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="na.html"><a href="na.html#按月對齊資料"><i class="fa fa-check"></i><b>10.2.1</b> 按月對齊資料</a></li>
-<li class="chapter" data-level="10.2.2" data-path="na.html"><a href="na.html#處理遺漏資料的月份"><i class="fa fa-check"></i><b>10.2.2</b> 處理遺漏資料的月份</a></li>
-<li class="chapter" data-level="10.2.3" data-path="na.html"><a href="na.html#完整程式碼"><i class="fa fa-check"></i><b>10.2.3</b> 完整程式碼</a></li>
+<li class="chapter" data-level="10.2.1" data-path="na.html"><a href="na.html#觀察並評估資料概況"><i class="fa fa-check"></i><b>10.2.1</b> 觀察並評估資料概況</a></li>
+<li class="chapter" data-level="10.2.2" data-path="na.html"><a href="na.html#按月對齊資料"><i class="fa fa-check"></i><b>10.2.2</b> 按月對齊資料</a></li>
+<li class="chapter" data-level="10.2.3" data-path="na.html"><a href="na.html#處理遺漏資料的月份"><i class="fa fa-check"></i><b>10.2.3</b> 處理遺漏資料的月份</a></li>
+<li class="chapter" data-level="10.2.4" data-path="na.html"><a href="na.html#完整程式碼"><i class="fa fa-check"></i><b>10.2.4</b> 完整程式碼</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III TEXT PROCESSING</b></span></li>
@@ -594,25 +595,51 @@ div.csl-indent {
 <li class="chapter" data-level="25.2.1" data-path="time-trends.html"><a href="time-trends.html#polls_2008"><i class="fa fa-check"></i><b>25.2.1</b> Polls_2008</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="network-vis.html"><a href="network-vis.html"><i class="fa fa-check"></i><b>26</b> NETWORK VIS</a>
+<li class="chapter" data-level="26" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>26</b> GEOSPATIAL</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="network-vis.html"><a href="network-vis.html#generating-networks"><i class="fa fa-check"></i><b>26.1</b> Generating networks</a>
+<li class="chapter" data-level="26.1" data-path="geospatial.html"><a href="geospatial.html#world-map"><i class="fa fa-check"></i><b>26.1</b> World Map</a>
 <ul>
-<li class="chapter" data-level="26.1.1" data-path="network-vis.html"><a href="network-vis.html#random-network"><i class="fa fa-check"></i><b>26.1.1</b> Random network</a></li>
-<li class="chapter" data-level="26.1.2" data-path="network-vis.html"><a href="network-vis.html#random-network-1"><i class="fa fa-check"></i><b>26.1.2</b> Random network</a></li>
+<li class="chapter" data-level="26.1.1" data-path="geospatial.html"><a href="geospatial.html#bind-data-to-map-data"><i class="fa fa-check"></i><b>26.1.1</b> Bind data to map data</a></li>
+<li class="chapter" data-level="26.1.2" data-path="geospatial.html"><a href="geospatial.html#drawing-map"><i class="fa fa-check"></i><b>26.1.2</b> Drawing Map</a></li>
+<li class="chapter" data-level="26.1.3" data-path="geospatial.html"><a href="geospatial.html#drawing-map-by-specific-colors"><i class="fa fa-check"></i><b>26.1.3</b> Drawing map by specific colors</a></li>
+<li class="chapter" data-level="26.1.4" data-path="geospatial.html"><a href="geospatial.html#practice.-drawing-map-for-every-years"><i class="fa fa-check"></i><b>26.1.4</b> Practice. Drawing map for every years</a></li>
 </ul></li>
-<li class="chapter" data-level="26.2" data-path="network-vis.html"><a href="network-vis.html#retrieve-top3-components"><i class="fa fa-check"></i><b>26.2</b> Retrieve Top3 Components</a>
+<li class="chapter" data-level="26.2" data-path="geospatial.html"><a href="geospatial.html#read-spatial-data-from-segis"><i class="fa fa-check"></i><b>26.2</b> Read Spatial Data from SEGIS</a>
 <ul>
-<li class="chapter" data-level="26.2.1" data-path="network-vis.html"><a href="network-vis.html#visualize-again"><i class="fa fa-check"></i><b>26.2.1</b> Visualize again</a></li>
+<li class="chapter" data-level="26.2.1" data-path="geospatial.html"><a href="geospatial.html#the-case-population-and-density-of-taipei"><i class="fa fa-check"></i><b>26.2.1</b> The case: Population and Density of Taipei</a></li>
+<li class="chapter" data-level="26.2.2" data-path="geospatial.html"><a href="geospatial.html#projection-投影的概念"><i class="fa fa-check"></i><b>26.2.2</b> Projection 投影的概念</a></li>
 </ul></li>
-<li class="chapter" data-level="26.3" data-path="network-vis.html"><a href="network-vis.html#motif-visualization-and-analysis"><i class="fa fa-check"></i><b>26.3</b> Motif visualization and analysis</a>
+<li class="chapter" data-level="26.3" data-path="geospatial.html"><a href="geospatial.html#town-level-taipei-income"><i class="fa fa-check"></i><b>26.3</b> Town-level: Taipei income</a>
 <ul>
-<li class="chapter" data-level="26.3.1" data-path="network-vis.html"><a href="network-vis.html#motif-type"><i class="fa fa-check"></i><b>26.3.1</b> Motif type</a></li>
-<li class="chapter" data-level="26.3.2" data-path="network-vis.html"><a href="network-vis.html#motif-analysis"><i class="fa fa-check"></i><b>26.3.2</b> Motif analysis</a></li>
-<li class="chapter" data-level="26.3.3" data-path="network-vis.html"><a href="network-vis.html#generate-motives"><i class="fa fa-check"></i><b>26.3.3</b> Generate motives</a></li>
+<li class="chapter" data-level="26.3.1" data-path="geospatial.html"><a href="geospatial.html#reading-income-data"><i class="fa fa-check"></i><b>26.3.1</b> Reading income data</a></li>
+<li class="chapter" data-level="26.3.2" data-path="geospatial.html"><a href="geospatial.html#read-taipei-zip-code"><i class="fa fa-check"></i><b>26.3.2</b> Read Taipei zip code</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="geospatial.html"><a href="geospatial.html#twmap"><i class="fa fa-check"></i><b>26.4</b> Voting map - County level</a>
+<ul>
+<li class="chapter" data-level="26.4.1" data-path="geospatial.html"><a href="geospatial.html#loading-county-level-president-voting-rate"><i class="fa fa-check"></i><b>26.4.1</b> Loading county-level president voting rate</a></li>
+<li class="chapter" data-level="26.4.2" data-path="geospatial.html"><a href="geospatial.html#sf-to-load-county-level-shp"><i class="fa fa-check"></i><b>26.4.2</b> sf to load county level shp</a></li>
+<li class="chapter" data-level="26.4.3" data-path="geospatial.html"><a href="geospatial.html#simplfying-map-polygon"><i class="fa fa-check"></i><b>26.4.3</b> Simplfying map polygon</a></li>
+<li class="chapter" data-level="26.4.4" data-path="geospatial.html"><a href="geospatial.html#practice.-drawing-taiwan-county-scale-map-from-segis-data"><i class="fa fa-check"></i><b>26.4.4</b> Practice. Drawing Taiwan county-scale map from SEGIS data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>27</b> GEOSPATIAL</a></li>
+<li class="chapter" data-level="27" data-path="network-vis.html"><a href="network-vis.html"><i class="fa fa-check"></i><b>27</b> NETWORK VIS</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="network-vis.html"><a href="network-vis.html#generating-networks"><i class="fa fa-check"></i><b>27.1</b> Generating networks</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="network-vis.html"><a href="network-vis.html#random-network"><i class="fa fa-check"></i><b>27.1.1</b> Random network</a></li>
+<li class="chapter" data-level="27.1.2" data-path="network-vis.html"><a href="network-vis.html#random-network-1"><i class="fa fa-check"></i><b>27.1.2</b> Random network</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="network-vis.html"><a href="network-vis.html#retrieve-top3-components"><i class="fa fa-check"></i><b>27.2</b> Retrieve Top3 Components</a>
+<ul>
+<li class="chapter" data-level="27.2.1" data-path="network-vis.html"><a href="network-vis.html#visualize-again"><i class="fa fa-check"></i><b>27.2.1</b> Visualize again</a></li>
+</ul></li>
+<li class="chapter" data-level="27.3" data-path="network-vis.html"><a href="network-vis.html#motif-visualization-and-analysis"><i class="fa fa-check"></i><b>27.3</b> Motif visualization and analysis</a>
+<ul>
+<li class="chapter" data-level="27.3.1" data-path="network-vis.html"><a href="network-vis.html#motif-type"><i class="fa fa-check"></i><b>27.3.1</b> Motif type</a></li>
+<li class="chapter" data-level="27.3.2" data-path="network-vis.html"><a href="network-vis.html#motif-analysis"><i class="fa fa-check"></i><b>27.3.2</b> Motif analysis</a></li>
+<li class="chapter" data-level="27.3.3" data-path="network-vis.html"><a href="network-vis.html#generate-motives"><i class="fa fa-check"></i><b>27.3.3</b> Generate motives</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="28" data-path="interactivity.html"><a href="interactivity.html"><i class="fa fa-check"></i><b>28</b> Interactivity</a>
 <ul>
 <li class="chapter" data-level="28.1" data-path="interactivity.html"><a href="interactivity.html#ggplotly"><i class="fa fa-check"></i><b>28.1</b> ggplotly</a>
@@ -666,17 +693,366 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="geospatial" class="section level1 hasAnchor" number="27">
-<h1><span class="header-section-number">Chapter 27</span> GEOSPATIAL<a href="geospatial.html#geospatial" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="geospatial" class="section level1 hasAnchor" number="26">
+<h1><span class="header-section-number">Chapter 26</span> GEOSPATIAL<a href="geospatial.html#geospatial" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>地圖是一種用來展示地理空間信息的視覺化工具，可以幫助我們更好地了解和分析地理現象。常見的地圖種類通常可以分為兩類：區域圖和點位圖。</p>
+<ol style="list-style-type: decimal">
+<li>區域圖（Choropleth Map）是通過將地理區域劃分為幾個區域，然後用不同的顏色、陰影或圖案等方式來表示這些區域的某種屬性或數量。這種地圖通常用於展示國家、省份、城市等區域的人口、經濟、地形、氣候等相關數據。區域圖能夠直觀地展示地理現象在不同區域之間的差異和變化，並有助於我們進行比較和分析。</li>
+<li>點位圖（Dot Density Map）則是通過在地圖上用點或符號來表示某種地理空間現象的分布或密度。例如，可以用紅點表示城市、綠點表示森林、藍點表示湖泊等等。這種地圖通常用於展示地理現象在空間上的分布和密度，並能夠直觀地展示相對密度和稀疏程度。</li>
+</ol>
+<p><strong>區域圖的數據形式：</strong>有兩種基本數據模型：向量（Vector）和網格（Raster）。</p>
+<ul>
+<li>向量數據模型使用點、線、多邊形等基本要素來描述地理空間現象。例如，可以用一個線段來表示一條河流，用一個多邊形來表示一個國家或城市的邊界等。向量數據模型具有比較強的邏輯性和表達能力，特別適合描述較簡單的地理現象。</li>
+<li>網格數據模型則是將地理空間區域劃分為一個個大小相等的格子，每個格子都有一個固定的數值，用來表示這個區域的某種屬性，例如溫度、濕度、高程等等。網格數據模型適合描述分布比較連續和具有變化的地理現象。</li>
+</ul>
+<p>通常繪製地理資訊地圖的時候，會需要因應你要繪製的地域去下載地圖空間數據檔案（例如.shape或geojson檔等）。如台灣的就可以去<a href="https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1">社會經濟資料服務平台 (moi.gov.tw)</a>下載。但也有一些套件內部就包含這些地理空間數據，例如下一節的例子rworldmap套件本身就有世界地圖。或者可以嘗試ggmap或rgooglemap等第三方服務（參考簡介：<a href="https://mpmendespt.github.io/Map-visualization.html">Map Visualization in R · Data Science and R</a>）</p>
+<div id="world-map" class="section level2 hasAnchor" number="26.1">
+<h2><span class="header-section-number">26.1</span> World Map<a href="geospatial.html#world-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="geospatial.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb649-2"><a href="geospatial.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rworldmap) <span class="co"># for drawing rworldmap</span></span></code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="geospatial.html#cb650-1" aria-hidden="true" tabindex="-1"></a>rawdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
+<span id="cb650-2"><a href="geospatial.html#cb650-2" aria-hidden="true" tabindex="-1"></a>mapdata <span class="ot">&lt;-</span> rawdata[,<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span></code></pre></div>
+<div id="bind-data-to-map-data" class="section level3 hasAnchor" number="26.1.1">
+<h3><span class="header-section-number">26.1.1</span> Bind data to map data<a href="geospatial.html#bind-data-to-map-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>這段程式碼是在將自己的數據<strong><code>mapdata</code></strong>與<strong><code>rworldmap</code></strong>世界地圖數據進行結合。</p>
+<p>首先，使用 <strong><code>joinCountryData2Map()</code></strong> 函數，將自己的數據和世界地圖數據按照國家的 ISO3 代碼進行連接，生成一張新的地圖。其中， <strong><code>mapdata</code></strong> 是指世界地圖數據， <strong><code>joinCode</code></strong> 參數指定連接時使用的 ISO3 代碼（亦即你預先知道你自己的資料中有ISO3國家代碼）。 <strong><code>nameJoinColumn</code></strong> 參數則用於指定自己數據中與國家對應的欄位名稱為<strong><code>iso3</code></strong>。</p>
+<p>還有其他的<strong><code>joinCode</code></strong>如「“ISO2”,“ISO3”,“FIPS”,“NAME”, “UN” = numeric codes」等可參見該套件的說明<a href="https://www.rdocumentation.org/packages/rworldmap/versions/1.3-6">rworldmap package - RDocumentation</a>。</p>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="geospatial.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="co"># join your data with the world map data</span></span>
+<span id="cb651-2"><a href="geospatial.html#cb651-2" aria-hidden="true" tabindex="-1"></a>myMap <span class="ot">&lt;-</span> <span class="fu">joinCountryData2Map</span>(mapdata, <span class="at">joinCode =</span> <span class="st">&quot;ISO3&quot;</span>, <span class="at">nameJoinColumn =</span> <span class="st">&quot;iso3&quot;</span>)</span></code></pre></div>
+<pre class="output"><code>## 196 codes from your data successfully matched countries in the map
+## 1 codes from your data failed to match with a country code in the map
+## 47 codes from the map weren&#39;t represented in your data</code></pre>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="geospatial.html#cb653-1" aria-hidden="true" tabindex="-1"></a>myMap<span class="sc">$</span>matleave_13</span></code></pre></div>
+<pre class="output"><code>##   [1]  2  2  5  2  2  5 NA NA  3  5  5  2  4  3  3  3  5  2  5  5  3  2  3  3  2
+##  [26]  2  3  4  3  4  3  3  3  3  3  3  3  5 NA  3  5  5  3  5  2  3  2  2  2  3
+##  [51]  5  2  5  2 NA  4  3  4  3  2  3  4  2  2  4 NA  2  2  2  5  2  5  2  2  4
+##  [76]  4  2  4  3  4  2  2  5  3  2  3  2  5 NA  2  2  2  2  3  2  2  5  4  5  3
+## [101]  5  3  2  4  3  2  5  5  2  3  2  2  2 NA  3  2  2  3  4  2  3  2  2  3  2
+## [126]  2  1  5 NA  2  4  2  2  5  5  2 NA  2  2  2  3  2  2  2  3  5  1  5  5  5
+## [151]  2  3  3  3  2  5  3  2  3  2  3 NA  2  2  5  2  1  5  4  4  2 NA  2  3  3
+## [176]  3 NA NA NA  3 NA NA  2  2 NA NA  2  2  3  2 NA NA  2 NA  1 NA NA  2 NA NA
+## [201] NA NA NA NA NA NA  2  2  2  3 NA NA  3  2  1  3 NA NA  2 NA  1  1 NA  1 NA
+## [226]  3 NA NA  5 NA  2 NA  3 NA  1  5  2 NA NA NA  2  2 NA</code></pre>
+</div>
+<div id="drawing-map" class="section level3 hasAnchor" number="26.1.2">
+<h3><span class="header-section-number">26.1.2</span> Drawing Map<a href="geospatial.html#drawing-map" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong><code>mapCountryData()</code></strong> 函數用於將數據繪製在地圖上。其中， <strong><code>myMap</code></strong> 是已經連接過的世界地圖數據和自己的數據，包含了各國的地理空間信息和相關的數據資訊。 <strong><code>nameColumnToPlot</code></strong> 指定要顯示在地圖上的數據欄位為<strong><code>matleave_13</code></strong>，也就是 2013 年的產假長度。 <strong><code>catMethod</code></strong> 參數是決定視覺化時的數據分類是類別或連續，<strong><code>categorical</code></strong>表示將數據分成幾個等級來展示在地圖上。</p>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="geospatial.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mapCountryData</span>(myMap</span>
+<span id="cb655-2"><a href="geospatial.html#cb655-2" aria-hidden="true" tabindex="-1"></a>               , <span class="at">nameColumnToPlot=</span><span class="st">&quot;matleave_13&quot;</span></span>
+<span id="cb655-3"><a href="geospatial.html#cb655-3" aria-hidden="true" tabindex="-1"></a>               , <span class="at">catMethod =</span> <span class="st">&quot;categorical&quot;</span></span>
+<span id="cb655-4"><a href="geospatial.html#cb655-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="V21_Geospatial_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="drawing-map-by-specific-colors" class="section level3 hasAnchor" number="26.1.3">
+<h3><span class="header-section-number">26.1.3</span> Drawing map by specific colors<a href="geospatial.html#drawing-map-by-specific-colors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="geospatial.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># self-defined colors</span></span>
+<span id="cb656-2"><a href="geospatial.html#cb656-2" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#FF8000&quot;</span>, <span class="st">&quot;#A9D0F5&quot;</span>, <span class="st">&quot;#58ACFA&quot;</span>, <span class="st">&quot;#0080FF&quot;</span>, <span class="st">&quot;#084B8A&quot;</span>)</span>
+<span id="cb656-3"><a href="geospatial.html#cb656-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mapCountryData</span>(myMap</span>
+<span id="cb656-4"><a href="geospatial.html#cb656-4" aria-hidden="true" tabindex="-1"></a>               , <span class="at">nameColumnToPlot=</span><span class="st">&quot;matleave_13&quot;</span></span>
+<span id="cb656-5"><a href="geospatial.html#cb656-5" aria-hidden="true" tabindex="-1"></a>               , <span class="at">catMethod =</span> <span class="st">&quot;categorical&quot;</span></span>
+<span id="cb656-6"><a href="geospatial.html#cb656-6" aria-hidden="true" tabindex="-1"></a>               , <span class="at">colourPalette =</span> colors</span>
+<span id="cb656-7"><a href="geospatial.html#cb656-7" aria-hidden="true" tabindex="-1"></a>               , <span class="at">addLegend=</span><span class="st">&quot;FALSE&quot;</span></span>
+<span id="cb656-8"><a href="geospatial.html#cb656-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="V21_Geospatial_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="practice.-drawing-map-for-every-years" class="section level3 hasAnchor practice" number="26.1.4">
+<h3><span class="header-section-number">26.1.4</span> Practice. Drawing map for every years<a href="geospatial.html#practice.-drawing-map-for-every-years" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>繪製自1995至2013年每年的地圖並觀察其上的變化。</li>
+<li>繪製的時候請嘗試使用<code>par()</code>來把每年的地圖繪製在同一張圖上，怎麼做？</li>
+<li>你能觀察出變化來嗎？可否透過顏色的調整來凸顯變化？你的策略是什麼？</li>
+</ol>
+</div>
 
+</div>
+<div id="read-spatial-data-from-segis" class="section level2 hasAnchor" number="26.2">
+<h2><span class="header-section-number">26.2</span> Read Spatial Data from SEGIS<a href="geospatial.html#read-spatial-data-from-segis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>要繪製地理地圖會要先下載地圖檔，可以查詢「<a href="https://data.gov.tw/dataset/7442">直轄市、縣市界線(TWD97經緯度)</a>」和<a href="https://data.gov.tw/dataset/7441">鄉鎮市區界線(TWD97經緯度) | 政府資料開放平臺 (data.gov.tw)</a>。</li>
+<li>接下來是取得要繪製在地圖上的資料。前面的rworldmap是已知地圖檔和資料檔中都有每個國家的ISO3代碼，所以可以用ISO3代碼來連結地圖檔和資料檔。如果是臺灣的資料，可能就要用縣市名稱來做連結。或者，某些圖資本身就有經緯度，甚至它並非區域圖，而是有經緯度的點位圖。這類的圖資檔案可以到<a href="https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1">社會經濟資料服務平台 (moi.gov.tw)</a>查找並下載。</li>
+</ul>
+<p>通常地理圖資檔有兩種格式：一種是geojson，一種是shapefile。</p>
+<ul>
+<li>shapefile 是一種老舊的地理圖資檔案格式，通常由 shp, shx, dbf, prj 等檔案組成。其中，shp 檔案包含了地理空間範圍和形狀的點與邊（邊通常是由點依序所構成，不會特別把邊標出來），shx 檔案是其索引文件，dbf 檔案則儲存了相關的屬性資訊，例如幾何特徵的名稱或變數，prj 檔案則是儲存了投影信息。shapefile 格式的優點是廣泛的應用性和支援程式豐富，可以在許多地理信息系統（GIS）和軟件中使用，是許多組織和機構最常用的地理圖資格式之一。</li>
+<li>geojson 則是一種基於 JSON 格式的地理圖資檔案格式，內容包含了地理空間範圍和屬性。geojson 的優點是格式簡單、容易理解和易於編輯，支援性也比較好。由於 geojson 使用的是文本格式，因此可以直接在許多文本編輯器中編輯和查看，也可以輕易地轉換成其他格式的地理圖資檔案。</li>
+</ul>
+<p>這邊我們所要用的套件是<strong><code>sf</code></strong>，<strong><code>sf</code></strong> 是一個在 R 環境下進行地理圖資處理和分析的套件，他不僅支援多種檔案格式，包括 shapefile、GeoJSON、KML 等，並且可以直接將這些檔案轉換為 R 中的空間資料框架，方便進行進一步的處理和分析。更方便的特色是在於，它可以用tidyverse的風格來寫作，方便對地理圖資和其他數據進行整合和分析，甚至在使用<strong><code>View()</code></strong>的時候，把圖資當成一個變項。</p>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="geospatial.html#cb657-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<div id="the-case-population-and-density-of-taipei" class="section level3 hasAnchor" number="26.2.1">
+<h3><span class="header-section-number">26.2.1</span> The case: Population and Density of Taipei<a href="geospatial.html#the-case-population-and-density-of-taipei" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>這個資料下載自<a href="https://segis.moi.gov.tw/STAT/Web/Portal/STAT_PortalHome.aspx">社會經濟資料服務平台 (moi.gov.tw)</a>的<img src="https://segis.moi.gov.tw/STAT/Resources/Project/Images/Platform/subProduct.png" title="子產品" /><a href="https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1#" title="111年9月行政區人口統計_鄉鎮市區_臺北市">111年9月行政區人口統計_鄉鎮市區_臺北市</a>，實際上內部的資料包含368個鄉鎮的依性別分人口數、家戶數等。</p>
+<p>資料變項包含每個區的家戶數（<strong><code>H_CNT</code></strong>）、總人口數（<strong><code>P_CNT</code></strong>）、男性人口數（<strong><code>M_CNT</code></strong>）、女性人口數（<strong><code>F_CNT</code></strong>）。等一下要計算每平方公里的家戶數或人口數時，你會疑惑為何沒有面積資料。</p>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="geospatial.html#cb658-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="ot">&lt;-</span></span>
+<span id="cb658-2"><a href="geospatial.html#cb658-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">&quot;data/111年9月行政區人口統計_鄉鎮市區_臺北市_SHP/&quot;</span>, </span>
+<span id="cb658-3"><a href="geospatial.html#cb658-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">layer =</span> <span class="st">&quot;111年9月行政區人口統計_鄉鎮市區&quot;</span>, <span class="at">quiet =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb658-4"><a href="geospatial.html#cb658-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">iconv</span>(., <span class="at">from =</span> <span class="st">&quot;BIG5&quot;</span>, <span class="at">to =</span> <span class="st">&quot;UTF8&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb658-5"><a href="geospatial.html#cb658-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(across(where(is.double), ~if_else(is.na(.),as.double(0),.))) %&gt;%</span></span>
+<span id="cb658-6"><a href="geospatial.html#cb658-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># st_set_crs(3826) %&gt;% st_transform(4326) %&gt;% </span></span>
+<span id="cb658-7"><a href="geospatial.html#cb658-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(COUNTY, <span class="st">&quot;臺北市&quot;</span>))</span>
+<span id="cb658-8"><a href="geospatial.html#cb658-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb658-9"><a href="geospatial.html#cb658-9" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre class="output"><code>## Simple feature collection with 6 features and 9 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 300874.7 ymin: 2766756 xmax: 309745.8 ymax: 2776127
+## CRS:           NA
+##    TOWN_ID   TOWN COUNTY_ID COUNTY  H_CNT  P_CNT  M_CNT  F_CNT INFO_TIME
+## 1 63000010 松山區     63000 臺北市  78977 187552  87625  99927   111Y09M
+## 2 63000020 信義區     63000 臺北市  87407 201951  95884 106067   111Y09M
+## 3 63000030 大安區     63000 臺北市 117243 280332 130596 149736   111Y09M
+## 4 63000040 中山區     63000 臺北市  98825 210156  97114 113042   111Y09M
+## 5 63000050 中正區     63000 臺北市  64491 146628  69663  76965   111Y09M
+## 6 63000060 大同區     63000 臺北市  51988 118065  57003  61062   111Y09M
+##                         geometry
+## 1 MULTIPOLYGON (((307703.1 27...
+## 2 MULTIPOLYGON (((307788.7 27...
+## 3 MULTIPOLYGON (((304591.5 27...
+## 4 MULTIPOLYGON (((305699 2776...
+## 5 MULTIPOLYGON (((302203.6 27...
+## 6 MULTIPOLYGON (((302217.9 27...</code></pre>
+<p>試著畫畫看。你會發現它的座標系是一個我們看不懂的數字，而不是想像中的經緯度。</p>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="geospatial.html#cb660-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
+<span id="cb660-2"><a href="geospatial.html#cb660-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb660-3"><a href="geospatial.html#cb660-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
+<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="projection-投影的概念" class="section level3 hasAnchor" number="26.2.2">
+<h3><span class="header-section-number">26.2.2</span> Projection 投影的概念<a href="geospatial.html#projection-投影的概念" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>投影是指將地球表面的三維空間坐標轉換為二維平面坐標的過程，這是因為在實際應用中需要將地球表面的訊息表示在平面上，方便分析和可視化。然而，由於地球是一個球體，不同的投影方式會導致在不同位置和距離上的形狀、面積和方向出現差異，因此在使用地理空間數據進行分析和視覺化時需要注意投影的選擇和轉換。</p>
+<p>除了投影之外，每個地理區域還有適合的參考橢球體和大地基準面。橢球體是指地球表面的形狀，大地基準面則是指地球表面的平均高程面。這些概念的選擇取決於具體的地理區域和應用場景，並且可能會對數據分析結果產生影響。基準點（Datum）則是用來定義地球表面上的某個點，從而將地球表面的形狀和大小轉換為平面坐標系中的數值。基準點分為區域性的（local）和全球的（global）。區域性的基準點通常是針對某個特定的地理區域進行定義，而全球的基準點則是針對整個地球進行定義。全球最常用的基準點是<strong>WGS84</strong>，它以地球質心為中心；而台灣常用的區域性基準點是<strong>TWD97</strong>，舊版則是用<strong>TWD67</strong>。基準點的選擇也可能會對數據分析結果產生影響。</p>
+<ul>
+<li>投影法有對應的代號稱為 EPSG（歐洲石油探勘組織），他們制定了空間參考識別系統（SRID）。可以記兩個重要的:
+<ul>
+<li><strong>WGS84 = 4326</strong></li>
+<li><strong>TWD97 = 3826</strong></li>
+</ul></li>
+<li>參考：<a href="https://gis.stackexchange.com/questions/48949/epsg-3857-or-4326-for-googlemaps-openstreetmap-and-leaflet" class="uri">https://gis.stackexchange.com/questions/48949/epsg-3857-or-4326-for-googlemaps-openstreetmap-and-leaflet</a>
+<ul>
+<li><p>Google Earth採用WGS84坐標系統的地理坐標系統。(EPSG：4326)</p>
+<p>Google Maps採用以WGS84為基礎的投影坐標系統。(EPSG 3857)</p>
+<p>Open Street Map數據庫中的數據以WGS84坐標系統的十進制度為單位進行儲存。(EPSG：4326)</p>
+<p>Open Street Map瓦片和WMS服務採用以WGS84為基礎的投影坐標系統。(EPSG 3857)</p>
+<p><a href="https://epsg.io/3825"><strong>https://epsg.io/3825</strong></a> 是台灣的坐標系統（3826、3827等也是，你可以打開看看）</p></li>
+</ul></li>
+<li>用得到投影的情境
+<ul>
+<li>研究區域，想轉換座標（changing projections）：修改 EPSG code 或是改掉 <code>proj4string</code> 的內容</li>
+<li>原始資料缺投影方法：加上 EPSG code 或是加上 <code>proj4string</code> 的內容</li>
+</ul></li>
+<li>如果需要進行投影轉換，可以使用 R 中的相關函數和方法。例如，
+<ul>
+<li>使用 <strong><code>st_crs()</code></strong> 函數可以取得地理空間數據的投影系統；</li>
+<li>使用 <strong><code>st_transform()</code></strong> 函數可以進行地理空間數據的投影變換；</li>
+<li>使用 <strong><code>st_set_crs()</code></strong> 函數可以設定地理空間數據的投影系統等等。</li>
+</ul></li>
+</ul>
+<p>就下載的這個資料來說，他並沒有設定他的投影座標。</p>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="geospatial.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)<span class="sc">$</span>proj4string</span></code></pre></div>
+<pre class="output"><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="geospatial.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)</span></code></pre></div>
+<pre class="output"><code>## Coordinate Reference System: NA</code></pre>
+<p>我們會希望在讀取資料的時候，設定他的投影座標。例如以下的例子是設定為TWD96（3826）然後轉換為全球座標WGS84（4326）。</p>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="geospatial.html#cb665-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="ot">&lt;-</span></span>
+<span id="cb665-2"><a href="geospatial.html#cb665-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">&quot;data/111年9月行政區人口統計_鄉鎮市區_臺北市_SHP/&quot;</span>, </span>
+<span id="cb665-3"><a href="geospatial.html#cb665-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">layer =</span> <span class="st">&quot;111年9月行政區人口統計_鄉鎮市區&quot;</span>, <span class="at">quiet =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb665-4"><a href="geospatial.html#cb665-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">iconv</span>(., <span class="at">from =</span> <span class="st">&quot;BIG5&quot;</span>, <span class="at">to =</span> <span class="st">&quot;UTF8&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb665-5"><a href="geospatial.html#cb665-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(<span class="dv">3826</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb665-6"><a href="geospatial.html#cb665-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">4326</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb665-7"><a href="geospatial.html#cb665-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(COUNTY, <span class="st">&quot;臺北市&quot;</span>))</span>
+<span id="cb665-8"><a href="geospatial.html#cb665-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb665-9"><a href="geospatial.html#cb665-9" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)<span class="sc">$</span>proj4string</span></code></pre></div>
+<pre class="output"><code>## [1] &quot;+proj=longlat +datum=WGS84 +no_defs&quot;</code></pre>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="geospatial.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)</span></code></pre></div>
+<pre class="output"><code>## Coordinate Reference System:
+##   User input: EPSG:4326 
+##   wkt:
+## GEOGCRS[&quot;WGS 84&quot;,
+##     ENSEMBLE[&quot;World Geodetic System 1984 ensemble&quot;,
+##         MEMBER[&quot;World Geodetic System 1984 (Transit)&quot;],
+##         MEMBER[&quot;World Geodetic System 1984 (G730)&quot;],
+##         MEMBER[&quot;World Geodetic System 1984 (G873)&quot;],
+##         MEMBER[&quot;World Geodetic System 1984 (G1150)&quot;],
+##         MEMBER[&quot;World Geodetic System 1984 (G1674)&quot;],
+##         MEMBER[&quot;World Geodetic System 1984 (G1762)&quot;],
+##         MEMBER[&quot;World Geodetic System 1984 (G2139)&quot;],
+##         ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##         ENSEMBLEACCURACY[2.0]],
+##     PRIMEM[&quot;Greenwich&quot;,0,
+##         ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     CS[ellipsoidal,2],
+##         AXIS[&quot;geodetic latitude (Lat)&quot;,north,
+##             ORDER[1],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         AXIS[&quot;geodetic longitude (Lon)&quot;,east,
+##             ORDER[2],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     USAGE[
+##         SCOPE[&quot;Horizontal component of 3D system.&quot;],
+##         AREA[&quot;World.&quot;],
+##         BBOX[-90,-180,90,180]],
+##     ID[&quot;EPSG&quot;,4326]]</code></pre>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="geospatial.html#cb669-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
+<span id="cb669-2"><a href="geospatial.html#cb669-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb669-3"><a href="geospatial.html#cb669-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
+<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="geospatial.html#cb670-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
+<span id="cb670-2"><a href="geospatial.html#cb670-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">fill =</span> P_CNT) <span class="sc">+</span> </span>
+<span id="cb670-3"><a href="geospatial.html#cb670-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb670-4"><a href="geospatial.html#cb670-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;white&quot;</span>, <span class="at">high =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
+<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>面積資料可以用<strong><code>st_area()</code></strong>這個函式求得。<strong><code>st_area()</code></strong> 是 R 中一個與地理空間數據相關的函數，用於計算地理多邊形的面積。具體而言，st_area() 函數接受一個 Spatial* 或是 sf 的資料物件，可以計算其包含的每個多邊形的面積，並以相應的單位返回結果。其中 <strong><code>as.double(st_area(.))/1000000</code></strong> 的作用是將地理多邊形的面積從平方公尺轉換為平方公里。因為面積的單位是平方公尺，而人口密度的常用單位是人口數/平方公里，因此需要進行單位換算，將面積轉換為平方公里。</p>
+<p><strong><code>st_area()</code></strong> 函數的計算方式基於多邊形的投影，因此在使用該函數時需要注意地理空間數據的投影選擇和轉換。通常情況下，<strong><code>st_area()</code></strong> 函數可以自動識別多邊形的投影系統，並返回相應的面積值。如果需要在不同的投影系統間進行面積的轉換，則需要使用 <strong><code>st_transform()</code></strong> 函數進行投影變換。</p>
+<p>需要注意的是，由於地球是一個球體，因此在計算面積時需要考慮到地球的曲率效應。<strong><code>st_area()</code></strong> 函數默認使用的是橢球面積計算公式（ellipsoidal area formula），可以更準確地計算地理多邊形的面積。如果需要更精確的面積計算結果，也可以使用球面面積計算公式（spherical area formula）或是進行局部的面積校正。</p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="geospatial.html#cb671-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
+<span id="cb671-2"><a href="geospatial.html#cb671-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_density =</span> P_CNT<span class="sc">/</span>(<span class="fu">as.double</span>(<span class="fu">st_area</span>(.))<span class="sc">/</span><span class="dv">1000000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb671-3"><a href="geospatial.html#cb671-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">fill =</span> p_density) <span class="sc">+</span> </span>
+<span id="cb671-4"><a href="geospatial.html#cb671-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
+<span id="cb671-5"><a href="geospatial.html#cb671-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;white&quot;</span>, <span class="at">high =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
+<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="town-level-taipei-income" class="section level2 hasAnchor" number="26.3">
+<h2><span class="header-section-number">26.3</span> Town-level: Taipei income<a href="geospatial.html#town-level-taipei-income" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>有時候我們所希望繪製的資料並非來自SEGIS這類有圖資的平台（例如下面所用的台北各區每人平均所得），那我們就會需要先取得另一份圖資資料（例如下例的鄉鎮市區界圖資），再透過一些索引（Index）來結合這兩方的資料。而下面這個例子，還為了要將鄉鎮市區名稱打在各區的中央，結合了另一份資料，一共結合了三方的資料。</p>
+<div id="reading-income-data" class="section level3 hasAnchor" number="26.3.1">
+<h3><span class="header-section-number">26.3.1</span> Reading income data<a href="geospatial.html#reading-income-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="geospatial.html#cb672-1" aria-hidden="true" tabindex="-1"></a>taipei_income <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&#39;data/台北各區每人所得.xlsx&#39;</span>) </span>
+<span id="cb672-2"><a href="geospatial.html#cb672-2" aria-hidden="true" tabindex="-1"></a>taipei_income <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 6 × 2
+##   district  income
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 松山區   1012678
+## 2 信義區    909336
+## 3 大安區   1038921
+## 4 中山區    861415
+## 5 中正區   1022438
+## 6 大同區    814439</code></pre>
+</div>
+<div id="read-taipei-zip-code" class="section level3 hasAnchor" number="26.3.2">
+<h3><span class="header-section-number">26.3.2</span> Read Taipei zip code<a href="geospatial.html#read-taipei-zip-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>等一下我打算把每區的名稱打在各區上，但是我沒有各區的名稱應該打在哪裡的經緯度，恰好Zip Code這份資料裡面有台北市各區的經緯度中心，因此先把它讀進來合併用。</p>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="geospatial.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb674-2"><a href="geospatial.html#cb674-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb674-3"><a href="geospatial.html#cb674-3" aria-hidden="true" tabindex="-1"></a>twzipcode_json <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">&quot;data/twzipcode.json&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb674-4"><a href="geospatial.html#cb674-4" aria-hidden="true" tabindex="-1"></a>taipei_zipcode <span class="ot">&lt;-</span> twzipcode_json <span class="sc">%&gt;%</span> </span>
+<span id="cb674-5"><a href="geospatial.html#cb674-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city <span class="sc">==</span> <span class="st">&quot;台北市&quot;</span>)</span>
+<span id="cb674-6"><a href="geospatial.html#cb674-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb674-7"><a href="geospatial.html#cb674-7" aria-hidden="true" tabindex="-1"></a>taipei_zipcode <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre class="output"><code>##   zip_code district   city     lat     lng
+## 1      100   中正區 台北市 25.0324 121.520
+## 2      103   大同區 台北市 25.0634 121.513
+## 3      104   中山區 台北市 25.0697 121.538
+## 4      105   松山區 台北市 25.0600 121.558
+## 5      106   大安區 台北市 25.0268 121.543
+## 6      108   萬華區 台北市 25.0286 121.498</code></pre>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="geospatial.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;rmapshaper&quot;)</span></span>
+<span id="cb676-2"><a href="geospatial.html#cb676-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/TOWN_MOI_1100415.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb676-3"><a href="geospatial.html#cb676-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(COUNTYNAME <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb676-4"><a href="geospatial.html#cb676-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># st_transform(3825) %&gt;% #3857</span></span>
+<span id="cb676-5"><a href="geospatial.html#cb676-5" aria-hidden="true" tabindex="-1"></a>    rmapshaper<span class="sc">::</span><span class="fu">ms_simplify</span>(<span class="at">keep=</span><span class="fl">0.05</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb676-6"><a href="geospatial.html#cb676-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(taipei_income, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;TOWNNAME&quot;</span> <span class="ot">=</span> <span class="st">&quot;district&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb676-7"><a href="geospatial.html#cb676-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(taipei_zipcode, <span class="at">by=</span> <span class="fu">c</span>(<span class="st">&quot;TOWNNAME&quot;</span> <span class="ot">=</span> <span class="st">&quot;district&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb676-8"><a href="geospatial.html#cb676-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> income)) <span class="sc">+</span> </span>
+<span id="cb676-9"><a href="geospatial.html#cb676-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb676-10"><a href="geospatial.html#cb676-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">&quot;#FF8888&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#0000AA&quot;</span>, <span class="at">midpoint =</span> <span class="fu">median</span>(taipei_income<span class="sc">$</span>income)) <span class="sc">+</span></span>
+<span id="cb676-11"><a href="geospatial.html#cb676-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> lng, <span class="at">y =</span> lat, <span class="at">label =</span> TOWNNAME), <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
+<pre class="output"><code>## Reading layer `TOWN_MOI_1100415&#39; from data source 
+##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/TOWN_MOI_1100415.shp&#39; 
+##   using driver `ESRI Shapefile&#39;
+## Simple feature collection with 368 features and 7 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
+## Geodetic CRS:  TWD97</code></pre>
+<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="twmap" class="section level2 hasAnchor" number="26.4">
+<h2><span class="header-section-number">26.4</span> Voting map - County level<a href="geospatial.html#twmap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本練習將以2016年總統選舉為例，比較朱立倫、宋楚瑜、蔡英文在不同縣市的得票率，並繪製為地圖。該地圖比較有趣的是，因為台灣的地圖實際上是由很多點連成的，在這麼大的規模如果把全部的點全部繪製上去，會繪製非常久，而讀者也不盡然能夠看清楚這個差別，所以可以降低點的數量。</p>
+<div id="loading-county-level-president-voting-rate" class="section level3 hasAnchor" number="26.4.1">
+<h3><span class="header-section-number">26.4.1</span> Loading county-level president voting rate<a href="geospatial.html#loading-county-level-president-voting-rate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="geospatial.html#cb678-1" aria-hidden="true" tabindex="-1"></a>president_vote <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&#39;data/president.xlsx&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb678-2"><a href="geospatial.html#cb678-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> chu <span class="sc">+</span> tsai <span class="sc">+</span> song) <span class="sc">%&gt;%</span> </span>
+<span id="cb678-3"><a href="geospatial.html#cb678-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chu_ratio =</span> chu <span class="sc">/</span> total,</span>
+<span id="cb678-4"><a href="geospatial.html#cb678-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_ratio =</span> tsai <span class="sc">/</span> total,</span>
+<span id="cb678-5"><a href="geospatial.html#cb678-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">song_ratio =</span> song <span class="sc">/</span> total,</span>
+<span id="cb678-6"><a href="geospatial.html#cb678-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_chu_ratio =</span> tsai <span class="sc">/</span> chu)</span></code></pre></div>
+</div>
+<div id="sf-to-load-county-level-shp" class="section level3 hasAnchor" number="26.4.2">
+<h3><span class="header-section-number">26.4.2</span> sf to load county level shp<a href="geospatial.html#sf-to-load-county-level-shp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://fidanalytics.co.uk/blog/simplifying-polygons-r" class="uri">https://fidanalytics.co.uk/blog/simplifying-polygons-r</a></p>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="geospatial.html#cb679-1" aria-hidden="true" tabindex="-1"></a>county_sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>)</span></code></pre></div>
+<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
+##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
+##   using driver `ESRI Shapefile&#39;
+## Simple feature collection with 22 features and 4 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
+## Geodetic CRS:  TWD97</code></pre>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="geospatial.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(county_sf) # Taking very long time</span></span></code></pre></div>
+</div>
+<div id="simplfying-map-polygon" class="section level3 hasAnchor" number="26.4.3">
+<h3><span class="header-section-number">26.4.3</span> Simplfying map polygon<a href="geospatial.html#simplfying-map-polygon" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="geospatial.html#cb682-1" aria-hidden="true" tabindex="-1"></a>county_ms_simp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb682-2"><a href="geospatial.html#cb682-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rmapshaper::ms_simplify(county_sf,  keep=0.001) </span></span>
+<span id="cb682-3"><a href="geospatial.html#cb682-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_simplify</span>(<span class="at">dTolerance =</span> <span class="dv">100</span>)</span></code></pre></div>
+<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
+##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
+##   using driver `ESRI Shapefile&#39;
+## Simple feature collection with 22 features and 4 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
+## Geodetic CRS:  TWD97</code></pre>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="geospatial.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(county_ms_simp)</span></code></pre></div>
+<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="geospatial.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;rmapshaper&quot;)</span></span>
+<span id="cb685-2"><a href="geospatial.html#cb685-2" aria-hidden="true" tabindex="-1"></a>plot_chu <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb685-3"><a href="geospatial.html#cb685-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># st_transform(3825) %&gt;% #3857</span></span>
+<span id="cb685-4"><a href="geospatial.html#cb685-4" aria-hidden="true" tabindex="-1"></a>  rmapshaper<span class="sc">::</span><span class="fu">ms_simplify</span>(<span class="at">keep=</span><span class="fl">0.01</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb685-5"><a href="geospatial.html#cb685-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(president_vote, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;COUNTYNAME&quot;</span><span class="ot">=</span><span class="st">&quot;county&quot;</span>))</span></code></pre></div>
+<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
+##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
+##   using driver `ESRI Shapefile&#39;
+## Simple feature collection with 22 features and 4 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
+## Geodetic CRS:  TWD97</code></pre>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="geospatial.html#cb687-1" aria-hidden="true" tabindex="-1"></a>plot_chu <span class="sc">%&gt;%</span></span>
+<span id="cb687-2"><a href="geospatial.html#cb687-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> chu_ratio)) <span class="sc">+</span> </span>
+<span id="cb687-3"><a href="geospatial.html#cb687-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb687-4"><a href="geospatial.html#cb687-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#FFFFFF&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#0000FF&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb687-5"><a href="geospatial.html#cb687-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="practice.-drawing-taiwan-county-scale-map-from-segis-data" class="section level3 hasAnchor practice" number="26.4.4">
+<h3><span class="header-section-number">26.4.4</span> Practice. Drawing Taiwan county-scale map from SEGIS data<a href="geospatial.html#practice.-drawing-taiwan-county-scale-map-from-segis-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>這個練習希望你從SEGIS下載一個縣市層級的資料，並測試以下函式的結果：</p>
+<ol style="list-style-type: decimal">
+<li>運用<code>st_transform()</code>和<code>st_set_crs()</code>等函式測試用3826或4326座標系有何不同？
+<ol style="list-style-type: decimal">
+<li>在用<code>st_area()</code>計算面積時會不會有何不同？</li>
+<li>在視覺化的時候可否看出來有何不同？請寫程式測試看看。</li>
+</ol></li>
+<li><code>st_simplify()</code>這個函式可以降低點的數量，但運用<code>st_simplify(dTolerance = 100)</code>，<code>dTolerance</code>的設定是如何影響點的數量？<code>100</code>所指的是什麼？公尺嗎？</li>
+<li>用<code>st_bbox()</code>可以得知上下界為何，請試用這個函式看看？</li>
+<li>如何運用<code>st_crop()</code>切出台灣本島（不包含澎湖、金門、馬祖）得地圖？</li>
+</ol>
+</div>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="network-vis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="interactivity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="time-trends.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="network-vis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -707,7 +1083,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/V15_Geospatial.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/V21_Geospatial.Rmd",
 "text": "Edit"
 },
 "history": {
