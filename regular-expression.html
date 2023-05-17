@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 27 GEOSPATIAL | R for Data Journalism</title>
+  <title>Chapter 13 Regular expression | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 27 GEOSPATIAL | R for Data Journalism" />
+  <meta property="og:title" content="Chapter 13 Regular expression | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 27 GEOSPATIAL | R for Data Journalism" />
+  <meta name="twitter:title" content="Chapter 13 Regular expression | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="time-trends.html"/>
-<link rel="next" href="network-vis.html"/>
+<link rel="prev" href="trump.html"/>
+<link rel="next" href="crawler-overview.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -721,457 +721,515 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="geospatial" class="section level1 hasAnchor" number="27">
-<h1><span class="header-section-number">Chapter 27</span> GEOSPATIAL<a href="geospatial.html#geospatial" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>地圖是一種用來展示地理空間信息的視覺化工具，可以幫助我們更好地了解和分析地理現象。常見的地圖種類通常可以分為兩類：區域圖和點位圖。</p>
-<ol style="list-style-type: decimal">
-<li>區域圖（Choropleth Map）是通過將地理區域劃分為幾個區域，然後用不同的顏色、陰影或圖案等方式來表示這些區域的某種屬性或數量。這種地圖通常用於展示國家、省份、城市等區域的人口、經濟、地形、氣候等相關數據。區域圖能夠直觀地展示地理現象在不同區域之間的差異和變化，並有助於我們進行比較和分析。</li>
-<li>點位圖（Dot Density Map）則是通過在地圖上用點或符號來表示某種地理空間現象的分布或密度。例如，可以用紅點表示城市、綠點表示森林、藍點表示湖泊等等。這種地圖通常用於展示地理現象在空間上的分布和密度，並能夠直觀地展示相對密度和稀疏程度。</li>
-</ol>
-<p><strong>區域圖的數據形式：</strong>有兩種基本數據模型：向量（Vector）和網格（Raster）。</p>
+<div id="regular-expression" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Regular expression<a href="regular-expression.html#regular-expression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="regular-expression.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p><br />
+正規表達式（Regular
+Expression）是一種用來描述、搜尋和操作文本的強大工具。它是由一系列字元和特殊符號所組成的模式，用於匹配和處理符合特定模式的字串。</p>
+<p>正規表達式提供了一種靈活且強大的方式來執行字串的模式匹配。這些模式可以包含字母、數字、特殊字符和控制字符等各種元素。使用正規表達式，可以進行字串的搜尋、替換、提取、驗證和分割等操作。</p>
+<p><strong>Online tools for detecting regular expression (RE)</strong></p>
 <ul>
-<li>向量數據模型使用點、線、多邊形等基本要素來描述地理空間現象。例如，可以用一個線段來表示一條河流，用一個多邊形來表示一個國家或城市的邊界等。向量數據模型具有比較強的邏輯性和表達能力，特別適合描述較簡單的地理現象。</li>
-<li>網格數據模型則是將地理空間區域劃分為一個個大小相等的格子，每個格子都有一個固定的數值，用來表示這個區域的某種屬性，例如溫度、濕度、高程等等。網格數據模型適合描述分布比較連續和具有變化的地理現象。</li>
+<li><a href="https://regex101.com/" class="uri">https://regex101.com/</a></li>
+<li><a href="http://regexr.com/" class="uri">http://regexr.com/</a></li>
 </ul>
-<p>通常繪製地理資訊地圖的時候，會需要因應你要繪製的地域去下載地圖空間數據檔案（例如.shape或geojson檔等）。如台灣的就可以去<a href="https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1">社會經濟資料服務平台 (moi.gov.tw)</a>下載。但也有一些套件內部就包含這些地理空間數據，例如下一節的例子rworldmap套件本身就有世界地圖。或者可以嘗試ggmap或rgooglemap等第三方服務（參考簡介：<a href="https://mpmendespt.github.io/Map-visualization.html">Map Visualization in R · Data Science and R</a>）</p>
-<div id="world-map" class="section level2 hasAnchor" number="27.1">
-<h2><span class="header-section-number">27.1</span> World Map<a href="geospatial.html#world-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="geospatial.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb720-2"><a href="geospatial.html#cb720-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rworldmap) <span class="co"># for drawing rworldmap</span></span></code></pre></div>
-<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="geospatial.html#cb721-1" aria-hidden="true" tabindex="-1"></a>rawdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/WORLD-MACHE_Gender_6.8.15.xls&quot;</span>, <span class="st">&quot;Sheet1&quot;</span>, <span class="at">col_names=</span>T)</span>
-<span id="cb721-2"><a href="geospatial.html#cb721-2" aria-hidden="true" tabindex="-1"></a>mapdata <span class="ot">&lt;-</span> rawdata[,<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)]</span></code></pre></div>
-<div id="bind-data-to-map-data" class="section level3 hasAnchor" number="27.1.1">
-<h3><span class="header-section-number">27.1.1</span> Bind data to map data<a href="geospatial.html#bind-data-to-map-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>這段程式碼是在將自己的數據<strong><code>mapdata</code></strong>與<strong><code>rworldmap</code></strong>世界地圖數據進行結合。</p>
-<p>首先，使用 <strong><code>joinCountryData2Map()</code></strong> 函數，將自己的數據和世界地圖數據按照國家的 ISO3 代碼進行連接，生成一張新的地圖。其中， <strong><code>mapdata</code></strong> 是指世界地圖數據， <strong><code>joinCode</code></strong> 參數指定連接時使用的 ISO3 代碼（亦即你預先知道你自己的資料中有ISO3國家代碼）。 <strong><code>nameJoinColumn</code></strong> 參數則用於指定自己數據中與國家對應的欄位名稱為<strong><code>iso3</code></strong>。</p>
-<p>還有其他的<strong><code>joinCode</code></strong>如「“ISO2”,“ISO3”,“FIPS”,“NAME”, “UN” = numeric codes」等可參見該套件的說明<a href="https://www.rdocumentation.org/packages/rworldmap/versions/1.3-6">rworldmap package - RDocumentation</a>。</p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="geospatial.html#cb722-1" aria-hidden="true" tabindex="-1"></a><span class="co"># join your data with the world map data</span></span>
-<span id="cb722-2"><a href="geospatial.html#cb722-2" aria-hidden="true" tabindex="-1"></a>myMap <span class="ot">&lt;-</span> <span class="fu">joinCountryData2Map</span>(mapdata, <span class="at">joinCode =</span> <span class="st">&quot;ISO3&quot;</span>, <span class="at">nameJoinColumn =</span> <span class="st">&quot;iso3&quot;</span>)</span></code></pre></div>
-<pre class="output"><code>## 196 codes from your data successfully matched countries in the map
-## 1 codes from your data failed to match with a country code in the map
-## 47 codes from the map weren&#39;t represented in your data</code></pre>
-<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="geospatial.html#cb724-1" aria-hidden="true" tabindex="-1"></a>myMap<span class="sc">$</span>matleave_13</span></code></pre></div>
-<pre class="output"><code>##   [1]  2  2  5  2  2  5 NA NA  3  5  5  2  4  3  3  3  5  2  5  5  3  2  3  3  2
-##  [26]  2  3  4  3  4  3  3  3  3  3  3  3  5 NA  3  5  5  3  5  2  3  2  2  2  3
-##  [51]  5  2  5  2 NA  4  3  4  3  2  3  4  2  2  4 NA  2  2  2  5  2  5  2  2  4
-##  [76]  4  2  4  3  4  2  2  5  3  2  3  2  5 NA  2  2  2  2  3  2  2  5  4  5  3
-## [101]  5  3  2  4  3  2  5  5  2  3  2  2  2 NA  3  2  2  3  4  2  3  2  2  3  2
-## [126]  2  1  5 NA  2  4  2  2  5  5  2 NA  2  2  2  3  2  2  2  3  5  1  5  5  5
-## [151]  2  3  3  3  2  5  3  2  3  2  3 NA  2  2  5  2  1  5  4  4  2 NA  2  3  3
-## [176]  3 NA NA NA  3 NA NA  2  2 NA NA  2  2  3  2 NA NA  2 NA  1 NA NA  2 NA NA
-## [201] NA NA NA NA NA NA  2  2  2  3 NA NA  3  2  1  3 NA NA  2 NA  1  1 NA  1 NA
-## [226]  3 NA NA  5 NA  2 NA  3 NA  1  5  2 NA NA NA  2  2 NA</code></pre>
+<p><strong>RE Patterns</strong></p>
+<p>在正規表達式中，一些特殊符號和字符具有特殊的含義。例如，<code>\d</code>可以匹配任何一個數字，<code>\w</code>可以匹配任何一個字母或數字，<code>.</code>可以匹配除換行符之外的任何一個字符，<code>+</code>表示前面的模式可以出現一次或多次，<code>*</code>表示前面的模式可以出現零次或多次，<code>?</code>表示前面的模式可以出現零次或一次，<code>[]</code>用於指定一組字符中的任意一個等等。較完整的表格如下。<strong>要注意到的是，如果是<code>\d</code>的話，R中要以<code>\\d</code>雙斜線來表示</strong>。</p>
+<p><code>pattern &lt;- "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b"</code>為一個用R來寫RE的範例：在R中，我們使用雙反斜線（\）來表示正規表達式中的特殊字符。在這個示例中，使用的正規表達式模式包括以下幾個部分：</p>
+<ul>
+<li><p><strong><code>\\b</code></strong>：匹配單詞的邊界，確保郵件地址不是部分字詞的一部分。</p></li>
+<li><p><strong><code>[A-Za-z0-9._%+-]+</code></strong>：匹配郵件地址的用戶名部分，它可以包含字母、數字、點（.）、下劃線（_）、百分比（%）、加號（+）和減號（-）。注意這個在中括號中的點（.）並非用來匹配任意字。後面的<code>+</code>號意思是代表至少要有一個字以上。</p></li>
+<li><p><strong><code>@</code></strong>：匹配郵件地址中的「@」符號。</p></li>
+<li><p><strong><code>[A-Za-z0-9.-]+</code></strong>：匹配郵件地址的域名部分，它可以包含字母、數字、點（.）和減號（-）。</p></li>
+<li><p><strong><code>\\.</code></strong>：匹配郵件地址中的點（.），需要使用反斜線進行轉義。</p></li>
+<li><p><strong><code>[A-Za-z]{2,}</code></strong>：匹配郵件地址的頂級域名部分，它可以是由至少兩個字母組成的字詞。</p></li>
+</ul>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="73%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Pattern</strong></td>
+<td>Description</td>
+</tr>
+<tr class="even">
+<td><code>^</code></td>
+<td>Matches beginning of line.</td>
+</tr>
+<tr class="odd">
+<td><code>$</code></td>
+<td>Matches end of line.</td>
+</tr>
+<tr class="even">
+<td><code>.</code></td>
+<td>Matches any single character except newline. Using m option allows it to match newline as well.</td>
+</tr>
+<tr class="odd">
+<td><code>[...]</code></td>
+<td>Matches any single character in brackets.</td>
+</tr>
+<tr class="even">
+<td><code>[^...]</code></td>
+<td>Matches any single character not in brackets</td>
+</tr>
+<tr class="odd">
+<td><code>re*</code></td>
+<td>Matches 0 or more occurrences of preceding expression.</td>
+</tr>
+<tr class="even">
+<td><code>re+</code></td>
+<td>Matches 1 or more occurrence of preceding expression.</td>
+</tr>
+<tr class="odd">
+<td><code>re?</code></td>
+<td>Matches 0 or 1 occurrence of preceding expression.</td>
+</tr>
+<tr class="even">
+<td><code>*?, +?, ??</code></td>
+<td>*, +和?預設是greedy的，如果要匹配’&lt;H1&gt;title&lt;/H1&gt;‘時，會匹配整個句子。如果不希望它是greedy的，就要在上述符號後面加一個？。Using .*? in the previous expression will match only ’&lt;H1&gt;’.</td>
+</tr>
+<tr class="odd">
+<td>re{ n}</td>
+<td>Matches exactly n number of occurrences of preceding expression.</td>
+</tr>
+<tr class="even">
+<td>re{ n,}</td>
+<td>Matches n or more occurrences of preceding expression.</td>
+</tr>
+<tr class="odd">
+<td><code>re{n, m}</code></td>
+<td>Matches at least n and at most m occurrences of preceding expression.</td>
+</tr>
+<tr class="even">
+<td><code>a| b</code></td>
+<td>Matches either a or b.</td>
+</tr>
+<tr class="odd">
+<td><code>(re)</code></td>
+<td>問號括住的部分就是match要留下來的部分。Groups regular expressions and remembers matched text.</td>
+</tr>
+<tr class="even">
+<td>(?imx)</td>
+<td>Temporarily toggles on i, m, or x options within a regular expression. If in parentheses, only that area is affected.</td>
+</tr>
+<tr class="odd">
+<td>(?-imx)</td>
+<td>Temporarily toggles off i, m, or x options within a regular expression. If in parentheses, only that area is affected.</td>
+</tr>
+<tr class="even">
+<td>(?: re)</td>
+<td>Groups regular expressions without remembering matched text.</td>
+</tr>
+<tr class="odd">
+<td>(?imx: re)</td>
+<td>Temporarily toggles on i, m, or x options within parentheses.</td>
+</tr>
+<tr class="even">
+<td>(?-imx: re)</td>
+<td>Temporarily toggles off i, m, or x options within parentheses.</td>
+</tr>
+<tr class="odd">
+<td>(?#...)</td>
+<td>Comment.</td>
+</tr>
+<tr class="even">
+<td>(?= re)</td>
+<td>Specifies position using a pattern. Doesn’t have a range.</td>
+</tr>
+<tr class="odd">
+<td>(?! re)</td>
+<td>Specifies position using pattern negation. Doesn’t have a range.</td>
+</tr>
+<tr class="even">
+<td>(?&gt; re)</td>
+<td>Matches independent pattern without backtracking.</td>
+</tr>
+<tr class="odd">
+<td><code>\w</code></td>
+<td>Matches word characters.</td>
+</tr>
+<tr class="even">
+<td>\W</td>
+<td>Matches nonword characters.</td>
+</tr>
+<tr class="odd">
+<td><code>\s</code></td>
+<td>Matches whitespace. Equivalent to [\t\n\r\f].</td>
+</tr>
+<tr class="even">
+<td><code>\S</code></td>
+<td>Matches nonwhitespace.</td>
+</tr>
+<tr class="odd">
+<td><code>\d</code></td>
+<td>Matches digits. Equivalent to [0-9].</td>
+</tr>
+<tr class="even">
+<td><code>\D</code></td>
+<td>Matches nondigits.</td>
+</tr>
+<tr class="odd">
+<td>\A</td>
+<td>Matches beginning of string.</td>
+</tr>
+<tr class="even">
+<td>\Z</td>
+<td>Matches end of string. If a newline exists, it matches just before newline.</td>
+</tr>
+<tr class="odd">
+<td>\z</td>
+<td>Matches end of string.</td>
+</tr>
+<tr class="even">
+<td>\G</td>
+<td>Matches point where last match finished.</td>
+</tr>
+<tr class="odd">
+<td>\b</td>
+<td>Matches word boundaries when outside brackets. Matches backspace (0x08) when inside brackets.</td>
+</tr>
+<tr class="even">
+<td>\B</td>
+<td>Matches nonword boundaries.</td>
+</tr>
+<tr class="odd">
+<td>\n, \t, etc.</td>
+<td>Matches newlines, carriage returns, tabs, etc.</td>
+</tr>
+<tr class="even">
+<td>\1...\9</td>
+<td>Matches nth grouped subexpression.</td>
+</tr>
+<tr class="odd">
+<td>\10</td>
+<td>Matches nth grouped subexpression if it matched already. Otherwise refers to the octal representation of a character code.</td>
+</tr>
+</tbody>
+</table>
+<div id="re-applications-on-string-operations" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> <strong>RE applications on string operations</strong><a href="regular-expression.html#re-applications-on-string-operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>Replacing</strong> specific pattern
+<ul>
+<li>Replacing all space or new line character to one space or empty
+string</li>
+<li>Deleting all number and alphabetic by empty string</li>
+<li>Deleting all HTML tags</li>
+</ul></li>
+<li><strong>Detecting</strong> if it exists some specific pattern
+<ul>
+<li>Fitering if one sentence starting with “.</li>
+</ul></li>
+<li><strong>Extracting</strong> some words by specific pattern
+<ul>
+<li>Extracting hashtags in text</li>
+<li>Extracting timestamp, email, hyperlink, or url in text</li>
+<li>Extracting number after some specific patterns</li>
+</ul></li>
+<li><strong>Splitting</strong> Splitting string into several parts when detecting
+some specific pattern successfully.</li>
+</ul>
+<p><strong>Replacing</strong></p>
+<ul>
+<li><code>\s</code> matching any whitespace character including space, tabs, and
+line breaks</li>
+<li>R uses <code>\\s</code>, instead of <code>\s</code>.</li>
+<li><code>\\d</code> digit, <code>\\D</code> not digit</li>
+<li><code>\\s</code> whitepsace, <code>\\S</code> not whitespace</li>
+<li><code>\\w</code> word, <code>\\W</code> not word</li>
+<li><code>.</code> matches any</li>
+<li><code>[A-Z0-9a-z]</code> range</li>
+<li><code>[ABC]</code> character set</li>
+<li><code>[^ABC]</code> neglect set (Leadning <code>^</code> in <code>[]</code> means neglecting)</li>
+</ul>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="regular-expression.html#cb478-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="st">&quot;   123   456   789   &quot;</span></span>
+<span id="cb478-2"><a href="regular-expression.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(s, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;123456789&quot;</code></pre>
+<div id="extracting" class="section level3 hasAnchor" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> Extracting<a href="regular-expression.html#extracting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>+</code> means matching word occurring at least one time, matching longer
+is better</li>
+<li><code>*</code> means matching word occurring any time, matching longer is
+better</li>
+<li><code>{1,3}</code> means matching at least one time, but at most 3 times</li>
+<li><code>{3}</code> means matching 3 times exactly.</li>
+</ul>
+<div id="by-str_extract" class="section level4 hasAnchor" number="13.1.1.1">
+<h4><span class="header-section-number">13.1.1.1</span> by <code>str_extract()</code><a href="regular-expression.html#by-str_extract" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>以下這個例子是在爬取PTT資料後，嘗試能夠取出每則貼文的ID與暱稱。</p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="regular-expression.html#cb480-1" aria-hidden="true" tabindex="-1"></a>pname <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pttid111(kefan)&quot;</span>, <span class="st">&quot;pid2(hangfan)&quot;</span>)</span>
+<span id="cb480-2"><a href="regular-expression.html#cb480-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-3"><a href="regular-expression.html#cb480-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-4"><a href="regular-expression.html#cb480-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-5"><a href="regular-expression.html#cb480-5" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting at least one words until not word</span></span>
+<span id="cb480-6"><a href="regular-expression.html#cb480-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;p&quot; &quot;p&quot;</code></pre>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="regular-expression.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;pttid111&quot; &quot;pid2&quot;</code></pre>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="regular-expression.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;[A-Za-z0-9]+&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;pttid111&quot; &quot;pid2&quot;</code></pre>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="regular-expression.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;[A-Za-z0-9]*&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;pttid111&quot; &quot;pid2&quot;</code></pre>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="regular-expression.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;[A-Za-z0-9]{8}&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;pttid111&quot; NA</code></pre>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="regular-expression.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;[A-Za-z0-9]{1,8}&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;pttid111&quot; &quot;pid2&quot;</code></pre>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="regular-expression.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting word between ()</span></span>
+<span id="cb492-2"><a href="regular-expression.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="co"># () is controlled vocabulary in regular expression, needing \\( and \\) to specify the character themself</span></span>
+<span id="cb492-3"><a href="regular-expression.html#cb492-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">(</span><span class="sc">\\</span><span class="st">w+</span><span class="sc">\\</span><span class="st">)&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">&quot;[</span><span class="sc">\\</span><span class="st">(</span><span class="sc">\\</span><span class="st">)]&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;kefan&quot;   &quot;hangfan&quot;</code></pre>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="regular-expression.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(pname, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">(.+</span><span class="sc">\\</span><span class="st">)&quot;</span>) </span></code></pre></div>
+<pre><code>## [1] &quot;(kefan)&quot;   &quot;(hangfan)&quot;</code></pre>
 </div>
-<div id="drawing-map" class="section level3 hasAnchor" number="27.1.2">
-<h3><span class="header-section-number">27.1.2</span> Drawing Map<a href="geospatial.html#drawing-map" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong><code>mapCountryData()</code></strong> 函數用於將數據繪製在地圖上。其中， <strong><code>myMap</code></strong> 是已經連接過的世界地圖數據和自己的數據，包含了各國的地理空間信息和相關的數據資訊。 <strong><code>nameColumnToPlot</code></strong> 指定要顯示在地圖上的數據欄位為<strong><code>matleave_13</code></strong>，也就是 2013 年的產假長度。 <strong><code>catMethod</code></strong> 參數是決定視覺化時的數據分類是類別或連續，<strong><code>categorical</code></strong>表示將數據分成幾個等級來展示在地圖上。</p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="geospatial.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mapCountryData</span>(myMap</span>
-<span id="cb726-2"><a href="geospatial.html#cb726-2" aria-hidden="true" tabindex="-1"></a>               , <span class="at">nameColumnToPlot=</span><span class="st">&quot;matleave_13&quot;</span></span>
-<span id="cb726-3"><a href="geospatial.html#cb726-3" aria-hidden="true" tabindex="-1"></a>               , <span class="at">catMethod =</span> <span class="st">&quot;categorical&quot;</span></span>
-<span id="cb726-4"><a href="geospatial.html#cb726-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="V21_Geospatial_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="by-str_extract-for-data-frame" class="section level4 hasAnchor" number="13.1.1.2">
+<h4><span class="header-section-number">13.1.1.2</span> by <code>str_extract</code> for data frame<a href="regular-expression.html#by-str_extract-for-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="regular-expression.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(pname) <span class="sc">%&gt;%</span></span>
+<span id="cb496-2"><a href="regular-expression.html#cb496-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">nickname =</span> <span class="fu">str_extract</span>(pname, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">(</span><span class="sc">\\</span><span class="st">w+</span><span class="sc">\\</span><span class="st">)&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">&quot;[</span><span class="sc">\\</span><span class="st">(</span><span class="sc">\\</span><span class="st">)]&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb496-3"><a href="regular-expression.html#cb496-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">str_extract</span>(pname, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>))</span></code></pre></div>
+<pre><code>## Warning: `data_frame()` was deprecated in tibble 1.1.0.
+## ℹ Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##   pname           nickname id      
+##   &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;   
+## 1 pttid111(kefan) kefan    pttid111
+## 2 pid2(hangfan)   hangfan  pid2</code></pre>
 </div>
-<div id="drawing-map-by-specific-colors" class="section level3 hasAnchor" number="27.1.3">
-<h3><span class="header-section-number">27.1.3</span> Drawing map by specific colors<a href="geospatial.html#drawing-map-by-specific-colors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="geospatial.html#cb727-1" aria-hidden="true" tabindex="-1"></a><span class="co"># self-defined colors</span></span>
-<span id="cb727-2"><a href="geospatial.html#cb727-2" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#FF8000&quot;</span>, <span class="st">&quot;#A9D0F5&quot;</span>, <span class="st">&quot;#58ACFA&quot;</span>, <span class="st">&quot;#0080FF&quot;</span>, <span class="st">&quot;#084B8A&quot;</span>)</span>
-<span id="cb727-3"><a href="geospatial.html#cb727-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mapCountryData</span>(myMap</span>
-<span id="cb727-4"><a href="geospatial.html#cb727-4" aria-hidden="true" tabindex="-1"></a>               , <span class="at">nameColumnToPlot=</span><span class="st">&quot;matleave_13&quot;</span></span>
-<span id="cb727-5"><a href="geospatial.html#cb727-5" aria-hidden="true" tabindex="-1"></a>               , <span class="at">catMethod =</span> <span class="st">&quot;categorical&quot;</span></span>
-<span id="cb727-6"><a href="geospatial.html#cb727-6" aria-hidden="true" tabindex="-1"></a>               , <span class="at">colourPalette =</span> colors</span>
-<span id="cb727-7"><a href="geospatial.html#cb727-7" aria-hidden="true" tabindex="-1"></a>               , <span class="at">addLegend=</span><span class="st">&quot;FALSE&quot;</span></span>
-<span id="cb727-8"><a href="geospatial.html#cb727-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="V21_Geospatial_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="by-str_replace" class="section level4 hasAnchor" number="13.1.1.3">
+<h4><span class="header-section-number">13.1.1.3</span> by <code>str_replace()</code><a href="regular-expression.html#by-str_replace" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><code>(\\w+)</code>的括號代表，我等一下要抽取出這個pattern的字</li>
+<li><code>\\(.+\\)</code>則是把剩下的pattern matching 完</li>
+<li><code>\\1</code>代表我要抽取前面第一組抽取出來的pattern，也就是<code>(\\w+)</code>中間的<code>\\w+</code>。</li>
+</ul>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="regular-expression.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(pname) <span class="sc">%&gt;%</span></span>
+<span id="cb499-2"><a href="regular-expression.html#cb499-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">str_replace</span>(pname, <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w+)</span><span class="sc">\\</span><span class="st">(.+</span><span class="sc">\\</span><span class="st">)&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   pname           id      
+##   &lt;chr&gt;           &lt;chr&gt;   
+## 1 pttid111(kefan) pttid111
+## 2 pid2(hangfan)   pid2</code></pre>
 </div>
-<div id="practice.-drawing-map-for-every-years" class="section level3 hasAnchor practice" number="27.1.4">
-<h3><span class="header-section-number">27.1.4</span> Practice. Drawing map for every years<a href="geospatial.html#practice.-drawing-map-for-every-years" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="by-tidyrextract-for-data-frame" class="section level4 hasAnchor" number="13.1.1.4">
+<h4><span class="header-section-number">13.1.1.4</span> by <code>tidyr::extract()</code> for data frame<a href="regular-expression.html#by-tidyrextract-for-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="regular-expression.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(pname) <span class="sc">%&gt;%</span> </span>
+<span id="cb501-2"><a href="regular-expression.html#cb501-2" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">extract</span>(pname, <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;nickname&quot;</span>), <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w+)</span><span class="sc">\\</span><span class="st">((.+)</span><span class="sc">\\</span><span class="st">)&quot;</span>, <span class="at">remove =</span> F)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 3
+##   pname           id       nickname
+##   &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;   
+## 1 pttid111(kefan) pttid111 kefan   
+## 2 pid2(hangfan)   pid2     hangfan</code></pre>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="regular-expression.html#cb503-1" aria-hidden="true" tabindex="-1"></a>?tidyr<span class="sc">::</span>extract</span></code></pre></div>
+</div>
+</div>
+<div id="detecting-with-non-greedy" class="section level3 hasAnchor" number="13.1.2">
+<h3><span class="header-section-number">13.1.2</span> Detecting with non-greedy<a href="regular-expression.html#detecting-with-non-greedy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>這段程式碼使用R中的tidyverse套件中的<strong><code>extract()</code></strong>函數，從<strong><code>source</code></strong>向量中的每個元素中提取出「device」的資訊。假設我們希望從<strong><code>&lt;p&gt;</code></strong>和<strong><code>&lt;/p&gt;</code></strong>之間提取「Twitter
+for iPhone」這個資訊。</p>
+<p>此時我們會需要理解正規表示式的寫法預設是貪婪（greedy）的概念。當我們談到正規表達式的「貪婪」（greedy）和「非貪婪」（non-greedy）時，我們指的是模式匹配時的行為。</p>
+<ul>
+<li><p>「貪婪」指的是匹配器在尋找模式時傾向於匹配盡可能多的字符。換句話說，它會儘可能地擴展匹配範圍。在正規表達式中，默認情況下，量詞（如<strong><code>*</code></strong>和<strong><code>+</code></strong>）是貪婪的。這意味著它們會匹配盡可能長的字串。</p></li>
+<li><p>「非貪婪」（或稱「勉強」）則相反，它傾向於匹配最短的可能字串。在正規表達式中，可以在量詞後面加上「?」來表示非貪婪匹配。這樣一來，量詞就會儘可能少地匹配字符。</p></li>
+</ul>
+<p>回到我們的例子，當使用默認的貪婪模式時，我們的正則表達式<strong><code>"Twitter for (.*)&lt;"</code></strong>會從第一個<strong><code>&lt;p&gt;</code></strong>開始匹配，直到找到最後一個<strong><code>&lt;</code></strong>之前的所有字符。這意味著它會將整個<strong><code>&lt;p&gt;Twitter for iphone&lt;/p&gt;&lt;div&gt;&lt;p&gt;</code></strong>作為匹配結果，而不僅僅是<strong><code>&lt;p&gt;Twitter for iphone&lt;/p&gt;</code></strong>。</p>
+<p>但如果我們想要只匹配第一個<strong><code>&lt;p&gt;</code></strong>和之後的字符，而不是將整個<strong><code>&lt;p&gt;</code></strong>標籤內容都包括在內，我們可以使用「非貪婪」模式，將正則表達式修改為<strong><code>"Twitter for (.*?)&lt;"</code></strong>，在量詞<strong><code>*</code></strong>後面加上「?」。這樣，它會匹配到第一個<strong><code>&lt;</code></strong>之前的最短字串，即只匹配到<strong><code>&lt;p&gt;Twitter for iphone</code></strong>。</p>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="regular-expression.html#cb504-1" aria-hidden="true" tabindex="-1"></a>source <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;&lt;p&gt;Twitter for iphone&lt;/p&gt;&quot;</span>, </span>
+<span id="cb504-2"><a href="regular-expression.html#cb504-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;&lt;div&gt;&lt;p&gt;Twitter for iphone&lt;/p&gt;&lt;/div&gt;&quot;</span>)</span>
+<span id="cb504-3"><a href="regular-expression.html#cb504-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(source) <span class="sc">%&gt;%</span> <span class="fu">extract</span>(source, <span class="st">&quot;device&quot;</span>, <span class="st">&quot;Twitter for (.*)&lt;&quot;</span>)  <span class="co"># Greedy</span></span></code></pre></div>
+<pre><code>## # A tibble: 2 × 1
+##   device    
+##   &lt;chr&gt;     
+## 1 iphone    
+## 2 iphone&lt;/p&gt;</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="regular-expression.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(source) <span class="sc">%&gt;%</span> <span class="fu">extract</span>(source, <span class="st">&quot;device&quot;</span>, <span class="st">&quot;Twitter for (.*?)&lt;&quot;</span>) <span class="co"># Non-Greedy</span></span></code></pre></div>
+<pre><code>## # A tibble: 2 × 1
+##   device
+##   &lt;chr&gt; 
+## 1 iphone
+## 2 iphone</code></pre>
+</div>
+<div id="detecting-multiple-patterns" class="section level3 hasAnchor" number="13.1.3">
+<h3><span class="header-section-number">13.1.3</span> Detecting multiple patterns<a href="regular-expression.html#detecting-multiple-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><a href="https://stackoverflow.com/questions/8020848/how-is-the-and-or-operator-represented-as-in-regular-expressions" class="uri">https://stackoverflow.com/questions/8020848/how-is-the-and-or-operator-represented-as-in-regular-expressions</a></li>
+</ul>
+<p>以下練習重點是讓學生理解如何使用 <strong><code>str_detect()</code></strong>
+函數和正則表達式進行模式匹配，以及如何進行邏輯操作來組合和篩選符合特定模式的句子。</p>
 <ol style="list-style-type: decimal">
-<li>繪製自1995至2013年每年的地圖並觀察其上的變化。</li>
-<li>繪製的時候請嘗試使用<code>par()</code>來把每年的地圖繪製在同一張圖上，怎麼做？</li>
-<li>你能觀察出變化來嗎？可否透過顏色的調整來凸顯變化？你的策略是什麼？</li>
+<li><p><strong><code>str_detect(teststr, re1) &amp; str_detect(teststr, re2)</code></strong> 通過
+<strong><code>&amp;</code></strong>
+進行邏輯「與」操作，將兩個邏輯向量進行元素級別的「與」運算，得到一個新的邏輯向量。該向量指示哪些句子同時符合
+<strong><code>re1</code></strong> 和 <strong><code>re2</code></strong> 的模式。</p></li>
+<li><p><strong><code>str_detect(teststr, re2) | str_detect(teststr, re2)</code></strong> 通過
+<strong><code>|</code></strong>
+進行邏輯「或」操作，將兩個邏輯向量進行元素級別的「或」運算，得到一個新的邏輯向量。該向量指示哪些句子符合
+<strong><code>re1</code></strong> 或 <strong><code>re2</code></strong> 的模式。</p></li>
 </ol>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="regular-expression.html#cb508-1" aria-hidden="true" tabindex="-1"></a>teststr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;B和A是不是男女朋友呢&quot;</span>, </span>
+<span id="cb508-2"><a href="regular-expression.html#cb508-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;C與B是不是在一起呢&quot;</span>, </span>
+<span id="cb508-3"><a href="regular-expression.html#cb508-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A就是B。&quot;</span>)</span>
+<span id="cb508-4"><a href="regular-expression.html#cb508-4" aria-hidden="true" tabindex="-1"></a>re1 <span class="ot">&lt;-</span> <span class="st">&quot;(.*B.*呢$)&quot;</span></span>
+<span id="cb508-5"><a href="regular-expression.html#cb508-5" aria-hidden="true" tabindex="-1"></a>re2 <span class="ot">&lt;-</span> <span class="st">&quot;(.*A.*)&quot;</span></span>
+<span id="cb508-6"><a href="regular-expression.html#cb508-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(teststr, re1)</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="regular-expression.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(teststr, re2)</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="regular-expression.html#cb512-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(teststr, re1) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(teststr, re2)</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="regular-expression.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(teststr, re2) <span class="sc">|</span> <span class="fu">str_detect</span>(teststr, re2)</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 </div>
+<div id="extracting-nearby-words" class="section level3 hasAnchor" number="13.1.4">
+<h3><span class="header-section-number">13.1.4</span> Extracting nearby words<a href="regular-expression.html#extracting-nearby-words" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="extracting-nearby-3-english-words" class="section level4 hasAnchor" number="13.1.4.1">
+<h4><span class="header-section-number">13.1.4.1</span> Extracting nearby 3 English words<a href="regular-expression.html#extracting-nearby-3-english-words" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="regular-expression.html#cb516-1" aria-hidden="true" tabindex="-1"></a>string2 <span class="ot">&lt;-</span> <span class="st">&quot;..., compelled to defend as never before the hard-charging progressivism and ....&quot;</span></span>
+<span id="cb516-2"><a href="regular-expression.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(string2) <span class="sc">%&gt;%</span></span>
+<span id="cb516-3"><a href="regular-expression.html#cb516-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">string2 =</span> <span class="fu">str_extract</span>(string2, <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">s){3}before(</span><span class="sc">\\</span><span class="st">s</span><span class="sc">\\</span><span class="st">S+){3}&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb516-4"><a href="regular-expression.html#cb516-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(string2, <span class="fu">c</span>(<span class="st">&quot;prefix&quot;</span>,<span class="st">&quot;hit&quot;</span>, <span class="st">&quot;tail&quot;</span>), <span class="st">&quot;(.+)(before)(.+)&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   prefix             hit    tail                              
+##   &lt;chr&gt;              &lt;chr&gt;  &lt;chr&gt;                             
+## 1 &quot;defend as never &quot; before &quot; the hard-charging progressivism&quot;</code></pre>
+</div>
+<div id="extracting-nearby-3-chinese-words" class="section level4 hasAnchor" number="13.1.4.2">
+<h4><span class="header-section-number">13.1.4.2</span> Extracting nearby 3 Chinese words<a href="regular-expression.html#extracting-nearby-3-chinese-words" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="regular-expression.html#cb518-1" aria-hidden="true" tabindex="-1"></a>string3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;呵呵呵呵呵呵呵我家就住在台灣，那是個美麗的地方&quot;</span>,</span>
+<span id="cb518-2"><a href="regular-expression.html#cb518-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;臺灣真是個美麗的地方齁齁齁&quot;</span>, </span>
+<span id="cb518-3"><a href="regular-expression.html#cb518-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;呵呵呵呵呵呵呵我愛台灣臺灣&quot;</span>)</span>
+<span id="cb518-4"><a href="regular-expression.html#cb518-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(string3, <span class="st">&quot;.{5}台灣.{5}|.{5}臺灣.{5}&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;我家就住在台灣，那是個美&quot; NA                        
+## [3] NA</code></pre>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="regular-expression.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(string3, <span class="st">&quot;.{1,5}台灣.{1,5}|.{1,5}臺灣.{1,5}&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;我家就住在台灣，那是個美&quot; NA                        
+## [3] &quot;呵呵呵我愛台灣臺灣&quot;</code></pre>
+</div>
+<div id="extracting-nearby-3-chinese-words-1" class="section level4 hasAnchor" number="13.1.4.3">
+<h4><span class="header-section-number">13.1.4.3</span> Extracting nearby 3 Chinese words<a href="regular-expression.html#extracting-nearby-3-chinese-words-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="regular-expression.html#cb522-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(string3)</span>
+<span id="cb522-2"><a href="regular-expression.html#cb522-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(string3, <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;hit&quot;</span>, <span class="st">&quot;tail&quot;</span>), <span class="st">&quot;(.{0,5})(台灣|臺灣)(.{0,5})&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 3
+##   pre          hit   tail      
+##   &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;     
+## 1 &quot;我家就住在&quot; 台灣  ，那是個美
+## 2 &quot;&quot;           臺灣  真是個美麗
+## 3 &quot;呵呵呵我愛&quot; 台灣  臺灣</code></pre>
+</div>
+</div>
+</div>
+<div id="re-case-studies" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> RE Case studies<a href="regular-expression.html#re-case-studies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="getting-the-last-page-of-ptt-hatepolitics" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Getting the last page of PTT HatePolitics<a href="regular-expression.html#getting-the-last-page-of-ptt-hatepolitics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>這段程式碼的目的是從URL中提取出頁數或特定的部分，並進行一些後續處理和轉換。這些操作可用於從URL中獲取有用的訊息，例如網頁索引、頁數等。</p>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="regular-expression.html#cb524-1" aria-hidden="true" tabindex="-1"></a>urls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;https://www.ptt.cc/bbs/HatePolitics/index4086.html&quot;</span>, </span>
+<span id="cb524-2"><a href="regular-expression.html#cb524-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;https://www.ptt.cc/bbs/HatePolitics/index348.html&quot;</span>)</span>
+<span id="cb524-3"><a href="regular-expression.html#cb524-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(urls, <span class="st">&quot;index(</span><span class="sc">\\</span><span class="st">d+)</span><span class="sc">\\</span><span class="st">.html&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;index4086.html&quot; &quot;index348.html&quot;</code></pre>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="regular-expression.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(urls, <span class="st">&quot;.*index(</span><span class="sc">\\</span><span class="st">d+)</span><span class="sc">\\</span><span class="st">.html&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span></code></pre></div>
+<pre><code>## [1] 4086  348</code></pre>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="regular-expression.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(urls) <span class="sc">%&gt;%</span> <span class="fu">extract</span>(urls, <span class="st">&quot;last_page&quot;</span>, <span class="st">&quot;index(</span><span class="sc">\\</span><span class="st">d+)</span><span class="sc">\\</span><span class="st">.html&quot;</span>, <span class="at">remove =</span> F)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   urls                                               last_page
+##   &lt;chr&gt;                                              &lt;chr&gt;    
+## 1 https://www.ptt.cc/bbs/HatePolitics/index4086.html 4086     
+## 2 https://www.ptt.cc/bbs/HatePolitics/index348.html  348</code></pre>
+</div>
+</div>
+<div id="famous-cases" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Famous cases<a href="regular-expression.html#famous-cases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="matching-url" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Matching URL<a href="regular-expression.html#matching-url" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>這個正規表達式用於檢測是否符合超連結的格式。它可以匹配包含
+<strong><code>http://</code></strong>、<strong><code>https://</code></strong>、<strong><code>ftp://</code></strong>、<strong><code>www.</code></strong> 或 <strong><code>ftp.</code></strong>
+前綴的URL，並確保後續的部分符合網址的正確格式，例如域名、路徑和查詢參數等。</p>
+<ol style="list-style-type: decimal">
+<li><p><strong><code>^</code></strong> 表示匹配字符串的開頭。</p></li>
+<li><p><strong><code>((https?|ftp)://|(www|ftp)\\.)?</code></strong> 是一個可選的前綴，它匹配以
+<strong><code>http://</code></strong>、<strong><code>https://</code></strong>、<strong><code>ftp://</code></strong>、<strong><code>www.</code></strong> 或
+<strong><code>ftp.</code></strong> 開頭的部分。其中 <strong><code>?</code></strong> 表示前綴部分是可選的。</p></li>
+<li><p><strong><code>[a-z0-9-]+</code></strong> 匹配一個或多個小寫字母、數字或破折號字符。</p></li>
+<li><p><strong><code>(\\.[a-z0-9-]+)+</code></strong>
+是一個重複組，它匹配一個或多個點（<strong><code>.</code></strong>）後跟一個或多個小寫字母、數字或破折號字符。</p></li>
+<li><p><strong><code>([/?].*)?</code></strong> 是另一個可選的後綴，它匹配以 <strong><code>/</code></strong> 或 <strong><code>?</code></strong>
+開頭的部分，並跟隨著任意字符。</p></li>
+<li><p><strong><code>$</code></strong> 表示匹配字符串的結尾。</p></li>
+</ol>
+<p>根據需求和特定的使用情境，可以有不同的寫法。以下是一些可能的替代寫法：</p>
+<ol style="list-style-type: decimal">
+<li><p>捕獲更多的URL前綴：當前的正規表達式只捕獲了
+<strong><code>http://</code></strong>、<strong><code>https://</code></strong>、<strong><code>ftp://</code></strong>、<strong><code>www.</code></strong> 和
+<strong><code>ftp.</code></strong> 這些前綴。如果需要捕獲更多的前綴，可以擴展前綴部分，例如
+<strong><code>((https?|ftp|file)://|(www|ftp)\\.)?</code></strong>，這樣可以捕獲
+<strong><code>file://</code></strong> 這樣的前綴。</p></li>
+<li><p>更精確的域名部分：當前的正規表達式使用
+<strong><code>[a-z0-9-]+(\\.[a-z0-9-]+)+</code></strong>
+匹配域名部分，這允許了字母、數字和破折號字符。如果需要更精確的域名匹配，可以使用更複雜的正規表達式，例如
+<strong><code>(?!-)[A-Za-z0-9-]{1,63}(?&lt;!-)\\.(?!-)[A-Za-z0-9-]{1,63}(?&lt;!-)</code></strong>，這樣可以確保符合域名規範。</p></li>
+</ol>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="regular-expression.html#cb530-1" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="st">&quot;^((https?|ftp)://|(www|ftp)</span><span class="sc">\\</span><span class="st">.)?[a-z0-9-]+(</span><span class="sc">\\</span><span class="st">.[a-z0-9-]+)+([/?].*)?$&quot;</span></span>
+<span id="cb530-2"><a href="regular-expression.html#cb530-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb530-3"><a href="regular-expression.html#cb530-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;http://www.yahoo.com.tw&quot;</span>, pattern)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="regular-expression.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;https://m.facebook.com/story.php?story_fbid=1483357095305703&amp;id=1435979486710131&quot;</span>, pattern)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="regular-expression.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;https://www.facebook.com/groups/335691256571414/permalink/774316322708903/&quot;</span>, pattern)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="removing-all-html-tags-but-keeping-comment-content" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Removing all html tags but keeping comment content<a href="regular-expression.html#removing-all-html-tags-but-keeping-comment-content" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>ANS: <code>"推 ya870801: 推  218.166.12.10 10/16 15:56"</code></p>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="regular-expression.html#cb536-1" aria-hidden="true" tabindex="-1"></a>comment <span class="ot">&lt;-</span> <span class="st">&#39;&lt;div class=&quot;push&quot;&gt;&lt;span class=&quot;hl push-tag&quot;&gt;推 &lt;/span&gt;&lt;span class=&quot;f3 hl push-userid&quot;&gt;ya870801&lt;/span&gt;&lt;span class=&quot;f3 push-content&quot;&gt;: 推&lt;/span&gt;&lt;span class=&quot;push-ipdatetime&quot;&gt;  218.166.12.10 10/16 15:56&lt;/span&gt;&lt;/div&gt;&#39;</span></span>
+<span id="cb536-2"><a href="regular-expression.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(comment, <span class="st">&quot;&lt;.+?&gt;&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;推 ya870801: 推  218.166.12.10 10/16 15:56&quot;</code></pre>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="regular-expression.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(comment, <span class="st">&quot;&lt;.*?&gt;&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;推 ya870801: 推  218.166.12.10 10/16 15:56&quot;</code></pre>
+</div>
+<div id="removing-space" class="section level3 hasAnchor" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> Removing space<a href="regular-expression.html#removing-space" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="regular-expression.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing space in Chinese sentence</span></span>
+<span id="cb540-2"><a href="regular-expression.html#cb540-2" aria-hidden="true" tabindex="-1"></a>sentence <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39; 噓 wwHui: 這批安好純   </span><span class="sc">\n</span><span class="st">  辛苦了  </span><span class="sc">\n</span><span class="st"> 噓 &#39;</span>, <span class="st">&#39;噓 wwHui: 這批安好純   &#39;</span>, <span class="st">&#39;辛苦了  &#39;</span>)</span>
+<span id="cb540-3"><a href="regular-expression.html#cb540-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb540-4"><a href="regular-expression.html#cb540-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing all space characters</span></span>
+<span id="cb540-5"><a href="regular-expression.html#cb540-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(sentence, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;噓wwHui:這批安好純辛苦了噓&quot; &quot;噓wwHui:這批安好純&quot;        
+## [3] &quot;辛苦了&quot;</code></pre>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="regular-expression.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing leading and ending space by str_replace_all()</span></span>
+<span id="cb542-2"><a href="regular-expression.html#cb542-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You cannot use trimws()</span></span>
+<span id="cb542-3"><a href="regular-expression.html#cb542-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(sentence, <span class="st">&quot;^</span><span class="sc">\\</span><span class="st">s+|</span><span class="sc">\\</span><span class="st">s+$&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;噓 wwHui: 這批安好純   \n  辛苦了  \n 噓&quot;
+## [2] &quot;噓 wwHui: 這批安好純&quot;                    
+## [3] &quot;辛苦了&quot;</code></pre>
+</div>
+<div id="testing" class="section level3 hasAnchor" number="13.3.4">
+<h3><span class="header-section-number">13.3.4</span> Testing<a href="regular-expression.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="regular-expression.html#cb544-1" aria-hidden="true" tabindex="-1"></a>teststr1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;我最近過的挺爽&quot;</span>, <span class="st">&quot;最近我過的不是很好。&quot;</span>, <span class="st">&quot;我最近過得不太好。&quot;</span>)</span>
+<span id="cb544-2"><a href="regular-expression.html#cb544-2" aria-hidden="true" tabindex="-1"></a>re1 <span class="ot">&lt;-</span> <span class="st">&quot;(^我.+)&quot;</span></span>
+<span id="cb544-3"><a href="regular-expression.html#cb544-3" aria-hidden="true" tabindex="-1"></a>re2 <span class="ot">&lt;-</span> <span class="st">&quot;(.*。)&quot;</span></span>
+<span id="cb544-4"><a href="regular-expression.html#cb544-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb544-5"><a href="regular-expression.html#cb544-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(teststr1, <span class="fu">str_c</span>(re1,re2, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="regular-expression.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(teststr1, <span class="fu">str_c</span>(re1,re2, <span class="at">sep =</span> <span class="st">&quot;|&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE TRUE TRUE</code></pre>
 
 </div>
-<div id="read-spatial-data-from-segis" class="section level2 hasAnchor" number="27.2">
-<h2><span class="header-section-number">27.2</span> Read Spatial Data from SEGIS<a href="geospatial.html#read-spatial-data-from-segis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>要繪製地理地圖會要先下載地圖檔，可以查詢「<a href="https://data.gov.tw/dataset/7442">直轄市、縣市界線(TWD97經緯度)</a>」和<a href="https://data.gov.tw/dataset/7441">鄉鎮市區界線(TWD97經緯度) | 政府資料開放平臺 (data.gov.tw)</a>。</li>
-<li>接下來是取得要繪製在地圖上的資料。前面的rworldmap是已知地圖檔和資料檔中都有每個國家的ISO3代碼，所以可以用ISO3代碼來連結地圖檔和資料檔。如果是臺灣的資料，可能就要用縣市名稱來做連結。或者，某些圖資本身就有經緯度，甚至它並非區域圖，而是有經緯度的點位圖。這類的圖資檔案可以到<a href="https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1">社會經濟資料服務平台 (moi.gov.tw)</a>查找並下載。</li>
-</ul>
-<p>通常地理圖資檔有兩種格式：一種是geojson，一種是shapefile。</p>
-<ul>
-<li>shapefile 是一種老舊的地理圖資檔案格式，通常由 shp, shx, dbf, prj 等檔案組成。其中，shp 檔案包含了地理空間範圍和形狀的點與邊（邊通常是由點依序所構成，不會特別把邊標出來），shx 檔案是其索引文件，dbf 檔案則儲存了相關的屬性資訊，例如幾何特徵的名稱或變數，prj 檔案則是儲存了投影信息。shapefile 格式的優點是廣泛的應用性和支援程式豐富，可以在許多地理信息系統（GIS）和軟件中使用，是許多組織和機構最常用的地理圖資格式之一。</li>
-<li>geojson 則是一種基於 JSON 格式的地理圖資檔案格式，內容包含了地理空間範圍和屬性。geojson 的優點是格式簡單、容易理解和易於編輯，支援性也比較好。由於 geojson 使用的是文本格式，因此可以直接在許多文本編輯器中編輯和查看，也可以輕易地轉換成其他格式的地理圖資檔案。</li>
-</ul>
-<p>這邊我們所要用的套件是<strong><code>sf</code></strong>，<strong><code>sf</code></strong> 是一個在 R 環境下進行地理圖資處理和分析的套件，他不僅支援多種檔案格式，包括 shapefile、GeoJSON、KML 等，並且可以直接將這些檔案轉換為 R 中的空間資料框架，方便進行進一步的處理和分析。更方便的特色是在於，它可以用tidyverse的風格來寫作，方便對地理圖資和其他數據進行整合和分析，甚至在使用<strong><code>View()</code></strong>的時候，把圖資當成一個變項。</p>
-<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="geospatial.html#cb728-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<div id="the-case-population-and-density-of-taipei" class="section level3 hasAnchor" number="27.2.1">
-<h3><span class="header-section-number">27.2.1</span> The case: Population and Density of Taipei<a href="geospatial.html#the-case-population-and-density-of-taipei" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>這個資料下載自<a href="https://segis.moi.gov.tw/STAT/Web/Portal/STAT_PortalHome.aspx">社會經濟資料服務平台 (moi.gov.tw)</a>的<img src="https://segis.moi.gov.tw/STAT/Resources/Project/Images/Platform/subProduct.png" title="子產品" /><a href="https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1#" title="111年9月行政區人口統計_鄉鎮市區_臺北市">111年9月行政區人口統計_鄉鎮市區_臺北市</a>，實際上內部的資料包含368個鄉鎮的依性別分人口數、家戶數等。</p>
-<p>資料變項包含每個區的家戶數（<strong><code>H_CNT</code></strong>）、總人口數（<strong><code>P_CNT</code></strong>）、男性人口數（<strong><code>M_CNT</code></strong>）、女性人口數（<strong><code>F_CNT</code></strong>）。等一下要計算每平方公里的家戶數或人口數時，你會疑惑為何沒有面積資料。</p>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="geospatial.html#cb729-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="ot">&lt;-</span></span>
-<span id="cb729-2"><a href="geospatial.html#cb729-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">&quot;data/111年9月行政區人口統計_鄉鎮市區_臺北市_SHP/&quot;</span>, </span>
-<span id="cb729-3"><a href="geospatial.html#cb729-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">layer =</span> <span class="st">&quot;111年9月行政區人口統計_鄉鎮市區&quot;</span>, <span class="at">quiet =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb729-4"><a href="geospatial.html#cb729-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">iconv</span>(., <span class="at">from =</span> <span class="st">&quot;BIG5&quot;</span>, <span class="at">to =</span> <span class="st">&quot;UTF8&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb729-5"><a href="geospatial.html#cb729-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(across(where(is.double), ~if_else(is.na(.),as.double(0),.))) %&gt;%</span></span>
-<span id="cb729-6"><a href="geospatial.html#cb729-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># st_set_crs(3826) %&gt;% st_transform(4326) %&gt;% </span></span>
-<span id="cb729-7"><a href="geospatial.html#cb729-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(COUNTY == &quot;臺北市&quot;)</span></span>
-<span id="cb729-8"><a href="geospatial.html#cb729-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(COUNTY, <span class="st">&quot;臺北市&quot;</span>))</span>
-<span id="cb729-9"><a href="geospatial.html#cb729-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb729-10"><a href="geospatial.html#cb729-10" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
-<pre class="output"><code>## Simple feature collection with 6 features and 9 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 300874.7 ymin: 2766756 xmax: 309745.8 ymax: 2776127
-## CRS:           NA
-##    TOWN_ID   TOWN COUNTY_ID COUNTY  H_CNT  P_CNT  M_CNT  F_CNT INFO_TIME
-## 1 63000010 松山區     63000 臺北市  78977 187552  87625  99927   111Y09M
-## 2 63000020 信義區     63000 臺北市  87407 201951  95884 106067   111Y09M
-## 3 63000030 大安區     63000 臺北市 117243 280332 130596 149736   111Y09M
-## 4 63000040 中山區     63000 臺北市  98825 210156  97114 113042   111Y09M
-## 5 63000050 中正區     63000 臺北市  64491 146628  69663  76965   111Y09M
-## 6 63000060 大同區     63000 臺北市  51988 118065  57003  61062   111Y09M
-##                         geometry
-## 1 MULTIPOLYGON (((307703.1 27...
-## 2 MULTIPOLYGON (((307788.7 27...
-## 3 MULTIPOLYGON (((304591.5 27...
-## 4 MULTIPOLYGON (((305699 2776...
-## 5 MULTIPOLYGON (((302203.6 27...
-## 6 MULTIPOLYGON (((302217.9 27...</code></pre>
-<p>試著畫畫看。你會發現它的座標系是一個我們看不懂的數字，而不是想像中的經緯度。</p>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="geospatial.html#cb731-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
-<span id="cb731-2"><a href="geospatial.html#cb731-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb731-3"><a href="geospatial.html#cb731-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
-<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="projection-投影的概念" class="section level3 hasAnchor" number="27.2.2">
-<h3><span class="header-section-number">27.2.2</span> Projection 投影的概念<a href="geospatial.html#projection-投影的概念" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>投影是指將地球表面的三維空間坐標轉換為二維平面坐標的過程，這是因為在實際應用中需要將地球表面的訊息表示在平面上，方便分析和可視化。然而，由於地球是一個球體，不同的投影方式會導致在不同位置和距離上的形狀、面積和方向出現差異，因此在使用地理空間數據進行分析和視覺化時需要注意投影的選擇和轉換。</p>
-<p>除了投影之外，每個地理區域還有適合的參考橢球體和大地基準面。橢球體是指地球表面的形狀，大地基準面則是指地球表面的平均高程面。這些概念的選擇取決於具體的地理區域和應用場景，並且可能會對數據分析結果產生影響。基準點（Datum）則是用來定義地球表面上的某個點，從而將地球表面的形狀和大小轉換為平面坐標系中的數值。基準點分為區域性的（local）和全球的（global）。區域性的基準點通常是針對某個特定的地理區域進行定義，而全球的基準點則是針對整個地球進行定義。全球最常用的基準點是<strong>WGS84</strong>，它以地球質心為中心；而台灣常用的區域性基準點是<strong>TWD97</strong>，舊版則是用<strong>TWD67</strong>。基準點的選擇也可能會對數據分析結果產生影響。</p>
-<ul>
-<li>投影法有對應的代號稱為 EPSG（歐洲石油探勘組織），他們制定了空間參考識別系統（SRID）。可以記兩個重要的:
-<ul>
-<li><strong>WGS84 = 4326</strong></li>
-<li><strong>TWD97 = 3826</strong></li>
-</ul></li>
-<li>參考：<a href="https://gis.stackexchange.com/questions/48949/epsg-3857-or-4326-for-googlemaps-openstreetmap-and-leaflet" class="uri">https://gis.stackexchange.com/questions/48949/epsg-3857-or-4326-for-googlemaps-openstreetmap-and-leaflet</a>
-<ul>
-<li><p>Google Earth採用WGS84坐標系統的地理坐標系統。(EPSG：4326)</p>
-<p>Google Maps採用以WGS84為基礎的投影坐標系統。(EPSG 3857)</p>
-<p>Open Street Map數據庫中的數據以WGS84坐標系統的十進制度為單位進行儲存。(EPSG：4326)</p>
-<p>Open Street Map瓦片和WMS服務採用以WGS84為基礎的投影坐標系統。(EPSG 3857)</p>
-<p><a href="https://epsg.io/3825"><strong>https://epsg.io/3825</strong></a> 是台灣的坐標系統（3826、3827等也是，你可以打開看看）</p></li>
-</ul></li>
-<li>用得到投影的情境
-<ul>
-<li>研究區域，想轉換座標（changing projections）：修改 EPSG code 或是改掉 <code>proj4string</code> 的內容</li>
-<li>原始資料缺投影方法：加上 EPSG code 或是加上 <code>proj4string</code> 的內容</li>
-</ul></li>
-<li>如果需要進行投影轉換，可以使用 R 中的相關函數和方法。例如，
-<ul>
-<li>使用 <strong><code>st_crs()</code></strong> 函數可以取得地理空間數據的投影系統；</li>
-<li>使用 <strong><code>st_transform()</code></strong> 函數可以進行地理空間數據的投影變換；</li>
-<li>使用 <strong><code>st_set_crs()</code></strong> 函數可以設定地理空間數據的投影系統等等。</li>
-</ul></li>
-</ul>
-<p>就下載的這個資料來說，他並沒有設定他的投影座標。</p>
-<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="geospatial.html#cb732-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)<span class="sc">$</span>proj4string</span></code></pre></div>
-<pre class="output"><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="geospatial.html#cb734-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)</span></code></pre></div>
-<pre class="output"><code>## Coordinate Reference System: NA</code></pre>
-<p>我們會希望在讀取資料的時候，設定他的投影座標。例如以下的例子是設定為TWD96（3826）然後轉換為全球座標WGS84（4326）。</p>
-<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="geospatial.html#cb736-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="ot">&lt;-</span></span>
-<span id="cb736-2"><a href="geospatial.html#cb736-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">&quot;data/111年9月行政區人口統計_鄉鎮市區_臺北市_SHP/&quot;</span>, </span>
-<span id="cb736-3"><a href="geospatial.html#cb736-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">layer =</span> <span class="st">&quot;111年9月行政區人口統計_鄉鎮市區&quot;</span>, <span class="at">quiet =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb736-4"><a href="geospatial.html#cb736-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">iconv</span>(., <span class="at">from =</span> <span class="st">&quot;BIG5&quot;</span>, <span class="at">to =</span> <span class="st">&quot;UTF8&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb736-5"><a href="geospatial.html#cb736-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(<span class="dv">3826</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb736-6"><a href="geospatial.html#cb736-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># st_transform(4326) %&gt;%</span></span>
-<span id="cb736-7"><a href="geospatial.html#cb736-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(COUNTY, <span class="st">&quot;臺北市&quot;</span>))</span>
-<span id="cb736-8"><a href="geospatial.html#cb736-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb736-9"><a href="geospatial.html#cb736-9" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)<span class="sc">$</span>proj4string</span></code></pre></div>
-<pre class="output"><code>## [1] &quot;+proj=tmerc +lat_0=0 +lon_0=121 +k=0.9999 +x_0=250000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</code></pre>
-<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="geospatial.html#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf_tpe)</span></code></pre></div>
-<pre class="output"><code>## Coordinate Reference System:
-##   User input: EPSG:3826 
-##   wkt:
-## PROJCRS[&quot;TWD97 / TM2 zone 121&quot;,
-##     BASEGEOGCRS[&quot;TWD97&quot;,
-##         DATUM[&quot;Taiwan Datum 1997&quot;,
-##             ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
-##                 LENGTHUNIT[&quot;metre&quot;,1]]],
-##         PRIMEM[&quot;Greenwich&quot;,0,
-##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
-##         ID[&quot;EPSG&quot;,3824]],
-##     CONVERSION[&quot;Taiwan 2-degree TM zone 121&quot;,
-##         METHOD[&quot;Transverse Mercator&quot;,
-##             ID[&quot;EPSG&quot;,9807]],
-##         PARAMETER[&quot;Latitude of natural origin&quot;,0,
-##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
-##             ID[&quot;EPSG&quot;,8801]],
-##         PARAMETER[&quot;Longitude of natural origin&quot;,121,
-##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
-##             ID[&quot;EPSG&quot;,8802]],
-##         PARAMETER[&quot;Scale factor at natural origin&quot;,0.9999,
-##             SCALEUNIT[&quot;unity&quot;,1],
-##             ID[&quot;EPSG&quot;,8805]],
-##         PARAMETER[&quot;False easting&quot;,250000,
-##             LENGTHUNIT[&quot;metre&quot;,1],
-##             ID[&quot;EPSG&quot;,8806]],
-##         PARAMETER[&quot;False northing&quot;,0,
-##             LENGTHUNIT[&quot;metre&quot;,1],
-##             ID[&quot;EPSG&quot;,8807]]],
-##     CS[Cartesian,2],
-##         AXIS[&quot;easting (X)&quot;,east,
-##             ORDER[1],
-##             LENGTHUNIT[&quot;metre&quot;,1]],
-##         AXIS[&quot;northing (Y)&quot;,north,
-##             ORDER[2],
-##             LENGTHUNIT[&quot;metre&quot;,1]],
-##     USAGE[
-##         SCOPE[&quot;Engineering survey, topographic mapping.&quot;],
-##         AREA[&quot;Taiwan, Republic of China - between 120°E and 122°E, onshore and offshore - Taiwan Island.&quot;],
-##         BBOX[20.41,119.99,26.72,122.06]],
-##     ID[&quot;EPSG&quot;,3826]]</code></pre>
-<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="geospatial.html#cb740-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
-<span id="cb740-2"><a href="geospatial.html#cb740-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb740-3"><a href="geospatial.html#cb740-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
-<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="geospatial.html#cb741-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
-<span id="cb741-2"><a href="geospatial.html#cb741-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">fill =</span> P_CNT) <span class="sc">+</span> </span>
-<span id="cb741-3"><a href="geospatial.html#cb741-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb741-4"><a href="geospatial.html#cb741-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;white&quot;</span>, <span class="at">high =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
-<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>面積資料可以用<strong><code>st_area()</code></strong>這個函式求得。<strong><code>st_area()</code></strong> 是 R 中一個與地理空間數據相關的函數，用於計算地理多邊形的面積。具體而言，st_area() 函數接受一個 Spatial* 或是 sf 的資料物件，可以計算其包含的每個多邊形的面積，並以相應的單位返回結果。其中 <strong><code>as.double(st_area(.))/1000000</code></strong> 的作用是將地理多邊形的面積從平方公尺轉換為平方公里。因為面積的單位是平方公尺，而人口密度的常用單位是人口數/平方公里，因此需要進行單位換算，將面積轉換為平方公里。</p>
-<p><strong><code>st_area()</code></strong> 函數的計算方式基於多邊形的投影，因此在使用該函數時需要注意地理空間數據的投影選擇和轉換。通常情況下，<strong><code>st_area()</code></strong> 函數可以自動識別多邊形的投影系統，並返回相應的面積值。如果需要在不同的投影系統間進行面積的轉換，則需要使用 <strong><code>st_transform()</code></strong> 函數進行投影變換。</p>
-<p>需要注意的是，由於地球是一個球體，因此在計算面積時需要考慮到地球的曲率效應。<strong><code>st_area()</code></strong> 函數默認使用的是橢球面積計算公式（ellipsoidal area formula），可以更準確地計算地理多邊形的面積。如果需要更精確的面積計算結果，也可以使用球面面積計算公式（spherical area formula）或是進行局部的面積校正。</p>
-<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="geospatial.html#cb742-1" aria-hidden="true" tabindex="-1"></a>sf_tpe <span class="sc">%&gt;%</span> </span>
-<span id="cb742-2"><a href="geospatial.html#cb742-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_density =</span> P_CNT<span class="sc">/</span>(<span class="fu">as.double</span>(<span class="fu">st_area</span>(.))<span class="sc">/</span><span class="dv">1000000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb742-3"><a href="geospatial.html#cb742-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">fill =</span> p_density) <span class="sc">+</span> </span>
-<span id="cb742-4"><a href="geospatial.html#cb742-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
-<span id="cb742-5"><a href="geospatial.html#cb742-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;white&quot;</span>, <span class="at">high =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
-<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="town-level-taipei-income" class="section level2 hasAnchor" number="27.3">
-<h2><span class="header-section-number">27.3</span> Town-level: Taipei income<a href="geospatial.html#town-level-taipei-income" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>有時候我們所希望繪製的資料並非來自SEGIS這類有圖資的平台（例如下面所用的台北各區每人平均所得），那我們就會需要先取得另一份圖資資料（例如下例的鄉鎮市區界圖資），再透過一些索引（Index）來結合這兩方的資料。而下面這個例子，還為了要將鄉鎮市區名稱打在各區的中央，結合了另一份資料，一共結合了三方的資料。</p>
-<div id="reading-income-data" class="section level3 hasAnchor" number="27.3.1">
-<h3><span class="header-section-number">27.3.1</span> Reading income data<a href="geospatial.html#reading-income-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="geospatial.html#cb743-1" aria-hidden="true" tabindex="-1"></a>taipei_income <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&#39;data/台北各區每人所得.xlsx&#39;</span>) </span>
-<span id="cb743-2"><a href="geospatial.html#cb743-2" aria-hidden="true" tabindex="-1"></a>taipei_income <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
-<pre class="output"><code>## # A tibble: 6 × 2
-##   district  income
-##   &lt;chr&gt;      &lt;dbl&gt;
-## 1 松山區   1012678
-## 2 信義區    909336
-## 3 大安區   1038921
-## 4 中山區    861415
-## 5 中正區   1022438
-## 6 大同區    814439</code></pre>
-</div>
-<div id="read-taipei-zip-code" class="section level3 hasAnchor" number="27.3.2">
-<h3><span class="header-section-number">27.3.2</span> Read Taipei zip code<a href="geospatial.html#read-taipei-zip-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>等一下我打算把每區的名稱打在各區上，但是我沒有各區的名稱應該打在哪裡的經緯度，恰好Zip Code這份資料裡面有台北市各區的經緯度中心，因此先把它讀進來合併用。</p>
-<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="geospatial.html#cb745-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb745-2"><a href="geospatial.html#cb745-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb745-3"><a href="geospatial.html#cb745-3" aria-hidden="true" tabindex="-1"></a>twzipcode_json <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">&quot;data/twzipcode.json&quot;</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb745-4"><a href="geospatial.html#cb745-4" aria-hidden="true" tabindex="-1"></a>taipei_zipcode <span class="ot">&lt;-</span> twzipcode_json <span class="sc">%&gt;%</span> </span>
-<span id="cb745-5"><a href="geospatial.html#cb745-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city <span class="sc">==</span> <span class="st">&quot;台北市&quot;</span>)</span>
-<span id="cb745-6"><a href="geospatial.html#cb745-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb745-7"><a href="geospatial.html#cb745-7" aria-hidden="true" tabindex="-1"></a>taipei_zipcode <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
-<pre class="output"><code>##   zip_code district   city     lat     lng
-## 1      100   中正區 台北市 25.0324 121.520
-## 2      103   大同區 台北市 25.0634 121.513
-## 3      104   中山區 台北市 25.0697 121.538
-## 4      105   松山區 台北市 25.0600 121.558
-## 5      106   大安區 台北市 25.0268 121.543
-## 6      108   萬華區 台北市 25.0286 121.498</code></pre>
-<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="geospatial.html#cb747-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;rmapshaper&quot;)</span></span>
-<span id="cb747-2"><a href="geospatial.html#cb747-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/TOWN_MOI_1100415.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb747-3"><a href="geospatial.html#cb747-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(COUNTYNAME <span class="sc">==</span> <span class="st">&quot;臺北市&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb747-4"><a href="geospatial.html#cb747-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># st_transform(3825) %&gt;% #3857</span></span>
-<span id="cb747-5"><a href="geospatial.html#cb747-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># rmapshaper::ms_simplify(keep=0.05) %&gt;%</span></span>
-<span id="cb747-6"><a href="geospatial.html#cb747-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(taipei_income, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;TOWNNAME&quot;</span> <span class="ot">=</span> <span class="st">&quot;district&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb747-7"><a href="geospatial.html#cb747-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(taipei_zipcode, <span class="at">by=</span> <span class="fu">c</span>(<span class="st">&quot;TOWNNAME&quot;</span> <span class="ot">=</span> <span class="st">&quot;district&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb747-8"><a href="geospatial.html#cb747-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">fill =</span> income) <span class="sc">+</span> </span>
-<span id="cb747-9"><a href="geospatial.html#cb747-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
-<span id="cb747-10"><a href="geospatial.html#cb747-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">&quot;#FF8888&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#0000AA&quot;</span>, </span>
-<span id="cb747-11"><a href="geospatial.html#cb747-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">midpoint =</span> <span class="fu">median</span>(taipei_income<span class="sc">$</span>income)) <span class="sc">+</span></span>
-<span id="cb747-12"><a href="geospatial.html#cb747-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> lng, <span class="at">y =</span> lat, <span class="at">label =</span> TOWNNAME), <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
-<pre class="output"><code>## Reading layer `TOWN_MOI_1100415&#39; from data source 
-##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/TOWN_MOI_1100415.shp&#39; 
-##   using driver `ESRI Shapefile&#39;
-## Simple feature collection with 368 features and 7 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
-## Geodetic CRS:  TWD97</code></pre>
-<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="twmap" class="section level2 hasAnchor" number="27.4">
-<h2><span class="header-section-number">27.4</span> Voting map - County level<a href="geospatial.html#twmap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本練習將以2016年總統選舉為例，比較朱立倫、宋楚瑜、蔡英文在不同縣市的得票率，並繪製為地圖。該地圖比較有趣的是，因為台灣的地圖實際上是由很多點連成的，在這麼大的規模如果把全部的點全部繪製上去，會繪製非常久，而讀者也不盡然能夠看清楚這個差別，所以可以降低點的數量。</p>
-<div id="loading-county-level-president-voting-rate" class="section level3 hasAnchor" number="27.4.1">
-<h3><span class="header-section-number">27.4.1</span> Loading county-level president voting rate<a href="geospatial.html#loading-county-level-president-voting-rate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="geospatial.html#cb749-1" aria-hidden="true" tabindex="-1"></a>president_vote <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&#39;data/president.xlsx&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb749-2"><a href="geospatial.html#cb749-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> chu <span class="sc">+</span> tsai <span class="sc">+</span> song) <span class="sc">%&gt;%</span> </span>
-<span id="cb749-3"><a href="geospatial.html#cb749-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chu_ratio =</span> chu <span class="sc">/</span> total,</span>
-<span id="cb749-4"><a href="geospatial.html#cb749-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_ratio =</span> tsai <span class="sc">/</span> total,</span>
-<span id="cb749-5"><a href="geospatial.html#cb749-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">song_ratio =</span> song <span class="sc">/</span> total,</span>
-<span id="cb749-6"><a href="geospatial.html#cb749-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_chu_ratio =</span> tsai <span class="sc">/</span> chu)</span></code></pre></div>
-</div>
-<div id="sf-to-load-county-level-shp" class="section level3 hasAnchor" number="27.4.2">
-<h3><span class="header-section-number">27.4.2</span> sf to load county level shp<a href="geospatial.html#sf-to-load-county-level-shp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://fidanalytics.co.uk/blog/simplifying-polygons-r" class="uri">https://fidanalytics.co.uk/blog/simplifying-polygons-r</a></p>
-<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="geospatial.html#cb750-1" aria-hidden="true" tabindex="-1"></a>county_sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>)</span></code></pre></div>
-<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
-##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
-##   using driver `ESRI Shapefile&#39;
-## Simple feature collection with 22 features and 4 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
-## Geodetic CRS:  TWD97</code></pre>
-<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="geospatial.html#cb752-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(county_sf) # Taking very long time</span></span></code></pre></div>
-</div>
-<div id="simplfying-map-polygon" class="section level3 hasAnchor" number="27.4.3">
-<h3><span class="header-section-number">27.4.3</span> Simplfying map polygon<a href="geospatial.html#simplfying-map-polygon" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="geospatial.html#cb753-1" aria-hidden="true" tabindex="-1"></a>county_ms_simp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb753-2"><a href="geospatial.html#cb753-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rmapshaper::ms_simplify(county_sf,  keep=0.001) </span></span>
-<span id="cb753-3"><a href="geospatial.html#cb753-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_simplify</span>(<span class="at">dTolerance =</span> <span class="dv">100</span>)</span></code></pre></div>
-<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
-##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
-##   using driver `ESRI Shapefile&#39;
-## Simple feature collection with 22 features and 4 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
-## Geodetic CRS:  TWD97</code></pre>
-<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="geospatial.html#cb755-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(county_ms_simp)</span></code></pre></div>
-<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="geospatial.html#cb756-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;rmapshaper&quot;)</span></span>
-<span id="cb756-2"><a href="geospatial.html#cb756-2" aria-hidden="true" tabindex="-1"></a>plot_chu <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb756-3"><a href="geospatial.html#cb756-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># st_transform(3825) %&gt;% #3857</span></span>
-<span id="cb756-4"><a href="geospatial.html#cb756-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_simplify</span>(<span class="at">dTolerance =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb756-5"><a href="geospatial.html#cb756-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rmapshaper::ms_simplify(keep=0.01) %&gt;%</span></span>
-<span id="cb756-6"><a href="geospatial.html#cb756-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(president_vote, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;COUNTYNAME&quot;</span><span class="ot">=</span><span class="st">&quot;county&quot;</span>))</span></code></pre></div>
-<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
-##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
-##   using driver `ESRI Shapefile&#39;
-## Simple feature collection with 22 features and 4 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
-## Geodetic CRS:  TWD97</code></pre>
-<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="geospatial.html#cb758-1" aria-hidden="true" tabindex="-1"></a>plot_chu <span class="sc">%&gt;%</span></span>
-<span id="cb758-2"><a href="geospatial.html#cb758-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> chu_ratio)) <span class="sc">+</span> </span>
-<span id="cb758-3"><a href="geospatial.html#cb758-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color=</span><span class="st">&quot;white&quot;</span>, <span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb758-4"><a href="geospatial.html#cb758-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#FFFFFF&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#0000FF&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb758-5"><a href="geospatial.html#cb758-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="V22_twmap_sf_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="practice.-drawing-taiwan-county-scale-map-from-segis-data" class="section level3 hasAnchor practice" number="27.4.4">
-<h3><span class="header-section-number">27.4.4</span> Practice. Drawing Taiwan county-scale map from SEGIS data<a href="geospatial.html#practice.-drawing-taiwan-county-scale-map-from-segis-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>這個練習希望你從SEGIS下載一個縣市層級的資料，並測試以下函式的結果：</p>
-<ol style="list-style-type: decimal">
-<li>運用<code>st_transform()</code>和<code>st_set_crs()</code>等函式測試用3826或4326座標系有何不同？
-<ol style="list-style-type: decimal">
-<li>在用<code>st_area()</code>計算面積時會不會有何不同？</li>
-<li>在視覺化的時候可否看出來有何不同？請寫程式測試看看。</li>
-</ol></li>
-<li><code>st_simplify()</code>這個函式可以降低點的數量，但運用<code>st_simplify(dTolerance = 100)</code>，<code>dTolerance</code>的設定是如何影響點的數量？<code>100</code>所指的是什麼？公尺嗎？</li>
-<li>用<code>st_bbox()</code>可以得知上下界為何，請試用這個函式看看？</li>
-<li>如何運用<code>st_crop()</code>切出台灣本島（不包含澎湖、金門、馬祖）得地圖？</li>
-</ol>
 </div>
 
-</div>
-<div id="mapping-data-with-grid" class="section level2 hasAnchor" number="27.5">
-<h2><span class="header-section-number">27.5</span> Mapping data with grid<a href="geospatial.html#mapping-data-with-grid" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="geospatial.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<div id="loading-taiwan-map" class="section level3 hasAnchor" number="27.5.1">
-<h3><span class="header-section-number">27.5.1</span> Loading Taiwan map<a href="geospatial.html#loading-taiwan-map" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb760"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb760-1"><a href="geospatial.html#cb760-1" aria-hidden="true" tabindex="-1"></a>TW.island <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/shapefiles/COUNTY_MOI_1090820.shp&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb760-2"><a href="geospatial.html#cb760-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="dv">3826</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb760-3"><a href="geospatial.html#cb760-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>())</span></code></pre></div>
-<pre class="output"><code>## Reading layer `COUNTY_MOI_1090820&#39; from data source 
-##   `/Users/jirlong/Library/CloudStorage/Dropbox/Programming/JOUR5014/data/shapefiles/COUNTY_MOI_1090820.shp&#39; 
-##   using driver `ESRI Shapefile&#39;
-## Simple feature collection with 22 features and 4 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 114.3593 ymin: 10.37135 xmax: 124.5611 ymax: 26.38528
-## Geodetic CRS:  TWD97</code></pre>
-</div>
-<div id="building-grid" class="section level3 hasAnchor" number="27.5.2">
-<h3><span class="header-section-number">27.5.2</span> Building grid<a href="geospatial.html#building-grid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="geospatial.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining grid size</span></span>
-<span id="cb762-2"><a href="geospatial.html#cb762-2" aria-hidden="true" tabindex="-1"></a>grid.extent <span class="ot">&lt;-</span> </span>
-<span id="cb762-3"><a href="geospatial.html#cb762-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">50000</span>,  <span class="dv">2920000</span>,   <span class="co"># (Xmin, Ymax)</span></span>
-<span id="cb762-4"><a href="geospatial.html#cb762-4" aria-hidden="true" tabindex="-1"></a>           <span class="dv">610000</span>,  <span class="dv">2920000</span>,   <span class="co"># (Xmax, Ymax)</span></span>
-<span id="cb762-5"><a href="geospatial.html#cb762-5" aria-hidden="true" tabindex="-1"></a>           <span class="dv">610000</span>, <span class="dv">2420000</span>,    <span class="co"># (Xmax, Ymin)</span></span>
-<span id="cb762-6"><a href="geospatial.html#cb762-6" aria-hidden="true" tabindex="-1"></a>           <span class="sc">-</span><span class="dv">50000</span>, <span class="dv">2420000</span>,    <span class="co"># (Xmin, Ymin)</span></span>
-<span id="cb762-7"><a href="geospatial.html#cb762-7" aria-hidden="true" tabindex="-1"></a>           <span class="sc">-</span><span class="dv">50000</span>,  <span class="dv">2920000</span>),  <span class="co"># (Xmin, Ymax) </span></span>
-<span id="cb762-8"><a href="geospatial.html#cb762-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb762-9"><a href="geospatial.html#cb762-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>() <span class="sc">%&gt;%</span> <span class="co"># convert to list for st_polygon()</span></span>
-<span id="cb762-10"><a href="geospatial.html#cb762-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_polygon</span>() <span class="sc">%&gt;%</span> <span class="co"># generate polygon</span></span>
-<span id="cb762-11"><a href="geospatial.html#cb762-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sfc</span>(<span class="at">crs =</span> <span class="dv">3826</span>) <span class="co"># convert format and crs</span></span>
-<span id="cb762-12"><a href="geospatial.html#cb762-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(grid.extent)</span></span>
-<span id="cb762-13"><a href="geospatial.html#cb762-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb762-14"><a href="geospatial.html#cb762-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb762-15"><a href="geospatial.html#cb762-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating grid</span></span>
-<span id="cb762-16"><a href="geospatial.html#cb762-16" aria-hidden="true" tabindex="-1"></a>Grid.sys <span class="ot">&lt;-</span> </span>
-<span id="cb762-17"><a href="geospatial.html#cb762-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_make_grid</span>(grid.extent,</span>
-<span id="cb762-18"><a href="geospatial.html#cb762-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">132</span>, <span class="dv">100</span>),   <span class="co"># Resolution of grids</span></span>
-<span id="cb762-19"><a href="geospatial.html#cb762-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">crs =</span> <span class="dv">3826</span>,  <span class="co"># crs: TWD97 121</span></span>
-<span id="cb762-20"><a href="geospatial.html#cb762-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">what =</span> <span class="st">&#39;polygons&#39;</span>) <span class="sc">%&gt;%</span>   <span class="co"># output format: polygon</span></span>
-<span id="cb762-21"><a href="geospatial.html#cb762-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>(<span class="st">&#39;geometry&#39;</span> <span class="ot">=</span> ., <span class="fu">data.frame</span>(<span class="st">&#39;ID&#39;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(.))) <span class="co"># convert to sf with id</span></span>
-<span id="cb762-22"><a href="geospatial.html#cb762-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># st_transform(3826) # assigning crs again ? </span></span>
-<span id="cb762-23"><a href="geospatial.html#cb762-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Grid.sys)</span></code></pre></div>
-<p><img src="V23_map_grid_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="geospatial.html#cb763-1" aria-hidden="true" tabindex="-1"></a>Grid.TW <span class="ot">&lt;-</span> </span>
-<span id="cb763-2"><a href="geospatial.html#cb763-2" aria-hidden="true" tabindex="-1"></a>  Grid.sys[<span class="fu">subset</span>(TW.island),]</span>
-<span id="cb763-3"><a href="geospatial.html#cb763-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Grid.TW)</span></code></pre></div>
-<p><img src="V23_map_grid_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="loading-data-1" class="section level3 hasAnchor" number="27.5.3">
-<h3><span class="header-section-number">27.5.3</span> loading data<a href="geospatial.html#loading-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb764"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb764-1"><a href="geospatial.html#cb764-1" aria-hidden="true" tabindex="-1"></a>president_vote <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&#39;data/president.xlsx&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb764-2"><a href="geospatial.html#cb764-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> chu <span class="sc">+</span> tsai <span class="sc">+</span> song) <span class="sc">%&gt;%</span> </span>
-<span id="cb764-3"><a href="geospatial.html#cb764-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chu_ratio =</span> chu <span class="sc">/</span> total,</span>
-<span id="cb764-4"><a href="geospatial.html#cb764-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_ratio =</span> tsai <span class="sc">/</span> total,</span>
-<span id="cb764-5"><a href="geospatial.html#cb764-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">song_ratio =</span> song <span class="sc">/</span> total,</span>
-<span id="cb764-6"><a href="geospatial.html#cb764-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">tsai_chu_ratio =</span> tsai <span class="sc">/</span> chu)</span></code></pre></div>
-</div>
-<div id="merging-data" class="section level3 hasAnchor" number="27.5.4">
-<h3><span class="header-section-number">27.5.4</span> Merging data<a href="geospatial.html#merging-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb765-1"><a href="geospatial.html#cb765-1" aria-hidden="true" tabindex="-1"></a>tw_info <span class="ot">&lt;-</span> TW.island <span class="sc">%&gt;%</span> </span>
-<span id="cb765-2"><a href="geospatial.html#cb765-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_set_geometry</span>(<span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb765-3"><a href="geospatial.html#cb765-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(president_vote, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;COUNTYNAME&quot;</span><span class="ot">=</span><span class="st">&quot;county&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="geospatial.html#cb766-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TW_info &lt;- sf::st_intersects(Grid.TW, TW.island)  # creat a data.frame of IDs in IBA for 1km grid</span></span>
-<span id="cb766-2"><a href="geospatial.html#cb766-2" aria-hidden="true" tabindex="-1"></a>grid_id <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">st_intersects</span>(Grid.TW, TW.island), <span class="cf">function</span>(z) <span class="cf">if</span> (<span class="fu">length</span>(z)<span class="sc">==</span><span class="dv">0</span>) <span class="cn">NA_integer_</span> <span class="cf">else</span> z[<span class="dv">1</span>])</span>
-<span id="cb766-3"><a href="geospatial.html#cb766-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb766-4"><a href="geospatial.html#cb766-4" aria-hidden="true" tabindex="-1"></a>Grid.TW <span class="ot">&lt;-</span>  Grid.TW <span class="sc">%&gt;%</span></span>
-<span id="cb766-5"><a href="geospatial.html#cb766-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grid_id =</span> grid_id) <span class="sc">%&gt;%</span></span>
-<span id="cb766-6"><a href="geospatial.html#cb766-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(tw_info, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;grid_id&quot;</span><span class="ot">=</span><span class="st">&quot;id&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="geospatial.html#cb767-1" aria-hidden="true" tabindex="-1"></a>Grid.TW <span class="sc">%&gt;%</span></span>
-<span id="cb767-2"><a href="geospatial.html#cb767-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> tsai_ratio)) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">lwd =</span> <span class="fl">0.1</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb767-3"><a href="geospatial.html#cb767-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_continuous</span>(<span class="at">high=</span><span class="st">&quot;#2EFF71&quot;</span>, <span class="at">low=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb767-4"><a href="geospatial.html#cb767-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="V23_map_grid_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
-</div>
-</div>
-</div>
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="time-trends.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="network-vis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="trump.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="crawler-overview.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1202,7 +1260,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/V21_Geospatial.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R33_regular_expression.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -12,7 +12,7 @@
 -   向量數據模型使用點、線、多邊形等基本要素來描述地理空間現象。例如，可以用一個線段來表示一條河流，用一個多邊形來表示一個國家或城市的邊界等。向量數據模型具有比較強的邏輯性和表達能力，特別適合描述較簡單的地理現象。
 -   網格數據模型則是將地理空間區域劃分為一個個大小相等的格子，每個格子都有一個固定的數值，用來表示這個區域的某種屬性，例如溫度、濕度、高程等等。網格數據模型適合描述分布比較連續和具有變化的地理現象。
 
-通常繪製地理資訊地圖的時候，會需要因應你要繪製的地域去下載地圖空間數據檔案（例如.shape或geojson檔等）。如台灣的就可以去[社會經濟資料服務平台 (moi.gov.tw)](https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1)下載。但也有一些套件內部就包含這些地理空間數據，例如下一節的例子rworldmap套件本身就有世界地圖。或者可以嘗試ggmap或rgooglemap等第三方服務（參考簡介：[Map Visualization in R · Data Science and R ](https://mpmendespt.github.io/Map-visualization.html)）
+通常繪製地理資訊地圖的時候，會需要因應你要繪製的地域去下載地圖空間數據檔案（例如.shape或geojson檔等）。如台灣的就可以去[社會經濟資料服務平台 (moi.gov.tw)](https://segis.moi.gov.tw/STAT/Web/Platform/QueryInterface/STAT_QueryInterface.aspx?Type=1)下載。但也有一些套件內部就包含這些地理空間數據，例如下一節的例子rworldmap套件本身就有世界地圖。或者可以嘗試ggmap或rgooglemap等第三方服務（參考簡介：[Map Visualization in R · Data Science and R](https://mpmendespt.github.io/Map-visualization.html)）
 
 ## World Map
 

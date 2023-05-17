@@ -31,6 +31,7 @@ sf_tpe <-
   mutate(across(where(is.character), ~iconv(., from = "BIG5", to = "UTF8"))) %>%
   # mutate(across(where(is.double), ~if_else(is.na(.),as.double(0),.))) %>%
   # st_set_crs(3826) %>% st_transform(4326) %>% 
+  # filter(COUNTY == "臺北市")
   filter(str_detect(COUNTY, "臺北市"))
 
 sf_tpe %>% head()
@@ -124,14 +125,14 @@ sf_tpe <-
           layer = "111年9月行政區人口統計_鄉鎮市區", quiet = T) %>%
   mutate(across(where(is.character), ~iconv(., from = "BIG5", to = "UTF8"))) %>%
   st_set_crs(3826) %>% 
-  st_transform(4326) %>%
+  # st_transform(4326) %>%
   filter(str_detect(COUNTY, "臺北市"))
 
 st_crs(sf_tpe)$proj4string
 ```
 
 ```{.output}
-## [1] "+proj=longlat +datum=WGS84 +no_defs"
+## [1] "+proj=tmerc +lat_0=0 +lon_0=121 +k=0.9999 +x_0=250000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 ```
 
 ```r
@@ -140,34 +141,46 @@ st_crs(sf_tpe)
 
 ```{.output}
 ## Coordinate Reference System:
-##   User input: EPSG:4326 
+##   User input: EPSG:3826 
 ##   wkt:
-## GEOGCRS["WGS 84",
-##     ENSEMBLE["World Geodetic System 1984 ensemble",
-##         MEMBER["World Geodetic System 1984 (Transit)"],
-##         MEMBER["World Geodetic System 1984 (G730)"],
-##         MEMBER["World Geodetic System 1984 (G873)"],
-##         MEMBER["World Geodetic System 1984 (G1150)"],
-##         MEMBER["World Geodetic System 1984 (G1674)"],
-##         MEMBER["World Geodetic System 1984 (G1762)"],
-##         MEMBER["World Geodetic System 1984 (G2139)"],
-##         ELLIPSOID["WGS 84",6378137,298.257223563,
-##             LENGTHUNIT["metre",1]],
-##         ENSEMBLEACCURACY[2.0]],
-##     PRIMEM["Greenwich",0,
-##         ANGLEUNIT["degree",0.0174532925199433]],
-##     CS[ellipsoidal,2],
-##         AXIS["geodetic latitude (Lat)",north,
+## PROJCRS["TWD97 / TM2 zone 121",
+##     BASEGEOGCRS["TWD97",
+##         DATUM["Taiwan Datum 1997",
+##             ELLIPSOID["GRS 1980",6378137,298.257222101,
+##                 LENGTHUNIT["metre",1]]],
+##         PRIMEM["Greenwich",0,
+##             ANGLEUNIT["degree",0.0174532925199433]],
+##         ID["EPSG",3824]],
+##     CONVERSION["Taiwan 2-degree TM zone 121",
+##         METHOD["Transverse Mercator",
+##             ID["EPSG",9807]],
+##         PARAMETER["Latitude of natural origin",0,
+##             ANGLEUNIT["degree",0.0174532925199433],
+##             ID["EPSG",8801]],
+##         PARAMETER["Longitude of natural origin",121,
+##             ANGLEUNIT["degree",0.0174532925199433],
+##             ID["EPSG",8802]],
+##         PARAMETER["Scale factor at natural origin",0.9999,
+##             SCALEUNIT["unity",1],
+##             ID["EPSG",8805]],
+##         PARAMETER["False easting",250000,
+##             LENGTHUNIT["metre",1],
+##             ID["EPSG",8806]],
+##         PARAMETER["False northing",0,
+##             LENGTHUNIT["metre",1],
+##             ID["EPSG",8807]]],
+##     CS[Cartesian,2],
+##         AXIS["easting (X)",east,
 ##             ORDER[1],
-##             ANGLEUNIT["degree",0.0174532925199433]],
-##         AXIS["geodetic longitude (Lon)",east,
+##             LENGTHUNIT["metre",1]],
+##         AXIS["northing (Y)",north,
 ##             ORDER[2],
-##             ANGLEUNIT["degree",0.0174532925199433]],
+##             LENGTHUNIT["metre",1]],
 ##     USAGE[
-##         SCOPE["Horizontal component of 3D system."],
-##         AREA["World."],
-##         BBOX[-90,-180,90,180]],
-##     ID["EPSG",4326]]
+##         SCOPE["Engineering survey, topographic mapping."],
+##         AREA["Taiwan, Republic of China - between 120°E and 122°E, onshore and offshore - Taiwan Island."],
+##         BBOX[20.41,119.99,26.72,122.06]],
+##     ID["EPSG",3826]]
 ```
 
 
@@ -261,12 +274,13 @@ taipei_zipcode %>% head()
 st_read("data/shapefiles/TOWN_MOI_1100415.shp") %>%
     filter(COUNTYNAME == "臺北市") %>%
     # st_transform(3825) %>% #3857
-    rmapshaper::ms_simplify(keep=0.05) %>%
+    # rmapshaper::ms_simplify(keep=0.05) %>%
     left_join(taipei_income, by = c("TOWNNAME" = "district")) %>% 
     left_join(taipei_zipcode, by= c("TOWNNAME" = "district")) %>%
-    ggplot(aes(fill = income)) + 
+    ggplot() + aes(fill = income) + 
     geom_sf() + 
-    scale_fill_gradient2(low = "#FF8888", high = "#0000AA", midpoint = median(taipei_income$income)) +
+    scale_fill_gradient2(low = "#FF8888", high = "#0000AA", 
+                         midpoint = median(taipei_income$income)) +
     geom_text(aes(x = lng, y = lat, label = TOWNNAME), family = "Heiti TC Light", color = "black", size = 2.5)
 ```
 
@@ -354,7 +368,8 @@ plot(county_ms_simp)
 # install.packages("rmapshaper")
 plot_chu <- st_read("data/shapefiles/COUNTY_MOI_1090820.shp") %>%
   # st_transform(3825) %>% #3857
-  rmapshaper::ms_simplify(keep=0.01) %>%
+  st_simplify(dTolerance = 100) %>%
+  # rmapshaper::ms_simplify(keep=0.01) %>%
   right_join(president_vote, by=c("COUNTYNAME"="county"))
 ```
 
