@@ -1,6 +1,6 @@
 
 
-# Regular expression
+# Regular expression {#re}
 
 
 ```r
@@ -8,8 +8,7 @@ library(tidyverse)
 ```
 
 \
-正規表達式（Regular
-Expression）是一種用來描述、搜尋和操作文本的強大工具。它是由一系列字元和特殊符號所組成的模式，用於匹配和處理符合特定模式的字串。
+正規表達式（Regular Expression）是一種用來描述、搜尋和操作文本的強大工具。它是由一系列字元和特殊符號所組成的模式，用於匹配和處理符合特定模式的字串。
 
 正規表達式提供了一種靈活且強大的方式來執行字串的模式匹配。這些模式可以包含字母、數字、特殊字符和控制字符等各種元素。使用正規表達式，可以進行字串的搜尋、替換、提取、驗證和分割等操作。
 
@@ -37,7 +36,7 @@ Expression）是一種用來描述、搜尋和操作文本的強大工具。它�
 -   **`[A-Za-z]{2,}`**：匹配郵件地址的頂級域名部分，它可以是由至少兩個字母組成的字詞。
 
 |                |                                                                                                                                                                                               |
-|-------------------|-----------------------------------------------------|
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Pattern**    | Description                                                                                                                                                                                   |
 | `^`            | Matches beginning of line.                                                                                                                                                                    |
 | `$`            | Matches end of line.                                                                                                                                                                          |
@@ -81,8 +80,7 @@ Expression）是一種用來描述、搜尋和操作文本的強大工具。它�
 ## **RE applications on string operations**
 
 -   **Replacing** specific pattern
-    -   Replacing all space or new line character to one space or empty
-        string
+    -   Replacing all space or new line character to one space or empty string
     -   Deleting all number and alphabetic by empty string
     -   Deleting all HTML tags
 -   **Detecting** if it exists some specific pattern
@@ -91,13 +89,11 @@ Expression）是一種用來描述、搜尋和操作文本的強大工具。它�
     -   Extracting hashtags in text
     -   Extracting timestamp, email, hyperlink, or url in text
     -   Extracting number after some specific patterns
--   **Splitting** Splitting string into several parts when detecting
-    some specific pattern successfully.
+-   **Splitting** Splitting string into several parts when detecting some specific pattern successfully.
 
 **Replacing**
 
--   `\s` matching any whitespace character including space, tabs, and
-    line breaks
+-   `\s` matching any whitespace character including space, tabs, and line breaks
 -   R uses `\\s`, instead of `\s`.
 -   `\\d` digit, `\\D` not digit
 -   `\\s` whitepsace, `\\S` not whitespace
@@ -119,10 +115,8 @@ str_replace_all(s, "\\s", "")
 
 ### Extracting
 
--   `+` means matching word occurring at least one time, matching longer
-    is better
--   `*` means matching word occurring any time, matching longer is
-    better
+-   `+` means matching word occurring at least one time, matching longer is better
+-   `*` means matching word occurring any time, matching longer is better
 -   `{1,3}` means matching at least one time, but at most 3 times
 -   `{3}` means matching 3 times exactly.
 
@@ -269,8 +263,7 @@ data_frame(pname) %>%
 
 ### Detecting with non-greedy
 
-這段程式碼使用R中的tidyverse套件中的**`extract()`**函數，從**`source`**向量中的每個元素中提取出「device」的資訊。假設我們希望從**`<p>`**和**`</p>`**之間提取「Twitter
-for iPhone」這個資訊。
+這段程式碼使用R中的tidyverse套件中的**`extract()`**函數，從**`source`**向量中的每個元素中提取出「device」的資訊。假設我們希望從**`<p>`**和**`</p>`**之間提取「Twitter for iPhone」這個資訊。
 
 此時我們會需要理解正規表示式的寫法預設是貪婪（greedy）的概念。當我們談到正規表達式的「貪婪」（greedy）和「非貪婪」（non-greedy）時，我們指的是模式匹配時的行為。
 
@@ -313,18 +306,11 @@ data_frame(source) %>% extract(source, "device", "Twitter for (.*?)<") # Non-Gre
 
 -   <https://stackoverflow.com/questions/8020848/how-is-the-and-or-operator-represented-as-in-regular-expressions>
 
-以下練習重點是讓學生理解如何使用 **`str_detect()`**
-函數和正則表達式進行模式匹配，以及如何進行邏輯操作來組合和篩選符合特定模式的句子。
+以下練習重點是讓學生理解如何使用 **`str_detect()`** 函數和正則表達式進行模式匹配，以及如何進行邏輯操作來組合和篩選符合特定模式的句子。
 
-1.  **`str_detect(teststr, re1) & str_detect(teststr, re2)`** 通過
-    **`&`**
-    進行邏輯「與」操作，將兩個邏輯向量進行元素級別的「與」運算，得到一個新的邏輯向量。該向量指示哪些句子同時符合
-    **`re1`** 和 **`re2`** 的模式。
+1.  **`str_detect(teststr, re1) & str_detect(teststr, re2)`** 通過 **`&`** 進行邏輯「與」操作，將兩個邏輯向量進行元素級別的「與」運算，得到一個新的邏輯向量。該向量指示哪些句子同時符合 **`re1`** 和 **`re2`** 的模式。
 
-2.  **`str_detect(teststr, re2) | str_detect(teststr, re2)`** 通過
-    **`|`**
-    進行邏輯「或」操作，將兩個邏輯向量進行元素級別的「或」運算，得到一個新的邏輯向量。該向量指示哪些句子符合
-    **`re1`** 或 **`re2`** 的模式。
+2.  **`str_detect(teststr, re2) | str_detect(teststr, re2)`** 通過 **`|`** 進行邏輯「或」操作，將兩個邏輯向量進行元素級別的「或」運算，得到一個新的邏輯向量。該向量指示哪些句子符合 **`re1`** 或 **`re2`** 的模式。
 
 
 ```r
@@ -465,38 +451,25 @@ data_frame(urls) %>% extract(urls, "last_page", "index(\\d+)\\.html", remove = F
 
 ### Matching URL
 
-這個正規表達式用於檢測是否符合超連結的格式。它可以匹配包含
-**`http://`**、**`https://`**、**`ftp://`**、**`www.`** 或 **`ftp.`**
-前綴的URL，並確保後續的部分符合網址的正確格式，例如域名、路徑和查詢參數等。
+這個正規表達式用於檢測是否符合超連結的格式。它可以匹配包含 **`http://`**、**`https://`**、**`ftp://`**、**`www.`** 或 **`ftp.`** 前綴的URL，並確保後續的部分符合網址的正確格式，例如域名、路徑和查詢參數等。
 
 1.  **`^`** 表示匹配字符串的開頭。
 
-2.  **`((https?|ftp)://|(www|ftp)\\.)?`** 是一個可選的前綴，它匹配以
-    **`http://`**、**`https://`**、**`ftp://`**、**`www.`** 或
-    **`ftp.`** 開頭的部分。其中 **`?`** 表示前綴部分是可選的。
+2.  **`((https?|ftp)://|(www|ftp)\\.)?`** 是一個可選的前綴，它匹配以 **`http://`**、**`https://`**、**`ftp://`**、**`www.`** 或 **`ftp.`** 開頭的部分。其中 **`?`** 表示前綴部分是可選的。
 
 3.  **`[a-z0-9-]+`** 匹配一個或多個小寫字母、數字或破折號字符。
 
-4.  **`(\\.[a-z0-9-]+)+`**
-    是一個重複組，它匹配一個或多個點（**`.`**）後跟一個或多個小寫字母、數字或破折號字符。
+4.  **`(\\.[a-z0-9-]+)+`** 是一個重複組，它匹配一個或多個點（**`.`**）後跟一個或多個小寫字母、數字或破折號字符。
 
-5.  **`([/?].*)?`** 是另一個可選的後綴，它匹配以 **`/`** 或 **`?`**
-    開頭的部分，並跟隨著任意字符。
+5.  **`([/?].*)?`** 是另一個可選的後綴，它匹配以 **`/`** 或 **`?`** 開頭的部分，並跟隨著任意字符。
 
 6.  **`$`** 表示匹配字符串的結尾。
 
 根據需求和特定的使用情境，可以有不同的寫法。以下是一些可能的替代寫法：
 
-1.  捕獲更多的URL前綴：當前的正規表達式只捕獲了
-    **`http://`**、**`https://`**、**`ftp://`**、**`www.`** 和
-    **`ftp.`** 這些前綴。如果需要捕獲更多的前綴，可以擴展前綴部分，例如
-    **`((https?|ftp|file)://|(www|ftp)\\.)?`**，這樣可以捕獲
-    **`file://`** 這樣的前綴。
+1.  捕獲更多的URL前綴：當前的正規表達式只捕獲了 **`http://`**、**`https://`**、**`ftp://`**、**`www.`** 和 **`ftp.`** 這些前綴。如果需要捕獲更多的前綴，可以擴展前綴部分，例如 **`((https?|ftp|file)://|(www|ftp)\\.)?`**，這樣可以捕獲 **`file://`** 這樣的前綴。
 
-2.  更精確的域名部分：當前的正規表達式使用
-    **`[a-z0-9-]+(\\.[a-z0-9-]+)+`**
-    匹配域名部分，這允許了字母、數字和破折號字符。如果需要更精確的域名匹配，可以使用更複雜的正規表達式，例如
-    **`(?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.(?!-)[A-Za-z0-9-]{1,63}(?<!-)`**，這樣可以確保符合域名規範。
+2.  更精確的域名部分：當前的正規表達式使用 **`[a-z0-9-]+(\\.[a-z0-9-]+)+`** 匹配域名部分，這允許了字母、數字和破折號字符。如果需要更精確的域名匹配，可以使用更複雜的正規表達式，例如 **`(?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.(?!-)[A-Za-z0-9-]{1,63}(?<!-)`**，這樣可以確保符合域名規範。
 
 
 ```r

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R for Data Journalism</title>
+  <title>Chapter 14 Text processing in Chinese | R for Data Journalism</title>
   <meta name="description" content="For my Class teaching how to make data news reports" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R for Data Journalism" />
+  <meta property="og:title" content="Chapter 14 Text processing in Chinese | R for Data Journalism" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="For my Class teaching how to make data news reports" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R for Data Journalism" />
+  <meta name="twitter:title" content="Chapter 14 Text processing in Chinese | R for Data Journalism" />
   
   <meta name="twitter:description" content="For my Class teaching how to make data news reports" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="re.html"/>
+<link rel="next" href="crawler-overview.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -744,33 +744,265 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R for Data Journalism</h1>
-<p class="author"><em>HSIEH, JI-LUNG</em></p>
-<p class="date"><em>2023-05-17</em></p>
+<div id="tmchi" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Text processing in Chinese<a href="tmchi.html#tmchi" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li>tidyverse內涵繪圖和操作資料所需要的ggplot2和dplyr</li>
+<li>stringr雖然隨著tidyverse被安裝了，但不會隨著tidyverse被載入，要另外載入。</li>
+<li>在中文斷詞的時候要用到tidytext和jiebaR。</li>
+<li>處理時間時要用到lubridate。</li>
+</ol>
+<div id="preprocessing" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Preprocessing<a href="tmchi.html#preprocessing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="assigning-unique-id-to-each-doc" class="section level3 hasAnchor" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> Assigning unique id to each doc<a href="tmchi.html#assigning-unique-id-to-each-doc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>為了便於後續建立Document-Term-Matrix，這時候若Document自身沒有編號的話，就得把整個Document內容當成該篇文章的id，但也有（極小）可能有兩篇Document內容相同，那就會被視為同一篇文章或發生錯誤。所以必須要編id。</li>
+<li><code>row_number()</code>產生每列的編號，所以這邊就直接把每列的編號視為每篇文章的id，可以保持該id的唯一性。</li>
+</ul>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="tmchi.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read rds by readRDS(&quot;data/typhoon.rds&quot;)</span></span>
+<span id="cb548-2"><a href="tmchi.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate doc_id by row_number()</span></span>
+<span id="cb548-3"><a href="tmchi.html#cb548-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign to news.df</span></span>
+<span id="cb548-4"><a href="tmchi.html#cb548-4" aria-hidden="true" tabindex="-1"></a>news.df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/typhoon.rds&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb548-5"><a href="tmchi.html#cb548-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">doc_id =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb548-6"><a href="tmchi.html#cb548-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(title)</span>
+<span id="cb548-7"><a href="tmchi.html#cb548-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View(news.df)</span></span></code></pre></div>
 </div>
-<div id="about" class="section level1 unnumbered hasAnchor">
-<h1>About<a href="index.html#about" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>這本書是寫給臺大新聞所「<strong>新聞資料分析與視覺化</strong>」課程使用。該課程並重三個面向的訓練：程式語言、視覺化、資料新聞。學生必須先能夠熟練地使用R語言來操作、讀取、清理、視覺化資料；然後以產製新聞為課程目標，了解資料要如何清理，以及選擇適合的視覺化的方法來強化新聞敘事，並避免視覺化方式引起讀者對新聞的理解謬誤。準此，本書分為幾個部分，包含PART I介紹程式語言基礎；PART II則以國際或國內新聞為個案，來介紹資料獲取（爬蟲）、清理、合併、篩選、轉換；PART III則著重如何用資料視覺化來強化敘事。</p>
-<p>本書所沿用的資料分析與視覺化案例均為國內、國外的新聞案例如各國產假支薪等級、居住正義、空氣污染、人口議題、COVID-19、資源區域分佈不均、選舉與公投、運輸交通等相關議題的新聞。並大量採用紐約時報挑選作為數據理解與視覺化推廣的「<a href="https://www.nytimes.com/column/whats-going-on-in-this-graph">What’s going on in this graph?</a>」系列新聞，包含美國不同年代各年齡層的淨資產來做視覺化案例。在視覺化教材的設計上，本書大量參考紐時「<a href="https://www.nytimes.com/column/whats-going-on-in-this-graph">What’s going on in this graph?</a>」的分類與<span class="citation">(<a href="#ref-wilke2019fundamentals" role="doc-biblioref">Wilke 2019</a>)</span>所著「<a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a>」一書的內容安排，強調利用資料視覺化方法來呈現新聞數據中的數量、分佈、比例、趨勢等，並均換用國內或紐時的相關資料新聞案例做範例，以利中文讀者的理解。</p>
-<p><strong>學習路徑</strong></p>
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-aacf75ed2432127687dd" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-aacf75ed2432127687dd">{"x":{"diagram":"\ndigraph G {\n  fontname=\"Helvetica,Arial,sans-serif\"\n  graph [layout = dot, rankdir=TD]\n  node [shape = rect,  height=0, fontname=\"Helvetica\", width=2]\n  node [style = filled, fillcolor=\"honeydew1\"]\n  edge [fontname=\"Courier\", splines=false, weight=2]\n\n  # define nodes\n  rbasic  [label = \"R Basic\"]\n  matleave[label = \"Filter & Select data\n(Maternal leave)\"]\n  tptheft [label = \"Pivot Analysis\n(Taipei Theft)\"]\n  \n  subgraph cluster_1{\n    label=\"base to dplyr\"\n    style=filled; fillcolor=\"lightgrey\";\n    dplyr_ml  [label = \"Filter & Select data with dplyr\n(Maternal leave)\"]\n    dplyr_tp  [label = \"Pivot Analysis with dplyr\n(Taipei Theft)\"]\n  }\n  \n  # define edge\n  node [fillcolor=\"azure1\"]\n    rbasic -> matleave -> tptheft -> {dplyr_tp, dplyr_ml} -> dplyr \n  node [fillcolor=\"gold\"]\n    dplyr -> {join, ggplot, textmining, scraper}\n  node [fillcolor=\"lightgrey\"]\n    join -> DB\n  node [fillcolor=\"yellow1\"]\n    ggplot -> temporal -> geospatial\n  node [fillcolor=\"skyblue\"]\n    scraper -> json -> htmlparser\n  node [fillcolor=\"pink1\"]\n    textmining -> doclevel -> wordlevel -> keyness -> POS -> sentiment\n  \n  # define path over edge\n  edge [constraint=false, penwidth=3, color=\"#ff000033\", weight=1, splines=curved]\n  rbasic -> matleave -> tptheft -> dplyr_ml\n  dplyr_ml -> dplyr_tp -> dplyr -> join -> ggplot\n  ggplot -> temporal -> geospatial -> textmining\n  textmining -> doclevel -> wordlevel -> keyness -> scraper\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="tokenization" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Tokenization<a href="tmchi.html#tokenization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="initializer-tokenizer" class="section level3 hasAnchor" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> Initializer tokenizer<a href="tmchi.html#initializer-tokenizer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>斷詞的時候不見能把我們要的字詞斷出來，比方說你可能希望台北市不會被斷開，偏偏被斷成台北+市。請參見謝舒凱老師的講義。<a href="https://legacy.gitbook.com/book/loperntu/ladsbook/details。最簡單的方法就是窮舉，例如下面的%60segment_not%60即是" class="uri">https://legacy.gitbook.com/book/loperntu/ladsbook/details。最簡單的方法就是窮舉，例如下面的`segment_not`即是</a>。</li>
+</ol>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="tmchi.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># segment_not to avoid to be segmented by jeiba cutter</span></span>
+<span id="cb549-2"><a href="tmchi.html#cb549-2" aria-hidden="true" tabindex="-1"></a>segment_not <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;第卅六條&quot;</span>, <span class="st">&quot;第卅八條&quot;</span>, <span class="st">&quot;蘇南成&quot;</span>, <span class="st">&quot;災前&quot;</span>, <span class="st">&quot;災後&quot;</span>, <span class="st">&quot;莫拉克&quot;</span>, <span class="st">&quot;颱風&quot;</span>, <span class="st">&quot;應變中心&quot;</span>, <span class="st">&quot;停班停課&quot;</span>, <span class="st">&quot;停課&quot;</span>, <span class="st">&quot;停班&quot;</span>, <span class="st">&quot;停駛&quot;</span>, <span class="st">&quot;路樹&quot;</span>, <span class="st">&quot;里長&quot;</span>, <span class="st">&quot;賀伯&quot;</span>, <span class="st">&quot;採收&quot;</span>, <span class="st">&quot;菜價&quot;</span>, <span class="st">&quot;蘇迪&quot;</span>, <span class="st">&quot;受災戶&quot;</span>, <span class="st">&quot;颱風警報&quot;</span>, <span class="st">&quot;韋恩&quot;</span>, <span class="st">&quot;台東縣&quot;</span>, <span class="st">&quot;馬總統&quot;</span>, <span class="st">&quot;豪大雨&quot;</span>, <span class="st">&quot;梅姬&quot;</span>, <span class="st">&quot;台東&quot;</span>, <span class="st">&quot;台北市政府&quot;</span>, <span class="st">&quot;工務段&quot;</span>, <span class="st">&quot;漂流木&quot;</span>, <span class="st">&quot;陳菊&quot;</span>, <span class="st">&quot;台南縣&quot;</span>, <span class="st">&quot;卡玫基&quot;</span>, <span class="st">&quot;魚塭&quot;</span>, <span class="st">&quot;救助金&quot;</span>, <span class="st">&quot;陳情&quot;</span>, <span class="st">&quot;全省&quot;</span>, <span class="st">&quot;強颱&quot;</span>, <span class="st">&quot;中颱&quot;</span>, <span class="st">&quot;輕颱&quot;</span>, <span class="st">&quot;小林村&quot;</span>, <span class="st">&quot;野溪&quot;</span>, <span class="st">&quot;蚵民&quot;</span>, <span class="st">&quot;農委會&quot;</span>, <span class="st">&quot;來襲&quot;</span>, <span class="st">&quot;中油公司&quot;</span>, <span class="st">&quot;蔣總統經國&quot;</span>, <span class="st">&quot;颱風天&quot;</span>, <span class="st">&quot;土石流&quot;</span>, <span class="st">&quot;蘇迪勒&quot;</span>, <span class="st">&quot;水利署&quot;</span>, <span class="st">&quot;陳說&quot;</span>, <span class="st">&quot;颱風假&quot;</span>, <span class="st">&quot;颱風地區&quot;</span>, <span class="st">&quot;台灣&quot;</span>, <span class="st">&quot;臺灣&quot;</span>, <span class="st">&quot;柯羅莎&quot;</span>, <span class="st">&quot;八八風災&quot;</span>, <span class="st">&quot;紓困&quot;</span>,<span class="st">&quot;傅崑萁&quot;</span>, <span class="st">&quot;傅崐萁&quot;</span>,<span class="st">&quot;台中&quot;</span>, <span class="st">&quot;文旦柚&quot;</span>, <span class="st">&quot;鄉鎮市公所&quot;</span>, <span class="st">&quot;鄉鎮市&quot;</span>, <span class="st">&quot;房屋稅&quot;</span>, <span class="st">&quot;高雄&quot;</span>, <span class="st">&quot;未達&quot;</span>, <span class="st">&quot;台灣省&quot;</span>, <span class="st">&quot;台北市&quot;</span>)</span>
+<span id="cb549-3"><a href="tmchi.html#cb549-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb549-4"><a href="tmchi.html#cb549-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize jieba cutter</span></span>
+<span id="cb549-5"><a href="tmchi.html#cb549-5" aria-hidden="true" tabindex="-1"></a>cutter <span class="ot">&lt;-</span> <span class="fu">worker</span>()</span>
+<span id="cb549-6"><a href="tmchi.html#cb549-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb549-7"><a href="tmchi.html#cb549-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add segment_not into user defined dictionary to avoid being cutted</span></span>
+<span id="cb549-8"><a href="tmchi.html#cb549-8" aria-hidden="true" tabindex="-1"></a><span class="fu">new_user_word</span>(cutter, segment_not)</span></code></pre></div>
+<pre class="output"><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="tmchi.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading Chinese stop words</span></span>
+<span id="cb551-2"><a href="tmchi.html#cb551-2" aria-hidden="true" tabindex="-1"></a>stopWords <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/stopWords.rds&quot;</span>)</span>
+<span id="cb551-3"><a href="tmchi.html#cb551-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb551-4"><a href="tmchi.html#cb551-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load(&quot;../segment_not.R&quot;)</span></span></code></pre></div>
+</div>
+<div id="tokenization-1" class="section level3 hasAnchor" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> Tokenization<a href="tmchi.html#tokenization-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="tmchi.html#cb552-1" aria-hidden="true" tabindex="-1"></a>news.df<span class="sc">$</span>time <span class="sc">%&gt;%</span> summary</span></code></pre></div>
+<pre class="output"><code>##                       Min.                    1st Qu. 
+## &quot;1986-01-29 00:00:00.0000&quot; &quot;1996-10-16 00:00:00.0000&quot; 
+##                     Median                       Mean 
+## &quot;2009-08-12 00:00:00.0000&quot; &quot;2006-05-24 21:13:22.3911&quot; 
+##                    3rd Qu.                       Max. 
+## &quot;2012-08-21 00:00:00.0000&quot; &quot;2016-12-29 00:00:00.0000&quot;</code></pre>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="tmchi.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutate timestamp to filter by timestamp range</span></span>
+<span id="cb554-2"><a href="tmchi.html#cb554-2" aria-hidden="true" tabindex="-1"></a><span class="co"># segment by jieba cutter</span></span>
+<span id="cb554-3"><a href="tmchi.html#cb554-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-4"><a href="tmchi.html#cb554-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-5"><a href="tmchi.html#cb554-5" aria-hidden="true" tabindex="-1"></a>tokenized.df <span class="ot">&lt;-</span> news.df <span class="sc">%&gt;%</span> </span>
+<span id="cb554-6"><a href="tmchi.html#cb554-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">3069</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb554-7"><a href="tmchi.html#cb554-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">timestamp=</span><span class="fu">ymd</span>(time)) <span class="sc">%&gt;%</span> </span>
+<span id="cb554-8"><a href="tmchi.html#cb554-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter(timestamp &gt; as.Date(&quot;2009-01-01&quot;)) %&gt;%</span></span>
+<span id="cb554-9"><a href="tmchi.html#cb554-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>time) <span class="sc">%&gt;%</span></span>
+<span id="cb554-10"><a href="tmchi.html#cb554-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(title, text, cat, timestamp, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb554-11"><a href="tmchi.html#cb554-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> purrr<span class="sc">::</span><span class="fu">map</span>(text, <span class="cf">function</span>(x)<span class="fu">segment</span>(x, cutter)))</span>
+<span id="cb554-12"><a href="tmchi.html#cb554-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-13"><a href="tmchi.html#cb554-13" aria-hidden="true" tabindex="-1"></a><span class="co"># word = purrr::map(news.df$text[3069], function(x)segment(x, cutter))</span></span>
+<span id="cb554-14"><a href="tmchi.html#cb554-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-15"><a href="tmchi.html#cb554-15" aria-hidden="true" tabindex="-1"></a><span class="co"># unnest() to spread character into a new word variable</span></span>
+<span id="cb554-16"><a href="tmchi.html#cb554-16" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out stop words</span></span>
+<span id="cb554-17"><a href="tmchi.html#cb554-17" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out alphabetical and numeric characters</span></span>
+<span id="cb554-18"><a href="tmchi.html#cb554-18" aria-hidden="true" tabindex="-1"></a>unnested.df <span class="ot">&lt;-</span> tokenized.df <span class="sc">%&gt;%</span></span>
+<span id="cb554-19"><a href="tmchi.html#cb554-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(doc_id, text, word) <span class="sc">%&gt;%</span></span>
+<span id="cb554-20"><a href="tmchi.html#cb554-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb554-21"><a href="tmchi.html#cb554-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>(word <span class="sc">%in%</span> stopWords<span class="sc">$</span>word)) <span class="sc">%&gt;%</span></span>
+<span id="cb554-22"><a href="tmchi.html#cb554-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;[a-zA-Z0-9]+&quot;</span>))</span>
+<span id="cb554-23"><a href="tmchi.html#cb554-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-24"><a href="tmchi.html#cb554-24" aria-hidden="true" tabindex="-1"></a>unnested.df <span class="sc">%&gt;%</span> head</span></code></pre></div>
+<pre class="output"><code>## # A tibble: 6 × 3
+##   doc_id text                                                              word 
+##    &lt;int&gt; &lt;chr&gt;                                                             &lt;chr&gt;
+## 1      1 昨天颱風天，北部各地區機關、學校經主管機關宣佈放假一天。民營事業… 昨天 
+## 2      1 昨天颱風天，北部各地區機關、學校經主管機關宣佈放假一天。民營事業… 颱風…
+## 3      1 昨天颱風天，北部各地區機關、學校經主管機關宣佈放假一天。民營事業… 北部 
+## 4      1 昨天颱風天，北部各地區機關、學校經主管機關宣佈放假一天。民營事業… 地區 
+## 5      1 昨天颱風天，北部各地區機關、學校經主管機關宣佈放假一天。民營事業… 機關 
+## 6      1 昨天颱風天，北部各地區機關、學校經主管機關宣佈放假一天。民營事業… 學校</code></pre>
+</div>
+</div>
+<div id="exploring-wording-features" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Exploring wording features<a href="tmchi.html#exploring-wording-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="word-frequency-distribution" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> Word frequency distribution<a href="tmchi.html#word-frequency-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="tmchi.html#cb556-1" aria-hidden="true" tabindex="-1"></a>word.count <span class="ot">&lt;-</span> tokenized.df <span class="sc">%&gt;%</span></span>
+<span id="cb556-2"><a href="tmchi.html#cb556-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb556-3"><a href="tmchi.html#cb556-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(word, <span class="at">sort=</span>T) <span class="sc">%&gt;%</span></span>
+<span id="cb556-4"><a href="tmchi.html#cb556-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>(word <span class="sc">%in%</span> stopWords<span class="sc">$</span>word)) <span class="sc">%&gt;%</span></span>
+<span id="cb556-5"><a href="tmchi.html#cb556-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">nchar</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb556-6"><a href="tmchi.html#cb556-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;[a-zA-Z0-9]+&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb556-7"><a href="tmchi.html#cb556-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb556-8"><a href="tmchi.html#cb556-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb556-9"><a href="tmchi.html#cb556-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb556-10"><a href="tmchi.html#cb556-10" aria-hidden="true" tabindex="-1"></a>word.count <span class="sc">%&gt;%</span></span>
+<span id="cb556-11"><a href="tmchi.html#cb556-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(n, <span class="at">sort=</span>T) <span class="sc">%&gt;%</span></span>
+<span id="cb556-12"><a href="tmchi.html#cb556-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, nn)) <span class="sc">+</span> </span>
+<span id="cb556-13"><a href="tmchi.html#cb556-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;#333333&quot;</span>)</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="tmchi.html#cb557-1" aria-hidden="true" tabindex="-1"></a>word.count <span class="sc">%&gt;%</span></span>
+<span id="cb557-2"><a href="tmchi.html#cb557-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(n, <span class="at">sort=</span>T) <span class="sc">%&gt;%</span></span>
+<span id="cb557-3"><a href="tmchi.html#cb557-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, nn)) <span class="sc">+</span> </span>
+<span id="cb557-4"><a href="tmchi.html#cb557-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">color=</span><span class="st">&quot;#333333&quot;</span>)  <span class="sc">+</span> </span>
+<span id="cb557-5"><a href="tmchi.html#cb557-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
+<span id="cb557-6"><a href="tmchi.html#cb557-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+</div>
+<div id="keyness-by-logratio" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> Keyness by logratio<a href="tmchi.html#keyness-by-logratio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>早、近期用字差異</p>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="tmchi.html#cb558-1" aria-hidden="true" tabindex="-1"></a>cat_word.tf <span class="ot">&lt;-</span> tokenized.df <span class="sc">%&gt;%</span></span>
+<span id="cb558-2"><a href="tmchi.html#cb558-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb558-3"><a href="tmchi.html#cb558-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(cat, word) <span class="sc">%&gt;%</span></span>
+<span id="cb558-4"><a href="tmchi.html#cb558-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb558-5"><a href="tmchi.html#cb558-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(word, <span class="st">&quot;[a-zA-Z0-9]+&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb558-6"><a href="tmchi.html#cb558-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>(word <span class="sc">%in%</span> stopWords<span class="sc">$</span>word)) <span class="sc">%&gt;%</span></span>
+<span id="cb558-7"><a href="tmchi.html#cb558-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">nchar</span>(word)<span class="sc">&gt;</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="tmchi.html#cb559-1" aria-hidden="true" tabindex="-1"></a>early_lat_ratio <span class="ot">&lt;-</span> cat_word.tf <span class="sc">%&gt;%</span></span>
+<span id="cb559-2"><a href="tmchi.html#cb559-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb559-3"><a href="tmchi.html#cb559-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(cat, n, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb559-4"><a href="tmchi.html#cb559-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb559-5"><a href="tmchi.html#cb559-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_if</span>(is.numeric, <span class="fu">funs</span>((. <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">sum</span>(. <span class="sc">+</span> <span class="dv">1</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb559-6"><a href="tmchi.html#cb559-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">logratio =</span> <span class="fu">log2</span>(early <span class="sc">/</span> lat)) <span class="sc">%&gt;%</span></span>
+<span id="cb559-7"><a href="tmchi.html#cb559-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(logratio))</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="tmchi.html#cb560-1" aria-hidden="true" tabindex="-1"></a>early_lat_ratio <span class="sc">%&gt;%</span></span>
+<span id="cb560-2"><a href="tmchi.html#cb560-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(logratio <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb560-3"><a href="tmchi.html#cb560-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">20</span>, <span class="fu">abs</span>(logratio)) <span class="sc">%&gt;%</span></span>
+<span id="cb560-4"><a href="tmchi.html#cb560-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb560-5"><a href="tmchi.html#cb560-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, logratio)) <span class="sc">%&gt;%</span></span>
+<span id="cb560-6"><a href="tmchi.html#cb560-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, logratio, <span class="at">fill =</span> logratio <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb560-7"><a href="tmchi.html#cb560-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb560-8"><a href="tmchi.html#cb560-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb560-9"><a href="tmchi.html#cb560-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;early / recent log ratio&quot;</span>) <span class="sc">+</span></span>
+<span id="cb560-10"><a href="tmchi.html#cb560-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;early&quot;</span>, <span class="st">&quot;recent&quot;</span>),</span>
+<span id="cb560-11"><a href="tmchi.html#cb560-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;lightblue&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb560-12"><a href="tmchi.html#cb560-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.y=</span><span class="fu">element_text</span>(<span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="keyness-by-scatter" class="section level3 hasAnchor" number="14.3.3">
+<h3><span class="header-section-number">14.3.3</span> Keyness by scatter<a href="tmchi.html#keyness-by-scatter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="tmchi.html#cb561-1" aria-hidden="true" tabindex="-1"></a>frequency <span class="ot">&lt;-</span> cat_word.tf <span class="sc">%&gt;%</span></span>
+<span id="cb561-2"><a href="tmchi.html#cb561-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb561-3"><a href="tmchi.html#cb561-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(cat) <span class="sc">%&gt;%</span></span>
+<span id="cb561-4"><a href="tmchi.html#cb561-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">proportion =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb561-5"><a href="tmchi.html#cb561-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb561-6"><a href="tmchi.html#cb561-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(cat, proportion) <span class="sc">%&gt;%</span></span>
+<span id="cb561-7"><a href="tmchi.html#cb561-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">na.omit</span>()</span>
+<span id="cb561-8"><a href="tmchi.html#cb561-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb561-9"><a href="tmchi.html#cb561-9" aria-hidden="true" tabindex="-1"></a><span class="co"># datatable(frequency)</span></span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="tmchi.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb562-2"><a href="tmchi.html#cb562-2" aria-hidden="true" tabindex="-1"></a>frequency <span class="sc">%&gt;%</span></span>
+<span id="cb562-3"><a href="tmchi.html#cb562-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> early, <span class="at">y =</span> lat, <span class="at">color =</span> <span class="fu">abs</span>(early <span class="sc">-</span> lat))) <span class="sc">+</span> </span>
+<span id="cb562-4"><a href="tmchi.html#cb562-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">color =</span> <span class="st">&quot;gray40&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb562-5"><a href="tmchi.html#cb562-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">height =</span> <span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb562-6"><a href="tmchi.html#cb562-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> word), <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb562-7"><a href="tmchi.html#cb562-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb562-8"><a href="tmchi.html#cb562-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb562-9"><a href="tmchi.html#cb562-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb562-10"><a href="tmchi.html#cb562-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
+<div id="tf-idf" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> TF-IDF<a href="tmchi.html#tf-idf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="term-frequency" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> Term-frequency<a href="tmchi.html#term-frequency" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="tmchi.html#cb563-1" aria-hidden="true" tabindex="-1"></a>word.tf <span class="ot">&lt;-</span> tokenized.df <span class="sc">%&gt;%</span></span>
+<span id="cb563-2"><a href="tmchi.html#cb563-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb563-3"><a href="tmchi.html#cb563-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(cat, word, <span class="at">sort=</span>T) <span class="sc">%&gt;%</span></span>
+<span id="cb563-4"><a href="tmchi.html#cb563-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(total_words=sum(n)) %&gt;%</span></span>
+<span id="cb563-5"><a href="tmchi.html#cb563-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rank=</span><span class="fu">row_number</span>(), <span class="at">tf=</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span></code></pre></div>
+<ul>
+<li>如果是跑histrogram因為不是常態分佈而是power-law分佈，通常會看不出什麼來</li>
+</ul>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="tmchi.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(word.tf, <span class="fu">aes</span>(tf, <span class="at">fill=</span>cat)) <span class="sc">+</span> </span>
+<span id="cb564-2"><a href="tmchi.html#cb564-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb564-3"><a href="tmchi.html#cb564-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="cn">NA</span>, <span class="fl">0.0009</span>) <span class="sc">+</span> </span>
+<span id="cb564-4"><a href="tmchi.html#cb564-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb564-5"><a href="tmchi.html#cb564-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb564-6"><a href="tmchi.html#cb564-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>cat, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">scales=</span><span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<ul>
+<li>加上rank後可以看出最高rank到最後的差異，中段差不多，但是，相較於晚近的文章，早期文章用過很少次的字比較多，但用過很多次的字比較少。（是否可推論用字越來越貧乏？）</li>
+</ul>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="tmchi.html#cb565-1" aria-hidden="true" tabindex="-1"></a>word.tf <span class="sc">%&gt;%</span></span>
+<span id="cb565-2"><a href="tmchi.html#cb565-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, tf, <span class="at">color=</span>cat)) <span class="sc">+</span> </span>
+<span id="cb565-3"><a href="tmchi.html#cb565-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">1.1</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb565-4"><a href="tmchi.html#cb565-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
+<span id="cb565-5"><a href="tmchi.html#cb565-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="tmchi.html#cb566-1" aria-hidden="true" tabindex="-1"></a>rank_subset <span class="ot">&lt;-</span> word.tf <span class="sc">%&gt;%</span></span>
+<span id="cb566-2"><a href="tmchi.html#cb566-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(rank <span class="sc">&lt;</span> <span class="dv">500</span>,</span>
+<span id="cb566-3"><a href="tmchi.html#cb566-3" aria-hidden="true" tabindex="-1"></a>           rank <span class="sc">&gt;</span> <span class="dv">10</span>)</span>
+<span id="cb566-4"><a href="tmchi.html#cb566-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb566-5"><a href="tmchi.html#cb566-5" aria-hidden="true" tabindex="-1"></a>lm_result <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log10</span>(tf) <span class="sc">~</span> <span class="fu">log10</span>(rank), <span class="at">data =</span> rank_subset)</span>
+<span id="cb566-6"><a href="tmchi.html#cb566-6" aria-hidden="true" tabindex="-1"></a>lm_result<span class="sc">$</span>coefficients[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre class="output"><code>## [1] -1.739581</code></pre>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="tmchi.html#cb568-1" aria-hidden="true" tabindex="-1"></a>word.tf <span class="sc">%&gt;%</span> </span>
+<span id="cb568-2"><a href="tmchi.html#cb568-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, tf, <span class="at">color =</span> cat)) <span class="sc">+</span> </span>
+<span id="cb568-3"><a href="tmchi.html#cb568-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> lm_result<span class="sc">$</span>coefficients[[<span class="dv">1</span>]], </span>
+<span id="cb568-4"><a href="tmchi.html#cb568-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> lm_result<span class="sc">$</span>coefficients[[<span class="dv">2</span>]], </span>
+<span id="cb568-5"><a href="tmchi.html#cb568-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb568-6"><a href="tmchi.html#cb568-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb568-7"><a href="tmchi.html#cb568-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb568-8"><a href="tmchi.html#cb568-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="tf-idf-to-filter-significant-words" class="section level3 hasAnchor" number="14.4.2">
+<h3><span class="header-section-number">14.4.2</span> TF-IDF to filter significant words<a href="tmchi.html#tf-idf-to-filter-significant-words" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>tf_idf計算結果，讓原本tf的分布從一個powewr-law分佈變成一個鐘形曲線，可以去除尾部，也就是將tf-idf很低的文字用平均和標準差刪除，重新優化要處理的字集。也可以僅取出大於平均加上一個或兩個標準差的字，作為有效辨識文章的關鍵字。</p>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="tmchi.html#cb569-1" aria-hidden="true" tabindex="-1"></a>news_count <span class="ot">&lt;-</span> tokenized.df <span class="sc">%&gt;%</span></span>
+<span id="cb569-2"><a href="tmchi.html#cb569-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb569-3"><a href="tmchi.html#cb569-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(doc_id, word) <span class="sc">%&gt;%</span></span>
+<span id="cb569-4"><a href="tmchi.html#cb569-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_tf_idf</span>(word, doc_id, n) <span class="sc">%&gt;%</span></span>
+<span id="cb569-5"><a href="tmchi.html#cb569-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span>
+<span id="cb569-6"><a href="tmchi.html#cb569-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb569-7"><a href="tmchi.html#cb569-7" aria-hidden="true" tabindex="-1"></a>news_count <span class="sc">%&gt;%</span></span>
+<span id="cb569-8"><a href="tmchi.html#cb569-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(tf_idf)) <span class="sc">+</span></span>
+<span id="cb569-9"><a href="tmchi.html#cb569-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>) <span class="sc">+</span> </span>
+<span id="cb569-10"><a href="tmchi.html#cb569-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>()</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="tmchi.html#cb570-1" aria-hidden="true" tabindex="-1"></a>news_count <span class="sc">%&gt;%</span> </span>
+<span id="cb570-2"><a href="tmchi.html#cb570-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(news.df, <span class="at">by=</span><span class="st">&quot;doc_id&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb570-3"><a href="tmchi.html#cb570-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>(word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NA&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb570-4"><a href="tmchi.html#cb570-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(cat) <span class="sc">%&gt;%</span></span>
+<span id="cb570-5"><a href="tmchi.html#cb570-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf)) <span class="sc">%&gt;%</span></span>
+<span id="cb570-6"><a href="tmchi.html#cb570-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">30</span>, tf_idf) <span class="sc">%&gt;%</span></span>
+<span id="cb570-7"><a href="tmchi.html#cb570-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb570-8"><a href="tmchi.html#cb570-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, tf_idf)) <span class="sc">%&gt;%</span></span>
+<span id="cb570-9"><a href="tmchi.html#cb570-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, tf_idf, <span class="at">fill =</span> cat)) <span class="sc">+</span></span>
+<span id="cb570-10"><a href="tmchi.html#cb570-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb570-11"><a href="tmchi.html#cb570-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;tf-idf&quot;</span>) <span class="sc">+</span></span>
+<span id="cb570-12"><a href="tmchi.html#cb570-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>cat, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb570-13"><a href="tmchi.html#cb570-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb570-14"><a href="tmchi.html#cb570-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.y=</span><span class="fu">element_text</span>(<span class="at">family=</span><span class="st">&quot;Heiti TC Light&quot;</span>))</span></code></pre></div>
+<p><img src="R35_tm_typhoon_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-wilke2019fundamentals" class="csl-entry">
-Wilke, Claus O. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures</em>. O’Reilly Media.
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="re.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="crawler-overview.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -801,7 +1033,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/R35_tm_typhoon.Rmd",
 "text": "Edit"
 },
 "history": {
