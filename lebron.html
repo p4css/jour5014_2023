@@ -378,8 +378,9 @@ div.csl-indent {
 <li class="chapter" data-level="13.2" data-path="re.html"><a href="re.html#re-case-studies"><i class="fa fa-check"></i><b>13.2</b> RE Case studies</a>
 <ul>
 <li class="chapter" data-level="13.2.1" data-path="re.html"><a href="re.html#getting-the-last-page-of-ptt-hatepolitics"><i class="fa fa-check"></i><b>13.2.1</b> Getting the last page of PTT HatePolitics</a></li>
+<li class="chapter" data-level="13.2.2" data-path="re.html"><a href="re.html#practice.-ask-chatgpt"><i class="fa fa-check"></i><b>13.2.2</b> Practice. Ask CHATGPT</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="re.html"><a href="re.html#famous-cases"><i class="fa fa-check"></i><b>13.3</b> Famous cases</a>
+<li class="chapter" data-level="13.3" data-path="re.html"><a href="re.html#useful-cases"><i class="fa fa-check"></i><b>13.3</b> Useful cases</a>
 <ul>
 <li class="chapter" data-level="13.3.1" data-path="re.html"><a href="re.html#matching-url"><i class="fa fa-check"></i><b>13.3.1</b> Matching URL</a></li>
 <li class="chapter" data-level="13.3.2" data-path="re.html"><a href="re.html#removing-all-html-tags-but-keeping-comment-content"><i class="fa fa-check"></i><b>13.3.2</b> Removing all html tags but keeping comment content</a></li>
@@ -768,103 +769,103 @@ div.csl-indent {
 <li><p><code>html_text()</code>/<code>html_attr()</code>/<code>html_table()</code>：抽取所選取的HTML元素內容。此時要抽取的是<code>&lt;a&gt;</code>中的超鏈結，也就是<code>&lt;a&gt;</code>的<code>href</code>屬性（Attribute），所以要用<code>html_attr("href")</code>。</p></li>
 </ul>
 <p>抽取出來的連結往往是相對於主要連結的後半段，因此，最後要將所取得的連結黏接在主頁連結的後方，如<code>str_c(url.base, .)</code>。</p>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="lebron.html#cb648-1" aria-hidden="true" tabindex="-1"></a>url.base <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com&quot;</span></span>
-<span id="cb648-2"><a href="lebron.html#cb648-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/leaders/per_career.html&quot;</span></span>
-<span id="cb648-3"><a href="lebron.html#cb648-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb648-4"><a href="lebron.html#cb648-4" aria-hidden="true" tabindex="-1"></a>top_players <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
-<span id="cb648-5"><a href="lebron.html#cb648-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#nba&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb648-6"><a href="lebron.html#cb648-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>()</span>
-<span id="cb648-7"><a href="lebron.html#cb648-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb648-8"><a href="lebron.html#cb648-8" aria-hidden="true" tabindex="-1"></a>top_players<span class="sc">$</span>plink <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
-<span id="cb648-9"><a href="lebron.html#cb648-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#nba&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb648-10"><a href="lebron.html#cb648-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tr td:nth-child(2) a&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb648-11"><a href="lebron.html#cb648-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb648-12"><a href="lebron.html#cb648-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_c</span>(url.base, .)</span>
-<span id="cb648-13"><a href="lebron.html#cb648-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb648-14"><a href="lebron.html#cb648-14" aria-hidden="true" tabindex="-1"></a>top_players</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="lebron.html#cb654-1" aria-hidden="true" tabindex="-1"></a>url.base <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com&quot;</span></span>
+<span id="cb654-2"><a href="lebron.html#cb654-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/leaders/per_career.html&quot;</span></span>
+<span id="cb654-3"><a href="lebron.html#cb654-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb654-4"><a href="lebron.html#cb654-4" aria-hidden="true" tabindex="-1"></a>top_players <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb654-5"><a href="lebron.html#cb654-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#nba&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb654-6"><a href="lebron.html#cb654-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>()</span>
+<span id="cb654-7"><a href="lebron.html#cb654-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb654-8"><a href="lebron.html#cb654-8" aria-hidden="true" tabindex="-1"></a>top_players<span class="sc">$</span>plink <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb654-9"><a href="lebron.html#cb654-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#nba&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb654-10"><a href="lebron.html#cb654-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tr td:nth-child(2) a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb654-11"><a href="lebron.html#cb654-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb654-12"><a href="lebron.html#cb654-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_c</span>(url.base, .)</span>
+<span id="cb654-13"><a href="lebron.html#cb654-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb654-14"><a href="lebron.html#cb654-14" aria-hidden="true" tabindex="-1"></a>top_players</span></code></pre></div>
 </div>
 <div id="scraping-live-scores" class="section level2 hasAnchor" number="20.2">
 <h2><span class="header-section-number">20.2</span> Scraping live scores<a href="lebron.html#scraping-live-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="testing-1" class="section level3 hasAnchor" number="20.2.1">
 <h3><span class="header-section-number">20.2.1</span> Testing<a href="lebron.html#testing-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="lebron.html#cb649-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/c/chambto01.html&quot;</span></span>
-<span id="cb649-2"><a href="lebron.html#cb649-2" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
-<span id="cb649-3"><a href="lebron.html#cb649-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#per_game&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb649-4"><a href="lebron.html#cb649-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>(<span class="at">convert=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="lebron.html#cb655-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/c/chambto01.html&quot;</span></span>
+<span id="cb655-2"><a href="lebron.html#cb655-2" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span> </span>
+<span id="cb655-3"><a href="lebron.html#cb655-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#per_game&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb655-4"><a href="lebron.html#cb655-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>(<span class="at">convert=</span>T)</span></code></pre></div>
 </div>
 </div>
 <div id="scrape-life-time-scores" class="section level2 hasAnchor" number="20.3">
 <h2><span class="header-section-number">20.3</span> Scrape life time scores<a href="lebron.html#scrape-life-time-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="lebron.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pinks &lt;- long_players$plink</span></span>
-<span id="cb650-2"><a href="lebron.html#cb650-2" aria-hidden="true" tabindex="-1"></a>plinks <span class="ot">&lt;-</span> top_players<span class="sc">$</span>plink</span>
-<span id="cb650-3"><a href="lebron.html#cb650-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb650-4"><a href="lebron.html#cb650-4" aria-hidden="true" tabindex="-1"></a>totals <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
-<span id="cb650-5"><a href="lebron.html#cb650-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(plinks)){</span>
-<span id="cb650-6"><a href="lebron.html#cb650-6" aria-hidden="true" tabindex="-1"></a>    plink <span class="ot">&lt;-</span> plinks[i]</span>
-<span id="cb650-7"><a href="lebron.html#cb650-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">sprintf</span>(<span class="st">&quot;[%s] &quot;</span>, i), plink)</span>
-<span id="cb650-8"><a href="lebron.html#cb650-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb650-9"><a href="lebron.html#cb650-9" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">read_html</span>(plink) <span class="sc">%&gt;%</span> </span>
-<span id="cb650-10"><a href="lebron.html#cb650-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#totals&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb650-11"><a href="lebron.html#cb650-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>()</span>
-<span id="cb650-12"><a href="lebron.html#cb650-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb650-13"><a href="lebron.html#cb650-13" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>plink <span class="ot">&lt;-</span> plink</span>
-<span id="cb650-14"><a href="lebron.html#cb650-14" aria-hidden="true" tabindex="-1"></a>    totals <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(totals, table)</span>
-<span id="cb650-15"><a href="lebron.html#cb650-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb650-16"><a href="lebron.html#cb650-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="lebron.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pinks &lt;- long_players$plink</span></span>
+<span id="cb656-2"><a href="lebron.html#cb656-2" aria-hidden="true" tabindex="-1"></a>plinks <span class="ot">&lt;-</span> top_players<span class="sc">$</span>plink</span>
+<span id="cb656-3"><a href="lebron.html#cb656-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb656-4"><a href="lebron.html#cb656-4" aria-hidden="true" tabindex="-1"></a>totals <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb656-5"><a href="lebron.html#cb656-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(plinks)){</span>
+<span id="cb656-6"><a href="lebron.html#cb656-6" aria-hidden="true" tabindex="-1"></a>    plink <span class="ot">&lt;-</span> plinks[i]</span>
+<span id="cb656-7"><a href="lebron.html#cb656-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">sprintf</span>(<span class="st">&quot;[%s] &quot;</span>, i), plink)</span>
+<span id="cb656-8"><a href="lebron.html#cb656-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb656-9"><a href="lebron.html#cb656-9" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">read_html</span>(plink) <span class="sc">%&gt;%</span> </span>
+<span id="cb656-10"><a href="lebron.html#cb656-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#totals&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb656-11"><a href="lebron.html#cb656-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>()</span>
+<span id="cb656-12"><a href="lebron.html#cb656-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb656-13"><a href="lebron.html#cb656-13" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>plink <span class="ot">&lt;-</span> plink</span>
+<span id="cb656-14"><a href="lebron.html#cb656-14" aria-hidden="true" tabindex="-1"></a>    totals <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(totals, table)</span>
+<span id="cb656-15"><a href="lebron.html#cb656-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb656-16"><a href="lebron.html#cb656-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="cleaning-data-1" class="section level2 hasAnchor" number="20.4">
 <h2><span class="header-section-number">20.4</span> Cleaning data<a href="lebron.html#cleaning-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="lebron.html#cb651-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="ot">&lt;-</span> totals <span class="sc">%&gt;%</span></span>
-<span id="cb651-2"><a href="lebron.html#cb651-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(Season, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb651-3"><a href="lebron.html#cb651-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(top_players, <span class="at">by=</span><span class="st">&quot;plink&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb651-4"><a href="lebron.html#cb651-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(<span class="dv">34</span><span class="sc">:</span><span class="dv">53</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb651-5"><a href="lebron.html#cb651-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span><span class="dv">31</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb651-6"><a href="lebron.html#cb651-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(<span class="fu">paste0</span>(<span class="fu">str_sub</span>(Season, <span class="dv">1</span>, <span class="dv">4</span>), <span class="st">&quot;-01-01&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb651-7"><a href="lebron.html#cb651-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">PERyear =</span> PTS<span class="sc">/</span>G) <span class="sc">%&gt;%</span></span>
-<span id="cb651-8"><a href="lebron.html#cb651-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(plink) <span class="sc">%&gt;%</span></span>
-<span id="cb651-9"><a href="lebron.html#cb651-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(Age) <span class="sc">%&gt;%</span></span>
-<span id="cb651-10"><a href="lebron.html#cb651-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cumPTS =</span> <span class="fu">cumsum</span>(PTS)) <span class="sc">%&gt;%</span></span>
-<span id="cb651-11"><a href="lebron.html#cb651-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="lebron.html#cb657-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="ot">&lt;-</span> totals <span class="sc">%&gt;%</span></span>
+<span id="cb657-2"><a href="lebron.html#cb657-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(Season, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb657-3"><a href="lebron.html#cb657-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(top_players, <span class="at">by=</span><span class="st">&quot;plink&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb657-4"><a href="lebron.html#cb657-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(<span class="dv">34</span><span class="sc">:</span><span class="dv">53</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb657-5"><a href="lebron.html#cb657-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span><span class="dv">31</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb657-6"><a href="lebron.html#cb657-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(<span class="fu">paste0</span>(<span class="fu">str_sub</span>(Season, <span class="dv">1</span>, <span class="dv">4</span>), <span class="st">&quot;-01-01&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb657-7"><a href="lebron.html#cb657-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">PERyear =</span> PTS<span class="sc">/</span>G) <span class="sc">%&gt;%</span></span>
+<span id="cb657-8"><a href="lebron.html#cb657-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(plink) <span class="sc">%&gt;%</span></span>
+<span id="cb657-9"><a href="lebron.html#cb657-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(Age) <span class="sc">%&gt;%</span></span>
+<span id="cb657-10"><a href="lebron.html#cb657-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cumPTS =</span> <span class="fu">cumsum</span>(PTS)) <span class="sc">%&gt;%</span></span>
+<span id="cb657-11"><a href="lebron.html#cb657-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
 </div>
 <div id="visualization" class="section level2 hasAnchor" number="20.5">
 <h2><span class="header-section-number">20.5</span> Visualization<a href="lebron.html#visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="lebron.html#cb652-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/nba_players.rda&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="lebron.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/nba_players.rda&quot;</span>)</span></code></pre></div>
 <div id="line-age-x-cumpts" class="section level3 hasAnchor" number="20.5.1">
 <h3><span class="header-section-number">20.5.1</span> Line: Age x cumPTS<a href="lebron.html#line-age-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="lebron.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
-<span id="cb653-2"><a href="lebron.html#cb653-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb653-3"><a href="lebron.html#cb653-3" aria-hidden="true" tabindex="-1"></a>selected_players <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Michael Jordan*&quot;</span>, <span class="st">&quot;LeBron James&quot;</span>, <span class="st">&quot;Kobe Bryant*&quot;</span>,</span>
-<span id="cb653-4"><a href="lebron.html#cb653-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;Wilt Chamberlain*&quot;</span>, <span class="st">&quot;Kareem Abdul-Jabbar*&quot;</span>, <span class="st">&quot;Stephen Curry&quot;</span>)</span>
-<span id="cb653-5"><a href="lebron.html#cb653-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb653-6"><a href="lebron.html#cb653-6" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
-<span id="cb653-7"><a href="lebron.html#cb653-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb653-8"><a href="lebron.html#cb653-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(Age, cumPTS, <span class="at">group=</span>Player) <span class="sc">+</span></span>
-<span id="cb653-9"><a href="lebron.html#cb653-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb653-10"><a href="lebron.html#cb653-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
-<span id="cb653-11"><a href="lebron.html#cb653-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb653-12"><a href="lebron.html#cb653-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="lebron.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb659-2"><a href="lebron.html#cb659-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb659-3"><a href="lebron.html#cb659-3" aria-hidden="true" tabindex="-1"></a>selected_players <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Michael Jordan*&quot;</span>, <span class="st">&quot;LeBron James&quot;</span>, <span class="st">&quot;Kobe Bryant*&quot;</span>,</span>
+<span id="cb659-4"><a href="lebron.html#cb659-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;Wilt Chamberlain*&quot;</span>, <span class="st">&quot;Kareem Abdul-Jabbar*&quot;</span>, <span class="st">&quot;Stephen Curry&quot;</span>)</span>
+<span id="cb659-5"><a href="lebron.html#cb659-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb659-6"><a href="lebron.html#cb659-6" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb659-7"><a href="lebron.html#cb659-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb659-8"><a href="lebron.html#cb659-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(Age, cumPTS, <span class="at">group=</span>Player) <span class="sc">+</span></span>
+<span id="cb659-9"><a href="lebron.html#cb659-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb659-10"><a href="lebron.html#cb659-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
+<span id="cb659-11"><a href="lebron.html#cb659-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb659-12"><a href="lebron.html#cb659-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="R45_scrape_nba_players_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="line-year-x-cumpts" class="section level3 hasAnchor" number="20.5.2">
 <h3><span class="header-section-number">20.5.2</span> Line: year x cumPTS<a href="lebron.html#line-year-x-cumpts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="lebron.html#cb654-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
-<span id="cb654-2"><a href="lebron.html#cb654-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb654-3"><a href="lebron.html#cb654-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year, cumPTS, <span class="at">group=</span>Player) <span class="sc">+</span></span>
-<span id="cb654-4"><a href="lebron.html#cb654-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb654-5"><a href="lebron.html#cb654-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
-<span id="cb654-6"><a href="lebron.html#cb654-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb654-7"><a href="lebron.html#cb654-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="lebron.html#cb660-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb660-2"><a href="lebron.html#cb660-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb660-3"><a href="lebron.html#cb660-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(year, cumPTS, <span class="at">group=</span>Player) <span class="sc">+</span></span>
+<span id="cb660-4"><a href="lebron.html#cb660-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb660-5"><a href="lebron.html#cb660-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
+<span id="cb660-6"><a href="lebron.html#cb660-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb660-7"><a href="lebron.html#cb660-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="R45_scrape_nba_players_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="line-age-x-per_by_year" class="section level3 hasAnchor" number="20.5.3">
 <h3><span class="header-section-number">20.5.3</span> Line: Age x PER_by_year<a href="lebron.html#line-age-x-per_by_year" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="lebron.html#cb655-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
-<span id="cb655-2"><a href="lebron.html#cb655-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb655-3"><a href="lebron.html#cb655-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(Age, PERyear, <span class="at">group=</span>Player) <span class="sc">+</span></span>
-<span id="cb655-4"><a href="lebron.html#cb655-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb655-5"><a href="lebron.html#cb655-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
-<span id="cb655-6"><a href="lebron.html#cb655-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb655-7"><a href="lebron.html#cb655-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="lebron.html#cb661-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb661-2"><a href="lebron.html#cb661-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb661-3"><a href="lebron.html#cb661-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(Age, PERyear, <span class="at">group=</span>Player) <span class="sc">+</span></span>
+<span id="cb661-4"><a href="lebron.html#cb661-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb661-5"><a href="lebron.html#cb661-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span></span>
+<span id="cb661-6"><a href="lebron.html#cb661-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb661-7"><a href="lebron.html#cb661-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="R45_scrape_nba_players_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="comparing-lebron-james-and-jabbar" class="section level3 hasAnchor" number="20.5.4">
@@ -873,128 +874,128 @@ div.csl-indent {
 </div>
 <div id="scraping-and-cleaning" class="section level2 hasAnchor" number="20.6">
 <h2><span class="header-section-number">20.6</span> Scraping and cleaning<a href="lebron.html#scraping-and-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="lebron.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plink &lt;- &quot;https://www.basketball-reference.com/players/j/jamesle01.html&quot;</span></span>
-<span id="cb656-2"><a href="lebron.html#cb656-2" aria-hidden="true" tabindex="-1"></a>plink <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/a/abdulka01.html&quot;</span></span>
-<span id="cb656-3"><a href="lebron.html#cb656-3" aria-hidden="true" tabindex="-1"></a>loglinks <span class="ot">&lt;-</span> <span class="fu">read_html</span>(plink) <span class="sc">%&gt;%</span> </span>
-<span id="cb656-4"><a href="lebron.html#cb656-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#totals&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb656-5"><a href="lebron.html#cb656-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tr th a&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb656-6"><a href="lebron.html#cb656-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb656-7"><a href="lebron.html#cb656-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(url.base, .)</span>
-<span id="cb656-8"><a href="lebron.html#cb656-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb656-9"><a href="lebron.html#cb656-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb656-10"><a href="lebron.html#cb656-10" aria-hidden="true" tabindex="-1"></a>logtable <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
-<span id="cb656-11"><a href="lebron.html#cb656-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb656-12"><a href="lebron.html#cb656-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(link <span class="cf">in</span> loglinks){</span>
-<span id="cb656-13"><a href="lebron.html#cb656-13" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">read_html</span>(link) <span class="sc">%&gt;%</span></span>
-<span id="cb656-14"><a href="lebron.html#cb656-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#pgl_basic&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb656-15"><a href="lebron.html#cb656-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>()</span>
-<span id="cb656-16"><a href="lebron.html#cb656-16" aria-hidden="true" tabindex="-1"></a>    logtable <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(logtable, table)</span>
-<span id="cb656-17"><a href="lebron.html#cb656-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">nrow</span>(logtable), link)</span>
-<span id="cb656-18"><a href="lebron.html#cb656-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb656-19"><a href="lebron.html#cb656-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb656-20"><a href="lebron.html#cb656-20" aria-hidden="true" tabindex="-1"></a>jabbar.log <span class="ot">&lt;-</span> logtable <span class="sc">%&gt;%</span></span>
-<span id="cb656-21"><a href="lebron.html#cb656-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Rk, G, Date, FG, <span class="st">`</span><span class="at">3P</span><span class="st">`</span>, FT, PTS) <span class="sc">%&gt;%</span></span>
-<span id="cb656-22"><a href="lebron.html#cb656-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rk =</span> <span class="fu">as.numeric</span>(Rk),</span>
-<span id="cb656-23"><a href="lebron.html#cb656-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">FG =</span> <span class="fu">as.numeric</span>(FG),</span>
-<span id="cb656-24"><a href="lebron.html#cb656-24" aria-hidden="true" tabindex="-1"></a>           <span class="st">`</span><span class="at">3P</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">3P</span><span class="st">`</span>),</span>
-<span id="cb656-25"><a href="lebron.html#cb656-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">FT =</span> <span class="fu">as.numeric</span>(FT),</span>
-<span id="cb656-26"><a href="lebron.html#cb656-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">PTS =</span> <span class="fu">as.numeric</span>(PTS)) <span class="sc">%&gt;%</span></span>
-<span id="cb656-27"><a href="lebron.html#cb656-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PTS)) <span class="sc">%&gt;%</span></span>
-<span id="cb656-28"><a href="lebron.html#cb656-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb656-29"><a href="lebron.html#cb656-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">try =</span> FG <span class="sc">+</span> <span class="st">`</span><span class="at">3P</span><span class="st">`</span> <span class="sc">+</span> FT) <span class="sc">%&gt;%</span></span>
-<span id="cb656-30"><a href="lebron.html#cb656-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">FGperc =</span> FG<span class="sc">/</span>try, </span>
-<span id="cb656-31"><a href="lebron.html#cb656-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">P3perc =</span> <span class="st">`</span><span class="at">3P</span><span class="st">`</span><span class="sc">/</span>try,</span>
-<span id="cb656-32"><a href="lebron.html#cb656-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">FTperc =</span> FT<span class="sc">/</span>try) <span class="sc">%&gt;%</span></span>
-<span id="cb656-33"><a href="lebron.html#cb656-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gid =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="lebron.html#cb662-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plink &lt;- &quot;https://www.basketball-reference.com/players/j/jamesle01.html&quot;</span></span>
+<span id="cb662-2"><a href="lebron.html#cb662-2" aria-hidden="true" tabindex="-1"></a>plink <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/a/abdulka01.html&quot;</span></span>
+<span id="cb662-3"><a href="lebron.html#cb662-3" aria-hidden="true" tabindex="-1"></a>loglinks <span class="ot">&lt;-</span> <span class="fu">read_html</span>(plink) <span class="sc">%&gt;%</span> </span>
+<span id="cb662-4"><a href="lebron.html#cb662-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#totals&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb662-5"><a href="lebron.html#cb662-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tr th a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb662-6"><a href="lebron.html#cb662-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb662-7"><a href="lebron.html#cb662-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(url.base, .)</span>
+<span id="cb662-8"><a href="lebron.html#cb662-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb662-9"><a href="lebron.html#cb662-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb662-10"><a href="lebron.html#cb662-10" aria-hidden="true" tabindex="-1"></a>logtable <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb662-11"><a href="lebron.html#cb662-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb662-12"><a href="lebron.html#cb662-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(link <span class="cf">in</span> loglinks){</span>
+<span id="cb662-13"><a href="lebron.html#cb662-13" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">read_html</span>(link) <span class="sc">%&gt;%</span></span>
+<span id="cb662-14"><a href="lebron.html#cb662-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#pgl_basic&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb662-15"><a href="lebron.html#cb662-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_table</span>()</span>
+<span id="cb662-16"><a href="lebron.html#cb662-16" aria-hidden="true" tabindex="-1"></a>    logtable <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(logtable, table)</span>
+<span id="cb662-17"><a href="lebron.html#cb662-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">nrow</span>(logtable), link)</span>
+<span id="cb662-18"><a href="lebron.html#cb662-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb662-19"><a href="lebron.html#cb662-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb662-20"><a href="lebron.html#cb662-20" aria-hidden="true" tabindex="-1"></a>jabbar.log <span class="ot">&lt;-</span> logtable <span class="sc">%&gt;%</span></span>
+<span id="cb662-21"><a href="lebron.html#cb662-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Rk, G, Date, FG, <span class="st">`</span><span class="at">3P</span><span class="st">`</span>, FT, PTS) <span class="sc">%&gt;%</span></span>
+<span id="cb662-22"><a href="lebron.html#cb662-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rk =</span> <span class="fu">as.numeric</span>(Rk),</span>
+<span id="cb662-23"><a href="lebron.html#cb662-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">FG =</span> <span class="fu">as.numeric</span>(FG),</span>
+<span id="cb662-24"><a href="lebron.html#cb662-24" aria-hidden="true" tabindex="-1"></a>           <span class="st">`</span><span class="at">3P</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">3P</span><span class="st">`</span>),</span>
+<span id="cb662-25"><a href="lebron.html#cb662-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">FT =</span> <span class="fu">as.numeric</span>(FT),</span>
+<span id="cb662-26"><a href="lebron.html#cb662-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">PTS =</span> <span class="fu">as.numeric</span>(PTS)) <span class="sc">%&gt;%</span></span>
+<span id="cb662-27"><a href="lebron.html#cb662-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PTS)) <span class="sc">%&gt;%</span></span>
+<span id="cb662-28"><a href="lebron.html#cb662-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb662-29"><a href="lebron.html#cb662-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">try =</span> FG <span class="sc">+</span> <span class="st">`</span><span class="at">3P</span><span class="st">`</span> <span class="sc">+</span> FT) <span class="sc">%&gt;%</span></span>
+<span id="cb662-30"><a href="lebron.html#cb662-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">FGperc =</span> FG<span class="sc">/</span>try, </span>
+<span id="cb662-31"><a href="lebron.html#cb662-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">P3perc =</span> <span class="st">`</span><span class="at">3P</span><span class="st">`</span><span class="sc">/</span>try,</span>
+<span id="cb662-32"><a href="lebron.html#cb662-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">FTperc =</span> FT<span class="sc">/</span>try) <span class="sc">%&gt;%</span></span>
+<span id="cb662-33"><a href="lebron.html#cb662-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gid =</span> <span class="fu">row_number</span>())</span></code></pre></div>
 <div id="vis-ljames-and-jabbar" class="section level3 hasAnchor" number="20.6.1">
 <h3><span class="header-section-number">20.6.1</span> VIS LJames and jabbar<a href="lebron.html#vis-ljames-and-jabbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="lebron.html#cb657-1" aria-hidden="true" tabindex="-1"></a>james.log <span class="sc">%&gt;%</span></span>
-<span id="cb657-2"><a href="lebron.html#cb657-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
-<span id="cb657-3"><a href="lebron.html#cb657-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
-<span id="cb657-4"><a href="lebron.html#cb657-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;perc&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb657-5"><a href="lebron.html#cb657-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb657-6"><a href="lebron.html#cb657-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
-<span id="cb657-7"><a href="lebron.html#cb657-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
-<span id="cb657-8"><a href="lebron.html#cb657-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="lebron.html#cb663-1" aria-hidden="true" tabindex="-1"></a>james.log <span class="sc">%&gt;%</span></span>
+<span id="cb663-2"><a href="lebron.html#cb663-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
+<span id="cb663-3"><a href="lebron.html#cb663-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
+<span id="cb663-4"><a href="lebron.html#cb663-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;perc&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb663-5"><a href="lebron.html#cb663-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb663-6"><a href="lebron.html#cb663-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
+<span id="cb663-7"><a href="lebron.html#cb663-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
+<span id="cb663-8"><a href="lebron.html#cb663-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="R45_scrape_nba_players_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="lebron.html#cb658-1" aria-hidden="true" tabindex="-1"></a>jabbar.log <span class="sc">%&gt;%</span></span>
-<span id="cb658-2"><a href="lebron.html#cb658-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
-<span id="cb658-3"><a href="lebron.html#cb658-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
-<span id="cb658-4"><a href="lebron.html#cb658-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;perc&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb658-5"><a href="lebron.html#cb658-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb658-6"><a href="lebron.html#cb658-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
-<span id="cb658-7"><a href="lebron.html#cb658-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
-<span id="cb658-8"><a href="lebron.html#cb658-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="lebron.html#cb664-1" aria-hidden="true" tabindex="-1"></a>jabbar.log <span class="sc">%&gt;%</span></span>
+<span id="cb664-2"><a href="lebron.html#cb664-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, </span>
+<span id="cb664-3"><a href="lebron.html#cb664-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;FGperc&quot;</span>, <span class="st">&quot;P3perc&quot;</span>, <span class="st">&quot;FTperc&quot;</span>), </span>
+<span id="cb664-4"><a href="lebron.html#cb664-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;perc&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb664-5"><a href="lebron.html#cb664-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb664-6"><a href="lebron.html#cb664-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(gid, perc, <span class="at">fill =</span> type) <span class="sc">+</span></span>
+<span id="cb664-7"><a href="lebron.html#cb664-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>() <span class="sc">+</span> </span>
+<span id="cb664-8"><a href="lebron.html#cb664-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="R45_scrape_nba_players_files/figure-html/unnamed-chunk-12-2.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="lebron.html#cb659-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
-<span id="cb659-2"><a href="lebron.html#cb659-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Player) <span class="sc">%&gt;%</span></span>
-<span id="cb659-3"><a href="lebron.html#cb659-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">FGsum =</span> <span class="fu">sum</span>(FG),</span>
-<span id="cb659-4"><a href="lebron.html#cb659-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">FTsum =</span> <span class="fu">sum</span>(FT),</span>
-<span id="cb659-5"><a href="lebron.html#cb659-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">P3sum =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">3P</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb659-6"><a href="lebron.html#cb659-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb659-7"><a href="lebron.html#cb659-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb659-8"><a href="lebron.html#cb659-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">trials =</span> FGsum <span class="sc">+</span> FTsum <span class="sc">+</span> P3sum) <span class="sc">%&gt;%</span></span>
-<span id="cb659-9"><a href="lebron.html#cb659-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">FGperc =</span> FGsum<span class="sc">/</span>trials,</span>
-<span id="cb659-10"><a href="lebron.html#cb659-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">FTperc =</span> FTsum<span class="sc">/</span>trials,</span>
-<span id="cb659-11"><a href="lebron.html#cb659-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">P3perc =</span> P3sum<span class="sc">/</span>trials) <span class="sc">%&gt;%</span></span>
-<span id="cb659-12"><a href="lebron.html#cb659-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb659-13"><a href="lebron.html#cb659-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(FGperc, P3perc) <span class="sc">+</span> </span>
-<span id="cb659-14"><a href="lebron.html#cb659-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb659-15"><a href="lebron.html#cb659-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Player), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
-<span id="cb659-16"><a href="lebron.html#cb659-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span> </span>
-<span id="cb659-17"><a href="lebron.html#cb659-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb659-18"><a href="lebron.html#cb659-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="lebron.html#cb665-1" aria-hidden="true" tabindex="-1"></a>top250 <span class="sc">%&gt;%</span></span>
+<span id="cb665-2"><a href="lebron.html#cb665-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Player) <span class="sc">%&gt;%</span></span>
+<span id="cb665-3"><a href="lebron.html#cb665-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">FGsum =</span> <span class="fu">sum</span>(FG),</span>
+<span id="cb665-4"><a href="lebron.html#cb665-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">FTsum =</span> <span class="fu">sum</span>(FT),</span>
+<span id="cb665-5"><a href="lebron.html#cb665-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">P3sum =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">3P</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb665-6"><a href="lebron.html#cb665-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb665-7"><a href="lebron.html#cb665-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb665-8"><a href="lebron.html#cb665-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">trials =</span> FGsum <span class="sc">+</span> FTsum <span class="sc">+</span> P3sum) <span class="sc">%&gt;%</span></span>
+<span id="cb665-9"><a href="lebron.html#cb665-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">FGperc =</span> FGsum<span class="sc">/</span>trials,</span>
+<span id="cb665-10"><a href="lebron.html#cb665-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">FTperc =</span> FTsum<span class="sc">/</span>trials,</span>
+<span id="cb665-11"><a href="lebron.html#cb665-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">P3perc =</span> P3sum<span class="sc">/</span>trials) <span class="sc">%&gt;%</span></span>
+<span id="cb665-12"><a href="lebron.html#cb665-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb665-13"><a href="lebron.html#cb665-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(FGperc, P3perc) <span class="sc">+</span> </span>
+<span id="cb665-14"><a href="lebron.html#cb665-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb665-15"><a href="lebron.html#cb665-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Player), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb665-16"><a href="lebron.html#cb665-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Player <span class="sc">%in%</span> selected_players) <span class="sc">+</span> </span>
+<span id="cb665-17"><a href="lebron.html#cb665-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb665-18"><a href="lebron.html#cb665-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="R45_scrape_nba_players_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="lebron.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(jabbar.log, james.log, top_players, top250, totals, </span>
-<span id="cb660-2"><a href="lebron.html#cb660-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">file=</span><span class="st">&quot;../data/nba_players.rda&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="lebron.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(jabbar.log, james.log, top_players, top250, totals, </span>
+<span id="cb666-2"><a href="lebron.html#cb666-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">file=</span><span class="st">&quot;../data/nba_players.rda&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="more-scraping-all-players" class="section level2 hasAnchor" number="20.7">
 <h2><span class="header-section-number">20.7</span> (More) Scraping all players<a href="lebron.html#more-scraping-all-players" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="testing-2" class="section level3 hasAnchor" number="20.7.1">
 <h3><span class="header-section-number">20.7.1</span> Testing<a href="lebron.html#testing-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="lebron.html#cb661-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/x/&quot;</span></span>
-<span id="cb661-2"><a href="lebron.html#cb661-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb661-3"><a href="lebron.html#cb661-3" aria-hidden="true" tabindex="-1"></a>table.path <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
-<span id="cb661-4"><a href="lebron.html#cb661-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#players&quot;</span>)</span>
-<span id="cb661-5"><a href="lebron.html#cb661-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb661-6"><a href="lebron.html#cb661-6" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span>
-<span id="cb661-7"><a href="lebron.html#cb661-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb661-8"><a href="lebron.html#cb661-8" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>pid <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
-<span id="cb661-9"><a href="lebron.html#cb661-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb661-10"><a href="lebron.html#cb661-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;data-append-csv&quot;</span>)</span>
-<span id="cb661-11"><a href="lebron.html#cb661-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb661-12"><a href="lebron.html#cb661-12" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>plink <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
-<span id="cb661-13"><a href="lebron.html#cb661-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th a&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb661-14"><a href="lebron.html#cb661-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb661-15"><a href="lebron.html#cb661-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com&quot;</span>,.)</span></code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="lebron.html#cb667-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.basketball-reference.com/players/x/&quot;</span></span>
+<span id="cb667-2"><a href="lebron.html#cb667-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-3"><a href="lebron.html#cb667-3" aria-hidden="true" tabindex="-1"></a>table.path <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb667-4"><a href="lebron.html#cb667-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_node</span>(<span class="st">&quot;#players&quot;</span>)</span>
+<span id="cb667-5"><a href="lebron.html#cb667-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-6"><a href="lebron.html#cb667-6" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span>
+<span id="cb667-7"><a href="lebron.html#cb667-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-8"><a href="lebron.html#cb667-8" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>pid <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb667-9"><a href="lebron.html#cb667-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb667-10"><a href="lebron.html#cb667-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;data-append-csv&quot;</span>)</span>
+<span id="cb667-11"><a href="lebron.html#cb667-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-12"><a href="lebron.html#cb667-12" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>plink <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb667-13"><a href="lebron.html#cb667-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb667-14"><a href="lebron.html#cb667-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb667-15"><a href="lebron.html#cb667-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com&quot;</span>,.)</span></code></pre></div>
 </div>
 <div id="scrape-from-a-z-except-xno-x" class="section level3 hasAnchor" number="20.7.2">
 <h3><span class="header-section-number">20.7.2</span> Scrape from a-z except x(no x)<a href="lebron.html#scrape-from-a-z-except-xno-x" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="lebron.html#cb662-1" aria-hidden="true" tabindex="-1"></a><span class="co"># letters[c(1:23, 25:26)]</span></span>
-<span id="cb662-2"><a href="lebron.html#cb662-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb662-3"><a href="lebron.html#cb662-3" aria-hidden="true" tabindex="-1"></a>players <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
-<span id="cb662-4"><a href="lebron.html#cb662-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(letter <span class="cf">in</span> letters[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">23</span>, <span class="dv">25</span><span class="sc">:</span><span class="dv">26</span>)]){</span>
-<span id="cb662-5"><a href="lebron.html#cb662-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb662-6"><a href="lebron.html#cb662-6" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com/players/&quot;</span>, letter, <span class="st">&quot;/&quot;</span>)</span>
-<span id="cb662-7"><a href="lebron.html#cb662-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(url)</span>
-<span id="cb662-8"><a href="lebron.html#cb662-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb662-9"><a href="lebron.html#cb662-9" aria-hidden="true" tabindex="-1"></a>    table.path <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
-<span id="cb662-10"><a href="lebron.html#cb662-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#players&quot;</span>)</span>
-<span id="cb662-11"><a href="lebron.html#cb662-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb662-12"><a href="lebron.html#cb662-12" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span>
-<span id="cb662-13"><a href="lebron.html#cb662-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb662-14"><a href="lebron.html#cb662-14" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>pid <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
-<span id="cb662-15"><a href="lebron.html#cb662-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb662-16"><a href="lebron.html#cb662-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_attr</span>(<span class="st">&quot;data-append-csv&quot;</span>)</span>
-<span id="cb662-17"><a href="lebron.html#cb662-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb662-18"><a href="lebron.html#cb662-18" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>plink <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
-<span id="cb662-19"><a href="lebron.html#cb662-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th a&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb662-20"><a href="lebron.html#cb662-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb662-21"><a href="lebron.html#cb662-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com&quot;</span>,.)</span>
-<span id="cb662-22"><a href="lebron.html#cb662-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb662-23"><a href="lebron.html#cb662-23" aria-hidden="true" tabindex="-1"></a>    players <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(players, table)</span>
-<span id="cb662-24"><a href="lebron.html#cb662-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="lebron.html#cb668-1" aria-hidden="true" tabindex="-1"></a><span class="co"># letters[c(1:23, 25:26)]</span></span>
+<span id="cb668-2"><a href="lebron.html#cb668-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb668-3"><a href="lebron.html#cb668-3" aria-hidden="true" tabindex="-1"></a>players <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb668-4"><a href="lebron.html#cb668-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(letter <span class="cf">in</span> letters[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">23</span>, <span class="dv">25</span><span class="sc">:</span><span class="dv">26</span>)]){</span>
+<span id="cb668-5"><a href="lebron.html#cb668-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb668-6"><a href="lebron.html#cb668-6" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com/players/&quot;</span>, letter, <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb668-7"><a href="lebron.html#cb668-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(url)</span>
+<span id="cb668-8"><a href="lebron.html#cb668-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb668-9"><a href="lebron.html#cb668-9" aria-hidden="true" tabindex="-1"></a>    table.path <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb668-10"><a href="lebron.html#cb668-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_node</span>(<span class="st">&quot;#players&quot;</span>)</span>
+<span id="cb668-11"><a href="lebron.html#cb668-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb668-12"><a href="lebron.html#cb668-12" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span>
+<span id="cb668-13"><a href="lebron.html#cb668-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb668-14"><a href="lebron.html#cb668-14" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>pid <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb668-15"><a href="lebron.html#cb668-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb668-16"><a href="lebron.html#cb668-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_attr</span>(<span class="st">&quot;data-append-csv&quot;</span>)</span>
+<span id="cb668-17"><a href="lebron.html#cb668-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb668-18"><a href="lebron.html#cb668-18" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>plink <span class="ot">&lt;-</span> table.path <span class="sc">%&gt;%</span></span>
+<span id="cb668-19"><a href="lebron.html#cb668-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_nodes</span>(<span class="st">&quot;tbody th a&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb668-20"><a href="lebron.html#cb668-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb668-21"><a href="lebron.html#cb668-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_c</span>(<span class="st">&quot;https://www.basketball-reference.com&quot;</span>,.)</span>
+<span id="cb668-22"><a href="lebron.html#cb668-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb668-23"><a href="lebron.html#cb668-23" aria-hidden="true" tabindex="-1"></a>    players <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(players, table)</span>
+<span id="cb668-24"><a href="lebron.html#cb668-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>

@@ -145,7 +145,7 @@ cowplot::plot_grid(
 
 ## Order as axis
 
-學術論文若要呈現一群數據的分佈時，最常用的是密度（分佈）函數、累積分佈函數，最常視覺化的方法是密度分佈圖（`geom_density()`）或直方圖（`geom_histogram()`)。然而，對新聞等強調「說故事」的文體而言，說故事的技巧往往不是「**那一群**資源多或資源少的對象」，而經常要直指「**那個對象**」，要能夠看得見所敘述的對象在圖中的位置。此時，用密度分佈來呈現的話，只能看出，該對象在分佈的某個位置；但可以改用將資料對象根據某個數據來排序後，繪製折現圖的方式來表現。例如，若要繪製一個班級的成績分佈，通常X軸是分數（組），Y軸是獲得該分數（組）的人數；但其實可以將個體依照分數來做排序，Y軸不是某個分數（組）的個數，而是每個排序後的個體，而且以排序後的序號（Ranking）來表示。用折線圖繪製後，一樣可以看出分數的分佈，但卻能夠直接標記敘事中的某個對象是Y軸中得哪個點。
+學術論文若要呈現一群數據的分佈時，最常用的是密度（分佈）函數、累積分佈函數，最常視覺化的方法是密度分佈圖（`geom_density()`）或直方圖（`geom_histogram()`)。然而，**對新聞等強調「說故事」的文體而言，說故事的技巧往往不是「那一群資源多或資源少的對象」，而經常要直指「那個對象」，要能夠看得見所敘述的對象在圖中的位置。**此時，用密度分佈來呈現的話，只能看出，該對象在分佈的某個位置；但可以改用將資料對象根據某個數據來排序後，繪製折現圖的方式來表現。例如，若要繪製一個班級的成績分佈，通常X軸是分數（組），Y軸是獲得該分數（組）的人數；但其實可以將個體依照分數來做排序，Y軸不是某個分數（組）的個數，而是每個排序後的個體，而且以排序後的序號（Ranking）來表示。用折線圖繪製後，一樣可以看出分數的分佈，但卻能夠直接標記敘事中的某個對象是Y軸中得哪個點。
 
 ### 
 
@@ -161,12 +161,27 @@ cowplot::plot_grid(
 
 ## Log-scale
 
+以下我打算繪製出每個村里在15歲以上的人口數，來呈現台灣有些村里人口相當稀少，尤其是花蓮縣、澎湖縣、南投縣和宜蘭縣的幾個聚落。並標記出幾個人口數最高的里。如果我的目的是呈現村里人口數的統計分佈，我會用`geom_density()`來繪圖（如下），但實際上沒辦法從這樣的密度函式圖來說故事，指出那些人口數過高或過低的村里。
+
 
 ```r
 raw <- read_csv("data/opendata107Y020.csv", show_col_types = FALSE)  %>% 
     slice(-1) %>% 
     type_convert()
 
+raw %>%
+  ggplot() + aes(edu_age_15up_total) + 
+  geom_density()
+```
+
+<img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" />
+
+因此，一個比較好的策略是，把各村里的人口數由小到大或由大到小排序好，編好Rank比序的代號，然後讓X軸做為比序，逐一在Y軸打出每一個村里的數據。
+
+但這邊值得注意的是，如果沒有放大尾端（也就是村里人口數最少的那部分），實際上也很難繪圖。所以對Y軸取log，就可以看清楚Y軸的資料點。
+
+
+```r
 toplot <- raw %>%
     select(site_id, village, edu_age_15up_total) %>%
     arrange(desc(edu_age_15up_total)) %>%
@@ -174,6 +189,7 @@ toplot <- raw %>%
     mutate(label = ifelse(index <= 5 | index > n()-5, paste0(site_id, village), ""))
 
 library(ggrepel)
+
 p2 <- toplot %>% ggplot() + aes(index, edu_age_15up_total) + 
     geom_point(alpha=0.5, color="royalblue") + 
     geom_text_repel(aes(label = label), point.padding = .4, color = "black",
@@ -181,6 +197,7 @@ p2 <- toplot %>% ggplot() + aes(index, edu_age_15up_total) +
     theme(axis.text.x=element_blank()) + 
     scale_y_log10(breaks = c(0, 1, 10, 100, 1000, 10000)) + 
     theme_minimal()
+
 p1 <- toplot %>% ggplot() + aes(index, edu_age_15up_total) + 
     geom_point(alpha=0.5, color="royalblue") + 
     theme(axis.text.x=element_blank()) + 
@@ -315,10 +332,11 @@ p1 %>% filter(year <= 1992) %>% knitr::kable()
 
 
 ```r
+library(gghighlight)
 p1 %>% ggplot() + aes(year, Net_Worth, color = Category) + 
     geom_line() + 
     geom_point() + 
-    gghighlight(Category %in% c("65-74", "Less than 35")) + 
+    gghighlight(Category %in% c("65-74", "35-44")) + 
     theme_minimal() + 
     scale_x_continuous(breaks = NULL) + 
     theme(panel.background = element_rect(fill = "white",
@@ -326,7 +344,7 @@ p1 %>% ggplot() + aes(year, Net_Worth, color = Category) +
                                 size = 0.5, linetype = "solid"))
 ```
 
-<img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -372,7 +390,7 @@ p2 %>% ggplot() + aes(year, increase, color = Category) +
                                 size = 0.5, linetype = "solid"))
 ```
 
-<img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## X/Y aspect ratio
 
@@ -437,4 +455,4 @@ plot.opt %>%
     theme(aspect.ratio=1)
 ```
 
-<img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" />

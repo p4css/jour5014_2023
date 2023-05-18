@@ -378,8 +378,9 @@ div.csl-indent {
 <li class="chapter" data-level="13.2" data-path="re.html"><a href="re.html#re-case-studies"><i class="fa fa-check"></i><b>13.2</b> RE Case studies</a>
 <ul>
 <li class="chapter" data-level="13.2.1" data-path="re.html"><a href="re.html#getting-the-last-page-of-ptt-hatepolitics"><i class="fa fa-check"></i><b>13.2.1</b> Getting the last page of PTT HatePolitics</a></li>
+<li class="chapter" data-level="13.2.2" data-path="re.html"><a href="re.html#practice.-ask-chatgpt"><i class="fa fa-check"></i><b>13.2.2</b> Practice. Ask CHATGPT</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="re.html"><a href="re.html#famous-cases"><i class="fa fa-check"></i><b>13.3</b> Famous cases</a>
+<li class="chapter" data-level="13.3" data-path="re.html"><a href="re.html#useful-cases"><i class="fa fa-check"></i><b>13.3</b> Useful cases</a>
 <ul>
 <li class="chapter" data-level="13.3.1" data-path="re.html"><a href="re.html#matching-url"><i class="fa fa-check"></i><b>13.3.1</b> Matching URL</a></li>
 <li class="chapter" data-level="13.3.2" data-path="re.html"><a href="re.html#removing-all-html-tags-but-keeping-comment-content"><i class="fa fa-check"></i><b>13.3.2</b> Removing all html tags but keeping comment content</a></li>
@@ -757,40 +758,40 @@ div.csl-indent {
 <p>至<a href="https://github.com/p4css/R4CSS/tree/master/data">R4CSS/data</a>可以下載到本範例所用的資料（是一個pdf檔案）<a href="https://github.com/p4css/R4CSS/raw/master/data/world_population_change.pdf" class="uri">https://github.com/p4css/R4CSS/raw/master/data/world_population_change.pdf</a>。</p>
 <p>我們可使用<code>tabulizer</code>這個套件來萃取PDF文件中的表格，官方雖然提供cran可以直接安裝，但有可能會遇到R的版本不符要求而安裝不起來的情形。此時可用第二種方法，直接從github上安裝該套件。</p>
 <p>程式碼使用 <strong><code>extract_tables()</code></strong> 函數從指定的PDF文件中提取表格數據，並將其存儲在 <strong><code>tables</code></strong> 變量中。在這個函數中，我們指定了要從第1頁中提取表格數據。</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="coordinate.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1</span></span>
-<span id="cb700-2"><a href="coordinate.html#cb700-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tabulizer&quot;)</span></span>
-<span id="cb700-3"><a href="coordinate.html#cb700-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb700-4"><a href="coordinate.html#cb700-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2</span></span>
-<span id="cb700-5"><a href="coordinate.html#cb700-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if (!require(&quot;remotes&quot;)) {</span></span>
-<span id="cb700-6"><a href="coordinate.html#cb700-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     install.packages(&quot;remotes&quot;)</span></span>
-<span id="cb700-7"><a href="coordinate.html#cb700-7" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
-<span id="cb700-8"><a href="coordinate.html#cb700-8" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github(c(&quot;ropensci/tabulizerjars&quot;, &quot;ropensci/tabulizer&quot;))</span></span>
-<span id="cb700-9"><a href="coordinate.html#cb700-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb700-10"><a href="coordinate.html#cb700-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb700-11"><a href="coordinate.html#cb700-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tabulizer)</span>
-<span id="cb700-12"><a href="coordinate.html#cb700-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the table</span></span>
-<span id="cb700-13"><a href="coordinate.html#cb700-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb700-14"><a href="coordinate.html#cb700-14" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">&lt;-</span> <span class="fu">extract_tables</span>(<span class="st">&#39;data/world_population_change.pdf&#39;</span>, <span class="at">pages =</span> <span class="dv">1</span>)</span>
-<span id="cb700-15"><a href="coordinate.html#cb700-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb700-16"><a href="coordinate.html#cb700-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the first element of the variable</span></span>
-<span id="cb700-17"><a href="coordinate.html#cb700-17" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(tables[[<span class="dv">1</span>]])</span>
-<span id="cb700-18"><a href="coordinate.html#cb700-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb700-19"><a href="coordinate.html#cb700-19" aria-hidden="true" tabindex="-1"></a>population_by_year <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb700-20"><a href="coordinate.html#cb700-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb700-21"><a href="coordinate.html#cb700-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb700-22"><a href="coordinate.html#cb700-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(<span class="at">years_to_2020 =</span> V1, <span class="at">population =</span> V2)</span>
-<span id="cb700-23"><a href="coordinate.html#cb700-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># select(years_to_2020 = v1, population = v2)</span></span>
-<span id="cb700-24"><a href="coordinate.html#cb700-24" aria-hidden="true" tabindex="-1"></a>   <span class="co"># mutate(years_to_2020 = v1, population = v2)</span></span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="coordinate.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1</span></span>
+<span id="cb706-2"><a href="coordinate.html#cb706-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tabulizer&quot;)</span></span>
+<span id="cb706-3"><a href="coordinate.html#cb706-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb706-4"><a href="coordinate.html#cb706-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2</span></span>
+<span id="cb706-5"><a href="coordinate.html#cb706-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if (!require(&quot;remotes&quot;)) {</span></span>
+<span id="cb706-6"><a href="coordinate.html#cb706-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     install.packages(&quot;remotes&quot;)</span></span>
+<span id="cb706-7"><a href="coordinate.html#cb706-7" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb706-8"><a href="coordinate.html#cb706-8" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github(c(&quot;ropensci/tabulizerjars&quot;, &quot;ropensci/tabulizer&quot;))</span></span>
+<span id="cb706-9"><a href="coordinate.html#cb706-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb706-10"><a href="coordinate.html#cb706-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb706-11"><a href="coordinate.html#cb706-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tabulizer)</span>
+<span id="cb706-12"><a href="coordinate.html#cb706-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the table</span></span>
+<span id="cb706-13"><a href="coordinate.html#cb706-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb706-14"><a href="coordinate.html#cb706-14" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">&lt;-</span> <span class="fu">extract_tables</span>(<span class="st">&#39;data/world_population_change.pdf&#39;</span>, <span class="at">pages =</span> <span class="dv">1</span>)</span>
+<span id="cb706-15"><a href="coordinate.html#cb706-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb706-16"><a href="coordinate.html#cb706-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the first element of the variable</span></span>
+<span id="cb706-17"><a href="coordinate.html#cb706-17" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(tables[[<span class="dv">1</span>]])</span>
+<span id="cb706-18"><a href="coordinate.html#cb706-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb706-19"><a href="coordinate.html#cb706-19" aria-hidden="true" tabindex="-1"></a>population_by_year <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb706-20"><a href="coordinate.html#cb706-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb706-21"><a href="coordinate.html#cb706-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb706-22"><a href="coordinate.html#cb706-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(<span class="at">years_to_2020 =</span> V1, <span class="at">population =</span> V2)</span>
+<span id="cb706-23"><a href="coordinate.html#cb706-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># select(years_to_2020 = v1, population = v2)</span></span>
+<span id="cb706-24"><a href="coordinate.html#cb706-24" aria-hidden="true" tabindex="-1"></a>   <span class="co"># mutate(years_to_2020 = v1, population = v2)</span></span></code></pre></div>
 </div>
 <div id="x-and-y-with-log-scale" class="section level3 hasAnchor" number="22.1.2">
 <h3><span class="header-section-number">22.1.2</span> X and Y with log-scale<a href="coordinate.html#x-and-y-with-log-scale" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>通常情況下，當數據範圍很大，且存在極端值或者偏離值時，使用對數轉換可以更好地展示數據的分佈情況。在這種情況下，你可以使用 <strong><code>scale_x_log10()</code></strong> 或 <strong><code>scale_y_log10()</code></strong> 函數將 x 軸或 y 軸轉換為對數刻度。</p>
 <p>例如，如果你有一個數據集，其中一個變量的數值範圍從1到100000，且大多數數據會集中在較小的值上，那麼使用線性刻度將導致數據在圖形中的分佈不平衡，而較大的值會集中在圖形的邊緣或者消失在圖形之外。在這種情況下，使用對數刻度可以更好地展示數據的分佈情況，並且可以更好地顯示較大值之間的差異。而上述資料便有這樣的特色，尤其是在Y軸方向，一開始人口增加量不多，後來指數成長，此時若使用線性尺度，會看不清楚一開始的人口增加量。</p>
-<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="coordinate.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb701-2"><a href="coordinate.html#cb701-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb701-3"><a href="coordinate.html#cb701-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/world_population_change.rda&quot;</span>)</span>
-<span id="cb701-4"><a href="coordinate.html#cb701-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb701-5"><a href="coordinate.html#cb701-5" aria-hidden="true" tabindex="-1"></a>population_by_year</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="coordinate.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb707-2"><a href="coordinate.html#cb707-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb707-3"><a href="coordinate.html#cb707-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/world_population_change.rda&quot;</span>)</span>
+<span id="cb707-4"><a href="coordinate.html#cb707-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb707-5"><a href="coordinate.html#cb707-5" aria-hidden="true" tabindex="-1"></a>population_by_year</span></code></pre></div>
 <pre class="output"><code>##    years_to_2020 population
 ## 1         11,720          4
 ## 2         10,020          5
@@ -826,12 +827,12 @@ div.csl-indent {
 ## 32            10       6930
 ## 33             5       7349
 ## 34             0       7717</code></pre>
-<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="coordinate.html#cb703-1" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> population_by_year <span class="sc">%&gt;%</span></span>
-<span id="cb703-2"><a href="coordinate.html#cb703-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">years_to_2020 =</span> <span class="fu">map</span>(years_to_2020, <span class="sc">~</span>(<span class="fu">str_remove</span>(., <span class="st">&quot;,&quot;</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb703-3"><a href="coordinate.html#cb703-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">years_to_2020 =</span> <span class="fu">as.numeric</span>(years_to_2020),</span>
-<span id="cb703-4"><a href="coordinate.html#cb703-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">population =</span> <span class="fu">as.numeric</span>(population))</span>
-<span id="cb703-5"><a href="coordinate.html#cb703-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb703-6"><a href="coordinate.html#cb703-6" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> head</span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="coordinate.html#cb709-1" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> population_by_year <span class="sc">%&gt;%</span></span>
+<span id="cb709-2"><a href="coordinate.html#cb709-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">years_to_2020 =</span> <span class="fu">map</span>(years_to_2020, <span class="sc">~</span>(<span class="fu">str_remove</span>(., <span class="st">&quot;,&quot;</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb709-3"><a href="coordinate.html#cb709-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">years_to_2020 =</span> <span class="fu">as.numeric</span>(years_to_2020),</span>
+<span id="cb709-4"><a href="coordinate.html#cb709-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">population =</span> <span class="fu">as.numeric</span>(population))</span>
+<span id="cb709-5"><a href="coordinate.html#cb709-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb709-6"><a href="coordinate.html#cb709-6" aria-hidden="true" tabindex="-1"></a>toplot <span class="sc">%&gt;%</span> head</span></code></pre></div>
 <pre class="output"><code>##   years_to_2020 population
 ## 1         11720          4
 ## 2         10020          5
@@ -839,32 +840,32 @@ div.csl-indent {
 ## 4          7020         11
 ## 5          6020          7
 ## 6          5020         14</code></pre>
-<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="coordinate.html#cb705-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
-<span id="cb705-2"><a href="coordinate.html#cb705-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb705-3"><a href="coordinate.html#cb705-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>years_to_2020, <span class="at">y=</span>population) <span class="sc">+</span> </span>
-<span id="cb705-4"><a href="coordinate.html#cb705-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb705-5"><a href="coordinate.html#cb705-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
-<span id="cb705-6"><a href="coordinate.html#cb705-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb705-7"><a href="coordinate.html#cb705-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb705-8"><a href="coordinate.html#cb705-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
-<span id="cb705-9"><a href="coordinate.html#cb705-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb705-10"><a href="coordinate.html#cb705-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>years_to_2020, <span class="at">y=</span>population) <span class="sc">+</span> </span>
-<span id="cb705-11"><a href="coordinate.html#cb705-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb705-12"><a href="coordinate.html#cb705-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
-<span id="cb705-13"><a href="coordinate.html#cb705-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
-<span id="cb705-14"><a href="coordinate.html#cb705-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
-<span id="cb705-15"><a href="coordinate.html#cb705-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb705-16"><a href="coordinate.html#cb705-16" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb705-17"><a href="coordinate.html#cb705-17" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
-<span id="cb705-18"><a href="coordinate.html#cb705-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Original Scale&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Low-Scale&quot;</span>),</span>
-<span id="cb705-19"><a href="coordinate.html#cb705-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb705-20"><a href="coordinate.html#cb705-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="coordinate.html#cb711-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
+<span id="cb711-2"><a href="coordinate.html#cb711-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb711-3"><a href="coordinate.html#cb711-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>years_to_2020, <span class="at">y=</span>population) <span class="sc">+</span> </span>
+<span id="cb711-4"><a href="coordinate.html#cb711-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb711-5"><a href="coordinate.html#cb711-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb711-6"><a href="coordinate.html#cb711-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb711-7"><a href="coordinate.html#cb711-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb711-8"><a href="coordinate.html#cb711-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span></span>
+<span id="cb711-9"><a href="coordinate.html#cb711-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb711-10"><a href="coordinate.html#cb711-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>years_to_2020, <span class="at">y=</span>population) <span class="sc">+</span> </span>
+<span id="cb711-11"><a href="coordinate.html#cb711-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb711-12"><a href="coordinate.html#cb711-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
+<span id="cb711-13"><a href="coordinate.html#cb711-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb711-14"><a href="coordinate.html#cb711-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb711-15"><a href="coordinate.html#cb711-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb711-16"><a href="coordinate.html#cb711-16" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb711-17"><a href="coordinate.html#cb711-17" aria-hidden="true" tabindex="-1"></a>  p1, <span class="cn">NULL</span>, p2,</span>
+<span id="cb711-18"><a href="coordinate.html#cb711-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;(a) Original Scale&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;(b) Low-Scale&quot;</span>),</span>
+<span id="cb711-19"><a href="coordinate.html#cb711-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb711-20"><a href="coordinate.html#cb711-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="order-as-axis" class="section level2 hasAnchor" number="22.2">
 <h2><span class="header-section-number">22.2</span> Order as axis<a href="coordinate.html#order-as-axis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>學術論文若要呈現一群數據的分佈時，最常用的是密度（分佈）函數、累積分佈函數，最常視覺化的方法是密度分佈圖（<code>geom_density()</code>）或直方圖（<code>geom_histogram()</code>)。然而，對新聞等強調「說故事」的文體而言，說故事的技巧往往不是「<strong>那一群</strong>資源多或資源少的對象」，而經常要直指「<strong>那個對象</strong>」，要能夠看得見所敘述的對象在圖中的位置。此時，用密度分佈來呈現的話，只能看出，該對象在分佈的某個位置；但可以改用將資料對象根據某個數據來排序後，繪製折現圖的方式來表現。例如，若要繪製一個班級的成績分佈，通常X軸是分數（組），Y軸是獲得該分數（組）的人數；但其實可以將個體依照分數來做排序，Y軸不是某個分數（組）的個數，而是每個排序後的個體，而且以排序後的序號（Ranking）來表示。用折線圖繪製後，一樣可以看出分數的分佈，但卻能夠直接標記敘事中的某個對象是Y軸中得哪個點。</p>
+<p>學術論文若要呈現一群數據的分佈時，最常用的是密度（分佈）函數、累積分佈函數，最常視覺化的方法是密度分佈圖（<code>geom_density()</code>）或直方圖（<code>geom_histogram()</code>)。然而，<strong>對新聞等強調「說故事」的文體而言，說故事的技巧往往不是「那一群資源多或資源少的對象」，而經常要直指「那個對象」，要能夠看得見所敘述的對象在圖中的位置。</strong>此時，用密度分佈來呈現的話，只能看出，該對象在分佈的某個位置；但可以改用將資料對象根據某個數據來排序後，繪製折現圖的方式來表現。例如，若要繪製一個班級的成績分佈，通常X軸是分數（組），Y軸是獲得該分數（組）的人數；但其實可以將個體依照分數來做排序，Y軸不是某個分數（組）的個數，而是每個排序後的個體，而且以排序後的序號（Ranking）來表示。用折線圖繪製後，一樣可以看出分數的分佈，但卻能夠直接標記敘事中的某個對象是Y軸中得哪個點。</p>
 <div id="section-1" class="section level3" number="22.2.1">
 <h3><span class="header-section-number">22.2.1</span> </h3>
 <div class="figure">
@@ -880,36 +881,45 @@ div.csl-indent {
 </div>
 <div id="log-scale" class="section level2 hasAnchor" number="22.3">
 <h2><span class="header-section-number">22.3</span> Log-scale<a href="coordinate.html#log-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="coordinate.html#cb706-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/opendata107Y020.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb706-2"><a href="coordinate.html#cb706-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb706-3"><a href="coordinate.html#cb706-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
-<span id="cb706-4"><a href="coordinate.html#cb706-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb706-5"><a href="coordinate.html#cb706-5" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb706-6"><a href="coordinate.html#cb706-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(site_id, village, edu_age_15up_total) <span class="sc">%&gt;%</span></span>
-<span id="cb706-7"><a href="coordinate.html#cb706-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(edu_age_15up_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb706-8"><a href="coordinate.html#cb706-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb706-9"><a href="coordinate.html#cb706-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(index <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">|</span> index <span class="sc">&gt;</span> <span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>, <span class="fu">paste0</span>(site_id, village), <span class="st">&quot;&quot;</span>))</span>
-<span id="cb706-10"><a href="coordinate.html#cb706-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb706-11"><a href="coordinate.html#cb706-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb706-12"><a href="coordinate.html#cb706-12" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
-<span id="cb706-13"><a href="coordinate.html#cb706-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb706-14"><a href="coordinate.html#cb706-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">point.padding =</span> .<span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb706-15"><a href="coordinate.html#cb706-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">min.segment.length =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb706-16"><a href="coordinate.html#cb706-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb706-17"><a href="coordinate.html#cb706-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)) <span class="sc">+</span> </span>
-<span id="cb706-18"><a href="coordinate.html#cb706-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb706-19"><a href="coordinate.html#cb706-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
-<span id="cb706-20"><a href="coordinate.html#cb706-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb706-21"><a href="coordinate.html#cb706-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb706-22"><a href="coordinate.html#cb706-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb706-23"><a href="coordinate.html#cb706-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb706-24"><a href="coordinate.html#cb706-24" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb706-25"><a href="coordinate.html#cb706-25" aria-hidden="true" tabindex="-1"></a>  p2, <span class="cn">NULL</span>, p1,</span>
-<span id="cb706-26"><a href="coordinate.html#cb706-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb706-27"><a href="coordinate.html#cb706-27" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>以下我打算繪製出每個村里在15歲以上的人口數，來呈現台灣有些村里人口相當稀少，尤其是花蓮縣、澎湖縣、南投縣和宜蘭縣的幾個聚落。並標記出幾個人口數最高的里。如果我的目的是呈現村里人口數的統計分佈，我會用<code>geom_density()</code>來繪圖（如下），但實際上沒辦法從這樣的密度函式圖來說故事，指出那些人口數過高或過低的村里。</p>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="coordinate.html#cb712-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/opendata107Y020.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb712-2"><a href="coordinate.html#cb712-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb712-3"><a href="coordinate.html#cb712-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
+<span id="cb712-4"><a href="coordinate.html#cb712-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb712-5"><a href="coordinate.html#cb712-5" aria-hidden="true" tabindex="-1"></a>raw <span class="sc">%&gt;%</span></span>
+<span id="cb712-6"><a href="coordinate.html#cb712-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(edu_age_15up_total) <span class="sc">+</span> </span>
+<span id="cb712-7"><a href="coordinate.html#cb712-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>因此，一個比較好的策略是，把各村里的人口數由小到大或由大到小排序好，編好Rank比序的代號，然後讓X軸做為比序，逐一在Y軸打出每一個村里的數據。</p>
+<p>但這邊值得注意的是，如果沒有放大尾端（也就是村里人口數最少的那部分），實際上也很難繪圖。所以對Y軸取log，就可以看清楚Y軸的資料點。</p>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="coordinate.html#cb713-1" aria-hidden="true" tabindex="-1"></a>toplot <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
+<span id="cb713-2"><a href="coordinate.html#cb713-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(site_id, village, edu_age_15up_total) <span class="sc">%&gt;%</span></span>
+<span id="cb713-3"><a href="coordinate.html#cb713-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(edu_age_15up_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb713-4"><a href="coordinate.html#cb713-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb713-5"><a href="coordinate.html#cb713-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(index <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">|</span> index <span class="sc">&gt;</span> <span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>, <span class="fu">paste0</span>(site_id, village), <span class="st">&quot;&quot;</span>))</span>
+<span id="cb713-6"><a href="coordinate.html#cb713-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb713-7"><a href="coordinate.html#cb713-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb713-8"><a href="coordinate.html#cb713-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb713-9"><a href="coordinate.html#cb713-9" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
+<span id="cb713-10"><a href="coordinate.html#cb713-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb713-11"><a href="coordinate.html#cb713-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">point.padding =</span> .<span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb713-12"><a href="coordinate.html#cb713-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">min.segment.length =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">&quot;Heiti TC Light&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb713-13"><a href="coordinate.html#cb713-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb713-14"><a href="coordinate.html#cb713-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)) <span class="sc">+</span> </span>
+<span id="cb713-15"><a href="coordinate.html#cb713-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb713-16"><a href="coordinate.html#cb713-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb713-17"><a href="coordinate.html#cb713-17" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, edu_age_15up_total) <span class="sc">+</span> </span>
+<span id="cb713-18"><a href="coordinate.html#cb713-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb713-19"><a href="coordinate.html#cb713-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb713-20"><a href="coordinate.html#cb713-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb713-21"><a href="coordinate.html#cb713-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb713-22"><a href="coordinate.html#cb713-22" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb713-23"><a href="coordinate.html#cb713-23" aria-hidden="true" tabindex="-1"></a>  p2, <span class="cn">NULL</span>, p1,</span>
+<span id="cb713-24"><a href="coordinate.html#cb713-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="dv">1</span>)</span>
+<span id="cb713-25"><a href="coordinate.html#cb713-25" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="V02_Coordinate_System_files/figure-html/Fig3-5-6-log-scale-village-level-population-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="coordinate.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb707-2"><a href="coordinate.html#cb707-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="coordinate.html#cb714-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb714-2"><a href="coordinate.html#cb714-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span></code></pre></div>
 </div>
 <div id="section-2" class="section level2" number="22.4">
 <h2><span class="header-section-number">22.4</span> </h2>
@@ -922,53 +932,53 @@ div.csl-indent {
 <p class="caption">Figure 3.8: Areas of Northeastern U.S. states. (a) Areas shown on a linear scale. (b) Areas shown on a square-root scale. Data source: Google.</p>
 </div>
 <p>前面是視覺化了各村里大於十五歲以上人口的人口數分佈，採用對數尺度（log-scale）可以觀察到比較小的村里。那有什麼是適合用平方根尺度（sqrt-scale）的呢？是土地嗎？密度嗎？還是人口數？是村里等級嗎？鄉鎮市區等級嗎？還是縣市等級？</p>
-<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="coordinate.html#cb708-1" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb708-2"><a href="coordinate.html#cb708-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb708-3"><a href="coordinate.html#cb708-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
-<span id="cb708-4"><a href="coordinate.html#cb708-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb708-5"><a href="coordinate.html#cb708-5" aria-hidden="true" tabindex="-1"></a>town <span class="sc">%&gt;%</span></span>
-<span id="cb708-6"><a href="coordinate.html#cb708-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(area)) <span class="sc">%&gt;%</span></span>
-<span id="cb708-7"><a href="coordinate.html#cb708-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb708-8"><a href="coordinate.html#cb708-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, area) <span class="sc">%&gt;%</span></span>
-<span id="cb708-9"><a href="coordinate.html#cb708-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb708-10"><a href="coordinate.html#cb708-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>() <span class="sc">+</span> </span>
-<span id="cb708-11"><a href="coordinate.html#cb708-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="coordinate.html#cb715-1" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tw_population_opendata110N010.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb715-2"><a href="coordinate.html#cb715-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span>(<span class="dv">370</span><span class="sc">:</span><span class="dv">375</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb715-3"><a href="coordinate.html#cb715-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">type_convert</span>()</span>
+<span id="cb715-4"><a href="coordinate.html#cb715-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb715-5"><a href="coordinate.html#cb715-5" aria-hidden="true" tabindex="-1"></a>town <span class="sc">%&gt;%</span></span>
+<span id="cb715-6"><a href="coordinate.html#cb715-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(area)) <span class="sc">%&gt;%</span></span>
+<span id="cb715-7"><a href="coordinate.html#cb715-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb715-8"><a href="coordinate.html#cb715-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, area) <span class="sc">%&gt;%</span></span>
+<span id="cb715-9"><a href="coordinate.html#cb715-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb715-10"><a href="coordinate.html#cb715-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>() <span class="sc">+</span> </span>
+<span id="cb715-11"><a href="coordinate.html#cb715-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Fig03-8-TW-Population-Density-1"></span>
 <img src="V02_Coordinate_System_files/figure-html/Fig03-8-TW-Population-Density-1.png" alt="(ref:population-area)" width="100%" />
 <p class="caption">
 Figure 22.1: (ref:population-area)
 </p>
 </div>
-<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="coordinate.html#cb709-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> town <span class="sc">%&gt;%</span></span>
-<span id="cb709-2"><a href="coordinate.html#cb709-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb709-3"><a href="coordinate.html#cb709-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
-<span id="cb709-4"><a href="coordinate.html#cb709-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb709-5"><a href="coordinate.html#cb709-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
-<span id="cb709-6"><a href="coordinate.html#cb709-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
-<span id="cb709-7"><a href="coordinate.html#cb709-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb709-8"><a href="coordinate.html#cb709-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb709-9"><a href="coordinate.html#cb709-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb709-10"><a href="coordinate.html#cb709-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
-<span id="cb709-11"><a href="coordinate.html#cb709-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb709-12"><a href="coordinate.html#cb709-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb709-13"><a href="coordinate.html#cb709-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb709-14"><a href="coordinate.html#cb709-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>) <span class="sc">+</span></span>
-<span id="cb709-15"><a href="coordinate.html#cb709-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale_y_sqrt() +</span></span>
-<span id="cb709-16"><a href="coordinate.html#cb709-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb709-17"><a href="coordinate.html#cb709-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb709-18"><a href="coordinate.html#cb709-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
-<span id="cb709-19"><a href="coordinate.html#cb709-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb709-20"><a href="coordinate.html#cb709-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb709-21"><a href="coordinate.html#cb709-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
-<span id="cb709-22"><a href="coordinate.html#cb709-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;khaki&quot;</span>) <span class="sc">+</span></span>
-<span id="cb709-23"><a href="coordinate.html#cb709-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">250000</span>, <span class="dv">500000</span>, <span class="dv">1000000</span>, <span class="dv">2000000</span>, <span class="dv">4000000</span>)) <span class="sc">+</span></span>
-<span id="cb709-24"><a href="coordinate.html#cb709-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb709-25"><a href="coordinate.html#cb709-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb709-26"><a href="coordinate.html#cb709-26" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
-<span id="cb709-27"><a href="coordinate.html#cb709-27" aria-hidden="true" tabindex="-1"></a>  p1, p2,</span>
-<span id="cb709-28"><a href="coordinate.html#cb709-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>
-<span id="cb709-29"><a href="coordinate.html#cb709-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span></span>
-<span id="cb709-30"><a href="coordinate.html#cb709-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="coordinate.html#cb716-1" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> town <span class="sc">%&gt;%</span></span>
+<span id="cb716-2"><a href="coordinate.html#cb716-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_sub</span>(site_id, <span class="dv">1</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb716-3"><a href="coordinate.html#cb716-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
+<span id="cb716-4"><a href="coordinate.html#cb716-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb716-5"><a href="coordinate.html#cb716-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">sum</span>(area), </span>
+<span id="cb716-6"><a href="coordinate.html#cb716-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">people_total =</span> <span class="fu">sum</span>(people_total)</span>
+<span id="cb716-7"><a href="coordinate.html#cb716-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb716-8"><a href="coordinate.html#cb716-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb716-9"><a href="coordinate.html#cb716-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb716-10"><a href="coordinate.html#cb716-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
+<span id="cb716-11"><a href="coordinate.html#cb716-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb716-12"><a href="coordinate.html#cb716-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb716-13"><a href="coordinate.html#cb716-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb716-14"><a href="coordinate.html#cb716-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;lightgrey&quot;</span>) <span class="sc">+</span></span>
+<span id="cb716-15"><a href="coordinate.html#cb716-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale_y_sqrt() +</span></span>
+<span id="cb716-16"><a href="coordinate.html#cb716-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb716-17"><a href="coordinate.html#cb716-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb716-18"><a href="coordinate.html#cb716-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> county <span class="sc">%&gt;%</span></span>
+<span id="cb716-19"><a href="coordinate.html#cb716-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(people_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb716-20"><a href="coordinate.html#cb716-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb716-21"><a href="coordinate.html#cb716-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(index, people_total) <span class="sc">%&gt;%</span></span>
+<span id="cb716-22"><a href="coordinate.html#cb716-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;khaki&quot;</span>) <span class="sc">+</span></span>
+<span id="cb716-23"><a href="coordinate.html#cb716-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_sqrt</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">250000</span>, <span class="dv">500000</span>, <span class="dv">1000000</span>, <span class="dv">2000000</span>, <span class="dv">4000000</span>)) <span class="sc">+</span></span>
+<span id="cb716-24"><a href="coordinate.html#cb716-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb716-25"><a href="coordinate.html#cb716-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb716-26"><a href="coordinate.html#cb716-26" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb716-27"><a href="coordinate.html#cb716-27" aria-hidden="true" tabindex="-1"></a>  p1, p2,</span>
+<span id="cb716-28"><a href="coordinate.html#cb716-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), </span>
+<span id="cb716-29"><a href="coordinate.html#cb716-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span></span>
+<span id="cb716-30"><a href="coordinate.html#cb716-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Fig03-8-TW-Population-Density-2"></span>
 <img src="V02_Coordinate_System_files/figure-html/Fig03-8-TW-Population-Density-2.png" alt="(ref:population-area)" width="100%" />
 <p class="caption">
@@ -990,12 +1000,12 @@ Figure 22.2: (ref:population-area)
 <div id="read-and-sort-data" class="section level3 hasAnchor" number="22.6.2">
 <h3><span class="header-section-number">22.6.2</span> Read and sort data<a href="coordinate.html#read-and-sort-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sorted by <code>arrange()</code> function.</p>
-<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="coordinate.html#cb710-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb710-2"><a href="coordinate.html#cb710-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
-<span id="cb710-3"><a href="coordinate.html#cb710-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb710-4"><a href="coordinate.html#cb710-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb710-5"><a href="coordinate.html#cb710-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb710-6"><a href="coordinate.html#cb710-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="coordinate.html#cb717-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb717-2"><a href="coordinate.html#cb717-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, Net_Worth) <span class="sc">%&gt;%</span></span>
+<span id="cb717-3"><a href="coordinate.html#cb717-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb717-4"><a href="coordinate.html#cb717-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb717-5"><a href="coordinate.html#cb717-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb717-6"><a href="coordinate.html#cb717-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1067,23 +1077,24 @@ Figure 22.2: (ref:population-area)
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="coordinate.html#cb711-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb711-2"><a href="coordinate.html#cb711-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb711-3"><a href="coordinate.html#cb711-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb711-4"><a href="coordinate.html#cb711-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;Less than 35&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb711-5"><a href="coordinate.html#cb711-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb711-6"><a href="coordinate.html#cb711-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb711-7"><a href="coordinate.html#cb711-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb711-8"><a href="coordinate.html#cb711-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb711-9"><a href="coordinate.html#cb711-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
-<p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="coordinate.html#cb712-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb712-2"><a href="coordinate.html#cb712-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
-<span id="cb712-3"><a href="coordinate.html#cb712-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
-<span id="cb712-4"><a href="coordinate.html#cb712-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb712-5"><a href="coordinate.html#cb712-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
-<span id="cb712-6"><a href="coordinate.html#cb712-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb712-7"><a href="coordinate.html#cb712-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="coordinate.html#cb718-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghighlight)</span>
+<span id="cb718-2"><a href="coordinate.html#cb718-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, Net_Worth, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb718-3"><a href="coordinate.html#cb718-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb718-4"><a href="coordinate.html#cb718-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb718-5"><a href="coordinate.html#cb718-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;35-44&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb718-6"><a href="coordinate.html#cb718-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb718-7"><a href="coordinate.html#cb718-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb718-8"><a href="coordinate.html#cb718-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb718-9"><a href="coordinate.html#cb718-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb718-10"><a href="coordinate.html#cb718-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="coordinate.html#cb719-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/interactive_bulletin_charts_agecl_median.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb719-2"><a href="coordinate.html#cb719-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, Category, <span class="at">NW =</span> Net_Worth)  <span class="sc">%&gt;%</span></span>
+<span id="cb719-3"><a href="coordinate.html#cb719-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Category) <span class="sc">%&gt;%</span></span>
+<span id="cb719-4"><a href="coordinate.html#cb719-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb719-5"><a href="coordinate.html#cb719-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">increase =</span> (NW<span class="sc">-</span><span class="fu">first</span>(NW))<span class="sc">/</span><span class="fu">first</span>(NW)) <span class="sc">%&gt;%</span></span>
+<span id="cb719-6"><a href="coordinate.html#cb719-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb719-7"><a href="coordinate.html#cb719-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&lt;=</span> <span class="dv">1992</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1169,17 +1180,17 @@ Figure 22.2: (ref:population-area)
 </tbody>
 </table>
 <p>美國35歲以下的年輕人的中位淨資產比起年長的美國人來說，一開始平均貧窮得多。從「Less than 35」這條線看來，現在的年輕世代比起2004年的年輕世代所擁有的淨資產低了40%。相比之下，65歲以上的美國人現在的淨資產，相較於2004年增加了9%。隨著時代變化，可想像會有一群人的淨資產越來越多，只是現在從這個圖表看來，年輕人所擁有的淨資產相較於過去是越來越低的，多半流入了成年人和老年人手中。</p>
-<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="coordinate.html#cb713-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
-<span id="cb713-2"><a href="coordinate.html#cb713-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb713-3"><a href="coordinate.html#cb713-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb713-4"><a href="coordinate.html#cb713-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;Less than 35&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb713-5"><a href="coordinate.html#cb713-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb713-6"><a href="coordinate.html#cb713-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
-<span id="cb713-7"><a href="coordinate.html#cb713-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb713-8"><a href="coordinate.html#cb713-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb713-9"><a href="coordinate.html#cb713-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb713-10"><a href="coordinate.html#cb713-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
-<p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="coordinate.html#cb720-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(year, increase, <span class="at">color =</span> Category) <span class="sc">+</span> </span>
+<span id="cb720-2"><a href="coordinate.html#cb720-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb720-3"><a href="coordinate.html#cb720-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb720-4"><a href="coordinate.html#cb720-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gghighlight</span>(Category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65-74&quot;</span>, <span class="st">&quot;Less than 35&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb720-5"><a href="coordinate.html#cb720-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb720-6"><a href="coordinate.html#cb720-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">parse_format</span>()) <span class="sc">+</span> </span>
+<span id="cb720-7"><a href="coordinate.html#cb720-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb720-8"><a href="coordinate.html#cb720-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb720-9"><a href="coordinate.html#cb720-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb720-10"><a href="coordinate.html#cb720-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>))</span></code></pre></div>
+<p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="xy-aspect-ratio" class="section level2 hasAnchor" number="22.7">
@@ -1187,31 +1198,31 @@ Figure 22.2: (ref:population-area)
 <div id="unicef-optimistic-wgoith" class="section level3 hasAnchor" number="22.7.1">
 <h3><span class="header-section-number">22.7.1</span> UNICEF-Optimistic (WGOITH)<a href="coordinate.html#unicef-optimistic-wgoith" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html" class="uri">https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html</a> <a href="https://changingchildhood.unicef.org/about" class="uri">https://changingchildhood.unicef.org/about</a></p>
-<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="coordinate.html#cb714-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb714-2"><a href="coordinate.html#cb714-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
-<span id="cb714-3"><a href="coordinate.html#cb714-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
-<span id="cb714-4"><a href="coordinate.html#cb714-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
-<span id="cb714-5"><a href="coordinate.html#cb714-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
-<span id="cb714-6"><a href="coordinate.html#cb714-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
-<span id="cb714-7"><a href="coordinate.html#cb714-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
-<span id="cb714-8"><a href="coordinate.html#cb714-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
-<span id="cb714-9"><a href="coordinate.html#cb714-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
-<span id="cb714-10"><a href="coordinate.html#cb714-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
-<span id="cb714-11"><a href="coordinate.html#cb714-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
-<span id="cb714-12"><a href="coordinate.html#cb714-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
-<span id="cb714-13"><a href="coordinate.html#cb714-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
-<span id="cb714-14"><a href="coordinate.html#cb714-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
-<span id="cb714-15"><a href="coordinate.html#cb714-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb714-16"><a href="coordinate.html#cb714-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
-<span id="cb714-17"><a href="coordinate.html#cb714-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
-<span id="cb714-18"><a href="coordinate.html#cb714-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb714-19"><a href="coordinate.html#cb714-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb714-20"><a href="coordinate.html#cb714-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb714-21"><a href="coordinate.html#cb714-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb714-22"><a href="coordinate.html#cb714-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
-<span id="cb714-23"><a href="coordinate.html#cb714-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
-<span id="cb714-24"><a href="coordinate.html#cb714-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb714-25"><a href="coordinate.html#cb714-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="coordinate.html#cb721-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/unicef-changing-childhood-data.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb721-2"><a href="coordinate.html#cb721-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">country =</span> WP5, <span class="at">age =</span> WP22140, <span class="at">bw =</span> WP22092) <span class="sc">%&gt;%</span></span>
+<span id="cb721-3"><a href="coordinate.html#cb721-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ordered</span>(country, </span>
+<span id="cb721-4"><a href="coordinate.html#cb721-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, </span>
+<span id="cb721-5"><a href="coordinate.html#cb721-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">31</span>, </span>
+<span id="cb721-6"><a href="coordinate.html#cb721-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">60</span>, <span class="dv">61</span>, </span>
+<span id="cb721-7"><a href="coordinate.html#cb721-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">87</span>, <span class="dv">165</span>), </span>
+<span id="cb721-8"><a href="coordinate.html#cb721-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Morocco&quot;</span>, <span class="st">&quot;Lebanon&quot;</span>, </span>
+<span id="cb721-9"><a href="coordinate.html#cb721-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Bangladesh&quot;</span>, </span>
+<span id="cb721-10"><a href="coordinate.html#cb721-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;UK&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Germany&quot;</span>,</span>
+<span id="cb721-11"><a href="coordinate.html#cb721-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Spain&quot;</span>, <span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;India&quot;</span>, </span>
+<span id="cb721-12"><a href="coordinate.html#cb721-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Nigeria&quot;</span>, <span class="st">&quot;Kenya&quot;</span>, </span>
+<span id="cb721-13"><a href="coordinate.html#cb721-13" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Mali&quot;</span>, <span class="st">&quot;Ukraine&quot;</span>,</span>
+<span id="cb721-14"><a href="coordinate.html#cb721-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Cameroon&quot;</span>, <span class="st">&quot;Zimbabwe&quot;</span>,</span>
+<span id="cb721-15"><a href="coordinate.html#cb721-15" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Peru&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb721-16"><a href="coordinate.html#cb721-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(country, age, bw) <span class="sc">%&gt;%</span></span>
+<span id="cb721-17"><a href="coordinate.html#cb721-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(country, age) <span class="sc">%&gt;%</span></span>
+<span id="cb721-18"><a href="coordinate.html#cb721-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">perc =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb721-19"><a href="coordinate.html#cb721-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb721-20"><a href="coordinate.html#cb721-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bw <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb721-21"><a href="coordinate.html#cb721-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country, age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb721-22"><a href="coordinate.html#cb721-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(age, perc) <span class="sc">%&gt;%</span></span>
+<span id="cb721-23"><a href="coordinate.html#cb721-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">15-24y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">40+y</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>)</span>
+<span id="cb721-24"><a href="coordinate.html#cb721-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb721-25"><a href="coordinate.html#cb721-25" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1273,16 +1284,16 @@ Figure 22.2: (ref:population-area)
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="coordinate.html#cb715-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
-<span id="cb715-2"><a href="coordinate.html#cb715-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
-<span id="cb715-3"><a href="coordinate.html#cb715-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb715-4"><a href="coordinate.html#cb715-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb715-5"><a href="coordinate.html#cb715-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb715-6"><a href="coordinate.html#cb715-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
-<span id="cb715-7"><a href="coordinate.html#cb715-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb715-8"><a href="coordinate.html#cb715-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb715-9"><a href="coordinate.html#cb715-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="coordinate.html#cb722-1" aria-hidden="true" tabindex="-1"></a>plot.opt <span class="sc">%&gt;%</span></span>
+<span id="cb722-2"><a href="coordinate.html#cb722-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="st">`</span><span class="at">40+y</span><span class="st">`</span>, <span class="st">`</span><span class="at">15-24y</span><span class="st">`</span>, <span class="at">label =</span> country) <span class="sc">+</span> </span>
+<span id="cb722-3"><a href="coordinate.html#cb722-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb722-4"><a href="coordinate.html#cb722-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb722-5"><a href="coordinate.html#cb722-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb722-6"><a href="coordinate.html#cb722-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slop =</span> <span class="dv">1</span>, </span>
+<span id="cb722-7"><a href="coordinate.html#cb722-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb722-8"><a href="coordinate.html#cb722-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb722-9"><a href="coordinate.html#cb722-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

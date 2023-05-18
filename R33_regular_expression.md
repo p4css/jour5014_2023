@@ -129,7 +129,6 @@ str_replace_all(s, "\\s", "")
 pname <- c("pttid111(kefan)", "pid2(hangfan)")
 
 
-
 # extracting at least one words until not word
 str_extract(pname, "\\w")
 ```
@@ -310,7 +309,7 @@ data_frame(source) %>% extract(source, "device", "Twitter for (.*?)<") # Non-Gre
 
 1.  **`str_detect(teststr, re1) & str_detect(teststr, re2)`** 通過 **`&`** 進行邏輯「與」操作，將兩個邏輯向量進行元素級別的「與」運算，得到一個新的邏輯向量。該向量指示哪些句子同時符合 **`re1`** 和 **`re2`** 的模式。
 
-2.  **`str_detect(teststr, re2) | str_detect(teststr, re2)`** 通過 **`|`** 進行邏輯「或」操作，將兩個邏輯向量進行元素級別的「或」運算，得到一個新的邏輯向量。該向量指示哪些句子符合 **`re1`** 或 **`re2`** 的模式。
+2.  **`str_detect(teststr, re1) | str_detect(teststr, re2)`** 通過 **`|`** 進行邏輯「或」操作，將兩個邏輯向量進行元素級別的「或」運算，得到一個新的邏輯向量。該向量指示哪些句子符合 **`re1`** 或 **`re2`** 的模式。
 
 
 ```r
@@ -343,11 +342,11 @@ str_detect(teststr, re1) & str_detect(teststr, re2)
 ```
 
 ```r
-str_detect(teststr, re2) | str_detect(teststr, re2)
+str_detect(teststr, re1) | str_detect(teststr, re2)
 ```
 
 ```
-## [1]  TRUE FALSE  TRUE
+## [1] TRUE TRUE TRUE
 ```
 
 ### Extracting nearby words
@@ -420,6 +419,7 @@ df %>% extract(string3, c("pre", "hit", "tail"), "(.{0,5})(台灣|臺灣)(.{0,5}
 ```r
 urls <- c("https://www.ptt.cc/bbs/HatePolitics/index4086.html", 
           "https://www.ptt.cc/bbs/HatePolitics/index348.html")
+df <- tibble(urls)
 str_extract(urls, "index(\\d+)\\.html")
 ```
 
@@ -447,7 +447,72 @@ data_frame(urls) %>% extract(urls, "last_page", "index(\\d+)\\.html", remove = F
 ## 2 https://www.ptt.cc/bbs/HatePolitics/index348.html  348
 ```
 
-## Famous cases
+::: practice
+### Practice. Ask CHATGPT
+
+````         
+我現在有一程式碼如下
+```
+urls <- c("https://www.ptt.cc/bbs/HatePolitics/index4086.html", 
+          "https://www.ptt.cc/bbs/HatePolitics/index348.html")
+df <- tibble(urls)
+```
+我希望來抽取出頁面的編號，新增一個page_num的變項，使得
+```
+...index4086.html: 4086
+...index348.html: 348
+```
+請以tidyverse pipeline的方式寫，並使用stringr的函式
+````
+
+以下為chatgpt的回答。
+
+您可以使用tidyverse和stringr的函式來實現這個目標。以下是一個使用tidyverse pipeline和stringr的範例程式碼：
+
+```         
+library(tidyverse)
+
+urls <- c("https://www.ptt.cc/bbs/HatePolitics/index4086.html", 
+          "https://www.ptt.cc/bbs/HatePolitics/index348.html")
+
+df <- tibble(urls) %>%
+  mutate(page_num = str_extract(urls, "(?<=index)\\d+(?=.html)"))
+```
+
+PROMPT：請解釋**`(?<=index)\\d+(?=.html)`**
+
+-   **`(?<=index)`**: 是一個Positive Lookbehind。它表示匹配位置之前必須出現"index"字串。在這種情況下，我們希望匹配的數字出現在"index"之後，所以使用正向肯定後願式來確定位置。
+
+-   **`\\d+`**: 這是一個數字的匹配模式。**`\\d`**表示匹配一個數字字符（0-9），而**`+`**表示匹配一個或多個連續的數字字符。這樣可以確保我們匹配到的是一個或多個數字。
+
+-   **`(?=.html)`**: 是一個Positive Lookahead。它表示匹配位置之後必須出現".html"字串。在這種情況下，我們希望匹配的數字出現在".html"之前，所以使用正向肯定前願式來確定位置。
+
+-   **`index`**：匹配字串中的"index"字串。
+
+-   **`(\\d+)`**：這是一個捕獲組（Capture Group），用於捕獲一個或多個連續的數字字符。**`\\d`**表示匹配一個數字字符（0-9），而**`+`**表示匹配一個或多個連續的數字字符。
+
+-   **`\\.html`**：匹配字串中的".html"字串。由於"."在正則表達式中具有特殊意義，所以需要使用**`\\`**進行轉義。
+:::
+
+
+```r
+urls <- c("https://www.ptt.cc/bbs/HatePolitics/index4086.html", 
+          "https://www.ptt.cc/bbs/HatePolitics/index348.html")
+
+df <- tibble(urls) %>%
+  mutate(page_num = str_extract(urls, "(?<=index)\\d+(?=.html)"))
+df
+```
+
+```
+## # A tibble: 2 × 2
+##   urls                                               page_num
+##   <chr>                                              <chr>   
+## 1 https://www.ptt.cc/bbs/HatePolitics/index4086.html 4086    
+## 2 https://www.ptt.cc/bbs/HatePolitics/index348.html  348
+```
+
+## Useful cases
 
 ### Matching URL
 

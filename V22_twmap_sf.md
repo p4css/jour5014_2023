@@ -368,7 +368,7 @@ plot(county_ms_simp)
 # install.packages("rmapshaper")
 plot_chu <- st_read("data/shapefiles/COUNTY_MOI_1090820.shp") %>%
   # st_transform(3825) %>% #3857
-  st_simplify(dTolerance = 100) %>%
+  st_simplify(dTolerance = 10) %>%
   # rmapshaper::ms_simplify(keep=0.01) %>%
   right_join(president_vote, by=c("COUNTYNAME"="county"))
 ```
@@ -388,8 +388,7 @@ plot_chu <- st_read("data/shapefiles/COUNTY_MOI_1090820.shp") %>%
 plot_chu %>%
   ggplot(aes(fill = chu_ratio)) + 
   geom_sf(color="white", size=0.2) + 
-  scale_fill_gradient(low = "#FFFFFF", high = "#0000FF") + 
-  theme_void()
+  scale_fill_gradient(low = "#FFFFFF", high = "#0000FF")
 ```
 
 <img src="V22_twmap_sf_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" />
