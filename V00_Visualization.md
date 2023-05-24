@@ -19,3 +19,17 @@ ggplot2和Python的matplotlib都是常用的視覺化套件，但在設計上有
 5.  ggnatimate：ggnatimate用於將ggplot所產製的圖表多增加一個變量以轉製為動態圖表，支持多種動畫效果。
 6.  ggally：ggally是一個基於ggplot2的視覺化套件，提供了多種高級散點圖和數據矩陣的繪製方式，方便使用者進行多變量分析和資料探索。
 7.  ggrepel：ggrepel是一個基於ggplot2的視覺化套件，用於解決文字標籤重疊的問題，可以自動調整文字標籤的位置，使其更加易讀和美觀。
+
+## Covered Cases
+
+1.  [WP: Paid Maternity Leave (產假支薪)](#maternity): barplot
+2.  [NYT: Population Changes Over More Than 20,000 Years](#population_growth): Coordinate, lineplot
+3.  [NYT: LeBron James' Achievement](#lebron): Coordinate, lineplot
+4.  [Taiwan Village Population Distribution](#vilpopulation): Coordinate, lineplot
+5.  [NYT: Net Worth by Age Group](#networth): Coordinate, barplot
+6.  [NYT: Optimistic of different generation](#optimistic): Association, scatter
+7.  [Vaccinating Proportion by countries](#vaccination): Amount, heatmap
+8.  [NYT: Taiwan salary distribution](#twsalary): Distribution, boxmap
+9.  [Taiwan income distribution by each town](#twincome): Distribution, boxmap
+10. [NYT: Carbon by countries](#carbon): Proportion, Treemap
+11. [Taiwan Annual Expenditure](#twbudget): Proportion, Treemap

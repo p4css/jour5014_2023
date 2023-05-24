@@ -4,7 +4,7 @@
 
 本章節談論的是視覺化圖表的座標軸，本章節所涵蓋的概念可參考*Claus O. Wilke*所著之[Fundamentals of Data Visualization](https://clauswilke.com/dataviz/coordinate-systems-axes.html)的Chap3 Coordination & Axis與Chapter 8 [Visualizing distributions: Empirical cumulative distribution functions and q-q plots](https://clauswilke.com/dataviz/ecdf-qq.html)。
 
-## NYT: Population Growth
+## NYT: Population Growth {#population_growth}
 
 紐時這篇報導「[When Did the Anthropocene Start? Scientists Closer to Saying When. - The New York Times (nytimes.com)](https://www.nytimes.com/2022/12/17/climate/anthropocene-age-geology.html)」討論了人類活動對地球所產生的深遠影響，並探討人類是否已經進入了一個新的地質時期，被稱為「人新世」。報導指出，人類的經濟活動、能源消耗和人口增長是人新世的主要因素，並且這些因素已經在地球上留下了不可磨滅的痕跡。報導也提到，地質學家已經發現了人新世的證據，包括核爆炸中的鈽同位素、肥料中的氮和發電廠的灰燼等。然而，報導也問道，人新世是否真的已經開始，以及它的開始點是否應該是農業革命、工業革命、核彈（77年前）或其他發展。
 
@@ -143,11 +143,9 @@ cowplot::plot_grid(
 
 <img src="V02_Coordinate_System_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" />
 
-## Order as axis
+## Order as axis {#vilpopulation}
 
 學術論文若要呈現一群數據的分佈時，最常用的是密度（分佈）函數、累積分佈函數，最常視覺化的方法是密度分佈圖（`geom_density()`）或直方圖（`geom_histogram()`)。然而，**對新聞等強調「說故事」的文體而言，說故事的技巧往往不是「那一群資源多或資源少的對象」，而經常要直指「那個對象」，要能夠看得見所敘述的對象在圖中的位置。**此時，用密度分佈來呈現的話，只能看出，該對象在分佈的某個位置；但可以改用將資料對象根據某個數據來排序後，繪製折現圖的方式來表現。例如，若要繪製一個班級的成績分佈，通常X軸是分數（組），Y軸是獲得該分數（組）的人數；但其實可以將個體依照分數來做排序，Y軸不是某個分數（組）的個數，而是每個排序後的個體，而且以排序後的序號（Ranking）來表示。用折線圖繪製後，一樣可以看出分數的分佈，但卻能夠直接標記敘事中的某個對象是Y軸中得哪個點。
-
-### 
 
 ![Figure 3.5: Population numbers of Texas counties relative to their median value. Select counties are highlighted by name. The dashed line indicates a ratio of 1, corresponding to a county with median population number. The most populous counties have approximately 100 times more inhabitants than the median county, and the least populous counties have approximately 100 times fewer inhabitants than the median county. Data source: 2010 Decennial U.S. Census.](images/paste-FB7FC371.png)
 
@@ -287,7 +285,7 @@ cowplot::plot_grid(
 
 ## Increasing percentage as Y
 
-### NYT: Net Worth by Age Group
+### NYT: Net Worth by Age Group {#networth}
 
 ::: notes
 **LEARNING NOTES**
@@ -394,7 +392,7 @@ p2 %>% ggplot() + aes(year, increase, color = Category) +
 
 ## X/Y aspect ratio
 
-### UNICEF-Optimistic (WGOITH)
+### UNICEF-Optimistic (WGOITH) {#optimistic}
 
 <https://www.nytimes.com/2021/11/17/upshot/global-survey-optimism.html> <https://changingchildhood.unicef.org/about>
 
