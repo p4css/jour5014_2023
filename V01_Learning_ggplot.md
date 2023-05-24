@@ -1,4 +1,4 @@
-## ggplot簡介 {#ggplot}
+# ggplot {#ggplot}
 
 本節著重在介紹`ggplot`的基本概念與設定。
 

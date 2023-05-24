@@ -6,7 +6,7 @@
 
 
 
-## Heatmap: Vaccination {#vaccination}
+## Heatmap: Vaccination {#vaccinating}
 
 這個例子參考[@wilke2019fundamentals]在視覺化[數量（Amount）](https://clauswilke.com/dataviz/visualizing-amounts.html)時的熱圖範例（Heatmap），但改用為視覺化各國每百人完整注射COVID-19疫苗人數歷時資料。 - <https://ourworldindata.org/covid-vaccinations> - <https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations>
 
