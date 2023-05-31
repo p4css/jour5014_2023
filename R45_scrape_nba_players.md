@@ -16,7 +16,9 @@
 
 但目前（2023/04/01）的球員數共有五千多人，我們不可能將所有的球員通通繪製在圖上，反而會影響我們看到重要的訊息，因此要有效且有意義地減少要視覺化的資料量。這有幾種策略，一種是根據目的取出想要比較的球員、一種是直接設一個閥值（例如職涯超過15年的約90人），一種是看看該資料網站上有沒有列出一些頂尖球員名單。（猜想）紐約時報用的是該網站上的Top 250，因此第一個步驟要做的就是先把要分析的這250名球員的名冊爬取下來，之後再逐一爬取每個球員的資料紀錄。
 
-這段程式碼的目的是從網站 "[https://www.basketball-reference.com"](https://www.basketball-reference.com%22) 中提取出排名前幾位的籃球員生涯表現數據，以及每個球員的個人資料頁面連結。Top 250球員的頁面網址為<https://www.basketball-reference.com/leaders/per_career.html>。
+這段程式碼的目的是從網站 "<https://www.basketball-reference.com%22> 中提取出排名前幾位的籃球員生涯表現數據，以及每個球員的個人資料頁面連結。Top 250球員的頁面網址為<https://www.basketball-reference.com/leaders/per_career.html>。
+
+![](images/paste-9EE54CBD.png)
 
 現在，我們可以使用`rvest`套件中的`read_html()`函數讀取網頁的 HTML 內容，該。接著傳遞給下一個函數`html_node()`，並指定要選取的 HTML 元素 ID 為`nba`。這個 ID 代表了包含球員表現數據的表格。最後，使用`html_table()` 函數提取表格資料並將結果存入`top_players`變數中。
 
@@ -56,7 +58,9 @@ top_players
 
 ## Scraping live scores
 
-### Testing
+<https://www.basketball-reference.com/players/c/chambto01.html>
+
+### Testing: Scrape one
 
 
 ```r
@@ -66,7 +70,9 @@ table2 <- read_html(url) %>%
         html_table(convert=T)
 ```
 
-## Scrape life time scores
+### Scrape life time scores of all top-250 players
+
+![](images/paste-0BF71F44.png)
 
 
 ```r
@@ -106,6 +112,8 @@ top250 <- totals %>%
 ```
 
 ## Visualization
+
+Load pre-save data
 
 
 ```r
